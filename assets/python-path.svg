@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 330" role="img" aria-labelledby="title desc">
+  <title id="title">เส้นทางการเรียนรู้ Python</title>
+  <desc id="desc">โค้ดเชื่อมไปยังข้อมูล กราฟ และหน้าต่างโปรแกรม</desc>
+  <defs>
+    <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.3" fill="#ffffff" opacity=".16"/>
+    </pattern>
+  </defs>
+  <rect x="20" y="16" width="480" height="298" rx="20" fill="#242d58" stroke="#59628a" stroke-width="2"/>
+  <rect x="20" y="16" width="480" height="298" rx="20" fill="url(#dots)"/>
+  <rect x="40" y="37" width="238" height="254" rx="13" fill="#121936" stroke="#5d688d"/>
+  <circle cx="59" cy="56" r="4" fill="#ff755e"/><circle cx="73" cy="56" r="4" fill="#f5c960"/><circle cx="87" cy="56" r="4" fill="#8de0c7"/>
+  <text x="54" y="93" fill="#91e5d0" font-family="Consolas,monospace" font-size="15">01</text>
+  <text x="84" y="93" fill="#d9dfef" font-family="Consolas,monospace" font-size="15">score = 92</text>
+  <text x="54" y="125" fill="#91e5d0" font-family="Consolas,monospace" font-size="15">02</text>
+  <text x="84" y="125" fill="#ffc580" font-family="Consolas,monospace" font-size="15">if score &gt;= 80:</text>
+  <text x="54" y="157" fill="#91e5d0" font-family="Consolas,monospace" font-size="15">03</text>
+  <text x="100" y="157" fill="#d9dfef" font-family="Consolas,monospace" font-size="14">print("A")</text>
+  <rect x="53" y="184" width="192" height="73" rx="8" fill="#263454"/>
+  <text x="67" y="208" fill="#8de0c7" font-family="Consolas,monospace" font-size="11">OUTPUT</text>
+  <text x="67" y="238" fill="#ffffff" font-family="Consolas,monospace" font-size="21" font-weight="bold">A  ✓</text>
+  <path d="M292 105 C324 105 315 67 350 67" fill="none" stroke="#8de0c7" stroke-width="3" stroke-dasharray="6 7"/>
+  <path d="M292 205 C330 205 315 250 355 250" fill="none" stroke="#ff987e" stroke-width="3" stroke-dasharray="6 7"/>
+  <circle cx="354" cy="67" r="29" fill="#8de0c7"/><text x="354" y="75" fill="#192044" text-anchor="middle" font-family="Consolas,monospace" font-weight="bold" font-size="22">AI</text>
+  <rect x="380" y="43" width="93" height="50" rx="7" fill="#303d6b" stroke="#8de0c7"/>
+  <path d="M393 80 L406 68 L416 74 L430 56 L446 70 L461 57" fill="none" stroke="#f5c960" stroke-width="3"/>
+  <circle cx="425" cy="250" r="30" fill="#ff755e"/><text x="425" y="258" fill="#192044" text-anchor="middle" font-family="Consolas,monospace" font-weight="bold" font-size="19">GUI</text>
+  <rect x="345" y="278" width="132" height="14" rx="7" fill="#f5c960"/>
+  <rect x="362" y="224" width="126" height="12" rx="6" fill="#ff9880"/>
+  <path d="M310 151 l7 -16 7 16 16 7 -16 7 -7 16 -7 -16 -16 -7z" fill="#f5c960"/>
+  <circle cx="475" cy="132" r="5" fill="#ff755e"/><circle cx="326" cy="54" r="4" fill="#f5c960"/>
+</svg>

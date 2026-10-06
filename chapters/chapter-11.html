@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#192044">
+  <meta name="description" content="ใช้ไลบรารีมาตรฐาน ติดตั้งแพ็กเกจแยกสภาพแวดล้อม และจัด dependency ของโปรเจกต์">
+  <title>บทที่ 11 · โมดูล virtual environment และ pip | Python programming</title>
+  <link rel="stylesheet" href="../assets/lesson.css">
+</head>
+<body>
+  <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
+  <div class="lesson-shell">
+    <aside class="lesson-sidebar" aria-label="สารบัญบทเรียน">
+      <a class="lesson-brand" href="../index.html"><span class="brand-mark">Py</span><span><span class="brand-title">Python programming</span><span class="brand-caption">LECTURE NOTES</span></span></a>
+      <nav class="lesson-toc chapter-navigation" aria-label="สารบัญรายวิชา">
+        <p class="toc-label">สารบัญ · 20 บทเรียน</p>
+        <p class="toc-label" data-group="foundation">เริ่มต้นกับ Python</p><details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเริ่มใช้งาน Python ด้วย Thonny ทำความเข้าใจไฟล์ .py, โครงสร้างคำสั่ง และวิธีรัน/หยุดโปรแกรม Python program ทำงานอย่างไร เลือก IDE สำหรับผู้เริ่มเรียน: Thonny แยก editor, shell และ interpreter โครงสร้างไฟล์และการเยื้องบรรทัด รัน บันทึก และอ่านข้อผิดพลาด">
+      <summary><span class="toc-number">01</span><span class="chapter-nav-title">โครงสร้างโปรแกรม Python, IDE และการรัน</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-01.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-01.html#topic-1"><span class="topic-number">01.1</span>Python program ทำงานอย่างไร</a></li><li><a href="chapter-01.html#topic-2"><span class="topic-number">01.2</span>เลือก IDE สำหรับผู้เริ่มเรียน: Thonny</a></li><li><a href="chapter-01.html#topic-3"><span class="topic-number">01.3</span>แยก editor, shell และ interpreter</a></li><li><a href="chapter-01.html#topic-4"><span class="topic-number">01.4</span>โครงสร้างไฟล์และการเยื้องบรรทัด</a></li><li><a href="chapter-01.html#topic-5"><span class="topic-number">01.5</span>รัน บันทึก และอ่านข้อผิดพลาด</a></li><li><a href="chapter-01.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลแต่ละชนิด รับค่าจากผู้ใช้ แปลงชนิดก่อนคำนวณ และสร้าง output ที่อ่านเข้าใจได้ ตัวแปรคือชื่อที่อ้างถึงข้อมูล ตั้งชื่อให้คนอ่านเข้าใจ ค่าหนึ่งเปลี่ยนได้ตามลำดับคำสั่ง ชนิดข้อมูลบอกวิธีใช้งานค่า input คืนค่าเป็นข้อความเสมอ f-string แทรกค่าลงในข้อความ">
+      <summary><span class="toc-number">02</span><span class="chapter-nav-title">ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-02.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-02.html#topic-1"><span class="topic-number">02.1</span>ตัวแปรคือชื่อที่อ้างถึงข้อมูล</a></li><li><a href="chapter-02.html#topic-2"><span class="topic-number">02.2</span>ตั้งชื่อให้คนอ่านเข้าใจ</a></li><li><a href="chapter-02.html#topic-3"><span class="topic-number">02.3</span>ค่าหนึ่งเปลี่ยนได้ตามลำดับคำสั่ง</a></li><li><a href="chapter-02.html#topic-4"><span class="topic-number">02.4</span>ชนิดข้อมูลบอกวิธีใช้งานค่า</a></li><li><a href="chapter-02.html#topic-5"><span class="topic-number">02.5</span>input คืนค่าเป็นข้อความเสมอ</a></li><li><a href="chapter-02.html#topic-6"><span class="topic-number">02.6</span>f-string แทรกค่าลงในข้อความ</a></li><li><a href="chapter-02.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และประกอบเงื่อนไขเชิงตรรกะ ตัวดำเนินการเลขคณิต เปรียบเทียบแล้วได้ bool เชื่อมเงื่อนไข">
+      <summary><span class="toc-number">03</span><span class="chapter-nav-title">ตัวดำเนินการและนิพจน์</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-03.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-03.html#topic-1"><span class="topic-number">03.1</span>ตัวดำเนินการเลขคณิต</a></li><li><a href="chapter-03.html#topic-2"><span class="topic-number">03.2</span>เปรียบเทียบแล้วได้ bool</a></li><li><a href="chapter-03.html#topic-3"><span class="topic-number">03.3</span>เชื่อมเงื่อนไข</a></li><li><a href="chapter-03.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if ตรวจกรณีแรก elif เรียงกรณีที่ไม่ทับกัน else เป็นกรณีที่เหลือ">
+      <summary><span class="toc-number">04</span><span class="chapter-nav-title">เงื่อนไขและการตัดสินใจ</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-04.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-04.html#topic-1"><span class="topic-number">04.1</span>if ตรวจกรณีแรก</a></li><li><a href="chapter-04.html#topic-2"><span class="topic-number">04.2</span>elif เรียงกรณีที่ไม่ทับกัน</a></li><li><a href="chapter-04.html#topic-3"><span class="topic-number">04.3</span>else เป็นกรณีที่เหลือ</a></li><li><a href="chapter-04.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="foundation" data-search="การทำซ้ำด้วยลูป ทำคำสั่งซ้ำอย่างควบคุมได้ด้วย for, while และ range for วนผ่านสมาชิก สะสมค่าอย่างระมัดระวัง while วนจนเงื่อนไขเปลี่ยน">
+      <summary><span class="toc-number">05</span><span class="chapter-nav-title">การทำซ้ำด้วยลูป</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-05.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-05.html#topic-1"><span class="topic-number">05.1</span>for วนผ่านสมาชิก</a></li><li><a href="chapter-05.html#topic-2"><span class="topic-number">05.2</span>สะสมค่าอย่างระมัดระวัง</a></li><li><a href="chapter-05.html#topic-3"><span class="topic-number">05.3</span>while วนจนเงื่อนไขเปลี่ยน</a></li><li><a href="chapter-05.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด ต่อ ค้นหา และจัดรูปแบบข้อความที่รับมาจากผู้ใช้หรือไฟล์ ข้อความแก้ตรงตำแหน่งไม่ได้ method ช่วยทำความสะอาด index และ slicing เริ่มที่ศูนย์">
+      <summary><span class="toc-number">06</span><span class="chapter-nav-title">ข้อความและการจัดการ string</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-06.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-06.html#topic-1"><span class="topic-number">06.1</span>ข้อความแก้ตรงตำแหน่งไม่ได้</a></li><li><a href="chapter-06.html#topic-2"><span class="topic-number">06.2</span>method ช่วยทำความสะอาด</a></li><li><a href="chapter-06.html#topic-3"><span class="topic-number">06.3</span>index และ slicing เริ่มที่ศูนย์</a></li><li><a href="chapter-06.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เลือกภาชนะเก็บข้อมูลหลายค่าให้เหมาะกับการเพิ่ม แก้ ค้นหา และจับคู่ list เก็บลำดับและแก้ไขได้ tuple และ set มีหน้าที่ต่างกัน dict ผูก key กับ value">
+      <summary><span class="toc-number">07</span><span class="chapter-nav-title">โครงสร้างข้อมูล: list, tuple, set และ dict</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-07.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-07.html#topic-1"><span class="topic-number">07.1</span>list เก็บลำดับและแก้ไขได้</a></li><li><a href="chapter-07.html#topic-2"><span class="topic-number">07.2</span>tuple และ set มีหน้าที่ต่างกัน</a></li><li><a href="chapter-07.html#topic-3"><span class="topic-number">07.3</span>dict ผูก key กับ value</a></li><li><a href="chapter-07.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม ห่อแนวคิดที่ใช้ซ้ำในฟังก์ชัน พร้อมพารามิเตอร์และค่าที่คืนกลับ def ประกาศหน้าที่หนึ่งอย่าง parameter และ argument return ส่งผลกลับผู้เรียก">
+      <summary><span class="toc-number">08</span><span class="chapter-nav-title">ฟังก์ชันและการแบ่งโปรแกรม</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-08.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-08.html#topic-1"><span class="topic-number">08.1</span>def ประกาศหน้าที่หนึ่งอย่าง</a></li><li><a href="chapter-08.html#topic-2"><span class="topic-number">08.2</span>parameter และ argument</a></li><li><a href="chapter-08.html#topic-3"><span class="topic-number">08.3</span>return ส่งผลกลับผู้เรียก</a></li><li><a href="chapter-08.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<p class="toc-label" data-group="practice">ฝึกเขียนและใช้งาน</p><details class="chapter-nav-item" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน traceback อย่างมีระบบ ป้องกันข้อผิดพลาดที่คาดหมาย และแก้ที่สาเหตุ อ่าน traceback จากบรรทัดล่างขึ้นบน try-except ควรจับเฉพาะที่เข้าใจ แยก logic error ด้วยตัวอย่าง">
+      <summary><span class="toc-number">09</span><span class="chapter-nav-title">ข้อผิดพลาด การจัดการ exception และ debug</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-09.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-09.html#topic-1"><span class="topic-number">09.1</span>อ่าน traceback จากบรรทัดล่างขึ้นบน</a></li><li><a href="chapter-09.html#topic-2"><span class="topic-number">09.2</span>try-except ควรจับเฉพาะที่เข้าใจ</a></li><li><a href="chapter-09.html#topic-3"><span class="topic-number">09.3</span>แยก logic error ด้วยตัวอย่าง</a></li><li><a href="chapter-09.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนข้อมูลอย่างปลอดภัย พร้อมใช้รูปแบบไฟล์ที่พบในงานจริง ใช้ with เปิดไฟล์ pathlib จัดการตำแหน่งไฟล์ CSV กับ JSON ใช้คนละโครงสร้าง">
+      <summary><span class="toc-number">10</span><span class="chapter-nav-title">ไฟล์ ข้อมูล CSV และ JSON</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-10.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-10.html#topic-1"><span class="topic-number">10.1</span>ใช้ with เปิดไฟล์</a></li><li><a href="chapter-10.html#topic-2"><span class="topic-number">10.2</span>pathlib จัดการตำแหน่งไฟล์</a></li><li><a href="chapter-10.html#topic-3"><span class="topic-number">10.3</span>CSV กับ JSON ใช้คนละโครงสร้าง</a></li><li><a href="chapter-10.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="practice" data-search="โมดูล virtual environment และ pip ใช้ไลบรารีมาตรฐาน ติดตั้งแพ็กเกจแยกสภาพแวดล้อม และจัด dependency ของโปรเจกต์ import นำโมดูลมาใช้ venv ป้องกัน dependency ชนกัน pip และ requirements.txt" open>
+      <summary><span class="toc-number">11</span><span class="chapter-nav-title">โมดูล virtual environment และ pip</span></summary>
+      <ul class="chapter-subnav"><li><a href="#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="#topic-1"><span class="topic-number">11.1</span>import นำโมดูลมาใช้</a></li><li><a href="#topic-2"><span class="topic-number">11.2</span>venv ป้องกัน dependency ชนกัน</a></li><li><a href="#topic-3"><span class="topic-number">11.3</span>pip และ requirements.txt</a></li><li><a href="#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมสถานะและพฤติกรรมที่สัมพันธ์กันไว้ใน class เพื่อสร้าง object หลายตัว class เป็นแบบพิมพ์ object เป็นสิ่งที่สร้าง __init__ กำหนดค่าเริ่มต้น method รวมพฤติกรรมกับข้อมูล">
+      <summary><span class="toc-number">12</span><span class="chapter-nav-title">เขียนโปรแกรมเชิงวัตถุด้วย class</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-12.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-12.html#topic-1"><span class="topic-number">12.1</span>class เป็นแบบพิมพ์ object เป็นสิ่งที่สร้าง</a></li><li><a href="chapter-12.html#topic-2"><span class="topic-number">12.2</span>__init__ กำหนดค่าเริ่มต้น</a></li><li><a href="chapter-12.html#topic-3"><span class="topic-number">12.3</span>method รวมพฤติกรรมกับข้อมูล</a></li><li><a href="chapter-12.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON เข้าใจ request/response, ส่งพารามิเตอร์ และแปลง JSON เพื่อเชื่อมบริการอื่น API คือสัญญาการสื่อสาร แปลงข้อมูล JSON เครือข่ายผิดพลาดได้">
+      <summary><span class="toc-number">13</span><span class="chapter-nav-title">เรียกใช้ Web API และแลกเปลี่ยน JSON</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-13.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-13.html#topic-1"><span class="topic-number">13.1</span>API คือสัญญาการสื่อสาร</a></li><li><a href="chapter-13.html#topic-2"><span class="topic-number">13.2</span>แปลงข้อมูล JSON</a></li><li><a href="chapter-13.html#topic-3"><span class="topic-number">13.3</span>เครือข่ายผิดพลาดได้</a></li><li><a href="chapter-13.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<p class="toc-label" data-group="ai">ต่อยอดข้อมูลและ AI</p><details class="chapter-nav-item" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข ใช้ array คำนวณข้อมูลจำนวนมากแบบเวกเตอร์ ซึ่งเป็นฐานของงาน Data Science และ AI ndarray เป็นข้อมูลชนิดเดียวกัน vectorization แทนการวนทีละค่า เลือกและสรุปตามแกน">
+      <summary><span class="toc-number">14</span><span class="chapter-nav-title">NumPy สำหรับการคำนวณตัวเลข</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-14.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-14.html#topic-1"><span class="topic-number">14.1</span>ndarray เป็นข้อมูลชนิดเดียวกัน</a></li><li><a href="chapter-14.html#topic-2"><span class="topic-number">14.2</span>vectorization แทนการวนทีละค่า</a></li><li><a href="chapter-14.html#topic-3"><span class="topic-number">14.3</span>เลือกและสรุปตามแกน</a></li><li><a href="chapter-14.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน ทำความสะอาด เลือก และสรุปข้อมูลตารางด้วย DataFrame DataFrame มีแถวและคอลัมน์ เลือกและกรองข้อมูล ทำความสะอาดและ groupby">
+      <summary><span class="toc-number">15</span><span class="chapter-nav-title">จัดการตารางข้อมูลด้วย pandas</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-15.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-15.html#topic-1"><span class="topic-number">15.1</span>DataFrame มีแถวและคอลัมน์</a></li><li><a href="chapter-15.html#topic-2"><span class="topic-number">15.2</span>เลือกและกรองข้อมูล</a></li><li><a href="chapter-15.html#topic-3"><span class="topic-number">15.3</span>ทำความสะอาดและ groupby</a></li><li><a href="chapter-15.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib เปลี่ยนข้อมูลตัวเลขเป็นภาพเพื่อมองแนวโน้ม เปรียบเทียบ และสื่อสารผล เลือกชนิดกราฟตามคำถาม label ทำให้กราฟอ่านได้ แยกการวาดกับการบันทึก">
+      <summary><span class="toc-number">16</span><span class="chapter-nav-title">สร้างกราฟด้วย Matplotlib</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-16.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-16.html#topic-1"><span class="topic-number">16.1</span>เลือกชนิดกราฟตามคำถาม</a></li><li><a href="chapter-16.html#topic-2"><span class="topic-number">16.2</span>label ทำให้กราฟอ่านได้</a></li><li><a href="chapter-16.html#topic-3"><span class="topic-number">16.3</span>แยกการวาดกับการบันทึก</a></li><li><a href="chapter-16.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn สร้าง pipeline ฝึกและประเมินโมเดลจากข้อมูลตัวอย่าง โดยแยก train กับ test แยก feature กับ target อย่าทดสอบด้วยข้อมูลฝึก Pipeline ป้องกันขั้นตอนสับสน">
+      <summary><span class="toc-number">17</span><span class="chapter-nav-title">Machine Learning เบื้องต้นด้วย scikit-learn</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-17.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-17.html#topic-1"><span class="topic-number">17.1</span>แยก feature กับ target</a></li><li><a href="chapter-17.html#topic-2"><span class="topic-number">17.2</span>อย่าทดสอบด้วยข้อมูลฝึก</a></li><li><a href="chapter-17.html#topic-3"><span class="topic-number">17.3</span>Pipeline ป้องกันขั้นตอนสับสน</a></li><li><a href="chapter-17.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล ต่อยอดแนวคิด ML สู่ neuron, activation, loss และวงจรการเรียนรู้ของ deep learning Neuron รวม input ด้วยน้ำหนัก Loss วัดความคลาดเคลื่อน Framework ช่วยคำนวณ gradient">
+      <summary><span class="toc-number">18</span><span class="chapter-nav-title">แนวคิด Neural Network และการฝึกโมเดล</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-18.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-18.html#topic-1"><span class="topic-number">18.1</span>Neuron รวม input ด้วยน้ำหนัก</a></li><li><a href="chapter-18.html#topic-2"><span class="topic-number">18.2</span>Loss วัดความคลาดเคลื่อน</a></li><li><a href="chapter-18.html#topic-3"><span class="topic-number">18.3</span>Framework ช่วยคำนวณ gradient</a></li><li><a href="chapter-18.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<p class="toc-label" data-group="gui">GUI และโปรเจกต์</p><details class="chapter-nav-item" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปหน้าต่างด้วย Qt for Python โดยใช้ widget, layout, signal และ slot QApplication จัดการแอป Layout ทำหน้าที่จัดวาง signal/slot เชื่อม event กับงาน">
+      <summary><span class="toc-number">19</span><span class="chapter-nav-title">สร้าง GUI สมัยใหม่ด้วย PySide6</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-19.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-19.html#topic-1"><span class="topic-number">19.1</span>QApplication จัดการแอป</a></li><li><a href="chapter-19.html#topic-2"><span class="topic-number">19.2</span>Layout ทำหน้าที่จัดวาง</a></li><li><a href="chapter-19.html#topic-3"><span class="topic-number">19.3</span>signal/slot เชื่อม event กับงาน</a></li><li><a href="chapter-19.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+<details class="chapter-nav-item" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI นำ Python, ตารางข้อมูล, โมเดล และ GUI มาประกอบเป็นแอปแนะนำแผนเรียนขนาดเล็ก เริ่มจากโจทย์และข้อมูล แยก UI, logic และ data ประเมินและสื่อสารข้อจำกัด">
+      <summary><span class="toc-number">20</span><span class="chapter-nav-title">โปรเจกต์ปลายทาง: Course Planner + AI</span></summary>
+      <ul class="chapter-subnav"><li><a href="chapter-20.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-20.html#topic-1"><span class="topic-number">20.1</span>เริ่มจากโจทย์และข้อมูล</a></li><li><a href="chapter-20.html#topic-2"><span class="topic-number">20.2</span>แยก UI, logic และ data</a></li><li><a href="chapter-20.html#topic-3"><span class="topic-number">20.3</span>ประเมินและสื่อสารข้อจำกัด</a></li><li><a href="chapter-20.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+    </details>
+      </nav>
+      <div class="sidebar-bottom">ตัวอย่างรันด้วย Python จริง<br>เลื่อนเพื่ออ่านหัวข้อถัดไป</div>
+    </aside>
+    <main class="lesson-main" id="lesson-content">
+      <div class="utility-row"><a href="../index.html">← สารบัญรายวิชา</a><span class="utility-code">CHAPTER 11 / 20</span></div>
+      <header class="lesson-header"><p class="lesson-kicker">CHAPTER 11 · ใช้งานจริง</p><h1>โมดูล virtual environment และ pip</h1><p>ใช้ไลบรารีมาตรฐาน ติดตั้งแพ็กเกจแยกสภาพแวดล้อม และจัด dependency ของโปรเจกต์</p></header>
+      <section class="learning-goals"><strong>เมื่อจบบทนี้ นิสิตจะทำได้</strong><ul><li>แยกไฟล์เป็นโมดูล ใช้ venv/pip และบันทึกรายการแพ็กเกจที่ต้องใช้</li><li>import นำโมดูลมาใช้</li><li>venv ป้องกัน dependency ชนกัน</li></ul></section>
+      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">แนวคิดและตัวอย่าง</h2>
+        <div class="chapter-intro"><strong>แผนการเรียนบทนี้</strong><p>เมื่อโปรแกรมแยกหลายไฟล์หรือใช้ไลบรารีเพิ่ม ต้องรู้ว่า Python กำลัง import จากที่ใดและ pip ติดตั้งลง environment ไหน เริ่มจากโมดูลมาตรฐานที่ไม่ต้องติดตั้ง แล้วค่อยสร้าง venv และใช้ python -m pip เพื่อให้ dependency อยู่กับ interpreter ของโปรเจกต์</p><p>วิธีฝึก: อ่านโจทย์ → ระบุข้อมูลเข้าและผลที่ต้องการ → ทำนาย output → รันและตรวจทีละขั้น → อธิบายด้วยคำของตนเองว่าเหตุใดจึงได้ผลเช่นนั้น</p></div>
+        <article class="subtopic" id="topic-1"><h3>11.1 import นำโมดูลมาใช้</h3><p>โมดูลมาตรฐาน เช่น `math`, `statistics` และ `pathlib` ติดมากับ Python ส่วน package ภายนอกต้องติดตั้งใน environment ที่โปรเจกต์ใช้อยู่</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-2"><h3>11.2 venv ป้องกัน dependency ชนกัน</h3><p>สร้างด้วย `python -m venv .venv` แล้วติดตั้งแพ็กเกจผ่าน interpreter ของ environment นั้น ทำให้แต่ละวิชาใช้เวอร์ชันคนละชุดได้</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-3"><h3>11.3 pip และ requirements.txt</h3><p>ใช้ `python -m pip install -r requirements.txt` ติดตั้ง dependency และบันทึกชื่อแพ็กเกจ/เวอร์ชันที่จำเป็นเพื่อให้คนอื่นสร้าง environment ซ้ำได้</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><div class="source-example">
+    <h4>ตัวอย่าง 11.1 · ใช้โมดูลมาตรฐาน</h4>
+    <p class="concept-line"><strong>แนวคิด:</strong> นำค่า pi จาก math และค่าเฉลี่ยจาก statistics มาใช้แทนการเขียนใหม่</p>
+    <div class="source-grid">
+      <div class="source-field"><span>Python source</span><pre class="copyable"><code>import math
+import statistics
+
+radius = 4
+scores = [70, 85, 90]
+print(f&quot;พื้นที่วงกลม {math.pi * radius ** 2:.2f}&quot;)
+print(f&quot;คะแนนเฉลี่ย {statistics.mean(scores):.1f}&quot;)</code></pre></div>
+      <div class="output-field"><span>Output</span><pre>พื้นที่วงกลม 50.27
+คะแนนเฉลี่ย 81.7</pre></div>
+    </div>
+    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>import ทำให้เรียกชื่อโมดูลได้</li><li>math มีค่าคงที่และฟังก์ชันคณิตศาสตร์</li><li>statistics มีฟังก์ชันสรุปข้อมูล</li></ol></div>
+  </div>
+<div class="source-example">
+    <h4>ตัวอย่าง 11.2 · แยกชื่อด้วย alias</h4>
+    <p class="concept-line"><strong>แนวคิด:</strong> ใช้ alias ตามธรรมเนียมที่พบในงาน data</p>
+    <div class="source-grid">
+      <div class="source-field"><span>Python source</span><pre class="copyable"><code>import numpy as np
+import pandas as pd
+
+scores = np.array([80, 92, 75])
+table = pd.DataFrame({&quot;score&quot;: scores})
+print(table[&quot;score&quot;].mean())</code></pre></div>
+      <div class="output-field"><span>Output</span><pre>82.33333333333333</pre></div>
+    </div>
+    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>np และ pd เป็น alias ที่พบบ่อย</li><li>numpy array ใช้คำนวณตัวเลขเป็นชุด</li><li>DataFrame จัดข้อมูลเป็นตาราง</li></ol></div>
+  </div>
+<div class="source-example">
+    <h4>ตัวอย่าง 11.3 · ใช้โมดูลมาตรฐานจัดข้อมูล</h4>
+    <p class="concept-line"><strong>แนวคิด:</strong> เริ่มจาก standard library ก่อนติดตั้ง package เพิ่ม และใช้ Counter เพื่อสรุปความถี่</p>
+    <div class="source-grid">
+      <div class="source-field"><span>Python source</span><pre class="copyable"><code>from collections import Counter
+from statistics import mean
+
+answers = [&quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;C&quot;, &quot;A&quot;, &quot;B&quot;]
+counts = Counter(answers)
+print(counts.most_common(1))
+print(f&quot;average length={mean([len(x) for x in answers]):.1f}&quot;)</code></pre></div>
+      <div class="output-field"><span>Output</span><pre>[(&#39;A&#39;, 3)]
+average length=1.0</pre></div>
+    </div>
+    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>collections และ statistics มากับ Python ไม่ต้อง pip install</li><li>Counter นับความถี่โดยไม่ต้องเขียน dict loop เอง</li><li>ติดตั้ง package เพิ่มเฉพาะเมื่อต้องการความสามารถเฉพาะ</li></ol></div>
+  </div>
+      </section>
+      <section class="exercise-section" id="chapter-exercises" aria-labelledby="exercise-heading">
+        <h2 id="exercise-heading">แบบฝึกหัดท้ายบท</h2>
+        <p class="exercise-intro">ทำจากข้อพื้นฐานไปข้อท้าทาย ก่อนเขียนให้จดข้อมูลที่โจทย์ให้ สิ่งที่ต้องหา และลำดับการทำงานสั้น ๆ จากนั้นทำนาย output แล้วรันตรวจ รายการตรวจช่วยไล่เงื่อนไขทีละข้อ หากยังติดให้ย้อนอ่านหัวข้อที่เกี่ยวข้องก่อนเปิดเฉลย ซึ่งมีแนวคิดและ source code ที่รันตรวจแล้ว</p>
+        <div class="exercise-list"><article class="exercise">
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 11.1</span><strong>ใช้โมดูล math</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
+    <p>รับรัศมี 5 แล้วใช้ math.pi คำนวณพื้นที่วงกลม แสดงทศนิยมสองตำแหน่ง</p>
+    <ul><li>import math</li><li>คำนวณ pi × r²</li><li>จัดรูปแบบ .2f</li></ul>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>78.54</pre></div>
+    <div class="answer-gate" data-answer-id="11.1">
+      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
+      <form class="password-form" hidden>
+        <label>รหัสผ่านข้อ 11.1<input type="password" autocomplete="off" required></label>
+        <button class="password-submit" type="submit">เปิดเฉลย</button>
+        <p class="password-message" aria-live="polite"></p>
+      </form>
+      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
+        <p>นำ math.pi มาใช้ช่วยหลีกเลี่ยงการประมาณค่า pi เอง</p><pre class="copyable"><code>import math
+radius = 5
+area = math.pi * radius ** 2
+print(f&quot;{area:.2f}&quot;)</code></pre>
+      </div>
+    </div>
+  </article>
+<article class="exercise">
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 11.2</span><strong>สรุปสถิติ</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
+    <p>ใช้โมดูล statistics หาค่าเฉลี่ยและมัธยฐานของ [4, 9, 6, 11, 10]</p>
+    <ul><li>import statistics</li><li>เรียก mean และ median</li><li>แสดงผลทั้งคู่</li></ul>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>8
+9</pre></div>
+    <div class="answer-gate" data-answer-id="11.2">
+      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
+      <form class="password-form" hidden>
+        <label>รหัสผ่านข้อ 11.2<input type="password" autocomplete="off" required></label>
+        <button class="password-submit" type="submit">เปิดเฉลย</button>
+        <p class="password-message" aria-live="polite"></p>
+      </form>
+      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
+        <p>ใช้ไลบรารีมาตรฐานเมื่องานมีฟังก์ชันที่ผ่านการทดสอบแล้ว</p><pre class="copyable"><code>import statistics
+values = [4, 9, 6, 11, 10]
+print(statistics.mean(values))
+print(statistics.median(values))</code></pre>
+      </div>
+    </div>
+  </article>
+<article class="exercise">
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 11.3</span><strong>ตรวจเวอร์ชันแพ็กเกจ</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
+    <p>ใช้ importlib.metadata ตรวจเวอร์ชันของ numpy และแสดงชื่อกับเวอร์ชัน</p>
+    <ul><li>ใช้ version จาก importlib.metadata</li><li>ระบุชื่อ distribution เป็น numpy</li><li>พิมพ์ผลลัพธ์</li></ul>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>numpy 2.5.3</pre></div>
+    <div class="answer-gate" data-answer-id="11.3">
+      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
+      <form class="password-form" hidden>
+        <label>รหัสผ่านข้อ 11.3<input type="password" autocomplete="off" required></label>
+        <button class="password-submit" type="submit">เปิดเฉลย</button>
+        <p class="password-message" aria-live="polite"></p>
+      </form>
+      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
+        <p>distribution name ที่ส่งให้ metadata คือชื่อแพ็กเกจที่ pip ติดตั้ง</p><pre class="copyable"><code>from importlib.metadata import version
+print(f&quot;numpy {version(&#39;numpy&#39;)}&quot;)</code></pre>
+      </div>
+    </div>
+  </article>
+<article class="exercise">
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 11.4</span><strong>เลือกตัวติดตั้งที่ถูก environment</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
+    <p>เขียนคำสั่ง terminal สำหรับสร้าง .venv, ติดตั้งจาก requirements.txt และตรวจแพ็กเกจที่ติดตั้งแล้ว</p>
+    <ul><li>สร้าง virtual environment ด้วย interpreter ที่ต้องการ</li><li>เรียก pip ผ่าน python -m pip</li><li>แสดงรายการติดตั้งด้วย pip list</li></ul>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>python -m venv .venv
+python -m pip install -r requirements.txt
+python -m pip list</pre></div>
+    <div class="answer-gate" data-answer-id="11.4">
+      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
+      <form class="password-form" hidden>
+        <label>รหัสผ่านข้อ 11.4<input type="password" autocomplete="off" required></label>
+        <button class="password-submit" type="submit">เปิดเฉลย</button>
+        <p class="password-message" aria-live="polite"></p>
+      </form>
+      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
+        <p>python -m pip ช่วยให้ pip ผูกกับ interpreter ที่เรียกอยู่</p><pre class="copyable"><code>commands = [
+    &quot;python -m venv .venv&quot;,
+    &quot;python -m pip install -r requirements.txt&quot;,
+    &quot;python -m pip list&quot;,
+]
+for command in commands:
+    print(command)</code></pre>
+      </div>
+    </div>
+  </article>
+<article class="exercise">
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 11.5</span><strong>เลือกใช้ standard library</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
+    <p>มีรายการคำตอบ [&quot;yes&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;yes&quot;, &quot;no&quot;] ใช้ collections.Counter นับจำนวน yes และ no</p>
+    <ul><li>import Counter จาก collections</li><li>สร้าง Counter จาก list</li><li>อ่านจำนวนทั้งสอง key</li></ul>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>3 2</pre></div>
+    <div class="answer-gate" data-answer-id="11.5">
+      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
+      <form class="password-form" hidden>
+        <label>รหัสผ่านข้อ 11.5<input type="password" autocomplete="off" required></label>
+        <button class="password-submit" type="submit">เปิดเฉลย</button>
+        <p class="password-message" aria-live="polite"></p>
+      </form>
+      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
+        <p>ควรตรวจ standard library ก่อนเลือกติดตั้ง dependency เพิ่ม</p><pre class="copyable"><code>from collections import Counter
+answers = Counter([&quot;yes&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;yes&quot;, &quot;no&quot;])
+print(answers[&quot;yes&quot;], answers[&quot;no&quot;])</code></pre>
+      </div>
+    </div>
+  </article>
+<article class="exercise">
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 11.6</span><strong>อ่าน dependency จาก environment</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
+    <p>ใช้ importlib.metadata ตรวจเวอร์ชันของ pandas และพิมพ์ข้อความบอกว่าคำสั่งติดตั้งควรใช้ `python -m pip` ไม่ใช่ pip เปล่า</p>
+    <ul><li>อ่าน version ของ pandas</li><li>พิมพ์ชื่อแพ็กเกจกับเวอร์ชัน</li><li>พิมพ์คำสั่งติดตั้งที่ผูกกับ interpreter</li></ul>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>pandas 3.0.6
+python -m pip install pandas</pre></div>
+    <div class="answer-gate" data-answer-id="11.6">
+      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
+      <form class="password-form" hidden>
+        <label>รหัสผ่านข้อ 11.6<input type="password" autocomplete="off" required></label>
+        <button class="password-submit" type="submit">เปิดเฉลย</button>
+        <p class="password-message" aria-live="polite"></p>
+      </form>
+      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
+        <p>python -m pip ช่วยติดตั้ง package ลง environment ของ Python ตัวที่เรียกคำสั่งนี้</p><pre class="copyable"><code>from importlib.metadata import version
+print(f&quot;pandas {version(&#39;pandas&#39;)}&quot;)
+print(&quot;python -m pip install pandas&quot;)</code></pre>
+      </div>
+    </div>
+  </article></div>
+      </section>
+      <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-10.html">← บทก่อนหน้า</a><a class="pager-link" href="chapter-12.html">บทถัดไป →</a></nav>
+      <footer class="lesson-footer">Python programming · Lecture notes · ตัวอย่างรันตรวจด้วย Python จริง</footer>
+    </main>
+  </div>
+  <script src="../password.js"></script><script src="../assets/lesson.js"></script>
+</body>
+</html>
