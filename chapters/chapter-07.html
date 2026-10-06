@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#192044">
-  <meta name="description" content="เลือกภาชนะเก็บข้อมูลหลายค่าให้เหมาะกับการเพิ่ม แก้ ค้นหา และจับคู่">
+  <meta name="description" content="เก็บข้อมูลหลายค่าในตัวแปรเดียว และเลือกโครงสร้างให้เหมาะกับงาน">
   <title>บทที่ 07 · โครงสร้างข้อมูล: list, tuple, set และ dict | Python programming</title>
   <link rel="stylesheet" href="../assets/lesson.css">
 </head>
@@ -15,150 +15,176 @@
       <a class="lesson-brand" href="../index.html"><span class="brand-mark">Py</span><span><span class="brand-title">Python programming by Prymania</span><span class="brand-caption">LECTURE NOTES</span></span></a>
       <nav class="lesson-toc chapter-navigation" aria-label="สารบัญรายวิชา">
         <p class="toc-label">สารบัญ · 20 บทเรียน</p>
-        <p class="toc-label" data-group="foundation">เริ่มต้นกับ Python</p><details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเริ่มใช้งาน Python ด้วย Thonny ทำความเข้าใจไฟล์ .py, โครงสร้างคำสั่ง และวิธีรัน/หยุดโปรแกรม Python program ทำงานอย่างไร เลือก IDE สำหรับผู้เริ่มเรียน: Thonny แยก editor, shell และ interpreter โครงสร้างไฟล์และการเยื้องบรรทัด รัน บันทึก และอ่านข้อผิดพลาด">
+        <p class="toc-label" data-group="foundation">เริ่มต้นกับ Python</p><details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเปิด Thonny เขียนไฟล์ .py แรก รันโปรแกรม และอ่าน error เบื้องต้น Python ทำงานอย่างไร เครื่องมือที่ใช้: Thonny Shell กับไฟล์ .py ต่างกันอย่างไร comment และการเยื้องบรรทัด อ่าน error ให้เป็น">
       <summary><span class="toc-number">01</span><span class="chapter-nav-title">โครงสร้างโปรแกรม Python, IDE และการรัน</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-01.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-01.html#topic-1"><span class="topic-number">01.1</span>Python program ทำงานอย่างไร</a></li><li><a href="chapter-01.html#topic-2"><span class="topic-number">01.2</span>เลือก IDE สำหรับผู้เริ่มเรียน: Thonny</a></li><li><a href="chapter-01.html#topic-3"><span class="topic-number">01.3</span>แยก editor, shell และ interpreter</a></li><li><a href="chapter-01.html#topic-4"><span class="topic-number">01.4</span>โครงสร้างไฟล์และการเยื้องบรรทัด</a></li><li><a href="chapter-01.html#topic-5"><span class="topic-number">01.5</span>รัน บันทึก และอ่านข้อผิดพลาด</a></li><li><a href="chapter-01.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-01.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-01.html#topic-1"><span class="topic-number">01.1</span>Python ทำงานอย่างไร</a></li><li><a href="chapter-01.html#topic-2"><span class="topic-number">01.2</span>เครื่องมือที่ใช้: Thonny</a></li><li><a href="chapter-01.html#topic-3"><span class="topic-number">01.3</span>Shell กับไฟล์ .py ต่างกันอย่างไร</a></li><li><a href="chapter-01.html#topic-4"><span class="topic-number">01.4</span>comment และการเยื้องบรรทัด</a></li><li><a href="chapter-01.html#topic-5"><span class="topic-number">01.5</span>อ่าน error ให้เป็น</a></li><li><a href="chapter-01.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลแต่ละชนิด รับค่าจากผู้ใช้ แปลงชนิดก่อนคำนวณ และสร้าง output ที่อ่านเข้าใจได้ ตัวแปรคือชื่อที่อ้างถึงข้อมูล ตั้งชื่อให้คนอ่านเข้าใจ ค่าหนึ่งเปลี่ยนได้ตามลำดับคำสั่ง ชนิดข้อมูลบอกวิธีใช้งานค่า input คืนค่าเป็นข้อความเสมอ f-string แทรกค่าลงในข้อความ">
+<details class="chapter-nav-item" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลในตัวแปร รู้จักชนิดข้อมูล รับค่าด้วย input() และแสดงผลด้วย print() / f-string ตัวแปร: ตั้งชื่อให้ข้อมูล ชนิดข้อมูลพื้นฐาน 4 ชนิด แปลงชนิดข้อมูล รับค่าด้วย input() แสดงผลด้วย print() และ f-string ข้อผิดพลาดที่เจอบ่อย">
       <summary><span class="toc-number">02</span><span class="chapter-nav-title">ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-02.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-02.html#topic-1"><span class="topic-number">02.1</span>ตัวแปรคือชื่อที่อ้างถึงข้อมูล</a></li><li><a href="chapter-02.html#topic-2"><span class="topic-number">02.2</span>ตั้งชื่อให้คนอ่านเข้าใจ</a></li><li><a href="chapter-02.html#topic-3"><span class="topic-number">02.3</span>ค่าหนึ่งเปลี่ยนได้ตามลำดับคำสั่ง</a></li><li><a href="chapter-02.html#topic-4"><span class="topic-number">02.4</span>ชนิดข้อมูลบอกวิธีใช้งานค่า</a></li><li><a href="chapter-02.html#topic-5"><span class="topic-number">02.5</span>input คืนค่าเป็นข้อความเสมอ</a></li><li><a href="chapter-02.html#topic-6"><span class="topic-number">02.6</span>f-string แทรกค่าลงในข้อความ</a></li><li><a href="chapter-02.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-02.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-02.html#topic-1"><span class="topic-number">02.1</span>ตัวแปร: ตั้งชื่อให้ข้อมูล</a></li><li><a href="chapter-02.html#topic-2"><span class="topic-number">02.2</span>ชนิดข้อมูลพื้นฐาน 4 ชนิด</a></li><li><a href="chapter-02.html#topic-3"><span class="topic-number">02.3</span>แปลงชนิดข้อมูล</a></li><li><a href="chapter-02.html#topic-4"><span class="topic-number">02.4</span>รับค่าด้วย input()</a></li><li><a href="chapter-02.html#topic-5"><span class="topic-number">02.5</span>แสดงผลด้วย print() และ f-string</a></li><li><a href="chapter-02.html#topic-6"><span class="topic-number">02.6</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-02.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และประกอบเงื่อนไขเชิงตรรกะ ตัวดำเนินการเลขคณิต เปรียบเทียบแล้วได้ bool เชื่อมเงื่อนไข">
+<details class="chapter-nav-item" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และรวมเงื่อนไขด้วย and / or / not ตัวดำเนินการเลขคณิต ลำดับการคำนวณ เปรียบเทียบค่า ได้ผลเป็น True/False รวมเงื่อนไขด้วย and / or / not ตัวดำเนินการแบบย่อ">
       <summary><span class="toc-number">03</span><span class="chapter-nav-title">ตัวดำเนินการและนิพจน์</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-03.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-03.html#topic-1"><span class="topic-number">03.1</span>ตัวดำเนินการเลขคณิต</a></li><li><a href="chapter-03.html#topic-2"><span class="topic-number">03.2</span>เปรียบเทียบแล้วได้ bool</a></li><li><a href="chapter-03.html#topic-3"><span class="topic-number">03.3</span>เชื่อมเงื่อนไข</a></li><li><a href="chapter-03.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-03.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-03.html#topic-1"><span class="topic-number">03.1</span>ตัวดำเนินการเลขคณิต</a></li><li><a href="chapter-03.html#topic-2"><span class="topic-number">03.2</span>ลำดับการคำนวณ</a></li><li><a href="chapter-03.html#topic-3"><span class="topic-number">03.3</span>เปรียบเทียบค่า ได้ผลเป็น True/False</a></li><li><a href="chapter-03.html#topic-4"><span class="topic-number">03.4</span>รวมเงื่อนไขด้วย and / or / not</a></li><li><a href="chapter-03.html#topic-5"><span class="topic-number">03.5</span>ตัวดำเนินการแบบย่อ</a></li><li><a href="chapter-03.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if ตรวจกรณีแรก elif เรียงกรณีที่ไม่ทับกัน else เป็นกรณีที่เหลือ">
+<details class="chapter-nav-item" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if: ทำเมื่อเงื่อนไขเป็นจริง if-else: เลือก 1 ใน 2 ทาง elif: หลายทางเลือก เงื่อนไขหลายข้อ และ if ซ้อน ข้อผิดพลาดที่เจอบ่อย">
       <summary><span class="toc-number">04</span><span class="chapter-nav-title">เงื่อนไขและการตัดสินใจ</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-04.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-04.html#topic-1"><span class="topic-number">04.1</span>if ตรวจกรณีแรก</a></li><li><a href="chapter-04.html#topic-2"><span class="topic-number">04.2</span>elif เรียงกรณีที่ไม่ทับกัน</a></li><li><a href="chapter-04.html#topic-3"><span class="topic-number">04.3</span>else เป็นกรณีที่เหลือ</a></li><li><a href="chapter-04.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-04.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-04.html#topic-1"><span class="topic-number">04.1</span>if: ทำเมื่อเงื่อนไขเป็นจริง</a></li><li><a href="chapter-04.html#topic-2"><span class="topic-number">04.2</span>if-else: เลือก 1 ใน 2 ทาง</a></li><li><a href="chapter-04.html#topic-3"><span class="topic-number">04.3</span>elif: หลายทางเลือก</a></li><li><a href="chapter-04.html#topic-4"><span class="topic-number">04.4</span>เงื่อนไขหลายข้อ และ if ซ้อน</a></li><li><a href="chapter-04.html#topic-5"><span class="topic-number">04.5</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-04.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="การทำซ้ำด้วยลูป ทำคำสั่งซ้ำอย่างควบคุมได้ด้วย for, while และ range for วนผ่านสมาชิก สะสมค่าอย่างระมัดระวัง while วนจนเงื่อนไขเปลี่ยน">
+<details class="chapter-nav-item" data-group="foundation" data-search="การทำซ้ำด้วยลูป สั่งให้โปรแกรมทำงานซ้ำด้วย for และ while แทนการเขียนคำสั่งเดิมหลายครั้ง for กับ range() for วนผ่านข้อมูลทีละตัว สะสมผลรวมและนับจำนวน while: วนจนกว่าเงื่อนไขจะเป็นเท็จ break และ continue">
       <summary><span class="toc-number">05</span><span class="chapter-nav-title">การทำซ้ำด้วยลูป</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-05.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-05.html#topic-1"><span class="topic-number">05.1</span>for วนผ่านสมาชิก</a></li><li><a href="chapter-05.html#topic-2"><span class="topic-number">05.2</span>สะสมค่าอย่างระมัดระวัง</a></li><li><a href="chapter-05.html#topic-3"><span class="topic-number">05.3</span>while วนจนเงื่อนไขเปลี่ยน</a></li><li><a href="chapter-05.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-05.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-05.html#topic-1"><span class="topic-number">05.1</span>for กับ range()</a></li><li><a href="chapter-05.html#topic-2"><span class="topic-number">05.2</span>for วนผ่านข้อมูลทีละตัว</a></li><li><a href="chapter-05.html#topic-3"><span class="topic-number">05.3</span>สะสมผลรวมและนับจำนวน</a></li><li><a href="chapter-05.html#topic-4"><span class="topic-number">05.4</span>while: วนจนกว่าเงื่อนไขจะเป็นเท็จ</a></li><li><a href="chapter-05.html#topic-5"><span class="topic-number">05.5</span>break และ continue</a></li><li><a href="chapter-05.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด ต่อ ค้นหา และจัดรูปแบบข้อความที่รับมาจากผู้ใช้หรือไฟล์ ข้อความแก้ตรงตำแหน่งไม่ได้ method ช่วยทำความสะอาด index และ slicing เริ่มที่ศูนย์">
+<details class="chapter-nav-item" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด แยก ค้นหา และจัดรูปแบบข้อความด้วย index, slicing และ string method index: ตำแหน่งของตัวอักษร slicing: ตัดบางส่วน method ที่ใช้บ่อย ตรวจและวนข้อความ">
       <summary><span class="toc-number">06</span><span class="chapter-nav-title">ข้อความและการจัดการ string</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-06.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-06.html#topic-1"><span class="topic-number">06.1</span>ข้อความแก้ตรงตำแหน่งไม่ได้</a></li><li><a href="chapter-06.html#topic-2"><span class="topic-number">06.2</span>method ช่วยทำความสะอาด</a></li><li><a href="chapter-06.html#topic-3"><span class="topic-number">06.3</span>index และ slicing เริ่มที่ศูนย์</a></li><li><a href="chapter-06.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-06.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-06.html#topic-1"><span class="topic-number">06.1</span>index: ตำแหน่งของตัวอักษร</a></li><li><a href="chapter-06.html#topic-2"><span class="topic-number">06.2</span>slicing: ตัดบางส่วน</a></li><li><a href="chapter-06.html#topic-3"><span class="topic-number">06.3</span>method ที่ใช้บ่อย</a></li><li><a href="chapter-06.html#topic-4"><span class="topic-number">06.4</span>ตรวจและวนข้อความ</a></li><li><a href="chapter-06.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เลือกภาชนะเก็บข้อมูลหลายค่าให้เหมาะกับการเพิ่ม แก้ ค้นหา และจับคู่ list เก็บลำดับและแก้ไขได้ tuple และ set มีหน้าที่ต่างกัน dict ผูก key กับ value" open>
+<details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เก็บข้อมูลหลายค่าในตัวแปรเดียว และเลือกโครงสร้างให้เหมาะกับงาน เลือกใช้แบบไหนดี list: รายการที่แก้ไขได้ tuple และ set dict: จับคู่ key กับ value" open>
       <summary><span class="toc-number">07</span><span class="chapter-nav-title">โครงสร้างข้อมูล: list, tuple, set และ dict</span></summary>
-      <ul class="chapter-subnav"><li><a href="#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="#topic-1"><span class="topic-number">07.1</span>list เก็บลำดับและแก้ไขได้</a></li><li><a href="#topic-2"><span class="topic-number">07.2</span>tuple และ set มีหน้าที่ต่างกัน</a></li><li><a href="#topic-3"><span class="topic-number">07.3</span>dict ผูก key กับ value</a></li><li><a href="#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="#topic-1"><span class="topic-number">07.1</span>เลือกใช้แบบไหนดี</a></li><li><a href="#topic-2"><span class="topic-number">07.2</span>list: รายการที่แก้ไขได้</a></li><li><a href="#topic-3"><span class="topic-number">07.3</span>tuple และ set</a></li><li><a href="#topic-4"><span class="topic-number">07.4</span>dict: จับคู่ key กับ value</a></li><li><a href="#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม ห่อแนวคิดที่ใช้ซ้ำในฟังก์ชัน พร้อมพารามิเตอร์และค่าที่คืนกลับ def ประกาศหน้าที่หนึ่งอย่าง parameter และ argument return ส่งผลกลับผู้เรียก">
+<details class="chapter-nav-item" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม รวมคำสั่งที่ทำงานหนึ่งอย่างเป็นฟังก์ชัน เรียกใช้ซ้ำได้ และแบ่งโปรแกรมใหญ่เป็นส่วนเล็ก def: สร้างฟังก์ชัน parameter: ส่งค่าเข้าฟังก์ชัน return: ส่งผลกลับ ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน">
       <summary><span class="toc-number">08</span><span class="chapter-nav-title">ฟังก์ชันและการแบ่งโปรแกรม</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-08.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-08.html#topic-1"><span class="topic-number">08.1</span>def ประกาศหน้าที่หนึ่งอย่าง</a></li><li><a href="chapter-08.html#topic-2"><span class="topic-number">08.2</span>parameter และ argument</a></li><li><a href="chapter-08.html#topic-3"><span class="topic-number">08.3</span>return ส่งผลกลับผู้เรียก</a></li><li><a href="chapter-08.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-08.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-08.html#topic-1"><span class="topic-number">08.1</span>def: สร้างฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-2"><span class="topic-number">08.2</span>parameter: ส่งค่าเข้าฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-3"><span class="topic-number">08.3</span>return: ส่งผลกลับ</a></li><li><a href="chapter-08.html#topic-4"><span class="topic-number">08.4</span>ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน</a></li><li><a href="chapter-08.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="practice">ฝึกเขียนและใช้งาน</p><details class="chapter-nav-item" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน traceback อย่างมีระบบ ป้องกันข้อผิดพลาดที่คาดหมาย และแก้ที่สาเหตุ อ่าน traceback จากบรรทัดล่างขึ้นบน try-except ควรจับเฉพาะที่เข้าใจ แยก logic error ด้วยตัวอย่าง">
+<p class="toc-label" data-group="practice">ฝึกเขียนและใช้งาน</p><details class="chapter-nav-item" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน error ให้เข้าใจ ดักจับข้อผิดพลาดด้วย try/except และหาสาเหตุเมื่อผลลัพธ์ผิด อ่าน traceback error ที่พบบ่อย try / except: ดักจับ error ดักหลายชนิด และดูข้อความ error raise: แจ้ง error เอง ไล่หาบั๊กเมื่อผลลัพธ์ผิด">
       <summary><span class="toc-number">09</span><span class="chapter-nav-title">ข้อผิดพลาด การจัดการ exception และ debug</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-09.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-09.html#topic-1"><span class="topic-number">09.1</span>อ่าน traceback จากบรรทัดล่างขึ้นบน</a></li><li><a href="chapter-09.html#topic-2"><span class="topic-number">09.2</span>try-except ควรจับเฉพาะที่เข้าใจ</a></li><li><a href="chapter-09.html#topic-3"><span class="topic-number">09.3</span>แยก logic error ด้วยตัวอย่าง</a></li><li><a href="chapter-09.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-09.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-09.html#topic-1"><span class="topic-number">09.1</span>อ่าน traceback</a></li><li><a href="chapter-09.html#topic-2"><span class="topic-number">09.2</span>error ที่พบบ่อย</a></li><li><a href="chapter-09.html#topic-3"><span class="topic-number">09.3</span>try / except: ดักจับ error</a></li><li><a href="chapter-09.html#topic-4"><span class="topic-number">09.4</span>ดักหลายชนิด และดูข้อความ error</a></li><li><a href="chapter-09.html#topic-5"><span class="topic-number">09.5</span>raise: แจ้ง error เอง</a></li><li><a href="chapter-09.html#topic-6"><span class="topic-number">09.6</span>ไล่หาบั๊กเมื่อผลลัพธ์ผิด</a></li><li><a href="chapter-09.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนข้อมูลอย่างปลอดภัย พร้อมใช้รูปแบบไฟล์ที่พบในงานจริง ใช้ with เปิดไฟล์ pathlib จัดการตำแหน่งไฟล์ CSV กับ JSON ใช้คนละโครงสร้าง">
+<details class="chapter-nav-item" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนไฟล์ข้อความ CSV และ JSON เพื่อเก็บข้อมูลไว้ใช้ต่อหลังปิดโปรแกรม เปิดไฟล์ด้วย with open() อ่านทีละบรรทัด CSV: ข้อมูลตาราง JSON: บันทึก list/dict ทั้งก้อน เลือก CSV หรือ JSON">
       <summary><span class="toc-number">10</span><span class="chapter-nav-title">ไฟล์ ข้อมูล CSV และ JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-10.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-10.html#topic-1"><span class="topic-number">10.1</span>ใช้ with เปิดไฟล์</a></li><li><a href="chapter-10.html#topic-2"><span class="topic-number">10.2</span>pathlib จัดการตำแหน่งไฟล์</a></li><li><a href="chapter-10.html#topic-3"><span class="topic-number">10.3</span>CSV กับ JSON ใช้คนละโครงสร้าง</a></li><li><a href="chapter-10.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-10.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-10.html#topic-1"><span class="topic-number">10.1</span>เปิดไฟล์ด้วย with open()</a></li><li><a href="chapter-10.html#topic-2"><span class="topic-number">10.2</span>อ่านทีละบรรทัด</a></li><li><a href="chapter-10.html#topic-3"><span class="topic-number">10.3</span>CSV: ข้อมูลตาราง</a></li><li><a href="chapter-10.html#topic-4"><span class="topic-number">10.4</span>JSON: บันทึก list/dict ทั้งก้อน</a></li><li><a href="chapter-10.html#topic-5"><span class="topic-number">10.5</span>เลือก CSV หรือ JSON</a></li><li><a href="chapter-10.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="โมดูล virtual environment และ pip ใช้ไลบรารีมาตรฐาน ติดตั้งแพ็กเกจแยกสภาพแวดล้อม และจัด dependency ของโปรเจกต์ import นำโมดูลมาใช้ venv ป้องกัน dependency ชนกัน pip และ requirements.txt">
+<details class="chapter-nav-item" data-group="practice" data-search="โมดูล virtual environment และ pip นำโมดูลมาตรฐานมาใช้ สร้างโมดูลของตัวเอง และติดตั้งแพ็กเกจเพิ่มด้วย pip ใน virtual environment import: นำโมดูลมาใช้ โมดูลมาตรฐานที่ใช้บ่อย สร้างโมดูลเอง pip และ virtual environment ตรวจว่าติดตั้งแล้วหรือยัง">
       <summary><span class="toc-number">11</span><span class="chapter-nav-title">โมดูล virtual environment และ pip</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-11.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-11.html#topic-1"><span class="topic-number">11.1</span>import นำโมดูลมาใช้</a></li><li><a href="chapter-11.html#topic-2"><span class="topic-number">11.2</span>venv ป้องกัน dependency ชนกัน</a></li><li><a href="chapter-11.html#topic-3"><span class="topic-number">11.3</span>pip และ requirements.txt</a></li><li><a href="chapter-11.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-11.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-11.html#topic-1"><span class="topic-number">11.1</span>import: นำโมดูลมาใช้</a></li><li><a href="chapter-11.html#topic-2"><span class="topic-number">11.2</span>โมดูลมาตรฐานที่ใช้บ่อย</a></li><li><a href="chapter-11.html#topic-3"><span class="topic-number">11.3</span>สร้างโมดูลเอง</a></li><li><a href="chapter-11.html#topic-4"><span class="topic-number">11.4</span>pip และ virtual environment</a></li><li><a href="chapter-11.html#topic-5"><span class="topic-number">11.5</span>ตรวจว่าติดตั้งแล้วหรือยัง</a></li><li><a href="chapter-11.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมสถานะและพฤติกรรมที่สัมพันธ์กันไว้ใน class เพื่อสร้าง object หลายตัว class เป็นแบบพิมพ์ object เป็นสิ่งที่สร้าง __init__ กำหนดค่าเริ่มต้น method รวมพฤติกรรมกับข้อมูล">
+<details class="chapter-nav-item" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมข้อมูลและการทำงานที่เกี่ยวข้องกันไว้ใน class แล้วสร้าง object ได้หลายตัว class คือแม่แบบ object คือของจริง __init__ และ self method: การทำงานของ object __str__: กำหนดวิธีแสดงผล ทำงานกับ object หลายตัว">
       <summary><span class="toc-number">12</span><span class="chapter-nav-title">เขียนโปรแกรมเชิงวัตถุด้วย class</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-12.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-12.html#topic-1"><span class="topic-number">12.1</span>class เป็นแบบพิมพ์ object เป็นสิ่งที่สร้าง</a></li><li><a href="chapter-12.html#topic-2"><span class="topic-number">12.2</span>__init__ กำหนดค่าเริ่มต้น</a></li><li><a href="chapter-12.html#topic-3"><span class="topic-number">12.3</span>method รวมพฤติกรรมกับข้อมูล</a></li><li><a href="chapter-12.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-12.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-12.html#topic-1"><span class="topic-number">12.1</span>class คือแม่แบบ object คือของจริง</a></li><li><a href="chapter-12.html#topic-2"><span class="topic-number">12.2</span>__init__ และ self</a></li><li><a href="chapter-12.html#topic-3"><span class="topic-number">12.3</span>method: การทำงานของ object</a></li><li><a href="chapter-12.html#topic-4"><span class="topic-number">12.4</span>__str__: กำหนดวิธีแสดงผล</a></li><li><a href="chapter-12.html#topic-5"><span class="topic-number">12.5</span>ทำงานกับ object หลายตัว</a></li><li><a href="chapter-12.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON เข้าใจ request/response, ส่งพารามิเตอร์ และแปลง JSON เพื่อเชื่อมบริการอื่น API คือสัญญาการสื่อสาร แปลงข้อมูล JSON เครือข่ายผิดพลาดได้">
+<details class="chapter-nav-item" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON ขอข้อมูลจากบริการบนอินเทอร์เน็ตด้วย requests อ่านผลที่เป็น JSON และจัดการเมื่อเชื่อมต่อไม่สำเร็จ API ทำงานอย่างไร JSON กับ Python requests.get(): ขอข้อมูล ส่ง parameter รับมือเมื่อเรียกไม่สำเร็จ">
       <summary><span class="toc-number">13</span><span class="chapter-nav-title">เรียกใช้ Web API และแลกเปลี่ยน JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-13.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-13.html#topic-1"><span class="topic-number">13.1</span>API คือสัญญาการสื่อสาร</a></li><li><a href="chapter-13.html#topic-2"><span class="topic-number">13.2</span>แปลงข้อมูล JSON</a></li><li><a href="chapter-13.html#topic-3"><span class="topic-number">13.3</span>เครือข่ายผิดพลาดได้</a></li><li><a href="chapter-13.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-13.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-13.html#topic-1"><span class="topic-number">13.1</span>API ทำงานอย่างไร</a></li><li><a href="chapter-13.html#topic-2"><span class="topic-number">13.2</span>JSON กับ Python</a></li><li><a href="chapter-13.html#topic-3"><span class="topic-number">13.3</span>requests.get(): ขอข้อมูล</a></li><li><a href="chapter-13.html#topic-4"><span class="topic-number">13.4</span>ส่ง parameter</a></li><li><a href="chapter-13.html#topic-5"><span class="topic-number">13.5</span>รับมือเมื่อเรียกไม่สำเร็จ</a></li><li><a href="chapter-13.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="ai">ต่อยอดข้อมูลและ AI</p><details class="chapter-nav-item" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข ใช้ array คำนวณข้อมูลจำนวนมากแบบเวกเตอร์ ซึ่งเป็นฐานของงาน Data Science และ AI ndarray เป็นข้อมูลชนิดเดียวกัน vectorization แทนการวนทีละค่า เลือกและสรุปตามแกน">
+<p class="toc-label" data-group="ai">ต่อยอดข้อมูลและ AI</p><details class="chapter-nav-item" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของงาน Data Science และ AI array ต่างจาก list อย่างไร สร้าง array แบบต่าง ๆ คำนวณทั้ง array (vectorization) กรองข้อมูลด้วยเงื่อนไข array 2 มิติและแกน (axis) ฟังก์ชันสถิติ">
       <summary><span class="toc-number">14</span><span class="chapter-nav-title">NumPy สำหรับการคำนวณตัวเลข</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-14.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-14.html#topic-1"><span class="topic-number">14.1</span>ndarray เป็นข้อมูลชนิดเดียวกัน</a></li><li><a href="chapter-14.html#topic-2"><span class="topic-number">14.2</span>vectorization แทนการวนทีละค่า</a></li><li><a href="chapter-14.html#topic-3"><span class="topic-number">14.3</span>เลือกและสรุปตามแกน</a></li><li><a href="chapter-14.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-14.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-14.html#topic-1"><span class="topic-number">14.1</span>array ต่างจาก list อย่างไร</a></li><li><a href="chapter-14.html#topic-2"><span class="topic-number">14.2</span>สร้าง array แบบต่าง ๆ</a></li><li><a href="chapter-14.html#topic-3"><span class="topic-number">14.3</span>คำนวณทั้ง array (vectorization)</a></li><li><a href="chapter-14.html#topic-4"><span class="topic-number">14.4</span>กรองข้อมูลด้วยเงื่อนไข</a></li><li><a href="chapter-14.html#topic-5"><span class="topic-number">14.5</span>array 2 มิติและแกน (axis)</a></li><li><a href="chapter-14.html#topic-6"><span class="topic-number">14.6</span>ฟังก์ชันสถิติ</a></li><li><a href="chapter-14.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน ทำความสะอาด เลือก และสรุปข้อมูลตารางด้วย DataFrame DataFrame มีแถวและคอลัมน์ เลือกและกรองข้อมูล ทำความสะอาดและ groupby">
+<details class="chapter-nav-item" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน สำรวจ กรอง ทำความสะอาด และสรุปข้อมูลตารางด้วย pandas DataFrame DataFrame: ตารางข้อมูล อ่าน CSV และสำรวจข้อมูล เลือกและกรองข้อมูล เพิ่มคอลัมน์และเรียงข้อมูล จัดการค่าว่าง สรุปตามกลุ่มด้วย groupby">
       <summary><span class="toc-number">15</span><span class="chapter-nav-title">จัดการตารางข้อมูลด้วย pandas</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-15.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-15.html#topic-1"><span class="topic-number">15.1</span>DataFrame มีแถวและคอลัมน์</a></li><li><a href="chapter-15.html#topic-2"><span class="topic-number">15.2</span>เลือกและกรองข้อมูล</a></li><li><a href="chapter-15.html#topic-3"><span class="topic-number">15.3</span>ทำความสะอาดและ groupby</a></li><li><a href="chapter-15.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-15.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-15.html#topic-1"><span class="topic-number">15.1</span>DataFrame: ตารางข้อมูล</a></li><li><a href="chapter-15.html#topic-2"><span class="topic-number">15.2</span>อ่าน CSV และสำรวจข้อมูล</a></li><li><a href="chapter-15.html#topic-3"><span class="topic-number">15.3</span>เลือกและกรองข้อมูล</a></li><li><a href="chapter-15.html#topic-4"><span class="topic-number">15.4</span>เพิ่มคอลัมน์และเรียงข้อมูล</a></li><li><a href="chapter-15.html#topic-5"><span class="topic-number">15.5</span>จัดการค่าว่าง</a></li><li><a href="chapter-15.html#topic-6"><span class="topic-number">15.6</span>สรุปตามกลุ่มด้วย groupby</a></li><li><a href="chapter-15.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib เปลี่ยนข้อมูลตัวเลขเป็นภาพเพื่อมองแนวโน้ม เปรียบเทียบ และสื่อสารผล เลือกชนิดกราฟตามคำถาม label ทำให้กราฟอ่านได้ แยกการวาดกับการบันทึก">
+<details class="chapter-nav-item" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib แปลงตัวเลขเป็นกราฟที่อ่านง่าย เลือกชนิดกราฟให้ตรงคำถาม และบันทึกเป็นไฟล์ภาพ กราฟแรก เลือกชนิดกราฟจากคำถาม กราฟแท่ง หลายเส้นในกราฟเดียว กราฟกระจายและฮิสโทแกรม บันทึกกราฟและภาษาไทย">
       <summary><span class="toc-number">16</span><span class="chapter-nav-title">สร้างกราฟด้วย Matplotlib</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-16.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-16.html#topic-1"><span class="topic-number">16.1</span>เลือกชนิดกราฟตามคำถาม</a></li><li><a href="chapter-16.html#topic-2"><span class="topic-number">16.2</span>label ทำให้กราฟอ่านได้</a></li><li><a href="chapter-16.html#topic-3"><span class="topic-number">16.3</span>แยกการวาดกับการบันทึก</a></li><li><a href="chapter-16.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-16.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-16.html#topic-1"><span class="topic-number">16.1</span>กราฟแรก</a></li><li><a href="chapter-16.html#topic-2"><span class="topic-number">16.2</span>เลือกชนิดกราฟจากคำถาม</a></li><li><a href="chapter-16.html#topic-3"><span class="topic-number">16.3</span>กราฟแท่ง</a></li><li><a href="chapter-16.html#topic-4"><span class="topic-number">16.4</span>หลายเส้นในกราฟเดียว</a></li><li><a href="chapter-16.html#topic-5"><span class="topic-number">16.5</span>กราฟกระจายและฮิสโทแกรม</a></li><li><a href="chapter-16.html#topic-6"><span class="topic-number">16.6</span>บันทึกกราฟและภาษาไทย</a></li><li><a href="chapter-16.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn สร้าง pipeline ฝึกและประเมินโมเดลจากข้อมูลตัวอย่าง โดยแยก train กับ test แยก feature กับ target อย่าทดสอบด้วยข้อมูลฝึก Pipeline ป้องกันขั้นตอนสับสน">
+<details class="chapter-nav-item" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn ให้คอมพิวเตอร์เรียนรู้รูปแบบจากตัวอย่าง แล้วทำนายข้อมูลใหม่ ด้วยขั้นตอนมาตรฐานของ scikit-learn Machine Learning คืออะไร ขั้นตอนมาตรฐาน แบ่งข้อมูล train/test fit และ predict วัดผลโมเดล Pipeline: รวมการเตรียมข้อมูลกับโมเดล">
       <summary><span class="toc-number">17</span><span class="chapter-nav-title">Machine Learning เบื้องต้นด้วย scikit-learn</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-17.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-17.html#topic-1"><span class="topic-number">17.1</span>แยก feature กับ target</a></li><li><a href="chapter-17.html#topic-2"><span class="topic-number">17.2</span>อย่าทดสอบด้วยข้อมูลฝึก</a></li><li><a href="chapter-17.html#topic-3"><span class="topic-number">17.3</span>Pipeline ป้องกันขั้นตอนสับสน</a></li><li><a href="chapter-17.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-17.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-17.html#topic-1"><span class="topic-number">17.1</span>Machine Learning คืออะไร</a></li><li><a href="chapter-17.html#topic-2"><span class="topic-number">17.2</span>ขั้นตอนมาตรฐาน</a></li><li><a href="chapter-17.html#topic-3"><span class="topic-number">17.3</span>แบ่งข้อมูล train/test</a></li><li><a href="chapter-17.html#topic-4"><span class="topic-number">17.4</span>fit และ predict</a></li><li><a href="chapter-17.html#topic-5"><span class="topic-number">17.5</span>วัดผลโมเดล</a></li><li><a href="chapter-17.html#topic-6"><span class="topic-number">17.6</span>Pipeline: รวมการเตรียมข้อมูลกับโมเดล</a></li><li><a href="chapter-17.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล ต่อยอดแนวคิด ML สู่ neuron, activation, loss และวงจรการเรียนรู้ของ deep learning Neuron รวม input ด้วยน้ำหนัก Loss วัดความคลาดเคลื่อน Framework ช่วยคำนวณ gradient">
+<details class="chapter-nav-item" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล เข้าใจส่วนประกอบของ neural network ตั้งแต่ neuron, activation, loss จนถึงการเรียนรู้ด้วย gradient descent neuron: หน่วยคำนวณพื้นฐาน activation function layer: หลาย neuron พร้อมกัน loss: วัดว่าผิดมากแค่ไหน การเรียนรู้: gradient descent ใช้ library แทนการเขียนเอง">
       <summary><span class="toc-number">18</span><span class="chapter-nav-title">แนวคิด Neural Network และการฝึกโมเดล</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-18.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-18.html#topic-1"><span class="topic-number">18.1</span>Neuron รวม input ด้วยน้ำหนัก</a></li><li><a href="chapter-18.html#topic-2"><span class="topic-number">18.2</span>Loss วัดความคลาดเคลื่อน</a></li><li><a href="chapter-18.html#topic-3"><span class="topic-number">18.3</span>Framework ช่วยคำนวณ gradient</a></li><li><a href="chapter-18.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-18.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-18.html#topic-1"><span class="topic-number">18.1</span>neuron: หน่วยคำนวณพื้นฐาน</a></li><li><a href="chapter-18.html#topic-2"><span class="topic-number">18.2</span>activation function</a></li><li><a href="chapter-18.html#topic-3"><span class="topic-number">18.3</span>layer: หลาย neuron พร้อมกัน</a></li><li><a href="chapter-18.html#topic-4"><span class="topic-number">18.4</span>loss: วัดว่าผิดมากแค่ไหน</a></li><li><a href="chapter-18.html#topic-5"><span class="topic-number">18.5</span>การเรียนรู้: gradient descent</a></li><li><a href="chapter-18.html#topic-6"><span class="topic-number">18.6</span>ใช้ library แทนการเขียนเอง</a></li><li><a href="chapter-18.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="gui">GUI และโปรเจกต์</p><details class="chapter-nav-item" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปหน้าต่างด้วย Qt for Python โดยใช้ widget, layout, signal และ slot QApplication จัดการแอป Layout ทำหน้าที่จัดวาง signal/slot เชื่อม event กับงาน">
+<p class="toc-label" data-group="gui">GUI และโปรเจกต์</p><details class="chapter-nav-item" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปที่มีหน้าต่าง ปุ่ม และช่องกรอกข้อมูลด้วย PySide6 (Qt for Python) โครงสร้างแอปพื้นฐาน widget ที่ใช้บ่อย layout: จัดวาง widget signal และ slot: ทำงานเมื่อผู้ใช้กด เขียนหน้าต่างเป็น class">
       <summary><span class="toc-number">19</span><span class="chapter-nav-title">สร้าง GUI สมัยใหม่ด้วย PySide6</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-19.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-19.html#topic-1"><span class="topic-number">19.1</span>QApplication จัดการแอป</a></li><li><a href="chapter-19.html#topic-2"><span class="topic-number">19.2</span>Layout ทำหน้าที่จัดวาง</a></li><li><a href="chapter-19.html#topic-3"><span class="topic-number">19.3</span>signal/slot เชื่อม event กับงาน</a></li><li><a href="chapter-19.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-19.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-19.html#topic-1"><span class="topic-number">19.1</span>โครงสร้างแอปพื้นฐาน</a></li><li><a href="chapter-19.html#topic-2"><span class="topic-number">19.2</span>widget ที่ใช้บ่อย</a></li><li><a href="chapter-19.html#topic-3"><span class="topic-number">19.3</span>layout: จัดวาง widget</a></li><li><a href="chapter-19.html#topic-4"><span class="topic-number">19.4</span>signal และ slot: ทำงานเมื่อผู้ใช้กด</a></li><li><a href="chapter-19.html#topic-5"><span class="topic-number">19.5</span>เขียนหน้าต่างเป็น class</a></li><li><a href="chapter-19.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI นำ Python, ตารางข้อมูล, โมเดล และ GUI มาประกอบเป็นแอปแนะนำแผนเรียนขนาดเล็ก เริ่มจากโจทย์และข้อมูล แยก UI, logic และ data ประเมินและสื่อสารข้อจำกัด">
+<details class="chapter-nav-item" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI รวมทุกอย่างที่เรียนมาเป็นแอปแนะนำรายวิชา: ข้อมูลจาก CSV, กติกาแนะนำ, โมเดลทำนาย และหน้าต่าง PySide6 เริ่มจากโจทย์ ไม่ใช่โค้ด แยกเป็น 3 ชั้น ชั้นข้อมูล: โหลดรายวิชา ชั้น logic: กติกาแนะนำ + ทดสอบ เพิ่มโมเดล ML: ทำนายโอกาสผ่าน ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง">
       <summary><span class="toc-number">20</span><span class="chapter-nav-title">โปรเจกต์ปลายทาง: Course Planner + AI</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-20.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-20.html#topic-1"><span class="topic-number">20.1</span>เริ่มจากโจทย์และข้อมูล</a></li><li><a href="chapter-20.html#topic-2"><span class="topic-number">20.2</span>แยก UI, logic และ data</a></li><li><a href="chapter-20.html#topic-3"><span class="topic-number">20.3</span>ประเมินและสื่อสารข้อจำกัด</a></li><li><a href="chapter-20.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-20.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-20.html#topic-1"><span class="topic-number">20.1</span>เริ่มจากโจทย์ ไม่ใช่โค้ด</a></li><li><a href="chapter-20.html#topic-2"><span class="topic-number">20.2</span>แยกเป็น 3 ชั้น</a></li><li><a href="chapter-20.html#topic-3"><span class="topic-number">20.3</span>ชั้นข้อมูล: โหลดรายวิชา</a></li><li><a href="chapter-20.html#topic-4"><span class="topic-number">20.4</span>ชั้น logic: กติกาแนะนำ + ทดสอบ</a></li><li><a href="chapter-20.html#topic-5"><span class="topic-number">20.5</span>เพิ่มโมเดล ML: ทำนายโอกาสผ่าน</a></li><li><a href="chapter-20.html#topic-6"><span class="topic-number">20.6</span>ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง</a></li><li><a href="chapter-20.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
       </nav>
       <div class="sidebar-bottom">ตัวอย่างรันด้วย Python จริง<br>เลื่อนเพื่ออ่านหัวข้อถัดไป</div>
     </aside>
     <main class="lesson-main" id="lesson-content">
       <div class="utility-row"><a href="../index.html">← สารบัญรายวิชา</a><span class="utility-code">CHAPTER 07 / 20</span></div>
-      <header class="lesson-header"><p class="lesson-kicker">CHAPTER 07 · พื้นฐาน</p><h1>โครงสร้างข้อมูล: list, tuple, set และ dict</h1><p>เลือกภาชนะเก็บข้อมูลหลายค่าให้เหมาะกับการเพิ่ม แก้ ค้นหา และจับคู่</p></header>
-      <section class="learning-goals"><strong>เมื่อจบบทนี้ นิสิตจะทำได้</strong><ul><li>สร้างและวนข้อมูลแบบลำดับ แบบไม่ซ้ำ และแบบ key-value ได้</li><li>list เก็บลำดับและแก้ไขได้</li><li>tuple และ set มีหน้าที่ต่างกัน</li></ul></section>
-      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">แนวคิดและตัวอย่าง</h2>
-        <div class="chapter-intro"><strong>แผนการเรียนบทนี้</strong><p>เมื่อมีข้อมูลหลายค่า การเลือกโครงสร้างที่เหมาะจะทำให้ค้นหาและแก้ไขง่ายขึ้น ถามตัวเองว่าต้องรักษาลำดับหรือไม่ ต้องแก้สมาชิกหรือไม่ และต้องค้นด้วย key หรือไม่ แล้วเลือก list, tuple, set หรือ dict ตามงานแทนการใช้ชนิดเดียวกับทุกโจทย์</p><p>วิธีฝึก: อ่านโจทย์ → ระบุข้อมูลเข้าและผลที่ต้องการ → ทำนาย output → รันและตรวจทีละขั้น → อธิบายด้วยคำของตนเองว่าเหตุใดจึงได้ผลเช่นนั้น</p></div>
-        <article class="subtopic" id="topic-1"><h3>07.1 list เก็บลำดับและแก้ไขได้</h3><p>เพิ่มด้วย `append`, ลบด้วย `remove` หรือ `pop` และเข้าถึงด้วย index; list เหมาะกับรายการที่ลำดับมีความหมาย</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-2"><h3>07.2 tuple และ set มีหน้าที่ต่างกัน</h3><p>tuple เหมาะกับกลุ่มค่าที่ไม่ตั้งใจแก้ ส่วน set เก็บสมาชิกไม่ซ้ำและช่วยทดสอบการเป็นสมาชิกได้รวดเร็ว</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-3"><h3>07.3 dict ผูก key กับ value</h3><p>อ่านค่าด้วย key, ใช้ `get` เมื่อต้องการค่าเริ่มต้น และวน `items()` เมื่อจำเป็นต้องใช้ทั้ง key และ value</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><div class="source-example">
-    <h4>ตัวอย่าง 07.1 · สรุปรายการคะแนน</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> เพิ่มคะแนนใหม่ คำนวณด้วย sum และหาอันดับจากรายการ</p>
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>scores = [72, 88, 91]
-scores.append(85)
-average = sum(scores) / len(scores)
-
+      <header class="lesson-header"><p class="lesson-kicker">CHAPTER 07 · พื้นฐาน</p><h1>โครงสร้างข้อมูล: list, tuple, set และ dict</h1><p>เก็บข้อมูลหลายค่าในตัวแปรเดียว และเลือกโครงสร้างให้เหมาะกับงาน</p></header>
+      <section class="learning-goals"><strong>จบบทนี้แล้วทำได้</strong><p>เลือกใช้ list, tuple, set และ dict ให้ตรงงาน เพิ่ม/ลบ/ค้นหาข้อมูล และวนลูปผ่านข้อมูลได้</p></section>
+      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">เนื้อหา</h2>
+        <article class="subtopic" id="topic-1"><h3>07.1 เลือกใช้แบบไหนดี</h3><p>ทั้ง 4 แบบเก็บข้อมูลได้หลายค่า แต่มีคุณสมบัติต่างกัน ให้เลือกจากลักษณะงาน</p><div class="table-wrap"><table class="concept-table"><thead><tr><th>ชนิด</th><th>เขียน</th><th>ลำดับ</th><th>แก้ไขได้</th><th>ค่าซ้ำ</th><th>ใช้เมื่อ</th></tr></thead><tbody><tr><td><code>list</code></td><td><code>[1, 2, 2]</code></td><td>มี</td><td>ได้</td><td>ได้</td><td>รายการทั่วไป เช่น คะแนนทั้งห้อง</td></tr><tr><td><code>tuple</code></td><td><code>(13.7, 100.5)</code></td><td>มี</td><td>ไม่ได้</td><td>ได้</td><td>ข้อมูลชุดที่ไม่ควรเปลี่ยน เช่น พิกัด</td></tr><tr><td><code>set</code></td><td><code>{&quot;a&quot;, &quot;b&quot;}</code></td><td>ไม่มี</td><td>ได้</td><td>ไม่ได้</td><td>ตัดค่าซ้ำ / หาค่าร่วม</td></tr><tr><td><code>dict</code></td><td><code>{&quot;Nina&quot;: 88}</code></td><td>มี</td><td>ได้</td><td>key ห้ามซ้ำ</td><td>จับคู่ key กับ value เช่น ชื่อ → คะแนน</td></tr></tbody></table></div></article><article class="subtopic" id="topic-2"><h3>07.2 list: รายการที่แก้ไขได้</h3><p>เข้าถึงด้วย index เหมือน string และมี method เพิ่ม/ลบ/เรียงข้อมูล</p><div class="table-wrap"><table class="concept-table"><thead><tr><th>คำสั่ง</th><th>ทำอะไร</th></tr></thead><tbody><tr><td><code>items.append(x)</code></td><td>เพิ่ม x ท้ายรายการ</td></tr><tr><td><code>items.insert(i, x)</code></td><td>แทรก x ที่ตำแหน่ง i</td></tr><tr><td><code>items.remove(x)</code></td><td>ลบค่า x ตัวแรกที่เจอ</td></tr><tr><td><code>items.pop()</code></td><td>ดึงตัวสุดท้ายออก (คืนค่านั้นมาด้วย)</td></tr><tr><td><code>items.sort()</code></td><td>เรียงน้อยไปมาก (<code>reverse=True</code> มากไปน้อย)</td></tr><tr><td><code>len()</code>, <code>sum()</code>, <code>max()</code>, <code>min()</code></td><td>นับ / รวม / มากสุด / น้อยสุด</td></tr></tbody></table></div><div class="mini-run"><pre class="copyable"><code>scores = [72, 88, 65]
+scores.append(91)
+scores.sort()
 print(scores)
-print(f&quot;เฉลี่ย {average:.1f}&quot;)
-print(f&quot;สูงสุด {max(scores)}&quot;)</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>[72, 88, 91, 85]
-เฉลี่ย 84.0
-สูงสุด 91</pre></div>
-    </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>append เพิ่มสมาชิกท้าย list</li><li>sum/len คำนวณค่าเฉลี่ย</li><li>max คืนค่ามากที่สุด</li></ol></div>
-  </div>
-<div class="source-example">
-    <h4>ตัวอย่าง 07.2 · นับจำนวนผลไม้</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> ใช้ dict เก็บจำนวน แล้ววนทั้งชื่อและจำนวน</p>
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>stock = {&quot;apple&quot;: 4, &quot;orange&quot;: 2}
-stock[&quot;banana&quot;] = 5
+print(len(scores), sum(scores), max(scores))
+print(scores[0], scores[-1])</code></pre><pre class="mini-output" aria-label="Output">[65, 72, 88, 91]
+4 316 91
+65 91</pre></div></article><article class="subtopic" id="topic-3"><h3>07.3 tuple และ set</h3><p>tuple เหมือน list แต่แก้ไขไม่ได้ แยกค่าออกเป็นตัวแปรได้ (unpacking) ส่วน set เก็บค่าไม่ซ้ำและหาค่าร่วม/ค่าต่างระหว่างกลุ่มได้</p><div class="mini-run"><pre class="copyable"><code>point = (13.75, 100.50)
+lat, lon = point
+print(lat, lon)
 
-for fruit, count in stock.items():
-    print(f&quot;{fruit}: {count}&quot;)</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>apple: 4
-orange: 2
-banana: 5</pre></div>
+a = {&quot;python&quot;, &quot;sql&quot;, &quot;excel&quot;}
+b = {&quot;python&quot;, &quot;java&quot;}
+print(a &amp; b)              # มีทั้งสองกลุ่ม
+print(sorted(a | b))      # รวมทุกค่า ไม่ซ้ำ
+print(sorted(set([3, 1, 3, 2, 1])))</code></pre><pre class="mini-output" aria-label="Output">13.75 100.5
+{&#39;python&#39;}
+[&#39;excel&#39;, &#39;java&#39;, &#39;python&#39;, &#39;sql&#39;]
+[1, 2, 3]</pre></div></article><article class="subtopic" id="topic-4"><h3>07.4 dict: จับคู่ key กับ value</h3><p>dict เก็บข้อมูลเป็นคู่ <code>key: value</code> ค้นหาด้วย key แทนตำแหน่ง ใช้ <code>get()</code> เมื่อไม่แน่ใจว่ามี key หรือไม่ และใช้ <code>.items()</code> วนผ่านทุกคู่</p><div class="mini-run"><pre class="copyable"><code>scores = {&quot;Nina&quot;: 88, &quot;Beam&quot;: 72}
+scores[&quot;Mali&quot;] = 95          # เพิ่ม / แก้ไข
+print(scores[&quot;Nina&quot;])
+print(scores.get(&quot;Tom&quot;, &quot;ไม่พบ&quot;))
+for name, score in scores.items():
+    print(name, score)</code></pre><pre class="mini-output" aria-label="Output">88
+ไม่พบ
+Nina 88
+Beam 72
+Mali 95</pre></div><p class="tip"><strong>จำง่าย ๆ</strong> <code>scores[&quot;Tom&quot;]</code> ถ้าไม่มี key จะเกิด <code>KeyError</code> ส่วน <code>get()</code> คืนค่าที่กำหนดแทน</p></article>
+        <h2 class="examples-heading">ตัวอย่างโปรแกรม</h2>
+        <div class="source-example">
+    <h4>ตัวอย่าง 07.1 · ตะกร้าสินค้า</h4>
+    <p class="concept-line">ใช้ dict เก็บราคาสินค้า และ list เก็บรายการที่ลูกค้าเลือก</p>
+    
+    <div class="source-grid">
+      <div class="source-field"><span>Python source</span><pre class="copyable"><code>prices = {&quot;pen&quot;: 12, &quot;notebook&quot;: 45, &quot;eraser&quot;: 8}
+cart = [&quot;pen&quot;, &quot;notebook&quot;, &quot;pen&quot;, &quot;eraser&quot;]
+
+total = 0
+for item in cart:
+    total += prices[item]
+
+print(&quot;รายการ:&quot;, cart)
+print(&quot;ปากกา&quot;, cart.count(&quot;pen&quot;), &quot;ด้าม&quot;)
+print(&quot;ยอดรวม&quot;, total, &quot;บาท&quot;)</code></pre></div>
+      <div class="output-field"><span>Output</span><pre>รายการ: [&#39;pen&#39;, &#39;notebook&#39;, &#39;pen&#39;, &#39;eraser&#39;]
+ปากกา 2 ด้าม
+ยอดรวม 77 บาท</pre></div>
     </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>key ใช้ระบุรายการ</li><li>กำหนดค่าให้ key ใหม่จะเพิ่มรายการ</li><li>items คืนคู่ key-value ในแต่ละรอบ</li></ol></div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li><code>prices[item]</code> ค้นราคาจากชื่อสินค้า ไม่ต้องจำตำแหน่ง</li><li>list เก็บของซ้ำได้ จึงนับจำนวนด้วย <code>count()</code> ได้</li><li>วนลูปสะสมยอดเหมือนบทที่แล้ว แต่ดึงราคาจาก dict</li></ol></div>
   </div>
 <div class="source-example">
-    <h4>ตัวอย่าง 07.3 · ค้นหาและนับจากข้อมูล</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> ใช้ list เก็บลำดับคะแนนและสร้าง dict เพื่อจับคู่ชื่อกับคะแนน</p>
+    <h4>ตัวอย่าง 07.2 · นับความถี่ของคำ</h4>
+    <p class="concept-line">ใช้ dict นับว่าแต่ละคำปรากฏกี่ครั้ง</p>
+    
     <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>scores = [72, 88, 88, 95]
-print(f&quot;88 appears {scores.count(88)} times&quot;)
-student_scores = {&quot;Mali&quot;: 88, &quot;Nok&quot;: 95}
-print(student_scores.get(&quot;Beam&quot;, &quot;not found&quot;))</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>88 appears 2 times
-not found</pre></div>
+      <div class="source-field"><span>Python source</span><pre class="copyable"><code>words = input(&quot;คำ (คั่นด้วยเว้นวรรค): &quot;).split()
+counts = {}
+for word in words:
+    counts[word] = counts.get(word, 0) + 1
+
+for word, n in counts.items():
+    print(f&quot;{word}: {n}&quot;)</code></pre></div>
+      <div class="output-field"><span>Output · ค่าที่ผู้ใช้พิมพ์แสดงต่อท้ายคำถาม</span><pre>คำ (คั่นด้วยเว้นวรรค): red blue red green blue red
+red: 3
+blue: 2
+green: 1</pre></div>
     </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>count นับจำนวนค่าที่สนใจใน list</li><li>dict ใช้ชื่อเป็น key และคะแนนเป็น value</li><li>get กำหนดผลเมื่อไม่พบ key</li></ol></div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li><code>counts.get(word, 0)</code> ได้จำนวนเดิม หรือ 0 ถ้ายังไม่เคยเจอ</li><li>บวก 1 แล้วเก็บกลับ เป็นรูปแบบการนับที่ใช้บ่อยมาก</li><li>วน <code>.items()</code> เพื่อแสดงทั้ง key และ value</li></ol></div>
   </div>
       </section>
       <section class="exercise-section" id="chapter-exercises" aria-labelledby="exercise-heading">
         <h2 id="exercise-heading">แบบฝึกหัดท้ายบท</h2>
-        <p class="exercise-intro">ทำจากข้อพื้นฐานไปข้อท้าทาย ก่อนเขียนให้จดข้อมูลที่โจทย์ให้ สิ่งที่ต้องหา และลำดับการทำงานสั้น ๆ จากนั้นทำนาย output แล้วรันตรวจ รายการตรวจช่วยไล่เงื่อนไขทีละข้อ หากยังติดให้ย้อนอ่านหัวข้อที่เกี่ยวข้องก่อนเปิดเฉลย ซึ่งมีแนวคิดและ source code ที่รันตรวจแล้ว</p>
+        <p class="exercise-intro">เรียงจากง่ายไปยาก ลองเขียนเองให้ได้ output ตรงตัวอย่างก่อน แล้วค่อยเปิดเฉลย</p>
         <div class="exercise-list"><article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 07.1</span><strong>สรุปรายการซื้อ</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>มีรายการราคา 12, 25, 8 และ 15 บาท ให้แสดงจำนวนรายการกับผลรวม</p>
-    <ul><li>ใช้ len นับรายการ</li><li>ใช้ sum รวมราคา</li><li>แสดงสองค่าแยกบรรทัด</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>4 รายการ
-รวม 60 บาท</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 07.1</span><strong>สรุปคะแนน</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
+    <p>จากคะแนน <code>[67, 82, 75, 91, 58]</code> ให้แสดงจำนวนคน ผลรวม ค่าเฉลี่ย สูงสุด และต่ำสุด</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>list คะแนน 5 ค่า</dd></div><div><dt>ต้องหา</dt><dd>5 ค่าสรุป ค่าเฉลี่ยทศนิยม 2 ตำแหน่ง</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>len</code>, <code>sum</code>, <code>max</code>, <code>min</code> ใช้กับ list ได้ทันที</li><li>ค่าเฉลี่ย = <code>sum / len</code></li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>จำนวน 5
+รวม 373
+เฉลี่ย 74.60
+สูงสุด 91 ต่ำสุด 58</pre></div>
     <div class="answer-gate" data-answer-id="07.1">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -167,18 +193,25 @@ not found</pre></div>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>built-in len และ sum ทำให้เขียนสรุปรายการได้กระชับ</p><pre class="copyable"><code>prices = [12, 25, 8, 15]
-print(f&quot;{len(prices)} รายการ&quot;)
-print(f&quot;รวม {sum(prices)} บาท&quot;)</code></pre>
+        <p>ฟังก์ชันพื้นฐานเหล่านี้แทนการเขียนลูปเองได้เกือบทั้งหมด</p><pre class="copyable"><code>scores = [67, 82, 75, 91, 58]
+print(&quot;จำนวน&quot;, len(scores))
+print(&quot;รวม&quot;, sum(scores))
+print(f&quot;เฉลี่ย {sum(scores) / len(scores):.2f}&quot;)
+print(&quot;สูงสุด&quot;, max(scores), &quot;ต่ำสุด&quot;, min(scores))</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 07.2</span><strong>ลบชื่อซ้ำ</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>รายชื่อผู้เข้าร่วมมีชื่อซ้ำหลายครั้ง ให้สร้างชุดชื่อที่ไม่ซ้ำแล้วแสดงจำนวนคน</p>
-    <ul><li>แปลง list เป็น set</li><li>หาจำนวนสมาชิกด้วย len</li><li>ไม่ต้องสมมติว่าลำดับสมาชิกคงเดิม</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>3
-[&#39;Aom&#39;, &#39;Beam&#39;, &#39;Nok&#39;]</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 07.2</span><strong>รายการซื้อของ</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
+    <p>รับชื่อของ 3 อย่าง เก็บใน list แล้วเรียงตามตัวอักษรและแสดงทีละบรรทัดพร้อมลำดับ</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ของ 3 อย่าง: milk, bread, apple</dd></div><div><dt>ต้องหา</dt><dd><code>1. apple</code>, <code>2. bread</code>, <code>3. milk</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>เริ่มจาก list ว่าง <code>[]</code></li><li>วนรับค่า 3 ครั้งแล้ว <code>append()</code></li><li><code>sort()</code> แล้ววนแสดงด้วยตัวนับ</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>ของที่จะซื้อ: milk
+ของที่จะซื้อ: bread
+ของที่จะซื้อ: apple
+1. apple
+2. bread
+3. milk</pre></div>
     <div class="answer-gate" data-answer-id="07.2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -187,19 +220,23 @@ print(f&quot;รวม {sum(prices)} บาท&quot;)</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>set ตัดค่าซ้ำ แต่ไม่รับประกันลำดับ จึงใช้ sorted เมื่อต้องการแสดงเรียง</p><pre class="copyable"><code>names = [&quot;Aom&quot;, &quot;Beam&quot;, &quot;Aom&quot;, &quot;Nok&quot;, &quot;Beam&quot;]
-unique_names = set(names)
-print(len(unique_names))
-print(sorted(unique_names))</code></pre>
+        <p>รูปแบบ “list ว่าง + append ในลูป” ใช้สร้างรายการจากข้อมูลที่ผู้ใช้กรอก</p><pre class="copyable"><code>items = []
+for _ in range(3):
+    items.append(input(&quot;ของที่จะซื้อ: &quot;))
+items.sort()
+number = 1
+for item in items:
+    print(f&quot;{number}. {item}&quot;)
+    number += 1</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 07.3</span><strong>ค้นหาสต็อก</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>มี stock เป็น dictionary ของสินค้าและจำนวน ให้แสดงจำนวนของ tea และแสดง 0 หากไม่มี coffee</p>
-    <ul><li>อ่านค่าด้วย key สำหรับ tea</li><li>ใช้ get พร้อมค่าเริ่มต้นสำหรับ coffee</li><li>แสดงผล</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>12
-0</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 07.3</span><strong>ตัดชื่อซ้ำ</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
+    <p>รายชื่อผู้ลงทะเบียน <code>[&quot;Nok&quot;, &quot;Beam&quot;, &quot;Nok&quot;, &quot;Mali&quot;, &quot;Beam&quot;]</code> มีชื่อซ้ำ ให้หาจำนวนคนจริงและรายชื่อเรียงตามตัวอักษร</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>list ที่มีชื่อซ้ำ</dd></div><div><dt>ต้องหา</dt><dd><code>3 คน: [&#39;Beam&#39;, &#39;Mali&#39;, &#39;Nok&#39;]</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>แปลงเป็น <code>set()</code> เพื่อตัดค่าซ้ำ</li><li><code>sorted()</code> เรียงและคืนเป็น list</li><li><code>len()</code> นับจำนวน</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>3 คน: [&#39;Beam&#39;, &#39;Mali&#39;, &#39;Nok&#39;]</pre></div>
     <div class="answer-gate" data-answer-id="07.3">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -208,18 +245,19 @@ print(sorted(unique_names))</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>get ป้องกัน KeyError เมื่อ key ที่ถามยังไม่มี</p><pre class="copyable"><code>stock = {&quot;tea&quot;: 12, &quot;milk&quot;: 4}
-print(stock[&quot;tea&quot;])
-print(stock.get(&quot;coffee&quot;, 0))</code></pre>
+        <p>set ไม่เก็บค่าซ้ำ แต่ไม่มีลำดับ จึงใช้ <code>sorted()</code> ให้ผลลัพธ์เรียงแน่นอนทุกครั้ง</p><pre class="copyable"><code>names = [&quot;Nok&quot;, &quot;Beam&quot;, &quot;Nok&quot;, &quot;Mali&quot;, &quot;Beam&quot;]
+unique = sorted(set(names))
+print(f&quot;{len(unique)} คน: {unique}&quot;)</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 07.4</span><strong>จัดกลุ่มคะแนนผ่าน</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
-    <p>รับคะแนน [55, 42, 80, 67, 39] แล้วสร้างรายการเฉพาะคะแนนตั้งแต่ 50 ขึ้นไป พร้อมแสดงจำนวนผู้ผ่าน</p>
-    <ul><li>วนผ่านคะแนนทุกค่า</li><li>กรองตามเงื่อนไข &gt;= 50</li><li>ใช้ผลลัพธ์หาจำนวนและแสดงรายการ</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>[55, 80, 67]
-ผ่าน 3 คน</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 07.4</span><strong>สมุดโทรศัพท์</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
+    <p>มี dict เบอร์โทร <code>{&quot;Nina&quot;: &quot;081-111-2222&quot;, &quot;Beam&quot;: &quot;089-333-4444&quot;}</code> ให้รับชื่อแล้วแสดงเบอร์ ถ้าไม่มีให้แสดง <code>ไม่พบรายชื่อ</code></p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ชื่อที่ผู้ใช้ค้นหา เช่น Tom</dd></div><div><dt>ต้องหา</dt><dd><code>Tom: ไม่พบรายชื่อ</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>ใช้ <code>get(name, &quot;ไม่พบรายชื่อ&quot;)</code></li><li>ไม่ต้องใช้ if เพราะ get จัดการกรณีไม่พบให้</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>ค้นหาชื่อ: Tom
+Tom: ไม่พบรายชื่อ</pre></div>
     <div class="answer-gate" data-answer-id="07.4">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -228,19 +266,19 @@ print(stock.get(&quot;coffee&quot;, 0))</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>list comprehension เหมาะกับการสร้าง list ใหม่จากการกรองข้อมูล</p><pre class="copyable"><code>scores = [55, 42, 80, 67, 39]
-passed = [score for score in scores if score &gt;= 50]
-print(passed)
-print(f&quot;ผ่าน {len(passed)} คน&quot;)</code></pre>
+        <p><code>phones[name]</code> จะเกิด KeyError เมื่อไม่มีชื่อ ส่วน <code>get()</code> คืนค่าสำรองแทน โปรแกรมจึงไม่หยุดทำงาน</p><pre class="copyable"><code>phones = {&quot;Nina&quot;: &quot;081-111-2222&quot;, &quot;Beam&quot;: &quot;089-333-4444&quot;}
+name = input(&quot;ค้นหาชื่อ: &quot;)
+print(f&quot;{name}: {phones.get(name, &#39;ไม่พบรายชื่อ&#39;)}&quot;)</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 07.5</span><strong>ทำสรุปตะกร้าสินค้า</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>รายการราคาคือ [20, 35, 20, 50] ให้หาผลรวม จำนวนรายการ และราคาที่ปรากฏซ้ำว่ามีค่าใดบ้าง</p>
-    <ul><li>ใช้ sum และ len สรุป list</li><li>ใช้ set ตัดค่าซ้ำ</li><li>จัดเรียงค่าที่ไม่ซ้ำก่อนแสดง</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>125 4
-[20, 35, 50]</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 07.5</span><strong>นักเรียนที่ผ่าน</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
+    <p>จาก dict คะแนน <code>{&quot;Nina&quot;: 88, &quot;Beam&quot;: 45, &quot;Mali&quot;: 72, &quot;Tom&quot;: 39}</code> ให้สร้าง list ชื่อคนที่ได้ตั้งแต่ 50 และหาคนที่ได้คะแนนสูงสุด</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>dict ชื่อ → คะแนน</dd></div><div><dt>ต้องหา</dt><dd><code>ผ่าน: [&#39;Nina&#39;, &#39;Mali&#39;]</code> และ <code>สูงสุด: Nina (88)</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>วน <code>.items()</code> ได้ทั้งชื่อและคะแนน</li><li>ถ้า <code>&gt;= 50</code> ให้ <code>append</code> ชื่อลง list</li><li>หาคนสูงสุดด้วยตัวแปร <code>best_name</code>, <code>best_score</code> ระหว่างวน</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>ผ่าน: [&#39;Nina&#39;, &#39;Mali&#39;]
+สูงสุด: Nina (88)</pre></div>
     <div class="answer-gate" data-answer-id="07.5">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -249,17 +287,27 @@ print(f&quot;ผ่าน {len(passed)} คน&quot;)</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>set ตัดค่าซ้ำ ส่วน sorted ทำให้ output มีลำดับแน่นอน</p><pre class="copyable"><code>prices = [20, 35, 20, 50]
-print(sum(prices), len(prices))
-print(sorted(set(prices)))</code></pre>
+        <p>ลูปเดียวทำได้สองงาน: คัดกรองคนผ่าน และติดตามค่าสูงสุด <code>best_score</code> เริ่มที่ -1 เพื่อให้คะแนนแรกถูกเก็บแน่นอน</p><pre class="copyable"><code>scores = {&quot;Nina&quot;: 88, &quot;Beam&quot;: 45, &quot;Mali&quot;: 72, &quot;Tom&quot;: 39}
+passed = []
+best_name, best_score = &quot;&quot;, -1
+for name, score in scores.items():
+    if score &gt;= 50:
+        passed.append(name)
+    if score &gt; best_score:
+        best_name, best_score = name, score
+print(&quot;ผ่าน:&quot;, passed)
+print(f&quot;สูงสุด: {best_name} ({best_score})&quot;)</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 07.6</span><strong>นับคะแนนตามระดับ</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>จากคะแนน [45, 62, 81, 55, 90] ให้สร้าง dictionary ที่มีจำนวนคนผ่าน (ตั้งแต่ 50) และจำนวนคนได้ A (ตั้งแต่ 80)</p>
-    <ul><li>เริ่มตัวนับทั้งสองค่า</li><li>วนผ่านคะแนนทีละตัว</li><li>เพิ่มตัวนับตามเกณฑ์แล้วสร้าง dict สรุป</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>{&#39;passed&#39;: 4, &#39;grade_a&#39;: 2}</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 07.6</span><strong>วิชาที่ลงร่วมกัน</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
+    <p>Nina ลงวิชา Python, Math, English ส่วน Beam ลง Python, Physics, English ให้หาวิชาที่ลงเหมือนกัน วิชาที่ Nina ลงคนเดียว และวิชาทั้งหมด</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>วิชาของ 2 คน</dd></div><div><dt>ต้องหา</dt><dd>วิชาร่วม, วิชาเฉพาะ Nina, วิชาทั้งหมด (เรียงตามตัวอักษร)</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>เก็บเป็น set 2 ชุด</li><li><code>&amp;</code> ค่าร่วม, <code>-</code> ค่าต่าง, <code>|</code> รวมทั้งหมด</li><li>ใช้ <code>sorted()</code> ก่อนแสดง</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>ลงร่วมกัน: [&#39;English&#39;, &#39;Python&#39;]
+Nina คนเดียว: [&#39;Math&#39;]
+ทั้งหมด: [&#39;English&#39;, &#39;Math&#39;, &#39;Physics&#39;, &#39;Python&#39;]</pre></div>
     <div class="answer-gate" data-answer-id="07.6">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -268,17 +316,17 @@ print(sorted(set(prices)))</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>bool สามารถนำมารวมได้ เพราะ True มีค่าเท่ากับ 1 และ False เท่ากับ 0</p><pre class="copyable"><code>scores = [45, 62, 81, 55, 90]
-passed = sum(score &gt;= 50 for score in scores)
-grade_a = sum(score &gt;= 80 for score in scores)
-summary = {&quot;passed&quot;: passed, &quot;grade_a&quot;: grade_a}
-print(summary)</code></pre>
+        <p>การดำเนินการ set ตรงกับแผนภาพเวนน์: <code>&amp;</code> ส่วนที่ซ้อนกัน <code>-</code> ส่วนที่มีแต่ฝั่งซ้าย <code>|</code> ทั้งหมด</p><pre class="copyable"><code>nina = {&quot;Python&quot;, &quot;Math&quot;, &quot;English&quot;}
+beam = {&quot;Python&quot;, &quot;Physics&quot;, &quot;English&quot;}
+print(&quot;ลงร่วมกัน:&quot;, sorted(nina &amp; beam))
+print(&quot;Nina คนเดียว:&quot;, sorted(nina - beam))
+print(&quot;ทั้งหมด:&quot;, sorted(nina | beam))</code></pre>
       </div>
     </div>
   </article></div>
       </section>
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-06.html">← บทก่อนหน้า</a><a class="pager-link" href="chapter-08.html">บทถัดไป →</a></nav>
-      <footer class="lesson-footer">Python programming · Lecture notes · ตัวอย่างรันตรวจด้วย Python จริง</footer>
+      <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
   <script src="../password.js"></script><script src="../assets/lesson.js"></script>

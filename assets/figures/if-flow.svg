@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 250" role="img" aria-labelledby="t">
+  <title id="t">ผัง if / elif / else ตรวจเงื่อนไขทีละข้อจากซ้ายไปขวา เจอข้อที่จริงก็ทำแล้วออก</title>
+  <style>
+    text { font-family: "Leelawadee UI", Tahoma, sans-serif; fill: #202440; }
+    .mono { font-family: Consolas, "Courier New", monospace; font-size: 14px; font-weight: 700; }
+    .cond { fill: #fffefa; stroke: #192044; stroke-width: 1.5; }
+    .act { fill: #e6f4ee; stroke: #147d70; stroke-width: 1.5; }
+    .yes { fill: #147d70; font-size: 13px; font-weight: 700; }
+    .no { fill: #ba4b3a; font-size: 13px; font-weight: 700; }
+    .line { stroke: #62677b; stroke-width: 2; fill: none; }
+  </style>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#62677b"/></marker></defs>
+  <polygon points="100,20 180,60 100,100 20,60" class="cond"/><text x="100" y="65" text-anchor="middle" class="mono">&gt;= 80</text>
+  <polygon points="320,20 400,60 320,100 240,60" class="cond"/><text x="320" y="65" text-anchor="middle" class="mono">&gt;= 70</text>
+  <polygon points="540,20 620,60 540,100 460,60" class="cond"/><text x="540" y="65" text-anchor="middle" class="mono">&gt;= 60</text>
+  <path d="M180 60 H236" class="line" marker-end="url(#a)"/><text x="208" y="52" text-anchor="middle" class="no">ไม่</text>
+  <path d="M400 60 H456" class="line" marker-end="url(#a)"/><text x="428" y="52" text-anchor="middle" class="no">ไม่</text>
+  <path d="M620 60 H690 V128" class="line" marker-end="url(#a)"/><text x="650" y="52" text-anchor="middle" class="no">ไม่</text>
+  <path d="M100 100 V128" class="line" marker-end="url(#a)"/><text x="112" y="120" class="yes">ใช่</text>
+  <path d="M320 100 V128" class="line" marker-end="url(#a)"/><text x="332" y="120" class="yes">ใช่</text>
+  <path d="M540 100 V128" class="line" marker-end="url(#a)"/><text x="552" y="120" class="yes">ใช่</text>
+  <rect x="50" y="132" width="100" height="38" rx="6" class="act"/><text x="100" y="157" text-anchor="middle" class="mono">grade A</text>
+  <rect x="270" y="132" width="100" height="38" rx="6" class="act"/><text x="320" y="157" text-anchor="middle" class="mono">grade B</text>
+  <rect x="490" y="132" width="100" height="38" rx="6" class="act"/><text x="540" y="157" text-anchor="middle" class="mono">grade C</text>
+  <rect x="640" y="132" width="100" height="38" rx="6" class="act"/><text x="690" y="152" text-anchor="middle" class="mono">grade F</text><text x="690" y="166" text-anchor="middle" font-size="11" fill="#62677b">else</text>
+  <path d="M100 170 V200 H690 V170" class="line"/><path d="M320 170 V200 M540 170 V200" class="line"/>
+  <path d="M395 200 V226" class="line" marker-end="url(#a)"/>
+  <text x="405" y="244" font-size="13" fill="#62677b">ทำต่อหลังบล็อก if (ทำแค่บล็อกเดียวเสมอ)</text>
+</svg>

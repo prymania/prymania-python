@@ -57,7 +57,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 .lesson-header p { max-width: 850px; margin: 8px 0 0; color: #dfe2ee; font-size: 14px; }
 .learning-goals { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 13px; align-items: start; margin: 15px 0 0; border-left: 4px solid var(--coral); background: var(--coral-pale); padding: 11px 15px; }
 .learning-goals strong { color: var(--navy); font-size: 13px; }
-.learning-goals ul { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 0; padding-left: 19px; font-size: 12px; }
+.learning-goals p { margin: 0; font-size: 13px; }
 .lesson-section { margin-top: 29px; scroll-margin-top: 18px; }
 .lesson-section > h2 { margin: 0 0 7px; font-size: 24px; line-height: 1.4; }
 .lesson-section > p { margin: 6px 0 12px; }
@@ -67,6 +67,36 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 .subtopic { margin-top: 21px; border-top: 1px solid var(--line); padding-top: 16px; scroll-margin-top: 18px; }
 .subtopic h3 { margin: 0 0 8px; font-size: 19px; line-height: 1.45; }
 .subtopic > p { margin: 7px 0 11px; }
+.examples-heading { margin: 34px 0 4px; font-size: 22px; line-height: 1.4; }
+.mini-run { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 8px; margin: 10px 0; }
+.mini-run pre { padding-top: 13px; }
+.mini-run .code-wrap pre { padding-top: 36px; }
+.mini-run.has-shot { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
+.mini-result { display: grid; gap: 8px; min-width: 0; }
+.mini-run .screenshot { margin: 0; }
+.mini-output { background: #edf1ed; color: #23283f; white-space: pre-wrap; overflow-wrap: anywhere; }
+.mini-output::before { display: block; margin-bottom: 4px; color: #545a70; content: "Output"; font: 800 10px "Leelawadee UI", Tahoma, sans-serif; letter-spacing: .5px; }
+.data-files { display: grid; gap: 8px; margin: 10px 0; }
+.file-box > span { display: inline-block; border-radius: 4px 4px 0 0; background: #e3e6dc; padding: 2px 10px; color: #3d4560; font: 700 11px Consolas, monospace; }
+.file-box pre { border: 1px solid #e3e6dc; border-radius: 0 4px 4px 4px; background: #fbfbf7; color: #23283f; font-size: 12.5px; }
+.table-wrap { overflow-x: auto; margin: 10px 0; }
+.concept-table { width: 100%; border-collapse: collapse; background: var(--surface); font-size: 14px; }
+.concept-table th { background: var(--navy); color: #fff; padding: 7px 11px; font-size: 13px; text-align: left; }
+.concept-table td { border-bottom: 1px solid var(--line); padding: 7px 11px; vertical-align: top; }
+.concept-table tr:nth-child(even) td { background: #f6f5ee; }
+.figure { margin: 12px 0; }
+.figure img { display: block; width: 100%; max-width: 760px; height: auto; }
+.figure figcaption { margin-top: 4px; color: var(--muted); font-size: 12px; }
+.tip { margin: 10px 0 4px; border-left: 3px solid var(--gold); background: #fdf6e3; padding: 8px 12px; font-size: 14px; }
+.tip strong { margin-right: 6px; color: #8a6100; font-size: 12px; }
+.task-brief { margin: 8px 0; border-left: 3px solid var(--mint-dark); background: #f0f7f2; padding: 9px 13px; font-size: 13px; }
+.task-brief > strong { color: var(--mint-dark); font-size: 12px; }
+.task-brief dl { display: grid; gap: 3px; margin: 5px 0 0; }
+.task-brief dl > div { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 8px; }
+.task-brief dt { color: #3d6b60; font-weight: 800; }
+.task-brief dd { margin: 0; }
+.brief-label { margin: 6px 0 0; color: #3d6b60; font-weight: 800; }
+.task-brief ol { margin: 2px 0 0; padding-left: 20px; }
 .teaching-prompt { margin: 10px 0 14px; border-left: 3px solid var(--mint-dark); background: #edf5f0; padding: 10px 13px; }
 .teaching-prompt strong { color: var(--mint-dark); font-size: 12px; }
 .teaching-prompt p { margin: 4px 0 0; color: #42495b; font-size: 12px; }
@@ -129,6 +159,7 @@ code:not(pre code) { border-radius: 3px; background: #ebece6; padding: 1px 4px; 
   :root { --sidebar: 220px; }
   .source-grid { grid-template-columns: 1fr; }
   .source-code, .output-field pre { min-height: 0; }
+  .mini-run { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .lesson-shell { display: block; }
@@ -141,6 +172,7 @@ code:not(pre code) { border-radius: 3px; background: #ebece6; padding: 1px 4px; 
   .learning-goals { grid-template-columns: 1fr; gap: 4px; }
   .exercise-heading { gap: 4px 7px; }
   .difficulty { margin-left: 0; }
+  .task-brief dl > div { grid-template-columns: 1fr; gap: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

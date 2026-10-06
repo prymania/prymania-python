@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 170" role="img" aria-labelledby="t">
+  <title id="t">ขั้นตอน ML 5 ขั้น: เตรียม X และ y, แบ่ง train/test, fit, predict, วัดผล</title>
+  <style>
+    text { font-family: "Leelawadee UI", Tahoma, sans-serif; fill: #202440; }
+    .mono { font-family: Consolas, "Courier New", monospace; font-size: 12px; fill: #62677b; }
+    .n { fill: #ff755e; font-size: 13px; font-weight: 700; }
+    .t { font-size: 15px; font-weight: 700; }
+    .box { fill: #fffefa; stroke: #192044; stroke-width: 1.5; }
+    .arrow { stroke: #ff755e; stroke-width: 2.5; fill: none; }
+  </style>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ff755e"/></marker></defs>
+  <g transform="translate(10,30)">
+    <rect width="128" height="96" rx="8" class="box"/><text x="12" y="24" class="n">1</text><text x="64" y="50" text-anchor="middle" class="t">เตรียมข้อมูล</text><text x="64" y="74" text-anchor="middle" class="mono">X, y</text>
+  </g>
+  <path d="M142 78H160" class="arrow" marker-end="url(#a)"/>
+  <g transform="translate(164,30)">
+    <rect width="128" height="96" rx="8" class="box"/><text x="12" y="24" class="n">2</text><text x="64" y="50" text-anchor="middle" class="t">แบ่งข้อมูล</text><text x="64" y="74" text-anchor="middle" class="mono">train_test_split</text>
+  </g>
+  <path d="M296 78H314" class="arrow" marker-end="url(#a)"/>
+  <g transform="translate(318,30)">
+    <rect width="128" height="96" rx="8" fill="#192044"/><text x="12" y="24" class="n">3</text><text x="64" y="50" text-anchor="middle" class="t" fill="#fff">ฝึกโมเดล</text><text x="64" y="74" text-anchor="middle" class="mono" fill="#8de0c7">fit(X_train, y_train)</text>
+  </g>
+  <path d="M450 78H468" class="arrow" marker-end="url(#a)"/>
+  <g transform="translate(472,30)">
+    <rect width="128" height="96" rx="8" class="box"/><text x="12" y="24" class="n">4</text><text x="64" y="50" text-anchor="middle" class="t">ทำนาย</text><text x="64" y="74" text-anchor="middle" class="mono">predict(X_test)</text>
+  </g>
+  <path d="M604 78H622" class="arrow" marker-end="url(#a)"/>
+  <g transform="translate(626,30)">
+    <rect width="124" height="96" rx="8" fill="#e6f4ee" stroke="#147d70" stroke-width="1.5"/><text x="12" y="24" class="n">5</text><text x="62" y="50" text-anchor="middle" class="t">วัดผล</text><text x="62" y="74" text-anchor="middle" class="mono">accuracy</text>
+  </g>
+  <text x="380" y="154" text-anchor="middle" font-size="13" fill="#62677b">ข้อมูล test ใช้แค่ขั้น 4–5 เท่านั้น ห้ามใช้ตอนฝึก</text>
+</svg>

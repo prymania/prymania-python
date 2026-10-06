@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#192044">
-  <meta name="description" content="เก็บข้อมูลแต่ละชนิด รับค่าจากผู้ใช้ แปลงชนิดก่อนคำนวณ และสร้าง output ที่อ่านเข้าใจได้">
+  <meta name="description" content="เก็บข้อมูลในตัวแปร รู้จักชนิดข้อมูล รับค่าด้วย input() และแสดงผลด้วย print() / f-string">
   <title>บทที่ 02 · ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล | Python programming</title>
   <link rel="stylesheet" href="../assets/lesson.css">
 </head>
@@ -15,194 +15,180 @@
       <a class="lesson-brand" href="../index.html"><span class="brand-mark">Py</span><span><span class="brand-title">Python programming by Prymania</span><span class="brand-caption">LECTURE NOTES</span></span></a>
       <nav class="lesson-toc chapter-navigation" aria-label="สารบัญรายวิชา">
         <p class="toc-label">สารบัญ · 20 บทเรียน</p>
-        <p class="toc-label" data-group="foundation">เริ่มต้นกับ Python</p><details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเริ่มใช้งาน Python ด้วย Thonny ทำความเข้าใจไฟล์ .py, โครงสร้างคำสั่ง และวิธีรัน/หยุดโปรแกรม Python program ทำงานอย่างไร เลือก IDE สำหรับผู้เริ่มเรียน: Thonny แยก editor, shell และ interpreter โครงสร้างไฟล์และการเยื้องบรรทัด รัน บันทึก และอ่านข้อผิดพลาด">
+        <p class="toc-label" data-group="foundation">เริ่มต้นกับ Python</p><details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเปิด Thonny เขียนไฟล์ .py แรก รันโปรแกรม และอ่าน error เบื้องต้น Python ทำงานอย่างไร เครื่องมือที่ใช้: Thonny Shell กับไฟล์ .py ต่างกันอย่างไร comment และการเยื้องบรรทัด อ่าน error ให้เป็น">
       <summary><span class="toc-number">01</span><span class="chapter-nav-title">โครงสร้างโปรแกรม Python, IDE และการรัน</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-01.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-01.html#topic-1"><span class="topic-number">01.1</span>Python program ทำงานอย่างไร</a></li><li><a href="chapter-01.html#topic-2"><span class="topic-number">01.2</span>เลือก IDE สำหรับผู้เริ่มเรียน: Thonny</a></li><li><a href="chapter-01.html#topic-3"><span class="topic-number">01.3</span>แยก editor, shell และ interpreter</a></li><li><a href="chapter-01.html#topic-4"><span class="topic-number">01.4</span>โครงสร้างไฟล์และการเยื้องบรรทัด</a></li><li><a href="chapter-01.html#topic-5"><span class="topic-number">01.5</span>รัน บันทึก และอ่านข้อผิดพลาด</a></li><li><a href="chapter-01.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-01.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-01.html#topic-1"><span class="topic-number">01.1</span>Python ทำงานอย่างไร</a></li><li><a href="chapter-01.html#topic-2"><span class="topic-number">01.2</span>เครื่องมือที่ใช้: Thonny</a></li><li><a href="chapter-01.html#topic-3"><span class="topic-number">01.3</span>Shell กับไฟล์ .py ต่างกันอย่างไร</a></li><li><a href="chapter-01.html#topic-4"><span class="topic-number">01.4</span>comment และการเยื้องบรรทัด</a></li><li><a href="chapter-01.html#topic-5"><span class="topic-number">01.5</span>อ่าน error ให้เป็น</a></li><li><a href="chapter-01.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลแต่ละชนิด รับค่าจากผู้ใช้ แปลงชนิดก่อนคำนวณ และสร้าง output ที่อ่านเข้าใจได้ ตัวแปรคือชื่อที่อ้างถึงข้อมูล ตั้งชื่อให้คนอ่านเข้าใจ ค่าหนึ่งเปลี่ยนได้ตามลำดับคำสั่ง ชนิดข้อมูลบอกวิธีใช้งานค่า input คืนค่าเป็นข้อความเสมอ f-string แทรกค่าลงในข้อความ" open>
+<details class="chapter-nav-item" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลในตัวแปร รู้จักชนิดข้อมูล รับค่าด้วย input() และแสดงผลด้วย print() / f-string ตัวแปร: ตั้งชื่อให้ข้อมูล ชนิดข้อมูลพื้นฐาน 4 ชนิด แปลงชนิดข้อมูล รับค่าด้วย input() แสดงผลด้วย print() และ f-string ข้อผิดพลาดที่เจอบ่อย" open>
       <summary><span class="toc-number">02</span><span class="chapter-nav-title">ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล</span></summary>
-      <ul class="chapter-subnav"><li><a href="#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="#topic-1"><span class="topic-number">02.1</span>ตัวแปรคือชื่อที่อ้างถึงข้อมูล</a></li><li><a href="#topic-2"><span class="topic-number">02.2</span>ตั้งชื่อให้คนอ่านเข้าใจ</a></li><li><a href="#topic-3"><span class="topic-number">02.3</span>ค่าหนึ่งเปลี่ยนได้ตามลำดับคำสั่ง</a></li><li><a href="#topic-4"><span class="topic-number">02.4</span>ชนิดข้อมูลบอกวิธีใช้งานค่า</a></li><li><a href="#topic-5"><span class="topic-number">02.5</span>input คืนค่าเป็นข้อความเสมอ</a></li><li><a href="#topic-6"><span class="topic-number">02.6</span>f-string แทรกค่าลงในข้อความ</a></li><li><a href="#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="#topic-1"><span class="topic-number">02.1</span>ตัวแปร: ตั้งชื่อให้ข้อมูล</a></li><li><a href="#topic-2"><span class="topic-number">02.2</span>ชนิดข้อมูลพื้นฐาน 4 ชนิด</a></li><li><a href="#topic-3"><span class="topic-number">02.3</span>แปลงชนิดข้อมูล</a></li><li><a href="#topic-4"><span class="topic-number">02.4</span>รับค่าด้วย input()</a></li><li><a href="#topic-5"><span class="topic-number">02.5</span>แสดงผลด้วย print() และ f-string</a></li><li><a href="#topic-6"><span class="topic-number">02.6</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และประกอบเงื่อนไขเชิงตรรกะ ตัวดำเนินการเลขคณิต เปรียบเทียบแล้วได้ bool เชื่อมเงื่อนไข">
+<details class="chapter-nav-item" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และรวมเงื่อนไขด้วย and / or / not ตัวดำเนินการเลขคณิต ลำดับการคำนวณ เปรียบเทียบค่า ได้ผลเป็น True/False รวมเงื่อนไขด้วย and / or / not ตัวดำเนินการแบบย่อ">
       <summary><span class="toc-number">03</span><span class="chapter-nav-title">ตัวดำเนินการและนิพจน์</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-03.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-03.html#topic-1"><span class="topic-number">03.1</span>ตัวดำเนินการเลขคณิต</a></li><li><a href="chapter-03.html#topic-2"><span class="topic-number">03.2</span>เปรียบเทียบแล้วได้ bool</a></li><li><a href="chapter-03.html#topic-3"><span class="topic-number">03.3</span>เชื่อมเงื่อนไข</a></li><li><a href="chapter-03.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-03.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-03.html#topic-1"><span class="topic-number">03.1</span>ตัวดำเนินการเลขคณิต</a></li><li><a href="chapter-03.html#topic-2"><span class="topic-number">03.2</span>ลำดับการคำนวณ</a></li><li><a href="chapter-03.html#topic-3"><span class="topic-number">03.3</span>เปรียบเทียบค่า ได้ผลเป็น True/False</a></li><li><a href="chapter-03.html#topic-4"><span class="topic-number">03.4</span>รวมเงื่อนไขด้วย and / or / not</a></li><li><a href="chapter-03.html#topic-5"><span class="topic-number">03.5</span>ตัวดำเนินการแบบย่อ</a></li><li><a href="chapter-03.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if ตรวจกรณีแรก elif เรียงกรณีที่ไม่ทับกัน else เป็นกรณีที่เหลือ">
+<details class="chapter-nav-item" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if: ทำเมื่อเงื่อนไขเป็นจริง if-else: เลือก 1 ใน 2 ทาง elif: หลายทางเลือก เงื่อนไขหลายข้อ และ if ซ้อน ข้อผิดพลาดที่เจอบ่อย">
       <summary><span class="toc-number">04</span><span class="chapter-nav-title">เงื่อนไขและการตัดสินใจ</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-04.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-04.html#topic-1"><span class="topic-number">04.1</span>if ตรวจกรณีแรก</a></li><li><a href="chapter-04.html#topic-2"><span class="topic-number">04.2</span>elif เรียงกรณีที่ไม่ทับกัน</a></li><li><a href="chapter-04.html#topic-3"><span class="topic-number">04.3</span>else เป็นกรณีที่เหลือ</a></li><li><a href="chapter-04.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-04.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-04.html#topic-1"><span class="topic-number">04.1</span>if: ทำเมื่อเงื่อนไขเป็นจริง</a></li><li><a href="chapter-04.html#topic-2"><span class="topic-number">04.2</span>if-else: เลือก 1 ใน 2 ทาง</a></li><li><a href="chapter-04.html#topic-3"><span class="topic-number">04.3</span>elif: หลายทางเลือก</a></li><li><a href="chapter-04.html#topic-4"><span class="topic-number">04.4</span>เงื่อนไขหลายข้อ และ if ซ้อน</a></li><li><a href="chapter-04.html#topic-5"><span class="topic-number">04.5</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-04.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="การทำซ้ำด้วยลูป ทำคำสั่งซ้ำอย่างควบคุมได้ด้วย for, while และ range for วนผ่านสมาชิก สะสมค่าอย่างระมัดระวัง while วนจนเงื่อนไขเปลี่ยน">
+<details class="chapter-nav-item" data-group="foundation" data-search="การทำซ้ำด้วยลูป สั่งให้โปรแกรมทำงานซ้ำด้วย for และ while แทนการเขียนคำสั่งเดิมหลายครั้ง for กับ range() for วนผ่านข้อมูลทีละตัว สะสมผลรวมและนับจำนวน while: วนจนกว่าเงื่อนไขจะเป็นเท็จ break และ continue">
       <summary><span class="toc-number">05</span><span class="chapter-nav-title">การทำซ้ำด้วยลูป</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-05.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-05.html#topic-1"><span class="topic-number">05.1</span>for วนผ่านสมาชิก</a></li><li><a href="chapter-05.html#topic-2"><span class="topic-number">05.2</span>สะสมค่าอย่างระมัดระวัง</a></li><li><a href="chapter-05.html#topic-3"><span class="topic-number">05.3</span>while วนจนเงื่อนไขเปลี่ยน</a></li><li><a href="chapter-05.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-05.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-05.html#topic-1"><span class="topic-number">05.1</span>for กับ range()</a></li><li><a href="chapter-05.html#topic-2"><span class="topic-number">05.2</span>for วนผ่านข้อมูลทีละตัว</a></li><li><a href="chapter-05.html#topic-3"><span class="topic-number">05.3</span>สะสมผลรวมและนับจำนวน</a></li><li><a href="chapter-05.html#topic-4"><span class="topic-number">05.4</span>while: วนจนกว่าเงื่อนไขจะเป็นเท็จ</a></li><li><a href="chapter-05.html#topic-5"><span class="topic-number">05.5</span>break และ continue</a></li><li><a href="chapter-05.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด ต่อ ค้นหา และจัดรูปแบบข้อความที่รับมาจากผู้ใช้หรือไฟล์ ข้อความแก้ตรงตำแหน่งไม่ได้ method ช่วยทำความสะอาด index และ slicing เริ่มที่ศูนย์">
+<details class="chapter-nav-item" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด แยก ค้นหา และจัดรูปแบบข้อความด้วย index, slicing และ string method index: ตำแหน่งของตัวอักษร slicing: ตัดบางส่วน method ที่ใช้บ่อย ตรวจและวนข้อความ">
       <summary><span class="toc-number">06</span><span class="chapter-nav-title">ข้อความและการจัดการ string</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-06.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-06.html#topic-1"><span class="topic-number">06.1</span>ข้อความแก้ตรงตำแหน่งไม่ได้</a></li><li><a href="chapter-06.html#topic-2"><span class="topic-number">06.2</span>method ช่วยทำความสะอาด</a></li><li><a href="chapter-06.html#topic-3"><span class="topic-number">06.3</span>index และ slicing เริ่มที่ศูนย์</a></li><li><a href="chapter-06.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-06.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-06.html#topic-1"><span class="topic-number">06.1</span>index: ตำแหน่งของตัวอักษร</a></li><li><a href="chapter-06.html#topic-2"><span class="topic-number">06.2</span>slicing: ตัดบางส่วน</a></li><li><a href="chapter-06.html#topic-3"><span class="topic-number">06.3</span>method ที่ใช้บ่อย</a></li><li><a href="chapter-06.html#topic-4"><span class="topic-number">06.4</span>ตรวจและวนข้อความ</a></li><li><a href="chapter-06.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เลือกภาชนะเก็บข้อมูลหลายค่าให้เหมาะกับการเพิ่ม แก้ ค้นหา และจับคู่ list เก็บลำดับและแก้ไขได้ tuple และ set มีหน้าที่ต่างกัน dict ผูก key กับ value">
+<details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เก็บข้อมูลหลายค่าในตัวแปรเดียว และเลือกโครงสร้างให้เหมาะกับงาน เลือกใช้แบบไหนดี list: รายการที่แก้ไขได้ tuple และ set dict: จับคู่ key กับ value">
       <summary><span class="toc-number">07</span><span class="chapter-nav-title">โครงสร้างข้อมูล: list, tuple, set และ dict</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-07.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-07.html#topic-1"><span class="topic-number">07.1</span>list เก็บลำดับและแก้ไขได้</a></li><li><a href="chapter-07.html#topic-2"><span class="topic-number">07.2</span>tuple และ set มีหน้าที่ต่างกัน</a></li><li><a href="chapter-07.html#topic-3"><span class="topic-number">07.3</span>dict ผูก key กับ value</a></li><li><a href="chapter-07.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-07.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-07.html#topic-1"><span class="topic-number">07.1</span>เลือกใช้แบบไหนดี</a></li><li><a href="chapter-07.html#topic-2"><span class="topic-number">07.2</span>list: รายการที่แก้ไขได้</a></li><li><a href="chapter-07.html#topic-3"><span class="topic-number">07.3</span>tuple และ set</a></li><li><a href="chapter-07.html#topic-4"><span class="topic-number">07.4</span>dict: จับคู่ key กับ value</a></li><li><a href="chapter-07.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม ห่อแนวคิดที่ใช้ซ้ำในฟังก์ชัน พร้อมพารามิเตอร์และค่าที่คืนกลับ def ประกาศหน้าที่หนึ่งอย่าง parameter และ argument return ส่งผลกลับผู้เรียก">
+<details class="chapter-nav-item" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม รวมคำสั่งที่ทำงานหนึ่งอย่างเป็นฟังก์ชัน เรียกใช้ซ้ำได้ และแบ่งโปรแกรมใหญ่เป็นส่วนเล็ก def: สร้างฟังก์ชัน parameter: ส่งค่าเข้าฟังก์ชัน return: ส่งผลกลับ ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน">
       <summary><span class="toc-number">08</span><span class="chapter-nav-title">ฟังก์ชันและการแบ่งโปรแกรม</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-08.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-08.html#topic-1"><span class="topic-number">08.1</span>def ประกาศหน้าที่หนึ่งอย่าง</a></li><li><a href="chapter-08.html#topic-2"><span class="topic-number">08.2</span>parameter และ argument</a></li><li><a href="chapter-08.html#topic-3"><span class="topic-number">08.3</span>return ส่งผลกลับผู้เรียก</a></li><li><a href="chapter-08.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-08.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-08.html#topic-1"><span class="topic-number">08.1</span>def: สร้างฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-2"><span class="topic-number">08.2</span>parameter: ส่งค่าเข้าฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-3"><span class="topic-number">08.3</span>return: ส่งผลกลับ</a></li><li><a href="chapter-08.html#topic-4"><span class="topic-number">08.4</span>ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน</a></li><li><a href="chapter-08.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="practice">ฝึกเขียนและใช้งาน</p><details class="chapter-nav-item" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน traceback อย่างมีระบบ ป้องกันข้อผิดพลาดที่คาดหมาย และแก้ที่สาเหตุ อ่าน traceback จากบรรทัดล่างขึ้นบน try-except ควรจับเฉพาะที่เข้าใจ แยก logic error ด้วยตัวอย่าง">
+<p class="toc-label" data-group="practice">ฝึกเขียนและใช้งาน</p><details class="chapter-nav-item" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน error ให้เข้าใจ ดักจับข้อผิดพลาดด้วย try/except และหาสาเหตุเมื่อผลลัพธ์ผิด อ่าน traceback error ที่พบบ่อย try / except: ดักจับ error ดักหลายชนิด และดูข้อความ error raise: แจ้ง error เอง ไล่หาบั๊กเมื่อผลลัพธ์ผิด">
       <summary><span class="toc-number">09</span><span class="chapter-nav-title">ข้อผิดพลาด การจัดการ exception และ debug</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-09.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-09.html#topic-1"><span class="topic-number">09.1</span>อ่าน traceback จากบรรทัดล่างขึ้นบน</a></li><li><a href="chapter-09.html#topic-2"><span class="topic-number">09.2</span>try-except ควรจับเฉพาะที่เข้าใจ</a></li><li><a href="chapter-09.html#topic-3"><span class="topic-number">09.3</span>แยก logic error ด้วยตัวอย่าง</a></li><li><a href="chapter-09.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-09.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-09.html#topic-1"><span class="topic-number">09.1</span>อ่าน traceback</a></li><li><a href="chapter-09.html#topic-2"><span class="topic-number">09.2</span>error ที่พบบ่อย</a></li><li><a href="chapter-09.html#topic-3"><span class="topic-number">09.3</span>try / except: ดักจับ error</a></li><li><a href="chapter-09.html#topic-4"><span class="topic-number">09.4</span>ดักหลายชนิด และดูข้อความ error</a></li><li><a href="chapter-09.html#topic-5"><span class="topic-number">09.5</span>raise: แจ้ง error เอง</a></li><li><a href="chapter-09.html#topic-6"><span class="topic-number">09.6</span>ไล่หาบั๊กเมื่อผลลัพธ์ผิด</a></li><li><a href="chapter-09.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนข้อมูลอย่างปลอดภัย พร้อมใช้รูปแบบไฟล์ที่พบในงานจริง ใช้ with เปิดไฟล์ pathlib จัดการตำแหน่งไฟล์ CSV กับ JSON ใช้คนละโครงสร้าง">
+<details class="chapter-nav-item" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนไฟล์ข้อความ CSV และ JSON เพื่อเก็บข้อมูลไว้ใช้ต่อหลังปิดโปรแกรม เปิดไฟล์ด้วย with open() อ่านทีละบรรทัด CSV: ข้อมูลตาราง JSON: บันทึก list/dict ทั้งก้อน เลือก CSV หรือ JSON">
       <summary><span class="toc-number">10</span><span class="chapter-nav-title">ไฟล์ ข้อมูล CSV และ JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-10.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-10.html#topic-1"><span class="topic-number">10.1</span>ใช้ with เปิดไฟล์</a></li><li><a href="chapter-10.html#topic-2"><span class="topic-number">10.2</span>pathlib จัดการตำแหน่งไฟล์</a></li><li><a href="chapter-10.html#topic-3"><span class="topic-number">10.3</span>CSV กับ JSON ใช้คนละโครงสร้าง</a></li><li><a href="chapter-10.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-10.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-10.html#topic-1"><span class="topic-number">10.1</span>เปิดไฟล์ด้วย with open()</a></li><li><a href="chapter-10.html#topic-2"><span class="topic-number">10.2</span>อ่านทีละบรรทัด</a></li><li><a href="chapter-10.html#topic-3"><span class="topic-number">10.3</span>CSV: ข้อมูลตาราง</a></li><li><a href="chapter-10.html#topic-4"><span class="topic-number">10.4</span>JSON: บันทึก list/dict ทั้งก้อน</a></li><li><a href="chapter-10.html#topic-5"><span class="topic-number">10.5</span>เลือก CSV หรือ JSON</a></li><li><a href="chapter-10.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="โมดูล virtual environment และ pip ใช้ไลบรารีมาตรฐาน ติดตั้งแพ็กเกจแยกสภาพแวดล้อม และจัด dependency ของโปรเจกต์ import นำโมดูลมาใช้ venv ป้องกัน dependency ชนกัน pip และ requirements.txt">
+<details class="chapter-nav-item" data-group="practice" data-search="โมดูล virtual environment และ pip นำโมดูลมาตรฐานมาใช้ สร้างโมดูลของตัวเอง และติดตั้งแพ็กเกจเพิ่มด้วย pip ใน virtual environment import: นำโมดูลมาใช้ โมดูลมาตรฐานที่ใช้บ่อย สร้างโมดูลเอง pip และ virtual environment ตรวจว่าติดตั้งแล้วหรือยัง">
       <summary><span class="toc-number">11</span><span class="chapter-nav-title">โมดูล virtual environment และ pip</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-11.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-11.html#topic-1"><span class="topic-number">11.1</span>import นำโมดูลมาใช้</a></li><li><a href="chapter-11.html#topic-2"><span class="topic-number">11.2</span>venv ป้องกัน dependency ชนกัน</a></li><li><a href="chapter-11.html#topic-3"><span class="topic-number">11.3</span>pip และ requirements.txt</a></li><li><a href="chapter-11.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-11.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-11.html#topic-1"><span class="topic-number">11.1</span>import: นำโมดูลมาใช้</a></li><li><a href="chapter-11.html#topic-2"><span class="topic-number">11.2</span>โมดูลมาตรฐานที่ใช้บ่อย</a></li><li><a href="chapter-11.html#topic-3"><span class="topic-number">11.3</span>สร้างโมดูลเอง</a></li><li><a href="chapter-11.html#topic-4"><span class="topic-number">11.4</span>pip และ virtual environment</a></li><li><a href="chapter-11.html#topic-5"><span class="topic-number">11.5</span>ตรวจว่าติดตั้งแล้วหรือยัง</a></li><li><a href="chapter-11.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมสถานะและพฤติกรรมที่สัมพันธ์กันไว้ใน class เพื่อสร้าง object หลายตัว class เป็นแบบพิมพ์ object เป็นสิ่งที่สร้าง __init__ กำหนดค่าเริ่มต้น method รวมพฤติกรรมกับข้อมูล">
+<details class="chapter-nav-item" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมข้อมูลและการทำงานที่เกี่ยวข้องกันไว้ใน class แล้วสร้าง object ได้หลายตัว class คือแม่แบบ object คือของจริง __init__ และ self method: การทำงานของ object __str__: กำหนดวิธีแสดงผล ทำงานกับ object หลายตัว">
       <summary><span class="toc-number">12</span><span class="chapter-nav-title">เขียนโปรแกรมเชิงวัตถุด้วย class</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-12.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-12.html#topic-1"><span class="topic-number">12.1</span>class เป็นแบบพิมพ์ object เป็นสิ่งที่สร้าง</a></li><li><a href="chapter-12.html#topic-2"><span class="topic-number">12.2</span>__init__ กำหนดค่าเริ่มต้น</a></li><li><a href="chapter-12.html#topic-3"><span class="topic-number">12.3</span>method รวมพฤติกรรมกับข้อมูล</a></li><li><a href="chapter-12.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-12.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-12.html#topic-1"><span class="topic-number">12.1</span>class คือแม่แบบ object คือของจริง</a></li><li><a href="chapter-12.html#topic-2"><span class="topic-number">12.2</span>__init__ และ self</a></li><li><a href="chapter-12.html#topic-3"><span class="topic-number">12.3</span>method: การทำงานของ object</a></li><li><a href="chapter-12.html#topic-4"><span class="topic-number">12.4</span>__str__: กำหนดวิธีแสดงผล</a></li><li><a href="chapter-12.html#topic-5"><span class="topic-number">12.5</span>ทำงานกับ object หลายตัว</a></li><li><a href="chapter-12.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON เข้าใจ request/response, ส่งพารามิเตอร์ และแปลง JSON เพื่อเชื่อมบริการอื่น API คือสัญญาการสื่อสาร แปลงข้อมูล JSON เครือข่ายผิดพลาดได้">
+<details class="chapter-nav-item" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON ขอข้อมูลจากบริการบนอินเทอร์เน็ตด้วย requests อ่านผลที่เป็น JSON และจัดการเมื่อเชื่อมต่อไม่สำเร็จ API ทำงานอย่างไร JSON กับ Python requests.get(): ขอข้อมูล ส่ง parameter รับมือเมื่อเรียกไม่สำเร็จ">
       <summary><span class="toc-number">13</span><span class="chapter-nav-title">เรียกใช้ Web API และแลกเปลี่ยน JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-13.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-13.html#topic-1"><span class="topic-number">13.1</span>API คือสัญญาการสื่อสาร</a></li><li><a href="chapter-13.html#topic-2"><span class="topic-number">13.2</span>แปลงข้อมูล JSON</a></li><li><a href="chapter-13.html#topic-3"><span class="topic-number">13.3</span>เครือข่ายผิดพลาดได้</a></li><li><a href="chapter-13.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-13.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-13.html#topic-1"><span class="topic-number">13.1</span>API ทำงานอย่างไร</a></li><li><a href="chapter-13.html#topic-2"><span class="topic-number">13.2</span>JSON กับ Python</a></li><li><a href="chapter-13.html#topic-3"><span class="topic-number">13.3</span>requests.get(): ขอข้อมูล</a></li><li><a href="chapter-13.html#topic-4"><span class="topic-number">13.4</span>ส่ง parameter</a></li><li><a href="chapter-13.html#topic-5"><span class="topic-number">13.5</span>รับมือเมื่อเรียกไม่สำเร็จ</a></li><li><a href="chapter-13.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="ai">ต่อยอดข้อมูลและ AI</p><details class="chapter-nav-item" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข ใช้ array คำนวณข้อมูลจำนวนมากแบบเวกเตอร์ ซึ่งเป็นฐานของงาน Data Science และ AI ndarray เป็นข้อมูลชนิดเดียวกัน vectorization แทนการวนทีละค่า เลือกและสรุปตามแกน">
+<p class="toc-label" data-group="ai">ต่อยอดข้อมูลและ AI</p><details class="chapter-nav-item" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของงาน Data Science และ AI array ต่างจาก list อย่างไร สร้าง array แบบต่าง ๆ คำนวณทั้ง array (vectorization) กรองข้อมูลด้วยเงื่อนไข array 2 มิติและแกน (axis) ฟังก์ชันสถิติ">
       <summary><span class="toc-number">14</span><span class="chapter-nav-title">NumPy สำหรับการคำนวณตัวเลข</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-14.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-14.html#topic-1"><span class="topic-number">14.1</span>ndarray เป็นข้อมูลชนิดเดียวกัน</a></li><li><a href="chapter-14.html#topic-2"><span class="topic-number">14.2</span>vectorization แทนการวนทีละค่า</a></li><li><a href="chapter-14.html#topic-3"><span class="topic-number">14.3</span>เลือกและสรุปตามแกน</a></li><li><a href="chapter-14.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-14.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-14.html#topic-1"><span class="topic-number">14.1</span>array ต่างจาก list อย่างไร</a></li><li><a href="chapter-14.html#topic-2"><span class="topic-number">14.2</span>สร้าง array แบบต่าง ๆ</a></li><li><a href="chapter-14.html#topic-3"><span class="topic-number">14.3</span>คำนวณทั้ง array (vectorization)</a></li><li><a href="chapter-14.html#topic-4"><span class="topic-number">14.4</span>กรองข้อมูลด้วยเงื่อนไข</a></li><li><a href="chapter-14.html#topic-5"><span class="topic-number">14.5</span>array 2 มิติและแกน (axis)</a></li><li><a href="chapter-14.html#topic-6"><span class="topic-number">14.6</span>ฟังก์ชันสถิติ</a></li><li><a href="chapter-14.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน ทำความสะอาด เลือก และสรุปข้อมูลตารางด้วย DataFrame DataFrame มีแถวและคอลัมน์ เลือกและกรองข้อมูล ทำความสะอาดและ groupby">
+<details class="chapter-nav-item" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน สำรวจ กรอง ทำความสะอาด และสรุปข้อมูลตารางด้วย pandas DataFrame DataFrame: ตารางข้อมูล อ่าน CSV และสำรวจข้อมูล เลือกและกรองข้อมูล เพิ่มคอลัมน์และเรียงข้อมูล จัดการค่าว่าง สรุปตามกลุ่มด้วย groupby">
       <summary><span class="toc-number">15</span><span class="chapter-nav-title">จัดการตารางข้อมูลด้วย pandas</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-15.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-15.html#topic-1"><span class="topic-number">15.1</span>DataFrame มีแถวและคอลัมน์</a></li><li><a href="chapter-15.html#topic-2"><span class="topic-number">15.2</span>เลือกและกรองข้อมูล</a></li><li><a href="chapter-15.html#topic-3"><span class="topic-number">15.3</span>ทำความสะอาดและ groupby</a></li><li><a href="chapter-15.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-15.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-15.html#topic-1"><span class="topic-number">15.1</span>DataFrame: ตารางข้อมูล</a></li><li><a href="chapter-15.html#topic-2"><span class="topic-number">15.2</span>อ่าน CSV และสำรวจข้อมูล</a></li><li><a href="chapter-15.html#topic-3"><span class="topic-number">15.3</span>เลือกและกรองข้อมูล</a></li><li><a href="chapter-15.html#topic-4"><span class="topic-number">15.4</span>เพิ่มคอลัมน์และเรียงข้อมูล</a></li><li><a href="chapter-15.html#topic-5"><span class="topic-number">15.5</span>จัดการค่าว่าง</a></li><li><a href="chapter-15.html#topic-6"><span class="topic-number">15.6</span>สรุปตามกลุ่มด้วย groupby</a></li><li><a href="chapter-15.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib เปลี่ยนข้อมูลตัวเลขเป็นภาพเพื่อมองแนวโน้ม เปรียบเทียบ และสื่อสารผล เลือกชนิดกราฟตามคำถาม label ทำให้กราฟอ่านได้ แยกการวาดกับการบันทึก">
+<details class="chapter-nav-item" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib แปลงตัวเลขเป็นกราฟที่อ่านง่าย เลือกชนิดกราฟให้ตรงคำถาม และบันทึกเป็นไฟล์ภาพ กราฟแรก เลือกชนิดกราฟจากคำถาม กราฟแท่ง หลายเส้นในกราฟเดียว กราฟกระจายและฮิสโทแกรม บันทึกกราฟและภาษาไทย">
       <summary><span class="toc-number">16</span><span class="chapter-nav-title">สร้างกราฟด้วย Matplotlib</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-16.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-16.html#topic-1"><span class="topic-number">16.1</span>เลือกชนิดกราฟตามคำถาม</a></li><li><a href="chapter-16.html#topic-2"><span class="topic-number">16.2</span>label ทำให้กราฟอ่านได้</a></li><li><a href="chapter-16.html#topic-3"><span class="topic-number">16.3</span>แยกการวาดกับการบันทึก</a></li><li><a href="chapter-16.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-16.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-16.html#topic-1"><span class="topic-number">16.1</span>กราฟแรก</a></li><li><a href="chapter-16.html#topic-2"><span class="topic-number">16.2</span>เลือกชนิดกราฟจากคำถาม</a></li><li><a href="chapter-16.html#topic-3"><span class="topic-number">16.3</span>กราฟแท่ง</a></li><li><a href="chapter-16.html#topic-4"><span class="topic-number">16.4</span>หลายเส้นในกราฟเดียว</a></li><li><a href="chapter-16.html#topic-5"><span class="topic-number">16.5</span>กราฟกระจายและฮิสโทแกรม</a></li><li><a href="chapter-16.html#topic-6"><span class="topic-number">16.6</span>บันทึกกราฟและภาษาไทย</a></li><li><a href="chapter-16.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn สร้าง pipeline ฝึกและประเมินโมเดลจากข้อมูลตัวอย่าง โดยแยก train กับ test แยก feature กับ target อย่าทดสอบด้วยข้อมูลฝึก Pipeline ป้องกันขั้นตอนสับสน">
+<details class="chapter-nav-item" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn ให้คอมพิวเตอร์เรียนรู้รูปแบบจากตัวอย่าง แล้วทำนายข้อมูลใหม่ ด้วยขั้นตอนมาตรฐานของ scikit-learn Machine Learning คืออะไร ขั้นตอนมาตรฐาน แบ่งข้อมูล train/test fit และ predict วัดผลโมเดล Pipeline: รวมการเตรียมข้อมูลกับโมเดล">
       <summary><span class="toc-number">17</span><span class="chapter-nav-title">Machine Learning เบื้องต้นด้วย scikit-learn</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-17.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-17.html#topic-1"><span class="topic-number">17.1</span>แยก feature กับ target</a></li><li><a href="chapter-17.html#topic-2"><span class="topic-number">17.2</span>อย่าทดสอบด้วยข้อมูลฝึก</a></li><li><a href="chapter-17.html#topic-3"><span class="topic-number">17.3</span>Pipeline ป้องกันขั้นตอนสับสน</a></li><li><a href="chapter-17.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-17.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-17.html#topic-1"><span class="topic-number">17.1</span>Machine Learning คืออะไร</a></li><li><a href="chapter-17.html#topic-2"><span class="topic-number">17.2</span>ขั้นตอนมาตรฐาน</a></li><li><a href="chapter-17.html#topic-3"><span class="topic-number">17.3</span>แบ่งข้อมูล train/test</a></li><li><a href="chapter-17.html#topic-4"><span class="topic-number">17.4</span>fit และ predict</a></li><li><a href="chapter-17.html#topic-5"><span class="topic-number">17.5</span>วัดผลโมเดล</a></li><li><a href="chapter-17.html#topic-6"><span class="topic-number">17.6</span>Pipeline: รวมการเตรียมข้อมูลกับโมเดล</a></li><li><a href="chapter-17.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล ต่อยอดแนวคิด ML สู่ neuron, activation, loss และวงจรการเรียนรู้ของ deep learning Neuron รวม input ด้วยน้ำหนัก Loss วัดความคลาดเคลื่อน Framework ช่วยคำนวณ gradient">
+<details class="chapter-nav-item" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล เข้าใจส่วนประกอบของ neural network ตั้งแต่ neuron, activation, loss จนถึงการเรียนรู้ด้วย gradient descent neuron: หน่วยคำนวณพื้นฐาน activation function layer: หลาย neuron พร้อมกัน loss: วัดว่าผิดมากแค่ไหน การเรียนรู้: gradient descent ใช้ library แทนการเขียนเอง">
       <summary><span class="toc-number">18</span><span class="chapter-nav-title">แนวคิด Neural Network และการฝึกโมเดล</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-18.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-18.html#topic-1"><span class="topic-number">18.1</span>Neuron รวม input ด้วยน้ำหนัก</a></li><li><a href="chapter-18.html#topic-2"><span class="topic-number">18.2</span>Loss วัดความคลาดเคลื่อน</a></li><li><a href="chapter-18.html#topic-3"><span class="topic-number">18.3</span>Framework ช่วยคำนวณ gradient</a></li><li><a href="chapter-18.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-18.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-18.html#topic-1"><span class="topic-number">18.1</span>neuron: หน่วยคำนวณพื้นฐาน</a></li><li><a href="chapter-18.html#topic-2"><span class="topic-number">18.2</span>activation function</a></li><li><a href="chapter-18.html#topic-3"><span class="topic-number">18.3</span>layer: หลาย neuron พร้อมกัน</a></li><li><a href="chapter-18.html#topic-4"><span class="topic-number">18.4</span>loss: วัดว่าผิดมากแค่ไหน</a></li><li><a href="chapter-18.html#topic-5"><span class="topic-number">18.5</span>การเรียนรู้: gradient descent</a></li><li><a href="chapter-18.html#topic-6"><span class="topic-number">18.6</span>ใช้ library แทนการเขียนเอง</a></li><li><a href="chapter-18.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="gui">GUI และโปรเจกต์</p><details class="chapter-nav-item" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปหน้าต่างด้วย Qt for Python โดยใช้ widget, layout, signal และ slot QApplication จัดการแอป Layout ทำหน้าที่จัดวาง signal/slot เชื่อม event กับงาน">
+<p class="toc-label" data-group="gui">GUI และโปรเจกต์</p><details class="chapter-nav-item" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปที่มีหน้าต่าง ปุ่ม และช่องกรอกข้อมูลด้วย PySide6 (Qt for Python) โครงสร้างแอปพื้นฐาน widget ที่ใช้บ่อย layout: จัดวาง widget signal และ slot: ทำงานเมื่อผู้ใช้กด เขียนหน้าต่างเป็น class">
       <summary><span class="toc-number">19</span><span class="chapter-nav-title">สร้าง GUI สมัยใหม่ด้วย PySide6</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-19.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-19.html#topic-1"><span class="topic-number">19.1</span>QApplication จัดการแอป</a></li><li><a href="chapter-19.html#topic-2"><span class="topic-number">19.2</span>Layout ทำหน้าที่จัดวาง</a></li><li><a href="chapter-19.html#topic-3"><span class="topic-number">19.3</span>signal/slot เชื่อม event กับงาน</a></li><li><a href="chapter-19.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-19.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-19.html#topic-1"><span class="topic-number">19.1</span>โครงสร้างแอปพื้นฐาน</a></li><li><a href="chapter-19.html#topic-2"><span class="topic-number">19.2</span>widget ที่ใช้บ่อย</a></li><li><a href="chapter-19.html#topic-3"><span class="topic-number">19.3</span>layout: จัดวาง widget</a></li><li><a href="chapter-19.html#topic-4"><span class="topic-number">19.4</span>signal และ slot: ทำงานเมื่อผู้ใช้กด</a></li><li><a href="chapter-19.html#topic-5"><span class="topic-number">19.5</span>เขียนหน้าต่างเป็น class</a></li><li><a href="chapter-19.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI นำ Python, ตารางข้อมูล, โมเดล และ GUI มาประกอบเป็นแอปแนะนำแผนเรียนขนาดเล็ก เริ่มจากโจทย์และข้อมูล แยก UI, logic และ data ประเมินและสื่อสารข้อจำกัด">
+<details class="chapter-nav-item" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI รวมทุกอย่างที่เรียนมาเป็นแอปแนะนำรายวิชา: ข้อมูลจาก CSV, กติกาแนะนำ, โมเดลทำนาย และหน้าต่าง PySide6 เริ่มจากโจทย์ ไม่ใช่โค้ด แยกเป็น 3 ชั้น ชั้นข้อมูล: โหลดรายวิชา ชั้น logic: กติกาแนะนำ + ทดสอบ เพิ่มโมเดล ML: ทำนายโอกาสผ่าน ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง">
       <summary><span class="toc-number">20</span><span class="chapter-nav-title">โปรเจกต์ปลายทาง: Course Planner + AI</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-20.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-20.html#topic-1"><span class="topic-number">20.1</span>เริ่มจากโจทย์และข้อมูล</a></li><li><a href="chapter-20.html#topic-2"><span class="topic-number">20.2</span>แยก UI, logic และ data</a></li><li><a href="chapter-20.html#topic-3"><span class="topic-number">20.3</span>ประเมินและสื่อสารข้อจำกัด</a></li><li><a href="chapter-20.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-20.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-20.html#topic-1"><span class="topic-number">20.1</span>เริ่มจากโจทย์ ไม่ใช่โค้ด</a></li><li><a href="chapter-20.html#topic-2"><span class="topic-number">20.2</span>แยกเป็น 3 ชั้น</a></li><li><a href="chapter-20.html#topic-3"><span class="topic-number">20.3</span>ชั้นข้อมูล: โหลดรายวิชา</a></li><li><a href="chapter-20.html#topic-4"><span class="topic-number">20.4</span>ชั้น logic: กติกาแนะนำ + ทดสอบ</a></li><li><a href="chapter-20.html#topic-5"><span class="topic-number">20.5</span>เพิ่มโมเดล ML: ทำนายโอกาสผ่าน</a></li><li><a href="chapter-20.html#topic-6"><span class="topic-number">20.6</span>ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง</a></li><li><a href="chapter-20.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
       </nav>
       <div class="sidebar-bottom">ตัวอย่างรันด้วย Python จริง<br>เลื่อนเพื่ออ่านหัวข้อถัดไป</div>
     </aside>
     <main class="lesson-main" id="lesson-content">
       <div class="utility-row"><a href="../index.html">← สารบัญรายวิชา</a><span class="utility-code">CHAPTER 02 / 20</span></div>
-      <header class="lesson-header"><p class="lesson-kicker">CHAPTER 02 · พื้นฐาน</p><h1>ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล</h1><p>เก็บข้อมูลแต่ละชนิด รับค่าจากผู้ใช้ แปลงชนิดก่อนคำนวณ และสร้าง output ที่อ่านเข้าใจได้</p></header>
-      <section class="learning-goals"><strong>เมื่อจบบทนี้ นิสิตจะทำได้</strong><ul><li>ประกาศและอัปเดตตัวแปร เลือกชนิดข้อมูลให้ตรงงาน รับ input แปลงค่า และจัดรูปแบบ output ได้</li><li>ตัวแปรคือชื่อที่อ้างถึงข้อมูล</li><li>ตั้งชื่อให้คนอ่านเข้าใจ</li></ul></section>
-      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">แนวคิดและตัวอย่าง</h2>
-        <div class="chapter-intro"><strong>แผนการเรียนบทนี้</strong><p>ตัวแปรเป็นจุดที่เก็บข้อมูลเพื่อให้โปรแกรมนำกลับมาใช้ ส่วนชนิดข้อมูลบอกว่าค่านั้นทำอะไรได้บ้าง บทนี้จึงพาเริ่มจากตั้งชื่อและติดตามค่า ต่อด้วยการแยก int, float, str และ bool แล้วจึงรับข้อความจาก input แปลงเป็นชนิดที่คำนวณได้ และจัดรูปแบบคำตอบด้วย f-string</p><p>วิธีฝึก: อ่านโจทย์ → ระบุข้อมูลเข้าและผลที่ต้องการ → ทำนาย output → รันและตรวจทีละขั้น → อธิบายด้วยคำของตนเองว่าเหตุใดจึงได้ผลเช่นนั้น</p></div>
-        <article class="subtopic" id="topic-1"><h3>02.1 ตัวแปรคือชื่อที่อ้างถึงข้อมูล</h3><p>เขียน `credits = 18` แล้ว Python นำชื่อ credits ไปอ้างถึงจำนวนเต็ม 18 เครื่องหมาย = คือการกำหนดค่า ไม่ใช่สมการที่ต้องมีค่าทั้งสองข้างเท่ากัน</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-2"><h3>02.2 ตั้งชื่อให้คนอ่านเข้าใจ</h3><p>ใช้ตัวพิมพ์เล็กและขีดล่าง เช่น `course_name` ชื่อแยกตัวพิมพ์เล็กใหญ่ ห้ามขึ้นต้นด้วยตัวเลข และไม่ควรใช้คำสงวนอย่าง `if` หรือ `class`</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-3"><h3>02.3 ค่าหนึ่งเปลี่ยนได้ตามลำดับคำสั่ง</h3><p>การกำหนดค่าใหม่แทนค่าที่ชื่อเดิมอ้างถึง การดู print ทีละจุดช่วยไล่สถานะโปรแกรม ซึ่งเป็นวิธีพื้นฐานในการ debug</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-4"><h3>02.4 ชนิดข้อมูลบอกวิธีใช้งานค่า</h3><p>`int` คือจำนวนเต็ม, `float` คือทศนิยม, `str` คือข้อความ และ `bool` คือ True/False ใช้ `type(value)` ตรวจชนิดขณะทดลอง</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-5"><h3>02.5 input คืนค่าเป็นข้อความเสมอ</h3><p>แม้ผู้ใช้พิมพ์ 20 ผลจาก `input()` ก็ยังเป็น `str` ถ้าต้องคำนวณให้แปลงด้วย `int()` หรือ `float()` ก่อน</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-6"><h3>02.6 f-string แทรกค่าลงในข้อความ</h3><p>ขึ้นต้นข้อความด้วย f แล้วใส่นิพจน์ในวงเล็บปีกกา เช่น `f&quot;รวม {total:.2f}&quot;` เพื่อควบคุมทศนิยม</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><div class="source-example">
-    <h4>ตัวอย่าง 02.1 · เก็บข้อมูลนักศึกษา</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> กำหนดค่าให้ตัวแปรแล้วส่งไปแสดงผลตามลำดับ</p>
+      <header class="lesson-header"><p class="lesson-kicker">CHAPTER 02 · พื้นฐาน</p><h1>ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล</h1><p>เก็บข้อมูลในตัวแปร รู้จักชนิดข้อมูล รับค่าด้วย input() และแสดงผลด้วย print() / f-string</p></header>
+      <section class="learning-goals"><strong>จบบทนี้แล้วทำได้</strong><p>เก็บค่าในตัวแปร เลือกชนิดข้อมูลให้ถูก รับตัวเลขจากผู้ใช้แล้วแปลงก่อนคำนวณ และแสดงผลให้อ่านง่าย</p></section>
+      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">เนื้อหา</h2>
+        <article class="subtopic" id="topic-1"><h3>02.1 ตัวแปร: ตั้งชื่อให้ข้อมูล</h3><p>เขียน <code>ชื่อ = ค่า</code> แล้ว Python จะจำค่านั้นไว้ในชื่อนั้น เครื่องหมาย <code>=</code> หมายถึง “เก็บค่าทางขวาไว้ในชื่อทางซ้าย” ไม่ใช่ “เท่ากับ” แบบคณิตศาสตร์ ถ้ากำหนดค่าใหม่ ค่าเดิมจะถูกแทนที่</p><figure class="figure"><img src="../assets/figures/variables.svg" alt="ตัวแปร name, age, height ชี้ไปยังค่า &quot;Nina&quot;, 19 และ 1.72 ซึ่งมีชนิด str, int และ float"><figcaption>ตัวแปร name, age, height ชี้ไปยังค่า &quot;Nina&quot;, 19 และ 1.72 ซึ่งมีชนิด str, int และ float</figcaption></figure><div class="mini-run"><pre class="copyable"><code>name = &quot;Nina&quot;
+age = 19
+age = age + 1      # เอาค่าเดิม (19) มาบวก 1 แล้วเก็บกลับ
+print(name, age)</code></pre><pre class="mini-output" aria-label="Output">Nina 20</pre></div><p class="tip"><strong>จำง่าย ๆ</strong> ตั้งชื่อด้วยตัวพิมพ์เล็กคั่นด้วย _ เช่น <code>total_price</code> · ห้ามขึ้นต้นด้วยตัวเลข · ห้ามมีเว้นวรรค · <code>age</code> กับ <code>Age</code> เป็นคนละชื่อ</p></article><article class="subtopic" id="topic-2"><h3>02.2 ชนิดข้อมูลพื้นฐาน 4 ชนิด</h3><p>ทุกค่ามีชนิด (type) ซึ่งบอกว่าค่านั้นทำอะไรได้ เช่น ตัวเลขนำมาบวกกันได้ ส่วนข้อความนำมาต่อกันได้ ใช้ <code>type(ค่า)</code> เพื่อตรวจว่าค่าเป็นชนิดอะไร</p><div class="table-wrap"><table class="concept-table"><thead><tr><th>ชนิด</th><th>ตัวอย่าง</th><th>ใช้เก็บ</th></tr></thead><tbody><tr><td><code>int</code></td><td><code>19</code>, <code>-5</code>, <code>0</code></td><td>จำนวนเต็ม เช่น อายุ จำนวนชิ้น</td></tr><tr><td><code>float</code></td><td><code>1.72</code>, <code>65.5</code></td><td>จำนวนทศนิยม เช่น ราคา ส่วนสูง</td></tr><tr><td><code>str</code></td><td><code>&quot;Nina&quot;</code>, <code>&quot;19&quot;</code></td><td>ข้อความ ต้องอยู่ในเครื่องหมายคำพูด</td></tr><tr><td><code>bool</code></td><td><code>True</code>, <code>False</code></td><td>ค่าจริง/เท็จ เช่น ลงทะเบียนแล้วหรือยัง</td></tr></tbody></table></div><div class="mini-run"><pre class="copyable"><code>print(type(19))
+print(type(1.72))
+print(type(&quot;19&quot;))
+print(type(True))</code></pre><pre class="mini-output" aria-label="Output">&lt;class &#39;int&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+&lt;class &#39;bool&#39;&gt;</pre></div><p class="tip"><strong>จำง่าย ๆ</strong> <code>19</code> กับ <code>&quot;19&quot;</code> ไม่เหมือนกัน ตัวแรกเป็นตัวเลข ตัวหลังเป็นข้อความ เพราะมีเครื่องหมายคำพูดครอบ</p></article><article class="subtopic" id="topic-3"><h3>02.3 แปลงชนิดข้อมูล</h3><p>ใช้ <code>int()</code>, <code>float()</code> และ <code>str()</code> แปลงค่าจากชนิดหนึ่งไปเป็นอีกชนิด ต้องใช้บ่อยมากเมื่อรับตัวเลขจากผู้ใช้</p><div class="table-wrap"><table class="concept-table"><thead><tr><th>คำสั่ง</th><th>ผลลัพธ์</th><th>หมายเหตุ</th></tr></thead><tbody><tr><td><code>int(&quot;19&quot;)</code></td><td><code>19</code></td><td>ข้อความ → จำนวนเต็ม</td></tr><tr><td><code>float(&quot;65.5&quot;)</code></td><td><code>65.5</code></td><td>ข้อความ → ทศนิยม</td></tr><tr><td><code>str(19)</code></td><td><code>&quot;19&quot;</code></td><td>ตัวเลข → ข้อความ</td></tr><tr><td><code>int(3.9)</code></td><td><code>3</code></td><td>ตัดทศนิยมทิ้ง ไม่ปัดขึ้น</td></tr><tr><td><code>int(&quot;3.5&quot;)</code></td><td>ValueError</td><td>ข้อความที่มีจุดทศนิยมต้องใช้ <code>float()</code></td></tr></tbody></table></div><div class="mini-run"><pre class="copyable"><code>price = float(&quot;65.5&quot;)
+qty = int(&quot;3&quot;)
+print(price * qty)
+print(&quot;อายุ &quot; + str(19) + &quot; ปี&quot;)</code></pre><pre class="mini-output" aria-label="Output">196.5
+อายุ 19 ปี</pre></div></article><article class="subtopic" id="topic-4"><h3>02.4 รับค่าด้วย input()</h3><p><code>input(&quot;คำถาม&quot;)</code> แสดงคำถาม แล้วรอผู้ใช้พิมพ์และกด Enter ค่าที่ได้เป็น <code>str</code> เสมอ แม้ผู้ใช้จะพิมพ์ตัวเลข ดังนั้นถ้าจะนำไปคำนวณต้องแปลงก่อน</p><figure class="figure"><img src="../assets/figures/input-flow.svg" alt="ผู้ใช้พิมพ์ 19 → input() ได้ &quot;19&quot; (str) → int() ได้ 19 (int) → age + 1 ได้ 20"><figcaption>ผู้ใช้พิมพ์ 19 → input() ได้ &quot;19&quot; (str) → int() ได้ 19 (int) → age + 1 ได้ 20</figcaption></figure><div class="mini-run"><pre class="copyable"><code>name = input(&quot;ชื่อของคุณ: &quot;)
+age = int(input(&quot;อายุ: &quot;))
+print(&quot;สวัสดี&quot;, name)
+print(&quot;ปีหน้าคุณจะอายุ&quot;, age + 1, &quot;ปี&quot;)</code></pre><pre class="mini-output" aria-label="Output">ชื่อของคุณ: Nina
+อายุ: 19
+สวัสดี Nina
+ปีหน้าคุณจะอายุ 20 ปี</pre></div><p class="tip"><strong>จำง่าย ๆ</strong> รับตัวเลขให้ใช้รูปแบบ <code>int(input(...))</code> หรือ <code>float(input(...))</code> เสมอ</p></article><article class="subtopic" id="topic-5"><h3>02.5 แสดงผลด้วย print() และ f-string</h3><p><code>print()</code> แสดงหลายค่าได้โดยคั่นด้วย <code>,</code> และจะเว้นวรรคให้อัตโนมัติ ถ้าต้องการผสมข้อความกับค่าให้อ่านง่าย ให้ใช้ f-string โดยขึ้นต้นข้อความด้วย <code>f</code> แล้ววางตัวแปรไว้ใน <code>{ }</code></p><div class="table-wrap"><table class="concept-table"><thead><tr><th>เขียนใน { }</th><th>ตัวอย่าง</th><th>ผลลัพธ์</th></tr></thead><tbody><tr><td><code>{x}</code></td><td><code>f&quot;รวม {total}&quot;</code></td><td><code>รวม 196.5</code></td></tr><tr><td><code>{x:.2f}</code> ทศนิยม 2 ตำแหน่ง</td><td><code>f&quot;{total:.2f}&quot;</code></td><td><code>196.50</code></td></tr><tr><td><code>{x:,}</code> คั่นหลักพัน</td><td><code>f&quot;{1500000:,}&quot;</code></td><td><code>1,500,000</code></td></tr><tr><td><code>{x:&gt;8}</code> ชิดขวา กว้าง 8 ช่อง</td><td><code>f&quot;[{42:&gt;8}]&quot;</code></td><td><code>[      42]</code></td></tr></tbody></table></div><div class="mini-run"><pre class="copyable"><code>item = &quot;กาแฟ&quot;
+price = 65.5
+qty = 3
+total = price * qty
+print(item, qty, &quot;แก้ว&quot;)
+print(f&quot;{item} {qty} แก้ว รวม {total:.2f} บาท&quot;)
+print(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, sep=&quot;-&quot;)</code></pre><pre class="mini-output" aria-label="Output">กาแฟ 3 แก้ว
+กาแฟ 3 แก้ว รวม 196.50 บาท
+A-B-C</pre></div><p class="tip"><strong>จำง่าย ๆ</strong> <code>sep=</code> เปลี่ยนตัวคั่นระหว่างค่า (ปกติคือเว้นวรรค) · <code>end=</code> เปลี่ยนสิ่งที่ปิดท้าย (ปกติคือขึ้นบรรทัดใหม่)</p></article><article class="subtopic" id="topic-6"><h3>02.6 ข้อผิดพลาดที่เจอบ่อย</h3><p>เมื่อโปรแกรม error ให้อ่านบรรทัดสุดท้ายของข้อความก่อน บรรทัดนั้นจะบอกชนิดของ error และสาเหตุ</p><div class="table-wrap"><table class="concept-table"><thead><tr><th>Error</th><th>เกิดจาก</th><th>แก้โดย</th></tr></thead><tbody><tr><td><code>TypeError: can only concatenate str (not &quot;int&quot;) to str</code></td><td><code>&quot;อายุ &quot; + 19</code> เอาข้อความไปต่อกับตัวเลข</td><td>ใช้ f-string หรือ <code>str(19)</code></td></tr><tr><td><code>TypeError</code> เมื่อนำค่าจาก <code>input()</code> ไปคำนวณ</td><td>ลืมแปลง เช่น <code>input() + 1</code></td><td>ครอบด้วย <code>int()</code> หรือ <code>float()</code></td></tr><tr><td><code>ValueError: invalid literal for int()</code></td><td><code>int(&quot;3.5&quot;)</code> หรือผู้ใช้พิมพ์ตัวอักษร</td><td>ใช้ <code>float()</code> หรือตรวจค่าที่พิมพ์</td></tr><tr><td><code>NameError: name &#39;Age&#39; is not defined</code></td><td>สะกดชื่อตัวแปรผิด หรือตัวพิมพ์เล็ก/ใหญ่ไม่ตรง</td><td>ใช้ชื่อให้ตรงกับตอนกำหนดค่า</td></tr></tbody></table></div></article>
+        <h2 class="examples-heading">ตัวอย่างโปรแกรม</h2>
+        <div class="source-example">
+    <h4>ตัวอย่าง 02.1 · บัตรแนะนำตัว</h4>
+    <p class="concept-line">รับข้อมูล 3 ค่า แล้วจัดผลลัพธ์เป็นบัตรด้วย f-string</p>
+    
     <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>student_name = &quot;Mali&quot;
-credits = 18
-is_enrolled = True
+      <div class="source-field"><span>Python source</span><pre class="copyable"><code>name = input(&quot;ชื่อ: &quot;)
+major = input(&quot;สาขา: &quot;)
+year = int(input(&quot;ชั้นปี: &quot;))
 
-print(student_name)
-print(credits)
-print(is_enrolled)</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>Mali
-18
-True</pre></div>
+print(&quot;-&quot; * 26)
+print(f&quot;ชื่อ   : {name}&quot;)
+print(f&quot;สาขา   : {major}&quot;)
+print(f&quot;ชั้นปี : {year} (อีก {4 - year} ปีจบ)&quot;)
+print(&quot;-&quot; * 26)</code></pre></div>
+      <div class="output-field"><span>Output · ค่าที่ผู้ใช้พิมพ์แสดงต่อท้ายคำถาม</span><pre>ชื่อ: Nina
+สาขา: Computer Science
+ชั้นปี: 2
+--------------------------
+ชื่อ   : Nina
+สาขา   : Computer Science
+ชั้นปี : 2 (อีก 2 ปีจบ)
+--------------------------</pre></div>
     </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>บรรทัดกำหนดค่าด้านขวาให้ชื่อทางซ้าย</li><li>แต่ละ print แสดงค่าปัจจุบันของตัวแปรหนึ่งตัว</li></ol></div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li>ชื่อและสาขาเป็นข้อความอยู่แล้ว จึงใช้ค่าจาก <code>input()</code> ได้ทันที</li><li>ชั้นปีต้องนำไปลบ จึงแปลงด้วย <code>int()</code></li><li><code>&quot;-&quot; * 26</code> คือการทำซ้ำข้อความ 26 ครั้ง ใช้วาดเส้นคั่น</li><li>ใน <code>{ }</code> ของ f-string ใส่การคำนวณได้ เช่น <code>{4 - year}</code></li></ol></div>
   </div>
 <div class="source-example">
-    <h4>ตัวอย่าง 02.2 · อัปเดตแล้วคำนวณค่าใหม่</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> ใช้ค่าที่มีอยู่เป็นส่วนหนึ่งของนิพจน์ แล้วบันทึกผลกลับ</p>
+    <h4>ตัวอย่าง 02.2 · คิดเงินร้านกาแฟ</h4>
+    <p class="concept-line">รับราคา (มีทศนิยม) และจำนวน (จำนวนเต็ม) แล้วคำนวณยอดพร้อม VAT</p>
+    
     <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>price = 120
-quantity = 3
-total = price * quantity
-total = total - 50
+      <div class="source-field"><span>Python source</span><pre class="copyable"><code>price = float(input(&quot;ราคาต่อแก้ว: &quot;))
+qty = int(input(&quot;จำนวนแก้ว: &quot;))
 
-print(f&quot;ยอดสุทธิ {total} บาท&quot;)</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>ยอดสุทธิ 310 บาท</pre></div>
-    </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>คูณราคากับจำนวนเพื่อหายอดเริ่มต้น</li><li>หักส่วนลดและกำหนดผลใหม่ให้ total</li><li>f-string นำค่าปัจจุบันของ total ไปใส่ในข้อความ</li></ol></div>
-  </div>
-<div class="source-example">
-    <h4>ตัวอย่าง 02.3 · ตรวจชนิดที่ได้</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> เทียบค่าจำนวนเต็ม ข้อความ และค่าจริง แล้วสังเกตชนิดที่ type รายงาน</p>
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>age = 20
-name = &quot;Beam&quot;
-height = 1.72
+total = price * qty
+vat = total * 0.07
 
-print(type(age).__name__)
-print(type(name).__name__)
-print(type(height).__name__)</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>int
-str
-float</pre></div>
+print(f&quot;ยอดสินค้า {total:,.2f} บาท&quot;)
+print(f&quot;VAT 7%    {vat:,.2f} บาท&quot;)
+print(f&quot;ชำระ      {total + vat:,.2f} บาท&quot;)</code></pre></div>
+      <div class="output-field"><span>Output · ค่าที่ผู้ใช้พิมพ์แสดงต่อท้ายคำถาม</span><pre>ราคาต่อแก้ว: 65.5
+จำนวนแก้ว: 3
+ยอดสินค้า 196.50 บาท
+VAT 7%    13.76 บาท
+ชำระ      210.25 บาท</pre></div>
     </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>ค่าที่ไม่มีจุดทศนิยมเป็น int</li><li>ข้อความอยู่ใน str แม้จะมีตัวเลขปนอยู่</li></ol></div>
-  </div>
-<div class="source-example">
-    <h4>ตัวอย่าง 02.4 · แปลงและจัดรูปแบบ</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> จำลองข้อความที่ได้จาก input แล้วแปลงเป็นตัวเลขก่อนคูณ</p>
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>price_text = &quot;42.50&quot;
-count_text = &quot;4&quot;
-total = float(price_text) * int(count_text)
-
-print(f&quot;ยอดรวม {total:.2f} บาท&quot;)</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>ยอดรวม 170.00 บาท</pre></div>
-    </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>float แปลงราคาให้คูณทศนิยมได้</li><li>int แปลงจำนวนชิ้น</li><li>รูปแบบ .2f แสดงทศนิยมสองตำแหน่ง</li></ol></div>
-  </div>
-<div class="source-example">
-    <h4>ตัวอย่าง 02.5 · รับค่าจากผู้ใช้แล้วคำนวณ</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> input() คืนข้อความแม้ผู้ใช้พิมพ์ตัวเลข จึงแปลงเป็น int ก่อนนำไปคำนวณ</p>
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>name = &quot;Nina&quot;
-credits_text = &quot;18&quot;
-credits = int(credits_text)
-next_year_credits = credits + 6
-print(f&quot;{name} will have {next_year_credits} credits&quot;)</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>Nina will have 24 credits</pre></div>
-    </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>เก็บข้อมูลที่รับมาในรูปข้อความ</li><li>int แปลงข้อความตัวเลขเป็นจำนวนเต็ม</li><li>คำนวณค่าถัดไปแล้วใช้ f-string แสดงผล</li></ol></div>
-  </div>
-<div class="source-example">
-    <h4>ตัวอย่าง 02.6 · ปัดเศษและจัดรูปแบบค่า</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> ค่าที่คำนวณได้อาจมีทศนิยมยาว ใช้ format specifier กำหนดจำนวนตำแหน่งที่ต้องการแสดง</p>
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>price = 89.9
-quantity = 3
-total = price * quantity
-print(f&quot;Unit price: {price:.2f}&quot;)
-print(f&quot;Total: {total:.2f}&quot;)</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>Unit price: 89.90
-Total: 269.70</pre></div>
-    </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>price เก็บจำนวนทศนิยม</li><li>คูณจำนวนสินค้าเพื่อหายอด</li><li>.2f แสดงผลสองตำแหน่งโดยไม่เปลี่ยนชนิดข้อมูลเดิม</li></ol></div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li>ราคามีทศนิยมจึงใช้ <code>float()</code> ส่วนจำนวนแก้วใช้ <code>int()</code></li><li>เก็บผลระหว่างทางไว้ใน <code>total</code> และ <code>vat</code> ทำให้อ่านและตรวจสูตรง่าย</li><li><code>:,.2f</code> แสดงคั่นหลักพันและทศนิยม 2 ตำแหน่ง</li></ol></div>
   </div>
       </section>
       <section class="exercise-section" id="chapter-exercises" aria-labelledby="exercise-heading">
         <h2 id="exercise-heading">แบบฝึกหัดท้ายบท</h2>
-        <p class="exercise-intro">ทำจากข้อพื้นฐานไปข้อท้าทาย ก่อนเขียนให้จดข้อมูลที่โจทย์ให้ สิ่งที่ต้องหา และลำดับการทำงานสั้น ๆ จากนั้นทำนาย output แล้วรันตรวจ รายการตรวจช่วยไล่เงื่อนไขทีละข้อ หากยังติดให้ย้อนอ่านหัวข้อที่เกี่ยวข้องก่อนเปิดเฉลย ซึ่งมีแนวคิดและ source code ที่รันตรวจแล้ว</p>
+        <p class="exercise-intro">เรียงจากง่ายไปยาก ลองเขียนเองให้ได้ output ตรงตัวอย่างก่อน แล้วค่อยเปิดเฉลย</p>
         <div class="exercise-list"><article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.1</span><strong>บัตรแนะนำตัว</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>สร้างข้อมูลผู้เรียนแล้วแสดงชื่อ สาขา และชั้นปีเป็นคนละบรรทัด</p>
-    <ul><li>ประกาศตัวแปรข้อความ 2 ตัวและตัวเลข 1 ตัว</li><li>แสดงค่าทั้งสามตามลำดับ</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>Nina
-Computer Science
-2</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.1</span><strong>แนะนำตัวเอง</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
+    <p>เก็บชื่อ อายุ และส่วนสูงไว้ในตัวแปร แล้วแสดงเป็นประโยคเดียว</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ชื่อ Beam, อายุ 20, ส่วนสูง 1.75 (กำหนดค่าในโค้ดได้เลย ไม่ต้องรับค่า)</dd></div><div><dt>ต้องหา</dt><dd>ข้อความ <code>Beam อายุ 20 ปี สูง 1.75 เมตร</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>สร้างตัวแปร 3 ตัว: ข้อความ (<code>str</code>), จำนวนเต็ม (<code>int</code>), ทศนิยม (<code>float</code>)</li><li>ใช้ f-string รวมทั้ง 3 ค่าเป็นประโยค</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>Beam อายุ 20 ปี สูง 1.75 เมตร</pre></div>
     <div class="answer-gate" data-answer-id="02.1">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -211,21 +197,22 @@ Computer Science
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>แยกข้อมูลเป็นตัวแปรทำให้แก้ค่าหรือใช้ซ้ำได้ง่าย</p><pre class="copyable"><code>name = &quot;Nina&quot;
-major = &quot;Computer Science&quot;
-year = 2
-
-print(name)
-print(major)
-print(year)</code></pre>
+        <p>แต่ละค่าเก็บในชนิดที่ตรงกับความหมาย แล้ว f-string นำค่าทั้งหมดมาวางในประโยคเดียว โดยไม่ต้องแปลงเป็นข้อความเอง</p><pre class="copyable"><code>name = &quot;Beam&quot;
+age = 20
+height = 1.75
+print(f&quot;{name} อายุ {age} ปี สูง {height} เมตร&quot;)</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.2</span><strong>คำนวณค่าใช้จ่าย</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>เก็บราคาหนังสือและจำนวนเล่ม จากนั้นหายอดรวมก่อนส่วนลด</p>
-    <ul><li>ประกาศ price และ quantity</li><li>คำนวณ total ด้วยการคูณ</li><li>แสดงยอดรวมพร้อมหน่วยบาท</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>รวม 490 บาท</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.2</span><strong>ทายชนิดข้อมูล</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
+    <p>ก่อนรันโปรแกรม ให้ทายว่าค่า <code>42</code>, <code>&quot;42&quot;</code>, <code>4.2</code> และ <code>False</code> เป็นชนิดอะไร แล้วรันเพื่อตรวจคำตอบ</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ค่า 4 ค่าในโจทย์</dd></div><div><dt>ต้องหา</dt><dd>ชนิดของแต่ละค่า แสดงบรรทัดละค่า</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>เขียนคำตอบที่ทายไว้ก่อน</li><li>ใช้ <code>print(type(ค่า))</code> ทีละค่า</li><li>เทียบกับคำตอบที่ทาย ตัวไหนผิดให้ดูว่าเพราะอะไร</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>&lt;class &#39;int&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+&lt;class &#39;bool&#39;&gt;</pre></div>
     <div class="answer-gate" data-answer-id="02.2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -234,19 +221,20 @@ print(year)</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>เก็บผลกลางไว้ใน total ทำให้ตามลำดับการคำนวณได้ชัด</p><pre class="copyable"><code>price = 245
-quantity = 2
-total = price * quantity
-
-print(f&quot;รวม {total} บาท&quot;)</code></pre>
+        <p><code>&quot;42&quot;</code> เป็น <code>str</code> เพราะมีเครื่องหมายคำพูดครอบ ส่วน <code>False</code> (F ตัวใหญ่ ไม่มีเครื่องหมายคำพูด) เป็น <code>bool</code></p><pre class="copyable"><code>print(type(42))
+print(type(&quot;42&quot;))
+print(type(4.2))
+print(type(False))</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.3</span><strong>อัปเดตคะแนน</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>เริ่มด้วยคะแนน 70 เพิ่มคะแนนกิจกรรม 8 แล้วเพิ่มคะแนนแบบทดสอบ 12</p>
-    <ul><li>กำหนดคะแนนเริ่มต้น</li><li>บวกคะแนนเพิ่มทีละรายการด้วยตัวแปรเดิม</li><li>แสดงคะแนนสุดท้าย</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>คะแนนสุดท้าย 90</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.3</span><strong>ทักทายผู้ใช้</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
+    <p>ถามชื่อผู้ใช้ แล้วกล่าวทักทายด้วยชื่อนั้น</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ชื่อที่ผู้ใช้พิมพ์ (ตัวอย่างพิมพ์ว่า Mali)</dd></div><div><dt>ต้องหา</dt><dd><code>สวัสดี Mali ยินดีต้อนรับ!</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>ใช้ <code>input(&quot;ชื่อของคุณ: &quot;)</code> รับชื่อ</li><li>ไม่ต้องแปลงชนิด เพราะชื่อเป็นข้อความอยู่แล้ว</li><li>แสดงผลด้วย f-string</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>ชื่อของคุณ: Mali
+สวัสดี Mali ยินดีต้อนรับ!</pre></div>
     <div class="answer-gate" data-answer-id="02.3">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -255,20 +243,18 @@ print(f&quot;รวม {total} บาท&quot;)</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>รูปแบบ += ย่อการนำค่าปัจจุบันมาบวกแล้วกำหนดกลับ</p><pre class="copyable"><code>score = 70
-score += 8
-score += 12
-
-print(f&quot;คะแนนสุดท้าย {score}&quot;)</code></pre>
+        <p><code>input()</code> คืนค่าเป็น <code>str</code> ซึ่งตรงกับข้อมูลที่ต้องการอยู่แล้ว จึงนำไปใส่ใน f-string ได้ทันที</p><pre class="copyable"><code>name = input(&quot;ชื่อของคุณ: &quot;)
+print(f&quot;สวัสดี {name} ยินดีต้อนรับ!&quot;)</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.4</span><strong>สรุปค่าใช้จ่ายหลังหาร</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
-    <p>มีงบ 1800 บาท จ่ายค่าเดินทาง 360 และค่าอาหาร 540 แล้วแบ่งเงินที่เหลือให้เพื่อน 3 คนเท่า ๆ กัน</p>
-    <ul><li>คำนวณเงินคงเหลือโดยใช้ตัวแปร</li><li>หารเงินคงเหลือด้วย 3</li><li>แสดงทั้งเงินคงเหลือและเงินต่อคน</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>เหลือ 900 บาท
-คนละ 300 บาท</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.4</span><strong>แปลงองศาเซลเซียสเป็นฟาเรนไฮต์</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
+    <p>รับอุณหภูมิเป็นองศาเซลเซียส แล้วแปลงเป็นฟาเรนไฮต์ด้วยสูตร F = C × 9 / 5 + 32</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>อุณหภูมิ °C ที่ผู้ใช้พิมพ์ (อาจมีทศนิยม เช่น 36.5)</dd></div><div><dt>ต้องหา</dt><dd>อุณหภูมิ °F ทศนิยม 1 ตำแหน่ง</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>รับค่าด้วย <code>float(input(...))</code> เพราะอาจมีทศนิยม</li><li>แทนค่าในสูตร</li><li>แสดงผลด้วย <code>:.1f</code></li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>องศาเซลเซียส: 30
+30.0 °C = 86.0 °F</pre></div>
     <div class="answer-gate" data-answer-id="02.4">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -277,22 +263,20 @@ print(f&quot;คะแนนสุดท้าย {score}&quot;)</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>เก็บผลลัพธ์ระหว่างทางทำให้ตรวจสูตรและปรับตัวเลขได้สะดวก</p><pre class="copyable"><code>budget = 1800
-travel = 360
-food = 540
-remaining = budget - travel - food
-per_person = remaining / 3
-
-print(f&quot;เหลือ {remaining:.0f} บาท&quot;)
-print(f&quot;คนละ {per_person:.0f} บาท&quot;)</code></pre>
+        <p>ถ้าใช้ <code>int()</code> แล้วผู้ใช้พิมพ์ 36.5 โปรแกรมจะเกิด ValueError จึงควรใช้ <code>float()</code> กับค่าที่อาจมีทศนิยม</p><pre class="copyable"><code>celsius = float(input(&quot;องศาเซลเซียส: &quot;))
+fahrenheit = celsius * 9 / 5 + 32
+print(f&quot;{celsius} °C = {fahrenheit:.1f} °F&quot;)</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.5</span><strong>แปลงอุณหภูมิ</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>กำหนดข้อความอุณหภูมิ 30 องศาเซลเซียส แปลงเป็นตัวเลข แล้วคำนวณฟาเรนไฮต์ด้วยสูตร F = C × 9/5 + 32</p>
-    <ul><li>แปลงข้อความด้วย float</li><li>ใช้สูตรตามโจทย์</li><li>แสดงผลหนึ่งตำแหน่ง</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>86.0 F</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.5</span><strong>หารค่าอาหาร</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
+    <p>รับยอดบิลและจำนวนคน แล้วคำนวณว่าแต่ละคนต้องจ่ายกี่บาท</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ยอดบิล (เช่น 1250) และจำนวนคน (เช่น 4)</dd></div><div><dt>ต้องหา</dt><dd>เงินที่แต่ละคนต้องจ่าย แสดงทศนิยม 2 ตำแหน่ง</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>ยอดบิลใช้ <code>float()</code> ส่วนจำนวนคนใช้ <code>int()</code></li><li>นำยอดบิลหารด้วยจำนวนคน</li><li>แสดงผลด้วย <code>:,.2f</code></li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>ยอดบิล: 1250
+จำนวนคน: 4
+จ่ายคนละ 312.50 บาท</pre></div>
     <div class="answer-gate" data-answer-id="02.5">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -301,19 +285,21 @@ print(f&quot;คนละ {per_person:.0f} บาท&quot;)</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ต้องแปลงค่าก่อน เพราะการคูณข้อความกับตัวเลขไม่ใช่การคำนวณแบบอุณหภูมิ</p><pre class="copyable"><code>celsius_text = &quot;30&quot;
-celsius = float(celsius_text)
-fahrenheit = celsius * 9 / 5 + 32
-
-print(f&quot;{fahrenheit:.1f} F&quot;)</code></pre>
+        <p>จำนวนคนเป็นจำนวนเต็มเสมอจึงใช้ <code>int</code> ผลจากเครื่องหมาย <code>/</code> เป็น <code>float</code> เสมอ จึงจัดทศนิยมด้วย <code>.2f</code> ได้เลย</p><pre class="copyable"><code>bill = float(input(&quot;ยอดบิล: &quot;))
+people = int(input(&quot;จำนวนคน: &quot;))
+each = bill / people
+print(f&quot;จ่ายคนละ {each:,.2f} บาท&quot;)</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.6</span><strong>ใบเสร็จอย่างย่อ</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>รับบทเป็นโปรแกรมคำนวณใบเสร็จโดยกำหนดราคาต่อแก้ว 65.5 บาทและจำนวน 3 แก้วไว้ในตัวแปร แล้วแสดงยอดสองตำแหน่ง</p>
-    <ul><li>ใช้ float เก็บราคาและ int เก็บจำนวน</li><li>คูณเพื่อหายอด</li><li>จัดรูปแบบเป็นทศนิยมสองตำแหน่ง</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>ยอดชำระ 196.50 บาท</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.6</span><strong>คำนวณ BMI</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
+    <p>รับน้ำหนัก (กิโลกรัม) และส่วนสูง (เมตร) แล้วคำนวณ BMI = น้ำหนัก ÷ (ส่วนสูง × ส่วนสูง)</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>น้ำหนัก 60 และส่วนสูง 1.70</dd></div><div><dt>ต้องหา</dt><dd>ค่า BMI ทศนิยม 2 ตำแหน่ง</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>รับทั้งสองค่าด้วย <code>float()</code></li><li>ใส่วงเล็บครอบ <code>height * height</code> เพื่อให้คูณก่อนหาร</li><li>แสดงผลด้วย <code>:.2f</code></li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>น้ำหนัก (kg): 60
+ส่วนสูง (m): 1.70
+BMI = 20.76</pre></div>
     <div class="answer-gate" data-answer-id="02.6">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -322,19 +308,25 @@ print(f&quot;{fahrenheit:.1f} F&quot;)</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ตัวเลขราคาเป็น float จึงเก็บเศษสตางค์ได้</p><pre class="copyable"><code>price = 65.5
-quantity = 3
-total = price * quantity
-
-print(f&quot;ยอดชำระ {total:.2f} บาท&quot;)</code></pre>
+        <p>ถ้าไม่ใส่วงเล็บ Python จะคำนวณจากซ้ายไปขวา คือ <code>weight / height * height</code> ซึ่งได้ค่าเท่ากับ weight จึงผิด</p><pre class="copyable"><code>weight = float(input(&quot;น้ำหนัก (kg): &quot;))
+height = float(input(&quot;ส่วนสูง (m): &quot;))
+bmi = weight / (height * height)
+print(f&quot;BMI = {bmi:.2f}&quot;)</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.7</span><strong>คำนวณอายุเป็นเดือน</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>แปลงอายุที่เก็บเป็นข้อความ &quot;19&quot; ให้เป็นจำนวนเต็ม แล้วคำนวณจำนวนเดือนโดยประมาณ</p>
-    <ul><li>ใช้ int แปลงข้อความ</li><li>คูณจำนวนปีด้วย 12</li><li>แสดงผลพร้อมหน่วย</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>228 เดือน</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.7</span><strong>ใบเสร็จ 2 รายการ</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
+    <p>รับราคาและจำนวนของสมุดกับปากกา แล้วพิมพ์ใบเสร็จที่ตัวเลขชิดขวาตรงกันทุกบรรทัด</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ราคาสมุด 42.5 จำนวน 2 · ราคาปากกา 12 จำนวน 3</dd></div><div><dt>ต้องหา</dt><dd>ราคาย่อยของแต่ละรายการและยอดรวม โดยตัวเลขชิดขวาในคอลัมน์เดียวกัน</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>รับราคาด้วย <code>float()</code> และจำนวนด้วย <code>int()</code> (รวม 4 ค่า)</li><li>คำนวณราคาย่อยของแต่ละรายการ แล้วรวมเป็นยอดทั้งหมด</li><li>ใช้ <code>{ชื่อ:&lt;10}</code> ให้ชื่อชิดซ้าย และ <code>{ราคา:&gt;8.2f}</code> ให้ตัวเลขชิดขวา</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>ราคาสมุด: 42.5
+จำนวนสมุด: 2
+ราคาปากกา: 12
+จำนวนปากกา: 3
+Notebook     85.00
+Pen          36.00
+TOTAL       121.00</pre></div>
     <div class="answer-gate" data-answer-id="02.7">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -343,19 +335,28 @@ print(f&quot;ยอดชำระ {total:.2f} บาท&quot;)</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>int เหมาะกับจำนวนปีเต็ม และนำไปคูณได้โดยตรง</p><pre class="copyable"><code>age_text = &quot;19&quot;
-age_years = int(age_text)
-age_months = age_years * 12
+        <p><code>&lt;10</code> จองพื้นที่ 10 ช่องแล้วชิดซ้าย ส่วน <code>&gt;8.2f</code> จอง 8 ช่อง ชิดขวา และแสดงทศนิยม 2 ตำแหน่ง ทุกบรรทัดจองความกว้างเท่ากัน ตัวเลขจึงตรงกันเป็นคอลัมน์</p><pre class="copyable"><code>notebook_price = float(input(&quot;ราคาสมุด: &quot;))
+notebook_qty = int(input(&quot;จำนวนสมุด: &quot;))
+pen_price = float(input(&quot;ราคาปากกา: &quot;))
+pen_qty = int(input(&quot;จำนวนปากกา: &quot;))
 
-print(f&quot;{age_months} เดือน&quot;)</code></pre>
+notebook_total = notebook_price * notebook_qty
+pen_total = pen_price * pen_qty
+total = notebook_total + pen_total
+
+print(f&quot;{&#39;Notebook&#39;:&lt;10}{notebook_total:&gt;8.2f}&quot;)
+print(f&quot;{&#39;Pen&#39;:&lt;10}{pen_total:&gt;8.2f}&quot;)
+print(f&quot;{&#39;TOTAL&#39;:&lt;10}{total:&gt;8.2f}&quot;)</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.8</span><strong>สรุปคะแนนเฉลี่ย</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
-    <p>มีคะแนนเก็บในรูปข้อความ 17, 18 และ 15 คะแนน แปลงทุกค่าเป็นตัวเลข หาค่าเฉลี่ย และแสดงสองตำแหน่ง</p>
-    <ul><li>แปลงแต่ละค่าด้วย float หรือ int</li><li>หาผลรวมแล้วหารจำนวนคะแนน</li><li>จัดรูปแบบผลเฉลี่ย</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>คะแนนเฉลี่ย 16.67</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.8</span><strong>แก้บั๊กโปรแกรมทายอายุ</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
+    <p>โปรแกรม <code>age = input(&quot;อายุ: &quot;)</code> ตามด้วย <code>print(&quot;อีก 5 ปีคุณจะอายุ &quot; + age + 5)</code> รันแล้วเกิด error ให้หาสาเหตุแล้วแก้ให้ทำงานได้</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>โค้ด 2 บรรทัดที่มี error และผู้ใช้พิมพ์อายุ 19</dd></div><div><dt>ต้องหา</dt><dd><code>อีก 5 ปีคุณจะอายุ 24 ปี</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>รันแล้วอ่านบรรทัดสุดท้ายของ error: <code>TypeError</code></li><li>สาเหตุที่ 1: <code>age</code> เป็น <code>str</code> จึงต้องแปลงด้วย <code>int()</code> ก่อนบวก 5</li><li>สาเหตุที่ 2: นำข้อความไปต่อกับตัวเลขด้วย <code>+</code> ไม่ได้ ให้เปลี่ยนไปใช้ f-string</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>อายุ: 19
+อีก 5 ปีคุณจะอายุ 24 ปี</pre></div>
     <div class="answer-gate" data-answer-id="02.8">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -364,110 +365,14 @@ print(f&quot;{age_months} เดือน&quot;)</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ข้อมูลจากไฟล์หรือ input มักเป็นข้อความ จึงควรแปลงชนิดก่อนคำนวณ</p><pre class="copyable"><code>scores_text = [&quot;17&quot;, &quot;18&quot;, &quot;15&quot;]
-scores = [int(value) for value in scores_text]
-average = sum(scores) / len(scores)
-
-print(f&quot;คะแนนเฉลี่ย {average:.2f}&quot;)</code></pre>
-      </div>
-    </div>
-  </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.9</span><strong>คำนวณส่วนลดด้วยตัวแปร</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>ร้านขายสมุดราคาเล่มละ 48.50 บาท มี 4 เล่มและลดท้ายบิล 25 บาท คำนวณยอดสุทธิและแสดงเป็นเงินสองตำแหน่ง</p>
-    <ul><li>ตั้งชื่อ price, quantity และ discount ให้สื่อความหมาย</li><li>คูณราคาและจำนวนก่อนหักส่วนลด</li><li>ใช้ :.2f ในข้อความผลลัพธ์</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>Total: 169.00 baht</pre></div>
-    <div class="answer-gate" data-answer-id="02.9">
-      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
-      <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 02.9<input type="password" autocomplete="off" required></label>
-        <button class="password-submit" type="submit">เปิดเฉลย</button>
-        <p class="password-message" aria-live="polite"></p>
-      </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>แยกยอดก่อนลดกับยอดสุทธิทำให้ตรวจสูตรและเปลี่ยนส่วนลดได้ง่าย</p><pre class="copyable"><code>price = 48.50
-quantity = 4
-discount = 25
-subtotal = price * quantity
-total = subtotal - discount
-print(f&quot;Total: {total:.2f} baht&quot;)</code></pre>
-      </div>
-    </div>
-  </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.10</span><strong>แปลง input ให้ถูกชนิด</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>จำลองค่าที่ผู้ใช้ป้อนเป็นข้อความ &quot;125.50&quot; และจำนวนสินค้า &quot;3&quot; แปลงเป็น float และ int ก่อนคูณ แสดงยอดรวม 2 ตำแหน่ง</p>
-    <ul><li>สังเกตว่าข้อมูลเริ่มต้นเป็น str</li><li>แปลงแต่ละค่าเป็นชนิดที่ตรงกับการคำนวณ</li><li>แสดงยอดโดยไม่ต่อข้อความตัวเลขตรง ๆ</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>376.50</pre></div>
-    <div class="answer-gate" data-answer-id="02.10">
-      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
-      <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 02.10<input type="password" autocomplete="off" required></label>
-        <button class="password-submit" type="submit">เปิดเฉลย</button>
-        <p class="password-message" aria-live="polite"></p>
-      </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การแปลงชนิดอย่างชัดเจนป้องกันการนำข้อความไปคำนวณผิดแบบ</p><pre class="copyable"><code>price_text = &quot;125.50&quot;
-quantity_text = &quot;3&quot;
-price = float(price_text)
-quantity = int(quantity_text)
-print(f&quot;{price * quantity:.2f}&quot;)</code></pre>
-      </div>
-    </div>
-  </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.11</span><strong>คำนวณคะแนนเฉลี่ยแบบมีน้ำหนัก</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
-    <p>คะแนนสอบกลางภาค 78 คิดเป็น 40% และปลายภาค 86 คิดเป็น 60% หาคะแนนรวมแบบถ่วงน้ำหนัก แสดงทศนิยมหนึ่งตำแหน่ง</p>
-    <ul><li>ตั้งตัวแปรคะแนนและสัดส่วน</li><li>คูณคะแนนแต่ละส่วนด้วยน้ำหนักก่อนบวก</li><li>ตรวจว่าน้ำหนักรวมกันเป็น 1.0</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>Weighted score: 82.8</pre></div>
-    <div class="answer-gate" data-answer-id="02.11">
-      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
-      <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 02.11<input type="password" autocomplete="off" required></label>
-        <button class="password-submit" type="submit">เปิดเฉลย</button>
-        <p class="password-message" aria-live="polite"></p>
-      </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>คะแนนถ่วงน้ำหนักไม่ใช่ค่าเฉลี่ยธรรมดา ต้องคูณสัดส่วนของแต่ละส่วนก่อนรวม</p><pre class="copyable"><code>midterm = 78
-final = 86
-midterm_weight = 0.4
-final_weight = 0.6
-weighted_score = midterm * midterm_weight + final * final_weight
-print(f&quot;Weighted score: {weighted_score:.1f}&quot;)</code></pre>
-      </div>
-    </div>
-  </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 02.12</span><strong>สรุปใบเสร็จจากข้อมูลหลายชนิด</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
-    <p>สร้างใบเสร็จสินค้า 2 รายการที่มีชื่อ ราคา และจำนวนต่างกัน ใช้ตัวแปรที่สื่อความหมายคำนวณยอดแต่ละรายการและยอดรวม</p>
-    <ul><li>ใช้ str เก็บชื่อ, float เก็บราคา และ int เก็บจำนวน</li><li>คำนวณ subtotal ของแต่ละสินค้า</li><li>รวมยอดและจัดรูปแบบทศนิยมสองตำแหน่ง</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>Notebook: 85.00
-Pen: 36.00
-Total: 121.00</pre></div>
-    <div class="answer-gate" data-answer-id="02.12">
-      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
-      <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 02.12<input type="password" autocomplete="off" required></label>
-        <button class="password-submit" type="submit">เปิดเฉลย</button>
-        <p class="password-message" aria-live="polite"></p>
-      </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>โจทย์หนึ่งเรื่องอาจต้องใช้หลายชนิดข้อมูลร่วมกัน แยกข้อมูลแต่ละบทบาทก่อนเขียนสูตร</p><pre class="copyable"><code>item1 = &quot;Notebook&quot;
-price1 = 42.5
-quantity1 = 2
-item2 = &quot;Pen&quot;
-price2 = 12.0
-quantity2 = 3
-total = price1 * quantity1 + price2 * quantity2
-print(f&quot;{item1}: {price1 * quantity1:.2f}&quot;)
-print(f&quot;{item2}: {price2 * quantity2:.2f}&quot;)
-print(f&quot;Total: {total:.2f}&quot;)</code></pre>
+        <p>บั๊กนี้มี 2 ชั้น: ค่าจาก <code>input()</code> เป็นข้อความ และ <code>+</code> ต่อข้อความกับตัวเลขไม่ได้ ถ้าแปลงเป็น <code>int</code> ก่อนแล้วใช้ f-string ก็แก้ได้ทั้งสองปัญหา</p><pre class="copyable"><code>age = int(input(&quot;อายุ: &quot;))
+print(f&quot;อีก 5 ปีคุณจะอายุ {age + 5} ปี&quot;)</code></pre>
       </div>
     </div>
   </article></div>
       </section>
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-01.html">← บทก่อนหน้า</a><a class="pager-link" href="chapter-03.html">บทถัดไป →</a></nav>
-      <footer class="lesson-footer">Python programming · Lecture notes · ตัวอย่างรันตรวจด้วย Python จริง</footer>
+      <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
   <script src="../password.js"></script><script src="../assets/lesson.js"></script>

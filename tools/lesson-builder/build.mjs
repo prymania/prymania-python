@@ -1,16 +1,18 @@
 import { spawnSync } from "node:child_process";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { core } from "./course-core.mjs";
-import { applied } from "./course-applied.mjs";
-import { extendCourse } from "./course-extensions.mjs";
+import { basics } from "./course-basics.mjs";
+import { practice } from "./course-practice.mjs";
+import { dataAi } from "./course-data-ai.mjs";
+import { guiProject } from "./course-gui.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "../..");
 const OUT = path.join(ROOT, "chapters");
 const PYTHON = process.env.PYTHON || path.join(ROOT, ".venv", "Scripts", "python.exe");
-const chapters = extendCourse([...core, ...applied]);
+const chapters = [...basics, ...practice, ...dataAi, ...guiProject];
 const groups = {
   foundation: "พื้นฐาน",
   practice: "ใช้งานจริง",
@@ -24,9 +26,104 @@ function esc(value) {
     .replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#39;");
 }
 
-function runPython(code, label) {
-  const result = spawnSync(PYTHON, ["-c", code], {
-    cwd: ROOT,
+// `code` ในข้อความ → <code>
+function fmt(value) {
+  return esc(value).replace(/`([^`]+)`/g, "<code>$1</code>");
+}
+
+// เมื่อมี stdin ให้ input() พิมพ์ค่าที่ป้อนลง output ด้วย เหมือนที่เห็นในหน้าจอจริง
+const ECHO_INPUT = `import builtins as _b
+_raw_input = _b.input
+def _echo_input(prompt=""):
+    value = _raw_input(prompt)
+    print(value)
+    return value
+_b.input = _echo_input
+`;
+
+// plot: บันทึกกราฟ Matplotlib ที่วาดไว้ (โค้ดของผู้เรียนจบด้วย plt.show() ได้ตามปกติ)
+function plotHooks(file) {
+  return {
+    before: `import warnings as _w
+_w.filterwarnings("ignore", message=".*non-interactive.*")
+`,
+    after: `
+import matplotlib.pyplot as _plt
+_plt.gcf().savefig(${JSON.stringify(abs(file))}, dpi=110, bbox_inches="tight")
+`,
+  };
+}
+
+// window: แทน app.exec() ด้วยการจับภาพหน้าต่าง (รันแบบ offscreen ไม่ต้องรอผู้ใช้ปิดหน้าต่าง)
+// demo คือโค้ดจำลองการใช้งาน เช่น พิมพ์ชื่อแล้วกดปุ่ม ก่อนจับภาพ
+function windowHooks(file, demo = "") {
+  return {
+    before: `import sys as _sys
+import PySide6.QtWidgets as _qtw
+from PySide6.QtGui import QFont as _QFont
+class _CaptureApp(_qtw.QApplication):
+    def __init__(self, *args):
+        super().__init__(*args)
+        self.setFont(_QFont("Leelawadee UI", 10))
+    def exec(self):
+        exec(${JSON.stringify(demo)}, vars(_sys.modules["__main__"]))
+        self.processEvents()
+        _shown = [w for w in self.topLevelWidgets() if w.isVisible()]
+        _shown[0].grab().save(${JSON.stringify(abs(file))})
+        return 0
+_qtw.QApplication = _CaptureApp
+`,
+    after: "",
+  };
+}
+
+// http: แทน requests.get ด้วยคำตอบจำลอง เพื่อให้ build ซ้ำได้โดยไม่ต้องต่ออินเทอร์เน็ต
+// รับคำตอบเดียว หรือ list ของคำตอบตามลำดับการเรียก: { status, json } หรือ { timeout: true }
+function httpHooks(responses) {
+  return {
+    before: `import json as _json, requests as _requests
+_responses = _json.loads(${JSON.stringify(JSON.stringify([responses].flat()))})
+class _FakeResponse:
+    def __init__(self, url, params, spec):
+        self.status_code = spec.get("status", 200)
+        self._data = spec.get("json")
+        self.text = _json.dumps(self._data, ensure_ascii=False)
+        self.url = _requests.Request("GET", url, params=params).prepare().url
+        self.ok = self.status_code < 400
+    def json(self):
+        return self._data
+    def raise_for_status(self):
+        if not self.ok:
+            raise _requests.HTTPError(f"{self.status_code} Client Error for url: {self.url}", response=self)
+def _fake_get(url, params=None, **_kwargs):
+    spec = _responses.pop(0) if len(_responses) > 1 else _responses[0]
+    if spec.get("timeout"):
+        raise _requests.Timeout("Read timed out")
+    return _FakeResponse(url, params, spec)
+_requests.get = _fake_get
+`,
+    after: "",
+  };
+}
+
+function abs(file) {
+  return path.join(ROOT, file).replaceAll("\\", "/");
+}
+
+// รันแต่ละโค้ดในโฟลเดอร์ชั่วคราว พร้อมไฟล์ข้อมูลที่กำหนดใน item.files
+function runPython(code, label, item = {}) {
+  const hooks = [
+    item.stdin === undefined ? null : { before: ECHO_INPUT, after: "" },
+    item.plot ? plotHooks(item.plot) : null,
+    item.window ? windowHooks(item.window.file, item.window.demo) : null,
+    item.http ? httpHooks(item.http) : null,
+  ].filter(Boolean);
+  const source = hooks.map((hook) => hook.before).join("") + code + hooks.map((hook) => hook.after).join("");
+  const workdir = fs.mkdtempSync(path.join(os.tmpdir(), "pylesson-"));
+  for (const [name, content] of Object.entries(item.files ?? {})) fs.writeFileSync(path.join(workdir, name), content, "utf8");
+  const result = spawnSync(PYTHON, ["-c", source], {
+    cwd: workdir,
+    input: item.stdin ?? "",
     encoding: "utf8",
     timeout: 45000,
     env: {
@@ -34,8 +131,10 @@ function runPython(code, label) {
       PYTHONIOENCODING: "utf-8",
       MPLBACKEND: "Agg",
       QT_QPA_PLATFORM: "offscreen",
+      QT_QPA_FONTDIR: path.join(process.env.WINDIR ?? "C:\\Windows", "Fonts"),
     },
   });
+  fs.rmSync(workdir, { recursive: true, force: true });
   if (result.error) throw new Error(`${label}: ${result.error.message}`);
   if (result.status !== 0) {
     throw new Error(`${label} failed (exit ${result.status})\n${result.stderr}\n${result.stdout}\n--- source ---\n${code}`);
@@ -45,18 +144,35 @@ function runPython(code, label) {
   return stderr ? `${stdout}${stdout ? "\n" : ""}[stderr]\n${stderr}` : stdout;
 }
 
+function renderFiles(item) {
+  const files = Object.entries(item.files ?? {});
+  if (!files.length) return "";
+  return `<div class="data-files">${files.map(([name, content]) => `<div class="file-box"><span>ไฟล์ ${esc(name)}</span><pre>${esc(content.trimEnd())}</pre></div>`).join("")}</div>`;
+}
+
+function outputNote(item) {
+  if (item.stdin !== undefined) return " · ค่าที่ผู้ใช้พิมพ์แสดงต่อท้ายคำถาม";
+  if (item.http) return " · จากข้อมูลตัวอย่างของ API (ไม่ได้ต่ออินเทอร์เน็ตจริงตอนสร้างหน้า)";
+  return "";
+}
+
+function renderShot(item) {
+  if (item.plot) return `<figure class="screenshot"><img src="../${esc(item.plot)}" alt="${esc(item.alt ?? "กราฟที่ได้จากการรันโค้ด")}"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure>`;
+  if (item.window) return `<figure class="screenshot"><img src="../${esc(item.window.file)}" alt="${esc(item.alt ?? "หน้าต่างโปรแกรมที่ได้จากการรันโค้ด")}"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง${item.window.demo ? " (หลังจำลองการกรอกและกดปุ่ม)" : ""}</figcaption></figure>`;
+  return "";
+}
+
 function renderExample(example, chapterNo, exampleNo) {
-  const output = runPython(example.code, `Chapter ${chapterNo}, example ${exampleNo}`);
-  const image = example.image
-    ? `<figure class="screenshot"><img src="../${esc(example.image)}" alt="ภาพหน้าต่าง PySide6 ที่สร้างจากการรันตัวอย่างจริง"><figcaption>ภาพหน้าต่างจากโปรแกรม PySide6 ที่รันจริงในสภาพแวดล้อม offscreen</figcaption></figure>`
-    : "";
-  const walkthrough = `<div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol>${example.steps.map((step) => `<li>${esc(step)}</li>`).join("")}</ol></div>`;
+  const output = runPython(example.code, `Chapter ${chapterNo}, example ${exampleNo}`, example);
+  const image = renderShot(example);
+  const walkthrough = `<div class="walkthrough"><strong>อธิบาย</strong><ol>${example.steps.map((step) => `<li>${fmt(step)}</li>`).join("")}</ol></div>`;
   return `<div class="source-example">
     <h4>ตัวอย่าง ${chapterNo}.${exampleNo} · ${esc(example.title)}</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> ${esc(example.idea)}</p>
+    <p class="concept-line">${fmt(example.idea)}</p>
+    ${renderFiles(example)}
     <div class="source-grid">
       <div class="source-field"><span>Python source</span><pre class="copyable"><code>${esc(example.code)}</code></pre></div>
-      <div class="output-field"><span>Output${example.image ? " · ภาพหน้าต่างจริง" : ""}</span><pre>${esc(output || "(ไม่มีข้อความแสดงผล)")}</pre>${image}</div>
+      <div class="output-field"><span>Output${outputNote(example)}</span>${output || !image ? `<pre>${esc(output || "(ไม่มีข้อความแสดงผล)")}</pre>` : ""}${image}</div>
     </div>
     ${walkthrough}
   </div>`;
@@ -64,14 +180,21 @@ function renderExample(example, chapterNo, exampleNo) {
 
 function renderExercise(exercise, chapterNo, exerciseNo) {
   const id = `${String(chapterNo).padStart(2, "0")}.${exerciseNo}`;
-  const password = `py${String(chapterNo).padStart(2, "0")}${String(exerciseNo).padStart(2, "0")}`;
-  const output = runPython(exercise.code, `Exercise ${id}`);
-  const checklist = exercise.checklist.map((item) => `<li>${esc(item)}</li>`).join("");
+  const output = runPython(exercise.code, `Exercise ${id}`, exercise);
+  const shot = renderShot(exercise);
+  const checklist = exercise.checklist.map((item) => `<li>${fmt(item)}</li>`).join("");
+  const facts = [["โจทย์ให้", exercise.given], ["ต้องหา", exercise.want]]
+    .filter(([, value]) => value)
+    .map(([label, value]) => `<div><dt>${label}</dt><dd>${fmt(value)}</dd></div>`).join("");
+  const brief = facts
+    ? `<div class="task-brief"><strong>เข้าใจโจทย์</strong><dl>${facts}</dl><p class="brief-label">วิธีคิด</p><ol>${checklist}</ol></div>`
+    : `<ul>${checklist}</ul>`;
   return `<article class="exercise">
     <h3 class="exercise-heading"><span class="exercise-id">ข้อ ${id}</span><strong>${esc(exercise.title)}</strong><span class="difficulty difficulty-${exercise.level}">${levels[exercise.level]}</span></h3>
-    <p>${esc(exercise.task)}</p>
-    <ul>${checklist}</ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>${esc(output || "(ไม่มีข้อความแสดงผล)")}</pre></div>
+    <p>${fmt(exercise.task)}</p>
+    ${renderFiles(exercise)}
+    ${brief}
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์${outputNote(exercise).replace(" · ค่าที่ผู้ใช้พิมพ์แสดงต่อท้ายคำถาม", "")}</strong>${output || !shot ? `<pre>${esc(output || "(ไม่มีข้อความแสดงผล)")}</pre>` : ""}${shot}</div>
     <div class="answer-gate" data-answer-id="${id}">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -80,10 +203,32 @@ function renderExercise(exercise, chapterNo, exerciseNo) {
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>${esc(exercise.explain)}</p><pre class="copyable"><code>${esc(exercise.code)}</code></pre>
+        <p>${fmt(exercise.explain)}</p><pre class="copyable"><code>${esc(exercise.code)}</code></pre>
       </div>
     </div>
   </article>`;
+}
+
+function renderTopic([heading, detail, extra = {}], label, topicNo) {
+  const parts = [`<p>${fmt(detail)}</p>`];
+  if (extra.figure) {
+    parts.push(`<figure class="figure"><img src="../${esc(extra.figure.src)}" alt="${esc(extra.figure.alt)}"><figcaption>${fmt(extra.figure.caption ?? extra.figure.alt)}</figcaption></figure>`);
+  }
+  if (extra.table) {
+    const head = extra.table.head.map((cell) => `<th>${fmt(cell)}</th>`).join("");
+    const rows = extra.table.rows.map((row) => `<tr>${row.map((cell) => `<td>${fmt(cell)}</td>`).join("")}</tr>`).join("");
+    parts.push(`<div class="table-wrap"><table class="concept-table"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`);
+  }
+  if (extra.files) parts.push(renderFiles(extra));
+  if (extra.code) {
+    const output = runPython(extra.code, `Chapter ${label}, topic ${topicNo}`, extra);
+    const shot = renderShot(extra);
+    const text = output || !shot ? `<pre class="mini-output" aria-label="Output">${esc(output || "(ไม่มีข้อความแสดงผล)")}</pre>` : "";
+    const result = shot ? `<div class="mini-result">${text}${shot}</div>` : text;
+    parts.push(`<div class="mini-run${shot ? " has-shot" : ""}"><pre class="copyable"><code>${esc(extra.code)}</code></pre>${result}</div>`);
+  }
+  if (extra.tip) parts.push(`<p class="tip"><strong>จำง่าย ๆ</strong> ${fmt(extra.tip)}</p>`);
+  return `<article class="subtopic" id="topic-${topicNo}"><h3>${label}.${topicNo} ${esc(heading)}</h3>${parts.join("")}</article>`;
 }
 
 function renderChapterNavigation(currentNo = null, prefix = "chapters/") {
@@ -125,11 +270,9 @@ function renderChapter(chapter, index) {
   const next = number === chapters.length
     ? `<a class="pager-link" href="../index.html">จบบทเรียน · กลับหน้าสารบัญ →</a>`
     : `<a class="pager-link" href="chapter-${String(number + 1).padStart(2, "0")}.html">บทถัดไป →</a>`;
-  const topics = chapter.concepts.map(([heading, detail], i) =>
-    `<article class="subtopic" id="topic-${i + 1}"><h3>${label}.${i + 1} ${esc(heading)}</h3><p>${esc(detail)}</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article>`).join("");
+  const topics = chapter.concepts.map((concept, i) => renderTopic(concept, label, i + 1)).join("");
   const examples = chapter.examples.map((example, i) => renderExample(example, label, i + 1)).join("\n");
   const exercises = chapter.exercises.map((exercise, i) => renderExercise(exercise, number, i + 1)).join("\n");
-  const goals = [chapter.outcome, ...chapter.concepts.slice(0, 2).map((concept) => concept[0])];
   return `<!doctype html>
 <html lang="th">
 <head>
@@ -154,18 +297,19 @@ function renderChapter(chapter, index) {
     <main class="lesson-main" id="lesson-content">
       <div class="utility-row"><a href="../index.html">← สารบัญรายวิชา</a><span class="utility-code">CHAPTER ${label} / ${String(chapters.length).padStart(2, "0")}</span></div>
       <header class="lesson-header"><p class="lesson-kicker">CHAPTER ${label} · ${esc(groups[chapter.group])}</p><h1>${esc(chapter.title)}</h1><p>${esc(chapter.summary)}</p></header>
-      <section class="learning-goals"><strong>เมื่อจบบทนี้ นิสิตจะทำได้</strong><ul>${goals.map((goal) => `<li>${esc(goal)}</li>`).join("")}</ul></section>
-      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">แนวคิดและตัวอย่าง</h2>
-        <div class="chapter-intro"><strong>แผนการเรียนบทนี้</strong><p>${esc(chapter.lessonIntro || chapter.summary)}</p><p>วิธีฝึก: อ่านโจทย์ → ระบุข้อมูลเข้าและผลที่ต้องการ → ทำนาย output → รันและตรวจทีละขั้น → อธิบายด้วยคำของตนเองว่าเหตุใดจึงได้ผลเช่นนั้น</p></div>
-        ${topics}${examples}
+      <section class="learning-goals"><strong>จบบทนี้แล้วทำได้</strong><p>${fmt(chapter.outcome)}</p></section>
+      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">เนื้อหา</h2>
+        ${topics}
+        <h2 class="examples-heading">ตัวอย่างโปรแกรม</h2>
+        ${examples}
       </section>
       <section class="exercise-section" id="chapter-exercises" aria-labelledby="exercise-heading">
         <h2 id="exercise-heading">แบบฝึกหัดท้ายบท</h2>
-        <p class="exercise-intro">ทำจากข้อพื้นฐานไปข้อท้าทาย ก่อนเขียนให้จดข้อมูลที่โจทย์ให้ สิ่งที่ต้องหา และลำดับการทำงานสั้น ๆ จากนั้นทำนาย output แล้วรันตรวจ รายการตรวจช่วยไล่เงื่อนไขทีละข้อ หากยังติดให้ย้อนอ่านหัวข้อที่เกี่ยวข้องก่อนเปิดเฉลย ซึ่งมีแนวคิดและ source code ที่รันตรวจแล้ว</p>
+        <p class="exercise-intro">เรียงจากง่ายไปยาก ลองเขียนเองให้ได้ output ตรงตัวอย่างก่อน แล้วค่อยเปิดเฉลย</p>
         <div class="exercise-list">${exercises}</div>
       </section>
       <nav class="lesson-pager" aria-label="เปลี่ยนบท">${previous}${next}</nav>
-      <footer class="lesson-footer">Python programming · Lecture notes · ตัวอย่างรันตรวจด้วย Python จริง</footer>
+      <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
   <script src="../password.js"></script><script src="../assets/lesson.js"></script>

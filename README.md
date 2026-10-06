@@ -26,14 +26,27 @@ chapters/chapter-01.html ...       หน้าแต่ละบท (สร้�
 assets/site.css, site.js           ธีมหน้าแรกและเครื่องมือค้นหา
 assets/lesson.css, lesson.js       รูปแบบบทเรียน ปุ่มคัดลอก และเปิดเฉลย
 assets/python-path.svg             ภาพประกอบเส้นทางการเรียนรู้
-assets/gui/study-buddy.png         ภาพหน้าต่าง PySide6 ที่ render จากโปรแกรมจริง
-tools/lesson-builder/course-*.mjs  เนื้อหาบทเรียน ตัวอย่าง และโจทย์
+assets/figures/*.svg               ภาพประกอบแนวคิด (เขียนด้วยมือ)
+assets/figures/*.png, assets/gui/  กราฟและภาพหน้าต่างที่ builder สร้างจากการรันโค้ดจริง
+tools/lesson-builder/course-basics.mjs     บทที่ 1–8
+tools/lesson-builder/course-practice.mjs   บทที่ 9–13
+tools/lesson-builder/course-data-ai.mjs    บทที่ 14–18
+tools/lesson-builder/course-gui.mjs        บทที่ 19–20
+tools/lesson-builder/course-helpers.mjs    รูปแบบข้อมูลบท หัวข้อ ตัวอย่าง และโจทย์
 tools/lesson-builder/build.mjs     รัน source และสร้างหน้าเว็บ
 requirements.txt                   แพ็กเกจ data/AI/GUI สำหรับตัวอย่าง
 password.js                        รหัสผ่านฝั่ง browser สำหรับแบบฝึกหัด
 ```
 
-แก้เนื้อหาที่ `tools/lesson-builder/course-core.mjs`, `course-applied.mjs` หรือเนื้อหาเสริมที่ `course-extensions.mjs` แล้วรัน builder ใหม่ บทเรียนมีตัวอย่างพร้อม output ที่รันจริงและแบบฝึกหัดเรียงระดับ อย่าแก้ HTML ที่สร้างใน `chapters/` โดยตรง เพราะการ build จะเขียนทับ
+แก้เนื้อหาที่ `tools/lesson-builder/course-*.mjs` แล้วรัน builder ใหม่ อย่าแก้ HTML ใน `chapters/` โดยตรง เพราะการ build จะเขียนทับ
+
+แต่ละหัวข้อเป็นย่อหน้าสั้น ๆ และเพิ่ม `code`, `table`, `figure` หรือ `tip` ได้ แบบฝึกหัดมี `given`/`want`/`checklist` ซึ่งแสดงเป็นกล่อง "เข้าใจโจทย์" ฟิลด์เสริมที่ใช้ได้ทั้งหัวข้อ ตัวอย่าง และโจทย์:
+
+- `stdin`: ค่าที่ผู้ใช้พิมพ์ให้ `input()` ซึ่งจะแสดงต่อท้ายคำถามใน output เหมือนหน้าจอจริง
+- `files`: ไฟล์ข้อมูล เช่น CSV ที่เตรียมไว้ในโฟลเดอร์ชั่วคราวก่อนรัน และแสดงเนื้อหาบนหน้าเว็บ
+- `plot`: path ของ PNG ที่บันทึกกราฟ Matplotlib (โค้ดจบด้วย `plt.show()` ได้ตามปกติ)
+- `window: { file, demo }`: จับภาพหน้าต่าง PySide6 แทน `app.exec()` และรัน `demo` เพื่อจำลองการกรอกหรือคลิกก่อนจับภาพ
+- `http`: คำตอบจำลองของ `requests.get` ทำให้ build ซ้ำได้โดยไม่ต้องต่ออินเทอร์เน็ต
 
 ## กลุ่มแพ็กเกจในรายวิชา
 
@@ -42,7 +55,8 @@ password.js                        รหัสผ่านฝั่ง browser 
 - **Matplotlib**: visualization และบันทึกกราฟ
 - **scikit-learn**: train/test split, pipeline และโมเดล ML เบื้องต้น
 - **PySide6**: widget, layout, signal/slot และ GUI
-- โมดูลมาตรฐานที่ใช้: `json`, `csv`, `pathlib`, `urllib`, `statistics`, `math`
+- โมดูลมาตรฐานที่ใช้: `json`, `csv`, `pathlib`, `random`, `datetime`, `statistics`, `math`
+- **requests**: เรียก Web API
 
 ตัวอย่างใช้ข้อมูล fixture หรือชุดข้อมูลที่ติดมากับ scikit-learn เพื่อให้ build ซ้ำได้โดยไม่ต้องพึ่ง Web API ภายนอก ภาพ GUI สร้างจาก widget ที่ render ด้วย PySide6 ในโหมด offscreen จึงไม่ต้องเปิดหน้าต่าง desktop ระหว่าง build
 

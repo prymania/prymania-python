@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 200" role="img" aria-labelledby="t">
+  <title id="t">โปรแกรม Python ส่ง GET request ไปยังเซิร์ฟเวอร์ API และได้ response status 200 พร้อม JSON กลับมา</title>
+  <style>
+    text { font-family: "Leelawadee UI", Tahoma, sans-serif; fill: #202440; }
+    .mono { font-family: Consolas, "Courier New", monospace; }
+    .cap { fill: #62677b; font-size: 13px; }
+    .req { stroke: #192044; stroke-width: 2.5; fill: none; }
+    .res { stroke: #147d70; stroke-width: 2.5; fill: none; }
+  </style>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#192044"/></marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#147d70"/></marker>
+  </defs>
+  <rect x="20" y="50" width="170" height="100" rx="10" fill="#fffefa" stroke="#192044" stroke-width="1.5"/>
+  <text x="105" y="92" text-anchor="middle" font-size="17" font-weight="700">โปรแกรม Python</text>
+  <text x="105" y="118" text-anchor="middle" class="cap mono">requests.get(url)</text>
+  <rect x="570" y="50" width="170" height="100" rx="10" fill="#192044"/>
+  <text x="655" y="92" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">เซิร์ฟเวอร์ API</text>
+  <text x="655" y="118" text-anchor="middle" fill="#c9cde0" font-size="13">ค้นข้อมูลแล้วตอบกลับ</text>
+  <path d="M196 76H562" class="req" marker-end="url(#a)"/>
+  <text x="380" y="44" text-anchor="middle" font-weight="700" font-size="14">① request</text>
+  <text x="380" y="66" text-anchor="middle" class="mono" font-size="13">GET https://api.example.com/users/1</text>
+  <path d="M564 126H198" class="res" marker-end="url(#b)"/>
+  <text x="380" y="118" text-anchor="middle" class="mono" font-size="13" fill="#147d70">status 200 OK</text>
+  <text x="380" y="150" text-anchor="middle" font-weight="700" font-size="14" fill="#147d70">② response</text>
+  <text x="380" y="176" text-anchor="middle" class="mono" font-size="13">{"id": 1, "name": "Leanne Graham"}</text>
+  <text x="380" y="194" text-anchor="middle" class="cap">ข้อมูลส่วนใหญ่ส่งมาเป็น JSON</text>
+</svg>

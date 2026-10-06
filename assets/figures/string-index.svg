@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 170" role="img" aria-labelledby="t">
+  <title id="t">ข้อความ Python มี index 0 ถึง 5 นับจากซ้าย และ -6 ถึง -1 นับจากขวา</title>
+  <style>
+    text { font-family: "Leelawadee UI", Tahoma, sans-serif; fill: #202440; }
+    .mono { font-family: Consolas, "Courier New", monospace; }
+    .ch { font-size: 30px; font-weight: 700; }
+    .pos { fill: #147d70; font-size: 16px; font-weight: 700; }
+    .neg { fill: #ba4b3a; font-size: 16px; font-weight: 700; }
+    .cap { fill: #62677b; font-size: 13px; }
+  </style>
+  <text x="20" y="54" class="cap">index บวก</text>
+  <text x="20" y="150" class="cap">index ลบ</text>
+  <g transform="translate(140,0)">
+    <g class="mono">
+      <text x="40" y="54" text-anchor="middle" class="pos mono">0</text><text x="120" y="54" text-anchor="middle" class="pos mono">1</text><text x="200" y="54" text-anchor="middle" class="pos mono">2</text><text x="280" y="54" text-anchor="middle" class="pos mono">3</text><text x="360" y="54" text-anchor="middle" class="pos mono">4</text><text x="440" y="54" text-anchor="middle" class="pos mono">5</text>
+    </g>
+    <rect x="0" y="66" width="480" height="58" rx="6" fill="#fffefa" stroke="#192044" stroke-width="1.5"/>
+    <path d="M80 66V124M160 66V124M240 66V124M320 66V124M400 66V124" stroke="#192044" stroke-width="1"/>
+    <text x="40" y="106" text-anchor="middle" class="ch mono">P</text><text x="120" y="106" text-anchor="middle" class="ch mono">y</text><text x="200" y="106" text-anchor="middle" class="ch mono">t</text><text x="280" y="106" text-anchor="middle" class="ch mono">h</text><text x="360" y="106" text-anchor="middle" class="ch mono">o</text><text x="440" y="106" text-anchor="middle" class="ch mono">n</text>
+    <text x="40" y="150" text-anchor="middle" class="neg mono">-6</text><text x="120" y="150" text-anchor="middle" class="neg mono">-5</text><text x="200" y="150" text-anchor="middle" class="neg mono">-4</text><text x="280" y="150" text-anchor="middle" class="neg mono">-3</text><text x="360" y="150" text-anchor="middle" class="neg mono">-2</text><text x="440" y="150" text-anchor="middle" class="neg mono">-1</text>
+  </g>
+  <text x="640" y="88" class="cap mono">word[0] → P</text>
+  <text x="640" y="110" class="cap mono">word[-1] → n</text>
+</svg>

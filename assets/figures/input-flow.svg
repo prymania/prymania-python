@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 150" role="img" aria-labelledby="t">
+  <title id="t">input() คืนค่าเป็นข้อความเสมอ ต้องแปลงด้วย int() ก่อนนำไปคำนวณ</title>
+  <style>
+    text { font-family: "Leelawadee UI", Tahoma, sans-serif; fill: #202440; }
+    .mono { font-family: Consolas, "Courier New", monospace; }
+    .box { fill: #fffefa; stroke: #192044; stroke-width: 1.5; }
+    .ok { fill: #e6f4ee; stroke: #147d70; stroke-width: 1.5; }
+    .val { font-size: 20px; font-weight: 700; }
+    .cap { fill: #62677b; font-size: 13px; }
+    .type { font-size: 13px; font-weight: 700; }
+    .str { fill: #ba4b3a; }
+    .int { fill: #147d70; }
+    .fn { fill: #192044; font-size: 14px; font-weight: 700; }
+    .arrow { stroke: #ff755e; stroke-width: 2.5; fill: none; }
+  </style>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ff755e"/></marker></defs>
+  <rect x="10" y="40" width="140" height="56" rx="8" class="box"/>
+  <text x="80" y="76" text-anchor="middle" class="val mono">19</text>
+  <text x="80" y="122" text-anchor="middle" class="cap">ผู้ใช้พิมพ์ 19</text>
+
+  <path d="M156 68H244" class="arrow" marker-end="url(#a)"/>
+  <text x="200" y="58" text-anchor="middle" class="fn mono">input()</text>
+
+  <rect x="252" y="40" width="140" height="56" rx="8" class="box"/>
+  <text x="322" y="76" text-anchor="middle" class="val mono">"19"</text>
+  <text x="322" y="122" text-anchor="middle" class="type mono str">str · ยังคำนวณไม่ได้</text>
+
+  <path d="M398 68H486" class="arrow" marker-end="url(#a)"/>
+  <text x="442" y="58" text-anchor="middle" class="fn mono">int()</text>
+
+  <rect x="494" y="40" width="110" height="56" rx="8" class="ok"/>
+  <text x="549" y="76" text-anchor="middle" class="val mono">19</text>
+  <text x="549" y="122" text-anchor="middle" class="type mono int">int</text>
+
+  <path d="M610 68H650" class="arrow" marker-end="url(#a)"/>
+  <rect x="656" y="40" width="94" height="56" rx="8" class="ok"/>
+  <text x="703" y="66" text-anchor="middle" class="cap mono">age + 1</text>
+  <text x="703" y="88" text-anchor="middle" class="val mono">20</text>
+  <text x="703" y="122" text-anchor="middle" class="cap">คำนวณได้</text>
+  <text x="10" y="22" class="cap">input() คืนค่าเป็นข้อความ (str) เสมอ แม้ผู้ใช้จะพิมพ์ตัวเลข</text>
+</svg>

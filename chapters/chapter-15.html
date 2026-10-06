@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#192044">
-  <meta name="description" content="อ่าน ทำความสะอาด เลือก และสรุปข้อมูลตารางด้วย DataFrame">
+  <meta name="description" content="อ่าน สำรวจ กรอง ทำความสะอาด และสรุปข้อมูลตารางด้วย pandas DataFrame">
   <title>บทที่ 15 · จัดการตารางข้อมูลด้วย pandas | Python programming</title>
   <link rel="stylesheet" href="../assets/lesson.css">
 </head>
@@ -15,157 +15,305 @@
       <a class="lesson-brand" href="../index.html"><span class="brand-mark">Py</span><span><span class="brand-title">Python programming by Prymania</span><span class="brand-caption">LECTURE NOTES</span></span></a>
       <nav class="lesson-toc chapter-navigation" aria-label="สารบัญรายวิชา">
         <p class="toc-label">สารบัญ · 20 บทเรียน</p>
-        <p class="toc-label" data-group="foundation">เริ่มต้นกับ Python</p><details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเริ่มใช้งาน Python ด้วย Thonny ทำความเข้าใจไฟล์ .py, โครงสร้างคำสั่ง และวิธีรัน/หยุดโปรแกรม Python program ทำงานอย่างไร เลือก IDE สำหรับผู้เริ่มเรียน: Thonny แยก editor, shell และ interpreter โครงสร้างไฟล์และการเยื้องบรรทัด รัน บันทึก และอ่านข้อผิดพลาด">
+        <p class="toc-label" data-group="foundation">เริ่มต้นกับ Python</p><details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเปิด Thonny เขียนไฟล์ .py แรก รันโปรแกรม และอ่าน error เบื้องต้น Python ทำงานอย่างไร เครื่องมือที่ใช้: Thonny Shell กับไฟล์ .py ต่างกันอย่างไร comment และการเยื้องบรรทัด อ่าน error ให้เป็น">
       <summary><span class="toc-number">01</span><span class="chapter-nav-title">โครงสร้างโปรแกรม Python, IDE และการรัน</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-01.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-01.html#topic-1"><span class="topic-number">01.1</span>Python program ทำงานอย่างไร</a></li><li><a href="chapter-01.html#topic-2"><span class="topic-number">01.2</span>เลือก IDE สำหรับผู้เริ่มเรียน: Thonny</a></li><li><a href="chapter-01.html#topic-3"><span class="topic-number">01.3</span>แยก editor, shell และ interpreter</a></li><li><a href="chapter-01.html#topic-4"><span class="topic-number">01.4</span>โครงสร้างไฟล์และการเยื้องบรรทัด</a></li><li><a href="chapter-01.html#topic-5"><span class="topic-number">01.5</span>รัน บันทึก และอ่านข้อผิดพลาด</a></li><li><a href="chapter-01.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-01.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-01.html#topic-1"><span class="topic-number">01.1</span>Python ทำงานอย่างไร</a></li><li><a href="chapter-01.html#topic-2"><span class="topic-number">01.2</span>เครื่องมือที่ใช้: Thonny</a></li><li><a href="chapter-01.html#topic-3"><span class="topic-number">01.3</span>Shell กับไฟล์ .py ต่างกันอย่างไร</a></li><li><a href="chapter-01.html#topic-4"><span class="topic-number">01.4</span>comment และการเยื้องบรรทัด</a></li><li><a href="chapter-01.html#topic-5"><span class="topic-number">01.5</span>อ่าน error ให้เป็น</a></li><li><a href="chapter-01.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลแต่ละชนิด รับค่าจากผู้ใช้ แปลงชนิดก่อนคำนวณ และสร้าง output ที่อ่านเข้าใจได้ ตัวแปรคือชื่อที่อ้างถึงข้อมูล ตั้งชื่อให้คนอ่านเข้าใจ ค่าหนึ่งเปลี่ยนได้ตามลำดับคำสั่ง ชนิดข้อมูลบอกวิธีใช้งานค่า input คืนค่าเป็นข้อความเสมอ f-string แทรกค่าลงในข้อความ">
+<details class="chapter-nav-item" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลในตัวแปร รู้จักชนิดข้อมูล รับค่าด้วย input() และแสดงผลด้วย print() / f-string ตัวแปร: ตั้งชื่อให้ข้อมูล ชนิดข้อมูลพื้นฐาน 4 ชนิด แปลงชนิดข้อมูล รับค่าด้วย input() แสดงผลด้วย print() และ f-string ข้อผิดพลาดที่เจอบ่อย">
       <summary><span class="toc-number">02</span><span class="chapter-nav-title">ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-02.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-02.html#topic-1"><span class="topic-number">02.1</span>ตัวแปรคือชื่อที่อ้างถึงข้อมูล</a></li><li><a href="chapter-02.html#topic-2"><span class="topic-number">02.2</span>ตั้งชื่อให้คนอ่านเข้าใจ</a></li><li><a href="chapter-02.html#topic-3"><span class="topic-number">02.3</span>ค่าหนึ่งเปลี่ยนได้ตามลำดับคำสั่ง</a></li><li><a href="chapter-02.html#topic-4"><span class="topic-number">02.4</span>ชนิดข้อมูลบอกวิธีใช้งานค่า</a></li><li><a href="chapter-02.html#topic-5"><span class="topic-number">02.5</span>input คืนค่าเป็นข้อความเสมอ</a></li><li><a href="chapter-02.html#topic-6"><span class="topic-number">02.6</span>f-string แทรกค่าลงในข้อความ</a></li><li><a href="chapter-02.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-02.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-02.html#topic-1"><span class="topic-number">02.1</span>ตัวแปร: ตั้งชื่อให้ข้อมูล</a></li><li><a href="chapter-02.html#topic-2"><span class="topic-number">02.2</span>ชนิดข้อมูลพื้นฐาน 4 ชนิด</a></li><li><a href="chapter-02.html#topic-3"><span class="topic-number">02.3</span>แปลงชนิดข้อมูล</a></li><li><a href="chapter-02.html#topic-4"><span class="topic-number">02.4</span>รับค่าด้วย input()</a></li><li><a href="chapter-02.html#topic-5"><span class="topic-number">02.5</span>แสดงผลด้วย print() และ f-string</a></li><li><a href="chapter-02.html#topic-6"><span class="topic-number">02.6</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-02.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และประกอบเงื่อนไขเชิงตรรกะ ตัวดำเนินการเลขคณิต เปรียบเทียบแล้วได้ bool เชื่อมเงื่อนไข">
+<details class="chapter-nav-item" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และรวมเงื่อนไขด้วย and / or / not ตัวดำเนินการเลขคณิต ลำดับการคำนวณ เปรียบเทียบค่า ได้ผลเป็น True/False รวมเงื่อนไขด้วย and / or / not ตัวดำเนินการแบบย่อ">
       <summary><span class="toc-number">03</span><span class="chapter-nav-title">ตัวดำเนินการและนิพจน์</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-03.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-03.html#topic-1"><span class="topic-number">03.1</span>ตัวดำเนินการเลขคณิต</a></li><li><a href="chapter-03.html#topic-2"><span class="topic-number">03.2</span>เปรียบเทียบแล้วได้ bool</a></li><li><a href="chapter-03.html#topic-3"><span class="topic-number">03.3</span>เชื่อมเงื่อนไข</a></li><li><a href="chapter-03.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-03.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-03.html#topic-1"><span class="topic-number">03.1</span>ตัวดำเนินการเลขคณิต</a></li><li><a href="chapter-03.html#topic-2"><span class="topic-number">03.2</span>ลำดับการคำนวณ</a></li><li><a href="chapter-03.html#topic-3"><span class="topic-number">03.3</span>เปรียบเทียบค่า ได้ผลเป็น True/False</a></li><li><a href="chapter-03.html#topic-4"><span class="topic-number">03.4</span>รวมเงื่อนไขด้วย and / or / not</a></li><li><a href="chapter-03.html#topic-5"><span class="topic-number">03.5</span>ตัวดำเนินการแบบย่อ</a></li><li><a href="chapter-03.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if ตรวจกรณีแรก elif เรียงกรณีที่ไม่ทับกัน else เป็นกรณีที่เหลือ">
+<details class="chapter-nav-item" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if: ทำเมื่อเงื่อนไขเป็นจริง if-else: เลือก 1 ใน 2 ทาง elif: หลายทางเลือก เงื่อนไขหลายข้อ และ if ซ้อน ข้อผิดพลาดที่เจอบ่อย">
       <summary><span class="toc-number">04</span><span class="chapter-nav-title">เงื่อนไขและการตัดสินใจ</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-04.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-04.html#topic-1"><span class="topic-number">04.1</span>if ตรวจกรณีแรก</a></li><li><a href="chapter-04.html#topic-2"><span class="topic-number">04.2</span>elif เรียงกรณีที่ไม่ทับกัน</a></li><li><a href="chapter-04.html#topic-3"><span class="topic-number">04.3</span>else เป็นกรณีที่เหลือ</a></li><li><a href="chapter-04.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-04.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-04.html#topic-1"><span class="topic-number">04.1</span>if: ทำเมื่อเงื่อนไขเป็นจริง</a></li><li><a href="chapter-04.html#topic-2"><span class="topic-number">04.2</span>if-else: เลือก 1 ใน 2 ทาง</a></li><li><a href="chapter-04.html#topic-3"><span class="topic-number">04.3</span>elif: หลายทางเลือก</a></li><li><a href="chapter-04.html#topic-4"><span class="topic-number">04.4</span>เงื่อนไขหลายข้อ และ if ซ้อน</a></li><li><a href="chapter-04.html#topic-5"><span class="topic-number">04.5</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-04.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="การทำซ้ำด้วยลูป ทำคำสั่งซ้ำอย่างควบคุมได้ด้วย for, while และ range for วนผ่านสมาชิก สะสมค่าอย่างระมัดระวัง while วนจนเงื่อนไขเปลี่ยน">
+<details class="chapter-nav-item" data-group="foundation" data-search="การทำซ้ำด้วยลูป สั่งให้โปรแกรมทำงานซ้ำด้วย for และ while แทนการเขียนคำสั่งเดิมหลายครั้ง for กับ range() for วนผ่านข้อมูลทีละตัว สะสมผลรวมและนับจำนวน while: วนจนกว่าเงื่อนไขจะเป็นเท็จ break และ continue">
       <summary><span class="toc-number">05</span><span class="chapter-nav-title">การทำซ้ำด้วยลูป</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-05.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-05.html#topic-1"><span class="topic-number">05.1</span>for วนผ่านสมาชิก</a></li><li><a href="chapter-05.html#topic-2"><span class="topic-number">05.2</span>สะสมค่าอย่างระมัดระวัง</a></li><li><a href="chapter-05.html#topic-3"><span class="topic-number">05.3</span>while วนจนเงื่อนไขเปลี่ยน</a></li><li><a href="chapter-05.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-05.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-05.html#topic-1"><span class="topic-number">05.1</span>for กับ range()</a></li><li><a href="chapter-05.html#topic-2"><span class="topic-number">05.2</span>for วนผ่านข้อมูลทีละตัว</a></li><li><a href="chapter-05.html#topic-3"><span class="topic-number">05.3</span>สะสมผลรวมและนับจำนวน</a></li><li><a href="chapter-05.html#topic-4"><span class="topic-number">05.4</span>while: วนจนกว่าเงื่อนไขจะเป็นเท็จ</a></li><li><a href="chapter-05.html#topic-5"><span class="topic-number">05.5</span>break และ continue</a></li><li><a href="chapter-05.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด ต่อ ค้นหา และจัดรูปแบบข้อความที่รับมาจากผู้ใช้หรือไฟล์ ข้อความแก้ตรงตำแหน่งไม่ได้ method ช่วยทำความสะอาด index และ slicing เริ่มที่ศูนย์">
+<details class="chapter-nav-item" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด แยก ค้นหา และจัดรูปแบบข้อความด้วย index, slicing และ string method index: ตำแหน่งของตัวอักษร slicing: ตัดบางส่วน method ที่ใช้บ่อย ตรวจและวนข้อความ">
       <summary><span class="toc-number">06</span><span class="chapter-nav-title">ข้อความและการจัดการ string</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-06.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-06.html#topic-1"><span class="topic-number">06.1</span>ข้อความแก้ตรงตำแหน่งไม่ได้</a></li><li><a href="chapter-06.html#topic-2"><span class="topic-number">06.2</span>method ช่วยทำความสะอาด</a></li><li><a href="chapter-06.html#topic-3"><span class="topic-number">06.3</span>index และ slicing เริ่มที่ศูนย์</a></li><li><a href="chapter-06.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-06.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-06.html#topic-1"><span class="topic-number">06.1</span>index: ตำแหน่งของตัวอักษร</a></li><li><a href="chapter-06.html#topic-2"><span class="topic-number">06.2</span>slicing: ตัดบางส่วน</a></li><li><a href="chapter-06.html#topic-3"><span class="topic-number">06.3</span>method ที่ใช้บ่อย</a></li><li><a href="chapter-06.html#topic-4"><span class="topic-number">06.4</span>ตรวจและวนข้อความ</a></li><li><a href="chapter-06.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เลือกภาชนะเก็บข้อมูลหลายค่าให้เหมาะกับการเพิ่ม แก้ ค้นหา และจับคู่ list เก็บลำดับและแก้ไขได้ tuple และ set มีหน้าที่ต่างกัน dict ผูก key กับ value">
+<details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เก็บข้อมูลหลายค่าในตัวแปรเดียว และเลือกโครงสร้างให้เหมาะกับงาน เลือกใช้แบบไหนดี list: รายการที่แก้ไขได้ tuple และ set dict: จับคู่ key กับ value">
       <summary><span class="toc-number">07</span><span class="chapter-nav-title">โครงสร้างข้อมูล: list, tuple, set และ dict</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-07.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-07.html#topic-1"><span class="topic-number">07.1</span>list เก็บลำดับและแก้ไขได้</a></li><li><a href="chapter-07.html#topic-2"><span class="topic-number">07.2</span>tuple และ set มีหน้าที่ต่างกัน</a></li><li><a href="chapter-07.html#topic-3"><span class="topic-number">07.3</span>dict ผูก key กับ value</a></li><li><a href="chapter-07.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-07.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-07.html#topic-1"><span class="topic-number">07.1</span>เลือกใช้แบบไหนดี</a></li><li><a href="chapter-07.html#topic-2"><span class="topic-number">07.2</span>list: รายการที่แก้ไขได้</a></li><li><a href="chapter-07.html#topic-3"><span class="topic-number">07.3</span>tuple และ set</a></li><li><a href="chapter-07.html#topic-4"><span class="topic-number">07.4</span>dict: จับคู่ key กับ value</a></li><li><a href="chapter-07.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม ห่อแนวคิดที่ใช้ซ้ำในฟังก์ชัน พร้อมพารามิเตอร์และค่าที่คืนกลับ def ประกาศหน้าที่หนึ่งอย่าง parameter และ argument return ส่งผลกลับผู้เรียก">
+<details class="chapter-nav-item" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม รวมคำสั่งที่ทำงานหนึ่งอย่างเป็นฟังก์ชัน เรียกใช้ซ้ำได้ และแบ่งโปรแกรมใหญ่เป็นส่วนเล็ก def: สร้างฟังก์ชัน parameter: ส่งค่าเข้าฟังก์ชัน return: ส่งผลกลับ ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน">
       <summary><span class="toc-number">08</span><span class="chapter-nav-title">ฟังก์ชันและการแบ่งโปรแกรม</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-08.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-08.html#topic-1"><span class="topic-number">08.1</span>def ประกาศหน้าที่หนึ่งอย่าง</a></li><li><a href="chapter-08.html#topic-2"><span class="topic-number">08.2</span>parameter และ argument</a></li><li><a href="chapter-08.html#topic-3"><span class="topic-number">08.3</span>return ส่งผลกลับผู้เรียก</a></li><li><a href="chapter-08.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-08.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-08.html#topic-1"><span class="topic-number">08.1</span>def: สร้างฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-2"><span class="topic-number">08.2</span>parameter: ส่งค่าเข้าฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-3"><span class="topic-number">08.3</span>return: ส่งผลกลับ</a></li><li><a href="chapter-08.html#topic-4"><span class="topic-number">08.4</span>ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน</a></li><li><a href="chapter-08.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="practice">ฝึกเขียนและใช้งาน</p><details class="chapter-nav-item" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน traceback อย่างมีระบบ ป้องกันข้อผิดพลาดที่คาดหมาย และแก้ที่สาเหตุ อ่าน traceback จากบรรทัดล่างขึ้นบน try-except ควรจับเฉพาะที่เข้าใจ แยก logic error ด้วยตัวอย่าง">
+<p class="toc-label" data-group="practice">ฝึกเขียนและใช้งาน</p><details class="chapter-nav-item" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน error ให้เข้าใจ ดักจับข้อผิดพลาดด้วย try/except และหาสาเหตุเมื่อผลลัพธ์ผิด อ่าน traceback error ที่พบบ่อย try / except: ดักจับ error ดักหลายชนิด และดูข้อความ error raise: แจ้ง error เอง ไล่หาบั๊กเมื่อผลลัพธ์ผิด">
       <summary><span class="toc-number">09</span><span class="chapter-nav-title">ข้อผิดพลาด การจัดการ exception และ debug</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-09.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-09.html#topic-1"><span class="topic-number">09.1</span>อ่าน traceback จากบรรทัดล่างขึ้นบน</a></li><li><a href="chapter-09.html#topic-2"><span class="topic-number">09.2</span>try-except ควรจับเฉพาะที่เข้าใจ</a></li><li><a href="chapter-09.html#topic-3"><span class="topic-number">09.3</span>แยก logic error ด้วยตัวอย่าง</a></li><li><a href="chapter-09.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-09.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-09.html#topic-1"><span class="topic-number">09.1</span>อ่าน traceback</a></li><li><a href="chapter-09.html#topic-2"><span class="topic-number">09.2</span>error ที่พบบ่อย</a></li><li><a href="chapter-09.html#topic-3"><span class="topic-number">09.3</span>try / except: ดักจับ error</a></li><li><a href="chapter-09.html#topic-4"><span class="topic-number">09.4</span>ดักหลายชนิด และดูข้อความ error</a></li><li><a href="chapter-09.html#topic-5"><span class="topic-number">09.5</span>raise: แจ้ง error เอง</a></li><li><a href="chapter-09.html#topic-6"><span class="topic-number">09.6</span>ไล่หาบั๊กเมื่อผลลัพธ์ผิด</a></li><li><a href="chapter-09.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนข้อมูลอย่างปลอดภัย พร้อมใช้รูปแบบไฟล์ที่พบในงานจริง ใช้ with เปิดไฟล์ pathlib จัดการตำแหน่งไฟล์ CSV กับ JSON ใช้คนละโครงสร้าง">
+<details class="chapter-nav-item" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนไฟล์ข้อความ CSV และ JSON เพื่อเก็บข้อมูลไว้ใช้ต่อหลังปิดโปรแกรม เปิดไฟล์ด้วย with open() อ่านทีละบรรทัด CSV: ข้อมูลตาราง JSON: บันทึก list/dict ทั้งก้อน เลือก CSV หรือ JSON">
       <summary><span class="toc-number">10</span><span class="chapter-nav-title">ไฟล์ ข้อมูล CSV และ JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-10.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-10.html#topic-1"><span class="topic-number">10.1</span>ใช้ with เปิดไฟล์</a></li><li><a href="chapter-10.html#topic-2"><span class="topic-number">10.2</span>pathlib จัดการตำแหน่งไฟล์</a></li><li><a href="chapter-10.html#topic-3"><span class="topic-number">10.3</span>CSV กับ JSON ใช้คนละโครงสร้าง</a></li><li><a href="chapter-10.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-10.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-10.html#topic-1"><span class="topic-number">10.1</span>เปิดไฟล์ด้วย with open()</a></li><li><a href="chapter-10.html#topic-2"><span class="topic-number">10.2</span>อ่านทีละบรรทัด</a></li><li><a href="chapter-10.html#topic-3"><span class="topic-number">10.3</span>CSV: ข้อมูลตาราง</a></li><li><a href="chapter-10.html#topic-4"><span class="topic-number">10.4</span>JSON: บันทึก list/dict ทั้งก้อน</a></li><li><a href="chapter-10.html#topic-5"><span class="topic-number">10.5</span>เลือก CSV หรือ JSON</a></li><li><a href="chapter-10.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="โมดูล virtual environment และ pip ใช้ไลบรารีมาตรฐาน ติดตั้งแพ็กเกจแยกสภาพแวดล้อม และจัด dependency ของโปรเจกต์ import นำโมดูลมาใช้ venv ป้องกัน dependency ชนกัน pip และ requirements.txt">
+<details class="chapter-nav-item" data-group="practice" data-search="โมดูล virtual environment และ pip นำโมดูลมาตรฐานมาใช้ สร้างโมดูลของตัวเอง และติดตั้งแพ็กเกจเพิ่มด้วย pip ใน virtual environment import: นำโมดูลมาใช้ โมดูลมาตรฐานที่ใช้บ่อย สร้างโมดูลเอง pip และ virtual environment ตรวจว่าติดตั้งแล้วหรือยัง">
       <summary><span class="toc-number">11</span><span class="chapter-nav-title">โมดูล virtual environment และ pip</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-11.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-11.html#topic-1"><span class="topic-number">11.1</span>import นำโมดูลมาใช้</a></li><li><a href="chapter-11.html#topic-2"><span class="topic-number">11.2</span>venv ป้องกัน dependency ชนกัน</a></li><li><a href="chapter-11.html#topic-3"><span class="topic-number">11.3</span>pip และ requirements.txt</a></li><li><a href="chapter-11.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-11.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-11.html#topic-1"><span class="topic-number">11.1</span>import: นำโมดูลมาใช้</a></li><li><a href="chapter-11.html#topic-2"><span class="topic-number">11.2</span>โมดูลมาตรฐานที่ใช้บ่อย</a></li><li><a href="chapter-11.html#topic-3"><span class="topic-number">11.3</span>สร้างโมดูลเอง</a></li><li><a href="chapter-11.html#topic-4"><span class="topic-number">11.4</span>pip และ virtual environment</a></li><li><a href="chapter-11.html#topic-5"><span class="topic-number">11.5</span>ตรวจว่าติดตั้งแล้วหรือยัง</a></li><li><a href="chapter-11.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมสถานะและพฤติกรรมที่สัมพันธ์กันไว้ใน class เพื่อสร้าง object หลายตัว class เป็นแบบพิมพ์ object เป็นสิ่งที่สร้าง __init__ กำหนดค่าเริ่มต้น method รวมพฤติกรรมกับข้อมูล">
+<details class="chapter-nav-item" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมข้อมูลและการทำงานที่เกี่ยวข้องกันไว้ใน class แล้วสร้าง object ได้หลายตัว class คือแม่แบบ object คือของจริง __init__ และ self method: การทำงานของ object __str__: กำหนดวิธีแสดงผล ทำงานกับ object หลายตัว">
       <summary><span class="toc-number">12</span><span class="chapter-nav-title">เขียนโปรแกรมเชิงวัตถุด้วย class</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-12.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-12.html#topic-1"><span class="topic-number">12.1</span>class เป็นแบบพิมพ์ object เป็นสิ่งที่สร้าง</a></li><li><a href="chapter-12.html#topic-2"><span class="topic-number">12.2</span>__init__ กำหนดค่าเริ่มต้น</a></li><li><a href="chapter-12.html#topic-3"><span class="topic-number">12.3</span>method รวมพฤติกรรมกับข้อมูล</a></li><li><a href="chapter-12.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-12.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-12.html#topic-1"><span class="topic-number">12.1</span>class คือแม่แบบ object คือของจริง</a></li><li><a href="chapter-12.html#topic-2"><span class="topic-number">12.2</span>__init__ และ self</a></li><li><a href="chapter-12.html#topic-3"><span class="topic-number">12.3</span>method: การทำงานของ object</a></li><li><a href="chapter-12.html#topic-4"><span class="topic-number">12.4</span>__str__: กำหนดวิธีแสดงผล</a></li><li><a href="chapter-12.html#topic-5"><span class="topic-number">12.5</span>ทำงานกับ object หลายตัว</a></li><li><a href="chapter-12.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON เข้าใจ request/response, ส่งพารามิเตอร์ และแปลง JSON เพื่อเชื่อมบริการอื่น API คือสัญญาการสื่อสาร แปลงข้อมูล JSON เครือข่ายผิดพลาดได้">
+<details class="chapter-nav-item" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON ขอข้อมูลจากบริการบนอินเทอร์เน็ตด้วย requests อ่านผลที่เป็น JSON และจัดการเมื่อเชื่อมต่อไม่สำเร็จ API ทำงานอย่างไร JSON กับ Python requests.get(): ขอข้อมูล ส่ง parameter รับมือเมื่อเรียกไม่สำเร็จ">
       <summary><span class="toc-number">13</span><span class="chapter-nav-title">เรียกใช้ Web API และแลกเปลี่ยน JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-13.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-13.html#topic-1"><span class="topic-number">13.1</span>API คือสัญญาการสื่อสาร</a></li><li><a href="chapter-13.html#topic-2"><span class="topic-number">13.2</span>แปลงข้อมูล JSON</a></li><li><a href="chapter-13.html#topic-3"><span class="topic-number">13.3</span>เครือข่ายผิดพลาดได้</a></li><li><a href="chapter-13.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-13.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-13.html#topic-1"><span class="topic-number">13.1</span>API ทำงานอย่างไร</a></li><li><a href="chapter-13.html#topic-2"><span class="topic-number">13.2</span>JSON กับ Python</a></li><li><a href="chapter-13.html#topic-3"><span class="topic-number">13.3</span>requests.get(): ขอข้อมูล</a></li><li><a href="chapter-13.html#topic-4"><span class="topic-number">13.4</span>ส่ง parameter</a></li><li><a href="chapter-13.html#topic-5"><span class="topic-number">13.5</span>รับมือเมื่อเรียกไม่สำเร็จ</a></li><li><a href="chapter-13.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="ai">ต่อยอดข้อมูลและ AI</p><details class="chapter-nav-item" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข ใช้ array คำนวณข้อมูลจำนวนมากแบบเวกเตอร์ ซึ่งเป็นฐานของงาน Data Science และ AI ndarray เป็นข้อมูลชนิดเดียวกัน vectorization แทนการวนทีละค่า เลือกและสรุปตามแกน">
+<p class="toc-label" data-group="ai">ต่อยอดข้อมูลและ AI</p><details class="chapter-nav-item" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของงาน Data Science และ AI array ต่างจาก list อย่างไร สร้าง array แบบต่าง ๆ คำนวณทั้ง array (vectorization) กรองข้อมูลด้วยเงื่อนไข array 2 มิติและแกน (axis) ฟังก์ชันสถิติ">
       <summary><span class="toc-number">14</span><span class="chapter-nav-title">NumPy สำหรับการคำนวณตัวเลข</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-14.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-14.html#topic-1"><span class="topic-number">14.1</span>ndarray เป็นข้อมูลชนิดเดียวกัน</a></li><li><a href="chapter-14.html#topic-2"><span class="topic-number">14.2</span>vectorization แทนการวนทีละค่า</a></li><li><a href="chapter-14.html#topic-3"><span class="topic-number">14.3</span>เลือกและสรุปตามแกน</a></li><li><a href="chapter-14.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-14.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-14.html#topic-1"><span class="topic-number">14.1</span>array ต่างจาก list อย่างไร</a></li><li><a href="chapter-14.html#topic-2"><span class="topic-number">14.2</span>สร้าง array แบบต่าง ๆ</a></li><li><a href="chapter-14.html#topic-3"><span class="topic-number">14.3</span>คำนวณทั้ง array (vectorization)</a></li><li><a href="chapter-14.html#topic-4"><span class="topic-number">14.4</span>กรองข้อมูลด้วยเงื่อนไข</a></li><li><a href="chapter-14.html#topic-5"><span class="topic-number">14.5</span>array 2 มิติและแกน (axis)</a></li><li><a href="chapter-14.html#topic-6"><span class="topic-number">14.6</span>ฟังก์ชันสถิติ</a></li><li><a href="chapter-14.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน ทำความสะอาด เลือก และสรุปข้อมูลตารางด้วย DataFrame DataFrame มีแถวและคอลัมน์ เลือกและกรองข้อมูล ทำความสะอาดและ groupby" open>
+<details class="chapter-nav-item" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน สำรวจ กรอง ทำความสะอาด และสรุปข้อมูลตารางด้วย pandas DataFrame DataFrame: ตารางข้อมูล อ่าน CSV และสำรวจข้อมูล เลือกและกรองข้อมูล เพิ่มคอลัมน์และเรียงข้อมูล จัดการค่าว่าง สรุปตามกลุ่มด้วย groupby" open>
       <summary><span class="toc-number">15</span><span class="chapter-nav-title">จัดการตารางข้อมูลด้วย pandas</span></summary>
-      <ul class="chapter-subnav"><li><a href="#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="#topic-1"><span class="topic-number">15.1</span>DataFrame มีแถวและคอลัมน์</a></li><li><a href="#topic-2"><span class="topic-number">15.2</span>เลือกและกรองข้อมูล</a></li><li><a href="#topic-3"><span class="topic-number">15.3</span>ทำความสะอาดและ groupby</a></li><li><a href="#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="#topic-1"><span class="topic-number">15.1</span>DataFrame: ตารางข้อมูล</a></li><li><a href="#topic-2"><span class="topic-number">15.2</span>อ่าน CSV และสำรวจข้อมูล</a></li><li><a href="#topic-3"><span class="topic-number">15.3</span>เลือกและกรองข้อมูล</a></li><li><a href="#topic-4"><span class="topic-number">15.4</span>เพิ่มคอลัมน์และเรียงข้อมูล</a></li><li><a href="#topic-5"><span class="topic-number">15.5</span>จัดการค่าว่าง</a></li><li><a href="#topic-6"><span class="topic-number">15.6</span>สรุปตามกลุ่มด้วย groupby</a></li><li><a href="#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib เปลี่ยนข้อมูลตัวเลขเป็นภาพเพื่อมองแนวโน้ม เปรียบเทียบ และสื่อสารผล เลือกชนิดกราฟตามคำถาม label ทำให้กราฟอ่านได้ แยกการวาดกับการบันทึก">
+<details class="chapter-nav-item" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib แปลงตัวเลขเป็นกราฟที่อ่านง่าย เลือกชนิดกราฟให้ตรงคำถาม และบันทึกเป็นไฟล์ภาพ กราฟแรก เลือกชนิดกราฟจากคำถาม กราฟแท่ง หลายเส้นในกราฟเดียว กราฟกระจายและฮิสโทแกรม บันทึกกราฟและภาษาไทย">
       <summary><span class="toc-number">16</span><span class="chapter-nav-title">สร้างกราฟด้วย Matplotlib</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-16.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-16.html#topic-1"><span class="topic-number">16.1</span>เลือกชนิดกราฟตามคำถาม</a></li><li><a href="chapter-16.html#topic-2"><span class="topic-number">16.2</span>label ทำให้กราฟอ่านได้</a></li><li><a href="chapter-16.html#topic-3"><span class="topic-number">16.3</span>แยกการวาดกับการบันทึก</a></li><li><a href="chapter-16.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-16.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-16.html#topic-1"><span class="topic-number">16.1</span>กราฟแรก</a></li><li><a href="chapter-16.html#topic-2"><span class="topic-number">16.2</span>เลือกชนิดกราฟจากคำถาม</a></li><li><a href="chapter-16.html#topic-3"><span class="topic-number">16.3</span>กราฟแท่ง</a></li><li><a href="chapter-16.html#topic-4"><span class="topic-number">16.4</span>หลายเส้นในกราฟเดียว</a></li><li><a href="chapter-16.html#topic-5"><span class="topic-number">16.5</span>กราฟกระจายและฮิสโทแกรม</a></li><li><a href="chapter-16.html#topic-6"><span class="topic-number">16.6</span>บันทึกกราฟและภาษาไทย</a></li><li><a href="chapter-16.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn สร้าง pipeline ฝึกและประเมินโมเดลจากข้อมูลตัวอย่าง โดยแยก train กับ test แยก feature กับ target อย่าทดสอบด้วยข้อมูลฝึก Pipeline ป้องกันขั้นตอนสับสน">
+<details class="chapter-nav-item" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn ให้คอมพิวเตอร์เรียนรู้รูปแบบจากตัวอย่าง แล้วทำนายข้อมูลใหม่ ด้วยขั้นตอนมาตรฐานของ scikit-learn Machine Learning คืออะไร ขั้นตอนมาตรฐาน แบ่งข้อมูล train/test fit และ predict วัดผลโมเดล Pipeline: รวมการเตรียมข้อมูลกับโมเดล">
       <summary><span class="toc-number">17</span><span class="chapter-nav-title">Machine Learning เบื้องต้นด้วย scikit-learn</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-17.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-17.html#topic-1"><span class="topic-number">17.1</span>แยก feature กับ target</a></li><li><a href="chapter-17.html#topic-2"><span class="topic-number">17.2</span>อย่าทดสอบด้วยข้อมูลฝึก</a></li><li><a href="chapter-17.html#topic-3"><span class="topic-number">17.3</span>Pipeline ป้องกันขั้นตอนสับสน</a></li><li><a href="chapter-17.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-17.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-17.html#topic-1"><span class="topic-number">17.1</span>Machine Learning คืออะไร</a></li><li><a href="chapter-17.html#topic-2"><span class="topic-number">17.2</span>ขั้นตอนมาตรฐาน</a></li><li><a href="chapter-17.html#topic-3"><span class="topic-number">17.3</span>แบ่งข้อมูล train/test</a></li><li><a href="chapter-17.html#topic-4"><span class="topic-number">17.4</span>fit และ predict</a></li><li><a href="chapter-17.html#topic-5"><span class="topic-number">17.5</span>วัดผลโมเดล</a></li><li><a href="chapter-17.html#topic-6"><span class="topic-number">17.6</span>Pipeline: รวมการเตรียมข้อมูลกับโมเดล</a></li><li><a href="chapter-17.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล ต่อยอดแนวคิด ML สู่ neuron, activation, loss และวงจรการเรียนรู้ของ deep learning Neuron รวม input ด้วยน้ำหนัก Loss วัดความคลาดเคลื่อน Framework ช่วยคำนวณ gradient">
+<details class="chapter-nav-item" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล เข้าใจส่วนประกอบของ neural network ตั้งแต่ neuron, activation, loss จนถึงการเรียนรู้ด้วย gradient descent neuron: หน่วยคำนวณพื้นฐาน activation function layer: หลาย neuron พร้อมกัน loss: วัดว่าผิดมากแค่ไหน การเรียนรู้: gradient descent ใช้ library แทนการเขียนเอง">
       <summary><span class="toc-number">18</span><span class="chapter-nav-title">แนวคิด Neural Network และการฝึกโมเดล</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-18.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-18.html#topic-1"><span class="topic-number">18.1</span>Neuron รวม input ด้วยน้ำหนัก</a></li><li><a href="chapter-18.html#topic-2"><span class="topic-number">18.2</span>Loss วัดความคลาดเคลื่อน</a></li><li><a href="chapter-18.html#topic-3"><span class="topic-number">18.3</span>Framework ช่วยคำนวณ gradient</a></li><li><a href="chapter-18.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-18.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-18.html#topic-1"><span class="topic-number">18.1</span>neuron: หน่วยคำนวณพื้นฐาน</a></li><li><a href="chapter-18.html#topic-2"><span class="topic-number">18.2</span>activation function</a></li><li><a href="chapter-18.html#topic-3"><span class="topic-number">18.3</span>layer: หลาย neuron พร้อมกัน</a></li><li><a href="chapter-18.html#topic-4"><span class="topic-number">18.4</span>loss: วัดว่าผิดมากแค่ไหน</a></li><li><a href="chapter-18.html#topic-5"><span class="topic-number">18.5</span>การเรียนรู้: gradient descent</a></li><li><a href="chapter-18.html#topic-6"><span class="topic-number">18.6</span>ใช้ library แทนการเขียนเอง</a></li><li><a href="chapter-18.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="gui">GUI และโปรเจกต์</p><details class="chapter-nav-item" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปหน้าต่างด้วย Qt for Python โดยใช้ widget, layout, signal และ slot QApplication จัดการแอป Layout ทำหน้าที่จัดวาง signal/slot เชื่อม event กับงาน">
+<p class="toc-label" data-group="gui">GUI และโปรเจกต์</p><details class="chapter-nav-item" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปที่มีหน้าต่าง ปุ่ม และช่องกรอกข้อมูลด้วย PySide6 (Qt for Python) โครงสร้างแอปพื้นฐาน widget ที่ใช้บ่อย layout: จัดวาง widget signal และ slot: ทำงานเมื่อผู้ใช้กด เขียนหน้าต่างเป็น class">
       <summary><span class="toc-number">19</span><span class="chapter-nav-title">สร้าง GUI สมัยใหม่ด้วย PySide6</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-19.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-19.html#topic-1"><span class="topic-number">19.1</span>QApplication จัดการแอป</a></li><li><a href="chapter-19.html#topic-2"><span class="topic-number">19.2</span>Layout ทำหน้าที่จัดวาง</a></li><li><a href="chapter-19.html#topic-3"><span class="topic-number">19.3</span>signal/slot เชื่อม event กับงาน</a></li><li><a href="chapter-19.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-19.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-19.html#topic-1"><span class="topic-number">19.1</span>โครงสร้างแอปพื้นฐาน</a></li><li><a href="chapter-19.html#topic-2"><span class="topic-number">19.2</span>widget ที่ใช้บ่อย</a></li><li><a href="chapter-19.html#topic-3"><span class="topic-number">19.3</span>layout: จัดวาง widget</a></li><li><a href="chapter-19.html#topic-4"><span class="topic-number">19.4</span>signal และ slot: ทำงานเมื่อผู้ใช้กด</a></li><li><a href="chapter-19.html#topic-5"><span class="topic-number">19.5</span>เขียนหน้าต่างเป็น class</a></li><li><a href="chapter-19.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI นำ Python, ตารางข้อมูล, โมเดล และ GUI มาประกอบเป็นแอปแนะนำแผนเรียนขนาดเล็ก เริ่มจากโจทย์และข้อมูล แยก UI, logic และ data ประเมินและสื่อสารข้อจำกัด">
+<details class="chapter-nav-item" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI รวมทุกอย่างที่เรียนมาเป็นแอปแนะนำรายวิชา: ข้อมูลจาก CSV, กติกาแนะนำ, โมเดลทำนาย และหน้าต่าง PySide6 เริ่มจากโจทย์ ไม่ใช่โค้ด แยกเป็น 3 ชั้น ชั้นข้อมูล: โหลดรายวิชา ชั้น logic: กติกาแนะนำ + ทดสอบ เพิ่มโมเดล ML: ทำนายโอกาสผ่าน ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง">
       <summary><span class="toc-number">20</span><span class="chapter-nav-title">โปรเจกต์ปลายทาง: Course Planner + AI</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-20.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-20.html#topic-1"><span class="topic-number">20.1</span>เริ่มจากโจทย์และข้อมูล</a></li><li><a href="chapter-20.html#topic-2"><span class="topic-number">20.2</span>แยก UI, logic และ data</a></li><li><a href="chapter-20.html#topic-3"><span class="topic-number">20.3</span>ประเมินและสื่อสารข้อจำกัด</a></li><li><a href="chapter-20.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-20.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-20.html#topic-1"><span class="topic-number">20.1</span>เริ่มจากโจทย์ ไม่ใช่โค้ด</a></li><li><a href="chapter-20.html#topic-2"><span class="topic-number">20.2</span>แยกเป็น 3 ชั้น</a></li><li><a href="chapter-20.html#topic-3"><span class="topic-number">20.3</span>ชั้นข้อมูล: โหลดรายวิชา</a></li><li><a href="chapter-20.html#topic-4"><span class="topic-number">20.4</span>ชั้น logic: กติกาแนะนำ + ทดสอบ</a></li><li><a href="chapter-20.html#topic-5"><span class="topic-number">20.5</span>เพิ่มโมเดล ML: ทำนายโอกาสผ่าน</a></li><li><a href="chapter-20.html#topic-6"><span class="topic-number">20.6</span>ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง</a></li><li><a href="chapter-20.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
       </nav>
       <div class="sidebar-bottom">ตัวอย่างรันด้วย Python จริง<br>เลื่อนเพื่ออ่านหัวข้อถัดไป</div>
     </aside>
     <main class="lesson-main" id="lesson-content">
       <div class="utility-row"><a href="../index.html">← สารบัญรายวิชา</a><span class="utility-code">CHAPTER 15 / 20</span></div>
-      <header class="lesson-header"><p class="lesson-kicker">CHAPTER 15 · ข้อมูลและ AI</p><h1>จัดการตารางข้อมูลด้วย pandas</h1><p>อ่าน ทำความสะอาด เลือก และสรุปข้อมูลตารางด้วย DataFrame</p></header>
-      <section class="learning-goals"><strong>เมื่อจบบทนี้ นิสิตจะทำได้</strong><ul><li>สร้าง DataFrame กรองแถว จัดการค่าว่าง และ groupby ข้อมูลตามหมวดหมู่ได้</li><li>DataFrame มีแถวและคอลัมน์</li><li>เลือกและกรองข้อมูล</li></ul></section>
-      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">แนวคิดและตัวอย่าง</h2>
-        <div class="chapter-intro"><strong>แผนการเรียนบทนี้</strong><p>การวิเคราะห์ตารางเริ่มจากตรวจข้อมูล ไม่ใช่รีบวาดกราฟ ให้สำรวจจำนวนแถว ชนิดคอลัมน์ และ missing values ก่อนเลือก/กรองข้อมูล จากนั้นค่อยสร้างคอลัมน์และ groupby เพื่อสรุปผล ระวังว่าตัวเลขที่อ่านจาก CSV อาจถูกอ่านเป็นข้อความ</p><p>วิธีฝึก: อ่านโจทย์ → ระบุข้อมูลเข้าและผลที่ต้องการ → ทำนาย output → รันและตรวจทีละขั้น → อธิบายด้วยคำของตนเองว่าเหตุใดจึงได้ผลเช่นนั้น</p></div>
-        <article class="subtopic" id="topic-1"><h3>15.1 DataFrame มีแถวและคอลัมน์</h3><p>สร้างจาก dict ของ list หรืออ่านจาก CSV; ตรวจ `head()`, `shape`, `dtypes` และ `info()` ก่อนวิเคราะห์</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-2"><h3>15.2 เลือกและกรองข้อมูล</h3><p>ใช้ `df[&quot;column&quot;]` เลือกคอลัมน์ และ boolean condition กรองแถว ควรใช้ `.loc` เมื่อเลือกแถวและคอลัมน์พร้อมกัน</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-3"><h3>15.3 ทำความสะอาดและ groupby</h3><p>`isna()` ตรวจค่าว่าง, `fillna()` เติมตามเหตุผล และ `groupby()` สรุปตามกลุ่ม คิดก่อนว่าจะทิ้งหรือเติม missing data</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><div class="source-example">
-    <h4>ตัวอย่าง 15.1 · สร้างตารางและกรอง</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> สร้าง DataFrame คะแนน แล้วเลือกเฉพาะแถวที่คะแนนถึงเกณฑ์</p>
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>import pandas as pd
+      <header class="lesson-header"><p class="lesson-kicker">CHAPTER 15 · ข้อมูลและ AI</p><h1>จัดการตารางข้อมูลด้วย pandas</h1><p>อ่าน สำรวจ กรอง ทำความสะอาด และสรุปข้อมูลตารางด้วย pandas DataFrame</p></header>
+      <section class="learning-goals"><strong>จบบทนี้แล้วทำได้</strong><p>อ่านไฟล์ CSV เป็น DataFrame เลือกและกรองข้อมูล เพิ่มคอลัมน์ จัดการค่าว่าง และสรุปด้วย groupby</p></section>
+      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">เนื้อหา</h2>
+        <article class="subtopic" id="topic-1"><h3>15.1 DataFrame: ตารางข้อมูล</h3><p>DataFrame คือตารางที่มีแถวและคอลัมน์เหมือน Excel แต่ละคอลัมน์คือ Series สร้างจาก dict ได้ โดย key เป็นชื่อคอลัมน์</p><div class="mini-run"><pre class="copyable"><code>import pandas as pd
 
 df = pd.DataFrame({
-    &quot;name&quot;: [&quot;Mali&quot;, &quot;Beam&quot;, &quot;Nok&quot;],
-    &quot;score&quot;: [88, 47, 76],
+    &quot;name&quot;: [&quot;Nina&quot;, &quot;Beam&quot;, &quot;Mali&quot;],
+    &quot;score&quot;: [88, 72, 95],
 })
-passed = df[df[&quot;score&quot;] &gt;= 50]
-print(passed[[&quot;name&quot;, &quot;score&quot;]].to_string(index=False))</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>name  score
-Mali     88
- Nok     76</pre></div>
-    </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>dict กำหนดชื่อคอลัมน์และข้อมูลแต่ละคอลัมน์</li><li>เงื่อนไขคืน Series ของ True/False</li><li>ใช้ mask เลือกแถวผ่านแล้วแสดงเฉพาะคอลัมน์ที่สนใจ</li></ol></div>
-  </div>
-<div class="source-example">
-    <h4>ตัวอย่าง 15.2 · สรุปด้วย groupby</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> รวมยอดขายตามหมวดหมู่ด้วยการจัดกลุ่ม</p>
+print(df)
+print(df.shape)</code></pre><pre class="mini-output" aria-label="Output">   name  score
+0  Nina     88
+1  Beam     72
+2  Mali     95
+(3, 2)</pre></div><p class="tip"><strong>จำง่าย ๆ</strong> ตัวเลขด้านซ้ายสุด (0, 1, 2) คือ index ของแถว</p></article><article class="subtopic" id="topic-2"><h3>15.2 อ่าน CSV และสำรวจข้อมูล</h3><p><code>pd.read_csv()</code> อ่านไฟล์เป็น DataFrame ในบรรทัดเดียว แล้วใช้คำสั่งสำรวจข้อมูลก่อนวิเคราะห์ทุกครั้ง</p><div class="table-wrap"><table class="concept-table"><thead><tr><th>คำสั่ง</th><th>ดูอะไร</th></tr></thead><tbody><tr><td><code>df.head()</code></td><td>5 แถวแรก</td></tr><tr><td><code>df.shape</code></td><td>(จำนวนแถว, จำนวนคอลัมน์)</td></tr><tr><td><code>df.columns</code></td><td>ชื่อคอลัมน์</td></tr><tr><td><code>df.info()</code></td><td>ชนิดข้อมูลและจำนวนค่าที่ไม่ว่าง</td></tr><tr><td><code>df.describe()</code></td><td>สถิติของคอลัมน์ตัวเลข</td></tr></tbody></table></div><div class="data-files"><div class="file-box"><span>ไฟล์ sales.csv</span><pre>date,branch,product,qty,price
+2026-01-05,Bangkok,Coffee,30,55
+2026-01-05,Chiang Mai,Coffee,18,50
+2026-01-05,Bangkok,Tea,12,45
+2026-01-06,Phuket,Coffee,22,60
+2026-01-06,Chiang Mai,Tea,15,40
+2026-01-06,Bangkok,Cake,8,85
+2026-01-07,Phuket,Tea,10,50
+2026-01-07,Bangkok,Coffee,35,55
+2026-01-07,Chiang Mai,Cake,6,80</pre></div></div><div class="mini-run"><pre class="copyable"><code>import pandas as pd
+
+df = pd.read_csv(&quot;sales.csv&quot;)
+print(df.head(3))
+print(df.shape)
+print(df[&quot;qty&quot;].describe()[[&quot;mean&quot;, &quot;min&quot;, &quot;max&quot;]])</code></pre><pre class="mini-output" aria-label="Output">         date      branch product  qty  price
+0  2026-01-05     Bangkok  Coffee   30     55
+1  2026-01-05  Chiang Mai  Coffee   18     50
+2  2026-01-05     Bangkok     Tea   12     45
+(9, 5)
+mean    17.333333
+min      6.000000
+max     35.000000
+Name: qty, dtype: float64</pre></div></article><article class="subtopic" id="topic-3"><h3>15.3 เลือกและกรองข้อมูล</h3><p>เลือกคอลัมน์ด้วยชื่อ กรองแถวด้วยเงื่อนไขในวงเล็บเหลี่ยม ถ้ามีหลายเงื่อนไขใช้ <code>&amp;</code> (และ) <code>|</code> (หรือ) และต้องใส่วงเล็บครอบแต่ละเงื่อนไข</p><div class="table-wrap"><table class="concept-table"><thead><tr><th>เขียน</th><th>ได้</th></tr></thead><tbody><tr><td><code>df[&quot;qty&quot;]</code></td><td>คอลัมน์เดียว (Series)</td></tr><tr><td><code>df[[&quot;branch&quot;, &quot;qty&quot;]]</code></td><td>หลายคอลัมน์ (DataFrame)</td></tr><tr><td><code>df[df[&quot;qty&quot;] &gt; 20]</code></td><td>แถวที่ qty มากกว่า 20</td></tr><tr><td><code>df[(df[&quot;branch&quot;] == &quot;Bangkok&quot;) &amp; (df[&quot;qty&quot;] &gt; 20)]</code></td><td>สองเงื่อนไขพร้อมกัน</td></tr></tbody></table></div><div class="data-files"><div class="file-box"><span>ไฟล์ sales.csv</span><pre>date,branch,product,qty,price
+2026-01-05,Bangkok,Coffee,30,55
+2026-01-05,Chiang Mai,Coffee,18,50
+2026-01-05,Bangkok,Tea,12,45
+2026-01-06,Phuket,Coffee,22,60
+2026-01-06,Chiang Mai,Tea,15,40
+2026-01-06,Bangkok,Cake,8,85
+2026-01-07,Phuket,Tea,10,50
+2026-01-07,Bangkok,Coffee,35,55
+2026-01-07,Chiang Mai,Cake,6,80</pre></div></div><div class="mini-run"><pre class="copyable"><code>import pandas as pd
+
+df = pd.read_csv(&quot;sales.csv&quot;)
+coffee = df[df[&quot;product&quot;] == &quot;Coffee&quot;]
+print(coffee[[&quot;date&quot;, &quot;branch&quot;, &quot;qty&quot;]])</code></pre><pre class="mini-output" aria-label="Output">         date      branch  qty
+0  2026-01-05     Bangkok   30
+1  2026-01-05  Chiang Mai   18
+3  2026-01-06      Phuket   22
+7  2026-01-07     Bangkok   35</pre></div></article><article class="subtopic" id="topic-4"><h3>15.4 เพิ่มคอลัมน์และเรียงข้อมูล</h3><p>คำนวณคอลัมน์ใหม่จากคอลัมน์เดิมได้ทั้งคอลัมน์ในบรรทัดเดียว และเรียงด้วย <code>sort_values()</code></p><div class="data-files"><div class="file-box"><span>ไฟล์ sales.csv</span><pre>date,branch,product,qty,price
+2026-01-05,Bangkok,Coffee,30,55
+2026-01-05,Chiang Mai,Coffee,18,50
+2026-01-05,Bangkok,Tea,12,45
+2026-01-06,Phuket,Coffee,22,60
+2026-01-06,Chiang Mai,Tea,15,40
+2026-01-06,Bangkok,Cake,8,85
+2026-01-07,Phuket,Tea,10,50
+2026-01-07,Bangkok,Coffee,35,55
+2026-01-07,Chiang Mai,Cake,6,80</pre></div></div><div class="mini-run"><pre class="copyable"><code>import pandas as pd
+
+df = pd.read_csv(&quot;sales.csv&quot;)
+df[&quot;revenue&quot;] = df[&quot;qty&quot;] * df[&quot;price&quot;]
+top = df.sort_values(&quot;revenue&quot;, ascending=False).head(3)
+print(top[[&quot;branch&quot;, &quot;product&quot;, &quot;revenue&quot;]])</code></pre><pre class="mini-output" aria-label="Output">    branch product  revenue
+7  Bangkok  Coffee     1925
+0  Bangkok  Coffee     1650
+3   Phuket  Coffee     1320</pre></div></article><article class="subtopic" id="topic-5"><h3>15.5 จัดการค่าว่าง</h3><p>ข้อมูลจริงมักมีช่องว่าง pandas แสดงเป็น <code>NaN</code> ตรวจด้วย <code>isna().sum()</code> แล้วเลือกจะเติมค่า (<code>fillna</code>) หรือลบแถวทิ้ง (<code>dropna</code>)</p><div class="data-files"><div class="file-box"><span>ไฟล์ survey.csv</span><pre>name,age,hours,score
+Nina,20,12,88
+Beam,,8,72
+Mali,21,15,
+Tom,19,,45
+Ploy,22,10,81</pre></div></div><div class="mini-run"><pre class="copyable"><code>import pandas as pd
+
+df = pd.read_csv(&quot;survey.csv&quot;)
+print(df.isna().sum())
+df[&quot;age&quot;] = df[&quot;age&quot;].fillna(df[&quot;age&quot;].mean())
+clean = df.dropna(subset=[&quot;score&quot;])
+print(clean)</code></pre><pre class="mini-output" aria-label="Output">name     0
+age      1
+hours    1
+score    1
+dtype: int64
+   name   age  hours  score
+0  Nina  20.0   12.0   88.0
+1  Beam  20.5    8.0   72.0
+3   Tom  19.0    NaN   45.0
+4  Ploy  22.0   10.0   81.0</pre></div><p class="tip"><strong>จำง่าย ๆ</strong> ก่อนลบแถวให้ดูว่าหายไปกี่แถว ถ้าหายเยอะเกินไปการเติมค่าอาจดีกว่า</p></article><article class="subtopic" id="topic-6"><h3>15.6 สรุปตามกลุ่มด้วย groupby</h3><p><code>groupby(&quot;คอลัมน์&quot;)</code> แบ่งข้อมูลเป็นกลุ่มตามค่าในคอลัมน์ แล้วสรุปแต่ละกลุ่มด้วย <code>sum</code>, <code>mean</code>, <code>count</code> หรือหลายอย่างพร้อมกันด้วย <code>agg</code></p><div class="data-files"><div class="file-box"><span>ไฟล์ sales.csv</span><pre>date,branch,product,qty,price
+2026-01-05,Bangkok,Coffee,30,55
+2026-01-05,Chiang Mai,Coffee,18,50
+2026-01-05,Bangkok,Tea,12,45
+2026-01-06,Phuket,Coffee,22,60
+2026-01-06,Chiang Mai,Tea,15,40
+2026-01-06,Bangkok,Cake,8,85
+2026-01-07,Phuket,Tea,10,50
+2026-01-07,Bangkok,Coffee,35,55
+2026-01-07,Chiang Mai,Cake,6,80</pre></div></div><div class="mini-run"><pre class="copyable"><code>import pandas as pd
+
+df = pd.read_csv(&quot;sales.csv&quot;)
+df[&quot;revenue&quot;] = df[&quot;qty&quot;] * df[&quot;price&quot;]
+print(df.groupby(&quot;branch&quot;)[&quot;revenue&quot;].sum())
+print(df.groupby(&quot;product&quot;)[&quot;qty&quot;].agg([&quot;sum&quot;, &quot;mean&quot;]))</code></pre><pre class="mini-output" aria-label="Output">branch
+Bangkok       4795
+Chiang Mai    1980
+Phuket        1820
+Name: revenue, dtype: int64
+         sum       mean
+product                
+Cake      14   7.000000
+Coffee   105  26.250000
+Tea       37  12.333333</pre></div></article>
+        <h2 class="examples-heading">ตัวอย่างโปรแกรม</h2>
+        <div class="source-example">
+    <h4>ตัวอย่าง 15.1 · รายงานยอดขาย</h4>
+    <p class="concept-line">อ่านไฟล์ → เพิ่มคอลัมน์รายได้ → สรุปตามสาขาและสินค้า → หาสาขาที่ดีที่สุด</p>
+    <div class="data-files"><div class="file-box"><span>ไฟล์ sales.csv</span><pre>date,branch,product,qty,price
+2026-01-05,Bangkok,Coffee,30,55
+2026-01-05,Chiang Mai,Coffee,18,50
+2026-01-05,Bangkok,Tea,12,45
+2026-01-06,Phuket,Coffee,22,60
+2026-01-06,Chiang Mai,Tea,15,40
+2026-01-06,Bangkok,Cake,8,85
+2026-01-07,Phuket,Tea,10,50
+2026-01-07,Bangkok,Coffee,35,55
+2026-01-07,Chiang Mai,Cake,6,80</pre></div></div>
     <div class="source-grid">
       <div class="source-field"><span>Python source</span><pre class="copyable"><code>import pandas as pd
 
-df = pd.DataFrame({
-    &quot;category&quot;: [&quot;book&quot;, &quot;pen&quot;, &quot;book&quot;, &quot;pen&quot;],
-    &quot;sales&quot;: [120, 30, 80, 45],
-})
-summary = df.groupby(&quot;category&quot;)[&quot;sales&quot;].sum()
-print(summary.to_string())</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>category
-book    200
-pen      75</pre></div>
+df = pd.read_csv(&quot;sales.csv&quot;)
+df[&quot;revenue&quot;] = df[&quot;qty&quot;] * df[&quot;price&quot;]
+
+by_branch = df.groupby(&quot;branch&quot;)[&quot;revenue&quot;].sum().sort_values(ascending=False)
+print(by_branch)
+print()
+print(df.pivot_table(index=&quot;branch&quot;, columns=&quot;product&quot;,
+                     values=&quot;qty&quot;, aggfunc=&quot;sum&quot;, fill_value=0))
+print()
+print(f&quot;รายได้รวม {df[&#39;revenue&#39;].sum():,} บาท&quot;)
+print(f&quot;สาขาที่ดีที่สุด: {by_branch.index[0]}&quot;)</code></pre></div>
+      <div class="output-field"><span>Output</span><pre>branch
+Bangkok       4795
+Chiang Mai    1980
+Phuket        1820
+Name: revenue, dtype: int64
+
+product     Cake  Coffee  Tea
+branch                       
+Bangkok        8      65   12
+Chiang Mai     6      18   15
+Phuket         0      22   10
+
+รายได้รวม 8,595 บาท
+สาขาที่ดีที่สุด: Bangkok</pre></div>
     </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>groupby แบ่งข้อมูลตาม category</li><li>เลือก sales แล้วคำนวณ sum ในแต่ละกลุ่ม</li><li>ผลลัพธ์เป็น Series ที่ index เป็นชื่อหมวด</li></ol></div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li><code>groupby</code> แล้ว <code>sort_values</code> ได้สาขาเรียงจากรายได้มากไปน้อย</li><li><code>pivot_table</code> ทำตารางไขว้ สาขา × สินค้า เหมือน Pivot ใน Excel</li><li><code>by_branch.index[0]</code> คือชื่อสาขาแถวแรกหลังเรียงแล้ว</li></ol></div>
   </div>
 <div class="source-example">
-    <h4>ตัวอย่าง 15.3 · จัดเรียงและเลือกแถว</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> เรียงข้อมูลตามคะแนนจากมากไปน้อย แล้วเลือกคอลัมน์ที่จะรายงาน</p>
+    <h4>ตัวอย่าง 15.2 · ทำความสะอาดข้อมูลแบบสอบถาม</h4>
+    <p class="concept-line">ตรวจค่าว่าง เติมค่าที่เหมาะสม ลบแถวที่ใช้ไม่ได้ แล้วจึงวิเคราะห์</p>
+    <div class="data-files"><div class="file-box"><span>ไฟล์ survey.csv</span><pre>name,age,hours,score
+Nina,20,12,88
+Beam,,8,72
+Mali,21,15,
+Tom,19,,45
+Ploy,22,10,81</pre></div></div>
     <div class="source-grid">
       <div class="source-field"><span>Python source</span><pre class="copyable"><code>import pandas as pd
 
-df = pd.DataFrame({&quot;name&quot;: [&quot;Nok&quot;, &quot;Mali&quot;, &quot;Beam&quot;], &quot;score&quot;: [76, 92, 84]})
-top = df.sort_values(&quot;score&quot;, ascending=False).head(2)
-print(top.to_string(index=False))</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>name  score
-Mali     92
-Beam     84</pre></div>
+df = pd.read_csv(&quot;survey.csv&quot;)
+print(&quot;ค่าว่างก่อนทำความสะอาด:&quot;)
+print(df.isna().sum())
+
+df[&quot;age&quot;] = df[&quot;age&quot;].fillna(df[&quot;age&quot;].median())
+df[&quot;hours&quot;] = df[&quot;hours&quot;].fillna(0)
+df = df.dropna(subset=[&quot;score&quot;])
+
+print()
+print(df)
+print(f&quot;ชั่วโมงอ่านหนังสือเฉลี่ย {df[&#39;hours&#39;].mean():.1f}&quot;)</code></pre></div>
+      <div class="output-field"><span>Output</span><pre>ค่าว่างก่อนทำความสะอาด:
+name     0
+age      1
+hours    1
+score    1
+dtype: int64
+
+   name   age  hours  score
+0  Nina  20.0   12.0   88.0
+1  Beam  20.5    8.0   72.0
+3   Tom  19.0    0.0   45.0
+4  Ploy  22.0   10.0   81.0
+ชั่วโมงอ่านหนังสือเฉลี่ย 7.5</pre></div>
     </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>sort_values เรียงตามคอลัมน์ score</li><li>ascending=False ทำให้ค่าสูงอยู่ก่อน</li><li>head(2) เลือกสองแถวแรกหลังเรียง</li></ol></div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li>อายุที่ว่างเติมด้วยค่ามัธยฐาน ซึ่งไม่ถูกดึงด้วยค่าผิดปกติเท่าค่าเฉลี่ย</li><li>ชั่วโมงที่ว่างตีความว่าไม่ได้อ่าน จึงเติม 0</li><li>คะแนนคือสิ่งที่จะวิเคราะห์ แถวที่ไม่มีคะแนนจึงลบทิ้ง</li></ol></div>
   </div>
       </section>
       <section class="exercise-section" id="chapter-exercises" aria-labelledby="exercise-heading">
         <h2 id="exercise-heading">แบบฝึกหัดท้ายบท</h2>
-        <p class="exercise-intro">ทำจากข้อพื้นฐานไปข้อท้าทาย ก่อนเขียนให้จดข้อมูลที่โจทย์ให้ สิ่งที่ต้องหา และลำดับการทำงานสั้น ๆ จากนั้นทำนาย output แล้วรันตรวจ รายการตรวจช่วยไล่เงื่อนไขทีละข้อ หากยังติดให้ย้อนอ่านหัวข้อที่เกี่ยวข้องก่อนเปิดเฉลย ซึ่งมีแนวคิดและ source code ที่รันตรวจแล้ว</p>
+        <p class="exercise-intro">เรียงจากง่ายไปยาก ลองเขียนเองให้ได้ output ตรงตัวอย่างก่อน แล้วค่อยเปิดเฉลย</p>
         <div class="exercise-list"><article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 15.1</span><strong>คำนวณคอลัมน์ใหม่</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>สร้างตารางสินค้า price และ quantity แล้วเพิ่มคอลัมน์ total = price * quantity</p>
-    <ul><li>สร้าง DataFrame</li><li>คูณ Series ของสองคอลัมน์</li><li>แสดงตารางผลลัพธ์</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre> price  quantity  total
-    10         3     30
-    25         2     50</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 15.1</span><strong>สร้างตารางและสรุป</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
+    <p>สร้าง DataFrame สินค้า 4 ชนิด (ชื่อ, ราคา, จำนวน) แล้วแสดงตาราง ราคาเฉลี่ย และจำนวนรวม</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>pen 12/30, book 45/10, bag 350/3, ruler 15/20</dd></div><div><dt>ต้องหา</dt><dd>ตาราง 4 แถว, ราคาเฉลี่ย 105.50, จำนวนรวม 63</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>สร้างจาก dict ที่ key เป็นชื่อคอลัมน์</li><li><code>df[&quot;price&quot;].mean()</code></li><li><code>df[&quot;qty&quot;].sum()</code></li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>    name  price  qty
+0    pen     12   30
+1   book     45   10
+2    bag    350    3
+3  ruler     15   20
+ราคาเฉลี่ย 105.50
+จำนวนรวม 63</pre></div>
     <div class="answer-gate" data-answer-id="15.1">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -174,20 +322,36 @@ Beam     84</pre></div>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การคำนวณระหว่าง Series จะจับคู่ค่าตาม index</p><pre class="copyable"><code>import pandas as pd
-df = pd.DataFrame({&quot;price&quot;: [10, 25], &quot;quantity&quot;: [3, 2]})
-df[&quot;total&quot;] = df[&quot;price&quot;] * df[&quot;quantity&quot;]
-print(df.to_string(index=False))</code></pre>
+        <p>แต่ละคอลัมน์เป็น Series ที่มีฟังก์ชันสถิติในตัวเหมือน NumPy array</p><pre class="copyable"><code>import pandas as pd
+
+df = pd.DataFrame({
+    &quot;name&quot;: [&quot;pen&quot;, &quot;book&quot;, &quot;bag&quot;, &quot;ruler&quot;],
+    &quot;price&quot;: [12, 45, 350, 15],
+    &quot;qty&quot;: [30, 10, 3, 20],
+})
+print(df)
+print(f&quot;ราคาเฉลี่ย {df[&#39;price&#39;].mean():.2f}&quot;)
+print(&quot;จำนวนรวม&quot;, df[&quot;qty&quot;].sum())</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 15.2</span><strong>กรองข้อมูลหลายเงื่อนไข</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>จากตารางชื่อและคะแนน ให้เลือกคนที่คะแนนตั้งแต่ 60 และแสดงเฉพาะชื่อ</p>
-    <ul><li>สร้าง mask คะแนน &gt;= 60</li><li>เลือกคอลัมน์ name</li><li>แสดง index=False</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>name
-   B
-   C</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 15.2</span><strong>กรองยอดขาย</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
+    <p>อ่าน <code>sales.csv</code> แล้วแสดงเฉพาะแถวของสาขา Bangkok ที่ขายได้ตั้งแต่ 20 ชิ้น</p>
+    <div class="data-files"><div class="file-box"><span>ไฟล์ sales.csv</span><pre>date,branch,product,qty,price
+2026-01-05,Bangkok,Coffee,30,55
+2026-01-05,Chiang Mai,Coffee,18,50
+2026-01-05,Bangkok,Tea,12,45
+2026-01-06,Phuket,Coffee,22,60
+2026-01-06,Chiang Mai,Tea,15,40
+2026-01-06,Bangkok,Cake,8,85
+2026-01-07,Phuket,Tea,10,50
+2026-01-07,Bangkok,Coffee,35,55
+2026-01-07,Chiang Mai,Cake,6,80</pre></div></div>
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ไฟล์ sales.csv</dd></div><div><dt>ต้องหา</dt><dd>2 แถว (Coffee 30 และ Coffee 35)</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>สองเงื่อนไขเชื่อมด้วย <code>&amp;</code></li><li>ครอบแต่ละเงื่อนไขด้วยวงเล็บ</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>         date   branch product  qty  price
+0  2026-01-05  Bangkok  Coffee   30     55
+7  2026-01-07  Bangkok  Coffee   35     55</pre></div>
     <div class="answer-gate" data-answer-id="15.2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -196,18 +360,32 @@ print(df.to_string(index=False))</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>.loc ระบุทั้งเงื่อนไขแถวและคอลัมน์ที่ต้องการ</p><pre class="copyable"><code>import pandas as pd
-df = pd.DataFrame({&quot;name&quot;: [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;], &quot;score&quot;: [55, 72, 90]})
-print(df.loc[df[&quot;score&quot;] &gt;= 60, [&quot;name&quot;]].to_string(index=False))</code></pre>
+        <p>pandas ใช้ <code>&amp;</code> แทน <code>and</code> เพราะต้องเทียบทีละแถว ถ้าลืมวงเล็บจะเกิด error เพราะ <code>&amp;</code> ทำก่อน <code>==</code></p><pre class="copyable"><code>import pandas as pd
+
+df = pd.read_csv(&quot;sales.csv&quot;)
+result = df[(df[&quot;branch&quot;] == &quot;Bangkok&quot;) &amp; (df[&quot;qty&quot;] &gt;= 20)]
+print(result)</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 15.3</span><strong>จัดการค่าว่าง</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>สร้างตารางคะแนนมีค่า None หนึ่งแถว แล้วเติมค่าว่างด้วยค่าเฉลี่ยของคอลัมน์</p>
-    <ul><li>ใช้ isna ตรวจค่าว่าง</li><li>คำนวณ mean</li><li>fillna ด้วยค่าเฉลี่ยและแสดงผล</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>1
-[70.0, 80.0, 90.0]</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 15.3</span><strong>10 อันดับรายได้</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
+    <p>อ่าน <code>sales.csv</code> เพิ่มคอลัมน์ revenue แล้วแสดงรายการที่ทำรายได้สูงสุด 3 อันดับ เฉพาะคอลัมน์ date, branch, product, revenue</p>
+    <div class="data-files"><div class="file-box"><span>ไฟล์ sales.csv</span><pre>date,branch,product,qty,price
+2026-01-05,Bangkok,Coffee,30,55
+2026-01-05,Chiang Mai,Coffee,18,50
+2026-01-05,Bangkok,Tea,12,45
+2026-01-06,Phuket,Coffee,22,60
+2026-01-06,Chiang Mai,Tea,15,40
+2026-01-06,Bangkok,Cake,8,85
+2026-01-07,Phuket,Tea,10,50
+2026-01-07,Bangkok,Coffee,35,55
+2026-01-07,Chiang Mai,Cake,6,80</pre></div></div>
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ไฟล์ sales.csv</dd></div><div><dt>ต้องหา</dt><dd>3 แถวเรียงรายได้จากมากไปน้อย</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>df[&quot;revenue&quot;] = df[&quot;qty&quot;] * df[&quot;price&quot;]</code></li><li><code>sort_values(..., ascending=False)</code></li><li><code>.head(3)</code> และเลือกคอลัมน์</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>         date   branch product  revenue
+7  2026-01-07  Bangkok  Coffee     1925
+0  2026-01-05  Bangkok  Coffee     1650
+3  2026-01-06   Phuket  Coffee     1320</pre></div>
     <div class="answer-gate" data-answer-id="15.3">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -216,22 +394,35 @@ print(df.loc[df[&quot;score&quot;] &gt;= 60, [&quot;name&quot;]].to_string(index
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การเติมค่าเฉลี่ยเป็นตัวอย่างหนึ่ง ต้องเลือกวิธีตามความหมายของข้อมูลจริง</p><pre class="copyable"><code>import pandas as pd
-df = pd.DataFrame({&quot;score&quot;: [70, None, 90]})
-print(df[&quot;score&quot;].isna().sum())
-df[&quot;score&quot;] = df[&quot;score&quot;].fillna(df[&quot;score&quot;].mean())
-print(df[&quot;score&quot;].tolist())</code></pre>
+        <p>การเรียงแล้วตัดด้วย <code>head()</code> เป็นรูปแบบมาตรฐานของการหา Top N</p><pre class="copyable"><code>import pandas as pd
+
+df = pd.read_csv(&quot;sales.csv&quot;)
+df[&quot;revenue&quot;] = df[&quot;qty&quot;] * df[&quot;price&quot;]
+top = df.sort_values(&quot;revenue&quot;, ascending=False).head(3)
+print(top[[&quot;date&quot;, &quot;branch&quot;, &quot;product&quot;, &quot;revenue&quot;]])</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 15.4</span><strong>สรุปยอดขายรายหมวด</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
-    <p>สร้างข้อมูลยอดขาย 4 แถวของหมวด A และ B ให้สรุปจำนวนรายการและยอดรวมต่อหมวด</p>
-    <ul><li>groupby category</li><li>aggregate count และ sum</li><li>แสดง DataFrame สรุป</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>          count  sum
-category            
-A             2   25
-B             2   25</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 15.4</span><strong>ยอดขายรายวัน</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
+    <p>สรุปจำนวนชิ้นที่ขายได้ในแต่ละวัน และบอกวันที่ขายได้มากที่สุด</p>
+    <div class="data-files"><div class="file-box"><span>ไฟล์ sales.csv</span><pre>date,branch,product,qty,price
+2026-01-05,Bangkok,Coffee,30,55
+2026-01-05,Chiang Mai,Coffee,18,50
+2026-01-05,Bangkok,Tea,12,45
+2026-01-06,Phuket,Coffee,22,60
+2026-01-06,Chiang Mai,Tea,15,40
+2026-01-06,Bangkok,Cake,8,85
+2026-01-07,Phuket,Tea,10,50
+2026-01-07,Bangkok,Coffee,35,55
+2026-01-07,Chiang Mai,Cake,6,80</pre></div></div>
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ไฟล์ sales.csv</dd></div><div><dt>ต้องหา</dt><dd>ยอดรายวัน 3 วัน และ <code>ขายดีสุดวันที่ 2026-01-07</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>groupby(&quot;date&quot;)[&quot;qty&quot;].sum()</code></li><li><code>.idxmax()</code> คืน index (วันที่) ของค่ามากสุด</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>date
+2026-01-05    60
+2026-01-06    45
+2026-01-07    51
+Name: qty, dtype: int64
+ขายดีสุดวันที่ 2026-01-05</pre></div>
     <div class="answer-gate" data-answer-id="15.4">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -240,18 +431,34 @@ B             2   25</pre></div>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>agg รวมหลายสถิติไว้ในขั้นตอน groupby เดียว</p><pre class="copyable"><code>import pandas as pd
-df = pd.DataFrame({&quot;category&quot;: [&quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;], &quot;sales&quot;: [10, 20, 15, 5]})
-result = df.groupby(&quot;category&quot;)[&quot;sales&quot;].agg([&quot;count&quot;, &quot;sum&quot;])
-print(result.to_string())</code></pre>
+        <p>หลัง groupby ค่าที่ใช้จัดกลุ่มกลายเป็น index <code>idxmax()</code> จึงคืนวันที่แทนตัวเลขลำดับ</p><pre class="copyable"><code>import pandas as pd
+
+df = pd.read_csv(&quot;sales.csv&quot;)
+daily = df.groupby(&quot;date&quot;)[&quot;qty&quot;].sum()
+print(daily)
+print(&quot;ขายดีสุดวันที่&quot;, daily.idxmax())</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 15.5</span><strong>จัดอันดับข้อมูล</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>มีตารางนักศึกษา 3 คนกับคะแนน ให้เรียงจากคะแนนมากไปน้อยและแสดงอันดับหนึ่ง</p>
-    <ul><li>สร้าง DataFrame</li><li>ใช้ sort_values โดยกำหนด ascending=False</li><li>เลือกแถวแรกหลังเรียง</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>Beam 95</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 15.5</span><strong>ทำความสะอาดแล้ววิเคราะห์</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
+    <p>จาก <code>survey.csv</code> ให้ลบแถวที่ไม่มีคะแนน เติมชั่วโมงที่ว่างด้วยค่าเฉลี่ย แล้วเปรียบเทียบคะแนนเฉลี่ยของคนที่อ่าน ≥ 10 ชั่วโมงกับ &lt; 10 ชั่วโมง</p>
+    <div class="data-files"><div class="file-box"><span>ไฟล์ survey.csv</span><pre>name,age,hours,score
+Nina,20,12,88
+Beam,,8,72
+Mali,21,15,
+Tom,19,,45
+Ploy,22,10,81</pre></div></div>
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ไฟล์ survey.csv ที่มีค่าว่าง</dd></div><div><dt>ต้องหา</dt><dd>คะแนนเฉลี่ย 2 กลุ่ม</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>dropna(subset=[&quot;score&quot;])</code> ก่อน</li><li><code>fillna(df[&quot;hours&quot;].mean())</code></li><li>สร้างคอลัมน์กลุ่มด้วย <code>np.where</code> หรือเงื่อนไข แล้ว groupby</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>   name  hours  score      group
+0  Nina   12.0   88.0  &gt;= 10 ชม.
+1  Beam    8.0   72.0   &lt; 10 ชม.
+3   Tom   10.0   45.0  &gt;= 10 ชม.
+4  Ploy   10.0   81.0  &gt;= 10 ชม.
+group
+&lt; 10 ชม.     72.0
+&gt;= 10 ชม.    71.3
+Name: score, dtype: float64</pre></div>
     <div class="answer-gate" data-answer-id="15.5">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -260,20 +467,36 @@ print(result.to_string())</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การเรียงก่อนเลือกแถวป้องกันการสมมติว่าข้อมูลต้นฉบับเรียงมาแล้ว</p><pre class="copyable"><code>import pandas as pd
-df = pd.DataFrame({&quot;name&quot;: [&quot;Aom&quot;, &quot;Beam&quot;, &quot;Nok&quot;], &quot;score&quot;: [81, 95, 88]})
-top = df.sort_values(&quot;score&quot;, ascending=False).iloc[0]
-print(top[&quot;name&quot;], top[&quot;score&quot;])</code></pre>
+        <p>ลำดับการทำความสะอาดสำคัญ: ลบแถวที่ใช้ไม่ได้ก่อน แล้วค่อยคำนวณค่าเฉลี่ยมาเติม ค่าที่เติมจะได้มาจากข้อมูลที่ใช้จริง</p><pre class="copyable"><code>import pandas as pd
+
+df = pd.read_csv(&quot;survey.csv&quot;)
+df = df.dropna(subset=[&quot;score&quot;])
+df[&quot;hours&quot;] = df[&quot;hours&quot;].fillna(df[&quot;hours&quot;].mean())
+df[&quot;group&quot;] = df[&quot;hours&quot;].apply(lambda h: &quot;&gt;= 10 ชม.&quot; if h &gt;= 10 else &quot;&lt; 10 ชม.&quot;)
+print(df[[&quot;name&quot;, &quot;hours&quot;, &quot;score&quot;, &quot;group&quot;]])
+print(df.groupby(&quot;group&quot;)[&quot;score&quot;].mean().round(1))</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 15.6</span><strong>รวมยอดขายแยกหมวดและเรียงผล</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>มีข้อมูลยอดขายหมวด A, B, A, B ให้รวมยอดต่อหมวดแล้วเรียงยอดรวมจากมากไปน้อย</p>
-    <ul><li>groupby หมวด</li><li>sum ยอดขาย</li><li>sort_values ผลลัพธ์</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>category
-B    45
-A    37</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 15.6</span><strong>ตาราง pivot</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
+    <p>สร้างตารางรายได้ (qty × price) แยกสาขาเป็นแถว สินค้าเป็นคอลัมน์ และเพิ่มคอลัมน์รวมของแต่ละสาขา</p>
+    <div class="data-files"><div class="file-box"><span>ไฟล์ sales.csv</span><pre>date,branch,product,qty,price
+2026-01-05,Bangkok,Coffee,30,55
+2026-01-05,Chiang Mai,Coffee,18,50
+2026-01-05,Bangkok,Tea,12,45
+2026-01-06,Phuket,Coffee,22,60
+2026-01-06,Chiang Mai,Tea,15,40
+2026-01-06,Bangkok,Cake,8,85
+2026-01-07,Phuket,Tea,10,50
+2026-01-07,Bangkok,Coffee,35,55
+2026-01-07,Chiang Mai,Cake,6,80</pre></div></div>
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ไฟล์ sales.csv</dd></div><div><dt>ต้องหา</dt><dd>ตาราง 3 สาขา × (Cake, Coffee, Tea, Total)</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>สร้างคอลัมน์ revenue</li><li><code>pivot_table(index=..., columns=..., values=..., aggfunc=&quot;sum&quot;, fill_value=0)</code></li><li><code>table[&quot;Total&quot;] = table.sum(axis=1)</code></li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>product     Cake  Coffee  Tea  Total
+branch                              
+Bangkok      680    3575  540   4795
+Chiang Mai   480     900  600   1980
+Phuket         0    1320  500   1820</pre></div>
     <div class="answer-gate" data-answer-id="15.6">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -282,16 +505,20 @@ A    37</pre></div>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ทำ groupby ก่อนแล้วค่อย sort เพื่อจัดอันดับกลุ่มจากผลรวม ไม่ใช่จากแต่ละแถว</p><pre class="copyable"><code>import pandas as pd
-df = pd.DataFrame({&quot;category&quot;: [&quot;A&quot;, &quot;B&quot;, &quot;A&quot;, &quot;B&quot;], &quot;sales&quot;: [12, 30, 25, 15]})
-result = df.groupby(&quot;category&quot;)[&quot;sales&quot;].sum().sort_values(ascending=False)
-print(result.to_string())</code></pre>
+        <p><code>fill_value=0</code> เติม 0 ให้คู่สาขา-สินค้าที่ไม่มียอดขาย และ <code>sum(axis=1)</code> รวมตามแถวเหมือน NumPy</p><pre class="copyable"><code>import pandas as pd
+
+df = pd.read_csv(&quot;sales.csv&quot;)
+df[&quot;revenue&quot;] = df[&quot;qty&quot;] * df[&quot;price&quot;]
+table = df.pivot_table(index=&quot;branch&quot;, columns=&quot;product&quot;,
+                       values=&quot;revenue&quot;, aggfunc=&quot;sum&quot;, fill_value=0)
+table[&quot;Total&quot;] = table.sum(axis=1)
+print(table)</code></pre>
       </div>
     </div>
   </article></div>
       </section>
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-14.html">← บทก่อนหน้า</a><a class="pager-link" href="chapter-16.html">บทถัดไป →</a></nav>
-      <footer class="lesson-footer">Python programming · Lecture notes · ตัวอย่างรันตรวจด้วย Python จริง</footer>
+      <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
   <script src="../password.js"></script><script src="../assets/lesson.js"></script>

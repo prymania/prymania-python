@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#192044">
-  <meta name="description" content="สร้างแอปหน้าต่างด้วย Qt for Python โดยใช้ widget, layout, signal และ slot">
+  <meta name="description" content="สร้างแอปที่มีหน้าต่าง ปุ่ม และช่องกรอกข้อมูลด้วย PySide6 (Qt for Python)">
   <title>บทที่ 19 · สร้าง GUI สมัยใหม่ด้วย PySide6 | Python programming</title>
   <link rel="stylesheet" href="../assets/lesson.css">
 </head>
@@ -15,193 +15,278 @@
       <a class="lesson-brand" href="../index.html"><span class="brand-mark">Py</span><span><span class="brand-title">Python programming by Prymania</span><span class="brand-caption">LECTURE NOTES</span></span></a>
       <nav class="lesson-toc chapter-navigation" aria-label="สารบัญรายวิชา">
         <p class="toc-label">สารบัญ · 20 บทเรียน</p>
-        <p class="toc-label" data-group="foundation">เริ่มต้นกับ Python</p><details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเริ่มใช้งาน Python ด้วย Thonny ทำความเข้าใจไฟล์ .py, โครงสร้างคำสั่ง และวิธีรัน/หยุดโปรแกรม Python program ทำงานอย่างไร เลือก IDE สำหรับผู้เริ่มเรียน: Thonny แยก editor, shell และ interpreter โครงสร้างไฟล์และการเยื้องบรรทัด รัน บันทึก และอ่านข้อผิดพลาด">
+        <p class="toc-label" data-group="foundation">เริ่มต้นกับ Python</p><details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเปิด Thonny เขียนไฟล์ .py แรก รันโปรแกรม และอ่าน error เบื้องต้น Python ทำงานอย่างไร เครื่องมือที่ใช้: Thonny Shell กับไฟล์ .py ต่างกันอย่างไร comment และการเยื้องบรรทัด อ่าน error ให้เป็น">
       <summary><span class="toc-number">01</span><span class="chapter-nav-title">โครงสร้างโปรแกรม Python, IDE และการรัน</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-01.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-01.html#topic-1"><span class="topic-number">01.1</span>Python program ทำงานอย่างไร</a></li><li><a href="chapter-01.html#topic-2"><span class="topic-number">01.2</span>เลือก IDE สำหรับผู้เริ่มเรียน: Thonny</a></li><li><a href="chapter-01.html#topic-3"><span class="topic-number">01.3</span>แยก editor, shell และ interpreter</a></li><li><a href="chapter-01.html#topic-4"><span class="topic-number">01.4</span>โครงสร้างไฟล์และการเยื้องบรรทัด</a></li><li><a href="chapter-01.html#topic-5"><span class="topic-number">01.5</span>รัน บันทึก และอ่านข้อผิดพลาด</a></li><li><a href="chapter-01.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-01.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-01.html#topic-1"><span class="topic-number">01.1</span>Python ทำงานอย่างไร</a></li><li><a href="chapter-01.html#topic-2"><span class="topic-number">01.2</span>เครื่องมือที่ใช้: Thonny</a></li><li><a href="chapter-01.html#topic-3"><span class="topic-number">01.3</span>Shell กับไฟล์ .py ต่างกันอย่างไร</a></li><li><a href="chapter-01.html#topic-4"><span class="topic-number">01.4</span>comment และการเยื้องบรรทัด</a></li><li><a href="chapter-01.html#topic-5"><span class="topic-number">01.5</span>อ่าน error ให้เป็น</a></li><li><a href="chapter-01.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลแต่ละชนิด รับค่าจากผู้ใช้ แปลงชนิดก่อนคำนวณ และสร้าง output ที่อ่านเข้าใจได้ ตัวแปรคือชื่อที่อ้างถึงข้อมูล ตั้งชื่อให้คนอ่านเข้าใจ ค่าหนึ่งเปลี่ยนได้ตามลำดับคำสั่ง ชนิดข้อมูลบอกวิธีใช้งานค่า input คืนค่าเป็นข้อความเสมอ f-string แทรกค่าลงในข้อความ">
+<details class="chapter-nav-item" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลในตัวแปร รู้จักชนิดข้อมูล รับค่าด้วย input() และแสดงผลด้วย print() / f-string ตัวแปร: ตั้งชื่อให้ข้อมูล ชนิดข้อมูลพื้นฐาน 4 ชนิด แปลงชนิดข้อมูล รับค่าด้วย input() แสดงผลด้วย print() และ f-string ข้อผิดพลาดที่เจอบ่อย">
       <summary><span class="toc-number">02</span><span class="chapter-nav-title">ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-02.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-02.html#topic-1"><span class="topic-number">02.1</span>ตัวแปรคือชื่อที่อ้างถึงข้อมูล</a></li><li><a href="chapter-02.html#topic-2"><span class="topic-number">02.2</span>ตั้งชื่อให้คนอ่านเข้าใจ</a></li><li><a href="chapter-02.html#topic-3"><span class="topic-number">02.3</span>ค่าหนึ่งเปลี่ยนได้ตามลำดับคำสั่ง</a></li><li><a href="chapter-02.html#topic-4"><span class="topic-number">02.4</span>ชนิดข้อมูลบอกวิธีใช้งานค่า</a></li><li><a href="chapter-02.html#topic-5"><span class="topic-number">02.5</span>input คืนค่าเป็นข้อความเสมอ</a></li><li><a href="chapter-02.html#topic-6"><span class="topic-number">02.6</span>f-string แทรกค่าลงในข้อความ</a></li><li><a href="chapter-02.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-02.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-02.html#topic-1"><span class="topic-number">02.1</span>ตัวแปร: ตั้งชื่อให้ข้อมูล</a></li><li><a href="chapter-02.html#topic-2"><span class="topic-number">02.2</span>ชนิดข้อมูลพื้นฐาน 4 ชนิด</a></li><li><a href="chapter-02.html#topic-3"><span class="topic-number">02.3</span>แปลงชนิดข้อมูล</a></li><li><a href="chapter-02.html#topic-4"><span class="topic-number">02.4</span>รับค่าด้วย input()</a></li><li><a href="chapter-02.html#topic-5"><span class="topic-number">02.5</span>แสดงผลด้วย print() และ f-string</a></li><li><a href="chapter-02.html#topic-6"><span class="topic-number">02.6</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-02.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และประกอบเงื่อนไขเชิงตรรกะ ตัวดำเนินการเลขคณิต เปรียบเทียบแล้วได้ bool เชื่อมเงื่อนไข">
+<details class="chapter-nav-item" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และรวมเงื่อนไขด้วย and / or / not ตัวดำเนินการเลขคณิต ลำดับการคำนวณ เปรียบเทียบค่า ได้ผลเป็น True/False รวมเงื่อนไขด้วย and / or / not ตัวดำเนินการแบบย่อ">
       <summary><span class="toc-number">03</span><span class="chapter-nav-title">ตัวดำเนินการและนิพจน์</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-03.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-03.html#topic-1"><span class="topic-number">03.1</span>ตัวดำเนินการเลขคณิต</a></li><li><a href="chapter-03.html#topic-2"><span class="topic-number">03.2</span>เปรียบเทียบแล้วได้ bool</a></li><li><a href="chapter-03.html#topic-3"><span class="topic-number">03.3</span>เชื่อมเงื่อนไข</a></li><li><a href="chapter-03.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-03.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-03.html#topic-1"><span class="topic-number">03.1</span>ตัวดำเนินการเลขคณิต</a></li><li><a href="chapter-03.html#topic-2"><span class="topic-number">03.2</span>ลำดับการคำนวณ</a></li><li><a href="chapter-03.html#topic-3"><span class="topic-number">03.3</span>เปรียบเทียบค่า ได้ผลเป็น True/False</a></li><li><a href="chapter-03.html#topic-4"><span class="topic-number">03.4</span>รวมเงื่อนไขด้วย and / or / not</a></li><li><a href="chapter-03.html#topic-5"><span class="topic-number">03.5</span>ตัวดำเนินการแบบย่อ</a></li><li><a href="chapter-03.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if ตรวจกรณีแรก elif เรียงกรณีที่ไม่ทับกัน else เป็นกรณีที่เหลือ">
+<details class="chapter-nav-item" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if: ทำเมื่อเงื่อนไขเป็นจริง if-else: เลือก 1 ใน 2 ทาง elif: หลายทางเลือก เงื่อนไขหลายข้อ และ if ซ้อน ข้อผิดพลาดที่เจอบ่อย">
       <summary><span class="toc-number">04</span><span class="chapter-nav-title">เงื่อนไขและการตัดสินใจ</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-04.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-04.html#topic-1"><span class="topic-number">04.1</span>if ตรวจกรณีแรก</a></li><li><a href="chapter-04.html#topic-2"><span class="topic-number">04.2</span>elif เรียงกรณีที่ไม่ทับกัน</a></li><li><a href="chapter-04.html#topic-3"><span class="topic-number">04.3</span>else เป็นกรณีที่เหลือ</a></li><li><a href="chapter-04.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-04.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-04.html#topic-1"><span class="topic-number">04.1</span>if: ทำเมื่อเงื่อนไขเป็นจริง</a></li><li><a href="chapter-04.html#topic-2"><span class="topic-number">04.2</span>if-else: เลือก 1 ใน 2 ทาง</a></li><li><a href="chapter-04.html#topic-3"><span class="topic-number">04.3</span>elif: หลายทางเลือก</a></li><li><a href="chapter-04.html#topic-4"><span class="topic-number">04.4</span>เงื่อนไขหลายข้อ และ if ซ้อน</a></li><li><a href="chapter-04.html#topic-5"><span class="topic-number">04.5</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-04.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="การทำซ้ำด้วยลูป ทำคำสั่งซ้ำอย่างควบคุมได้ด้วย for, while และ range for วนผ่านสมาชิก สะสมค่าอย่างระมัดระวัง while วนจนเงื่อนไขเปลี่ยน">
+<details class="chapter-nav-item" data-group="foundation" data-search="การทำซ้ำด้วยลูป สั่งให้โปรแกรมทำงานซ้ำด้วย for และ while แทนการเขียนคำสั่งเดิมหลายครั้ง for กับ range() for วนผ่านข้อมูลทีละตัว สะสมผลรวมและนับจำนวน while: วนจนกว่าเงื่อนไขจะเป็นเท็จ break และ continue">
       <summary><span class="toc-number">05</span><span class="chapter-nav-title">การทำซ้ำด้วยลูป</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-05.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-05.html#topic-1"><span class="topic-number">05.1</span>for วนผ่านสมาชิก</a></li><li><a href="chapter-05.html#topic-2"><span class="topic-number">05.2</span>สะสมค่าอย่างระมัดระวัง</a></li><li><a href="chapter-05.html#topic-3"><span class="topic-number">05.3</span>while วนจนเงื่อนไขเปลี่ยน</a></li><li><a href="chapter-05.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-05.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-05.html#topic-1"><span class="topic-number">05.1</span>for กับ range()</a></li><li><a href="chapter-05.html#topic-2"><span class="topic-number">05.2</span>for วนผ่านข้อมูลทีละตัว</a></li><li><a href="chapter-05.html#topic-3"><span class="topic-number">05.3</span>สะสมผลรวมและนับจำนวน</a></li><li><a href="chapter-05.html#topic-4"><span class="topic-number">05.4</span>while: วนจนกว่าเงื่อนไขจะเป็นเท็จ</a></li><li><a href="chapter-05.html#topic-5"><span class="topic-number">05.5</span>break และ continue</a></li><li><a href="chapter-05.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด ต่อ ค้นหา และจัดรูปแบบข้อความที่รับมาจากผู้ใช้หรือไฟล์ ข้อความแก้ตรงตำแหน่งไม่ได้ method ช่วยทำความสะอาด index และ slicing เริ่มที่ศูนย์">
+<details class="chapter-nav-item" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด แยก ค้นหา และจัดรูปแบบข้อความด้วย index, slicing และ string method index: ตำแหน่งของตัวอักษร slicing: ตัดบางส่วน method ที่ใช้บ่อย ตรวจและวนข้อความ">
       <summary><span class="toc-number">06</span><span class="chapter-nav-title">ข้อความและการจัดการ string</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-06.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-06.html#topic-1"><span class="topic-number">06.1</span>ข้อความแก้ตรงตำแหน่งไม่ได้</a></li><li><a href="chapter-06.html#topic-2"><span class="topic-number">06.2</span>method ช่วยทำความสะอาด</a></li><li><a href="chapter-06.html#topic-3"><span class="topic-number">06.3</span>index และ slicing เริ่มที่ศูนย์</a></li><li><a href="chapter-06.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-06.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-06.html#topic-1"><span class="topic-number">06.1</span>index: ตำแหน่งของตัวอักษร</a></li><li><a href="chapter-06.html#topic-2"><span class="topic-number">06.2</span>slicing: ตัดบางส่วน</a></li><li><a href="chapter-06.html#topic-3"><span class="topic-number">06.3</span>method ที่ใช้บ่อย</a></li><li><a href="chapter-06.html#topic-4"><span class="topic-number">06.4</span>ตรวจและวนข้อความ</a></li><li><a href="chapter-06.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เลือกภาชนะเก็บข้อมูลหลายค่าให้เหมาะกับการเพิ่ม แก้ ค้นหา และจับคู่ list เก็บลำดับและแก้ไขได้ tuple และ set มีหน้าที่ต่างกัน dict ผูก key กับ value">
+<details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เก็บข้อมูลหลายค่าในตัวแปรเดียว และเลือกโครงสร้างให้เหมาะกับงาน เลือกใช้แบบไหนดี list: รายการที่แก้ไขได้ tuple และ set dict: จับคู่ key กับ value">
       <summary><span class="toc-number">07</span><span class="chapter-nav-title">โครงสร้างข้อมูล: list, tuple, set และ dict</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-07.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-07.html#topic-1"><span class="topic-number">07.1</span>list เก็บลำดับและแก้ไขได้</a></li><li><a href="chapter-07.html#topic-2"><span class="topic-number">07.2</span>tuple และ set มีหน้าที่ต่างกัน</a></li><li><a href="chapter-07.html#topic-3"><span class="topic-number">07.3</span>dict ผูก key กับ value</a></li><li><a href="chapter-07.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-07.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-07.html#topic-1"><span class="topic-number">07.1</span>เลือกใช้แบบไหนดี</a></li><li><a href="chapter-07.html#topic-2"><span class="topic-number">07.2</span>list: รายการที่แก้ไขได้</a></li><li><a href="chapter-07.html#topic-3"><span class="topic-number">07.3</span>tuple และ set</a></li><li><a href="chapter-07.html#topic-4"><span class="topic-number">07.4</span>dict: จับคู่ key กับ value</a></li><li><a href="chapter-07.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม ห่อแนวคิดที่ใช้ซ้ำในฟังก์ชัน พร้อมพารามิเตอร์และค่าที่คืนกลับ def ประกาศหน้าที่หนึ่งอย่าง parameter และ argument return ส่งผลกลับผู้เรียก">
+<details class="chapter-nav-item" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม รวมคำสั่งที่ทำงานหนึ่งอย่างเป็นฟังก์ชัน เรียกใช้ซ้ำได้ และแบ่งโปรแกรมใหญ่เป็นส่วนเล็ก def: สร้างฟังก์ชัน parameter: ส่งค่าเข้าฟังก์ชัน return: ส่งผลกลับ ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน">
       <summary><span class="toc-number">08</span><span class="chapter-nav-title">ฟังก์ชันและการแบ่งโปรแกรม</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-08.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-08.html#topic-1"><span class="topic-number">08.1</span>def ประกาศหน้าที่หนึ่งอย่าง</a></li><li><a href="chapter-08.html#topic-2"><span class="topic-number">08.2</span>parameter และ argument</a></li><li><a href="chapter-08.html#topic-3"><span class="topic-number">08.3</span>return ส่งผลกลับผู้เรียก</a></li><li><a href="chapter-08.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-08.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-08.html#topic-1"><span class="topic-number">08.1</span>def: สร้างฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-2"><span class="topic-number">08.2</span>parameter: ส่งค่าเข้าฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-3"><span class="topic-number">08.3</span>return: ส่งผลกลับ</a></li><li><a href="chapter-08.html#topic-4"><span class="topic-number">08.4</span>ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน</a></li><li><a href="chapter-08.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="practice">ฝึกเขียนและใช้งาน</p><details class="chapter-nav-item" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน traceback อย่างมีระบบ ป้องกันข้อผิดพลาดที่คาดหมาย และแก้ที่สาเหตุ อ่าน traceback จากบรรทัดล่างขึ้นบน try-except ควรจับเฉพาะที่เข้าใจ แยก logic error ด้วยตัวอย่าง">
+<p class="toc-label" data-group="practice">ฝึกเขียนและใช้งาน</p><details class="chapter-nav-item" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน error ให้เข้าใจ ดักจับข้อผิดพลาดด้วย try/except และหาสาเหตุเมื่อผลลัพธ์ผิด อ่าน traceback error ที่พบบ่อย try / except: ดักจับ error ดักหลายชนิด และดูข้อความ error raise: แจ้ง error เอง ไล่หาบั๊กเมื่อผลลัพธ์ผิด">
       <summary><span class="toc-number">09</span><span class="chapter-nav-title">ข้อผิดพลาด การจัดการ exception และ debug</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-09.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-09.html#topic-1"><span class="topic-number">09.1</span>อ่าน traceback จากบรรทัดล่างขึ้นบน</a></li><li><a href="chapter-09.html#topic-2"><span class="topic-number">09.2</span>try-except ควรจับเฉพาะที่เข้าใจ</a></li><li><a href="chapter-09.html#topic-3"><span class="topic-number">09.3</span>แยก logic error ด้วยตัวอย่าง</a></li><li><a href="chapter-09.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-09.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-09.html#topic-1"><span class="topic-number">09.1</span>อ่าน traceback</a></li><li><a href="chapter-09.html#topic-2"><span class="topic-number">09.2</span>error ที่พบบ่อย</a></li><li><a href="chapter-09.html#topic-3"><span class="topic-number">09.3</span>try / except: ดักจับ error</a></li><li><a href="chapter-09.html#topic-4"><span class="topic-number">09.4</span>ดักหลายชนิด และดูข้อความ error</a></li><li><a href="chapter-09.html#topic-5"><span class="topic-number">09.5</span>raise: แจ้ง error เอง</a></li><li><a href="chapter-09.html#topic-6"><span class="topic-number">09.6</span>ไล่หาบั๊กเมื่อผลลัพธ์ผิด</a></li><li><a href="chapter-09.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนข้อมูลอย่างปลอดภัย พร้อมใช้รูปแบบไฟล์ที่พบในงานจริง ใช้ with เปิดไฟล์ pathlib จัดการตำแหน่งไฟล์ CSV กับ JSON ใช้คนละโครงสร้าง">
+<details class="chapter-nav-item" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนไฟล์ข้อความ CSV และ JSON เพื่อเก็บข้อมูลไว้ใช้ต่อหลังปิดโปรแกรม เปิดไฟล์ด้วย with open() อ่านทีละบรรทัด CSV: ข้อมูลตาราง JSON: บันทึก list/dict ทั้งก้อน เลือก CSV หรือ JSON">
       <summary><span class="toc-number">10</span><span class="chapter-nav-title">ไฟล์ ข้อมูล CSV และ JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-10.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-10.html#topic-1"><span class="topic-number">10.1</span>ใช้ with เปิดไฟล์</a></li><li><a href="chapter-10.html#topic-2"><span class="topic-number">10.2</span>pathlib จัดการตำแหน่งไฟล์</a></li><li><a href="chapter-10.html#topic-3"><span class="topic-number">10.3</span>CSV กับ JSON ใช้คนละโครงสร้าง</a></li><li><a href="chapter-10.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-10.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-10.html#topic-1"><span class="topic-number">10.1</span>เปิดไฟล์ด้วย with open()</a></li><li><a href="chapter-10.html#topic-2"><span class="topic-number">10.2</span>อ่านทีละบรรทัด</a></li><li><a href="chapter-10.html#topic-3"><span class="topic-number">10.3</span>CSV: ข้อมูลตาราง</a></li><li><a href="chapter-10.html#topic-4"><span class="topic-number">10.4</span>JSON: บันทึก list/dict ทั้งก้อน</a></li><li><a href="chapter-10.html#topic-5"><span class="topic-number">10.5</span>เลือก CSV หรือ JSON</a></li><li><a href="chapter-10.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="โมดูล virtual environment และ pip ใช้ไลบรารีมาตรฐาน ติดตั้งแพ็กเกจแยกสภาพแวดล้อม และจัด dependency ของโปรเจกต์ import นำโมดูลมาใช้ venv ป้องกัน dependency ชนกัน pip และ requirements.txt">
+<details class="chapter-nav-item" data-group="practice" data-search="โมดูล virtual environment และ pip นำโมดูลมาตรฐานมาใช้ สร้างโมดูลของตัวเอง และติดตั้งแพ็กเกจเพิ่มด้วย pip ใน virtual environment import: นำโมดูลมาใช้ โมดูลมาตรฐานที่ใช้บ่อย สร้างโมดูลเอง pip และ virtual environment ตรวจว่าติดตั้งแล้วหรือยัง">
       <summary><span class="toc-number">11</span><span class="chapter-nav-title">โมดูล virtual environment และ pip</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-11.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-11.html#topic-1"><span class="topic-number">11.1</span>import นำโมดูลมาใช้</a></li><li><a href="chapter-11.html#topic-2"><span class="topic-number">11.2</span>venv ป้องกัน dependency ชนกัน</a></li><li><a href="chapter-11.html#topic-3"><span class="topic-number">11.3</span>pip และ requirements.txt</a></li><li><a href="chapter-11.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-11.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-11.html#topic-1"><span class="topic-number">11.1</span>import: นำโมดูลมาใช้</a></li><li><a href="chapter-11.html#topic-2"><span class="topic-number">11.2</span>โมดูลมาตรฐานที่ใช้บ่อย</a></li><li><a href="chapter-11.html#topic-3"><span class="topic-number">11.3</span>สร้างโมดูลเอง</a></li><li><a href="chapter-11.html#topic-4"><span class="topic-number">11.4</span>pip และ virtual environment</a></li><li><a href="chapter-11.html#topic-5"><span class="topic-number">11.5</span>ตรวจว่าติดตั้งแล้วหรือยัง</a></li><li><a href="chapter-11.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมสถานะและพฤติกรรมที่สัมพันธ์กันไว้ใน class เพื่อสร้าง object หลายตัว class เป็นแบบพิมพ์ object เป็นสิ่งที่สร้าง __init__ กำหนดค่าเริ่มต้น method รวมพฤติกรรมกับข้อมูล">
+<details class="chapter-nav-item" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมข้อมูลและการทำงานที่เกี่ยวข้องกันไว้ใน class แล้วสร้าง object ได้หลายตัว class คือแม่แบบ object คือของจริง __init__ และ self method: การทำงานของ object __str__: กำหนดวิธีแสดงผล ทำงานกับ object หลายตัว">
       <summary><span class="toc-number">12</span><span class="chapter-nav-title">เขียนโปรแกรมเชิงวัตถุด้วย class</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-12.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-12.html#topic-1"><span class="topic-number">12.1</span>class เป็นแบบพิมพ์ object เป็นสิ่งที่สร้าง</a></li><li><a href="chapter-12.html#topic-2"><span class="topic-number">12.2</span>__init__ กำหนดค่าเริ่มต้น</a></li><li><a href="chapter-12.html#topic-3"><span class="topic-number">12.3</span>method รวมพฤติกรรมกับข้อมูล</a></li><li><a href="chapter-12.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-12.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-12.html#topic-1"><span class="topic-number">12.1</span>class คือแม่แบบ object คือของจริง</a></li><li><a href="chapter-12.html#topic-2"><span class="topic-number">12.2</span>__init__ และ self</a></li><li><a href="chapter-12.html#topic-3"><span class="topic-number">12.3</span>method: การทำงานของ object</a></li><li><a href="chapter-12.html#topic-4"><span class="topic-number">12.4</span>__str__: กำหนดวิธีแสดงผล</a></li><li><a href="chapter-12.html#topic-5"><span class="topic-number">12.5</span>ทำงานกับ object หลายตัว</a></li><li><a href="chapter-12.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON เข้าใจ request/response, ส่งพารามิเตอร์ และแปลง JSON เพื่อเชื่อมบริการอื่น API คือสัญญาการสื่อสาร แปลงข้อมูล JSON เครือข่ายผิดพลาดได้">
+<details class="chapter-nav-item" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON ขอข้อมูลจากบริการบนอินเทอร์เน็ตด้วย requests อ่านผลที่เป็น JSON และจัดการเมื่อเชื่อมต่อไม่สำเร็จ API ทำงานอย่างไร JSON กับ Python requests.get(): ขอข้อมูล ส่ง parameter รับมือเมื่อเรียกไม่สำเร็จ">
       <summary><span class="toc-number">13</span><span class="chapter-nav-title">เรียกใช้ Web API และแลกเปลี่ยน JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-13.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-13.html#topic-1"><span class="topic-number">13.1</span>API คือสัญญาการสื่อสาร</a></li><li><a href="chapter-13.html#topic-2"><span class="topic-number">13.2</span>แปลงข้อมูล JSON</a></li><li><a href="chapter-13.html#topic-3"><span class="topic-number">13.3</span>เครือข่ายผิดพลาดได้</a></li><li><a href="chapter-13.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-13.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-13.html#topic-1"><span class="topic-number">13.1</span>API ทำงานอย่างไร</a></li><li><a href="chapter-13.html#topic-2"><span class="topic-number">13.2</span>JSON กับ Python</a></li><li><a href="chapter-13.html#topic-3"><span class="topic-number">13.3</span>requests.get(): ขอข้อมูล</a></li><li><a href="chapter-13.html#topic-4"><span class="topic-number">13.4</span>ส่ง parameter</a></li><li><a href="chapter-13.html#topic-5"><span class="topic-number">13.5</span>รับมือเมื่อเรียกไม่สำเร็จ</a></li><li><a href="chapter-13.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="ai">ต่อยอดข้อมูลและ AI</p><details class="chapter-nav-item" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข ใช้ array คำนวณข้อมูลจำนวนมากแบบเวกเตอร์ ซึ่งเป็นฐานของงาน Data Science และ AI ndarray เป็นข้อมูลชนิดเดียวกัน vectorization แทนการวนทีละค่า เลือกและสรุปตามแกน">
+<p class="toc-label" data-group="ai">ต่อยอดข้อมูลและ AI</p><details class="chapter-nav-item" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของงาน Data Science และ AI array ต่างจาก list อย่างไร สร้าง array แบบต่าง ๆ คำนวณทั้ง array (vectorization) กรองข้อมูลด้วยเงื่อนไข array 2 มิติและแกน (axis) ฟังก์ชันสถิติ">
       <summary><span class="toc-number">14</span><span class="chapter-nav-title">NumPy สำหรับการคำนวณตัวเลข</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-14.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-14.html#topic-1"><span class="topic-number">14.1</span>ndarray เป็นข้อมูลชนิดเดียวกัน</a></li><li><a href="chapter-14.html#topic-2"><span class="topic-number">14.2</span>vectorization แทนการวนทีละค่า</a></li><li><a href="chapter-14.html#topic-3"><span class="topic-number">14.3</span>เลือกและสรุปตามแกน</a></li><li><a href="chapter-14.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-14.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-14.html#topic-1"><span class="topic-number">14.1</span>array ต่างจาก list อย่างไร</a></li><li><a href="chapter-14.html#topic-2"><span class="topic-number">14.2</span>สร้าง array แบบต่าง ๆ</a></li><li><a href="chapter-14.html#topic-3"><span class="topic-number">14.3</span>คำนวณทั้ง array (vectorization)</a></li><li><a href="chapter-14.html#topic-4"><span class="topic-number">14.4</span>กรองข้อมูลด้วยเงื่อนไข</a></li><li><a href="chapter-14.html#topic-5"><span class="topic-number">14.5</span>array 2 มิติและแกน (axis)</a></li><li><a href="chapter-14.html#topic-6"><span class="topic-number">14.6</span>ฟังก์ชันสถิติ</a></li><li><a href="chapter-14.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน ทำความสะอาด เลือก และสรุปข้อมูลตารางด้วย DataFrame DataFrame มีแถวและคอลัมน์ เลือกและกรองข้อมูล ทำความสะอาดและ groupby">
+<details class="chapter-nav-item" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน สำรวจ กรอง ทำความสะอาด และสรุปข้อมูลตารางด้วย pandas DataFrame DataFrame: ตารางข้อมูล อ่าน CSV และสำรวจข้อมูล เลือกและกรองข้อมูล เพิ่มคอลัมน์และเรียงข้อมูล จัดการค่าว่าง สรุปตามกลุ่มด้วย groupby">
       <summary><span class="toc-number">15</span><span class="chapter-nav-title">จัดการตารางข้อมูลด้วย pandas</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-15.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-15.html#topic-1"><span class="topic-number">15.1</span>DataFrame มีแถวและคอลัมน์</a></li><li><a href="chapter-15.html#topic-2"><span class="topic-number">15.2</span>เลือกและกรองข้อมูล</a></li><li><a href="chapter-15.html#topic-3"><span class="topic-number">15.3</span>ทำความสะอาดและ groupby</a></li><li><a href="chapter-15.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-15.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-15.html#topic-1"><span class="topic-number">15.1</span>DataFrame: ตารางข้อมูล</a></li><li><a href="chapter-15.html#topic-2"><span class="topic-number">15.2</span>อ่าน CSV และสำรวจข้อมูล</a></li><li><a href="chapter-15.html#topic-3"><span class="topic-number">15.3</span>เลือกและกรองข้อมูล</a></li><li><a href="chapter-15.html#topic-4"><span class="topic-number">15.4</span>เพิ่มคอลัมน์และเรียงข้อมูล</a></li><li><a href="chapter-15.html#topic-5"><span class="topic-number">15.5</span>จัดการค่าว่าง</a></li><li><a href="chapter-15.html#topic-6"><span class="topic-number">15.6</span>สรุปตามกลุ่มด้วย groupby</a></li><li><a href="chapter-15.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib เปลี่ยนข้อมูลตัวเลขเป็นภาพเพื่อมองแนวโน้ม เปรียบเทียบ และสื่อสารผล เลือกชนิดกราฟตามคำถาม label ทำให้กราฟอ่านได้ แยกการวาดกับการบันทึก">
+<details class="chapter-nav-item" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib แปลงตัวเลขเป็นกราฟที่อ่านง่าย เลือกชนิดกราฟให้ตรงคำถาม และบันทึกเป็นไฟล์ภาพ กราฟแรก เลือกชนิดกราฟจากคำถาม กราฟแท่ง หลายเส้นในกราฟเดียว กราฟกระจายและฮิสโทแกรม บันทึกกราฟและภาษาไทย">
       <summary><span class="toc-number">16</span><span class="chapter-nav-title">สร้างกราฟด้วย Matplotlib</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-16.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-16.html#topic-1"><span class="topic-number">16.1</span>เลือกชนิดกราฟตามคำถาม</a></li><li><a href="chapter-16.html#topic-2"><span class="topic-number">16.2</span>label ทำให้กราฟอ่านได้</a></li><li><a href="chapter-16.html#topic-3"><span class="topic-number">16.3</span>แยกการวาดกับการบันทึก</a></li><li><a href="chapter-16.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-16.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-16.html#topic-1"><span class="topic-number">16.1</span>กราฟแรก</a></li><li><a href="chapter-16.html#topic-2"><span class="topic-number">16.2</span>เลือกชนิดกราฟจากคำถาม</a></li><li><a href="chapter-16.html#topic-3"><span class="topic-number">16.3</span>กราฟแท่ง</a></li><li><a href="chapter-16.html#topic-4"><span class="topic-number">16.4</span>หลายเส้นในกราฟเดียว</a></li><li><a href="chapter-16.html#topic-5"><span class="topic-number">16.5</span>กราฟกระจายและฮิสโทแกรม</a></li><li><a href="chapter-16.html#topic-6"><span class="topic-number">16.6</span>บันทึกกราฟและภาษาไทย</a></li><li><a href="chapter-16.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn สร้าง pipeline ฝึกและประเมินโมเดลจากข้อมูลตัวอย่าง โดยแยก train กับ test แยก feature กับ target อย่าทดสอบด้วยข้อมูลฝึก Pipeline ป้องกันขั้นตอนสับสน">
+<details class="chapter-nav-item" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn ให้คอมพิวเตอร์เรียนรู้รูปแบบจากตัวอย่าง แล้วทำนายข้อมูลใหม่ ด้วยขั้นตอนมาตรฐานของ scikit-learn Machine Learning คืออะไร ขั้นตอนมาตรฐาน แบ่งข้อมูล train/test fit และ predict วัดผลโมเดล Pipeline: รวมการเตรียมข้อมูลกับโมเดล">
       <summary><span class="toc-number">17</span><span class="chapter-nav-title">Machine Learning เบื้องต้นด้วย scikit-learn</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-17.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-17.html#topic-1"><span class="topic-number">17.1</span>แยก feature กับ target</a></li><li><a href="chapter-17.html#topic-2"><span class="topic-number">17.2</span>อย่าทดสอบด้วยข้อมูลฝึก</a></li><li><a href="chapter-17.html#topic-3"><span class="topic-number">17.3</span>Pipeline ป้องกันขั้นตอนสับสน</a></li><li><a href="chapter-17.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-17.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-17.html#topic-1"><span class="topic-number">17.1</span>Machine Learning คืออะไร</a></li><li><a href="chapter-17.html#topic-2"><span class="topic-number">17.2</span>ขั้นตอนมาตรฐาน</a></li><li><a href="chapter-17.html#topic-3"><span class="topic-number">17.3</span>แบ่งข้อมูล train/test</a></li><li><a href="chapter-17.html#topic-4"><span class="topic-number">17.4</span>fit และ predict</a></li><li><a href="chapter-17.html#topic-5"><span class="topic-number">17.5</span>วัดผลโมเดล</a></li><li><a href="chapter-17.html#topic-6"><span class="topic-number">17.6</span>Pipeline: รวมการเตรียมข้อมูลกับโมเดล</a></li><li><a href="chapter-17.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล ต่อยอดแนวคิด ML สู่ neuron, activation, loss และวงจรการเรียนรู้ของ deep learning Neuron รวม input ด้วยน้ำหนัก Loss วัดความคลาดเคลื่อน Framework ช่วยคำนวณ gradient">
+<details class="chapter-nav-item" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล เข้าใจส่วนประกอบของ neural network ตั้งแต่ neuron, activation, loss จนถึงการเรียนรู้ด้วย gradient descent neuron: หน่วยคำนวณพื้นฐาน activation function layer: หลาย neuron พร้อมกัน loss: วัดว่าผิดมากแค่ไหน การเรียนรู้: gradient descent ใช้ library แทนการเขียนเอง">
       <summary><span class="toc-number">18</span><span class="chapter-nav-title">แนวคิด Neural Network และการฝึกโมเดล</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-18.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-18.html#topic-1"><span class="topic-number">18.1</span>Neuron รวม input ด้วยน้ำหนัก</a></li><li><a href="chapter-18.html#topic-2"><span class="topic-number">18.2</span>Loss วัดความคลาดเคลื่อน</a></li><li><a href="chapter-18.html#topic-3"><span class="topic-number">18.3</span>Framework ช่วยคำนวณ gradient</a></li><li><a href="chapter-18.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-18.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-18.html#topic-1"><span class="topic-number">18.1</span>neuron: หน่วยคำนวณพื้นฐาน</a></li><li><a href="chapter-18.html#topic-2"><span class="topic-number">18.2</span>activation function</a></li><li><a href="chapter-18.html#topic-3"><span class="topic-number">18.3</span>layer: หลาย neuron พร้อมกัน</a></li><li><a href="chapter-18.html#topic-4"><span class="topic-number">18.4</span>loss: วัดว่าผิดมากแค่ไหน</a></li><li><a href="chapter-18.html#topic-5"><span class="topic-number">18.5</span>การเรียนรู้: gradient descent</a></li><li><a href="chapter-18.html#topic-6"><span class="topic-number">18.6</span>ใช้ library แทนการเขียนเอง</a></li><li><a href="chapter-18.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="gui">GUI และโปรเจกต์</p><details class="chapter-nav-item" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปหน้าต่างด้วย Qt for Python โดยใช้ widget, layout, signal และ slot QApplication จัดการแอป Layout ทำหน้าที่จัดวาง signal/slot เชื่อม event กับงาน" open>
+<p class="toc-label" data-group="gui">GUI และโปรเจกต์</p><details class="chapter-nav-item" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปที่มีหน้าต่าง ปุ่ม และช่องกรอกข้อมูลด้วย PySide6 (Qt for Python) โครงสร้างแอปพื้นฐาน widget ที่ใช้บ่อย layout: จัดวาง widget signal และ slot: ทำงานเมื่อผู้ใช้กด เขียนหน้าต่างเป็น class" open>
       <summary><span class="toc-number">19</span><span class="chapter-nav-title">สร้าง GUI สมัยใหม่ด้วย PySide6</span></summary>
-      <ul class="chapter-subnav"><li><a href="#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="#topic-1"><span class="topic-number">19.1</span>QApplication จัดการแอป</a></li><li><a href="#topic-2"><span class="topic-number">19.2</span>Layout ทำหน้าที่จัดวาง</a></li><li><a href="#topic-3"><span class="topic-number">19.3</span>signal/slot เชื่อม event กับงาน</a></li><li><a href="#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="#topic-1"><span class="topic-number">19.1</span>โครงสร้างแอปพื้นฐาน</a></li><li><a href="#topic-2"><span class="topic-number">19.2</span>widget ที่ใช้บ่อย</a></li><li><a href="#topic-3"><span class="topic-number">19.3</span>layout: จัดวาง widget</a></li><li><a href="#topic-4"><span class="topic-number">19.4</span>signal และ slot: ทำงานเมื่อผู้ใช้กด</a></li><li><a href="#topic-5"><span class="topic-number">19.5</span>เขียนหน้าต่างเป็น class</a></li><li><a href="#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI นำ Python, ตารางข้อมูล, โมเดล และ GUI มาประกอบเป็นแอปแนะนำแผนเรียนขนาดเล็ก เริ่มจากโจทย์และข้อมูล แยก UI, logic และ data ประเมินและสื่อสารข้อจำกัด">
+<details class="chapter-nav-item" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI รวมทุกอย่างที่เรียนมาเป็นแอปแนะนำรายวิชา: ข้อมูลจาก CSV, กติกาแนะนำ, โมเดลทำนาย และหน้าต่าง PySide6 เริ่มจากโจทย์ ไม่ใช่โค้ด แยกเป็น 3 ชั้น ชั้นข้อมูล: โหลดรายวิชา ชั้น logic: กติกาแนะนำ + ทดสอบ เพิ่มโมเดล ML: ทำนายโอกาสผ่าน ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง">
       <summary><span class="toc-number">20</span><span class="chapter-nav-title">โปรเจกต์ปลายทาง: Course Planner + AI</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-20.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-20.html#topic-1"><span class="topic-number">20.1</span>เริ่มจากโจทย์และข้อมูล</a></li><li><a href="chapter-20.html#topic-2"><span class="topic-number">20.2</span>แยก UI, logic และ data</a></li><li><a href="chapter-20.html#topic-3"><span class="topic-number">20.3</span>ประเมินและสื่อสารข้อจำกัด</a></li><li><a href="chapter-20.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-20.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-20.html#topic-1"><span class="topic-number">20.1</span>เริ่มจากโจทย์ ไม่ใช่โค้ด</a></li><li><a href="chapter-20.html#topic-2"><span class="topic-number">20.2</span>แยกเป็น 3 ชั้น</a></li><li><a href="chapter-20.html#topic-3"><span class="topic-number">20.3</span>ชั้นข้อมูล: โหลดรายวิชา</a></li><li><a href="chapter-20.html#topic-4"><span class="topic-number">20.4</span>ชั้น logic: กติกาแนะนำ + ทดสอบ</a></li><li><a href="chapter-20.html#topic-5"><span class="topic-number">20.5</span>เพิ่มโมเดล ML: ทำนายโอกาสผ่าน</a></li><li><a href="chapter-20.html#topic-6"><span class="topic-number">20.6</span>ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง</a></li><li><a href="chapter-20.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
       </nav>
       <div class="sidebar-bottom">ตัวอย่างรันด้วย Python จริง<br>เลื่อนเพื่ออ่านหัวข้อถัดไป</div>
     </aside>
     <main class="lesson-main" id="lesson-content">
       <div class="utility-row"><a href="../index.html">← สารบัญรายวิชา</a><span class="utility-code">CHAPTER 19 / 20</span></div>
-      <header class="lesson-header"><p class="lesson-kicker">CHAPTER 19 · GUI / โปรเจกต์</p><h1>สร้าง GUI สมัยใหม่ด้วย PySide6</h1><p>สร้างแอปหน้าต่างด้วย Qt for Python โดยใช้ widget, layout, signal และ slot</p></header>
-      <section class="learning-goals"><strong>เมื่อจบบทนี้ นิสิตจะทำได้</strong><ul><li>ประกอบหน้าต่างด้วย widget จัด layout เชื่อมปุ่มกับฟังก์ชัน และรัน event loop ได้</li><li>QApplication จัดการแอป</li><li>Layout ทำหน้าที่จัดวาง</li></ul></section>
-      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">แนวคิดและตัวอย่าง</h2>
-        <div class="chapter-intro"><strong>แผนการเรียนบทนี้</strong><p>GUI เป็นโปรแกรมที่รอ event จากผู้ใช้ แทนการไหลจากบรรทัดแรกถึงบรรทัดสุดท้ายเพียงครั้งเดียว จึงเริ่มจาก QApplication และหน้าต่าง ใช้ layout จัด widget แล้วเชื่อม signal ของปุ่มเข้ากับ slot ที่ทำงาน ตรวจ input ก่อนนำไปคำนวณ</p><p>วิธีฝึก: อ่านโจทย์ → ระบุข้อมูลเข้าและผลที่ต้องการ → ทำนาย output → รันและตรวจทีละขั้น → อธิบายด้วยคำของตนเองว่าเหตุใดจึงได้ผลเช่นนั้น</p></div>
-        <article class="subtopic" id="topic-1"><h3>19.1 QApplication จัดการแอป</h3><p>สร้าง QApplication หนึ่งตัวต่อโปรแกรม สร้างหน้าต่างจาก QWidget/QMainWindow แล้วเรียก `app.exec()` เพื่อรับ event จากผู้ใช้</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-2"><h3>19.2 Layout ทำหน้าที่จัดวาง</h3><p>QVBoxLayout วาง widget แนวตั้ง และ QHBoxLayout วางแนวนอน ใช้ layout แทนพิกัดตายตัวเพื่อให้หน้าต่างปรับตามขนาดได้</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-3"><h3>19.3 signal/slot เชื่อม event กับงาน</h3><p>ปุ่มมี signal เช่น `clicked`; ต่อกับ method หรือ function ที่ทำงาน เช่น อ่าน QLineEdit แล้วอัปเดต QLabel</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><div class="source-example">
-    <h4>ตัวอย่าง 19.1 · หน้าต่างทักทาย</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> แอป Qt จริงที่รับชื่อ กดปุ่ม แล้วเปลี่ยนข้อความในหน้าต่าง</p>
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>import os
-import sys
-from pathlib import Path
-from PySide6.QtGui import QFont, QFontDatabase
-from PySide6.QtWidgets import QApplication, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget
+      <header class="lesson-header"><p class="lesson-kicker">CHAPTER 19 · GUI / โปรเจกต์</p><h1>สร้าง GUI สมัยใหม่ด้วย PySide6</h1><p>สร้างแอปที่มีหน้าต่าง ปุ่ม และช่องกรอกข้อมูลด้วย PySide6 (Qt for Python)</p></header>
+      <section class="learning-goals"><strong>จบบทนี้แล้วทำได้</strong><p>สร้างหน้าต่างด้วย widget จัดวางด้วย layout เชื่อมปุ่มกับฟังก์ชันด้วย signal/slot และเขียนแอปเป็น class</p></section>
+      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">เนื้อหา</h2>
+        <article class="subtopic" id="topic-1"><h3>19.1 โครงสร้างแอปพื้นฐาน</h3><p>ทุกแอป PySide6 มี 4 ขั้น: สร้าง <code>QApplication</code> 1 ตัว → สร้างหน้าต่าง → <code>show()</code> → <code>app.exec()</code> เพื่อรอรับการคลิก/พิมพ์จากผู้ใช้จนกว่าจะปิดหน้าต่าง ติดตั้งด้วย <code>pip install PySide6</code></p><div class="mini-run has-shot"><pre class="copyable"><code>import sys
+from PySide6.QtWidgets import QApplication, QLabel
 
 app = QApplication(sys.argv)
-font_path = Path(os.environ[&quot;WINDIR&quot;]) / &quot;Fonts&quot; / &quot;segoeui.ttf&quot;
-font_id = QFontDatabase.addApplicationFont(str(font_path))
-font_families = QFontDatabase.applicationFontFamilies(font_id)
-if font_id &lt; 0 or not font_families:
-    raise RuntimeError(f&quot;Unable to load GUI font: {font_path}&quot;)
-app.setFont(QFont(font_families[0], 11))
+label = QLabel(&quot;สวัสดี PySide6!&quot;)
+label.setWindowTitle(&quot;แอปแรก&quot;)
+label.resize(280, 100)
+label.show()
+sys.exit(app.exec())</code></pre><div class="mini-result"><figure class="screenshot"><img src="../assets/gui/ch19-first.png" alt="หน้าต่างโปรแกรมที่ได้จากการรันโค้ด"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div></div><p class="tip"><strong>จำง่าย ๆ</strong> โค้ดหลัง <code>app.exec()</code> จะทำงานเมื่อปิดหน้าต่างแล้วเท่านั้น</p></article><article class="subtopic" id="topic-2"><h3>19.2 widget ที่ใช้บ่อย</h3><p>widget คือส่วนประกอบบนหน้าจอ ทุกตัว import จาก <code>PySide6.QtWidgets</code></p><div class="table-wrap"><table class="concept-table"><thead><tr><th>widget</th><th>ใช้ทำ</th><th>อ่าน/ตั้งค่า</th></tr></thead><tbody><tr><td><code>QLabel</code></td><td>แสดงข้อความ</td><td><code>setText()</code></td></tr><tr><td><code>QPushButton</code></td><td>ปุ่มกด</td><td>signal <code>clicked</code></td></tr><tr><td><code>QLineEdit</code></td><td>ช่องกรอกข้อความ 1 บรรทัด</td><td><code>text()</code>, <code>setPlaceholderText()</code></td></tr><tr><td><code>QSpinBox</code> / <code>QDoubleSpinBox</code></td><td>ช่องตัวเลขมีปุ่มเพิ่ม/ลด</td><td><code>value()</code>, <code>setRange()</code></td></tr><tr><td><code>QComboBox</code></td><td>รายการให้เลือก</td><td><code>addItems()</code>, <code>currentText()</code></td></tr><tr><td><code>QCheckBox</code></td><td>ช่องติ๊ก</td><td><code>isChecked()</code></td></tr><tr><td><code>QListWidget</code></td><td>รายการหลายบรรทัด</td><td><code>addItem()</code>, <code>count()</code></td></tr></tbody></table></div></article><article class="subtopic" id="topic-3"><h3>19.3 layout: จัดวาง widget</h3><p>ใช้ layout แทนการกำหนดพิกัดเอง หน้าต่างจะปรับขนาดได้สวยงาม <code>QVBoxLayout</code> เรียงแนวตั้ง <code>QHBoxLayout</code> เรียงแนวนอน <code>QFormLayout</code> จัดเป็นคู่ ป้าย–ช่องกรอก และซ้อน layout กันได้</p><div class="mini-run has-shot"><pre class="copyable"><code>import sys
+from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout,
+                               QFormLayout, QLineEdit, QPushButton)
+
+app = QApplication(sys.argv)
 window = QWidget()
-window.setWindowTitle(&quot;Study Buddy&quot;)
-window.resize(420, 230)
+window.setWindowTitle(&quot;ลงทะเบียน&quot;)
+
+form = QFormLayout()
+form.addRow(&quot;ชื่อ&quot;, QLineEdit())
+form.addRow(&quot;อีเมล&quot;, QLineEdit())
+
+buttons = QHBoxLayout()
+buttons.addWidget(QPushButton(&quot;ยกเลิก&quot;))
+buttons.addWidget(QPushButton(&quot;บันทึก&quot;))
+
 layout = QVBoxLayout(window)
-title = QLabel(&quot;What are you learning today?&quot;)
-title.setObjectName(&quot;title&quot;)
+layout.addLayout(form)
+layout.addLayout(buttons)
+window.resize(320, 140)
+window.show()
+sys.exit(app.exec())</code></pre><div class="mini-result"><figure class="screenshot"><img src="../assets/gui/ch19-layout.png" alt="หน้าต่างโปรแกรมที่ได้จากการรันโค้ด"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div></div></article><article class="subtopic" id="topic-4"><h3>19.4 signal และ slot: ทำงานเมื่อผู้ใช้กด</h3><p>เมื่อผู้ใช้ทำอะไรกับ widget จะเกิด signal เช่น ปุ่มส่ง <code>clicked</code> เราเชื่อม signal กับฟังก์ชัน (slot) ด้วย <code>.connect(ฟังก์ชัน)</code> ใส่แค่ชื่อฟังก์ชัน ไม่ต้องมีวงเล็บ</p><div class="mini-run has-shot"><pre class="copyable"><code>import sys
+from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout,
+                               QLineEdit, QPushButton, QLabel)
+
+def greet():
+    result.setText(f&quot;ยินดีต้อนรับ {name.text()}!&quot;)
+
+app = QApplication(sys.argv)
+window = QWidget()
+window.setWindowTitle(&quot;ทักทาย&quot;)
 name = QLineEdit()
-name.setPlaceholderText(&quot;Enter your name&quot;)
-button = QPushButton(&quot;Start learning&quot;)
-result = QLabel(&quot;Ready to learn&quot;)
-layout.addWidget(title)
-layout.addWidget(name)
-layout.addWidget(button)
-layout.addWidget(result)
-button.clicked.connect(lambda: result.setText(f&quot;Welcome, {name.text()}&quot;))
-window.setStyleSheet(&quot;QWidget{background:#192044;color:white;font-size:16px;font-family:&#39;Segoe UI&#39;} QPushButton{background:#ff755e;padding:10px}&quot;)
-window.show()
-name.setText(&quot;Nina&quot;)
-button.click()
-app.processEvents()
-Path(&quot;assets/gui&quot;).mkdir(parents=True, exist_ok=True)
-saved = window.grab().save(&quot;assets/gui/study-buddy.png&quot;)
-print(f&quot;Study Buddy ready · capture={saved}&quot;)</code></pre></div>
-      <div class="output-field"><span>Output · ภาพหน้าต่างจริง</span><pre>Study Buddy ready · capture=True</pre><figure class="screenshot"><img src="../assets/gui/study-buddy.png" alt="ภาพหน้าต่าง PySide6 ที่สร้างจากการรันตัวอย่างจริง"><figcaption>ภาพหน้าต่างจากโปรแกรม PySide6 ที่รันจริงในสภาพแวดล้อม offscreen</figcaption></figure></div>
-    </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>สร้าง QApplication และ QWidget หลัก</li><li>layout จัดวาง label, ช่องกรอก และปุ่มโดยไม่กำหนดพิกัด</li><li>signal clicked เชื่อมการกดปุ่มกับการอัปเดตผล</li><li>โปรแกรมตัวอย่างเติมชื่อและคลิกปุ่มเพื่อให้เห็นหน้าต่างสถานะที่พร้อมใช้งาน</li></ol></div>
-  </div>
-<div class="source-example">
-    <h4>ตัวอย่าง 19.2 · แสดงผลการคำนวณบนหน้าต่าง</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> คำนวณยอดรวมแล้วแสดงผลใน QLabel เมื่อผู้ใช้กดปุ่ม</p>
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>from PySide6.QtWidgets import QApplication, QLabel, QPushButton, QVBoxLayout, QWidget
+name.setPlaceholderText(&quot;พิมพ์ชื่อ&quot;)
+button = QPushButton(&quot;ทักทาย&quot;)
+result = QLabel(&quot;&quot;)
+button.clicked.connect(greet)
 
-app = QApplication([])
-window = QWidget()
-window.setWindowTitle(&quot;Quick Calculator&quot;)
 layout = QVBoxLayout(window)
-result = QLabel(&quot;กดปุ่มเพื่อรวม 120 + 80&quot;)
-button = QPushButton(&quot;คำนวณ&quot;)
-button.clicked.connect(lambda: result.setText(f&quot;รวม {120 + 80} บาท&quot;))
-layout.addWidget(result)
-layout.addWidget(button)
+for widget in (name, button, result):
+    layout.addWidget(widget)
+window.resize(300, 130)
 window.show()
-button.click()
-app.processEvents()
-print(result.text())</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>รวม 200 บาท</pre></div>
+sys.exit(app.exec())</code></pre><div class="mini-result"><figure class="screenshot"><img src="../assets/gui/ch19-signal.png" alt="หน้าต่างโปรแกรมที่ได้จากการรันโค้ด"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง (หลังจำลองการกรอกและกดปุ่ม)</figcaption></figure></div></div><p class="tip"><strong>จำง่าย ๆ</strong> <code>connect(greet())</code> ผิด เพราะจะเรียกฟังก์ชันทันทีตอนเริ่มโปรแกรม ต้องเป็น <code>connect(greet)</code></p></article><article class="subtopic" id="topic-5"><h3>19.5 เขียนหน้าต่างเป็น class</h3><p>เมื่อแอปใหญ่ขึ้น ให้สร้าง class ที่สืบทอดจาก <code>QWidget</code> สร้าง widget ใน <code>__init__</code> เก็บเป็น <code>self.xxx</code> และเขียน slot เป็น method โค้ดจะเป็นระเบียบและไม่ต้องใช้ตัวแปร global</p><div class="mini-run has-shot"><pre class="copyable"><code>import sys
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton
+
+class CounterWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle(&quot;ตัวนับ&quot;)
+        self.count = 0
+        self.label = QLabel(&quot;กดแล้ว 0 ครั้ง&quot;)
+        self.button = QPushButton(&quot;กด +1&quot;)
+        self.button.clicked.connect(self.increase)
+        layout = QVBoxLayout(self)
+        layout.addWidget(self.label)
+        layout.addWidget(self.button)
+
+    def increase(self):
+        self.count += 1
+        self.label.setText(f&quot;กดแล้ว {self.count} ครั้ง&quot;)
+
+app = QApplication(sys.argv)
+window = CounterWindow()
+window.resize(260, 110)
+window.show()
+sys.exit(app.exec())</code></pre><div class="mini-result"><figure class="screenshot"><img src="../assets/gui/ch19-class.png" alt="หน้าต่างโปรแกรมที่ได้จากการรันโค้ด"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง (หลังจำลองการกรอกและกดปุ่ม)</figcaption></figure></div></div><p class="tip"><strong>จำง่าย ๆ</strong> <code>super().__init__()</code> เรียก <code>__init__</code> ของ QWidget ก่อน ต้องมีเสมอเมื่อสืบทอดจาก widget</p></article>
+        <h2 class="examples-heading">ตัวอย่างโปรแกรม</h2>
+        <div class="source-example">
+    <h4>ตัวอย่าง 19.1 · เครื่องคำนวณ BMI</h4>
+    <p class="concept-line">รับตัวเลขด้วย QDoubleSpinBox คำนวณเมื่อกดปุ่ม และใช้ stylesheet ตกแต่ง</p>
+    
+    <div class="source-grid">
+      <div class="source-field"><span>Python source</span><pre class="copyable"><code>import sys
+from PySide6.QtWidgets import (QApplication, QWidget, QFormLayout,
+                               QDoubleSpinBox, QPushButton, QLabel)
+
+class BmiWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle(&quot;BMI Calculator&quot;)
+        self.weight = QDoubleSpinBox(suffix=&quot; kg&quot;, maximum=300)
+        self.height = QDoubleSpinBox(suffix=&quot; cm&quot;, maximum=250)
+        self.button = QPushButton(&quot;คำนวณ&quot;)
+        self.result = QLabel(&quot;กรอกข้อมูลแล้วกดคำนวณ&quot;)
+        self.button.clicked.connect(self.calculate)
+
+        form = QFormLayout(self)
+        form.addRow(&quot;น้ำหนัก&quot;, self.weight)
+        form.addRow(&quot;ส่วนสูง&quot;, self.height)
+        form.addRow(self.button)
+        form.addRow(self.result)
+        self.setStyleSheet(&quot;QPushButton { background: #192044; color: white; padding: 6px; }&quot;
+                           &quot;QLabel#result { font-size: 16px; }&quot;)
+        self.result.setObjectName(&quot;result&quot;)
+
+    def calculate(self):
+        h = self.height.value() / 100
+        if h == 0:
+            self.result.setText(&quot;กรุณากรอกส่วนสูง&quot;)
+            return
+        bmi = self.weight.value() / (h * h)
+        level = &quot;ปกติ&quot; if 18.5 &lt;= bmi &lt; 23 else &quot;ควรดูแลสุขภาพ&quot;
+        self.result.setText(f&quot;BMI {bmi:.1f} ({level})&quot;)
+
+app = QApplication(sys.argv)
+window = BmiWindow()
+window.resize(300, 170)
+window.show()
+sys.exit(app.exec())</code></pre></div>
+      <div class="output-field"><span>Output</span><figure class="screenshot"><img src="../assets/gui/ch19-bmi.png" alt="หน้าต่างโปรแกรมที่ได้จากการรันโค้ด"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง (หลังจำลองการกรอกและกดปุ่ม)</figcaption></figure></div>
     </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>สร้าง widget สำหรับผลลัพธ์และปุ่ม</li><li>เชื่อม clicked กับการเปลี่ยนข้อความ</li><li>คลิกจากโค้ดเพื่อให้ตัวอย่างทำงานซ้ำได้โดยไม่ต้องโต้ตอบ</li></ol></div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li>QDoubleSpinBox รับเฉพาะตัวเลข จึงไม่ต้องแปลงข้อความหรือดัก ValueError เอง</li><li>method <code>calculate</code> ทำงานเมื่อกดปุ่ม อ่านค่าด้วย <code>value()</code> แล้วแสดงผลด้วย <code>setText()</code></li><li><code>setStyleSheet</code> ตกแต่งด้วยรูปแบบคล้าย CSS ภาพด้านขวาคือหน้าต่างหลังกรอก 68 kg, 170 cm แล้วกดคำนวณ</li></ol></div>
   </div>
 <div class="source-example">
-    <h4>ตัวอย่าง 19.3 · ตรวจ input ในหน้าต่าง</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> แยกฟังก์ชันตรวจข้อมูลก่อนเปลี่ยนข้อความ เพื่อให้เห็น signal/slot และ feedback</p>
+    <h4>ตัวอย่าง 19.2 · แอปรายการสิ่งที่ต้องทำ</h4>
+    <p class="concept-line">เพิ่ม/ลบรายการใน QListWidget และกด Enter ในช่องกรอกเพื่อเพิ่มได้</p>
+    
     <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>from PySide6.QtWidgets import QApplication, QLabel, QLineEdit, QPushButton
+      <div class="source-field"><span>Python source</span><pre class="copyable"><code>import sys
+from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout,
+                               QLineEdit, QPushButton, QListWidget, QLabel)
 
-app = QApplication([])
-field = QLineEdit()
-result = QLabel()
-button = QPushButton(&quot;Add&quot;)
-def update_result():
-    value = field.text().strip()
-    result.setText(&quot;Enter a task&quot; if not value else f&quot;Added: {value}&quot;)
-button.clicked.connect(update_result)
-field.setText(&quot;Read chapter&quot;)
-button.click()
-app.processEvents()
-print(result.text())</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>Added: Read chapter</pre></div>
+class TodoWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle(&quot;To-do&quot;)
+        self.entry = QLineEdit(placeholderText=&quot;งานใหม่…&quot;)
+        add = QPushButton(&quot;เพิ่ม&quot;)
+        remove = QPushButton(&quot;ลบที่เลือก&quot;)
+        self.tasks = QListWidget()
+        self.status = QLabel(&quot;0 งาน&quot;)
+
+        add.clicked.connect(self.add_task)
+        self.entry.returnPressed.connect(self.add_task)
+        remove.clicked.connect(self.remove_task)
+
+        row = QHBoxLayout()
+        row.addWidget(self.entry)
+        row.addWidget(add)
+        layout = QVBoxLayout(self)
+        layout.addLayout(row)
+        layout.addWidget(self.tasks)
+        layout.addWidget(remove)
+        layout.addWidget(self.status)
+
+    def add_task(self):
+        text = self.entry.text().strip()
+        if text:
+            self.tasks.addItem(text)
+            self.entry.clear()
+        self.status.setText(f&quot;{self.tasks.count()} งาน&quot;)
+
+    def remove_task(self):
+        for item in self.tasks.selectedItems():
+            self.tasks.takeItem(self.tasks.row(item))
+        self.status.setText(f&quot;{self.tasks.count()} งาน&quot;)
+
+app = QApplication(sys.argv)
+window = TodoWindow()
+window.resize(340, 300)
+window.show()
+sys.exit(app.exec())</code></pre></div>
+      <div class="output-field"><span>Output</span><figure class="screenshot"><img src="../assets/gui/ch19-todo.png" alt="หน้าต่างโปรแกรมที่ได้จากการรันโค้ด"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง (หลังจำลองการกรอกและกดปุ่ม)</figcaption></figure></div>
     </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>callback อ่านค่าล่าสุดจาก field</li><li>strip ป้องกัน input ที่มีแต่ช่องว่าง</li><li>signal clicked เรียกฟังก์ชันโดยไม่ผูก logic ไว้ใน widget</li></ol></div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li><code>returnPressed</code> คือ signal เมื่อกด Enter ในช่องกรอก เชื่อมกับ method เดียวกับปุ่มเพิ่มได้</li><li><code>strip()</code> แล้วตรวจ <code>if text:</code> ป้องกันการเพิ่มงานว่าง</li><li>ภาพด้านขวาคือหน้าต่างหลังเพิ่ม 3 งานและเลือกงานที่ 2</li></ol></div>
   </div>
       </section>
       <section class="exercise-section" id="chapter-exercises" aria-labelledby="exercise-heading">
         <h2 id="exercise-heading">แบบฝึกหัดท้ายบท</h2>
-        <p class="exercise-intro">ทำจากข้อพื้นฐานไปข้อท้าทาย ก่อนเขียนให้จดข้อมูลที่โจทย์ให้ สิ่งที่ต้องหา และลำดับการทำงานสั้น ๆ จากนั้นทำนาย output แล้วรันตรวจ รายการตรวจช่วยไล่เงื่อนไขทีละข้อ หากยังติดให้ย้อนอ่านหัวข้อที่เกี่ยวข้องก่อนเปิดเฉลย ซึ่งมีแนวคิดและ source code ที่รันตรวจแล้ว</p>
+        <p class="exercise-intro">เรียงจากง่ายไปยาก ลองเขียนเองให้ได้ output ตรงตัวอย่างก่อน แล้วค่อยเปิดเฉลย</p>
         <div class="exercise-list"><article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 19.1</span><strong>หน้าต่างข้อมูลส่วนตัว</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>สร้างหน้าต่าง PySide6 ที่มีชื่อแอปและ QLabel แสดงข้อความ Course Planner</p>
-    <ul><li>สร้าง QApplication</li><li>สร้าง QWidget พร้อม title</li><li>เพิ่ม QLabel ผ่าน QVBoxLayout</li><li>แสดงหน้าต่างและพิมพ์ข้อความยืนยัน</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>Course Planner</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 19.1</span><strong>หน้าต่างแนะนำตัว</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
+    <p>สร้างหน้าต่างชื่อ <code>About me</code> ที่มี QLabel 3 บรรทัด (ชื่อ, สาขา, งานอดิเรก) เรียงแนวตั้ง</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ข้อมูลของตัวเอง</dd></div><div><dt>ต้องหา</dt><dd>หน้าต่างที่มีข้อความ 3 บรรทัด</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>QWidget</code> + <code>QVBoxLayout</code></li><li><code>addWidget(QLabel(...))</code> 3 ครั้ง</li><li><code>show()</code> แล้ว <code>app.exec()</code></li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><figure class="screenshot"><img src="../assets/gui/ch19-ex1.png" alt="หน้าต่างโปรแกรมที่ได้จากการรันโค้ด"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div>
     <div class="answer-gate" data-answer-id="19.1">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -210,23 +295,27 @@ print(result.text())</code></pre></div>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>layout ช่วยให้ widget เรียงกันโดยไม่ต้องคำนวณตำแหน่งด้วยมือ</p><pre class="copyable"><code>from PySide6.QtWidgets import QApplication, QLabel, QVBoxLayout, QWidget
-app = QApplication([])
+        <p>layout จัดตำแหน่งให้ทั้งหมด เราแค่เพิ่ม widget ตามลำดับที่อยากให้แสดง</p><pre class="copyable"><code>import sys
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel
+
+app = QApplication(sys.argv)
 window = QWidget()
-window.setWindowTitle(&quot;Course Planner&quot;)
+window.setWindowTitle(&quot;About me&quot;)
 layout = QVBoxLayout(window)
-layout.addWidget(QLabel(&quot;Course Planner&quot;))
+for text in [&quot;ชื่อ: Nina&quot;, &quot;สาขา: Computer Science&quot;, &quot;งานอดิเรก: ถ่ายภาพ&quot;]:
+    layout.addWidget(QLabel(text))
+window.resize(260, 120)
 window.show()
-app.processEvents()
-print(&quot;Course Planner&quot;)</code></pre>
+sys.exit(app.exec())</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 19.2</span><strong>ปุ่มกดเปลี่ยนข้อความ</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>สร้าง QLabel และ QPushButton ให้เมื่อคลิกปุ่มแล้ว QLabel เปลี่ยนเป็น &quot;บันทึกแล้ว&quot; จากนั้นจำลอง click หนึ่งครั้ง</p>
-    <ul><li>สร้าง signal-slot connection</li><li>เรียก button.click เพื่อจำลอง event</li><li>แสดงข้อความผลลัพธ์</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>บันทึกแล้ว</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 19.2</span><strong>ปุ่มนับคะแนน</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
+    <p>สร้างหน้าต่างที่มี QLabel แสดงคะแนน และปุ่ม <code>+1</code> กับ <code>รีเซ็ต</code></p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>คะแนนเริ่มที่ 0</dd></div><div><dt>ต้องหา</dt><dd>กด +1 แล้วคะแนนเพิ่ม กดรีเซ็ตแล้วกลับเป็น 0 (ภาพ: หลังกด +1 สองครั้ง)</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>เขียนเป็น class เก็บ <code>self.score</code></li><li>method <code>add_one</code> และ <code>reset</code></li><li><code>connect</code> ปุ่มทั้งสอง</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><figure class="screenshot"><img src="../assets/gui/ch19-ex2.png" alt="หน้าต่างโปรแกรมที่ได้จากการรันโค้ด"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง (หลังจำลองการกรอกและกดปุ่ม)</figcaption></figure></div>
     <div class="answer-gate" data-answer-id="19.2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -235,22 +324,48 @@ print(&quot;Course Planner&quot;)</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การเชื่อม signal กับ slot แยกการตอบสนองออกจากโครงหน้าต่าง</p><pre class="copyable"><code>from PySide6.QtWidgets import QApplication, QLabel, QPushButton
-app = QApplication([])
-label = QLabel(&quot;ยังไม่บันทึก&quot;)
-button = QPushButton(&quot;บันทึก&quot;)
-button.clicked.connect(lambda: label.setText(&quot;บันทึกแล้ว&quot;))
-button.click()
-app.processEvents()
-print(label.text())</code></pre>
+        <p>object จำค่า <code>self.score</code> ไว้ระหว่างการกดแต่ละครั้ง เหมือน class Counter ในบทที่ 12</p><pre class="copyable"><code>import sys
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton
+
+class ScoreWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle(&quot;Score&quot;)
+        self.score = 0
+        self.label = QLabel(&quot;คะแนน: 0&quot;)
+        self.plus = QPushButton(&quot;+1&quot;)
+        reset = QPushButton(&quot;รีเซ็ต&quot;)
+        self.plus.clicked.connect(self.add_one)
+        reset.clicked.connect(self.reset)
+        row = QHBoxLayout()
+        row.addWidget(self.plus)
+        row.addWidget(reset)
+        layout = QVBoxLayout(self)
+        layout.addWidget(self.label)
+        layout.addLayout(row)
+
+    def add_one(self):
+        self.score += 1
+        self.label.setText(f&quot;คะแนน: {self.score}&quot;)
+
+    def reset(self):
+        self.score = 0
+        self.label.setText(&quot;คะแนน: 0&quot;)
+
+app = QApplication(sys.argv)
+window = ScoreWindow()
+window.resize(240, 100)
+window.show()
+sys.exit(app.exec())</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 19.3</span><strong>รับข้อมูลจากช่องกรอก</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>สร้าง QLineEdit และปุ่ม เมื่อคลิกให้นำข้อความ &quot;Ada&quot; ไปแสดงใน QLabel</p>
-    <ul><li>ตั้งค่า text ให้ช่องกรอก</li><li>อ่าน text ใน callback</li><li>เรียก click เพื่อทดสอบโดยไม่ต้องโต้ตอบ</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>สวัสดี Ada</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 19.3</span><strong>แปลงอุณหภูมิ</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
+    <p>สร้างแอปที่มี QDoubleSpinBox รับองศาเซลเซียส และแสดงฟาเรนไฮต์ทันทีที่ตัวเลขเปลี่ยน (ไม่ต้องกดปุ่ม)</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>องศาเซลเซียส เช่น 37</dd></div><div><dt>ต้องหา</dt><dd>ป้ายแสดง <code>37.0 °C = 98.6 °F</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>setRange(-100, 100)</code></li><li>signal <code>valueChanged</code> ของ spin box</li><li>เรียก method อัปเดตครั้งแรกใน <code>__init__</code> ด้วย</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><figure class="screenshot"><img src="../assets/gui/ch19-ex3.png" alt="หน้าต่างโปรแกรมที่ได้จากการรันโค้ด"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง (หลังจำลองการกรอกและกดปุ่ม)</figcaption></figure></div>
     <div class="answer-gate" data-answer-id="19.3">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -259,24 +374,40 @@ print(label.text())</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>อ่านค่าจาก widget ตอน event เกิดขึ้น เพื่อใช้ข้อมูลล่าสุดของผู้ใช้</p><pre class="copyable"><code>from PySide6.QtWidgets import QApplication, QLabel, QLineEdit, QPushButton
-app = QApplication([])
-name = QLineEdit()
-name.setText(&quot;Ada&quot;)
-result = QLabel()
-button = QPushButton(&quot;ทักทาย&quot;)
-button.clicked.connect(lambda: result.setText(f&quot;สวัสดี {name.text()}&quot;))
-button.click()
-app.processEvents()
-print(result.text())</code></pre>
+        <p><code>valueChanged</code> เกิดทุกครั้งที่ค่าเปลี่ยน ผู้ใช้จึงเห็นผลทันที การเรียก <code>update_result()</code> ใน <code>__init__</code> ทำให้ป้ายมีข้อความตั้งแต่เปิดแอป</p><pre class="copyable"><code>import sys
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QDoubleSpinBox, QLabel
+
+class TempWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle(&quot;Temperature&quot;)
+        self.celsius = QDoubleSpinBox(suffix=&quot; °C&quot;)
+        self.celsius.setRange(-100, 100)
+        self.result = QLabel()
+        self.celsius.valueChanged.connect(self.update_result)
+        layout = QVBoxLayout(self)
+        layout.addWidget(self.celsius)
+        layout.addWidget(self.result)
+        self.update_result()
+
+    def update_result(self):
+        c = self.celsius.value()
+        self.result.setText(f&quot;{c:.1f} °C = {c * 9 / 5 + 32:.1f} °F&quot;)
+
+app = QApplication(sys.argv)
+window = TempWindow()
+window.resize(240, 90)
+window.show()
+sys.exit(app.exec())</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 19.4</span><strong>สร้างแบบฟอร์มพร้อมตรวจค่าว่าง</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
-    <p>สร้างฟอร์มเพิ่มงานที่มี QLineEdit และปุ่ม ถ้าข้อความว่างให้แสดงคำเตือน ถ้ามีข้อความให้แสดงงานที่เพิ่ม</p>
-    <ul><li>ตัดช่องว่างหัวท้ายด้วย strip</li><li>ใช้ if/else แยกกรณีว่าง</li><li>ทดสอบทั้งข้อความว่างและข้อความจริง</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>เพิ่มแล้ว: อ่านบทที่ 1</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 19.4</span><strong>ฟอร์มสั่งเครื่องดื่ม</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
+    <p>สร้างฟอร์มด้วย QFormLayout: เลือกเมนูจาก QComboBox (ราคาต่างกัน), จำนวนจาก QSpinBox และติ๊ก <code>เพิ่มวิปครีม (+10)</code> แล้วกดปุ่มสรุปราคา</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>เมนู Latte 60, Mocha 65, Tea 45</dd></div><div><dt>ต้องหา</dt><dd>ภาพ: Mocha 2 แก้ว เพิ่มวิป = <code>รวม 150 บาท</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>เก็บราคาใน dict แล้ว <code>addItems(dict.keys())</code></li><li>อ่าน <code>currentText()</code>, <code>value()</code>, <code>isChecked()</code></li><li>ราคา = (ราคาเมนู + วิป) × จำนวน</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><figure class="screenshot"><img src="../assets/gui/ch19-ex4.png" alt="หน้าต่างโปรแกรมที่ได้จากการรันโค้ด"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง (หลังจำลองการกรอกและกดปุ่ม)</figcaption></figure></div>
     <div class="answer-gate" data-answer-id="19.4">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -285,27 +416,48 @@ print(result.text())</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ตรวจ input ก่อนทำงานช่วยกันข้อมูลว่างและทำให้ผู้ใช้เข้าใจสิ่งที่ต้องแก้</p><pre class="copyable"><code>from PySide6.QtWidgets import QApplication, QLabel, QLineEdit, QPushButton
-app = QApplication([])
-task = QLineEdit()
-result = QLabel()
-button = QPushButton(&quot;เพิ่มงาน&quot;)
-def add_task():
-    value = task.text().strip()
-    result.setText(&quot;กรุณากรอกงาน&quot; if not value else f&quot;เพิ่มแล้ว: {value}&quot;)
-button.clicked.connect(add_task)
-task.setText(&quot;อ่านบทที่ 1&quot;)
-button.click()
-app.processEvents()
-print(result.text())</code></pre>
+        <p>ข้อมูลราคาแยกไว้ใน dict ด้านบน เพิ่มเมนูใหม่ได้โดยไม่ต้องแก้ส่วนหน้าต่าง</p><pre class="copyable"><code>import sys
+from PySide6.QtWidgets import (QApplication, QWidget, QFormLayout, QComboBox,
+                               QSpinBox, QCheckBox, QPushButton, QLabel)
+
+PRICES = {&quot;Latte&quot;: 60, &quot;Mocha&quot;: 65, &quot;Tea&quot;: 45}
+
+class OrderWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle(&quot;Order&quot;)
+        self.menu = QComboBox()
+        self.menu.addItems(PRICES.keys())
+        self.qty = QSpinBox(minimum=1, maximum=20)
+        self.cream = QCheckBox(&quot;เพิ่มวิปครีม (+10)&quot;)
+        self.button = QPushButton(&quot;สรุปราคา&quot;)
+        self.total = QLabel(&quot;-&quot;)
+        self.button.clicked.connect(self.summarize)
+        form = QFormLayout(self)
+        form.addRow(&quot;เมนู&quot;, self.menu)
+        form.addRow(&quot;จำนวน&quot;, self.qty)
+        form.addRow(self.cream)
+        form.addRow(self.button)
+        form.addRow(&quot;ราคา&quot;, self.total)
+
+    def summarize(self):
+        each = PRICES[self.menu.currentText()] + (10 if self.cream.isChecked() else 0)
+        self.total.setText(f&quot;รวม {each * self.qty.value()} บาท&quot;)
+
+app = QApplication(sys.argv)
+window = OrderWindow()
+window.resize(280, 180)
+window.show()
+sys.exit(app.exec())</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 19.5</span><strong>ปุ่มเพิ่มตัวนับ</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>สร้างปุ่มและ label แสดงตัวนับ เริ่มที่ 0 และเมื่อคลิกปุ่มสองครั้งให้ label แสดง 2</p>
-    <ul><li>เก็บ count ในตัวแปรที่ callback เข้าถึงได้</li><li>เพิ่มค่าทุกครั้งที่เกิด clicked</li><li>จำลอง click สองครั้งและตรวจ label</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>2</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 19.5</span><strong>To-do ที่ไม่รับงานซ้ำ</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
+    <p>ต่อยอดตัวอย่างแอป To-do: ห้ามเพิ่มงานว่างและงานที่มีอยู่แล้ว โดยแสดงข้อความเตือนสีแดงใน QLabel</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>เพิ่ม <code>อ่านหนังสือ</code> 2 ครั้ง</dd></div><div><dt>ต้องหา</dt><dd>ครั้งที่สองขึ้นเตือน <code>มีงานนี้อยู่แล้ว</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>เก็บชื่องานที่มีใน list หรืออ่านจาก QListWidget</li><li>ตรวจกรณีว่างก่อน แล้วตรวจซ้ำ</li><li><code>setStyleSheet(&quot;color: #c0392b&quot;)</code> ให้ข้อความเตือนเป็นสีแดง</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><figure class="screenshot"><img src="../assets/gui/ch19-ex5.png" alt="หน้าต่างโปรแกรมที่ได้จากการรันโค้ด"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง (หลังจำลองการกรอกและกดปุ่ม)</figcaption></figure></div>
     <div class="answer-gate" data-answer-id="19.5">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -314,28 +466,48 @@ print(result.text())</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>event เกิดได้หลายครั้ง จึงต้องอัปเดตสถานะก่อนแสดงค่าปัจจุบัน</p><pre class="copyable"><code>from PySide6.QtWidgets import QApplication, QLabel, QPushButton
-app = QApplication([])
-count = 0
-label = QLabel(&quot;0&quot;)
-button = QPushButton(&quot;Add&quot;)
-def increment():
-    global count
-    count += 1
-    label.setText(str(count))
-button.clicked.connect(increment)
-button.click()
-button.click()
-app.processEvents()
-print(label.text())</code></pre>
+        <p>ตรวจข้อมูลก่อนเพิ่มเหมือนบทที่ 4 แต่แสดงผลบนหน้าต่างแทน <code>print</code> ผู้ใช้จึงรู้ทันทีว่าต้องแก้อะไร</p><pre class="copyable"><code>import sys
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit, QListWidget, QLabel
+
+class TodoWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle(&quot;To-do&quot;)
+        self.entry = QLineEdit(placeholderText=&quot;งานใหม่ แล้วกด Enter&quot;)
+        self.tasks = QListWidget()
+        self.message = QLabel(&quot;&quot;)
+        self.message.setStyleSheet(&quot;color: #c0392b&quot;)
+        self.entry.returnPressed.connect(self.add_task)
+        layout = QVBoxLayout(self)
+        for widget in (self.entry, self.tasks, self.message):
+            layout.addWidget(widget)
+
+    def add_task(self):
+        text = self.entry.text().strip()
+        existing = [self.tasks.item(i).text() for i in range(self.tasks.count())]
+        if not text:
+            self.message.setText(&quot;กรุณาพิมพ์ชื่องาน&quot;)
+        elif text in existing:
+            self.message.setText(&quot;มีงานนี้อยู่แล้ว&quot;)
+        else:
+            self.tasks.addItem(text)
+            self.message.setText(&quot;&quot;)
+        self.entry.clear()
+
+app = QApplication(sys.argv)
+window = TodoWindow()
+window.resize(300, 220)
+window.show()
+sys.exit(app.exec())</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 19.6</span><strong>ตรวจฟอร์มตัวเลข</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>สร้าง QLineEdit และปุ่มคำนวณพื้นที่สี่เหลี่ยมจัตุรัส เมื่อป้อนด้านเป็น &quot;4&quot; แสดงพื้นที่ 16 และเมื่อ input ไม่ใช่ตัวเลขให้แจ้งคำเตือน</p>
-    <ul><li>แปลง text เป็น float ใน try</li><li>จับ ValueError และแสดงข้อความ</li><li>คูณด้านกับตัวเองเมื่อข้อมูลถูกต้อง</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>16.0</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 19.6</span><strong>เครื่องคิดค่าทิป</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
+    <p>สร้างแอปที่รับยอดบิล (QDoubleSpinBox) เปอร์เซ็นต์ทิป (QComboBox: 0, 5, 10, 15) และจำนวนคน (QSpinBox) แล้วแสดงยอดต่อคนทันทีเมื่อค่าใดเปลี่ยน</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>บิล 1,250 บาท ทิป 10% 4 คน</dd></div><div><dt>ต้องหา</dt><dd><code>คนละ 343.75 บาท</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>เชื่อม <code>valueChanged</code> / <code>currentTextChanged</code> ทั้ง 3 widget เข้า method เดียว</li><li>ยอดต่อคน = บิล × (1 + ทิป/100) ÷ คน</li><li><code>setRange</code> ให้จำนวนคนเริ่มที่ 1 ป้องกันหารด้วยศูนย์</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><figure class="screenshot"><img src="../assets/gui/ch19-ex6.png" alt="หน้าต่างโปรแกรมที่ได้จากการรันโค้ด"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง (หลังจำลองการกรอกและกดปุ่ม)</figcaption></figure></div>
     <div class="answer-gate" data-answer-id="19.6">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -344,29 +516,44 @@ print(label.text())</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การตรวจ input ใน UI ป้องกัน exception จากข้อมูลผู้ใช้และให้คำแนะนำแก้ไขได้</p><pre class="copyable"><code>from PySide6.QtWidgets import QApplication, QLabel, QLineEdit, QPushButton
-app = QApplication([])
-side = QLineEdit()
-side.setText(&quot;4&quot;)
-result = QLabel()
-button = QPushButton(&quot;Calculate&quot;)
-def calculate():
-    try:
-        value = float(side.text())
-    except ValueError:
-        result.setText(&quot;Enter a number&quot;)
-    else:
-        result.setText(str(value * value))
-button.clicked.connect(calculate)
-button.click()
-app.processEvents()
-print(result.text())</code></pre>
+        <p>signal หลายตัวต่อเข้า slot เดียวได้ ทุกครั้งที่ค่าใดเปลี่ยนจะคำนวณใหม่ทั้งหมด และ <code>minimum=1</code> ป้องกันหารด้วยศูนย์ตั้งแต่ต้นทาง</p><pre class="copyable"><code>import sys
+from PySide6.QtWidgets import (QApplication, QWidget, QFormLayout, QDoubleSpinBox,
+                               QComboBox, QSpinBox, QLabel)
+
+class TipWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle(&quot;Tip calculator&quot;)
+        self.bill = QDoubleSpinBox(maximum=100000, suffix=&quot; บาท&quot;)
+        self.tip = QComboBox()
+        self.tip.addItems([&quot;0&quot;, &quot;5&quot;, &quot;10&quot;, &quot;15&quot;])
+        self.people = QSpinBox(minimum=1, maximum=50)
+        self.result = QLabel()
+        self.bill.valueChanged.connect(self.update_result)
+        self.tip.currentTextChanged.connect(self.update_result)
+        self.people.valueChanged.connect(self.update_result)
+        form = QFormLayout(self)
+        form.addRow(&quot;ยอดบิล&quot;, self.bill)
+        form.addRow(&quot;ทิป (%)&quot;, self.tip)
+        form.addRow(&quot;จำนวนคน&quot;, self.people)
+        form.addRow(self.result)
+        self.update_result()
+
+    def update_result(self):
+        total = self.bill.value() * (1 + int(self.tip.currentText()) / 100)
+        self.result.setText(f&quot;คนละ {total / self.people.value():,.2f} บาท&quot;)
+
+app = QApplication(sys.argv)
+window = TipWindow()
+window.resize(280, 150)
+window.show()
+sys.exit(app.exec())</code></pre>
       </div>
     </div>
   </article></div>
       </section>
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-18.html">← บทก่อนหน้า</a><a class="pager-link" href="chapter-20.html">บทถัดไป →</a></nav>
-      <footer class="lesson-footer">Python programming · Lecture notes · ตัวอย่างรันตรวจด้วย Python จริง</footer>
+      <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
   <script src="../password.js"></script><script src="../assets/lesson.js"></script>

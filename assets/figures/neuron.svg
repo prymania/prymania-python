@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 230" role="img" aria-labelledby="t">
+  <title id="t">neuron: input x1 x2 x3 คูณ weight แล้วรวมกับ bias ได้ z ผ่าน activation ได้ output</title>
+  <style>
+    text { font-family: "Leelawadee UI", Tahoma, sans-serif; fill: #202440; }
+    .mono { font-family: Consolas, "Courier New", monospace; }
+    .cap { fill: #62677b; font-size: 13px; }
+    .w { fill: #ba4b3a; font-size: 14px; font-weight: 700; }
+    .line { stroke: #62677b; stroke-width: 2; fill: none; }
+    .arrow { stroke: #ff755e; stroke-width: 2.5; fill: none; }
+  </style>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ff755e"/></marker></defs>
+  <g class="mono" font-size="16" font-weight="700" text-anchor="middle">
+    <circle cx="70" cy="50" r="26" fill="#fffefa" stroke="#192044" stroke-width="1.5"/><text x="70" y="56">x1</text>
+    <circle cx="70" cy="115" r="26" fill="#fffefa" stroke="#192044" stroke-width="1.5"/><text x="70" y="121">x2</text>
+    <circle cx="70" cy="180" r="26" fill="#fffefa" stroke="#192044" stroke-width="1.5"/><text x="70" y="186">x3</text>
+  </g>
+  <path d="M96 50L292 108M96 115H290M96 180L292 122" class="line"/>
+  <text x="190" y="70" class="w mono">× w1</text><text x="190" y="108" class="w mono">× w2</text><text x="190" y="166" class="w mono">× w3</text>
+  <circle cx="340" cy="115" r="48" fill="#192044"/>
+  <text x="340" y="110" text-anchor="middle" fill="#fff" font-size="26" font-weight="700">Σ</text>
+  <text x="340" y="136" text-anchor="middle" fill="#8de0c7" font-size="13" class="mono">+ bias</text>
+  <path d="M390 115H460" class="arrow" marker-end="url(#a)"/>
+  <text x="425" y="104" text-anchor="middle" class="mono" font-size="15" font-weight="700">z</text>
+  <rect x="466" y="85" width="130" height="60" rx="8" fill="#e6f4ee" stroke="#147d70" stroke-width="1.5"/>
+  <text x="531" y="112" text-anchor="middle" font-weight="700" font-size="15">activation</text>
+  <text x="531" y="132" text-anchor="middle" class="mono" font-size="12" fill="#147d70">เช่น ReLU</text>
+  <path d="M600 115H668" class="arrow" marker-end="url(#a)"/>
+  <text x="712" y="121" text-anchor="middle" font-weight="700" font-size="15">output</text>
+  <text x="70" y="222" text-anchor="middle" class="cap">input</text>
+  <text x="340" y="190" text-anchor="middle" class="cap mono">z = x1·w1 + x2·w2 + x3·w3 + b</text>
+  <text x="340" y="212" text-anchor="middle" class="cap">weight และ bias คือค่าที่โมเดลเรียนรู้</text>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" role="img" aria-labelledby="t">
+  <title id="t">หน้าจอ Thonny: แถบเครื่องมือมีปุ่ม Run, Editor ด้านบน, Shell ด้านล่าง</title>
+  <style>
+    text { font-family: "Leelawadee UI", Tahoma, sans-serif; fill: #202440; }
+    .mono { font-family: Consolas, "Courier New", monospace; font-size: 14px; }
+    .note { fill: #62677b; font-size: 13px; }
+    .tag { fill: #ff755e; font-size: 14px; font-weight: 700; }
+  </style>
+  <rect x="10" y="10" width="560" height="310" rx="8" fill="#fffefa" stroke="#192044" stroke-width="1.5"/>
+  <rect x="10" y="10" width="560" height="30" rx="8" fill="#e8e9e3"/>
+  <text x="24" y="30" font-size="13">hello.py – Thonny</text>
+  <g transform="translate(20,48)">
+    <rect width="26" height="26" rx="4" fill="#e8e9e3"/><rect x="32" width="26" height="26" rx="4" fill="#e8e9e3"/>
+    <rect x="64" width="26" height="26" rx="4" fill="#e8e9e3"/>
+    <circle cx="113" cy="13" r="13" fill="#2fa36b"/><path d="M108 6 L121 13 L108 20 Z" fill="#fff"/>
+    <rect x="134" width="26" height="26" rx="4" fill="#e8e9e3"/>
+    <circle cx="183" cy="13" r="13" fill="#d64545"/><rect x="177" y="7" width="12" height="12" fill="#fff"/>
+  </g>
+  <rect x="20" y="84" width="540" height="122" fill="#fbfbf7" stroke="#d9d8cf"/>
+  <text x="30" y="108" class="mono" fill="#9a9a9a">1</text><text x="54" y="108" class="mono">print("Hello, Python!")</text>
+  <text x="30" y="130" class="mono" fill="#9a9a9a">2</text><text x="54" y="130" class="mono">print(2 + 3)</text>
+  <rect x="20" y="214" width="540" height="96" fill="#f3f4f8" stroke="#d9d8cf"/>
+  <text x="30" y="234" font-size="12" fill="#62677b">Shell</text>
+  <text x="30" y="256" class="mono" fill="#62677b">&gt;&gt;&gt; %Run hello.py</text>
+  <text x="30" y="276" class="mono">Hello, Python!</text>
+  <text x="30" y="296" class="mono">5</text>
+  <path d="M220 61 H 600" stroke="#ff755e" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="606" y="58" class="tag">Run (F5)</text><text x="606" y="76" class="note">Stop (Ctrl+F2) ปุ่มแดง</text>
+  <path d="M560 140 H 600" stroke="#ff755e" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="606" y="138" class="tag">Editor</text><text x="606" y="156" class="note">เขียนและบันทึกไฟล์ .py</text>
+  <path d="M560 262 H 600" stroke="#ff755e" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="606" y="260" class="tag">Shell</text><text x="606" y="278" class="note">แสดงผล / ลองคำสั่งสั้น ๆ</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 170" role="img" aria-labelledby="t">
+  <title id="t">ฟังก์ชัน area รับ 4 และ 5 ทาง parameter คำนวณ width * height แล้ว return 20</title>
+  <style>
+    text { font-family: "Leelawadee UI", Tahoma, sans-serif; fill: #202440; }
+    .mono { font-family: Consolas, "Courier New", monospace; }
+    .cap { fill: #62677b; font-size: 13px; }
+    .val { font-size: 22px; font-weight: 700; }
+    .arrow { stroke: #ff755e; stroke-width: 2.5; fill: none; }
+  </style>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ff755e"/></marker></defs>
+  <rect x="20" y="40" width="130" height="70" rx="8" fill="#fffefa" stroke="#192044" stroke-width="1.5"/>
+  <text x="85" y="84" text-anchor="middle" class="val mono">4, 5</text>
+  <text x="85" y="134" text-anchor="middle" class="cap">argument (ค่าที่ส่งเข้า)</text>
+  <path d="M156 75H236" class="arrow" marker-end="url(#a)"/>
+  <rect x="244" y="22" width="280" height="106" rx="10" fill="#192044"/>
+  <text x="384" y="52" text-anchor="middle" fill="#8de0c7" font-size="15" class="mono" font-weight="700">def area(width, height):</text>
+  <text x="384" y="84" text-anchor="middle" fill="#fff" font-size="15" class="mono">    return width * height</text>
+  <text x="384" y="114" text-anchor="middle" fill="#c9cde0" font-size="12">width=4, height=5 คือ parameter</text>
+  <path d="M530 75H610" class="arrow" marker-end="url(#a)"/>
+  <rect x="618" y="40" width="120" height="70" rx="8" fill="#e6f4ee" stroke="#147d70" stroke-width="1.5"/>
+  <text x="678" y="84" text-anchor="middle" class="val mono">20</text>
+  <text x="678" y="134" text-anchor="middle" class="cap">return (ผลที่ส่งกลับ)</text>
+  <text x="384" y="160" text-anchor="middle" class="cap mono">room = area(4, 5)   # room มีค่า 20</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 220" role="img" aria-labelledby="t">
+  <title id="t">แอป 3 ชั้น: UI เรียก Logic และ Logic อ่านจาก Data</title>
+  <style>
+    text { font-family: "Leelawadee UI", Tahoma, sans-serif; fill: #202440; }
+    .mono { font-family: Consolas, "Courier New", monospace; font-size: 13px; }
+    .cap { fill: #62677b; font-size: 13px; }
+    .h { font-size: 16px; font-weight: 700; }
+    .arrow { stroke: #ff755e; stroke-width: 2.5; fill: none; }
+  </style>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#ff755e"/></marker></defs>
+  <rect x="20" y="20" width="460" height="54" rx="8" fill="#192044"/>
+  <text x="40" y="44" class="h" fill="#fff">UI · PySide6</text>
+  <text x="40" y="64" class="mono" fill="#c9cde0">รับค่าจากผู้ใช้ → เรียก logic → แสดงผล</text>
+  <path d="M250 78V94" class="arrow" marker-end="url(#a)"/>
+  <rect x="20" y="98" width="460" height="54" rx="8" fill="#e6f4ee" stroke="#147d70" stroke-width="1.5"/>
+  <text x="40" y="122" class="h">Logic · Python + scikit-learn</text>
+  <text x="40" y="142" class="mono">recommend(score) · pass_chance(hours, score)</text>
+  <path d="M250 156V172" class="arrow" marker-end="url(#a)"/>
+  <rect x="20" y="176" width="460" height="40" rx="8" fill="#fffefa" stroke="#192044" stroke-width="1.5"/>
+  <text x="40" y="201" class="h">Data · pandas</text>
+  <text x="200" y="201" class="mono">courses.csv · history.csv</text>
+  <text x="510" y="50" class="cap">ไม่มีกติกาซ่อนในหน้าต่าง</text>
+  <text x="510" y="122" class="cap">ทดสอบด้วย assert ได้</text>
+  <text x="510" y="142" class="cap">โดยไม่ต้องเปิดหน้าต่าง</text>
+  <text x="510" y="201" class="cap">ตรวจรูปแบบไฟล์ที่นี่</text>
+</svg>

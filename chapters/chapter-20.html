@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#192044">
-  <meta name="description" content="นำ Python, ตารางข้อมูล, โมเดล และ GUI มาประกอบเป็นแอปแนะนำแผนเรียนขนาดเล็ก">
+  <meta name="description" content="รวมทุกอย่างที่เรียนมาเป็นแอปแนะนำรายวิชา: ข้อมูลจาก CSV, กติกาแนะนำ, โมเดลทำนาย และหน้าต่าง PySide6">
   <title>บทที่ 20 · โปรเจกต์ปลายทาง: Course Planner + AI | Python programming</title>
   <link rel="stylesheet" href="../assets/lesson.css">
 </head>
@@ -15,155 +15,329 @@
       <a class="lesson-brand" href="../index.html"><span class="brand-mark">Py</span><span><span class="brand-title">Python programming by Prymania</span><span class="brand-caption">LECTURE NOTES</span></span></a>
       <nav class="lesson-toc chapter-navigation" aria-label="สารบัญรายวิชา">
         <p class="toc-label">สารบัญ · 20 บทเรียน</p>
-        <p class="toc-label" data-group="foundation">เริ่มต้นกับ Python</p><details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเริ่มใช้งาน Python ด้วย Thonny ทำความเข้าใจไฟล์ .py, โครงสร้างคำสั่ง และวิธีรัน/หยุดโปรแกรม Python program ทำงานอย่างไร เลือก IDE สำหรับผู้เริ่มเรียน: Thonny แยก editor, shell และ interpreter โครงสร้างไฟล์และการเยื้องบรรทัด รัน บันทึก และอ่านข้อผิดพลาด">
+        <p class="toc-label" data-group="foundation">เริ่มต้นกับ Python</p><details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเปิด Thonny เขียนไฟล์ .py แรก รันโปรแกรม และอ่าน error เบื้องต้น Python ทำงานอย่างไร เครื่องมือที่ใช้: Thonny Shell กับไฟล์ .py ต่างกันอย่างไร comment และการเยื้องบรรทัด อ่าน error ให้เป็น">
       <summary><span class="toc-number">01</span><span class="chapter-nav-title">โครงสร้างโปรแกรม Python, IDE และการรัน</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-01.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-01.html#topic-1"><span class="topic-number">01.1</span>Python program ทำงานอย่างไร</a></li><li><a href="chapter-01.html#topic-2"><span class="topic-number">01.2</span>เลือก IDE สำหรับผู้เริ่มเรียน: Thonny</a></li><li><a href="chapter-01.html#topic-3"><span class="topic-number">01.3</span>แยก editor, shell และ interpreter</a></li><li><a href="chapter-01.html#topic-4"><span class="topic-number">01.4</span>โครงสร้างไฟล์และการเยื้องบรรทัด</a></li><li><a href="chapter-01.html#topic-5"><span class="topic-number">01.5</span>รัน บันทึก และอ่านข้อผิดพลาด</a></li><li><a href="chapter-01.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-01.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-01.html#topic-1"><span class="topic-number">01.1</span>Python ทำงานอย่างไร</a></li><li><a href="chapter-01.html#topic-2"><span class="topic-number">01.2</span>เครื่องมือที่ใช้: Thonny</a></li><li><a href="chapter-01.html#topic-3"><span class="topic-number">01.3</span>Shell กับไฟล์ .py ต่างกันอย่างไร</a></li><li><a href="chapter-01.html#topic-4"><span class="topic-number">01.4</span>comment และการเยื้องบรรทัด</a></li><li><a href="chapter-01.html#topic-5"><span class="topic-number">01.5</span>อ่าน error ให้เป็น</a></li><li><a href="chapter-01.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลแต่ละชนิด รับค่าจากผู้ใช้ แปลงชนิดก่อนคำนวณ และสร้าง output ที่อ่านเข้าใจได้ ตัวแปรคือชื่อที่อ้างถึงข้อมูล ตั้งชื่อให้คนอ่านเข้าใจ ค่าหนึ่งเปลี่ยนได้ตามลำดับคำสั่ง ชนิดข้อมูลบอกวิธีใช้งานค่า input คืนค่าเป็นข้อความเสมอ f-string แทรกค่าลงในข้อความ">
+<details class="chapter-nav-item" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลในตัวแปร รู้จักชนิดข้อมูล รับค่าด้วย input() และแสดงผลด้วย print() / f-string ตัวแปร: ตั้งชื่อให้ข้อมูล ชนิดข้อมูลพื้นฐาน 4 ชนิด แปลงชนิดข้อมูล รับค่าด้วย input() แสดงผลด้วย print() และ f-string ข้อผิดพลาดที่เจอบ่อย">
       <summary><span class="toc-number">02</span><span class="chapter-nav-title">ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-02.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-02.html#topic-1"><span class="topic-number">02.1</span>ตัวแปรคือชื่อที่อ้างถึงข้อมูล</a></li><li><a href="chapter-02.html#topic-2"><span class="topic-number">02.2</span>ตั้งชื่อให้คนอ่านเข้าใจ</a></li><li><a href="chapter-02.html#topic-3"><span class="topic-number">02.3</span>ค่าหนึ่งเปลี่ยนได้ตามลำดับคำสั่ง</a></li><li><a href="chapter-02.html#topic-4"><span class="topic-number">02.4</span>ชนิดข้อมูลบอกวิธีใช้งานค่า</a></li><li><a href="chapter-02.html#topic-5"><span class="topic-number">02.5</span>input คืนค่าเป็นข้อความเสมอ</a></li><li><a href="chapter-02.html#topic-6"><span class="topic-number">02.6</span>f-string แทรกค่าลงในข้อความ</a></li><li><a href="chapter-02.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-02.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-02.html#topic-1"><span class="topic-number">02.1</span>ตัวแปร: ตั้งชื่อให้ข้อมูล</a></li><li><a href="chapter-02.html#topic-2"><span class="topic-number">02.2</span>ชนิดข้อมูลพื้นฐาน 4 ชนิด</a></li><li><a href="chapter-02.html#topic-3"><span class="topic-number">02.3</span>แปลงชนิดข้อมูล</a></li><li><a href="chapter-02.html#topic-4"><span class="topic-number">02.4</span>รับค่าด้วย input()</a></li><li><a href="chapter-02.html#topic-5"><span class="topic-number">02.5</span>แสดงผลด้วย print() และ f-string</a></li><li><a href="chapter-02.html#topic-6"><span class="topic-number">02.6</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-02.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และประกอบเงื่อนไขเชิงตรรกะ ตัวดำเนินการเลขคณิต เปรียบเทียบแล้วได้ bool เชื่อมเงื่อนไข">
+<details class="chapter-nav-item" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และรวมเงื่อนไขด้วย and / or / not ตัวดำเนินการเลขคณิต ลำดับการคำนวณ เปรียบเทียบค่า ได้ผลเป็น True/False รวมเงื่อนไขด้วย and / or / not ตัวดำเนินการแบบย่อ">
       <summary><span class="toc-number">03</span><span class="chapter-nav-title">ตัวดำเนินการและนิพจน์</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-03.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-03.html#topic-1"><span class="topic-number">03.1</span>ตัวดำเนินการเลขคณิต</a></li><li><a href="chapter-03.html#topic-2"><span class="topic-number">03.2</span>เปรียบเทียบแล้วได้ bool</a></li><li><a href="chapter-03.html#topic-3"><span class="topic-number">03.3</span>เชื่อมเงื่อนไข</a></li><li><a href="chapter-03.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-03.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-03.html#topic-1"><span class="topic-number">03.1</span>ตัวดำเนินการเลขคณิต</a></li><li><a href="chapter-03.html#topic-2"><span class="topic-number">03.2</span>ลำดับการคำนวณ</a></li><li><a href="chapter-03.html#topic-3"><span class="topic-number">03.3</span>เปรียบเทียบค่า ได้ผลเป็น True/False</a></li><li><a href="chapter-03.html#topic-4"><span class="topic-number">03.4</span>รวมเงื่อนไขด้วย and / or / not</a></li><li><a href="chapter-03.html#topic-5"><span class="topic-number">03.5</span>ตัวดำเนินการแบบย่อ</a></li><li><a href="chapter-03.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if ตรวจกรณีแรก elif เรียงกรณีที่ไม่ทับกัน else เป็นกรณีที่เหลือ">
+<details class="chapter-nav-item" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if: ทำเมื่อเงื่อนไขเป็นจริง if-else: เลือก 1 ใน 2 ทาง elif: หลายทางเลือก เงื่อนไขหลายข้อ และ if ซ้อน ข้อผิดพลาดที่เจอบ่อย">
       <summary><span class="toc-number">04</span><span class="chapter-nav-title">เงื่อนไขและการตัดสินใจ</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-04.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-04.html#topic-1"><span class="topic-number">04.1</span>if ตรวจกรณีแรก</a></li><li><a href="chapter-04.html#topic-2"><span class="topic-number">04.2</span>elif เรียงกรณีที่ไม่ทับกัน</a></li><li><a href="chapter-04.html#topic-3"><span class="topic-number">04.3</span>else เป็นกรณีที่เหลือ</a></li><li><a href="chapter-04.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-04.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-04.html#topic-1"><span class="topic-number">04.1</span>if: ทำเมื่อเงื่อนไขเป็นจริง</a></li><li><a href="chapter-04.html#topic-2"><span class="topic-number">04.2</span>if-else: เลือก 1 ใน 2 ทาง</a></li><li><a href="chapter-04.html#topic-3"><span class="topic-number">04.3</span>elif: หลายทางเลือก</a></li><li><a href="chapter-04.html#topic-4"><span class="topic-number">04.4</span>เงื่อนไขหลายข้อ และ if ซ้อน</a></li><li><a href="chapter-04.html#topic-5"><span class="topic-number">04.5</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-04.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="การทำซ้ำด้วยลูป ทำคำสั่งซ้ำอย่างควบคุมได้ด้วย for, while และ range for วนผ่านสมาชิก สะสมค่าอย่างระมัดระวัง while วนจนเงื่อนไขเปลี่ยน">
+<details class="chapter-nav-item" data-group="foundation" data-search="การทำซ้ำด้วยลูป สั่งให้โปรแกรมทำงานซ้ำด้วย for และ while แทนการเขียนคำสั่งเดิมหลายครั้ง for กับ range() for วนผ่านข้อมูลทีละตัว สะสมผลรวมและนับจำนวน while: วนจนกว่าเงื่อนไขจะเป็นเท็จ break และ continue">
       <summary><span class="toc-number">05</span><span class="chapter-nav-title">การทำซ้ำด้วยลูป</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-05.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-05.html#topic-1"><span class="topic-number">05.1</span>for วนผ่านสมาชิก</a></li><li><a href="chapter-05.html#topic-2"><span class="topic-number">05.2</span>สะสมค่าอย่างระมัดระวัง</a></li><li><a href="chapter-05.html#topic-3"><span class="topic-number">05.3</span>while วนจนเงื่อนไขเปลี่ยน</a></li><li><a href="chapter-05.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-05.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-05.html#topic-1"><span class="topic-number">05.1</span>for กับ range()</a></li><li><a href="chapter-05.html#topic-2"><span class="topic-number">05.2</span>for วนผ่านข้อมูลทีละตัว</a></li><li><a href="chapter-05.html#topic-3"><span class="topic-number">05.3</span>สะสมผลรวมและนับจำนวน</a></li><li><a href="chapter-05.html#topic-4"><span class="topic-number">05.4</span>while: วนจนกว่าเงื่อนไขจะเป็นเท็จ</a></li><li><a href="chapter-05.html#topic-5"><span class="topic-number">05.5</span>break และ continue</a></li><li><a href="chapter-05.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด ต่อ ค้นหา และจัดรูปแบบข้อความที่รับมาจากผู้ใช้หรือไฟล์ ข้อความแก้ตรงตำแหน่งไม่ได้ method ช่วยทำความสะอาด index และ slicing เริ่มที่ศูนย์">
+<details class="chapter-nav-item" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด แยก ค้นหา และจัดรูปแบบข้อความด้วย index, slicing และ string method index: ตำแหน่งของตัวอักษร slicing: ตัดบางส่วน method ที่ใช้บ่อย ตรวจและวนข้อความ">
       <summary><span class="toc-number">06</span><span class="chapter-nav-title">ข้อความและการจัดการ string</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-06.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-06.html#topic-1"><span class="topic-number">06.1</span>ข้อความแก้ตรงตำแหน่งไม่ได้</a></li><li><a href="chapter-06.html#topic-2"><span class="topic-number">06.2</span>method ช่วยทำความสะอาด</a></li><li><a href="chapter-06.html#topic-3"><span class="topic-number">06.3</span>index และ slicing เริ่มที่ศูนย์</a></li><li><a href="chapter-06.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-06.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-06.html#topic-1"><span class="topic-number">06.1</span>index: ตำแหน่งของตัวอักษร</a></li><li><a href="chapter-06.html#topic-2"><span class="topic-number">06.2</span>slicing: ตัดบางส่วน</a></li><li><a href="chapter-06.html#topic-3"><span class="topic-number">06.3</span>method ที่ใช้บ่อย</a></li><li><a href="chapter-06.html#topic-4"><span class="topic-number">06.4</span>ตรวจและวนข้อความ</a></li><li><a href="chapter-06.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เลือกภาชนะเก็บข้อมูลหลายค่าให้เหมาะกับการเพิ่ม แก้ ค้นหา และจับคู่ list เก็บลำดับและแก้ไขได้ tuple และ set มีหน้าที่ต่างกัน dict ผูก key กับ value">
+<details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เก็บข้อมูลหลายค่าในตัวแปรเดียว และเลือกโครงสร้างให้เหมาะกับงาน เลือกใช้แบบไหนดี list: รายการที่แก้ไขได้ tuple และ set dict: จับคู่ key กับ value">
       <summary><span class="toc-number">07</span><span class="chapter-nav-title">โครงสร้างข้อมูล: list, tuple, set และ dict</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-07.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-07.html#topic-1"><span class="topic-number">07.1</span>list เก็บลำดับและแก้ไขได้</a></li><li><a href="chapter-07.html#topic-2"><span class="topic-number">07.2</span>tuple และ set มีหน้าที่ต่างกัน</a></li><li><a href="chapter-07.html#topic-3"><span class="topic-number">07.3</span>dict ผูก key กับ value</a></li><li><a href="chapter-07.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-07.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-07.html#topic-1"><span class="topic-number">07.1</span>เลือกใช้แบบไหนดี</a></li><li><a href="chapter-07.html#topic-2"><span class="topic-number">07.2</span>list: รายการที่แก้ไขได้</a></li><li><a href="chapter-07.html#topic-3"><span class="topic-number">07.3</span>tuple และ set</a></li><li><a href="chapter-07.html#topic-4"><span class="topic-number">07.4</span>dict: จับคู่ key กับ value</a></li><li><a href="chapter-07.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม ห่อแนวคิดที่ใช้ซ้ำในฟังก์ชัน พร้อมพารามิเตอร์และค่าที่คืนกลับ def ประกาศหน้าที่หนึ่งอย่าง parameter และ argument return ส่งผลกลับผู้เรียก">
+<details class="chapter-nav-item" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม รวมคำสั่งที่ทำงานหนึ่งอย่างเป็นฟังก์ชัน เรียกใช้ซ้ำได้ และแบ่งโปรแกรมใหญ่เป็นส่วนเล็ก def: สร้างฟังก์ชัน parameter: ส่งค่าเข้าฟังก์ชัน return: ส่งผลกลับ ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน">
       <summary><span class="toc-number">08</span><span class="chapter-nav-title">ฟังก์ชันและการแบ่งโปรแกรม</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-08.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-08.html#topic-1"><span class="topic-number">08.1</span>def ประกาศหน้าที่หนึ่งอย่าง</a></li><li><a href="chapter-08.html#topic-2"><span class="topic-number">08.2</span>parameter และ argument</a></li><li><a href="chapter-08.html#topic-3"><span class="topic-number">08.3</span>return ส่งผลกลับผู้เรียก</a></li><li><a href="chapter-08.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-08.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-08.html#topic-1"><span class="topic-number">08.1</span>def: สร้างฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-2"><span class="topic-number">08.2</span>parameter: ส่งค่าเข้าฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-3"><span class="topic-number">08.3</span>return: ส่งผลกลับ</a></li><li><a href="chapter-08.html#topic-4"><span class="topic-number">08.4</span>ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน</a></li><li><a href="chapter-08.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="practice">ฝึกเขียนและใช้งาน</p><details class="chapter-nav-item" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน traceback อย่างมีระบบ ป้องกันข้อผิดพลาดที่คาดหมาย และแก้ที่สาเหตุ อ่าน traceback จากบรรทัดล่างขึ้นบน try-except ควรจับเฉพาะที่เข้าใจ แยก logic error ด้วยตัวอย่าง">
+<p class="toc-label" data-group="practice">ฝึกเขียนและใช้งาน</p><details class="chapter-nav-item" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน error ให้เข้าใจ ดักจับข้อผิดพลาดด้วย try/except และหาสาเหตุเมื่อผลลัพธ์ผิด อ่าน traceback error ที่พบบ่อย try / except: ดักจับ error ดักหลายชนิด และดูข้อความ error raise: แจ้ง error เอง ไล่หาบั๊กเมื่อผลลัพธ์ผิด">
       <summary><span class="toc-number">09</span><span class="chapter-nav-title">ข้อผิดพลาด การจัดการ exception และ debug</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-09.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-09.html#topic-1"><span class="topic-number">09.1</span>อ่าน traceback จากบรรทัดล่างขึ้นบน</a></li><li><a href="chapter-09.html#topic-2"><span class="topic-number">09.2</span>try-except ควรจับเฉพาะที่เข้าใจ</a></li><li><a href="chapter-09.html#topic-3"><span class="topic-number">09.3</span>แยก logic error ด้วยตัวอย่าง</a></li><li><a href="chapter-09.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-09.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-09.html#topic-1"><span class="topic-number">09.1</span>อ่าน traceback</a></li><li><a href="chapter-09.html#topic-2"><span class="topic-number">09.2</span>error ที่พบบ่อย</a></li><li><a href="chapter-09.html#topic-3"><span class="topic-number">09.3</span>try / except: ดักจับ error</a></li><li><a href="chapter-09.html#topic-4"><span class="topic-number">09.4</span>ดักหลายชนิด และดูข้อความ error</a></li><li><a href="chapter-09.html#topic-5"><span class="topic-number">09.5</span>raise: แจ้ง error เอง</a></li><li><a href="chapter-09.html#topic-6"><span class="topic-number">09.6</span>ไล่หาบั๊กเมื่อผลลัพธ์ผิด</a></li><li><a href="chapter-09.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนข้อมูลอย่างปลอดภัย พร้อมใช้รูปแบบไฟล์ที่พบในงานจริง ใช้ with เปิดไฟล์ pathlib จัดการตำแหน่งไฟล์ CSV กับ JSON ใช้คนละโครงสร้าง">
+<details class="chapter-nav-item" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนไฟล์ข้อความ CSV และ JSON เพื่อเก็บข้อมูลไว้ใช้ต่อหลังปิดโปรแกรม เปิดไฟล์ด้วย with open() อ่านทีละบรรทัด CSV: ข้อมูลตาราง JSON: บันทึก list/dict ทั้งก้อน เลือก CSV หรือ JSON">
       <summary><span class="toc-number">10</span><span class="chapter-nav-title">ไฟล์ ข้อมูล CSV และ JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-10.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-10.html#topic-1"><span class="topic-number">10.1</span>ใช้ with เปิดไฟล์</a></li><li><a href="chapter-10.html#topic-2"><span class="topic-number">10.2</span>pathlib จัดการตำแหน่งไฟล์</a></li><li><a href="chapter-10.html#topic-3"><span class="topic-number">10.3</span>CSV กับ JSON ใช้คนละโครงสร้าง</a></li><li><a href="chapter-10.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-10.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-10.html#topic-1"><span class="topic-number">10.1</span>เปิดไฟล์ด้วย with open()</a></li><li><a href="chapter-10.html#topic-2"><span class="topic-number">10.2</span>อ่านทีละบรรทัด</a></li><li><a href="chapter-10.html#topic-3"><span class="topic-number">10.3</span>CSV: ข้อมูลตาราง</a></li><li><a href="chapter-10.html#topic-4"><span class="topic-number">10.4</span>JSON: บันทึก list/dict ทั้งก้อน</a></li><li><a href="chapter-10.html#topic-5"><span class="topic-number">10.5</span>เลือก CSV หรือ JSON</a></li><li><a href="chapter-10.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="โมดูล virtual environment และ pip ใช้ไลบรารีมาตรฐาน ติดตั้งแพ็กเกจแยกสภาพแวดล้อม และจัด dependency ของโปรเจกต์ import นำโมดูลมาใช้ venv ป้องกัน dependency ชนกัน pip และ requirements.txt">
+<details class="chapter-nav-item" data-group="practice" data-search="โมดูล virtual environment และ pip นำโมดูลมาตรฐานมาใช้ สร้างโมดูลของตัวเอง และติดตั้งแพ็กเกจเพิ่มด้วย pip ใน virtual environment import: นำโมดูลมาใช้ โมดูลมาตรฐานที่ใช้บ่อย สร้างโมดูลเอง pip และ virtual environment ตรวจว่าติดตั้งแล้วหรือยัง">
       <summary><span class="toc-number">11</span><span class="chapter-nav-title">โมดูล virtual environment และ pip</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-11.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-11.html#topic-1"><span class="topic-number">11.1</span>import นำโมดูลมาใช้</a></li><li><a href="chapter-11.html#topic-2"><span class="topic-number">11.2</span>venv ป้องกัน dependency ชนกัน</a></li><li><a href="chapter-11.html#topic-3"><span class="topic-number">11.3</span>pip และ requirements.txt</a></li><li><a href="chapter-11.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-11.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-11.html#topic-1"><span class="topic-number">11.1</span>import: นำโมดูลมาใช้</a></li><li><a href="chapter-11.html#topic-2"><span class="topic-number">11.2</span>โมดูลมาตรฐานที่ใช้บ่อย</a></li><li><a href="chapter-11.html#topic-3"><span class="topic-number">11.3</span>สร้างโมดูลเอง</a></li><li><a href="chapter-11.html#topic-4"><span class="topic-number">11.4</span>pip และ virtual environment</a></li><li><a href="chapter-11.html#topic-5"><span class="topic-number">11.5</span>ตรวจว่าติดตั้งแล้วหรือยัง</a></li><li><a href="chapter-11.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมสถานะและพฤติกรรมที่สัมพันธ์กันไว้ใน class เพื่อสร้าง object หลายตัว class เป็นแบบพิมพ์ object เป็นสิ่งที่สร้าง __init__ กำหนดค่าเริ่มต้น method รวมพฤติกรรมกับข้อมูล">
+<details class="chapter-nav-item" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมข้อมูลและการทำงานที่เกี่ยวข้องกันไว้ใน class แล้วสร้าง object ได้หลายตัว class คือแม่แบบ object คือของจริง __init__ และ self method: การทำงานของ object __str__: กำหนดวิธีแสดงผล ทำงานกับ object หลายตัว">
       <summary><span class="toc-number">12</span><span class="chapter-nav-title">เขียนโปรแกรมเชิงวัตถุด้วย class</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-12.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-12.html#topic-1"><span class="topic-number">12.1</span>class เป็นแบบพิมพ์ object เป็นสิ่งที่สร้าง</a></li><li><a href="chapter-12.html#topic-2"><span class="topic-number">12.2</span>__init__ กำหนดค่าเริ่มต้น</a></li><li><a href="chapter-12.html#topic-3"><span class="topic-number">12.3</span>method รวมพฤติกรรมกับข้อมูล</a></li><li><a href="chapter-12.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-12.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-12.html#topic-1"><span class="topic-number">12.1</span>class คือแม่แบบ object คือของจริง</a></li><li><a href="chapter-12.html#topic-2"><span class="topic-number">12.2</span>__init__ และ self</a></li><li><a href="chapter-12.html#topic-3"><span class="topic-number">12.3</span>method: การทำงานของ object</a></li><li><a href="chapter-12.html#topic-4"><span class="topic-number">12.4</span>__str__: กำหนดวิธีแสดงผล</a></li><li><a href="chapter-12.html#topic-5"><span class="topic-number">12.5</span>ทำงานกับ object หลายตัว</a></li><li><a href="chapter-12.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON เข้าใจ request/response, ส่งพารามิเตอร์ และแปลง JSON เพื่อเชื่อมบริการอื่น API คือสัญญาการสื่อสาร แปลงข้อมูล JSON เครือข่ายผิดพลาดได้">
+<details class="chapter-nav-item" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON ขอข้อมูลจากบริการบนอินเทอร์เน็ตด้วย requests อ่านผลที่เป็น JSON และจัดการเมื่อเชื่อมต่อไม่สำเร็จ API ทำงานอย่างไร JSON กับ Python requests.get(): ขอข้อมูล ส่ง parameter รับมือเมื่อเรียกไม่สำเร็จ">
       <summary><span class="toc-number">13</span><span class="chapter-nav-title">เรียกใช้ Web API และแลกเปลี่ยน JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-13.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-13.html#topic-1"><span class="topic-number">13.1</span>API คือสัญญาการสื่อสาร</a></li><li><a href="chapter-13.html#topic-2"><span class="topic-number">13.2</span>แปลงข้อมูล JSON</a></li><li><a href="chapter-13.html#topic-3"><span class="topic-number">13.3</span>เครือข่ายผิดพลาดได้</a></li><li><a href="chapter-13.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-13.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-13.html#topic-1"><span class="topic-number">13.1</span>API ทำงานอย่างไร</a></li><li><a href="chapter-13.html#topic-2"><span class="topic-number">13.2</span>JSON กับ Python</a></li><li><a href="chapter-13.html#topic-3"><span class="topic-number">13.3</span>requests.get(): ขอข้อมูล</a></li><li><a href="chapter-13.html#topic-4"><span class="topic-number">13.4</span>ส่ง parameter</a></li><li><a href="chapter-13.html#topic-5"><span class="topic-number">13.5</span>รับมือเมื่อเรียกไม่สำเร็จ</a></li><li><a href="chapter-13.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="ai">ต่อยอดข้อมูลและ AI</p><details class="chapter-nav-item" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข ใช้ array คำนวณข้อมูลจำนวนมากแบบเวกเตอร์ ซึ่งเป็นฐานของงาน Data Science และ AI ndarray เป็นข้อมูลชนิดเดียวกัน vectorization แทนการวนทีละค่า เลือกและสรุปตามแกน">
+<p class="toc-label" data-group="ai">ต่อยอดข้อมูลและ AI</p><details class="chapter-nav-item" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของงาน Data Science และ AI array ต่างจาก list อย่างไร สร้าง array แบบต่าง ๆ คำนวณทั้ง array (vectorization) กรองข้อมูลด้วยเงื่อนไข array 2 มิติและแกน (axis) ฟังก์ชันสถิติ">
       <summary><span class="toc-number">14</span><span class="chapter-nav-title">NumPy สำหรับการคำนวณตัวเลข</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-14.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-14.html#topic-1"><span class="topic-number">14.1</span>ndarray เป็นข้อมูลชนิดเดียวกัน</a></li><li><a href="chapter-14.html#topic-2"><span class="topic-number">14.2</span>vectorization แทนการวนทีละค่า</a></li><li><a href="chapter-14.html#topic-3"><span class="topic-number">14.3</span>เลือกและสรุปตามแกน</a></li><li><a href="chapter-14.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-14.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-14.html#topic-1"><span class="topic-number">14.1</span>array ต่างจาก list อย่างไร</a></li><li><a href="chapter-14.html#topic-2"><span class="topic-number">14.2</span>สร้าง array แบบต่าง ๆ</a></li><li><a href="chapter-14.html#topic-3"><span class="topic-number">14.3</span>คำนวณทั้ง array (vectorization)</a></li><li><a href="chapter-14.html#topic-4"><span class="topic-number">14.4</span>กรองข้อมูลด้วยเงื่อนไข</a></li><li><a href="chapter-14.html#topic-5"><span class="topic-number">14.5</span>array 2 มิติและแกน (axis)</a></li><li><a href="chapter-14.html#topic-6"><span class="topic-number">14.6</span>ฟังก์ชันสถิติ</a></li><li><a href="chapter-14.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน ทำความสะอาด เลือก และสรุปข้อมูลตารางด้วย DataFrame DataFrame มีแถวและคอลัมน์ เลือกและกรองข้อมูล ทำความสะอาดและ groupby">
+<details class="chapter-nav-item" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน สำรวจ กรอง ทำความสะอาด และสรุปข้อมูลตารางด้วย pandas DataFrame DataFrame: ตารางข้อมูล อ่าน CSV และสำรวจข้อมูล เลือกและกรองข้อมูล เพิ่มคอลัมน์และเรียงข้อมูล จัดการค่าว่าง สรุปตามกลุ่มด้วย groupby">
       <summary><span class="toc-number">15</span><span class="chapter-nav-title">จัดการตารางข้อมูลด้วย pandas</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-15.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-15.html#topic-1"><span class="topic-number">15.1</span>DataFrame มีแถวและคอลัมน์</a></li><li><a href="chapter-15.html#topic-2"><span class="topic-number">15.2</span>เลือกและกรองข้อมูล</a></li><li><a href="chapter-15.html#topic-3"><span class="topic-number">15.3</span>ทำความสะอาดและ groupby</a></li><li><a href="chapter-15.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-15.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-15.html#topic-1"><span class="topic-number">15.1</span>DataFrame: ตารางข้อมูล</a></li><li><a href="chapter-15.html#topic-2"><span class="topic-number">15.2</span>อ่าน CSV และสำรวจข้อมูล</a></li><li><a href="chapter-15.html#topic-3"><span class="topic-number">15.3</span>เลือกและกรองข้อมูล</a></li><li><a href="chapter-15.html#topic-4"><span class="topic-number">15.4</span>เพิ่มคอลัมน์และเรียงข้อมูล</a></li><li><a href="chapter-15.html#topic-5"><span class="topic-number">15.5</span>จัดการค่าว่าง</a></li><li><a href="chapter-15.html#topic-6"><span class="topic-number">15.6</span>สรุปตามกลุ่มด้วย groupby</a></li><li><a href="chapter-15.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib เปลี่ยนข้อมูลตัวเลขเป็นภาพเพื่อมองแนวโน้ม เปรียบเทียบ และสื่อสารผล เลือกชนิดกราฟตามคำถาม label ทำให้กราฟอ่านได้ แยกการวาดกับการบันทึก">
+<details class="chapter-nav-item" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib แปลงตัวเลขเป็นกราฟที่อ่านง่าย เลือกชนิดกราฟให้ตรงคำถาม และบันทึกเป็นไฟล์ภาพ กราฟแรก เลือกชนิดกราฟจากคำถาม กราฟแท่ง หลายเส้นในกราฟเดียว กราฟกระจายและฮิสโทแกรม บันทึกกราฟและภาษาไทย">
       <summary><span class="toc-number">16</span><span class="chapter-nav-title">สร้างกราฟด้วย Matplotlib</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-16.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-16.html#topic-1"><span class="topic-number">16.1</span>เลือกชนิดกราฟตามคำถาม</a></li><li><a href="chapter-16.html#topic-2"><span class="topic-number">16.2</span>label ทำให้กราฟอ่านได้</a></li><li><a href="chapter-16.html#topic-3"><span class="topic-number">16.3</span>แยกการวาดกับการบันทึก</a></li><li><a href="chapter-16.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-16.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-16.html#topic-1"><span class="topic-number">16.1</span>กราฟแรก</a></li><li><a href="chapter-16.html#topic-2"><span class="topic-number">16.2</span>เลือกชนิดกราฟจากคำถาม</a></li><li><a href="chapter-16.html#topic-3"><span class="topic-number">16.3</span>กราฟแท่ง</a></li><li><a href="chapter-16.html#topic-4"><span class="topic-number">16.4</span>หลายเส้นในกราฟเดียว</a></li><li><a href="chapter-16.html#topic-5"><span class="topic-number">16.5</span>กราฟกระจายและฮิสโทแกรม</a></li><li><a href="chapter-16.html#topic-6"><span class="topic-number">16.6</span>บันทึกกราฟและภาษาไทย</a></li><li><a href="chapter-16.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn สร้าง pipeline ฝึกและประเมินโมเดลจากข้อมูลตัวอย่าง โดยแยก train กับ test แยก feature กับ target อย่าทดสอบด้วยข้อมูลฝึก Pipeline ป้องกันขั้นตอนสับสน">
+<details class="chapter-nav-item" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn ให้คอมพิวเตอร์เรียนรู้รูปแบบจากตัวอย่าง แล้วทำนายข้อมูลใหม่ ด้วยขั้นตอนมาตรฐานของ scikit-learn Machine Learning คืออะไร ขั้นตอนมาตรฐาน แบ่งข้อมูล train/test fit และ predict วัดผลโมเดล Pipeline: รวมการเตรียมข้อมูลกับโมเดล">
       <summary><span class="toc-number">17</span><span class="chapter-nav-title">Machine Learning เบื้องต้นด้วย scikit-learn</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-17.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-17.html#topic-1"><span class="topic-number">17.1</span>แยก feature กับ target</a></li><li><a href="chapter-17.html#topic-2"><span class="topic-number">17.2</span>อย่าทดสอบด้วยข้อมูลฝึก</a></li><li><a href="chapter-17.html#topic-3"><span class="topic-number">17.3</span>Pipeline ป้องกันขั้นตอนสับสน</a></li><li><a href="chapter-17.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-17.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-17.html#topic-1"><span class="topic-number">17.1</span>Machine Learning คืออะไร</a></li><li><a href="chapter-17.html#topic-2"><span class="topic-number">17.2</span>ขั้นตอนมาตรฐาน</a></li><li><a href="chapter-17.html#topic-3"><span class="topic-number">17.3</span>แบ่งข้อมูล train/test</a></li><li><a href="chapter-17.html#topic-4"><span class="topic-number">17.4</span>fit และ predict</a></li><li><a href="chapter-17.html#topic-5"><span class="topic-number">17.5</span>วัดผลโมเดล</a></li><li><a href="chapter-17.html#topic-6"><span class="topic-number">17.6</span>Pipeline: รวมการเตรียมข้อมูลกับโมเดล</a></li><li><a href="chapter-17.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล ต่อยอดแนวคิด ML สู่ neuron, activation, loss และวงจรการเรียนรู้ของ deep learning Neuron รวม input ด้วยน้ำหนัก Loss วัดความคลาดเคลื่อน Framework ช่วยคำนวณ gradient">
+<details class="chapter-nav-item" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล เข้าใจส่วนประกอบของ neural network ตั้งแต่ neuron, activation, loss จนถึงการเรียนรู้ด้วย gradient descent neuron: หน่วยคำนวณพื้นฐาน activation function layer: หลาย neuron พร้อมกัน loss: วัดว่าผิดมากแค่ไหน การเรียนรู้: gradient descent ใช้ library แทนการเขียนเอง">
       <summary><span class="toc-number">18</span><span class="chapter-nav-title">แนวคิด Neural Network และการฝึกโมเดล</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-18.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-18.html#topic-1"><span class="topic-number">18.1</span>Neuron รวม input ด้วยน้ำหนัก</a></li><li><a href="chapter-18.html#topic-2"><span class="topic-number">18.2</span>Loss วัดความคลาดเคลื่อน</a></li><li><a href="chapter-18.html#topic-3"><span class="topic-number">18.3</span>Framework ช่วยคำนวณ gradient</a></li><li><a href="chapter-18.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-18.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-18.html#topic-1"><span class="topic-number">18.1</span>neuron: หน่วยคำนวณพื้นฐาน</a></li><li><a href="chapter-18.html#topic-2"><span class="topic-number">18.2</span>activation function</a></li><li><a href="chapter-18.html#topic-3"><span class="topic-number">18.3</span>layer: หลาย neuron พร้อมกัน</a></li><li><a href="chapter-18.html#topic-4"><span class="topic-number">18.4</span>loss: วัดว่าผิดมากแค่ไหน</a></li><li><a href="chapter-18.html#topic-5"><span class="topic-number">18.5</span>การเรียนรู้: gradient descent</a></li><li><a href="chapter-18.html#topic-6"><span class="topic-number">18.6</span>ใช้ library แทนการเขียนเอง</a></li><li><a href="chapter-18.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<p class="toc-label" data-group="gui">GUI และโปรเจกต์</p><details class="chapter-nav-item" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปหน้าต่างด้วย Qt for Python โดยใช้ widget, layout, signal และ slot QApplication จัดการแอป Layout ทำหน้าที่จัดวาง signal/slot เชื่อม event กับงาน">
+<p class="toc-label" data-group="gui">GUI และโปรเจกต์</p><details class="chapter-nav-item" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปที่มีหน้าต่าง ปุ่ม และช่องกรอกข้อมูลด้วย PySide6 (Qt for Python) โครงสร้างแอปพื้นฐาน widget ที่ใช้บ่อย layout: จัดวาง widget signal และ slot: ทำงานเมื่อผู้ใช้กด เขียนหน้าต่างเป็น class">
       <summary><span class="toc-number">19</span><span class="chapter-nav-title">สร้าง GUI สมัยใหม่ด้วย PySide6</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-19.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-19.html#topic-1"><span class="topic-number">19.1</span>QApplication จัดการแอป</a></li><li><a href="chapter-19.html#topic-2"><span class="topic-number">19.2</span>Layout ทำหน้าที่จัดวาง</a></li><li><a href="chapter-19.html#topic-3"><span class="topic-number">19.3</span>signal/slot เชื่อม event กับงาน</a></li><li><a href="chapter-19.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="chapter-19.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-19.html#topic-1"><span class="topic-number">19.1</span>โครงสร้างแอปพื้นฐาน</a></li><li><a href="chapter-19.html#topic-2"><span class="topic-number">19.2</span>widget ที่ใช้บ่อย</a></li><li><a href="chapter-19.html#topic-3"><span class="topic-number">19.3</span>layout: จัดวาง widget</a></li><li><a href="chapter-19.html#topic-4"><span class="topic-number">19.4</span>signal และ slot: ทำงานเมื่อผู้ใช้กด</a></li><li><a href="chapter-19.html#topic-5"><span class="topic-number">19.5</span>เขียนหน้าต่างเป็น class</a></li><li><a href="chapter-19.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
-<details class="chapter-nav-item" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI นำ Python, ตารางข้อมูล, โมเดล และ GUI มาประกอบเป็นแอปแนะนำแผนเรียนขนาดเล็ก เริ่มจากโจทย์และข้อมูล แยก UI, logic และ data ประเมินและสื่อสารข้อจำกัด" open>
+<details class="chapter-nav-item" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI รวมทุกอย่างที่เรียนมาเป็นแอปแนะนำรายวิชา: ข้อมูลจาก CSV, กติกาแนะนำ, โมเดลทำนาย และหน้าต่าง PySide6 เริ่มจากโจทย์ ไม่ใช่โค้ด แยกเป็น 3 ชั้น ชั้นข้อมูล: โหลดรายวิชา ชั้น logic: กติกาแนะนำ + ทดสอบ เพิ่มโมเดล ML: ทำนายโอกาสผ่าน ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง" open>
       <summary><span class="toc-number">20</span><span class="chapter-nav-title">โปรเจกต์ปลายทาง: Course Planner + AI</span></summary>
-      <ul class="chapter-subnav"><li><a href="#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="#topic-1"><span class="topic-number">20.1</span>เริ่มจากโจทย์และข้อมูล</a></li><li><a href="#topic-2"><span class="topic-number">20.2</span>แยก UI, logic และ data</a></li><li><a href="#topic-3"><span class="topic-number">20.3</span>ประเมินและสื่อสารข้อจำกัด</a></li><li><a href="#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
+      <ul class="chapter-subnav"><li><a href="#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="#topic-1"><span class="topic-number">20.1</span>เริ่มจากโจทย์ ไม่ใช่โค้ด</a></li><li><a href="#topic-2"><span class="topic-number">20.2</span>แยกเป็น 3 ชั้น</a></li><li><a href="#topic-3"><span class="topic-number">20.3</span>ชั้นข้อมูล: โหลดรายวิชา</a></li><li><a href="#topic-4"><span class="topic-number">20.4</span>ชั้น logic: กติกาแนะนำ + ทดสอบ</a></li><li><a href="#topic-5"><span class="topic-number">20.5</span>เพิ่มโมเดล ML: ทำนายโอกาสผ่าน</a></li><li><a href="#topic-6"><span class="topic-number">20.6</span>ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง</a></li><li><a href="#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
     </details>
       </nav>
       <div class="sidebar-bottom">ตัวอย่างรันด้วย Python จริง<br>เลื่อนเพื่ออ่านหัวข้อถัดไป</div>
     </aside>
     <main class="lesson-main" id="lesson-content">
       <div class="utility-row"><a href="../index.html">← สารบัญรายวิชา</a><span class="utility-code">CHAPTER 20 / 20</span></div>
-      <header class="lesson-header"><p class="lesson-kicker">CHAPTER 20 · GUI / โปรเจกต์</p><h1>โปรเจกต์ปลายทาง: Course Planner + AI</h1><p>นำ Python, ตารางข้อมูล, โมเดล และ GUI มาประกอบเป็นแอปแนะนำแผนเรียนขนาดเล็ก</p></header>
-      <section class="learning-goals"><strong>เมื่อจบบทนี้ นิสิตจะทำได้</strong><ul><li>วางโครงโปรเจกต์ เชื่อมข้อมูลกับกติกา/โมเดล และทดสอบผลลัพธ์จาก UI</li><li>เริ่มจากโจทย์และข้อมูล</li><li>แยก UI, logic และ data</li></ul></section>
-      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">แนวคิดและตัวอย่าง</h2>
-        <div class="chapter-intro"><strong>แผนการเรียนบทนี้</strong><p>โปรเจกต์นี้นำความรู้ก่อนหน้ามาต่อกันเป็นชิ้นงาน: ออกแบบข้อมูล แยกกฎแนะนำ ทดสอบผล และสื่อสารข้อจำกัด เริ่มด้วย baseline ที่อธิบายเหตุผลได้ก่อนใช้โมเดล เพราะระบบแนะนำสำหรับการเรียนควรช่วยตัดสินใจ ไม่ควรทำหน้าที่ตัดสินแทนนิสิต</p><p>วิธีฝึก: อ่านโจทย์ → ระบุข้อมูลเข้าและผลที่ต้องการ → ทำนาย output → รันและตรวจทีละขั้น → อธิบายด้วยคำของตนเองว่าเหตุใดจึงได้ผลเช่นนั้น</p></div>
-        <article class="subtopic" id="topic-1"><h3>20.1 เริ่มจากโจทย์และข้อมูล</h3><p>กำหนดผู้ใช้ ปัญหาที่ช่วยแก้ และ schema ข้อมูลให้ชัด เช่น วิชา หน่วยกิต และคะแนนความพร้อม ก่อนเลือกว่าจะใช้กติกาหรือโมเดล</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-2"><h3>20.2 แยก UI, logic และ data</h3><p>ให้ widget รับ input และแสดงผล ฟังก์ชันแยกทำกติกาแนะนำ และชั้นข้อมูลโหลด/ตรวจตาราง การแยกส่วนทำให้ทดสอบ logic โดยไม่เปิดหน้าต่างได้</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><article class="subtopic" id="topic-3"><h3>20.3 ประเมินและสื่อสารข้อจำกัด</h3><p>ทดสอบกรณีปกติ ค่าว่าง และค่าขอบเขต เปรียบเทียบ baseline ที่อธิบายได้ก่อนโมเดลซับซ้อน และแจ้งผู้ใช้ว่าผลแนะนำไม่ใช่คำตัดสินอัตโนมัติ</p><div class="teaching-prompt"><strong>ลองคิดเป็นขั้น</strong><p>ก่อนเขียน ให้แยกข้อมูลที่โจทย์ให้ สิ่งที่ต้องการให้โปรแกรมทำ และผลลัพธ์ที่ควรได้ จากนั้นเลือกแนวคิดนี้มาจัดลำดับวิธีทำ ทดลองรันด้วยค่าตัวอย่าง แล้วตรวจผลทีละบรรทัด ถ้าผลไม่ตรง ให้เทียบค่าตั้งต้นและแต่ละขั้นกับสิ่งที่คาดไว้ก่อนเปลี่ยนโค้ด</p></div></article><div class="source-example">
-    <h4>ตัวอย่าง 20.1 · แนะนำวิชาจากคะแนนความพร้อม</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> เริ่มด้วยกติกาที่โปร่งใส แล้วค่อยเปลี่ยนเป็นโมเดลเมื่อมีข้อมูลที่เหมาะสม</p>
+      <header class="lesson-header"><p class="lesson-kicker">CHAPTER 20 · GUI / โปรเจกต์</p><h1>โปรเจกต์ปลายทาง: Course Planner + AI</h1><p>รวมทุกอย่างที่เรียนมาเป็นแอปแนะนำรายวิชา: ข้อมูลจาก CSV, กติกาแนะนำ, โมเดลทำนาย และหน้าต่าง PySide6</p></header>
+      <section class="learning-goals"><strong>จบบทนี้แล้วทำได้</strong><p>วางแผนโปรเจกต์ แยกโค้ดเป็นชั้นข้อมูล/logic/UI ทดสอบ logic ด้วย assert เพิ่มโมเดล ML และเชื่อมทุกส่วนเข้ากับหน้าต่าง</p></section>
+      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">เนื้อหา</h2>
+        <article class="subtopic" id="topic-1"><h3>20.1 เริ่มจากโจทย์ ไม่ใช่โค้ด</h3><p>ก่อนเขียนโค้ด ตอบให้ได้ว่าใครใช้ แก้ปัญหาอะไร ใช้ข้อมูลอะไร และผลลัพธ์หน้าตาแบบไหน แล้วแบ่งงานเป็นขั้นเล็ก ๆ ที่ทดสอบได้ทีละขั้น</p><div class="table-wrap"><table class="concept-table"><thead><tr><th>คำถาม</th><th>Course Planner</th></tr></thead><tbody><tr><td>ผู้ใช้</td><td>นักศึกษาที่กำลังเลือกวิชาเรียน</td></tr><tr><td>ปัญหา</td><td>ไม่รู้ว่าพร้อมลงวิชาไหน และวิชาไหนเสี่ยงไม่ผ่าน</td></tr><tr><td>ข้อมูล</td><td>รายวิชา (<code>courses.csv</code>) และผลการเรียนรุ่นก่อน (<code>history.csv</code>)</td></tr><tr><td>ผลลัพธ์</td><td>รายการวิชาที่แนะนำ + โอกาสผ่านโดยประมาณ</td></tr><tr><td>ขั้นตอน</td><td>โหลดข้อมูล → กติกาแนะนำ → ทดสอบ → โมเดล → หน้าต่าง</td></tr></tbody></table></div></article><article class="subtopic" id="topic-2"><h3>20.2 แยกเป็น 3 ชั้น</h3><p>แยกโค้ดเป็น ชั้นข้อมูล (อ่านไฟล์) ชั้น logic (กติกาและโมเดล) และชั้น UI (หน้าต่าง) logic ไม่ควรรู้ว่ามีหน้าต่าง จึงทดสอบได้โดยไม่ต้องเปิดแอป และนำไปใช้กับหน้าเว็บหรือ command line ได้ด้วย</p><figure class="figure"><img src="../assets/figures/app-layers.svg" alt="3 ชั้นของแอป: UI (PySide6) เรียก Logic (recommend, predict) ซึ่งใช้ Data (courses.csv, history.csv) ผ่าน pandas"><figcaption>3 ชั้นของแอป: UI (PySide6) เรียก Logic (recommend, predict) ซึ่งใช้ Data (courses.csv, history.csv) ผ่าน pandas</figcaption></figure></article><article class="subtopic" id="topic-3"><h3>20.3 ชั้นข้อมูล: โหลดรายวิชา</h3><p>ฟังก์ชันชั้นข้อมูลอ่านไฟล์แล้วคืน DataFrame ที่พร้อมใช้ ตรวจคอลัมน์ที่จำเป็นไว้ตรงนี้ ถ้าไฟล์ผิดรูปแบบจะรู้ทันที</p><div class="data-files"><div class="file-box"><span>ไฟล์ courses.csv</span><pre>code,name,credits,min_score,track
+CS101,Python Programming,3,0,core
+CS102,Data Structures,3,55,core
+DS201,Data Analysis with pandas,3,60,data
+DS202,Data Visualization,2,60,data
+AI301,Machine Learning,3,70,ai
+AI302,Neural Networks,3,80,ai
+UI201,GUI with PySide6,2,55,app</pre></div></div><div class="mini-run"><pre class="copyable"><code>import pandas as pd
+
+def load_courses(path=&quot;courses.csv&quot;):
+    df = pd.read_csv(path)
+    required = {&quot;code&quot;, &quot;name&quot;, &quot;credits&quot;, &quot;min_score&quot;}
+    missing = required - set(df.columns)
+    if missing:
+        raise ValueError(f&quot;ไฟล์ขาดคอลัมน์: {missing}&quot;)
+    return df
+
+courses = load_courses()
+print(courses[[&quot;code&quot;, &quot;name&quot;, &quot;min_score&quot;]])</code></pre><pre class="mini-output" aria-label="Output">    code                       name  min_score
+0  CS101         Python Programming          0
+1  CS102            Data Structures         55
+2  DS201  Data Analysis with pandas         60
+3  DS202         Data Visualization         60
+4  AI301           Machine Learning         70
+5  AI302            Neural Networks         80
+6  UI201           GUI with PySide6         55</pre></div></article><article class="subtopic" id="topic-4"><h3>20.4 ชั้น logic: กติกาแนะนำ + ทดสอบ</h3><p>เริ่มจากกติกาง่าย ๆ ที่อธิบายได้ (baseline): แนะนำวิชาที่คะแนนพื้นฐานถึงเกณฑ์ แล้วเขียน <code>assert</code> ทดสอบกรณีปกติ ค่าขอบ และค่าผิด ทุกครั้งที่แก้โค้ดให้รันทดสอบซ้ำ</p><div class="data-files"><div class="file-box"><span>ไฟล์ courses.csv</span><pre>code,name,credits,min_score,track
+CS101,Python Programming,3,0,core
+CS102,Data Structures,3,55,core
+DS201,Data Analysis with pandas,3,60,data
+DS202,Data Visualization,2,60,data
+AI301,Machine Learning,3,70,ai
+AI302,Neural Networks,3,80,ai
+UI201,GUI with PySide6,2,55,app</pre></div></div><div class="mini-run"><pre class="copyable"><code>import pandas as pd
+
+def recommend(courses, score, max_credits=9):
+    if not 0 &lt;= score &lt;= 100:
+        raise ValueError(&quot;คะแนนต้องอยู่ระหว่าง 0-100&quot;)
+    ready = courses[courses[&quot;min_score&quot;] &lt;= score].sort_values(&quot;min_score&quot;, ascending=False, kind=&quot;stable&quot;)
+    picked, total = [], 0
+    for _, row in ready.iterrows():
+        if total + row[&quot;credits&quot;] &lt;= max_credits:
+            picked.append(row[&quot;code&quot;])
+            total += row[&quot;credits&quot;]
+    return picked
+
+courses = pd.read_csv(&quot;courses.csv&quot;)
+assert recommend(courses, 50) == [&quot;CS101&quot;]
+assert &quot;AI302&quot; in recommend(courses, 80, max_credits=12)
+assert recommend(courses, 0) == [&quot;CS101&quot;]
+try:
+    recommend(courses, 120)
+    raise AssertionError(&quot;ควร raise ValueError&quot;)
+except ValueError:
+    pass
+print(&quot;ผ่านการทดสอบทั้งหมด&quot;)
+print(recommend(courses, 72))</code></pre><pre class="mini-output" aria-label="Output">ผ่านการทดสอบทั้งหมด
+[&#39;AI301&#39;, &#39;DS201&#39;, &#39;DS202&#39;]</pre></div><p class="tip"><strong>จำง่าย ๆ</strong> <code>assert เงื่อนไข</code> จะเงียบถ้าจริง และหยุดโปรแกรมทันทีถ้าเท็จ เป็นการทดสอบแบบง่ายที่สุด</p></article><article class="subtopic" id="topic-5"><h3>20.5 เพิ่มโมเดล ML: ทำนายโอกาสผ่าน</h3><p>ใช้ข้อมูลรุ่นก่อน (ชั่วโมงอ่านหนังสือ, คะแนนพื้นฐาน → ผ่าน/ไม่ผ่าน) ฝึก LogisticRegression ซึ่งให้ความน่าจะเป็นด้วย <code>predict_proba</code> ใช้เสริมกติกา ไม่ใช่แทนที่ และต้องบอกผู้ใช้ว่าเป็นค่าประมาณ</p><div class="data-files"><div class="file-box"><span>ไฟล์ history.csv</span><pre>study_hours,prior_score,passed
+2,45,0
+3,50,0
+4,62,0
+5,58,1
+6,70,1
+7,65,1
+8,75,1
+3,72,0
+9,80,1
+1,55,0
+6,52,0
+8,68,1</pre></div></div><div class="mini-run"><pre class="copyable"><code>import pandas as pd
+from sklearn.linear_model import LogisticRegression
+
+history = pd.read_csv(&quot;history.csv&quot;)
+X = history[[&quot;study_hours&quot;, &quot;prior_score&quot;]]
+model = LogisticRegression().fit(X, history[&quot;passed&quot;])
+
+for hours, score in [(3, 60), (7, 72)]:
+    new = pd.DataFrame({&quot;study_hours&quot;: [hours], &quot;prior_score&quot;: [score]})
+    chance = model.predict_proba(new)[0, 1]
+    print(f&quot;อ่าน {hours} ชม./สัปดาห์ คะแนนพื้นฐาน {score}: โอกาสผ่าน {chance:.0%}&quot;)</code></pre><pre class="mini-output" aria-label="Output">อ่าน 3 ชม./สัปดาห์ คะแนนพื้นฐาน 60: โอกาสผ่าน 8%
+อ่าน 7 ชม./สัปดาห์ คะแนนพื้นฐาน 72: โอกาสผ่าน 96%</pre></div><p class="tip"><strong>จำง่าย ๆ</strong> ข้อมูล 12 แถวน้อยเกินไปสำหรับงานจริง ตัวอย่างนี้ใช้แสดงวิธีต่อโมเดลเข้ากับแอป ก่อนใช้จริงต้องมีข้อมูลมากพอและแบ่ง train/test วัดผลแบบบทที่ 17</p></article><article class="subtopic" id="topic-6"><h3>20.6 ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง</h3><p>ชั้น UI แค่รับค่า เรียกฟังก์ชัน logic แล้วแสดงผล ไม่มีกติกาซ่อนอยู่ในหน้าต่าง ก่อนส่งงานให้ตรวจตามรายการนี้</p><div class="table-wrap"><table class="concept-table"><thead><tr><th>ตรวจ</th><th>วิธี</th></tr></thead><tbody><tr><td>logic ถูกต้อง</td><td>รัน assert ทั้งหมดผ่าน รวมค่าขอบและค่าผิด</td></tr><tr><td>ข้อมูลผิดรูปแบบ</td><td>ลองลบคอลัมน์หรือใส่ค่าว่างใน CSV แล้วดูว่าแจ้ง error ชัดเจน</td></tr><tr><td>UI ใช้งานได้</td><td>กรอกค่าสุดขอบ (0, 100) กดปุ่มรัว ๆ ปรับขนาดหน้าต่าง</td></tr><tr><td>สื่อสารข้อจำกัด</td><td>หน้าต่างบอกว่าผลทำนายเป็นค่าประมาณ</td></tr><tr><td>ติดตั้งได้บนเครื่องอื่น</td><td>มี <code>requirements.txt</code> และ README วิธีรัน</td></tr></tbody></table></div></article>
+        <h2 class="examples-heading">ตัวอย่างโปรแกรม</h2>
+        <div class="source-example">
+    <h4>ตัวอย่าง 20.1 · Course Planner ฉบับสมบูรณ์</h4>
+    <p class="concept-line">รวมชั้นข้อมูล logic โมเดล และ UI เป็นแอปเดียว (ในงานจริงแยกเป็นไฟล์ data.py, logic.py, app.py)</p>
+    <div class="data-files"><div class="file-box"><span>ไฟล์ courses.csv</span><pre>code,name,credits,min_score,track
+CS101,Python Programming,3,0,core
+CS102,Data Structures,3,55,core
+DS201,Data Analysis with pandas,3,60,data
+DS202,Data Visualization,2,60,data
+AI301,Machine Learning,3,70,ai
+AI302,Neural Networks,3,80,ai
+UI201,GUI with PySide6,2,55,app</pre></div><div class="file-box"><span>ไฟล์ history.csv</span><pre>study_hours,prior_score,passed
+2,45,0
+3,50,0
+4,62,0
+5,58,1
+6,70,1
+7,65,1
+8,75,1
+3,72,0
+9,80,1
+1,55,0
+6,52,0
+8,68,1</pre></div></div>
+    <div class="source-grid">
+      <div class="source-field"><span>Python source</span><pre class="copyable"><code>import sys
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from PySide6.QtWidgets import (QApplication, QWidget, QFormLayout, QSpinBox,
+                               QPushButton, QListWidget, QLabel)
+
+# ---- data ----
+courses = pd.read_csv(&quot;courses.csv&quot;)
+history = pd.read_csv(&quot;history.csv&quot;)
+
+# ---- logic ----
+def recommend(score, max_credits=9):
+    ready = courses[courses[&quot;min_score&quot;] &lt;= score].sort_values(&quot;min_score&quot;, ascending=False, kind=&quot;stable&quot;)
+    picked, total = [], 0
+    for _, row in ready.iterrows():
+        if total + row[&quot;credits&quot;] &lt;= max_credits:
+            picked.append(row)
+            total += row[&quot;credits&quot;]
+    return picked
+
+model = LogisticRegression().fit(history[[&quot;study_hours&quot;, &quot;prior_score&quot;]], history[&quot;passed&quot;])
+
+def pass_chance(hours, score):
+    new = pd.DataFrame({&quot;study_hours&quot;: [hours], &quot;prior_score&quot;: [score]})
+    return model.predict_proba(new)[0, 1]
+
+# ---- UI ----
+class PlannerWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle(&quot;Course Planner + AI&quot;)
+        self.score = QSpinBox(maximum=100)
+        self.hours = QSpinBox(maximum=40, suffix=&quot; ชม./สัปดาห์&quot;)
+        self.button = QPushButton(&quot;แนะนำวิชา&quot;)
+        self.courses = QListWidget()
+        self.chance = QLabel(&quot;&quot;)
+        note = QLabel(&quot;* โอกาสผ่านเป็นค่าประมาณจากข้อมูลรุ่นก่อน ใช้ประกอบการตัดสินใจเท่านั้น&quot;)
+        note.setWordWrap(True)
+        note.setStyleSheet(&quot;color: #62677b; font-size: 11px&quot;)
+        self.button.clicked.connect(self.show_plan)
+        form = QFormLayout(self)
+        form.addRow(&quot;คะแนนพื้นฐาน&quot;, self.score)
+        form.addRow(&quot;เวลาอ่านหนังสือ&quot;, self.hours)
+        form.addRow(self.button)
+        form.addRow(self.courses)
+        form.addRow(self.chance)
+        form.addRow(note)
+
+    def show_plan(self):
+        self.courses.clear()
+        plan = recommend(self.score.value())
+        for row in plan:
+            self.courses.addItem(f&quot;{row[&#39;code&#39;]}  {row[&#39;name&#39;]} ({row[&#39;credits&#39;]} หน่วยกิต)&quot;)
+        chance = pass_chance(self.hours.value(), self.score.value())
+        self.chance.setText(f&quot;แนะนำ {len(plan)} วิชา · โอกาสผ่านโดยประมาณ {chance:.0%}&quot;)
+
+app = QApplication(sys.argv)
+window = PlannerWindow()
+window.resize(430, 330)
+window.show()
+sys.exit(app.exec())</code></pre></div>
+      <div class="output-field"><span>Output</span><figure class="screenshot"><img src="../assets/gui/ch20-planner.png" alt="หน้าต่างโปรแกรมที่ได้จากการรันโค้ด"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง (หลังจำลองการกรอกและกดปุ่ม)</figcaption></figure></div>
+    </div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li>ชั้น data และ logic อยู่ด้านบน ไม่มีโค้ด PySide6 ปนเลย จึงทดสอบแยกได้</li><li><code>show_plan</code> ใน UI แค่อ่านค่า เรียก <code>recommend</code> และ <code>pass_chance</code> แล้วแสดงผล</li><li>ภาพด้านขวาคือหน้าต่างหลังกรอกคะแนน 72 อ่าน 6 ชม./สัปดาห์ แล้วกดแนะนำวิชา</li></ol></div>
+  </div>
+<div class="source-example">
+    <h4>ตัวอย่าง 20.2 · ทดสอบ logic แบบรวม</h4>
+    <p class="concept-line">รวมกรณีทดสอบไว้ในตาราง แล้ววนตรวจทีละกรณีพร้อมรายงานผล</p>
+    <div class="data-files"><div class="file-box"><span>ไฟล์ courses.csv</span><pre>code,name,credits,min_score,track
+CS101,Python Programming,3,0,core
+CS102,Data Structures,3,55,core
+DS201,Data Analysis with pandas,3,60,data
+DS202,Data Visualization,2,60,data
+AI301,Machine Learning,3,70,ai
+AI302,Neural Networks,3,80,ai
+UI201,GUI with PySide6,2,55,app</pre></div></div>
     <div class="source-grid">
       <div class="source-field"><span>Python source</span><pre class="copyable"><code>import pandas as pd
 
-courses = pd.DataFrame({
-    &quot;course&quot;: [&quot;Python&quot;, &quot;Data Analysis&quot;, &quot;Machine Learning&quot;],
-    &quot;prerequisite_score&quot;: [0, 60, 75],
-})
-student_score = 68
-recommended = courses[courses[&quot;prerequisite_score&quot;] &lt;= student_score]
-print(recommended[&quot;course&quot;].tolist())</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>[&#39;Python&#39;, &#39;Data Analysis&#39;]</pre></div>
-    </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>DataFrame เก็บ catalog วิชา</li><li>เงื่อนไขเลือกวิชาที่ prerequisite score ไม่เกินระดับผู้เรียน</li><li>แสดงรายการแนะนำที่ได้จากกติกาที่อธิบายได้</li></ol></div>
-  </div>
-<div class="source-example">
-    <h4>ตัวอย่าง 20.2 · เชื่อมผลแนะนำกับหน้าต่าง</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> ใช้ผลลัพธ์จากฟังก์ชัน logic แสดงใน widget โดยไม่ฝังกติกาไว้ใน callback</p>
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>def recommend(score, catalog):
-    return [course for course, minimum in catalog if score &gt;= minimum]
+courses = pd.read_csv(&quot;courses.csv&quot;)
 
-catalog = [(&quot;Python&quot;, 0), (&quot;Data Analysis&quot;, 60), (&quot;AI&quot;, 75)]
-suggestions = recommend(68, catalog)
-print(&quot;แนะนำ:&quot;, &quot;, &quot;.join(suggestions))
-print(&quot;พิจารณาความพร้อมก่อนลงทะเบียน&quot;)</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>แนะนำ: Python, Data Analysis
-พิจารณาความพร้อมก่อนลงทะเบียน</pre></div>
-    </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>ฟังก์ชันรับข้อมูลและคืนรายการแนะนำ</li><li>ส่วนแสดงผลนำรายการไปจัดข้อความ</li><li>ข้อความแจ้งข้อจำกัดป้องกันการตีความผลเป็นคำสั่งเด็ดขาด</li></ol></div>
-  </div>
-<div class="source-example">
-    <h4>ตัวอย่าง 20.3 · แยกข้อมูลวิชาที่แนะนำพร้อมเหตุผล</h4>
-    <p class="concept-line"><strong>แนวคิด:</strong> คืนทั้งรายชื่อและข้อความอธิบายเกณฑ์ เพื่อให้ผู้ใช้ทราบว่าระบบแนะนำจากข้อมูลใด</p>
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>catalog = [
-    {&quot;name&quot;: &quot;Python&quot;, &quot;minimum_score&quot;: 0},
-    {&quot;name&quot;: &quot;Data Analysis&quot;, &quot;minimum_score&quot;: 60},
-    {&quot;name&quot;: &quot;AI&quot;, &quot;minimum_score&quot;: 75},
+def recommend(score, max_credits=9):
+    if not 0 &lt;= score &lt;= 100:
+        raise ValueError(&quot;คะแนนต้องอยู่ระหว่าง 0-100&quot;)
+    ready = courses[courses[&quot;min_score&quot;] &lt;= score].sort_values(&quot;min_score&quot;, ascending=False, kind=&quot;stable&quot;)
+    picked, total = [], 0
+    for _, row in ready.iterrows():
+        if total + row[&quot;credits&quot;] &lt;= max_credits:
+            picked.append(row[&quot;code&quot;])
+            total += row[&quot;credits&quot;]
+    return picked
+
+cases = [
+    (0, 9, [&quot;CS101&quot;]),
+    (55, 9, [&quot;CS102&quot;, &quot;UI201&quot;, &quot;CS101&quot;]),
+    (100, 6, [&quot;AI302&quot;, &quot;AI301&quot;]),
 ]
-score = 68
-suggestions = [item for item in catalog if score &gt;= item[&quot;minimum_score&quot;]]
-for item in suggestions:
-    print(f&quot;{item[&#39;name&#39;]}: score &gt;= {item[&#39;minimum_score&#39;]}&quot;)</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>Python: score &gt;= 0
-Data Analysis: score &gt;= 60</pre></div>
+for score, credits, expected in cases:
+    result = recommend(score, credits)
+    status = &quot;ผ่าน&quot; if result == expected else f&quot;ไม่ผ่าน (ได้ {result})&quot;
+    print(f&quot;score={score:&lt;3} credits={credits}: {status}&quot;)</code></pre></div>
+      <div class="output-field"><span>Output</span><pre>score=0   credits=9: ผ่าน
+score=55  credits=9: ผ่าน
+score=100 credits=6: ผ่าน</pre></div>
     </div>
-    <div class="walkthrough"><strong>อธิบายทีละขั้น</strong><ol><li>ข้อมูลแต่ละวิชาเป็น dictionary ที่มีทั้งชื่อและเกณฑ์</li><li>กรองเฉพาะรายการที่ผู้เรียนถึงเกณฑ์</li><li>แสดงเหตุผลควบคู่กับชื่อเพื่อให้ผลโปร่งใส</li></ol></div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li>แต่ละกรณีเก็บ input และผลที่คาดไว้ (expected) เพิ่มกรณีใหม่ได้ง่าย</li><li>เลือกกรณีขอบ: คะแนนต่ำสุด, คะแนนพอดีเกณฑ์ (55), และหน่วยกิตจำกัด</li><li>เมื่อแก้ logic ในอนาคต รันไฟล์นี้ซ้ำเพื่อยืนยันว่าของเดิมไม่พัง</li></ol></div>
   </div>
       </section>
       <section class="exercise-section" id="chapter-exercises" aria-labelledby="exercise-heading">
         <h2 id="exercise-heading">แบบฝึกหัดท้ายบท</h2>
-        <p class="exercise-intro">ทำจากข้อพื้นฐานไปข้อท้าทาย ก่อนเขียนให้จดข้อมูลที่โจทย์ให้ สิ่งที่ต้องหา และลำดับการทำงานสั้น ๆ จากนั้นทำนาย output แล้วรันตรวจ รายการตรวจช่วยไล่เงื่อนไขทีละข้อ หากยังติดให้ย้อนอ่านหัวข้อที่เกี่ยวข้องก่อนเปิดเฉลย ซึ่งมีแนวคิดและ source code ที่รันตรวจแล้ว</p>
+        <p class="exercise-intro">เรียงจากง่ายไปยาก ลองเขียนเองให้ได้ output ตรงตัวอย่างก่อน แล้วค่อยเปิดเฉลย</p>
         <div class="exercise-list"><article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 20.1</span><strong>แนะนำวิชาตามเกณฑ์</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>สร้างรายการวิชาและคะแนนขั้นต่ำ จากนั้นเขียนฟังก์ชันแนะนำวิชาที่คะแนนผู้เรียนถึงเกณฑ์</p>
-    <ul><li>ใช้ list ของ tuple (ชื่อวิชา, คะแนนขั้นต่ำ)</li><li>กรองโดยเปรียบเทียบกับคะแนน</li><li>แสดงรายชื่อแนะนำ</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>[&#39;Python&#39;, &#39;Data&#39;]</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 20.1</span><strong>สรุปข้อมูลรายวิชา</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
+    <p>อ่าน <code>courses.csv</code> แล้วแสดงจำนวนวิชา หน่วยกิตรวม และจำนวนวิชาในแต่ละ track</p>
+    <div class="data-files"><div class="file-box"><span>ไฟล์ courses.csv</span><pre>code,name,credits,min_score,track
+CS101,Python Programming,3,0,core
+CS102,Data Structures,3,55,core
+DS201,Data Analysis with pandas,3,60,data
+DS202,Data Visualization,2,60,data
+AI301,Machine Learning,3,70,ai
+AI302,Neural Networks,3,80,ai
+UI201,GUI with PySide6,2,55,app</pre></div></div>
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ไฟล์ courses.csv</dd></div><div><dt>ต้องหา</dt><dd>7 วิชา, 19 หน่วยกิต และจำนวนวิชาต่อ track</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>pd.read_csv</code></li><li><code>len(df)</code>, <code>df[&quot;credits&quot;].sum()</code></li><li><code>df[&quot;track&quot;].value_counts()</code></li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>7 วิชา รวม 19 หน่วยกิต
+track
+core    2
+data    2
+ai      2
+app     1
+Name: count, dtype: int64</pre></div>
     <div class="answer-gate" data-answer-id="20.1">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -172,19 +346,28 @@ Data Analysis: score &gt;= 60</pre></div>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>เริ่มด้วย baseline แบบกฎช่วยอธิบายเหตุผลได้และใช้เป็นจุดเปรียบเทียบโมเดล</p><pre class="copyable"><code>catalog = [(&quot;Python&quot;, 0), (&quot;Data&quot;, 60), (&quot;AI&quot;, 75)]
-def recommend(score):
-    return [name for name, minimum in catalog if score &gt;= minimum]
-print(recommend(68))</code></pre>
+        <p>สำรวจข้อมูลก่อนเริ่มเขียน logic ทุกครั้ง จะรู้ว่าข้อมูลมีอะไรและครบหรือไม่</p><pre class="copyable"><code>import pandas as pd
+
+df = pd.read_csv(&quot;courses.csv&quot;)
+print(f&quot;{len(df)} วิชา รวม {df[&#39;credits&#39;].sum()} หน่วยกิต&quot;)
+print(df[&quot;track&quot;].value_counts())</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 20.2</span><strong>สรุปแผนเรียนด้วย pandas</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>สร้าง DataFrame วิชาสองรายการพร้อมหน่วยกิต แล้วแสดงจำนวนวิชาและหน่วยกิตรวม</p>
-    <ul><li>สร้าง DataFrame</li><li>ใช้ len นับรายการ</li><li>ใช้ sum รวม credits</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>2 วิชา
-6 หน่วยกิต</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 20.2</span><strong>กรองวิชาตาม track</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
+    <p>เขียนฟังก์ชัน <code>courses_in_track(df, track)</code> คืนรายชื่อวิชาใน track ที่กำหนด แล้วทดสอบกับ <code>data</code> และ <code>ai</code></p>
+    <div class="data-files"><div class="file-box"><span>ไฟล์ courses.csv</span><pre>code,name,credits,min_score,track
+CS101,Python Programming,3,0,core
+CS102,Data Structures,3,55,core
+DS201,Data Analysis with pandas,3,60,data
+DS202,Data Visualization,2,60,data
+AI301,Machine Learning,3,70,ai
+AI302,Neural Networks,3,80,ai
+UI201,GUI with PySide6,2,55,app</pre></div></div>
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ไฟล์ courses.csv</dd></div><div><dt>ต้องหา</dt><dd>รายชื่อวิชาของ track data และ ai</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>กรอง <code>df[df[&quot;track&quot;] == track]</code></li><li>คืน <code>[&quot;name&quot;].tolist()</code></li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>data: [&#39;Data Analysis with pandas&#39;, &#39;Data Visualization&#39;]
+ai: [&#39;Machine Learning&#39;, &#39;Neural Networks&#39;]</pre></div>
     <div class="answer-gate" data-answer-id="20.2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -193,18 +376,23 @@ print(recommend(68))</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ตารางช่วยตรวจแผนหลายรายการและสรุปข้อมูลได้ตรงไปตรงมา</p><pre class="copyable"><code>import pandas as pd
-plan = pd.DataFrame({&quot;course&quot;: [&quot;Python&quot;, &quot;Data&quot;], &quot;credits&quot;: [3, 3]})
-print(f&quot;{len(plan)} วิชา&quot;)
-print(f&quot;{plan[&#39;credits&#39;].sum()} หน่วยกิต&quot;)</code></pre>
+        <p>ฟังก์ชันรับ DataFrame เป็นพารามิเตอร์ ไม่ได้อ่านไฟล์เอง จึงทดสอบกับข้อมูลชุดอื่นได้ง่าย</p><pre class="copyable"><code>import pandas as pd
+
+def courses_in_track(df, track):
+    return df[df[&quot;track&quot;] == track][&quot;name&quot;].tolist()
+
+df = pd.read_csv(&quot;courses.csv&quot;)
+print(&quot;data:&quot;, courses_in_track(df, &quot;data&quot;))
+print(&quot;ai:&quot;, courses_in_track(df, &quot;ai&quot;))</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 20.3</span><strong>วัดความแม่นยำ baseline</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>เปรียบเทียบคำแนะนำกับ label จริงสำหรับรายการทดสอบ 4 รายการ แล้วคำนวณ accuracy</p>
-    <ul><li>สร้าง list actual และ predicted</li><li>นับคู่ที่ตรงกัน</li><li>หารด้วยจำนวนทั้งหมด</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>accuracy=0.75</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 20.3</span><strong>เขียน assert ทดสอบ</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
+    <p>เขียนฟังก์ชัน <code>level(score)</code> คืน <code>beginner</code> (&lt; 55), <code>intermediate</code> (55–69), <code>advanced</code> (≥ 70) และเขียน assert ทดสอบค่าขอบทุกจุด</p>
+    
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ค่าขอบ 0, 54, 55, 69, 70, 100</dd></div><div><dt>ต้องหา</dt><dd><code>ผ่านการทดสอบ 6 กรณี</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>เก็บกรณีทดสอบเป็น list ของ (input, expected)</li><li>วน <code>assert level(x) == expected</code></li><li>ทดสอบทั้งสองฝั่งของทุกขอบ</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>ผ่านการทดสอบ 6 กรณี</pre></div>
     <div class="answer-gate" data-answer-id="20.3">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -213,20 +401,40 @@ print(f&quot;{plan[&#39;credits&#39;].sum()} หน่วยกิต&quot;)</co
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ประเมิน baseline ก่อนเพื่อให้รู้ว่าระบบที่ซับซ้อนขึ้นดีขึ้นจริงหรือไม่</p><pre class="copyable"><code>actual = [&quot;yes&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;yes&quot;]
-predicted = [&quot;yes&quot;, &quot;no&quot;, &quot;no&quot;, &quot;yes&quot;]
-correct = sum(a == p for a, p in zip(actual, predicted))
-print(f&quot;accuracy={correct / len(actual):.2f}&quot;)</code></pre>
+        <p>บั๊กเงื่อนไขส่วนใหญ่อยู่ที่ค่าขอบ (เช่น ใช้ <code>&gt;</code> แทน <code>&gt;=</code>) การทดสอบทั้ง 54/55 และ 69/70 จับได้ทันที</p><pre class="copyable"><code>def level(score):
+    if score &gt;= 70:
+        return &quot;advanced&quot;
+    if score &gt;= 55:
+        return &quot;intermediate&quot;
+    return &quot;beginner&quot;
+
+cases = [(0, &quot;beginner&quot;), (54, &quot;beginner&quot;), (55, &quot;intermediate&quot;),
+         (69, &quot;intermediate&quot;), (70, &quot;advanced&quot;), (100, &quot;advanced&quot;)]
+for score, expected in cases:
+    assert level(score) == expected, f&quot;level({score}) ควรได้ {expected}&quot;
+print(f&quot;ผ่านการทดสอบ {len(cases)} กรณี&quot;)</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 20.4</span><strong>วางแผนทดสอบแอป</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
-    <p>เขียนฟังก์ชันแนะนำที่ตรวจคะแนนช่วง 0-100 และคืนข้อผิดพลาดเมื่อข้อมูลไม่ถูกต้อง พร้อมทดสอบค่าปกติและค่าขอบเขต</p>
-    <ul><li>ปฏิเสธคะแนนต่ำกว่า 0 หรือเกิน 100</li><li>ใช้ ValueError พร้อมข้อความชัดเจน</li><li>ทดสอบ 68, -1 และ 101</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>68 [&#39;Python&#39;, &#39;Data&#39;]
-คะแนนต้องอยู่ระหว่าง 0 ถึง 100
-คะแนนต้องอยู่ระหว่าง 0 ถึง 100</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 20.4</span><strong>วัดผลโมเดลทำนายผ่าน</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
+    <p>ฝึก LogisticRegression ด้วย <code>history.csv</code> แล้ววัด accuracy กับข้อมูลชุดเดียวกัน และเทียบกับ baseline ที่ทายว่า “ผ่าน” เมื่อคะแนนพื้นฐาน ≥ 60</p>
+    <div class="data-files"><div class="file-box"><span>ไฟล์ history.csv</span><pre>study_hours,prior_score,passed
+2,45,0
+3,50,0
+4,62,0
+5,58,1
+6,70,1
+7,65,1
+8,75,1
+3,72,0
+9,80,1
+1,55,0
+6,52,0
+8,68,1</pre></div></div>
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ไฟล์ history.csv</dd></div><div><dt>ต้องหา</dt><dd>accuracy ของ baseline และโมเดล</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>baseline: <code>(df[&quot;prior_score&quot;] &gt;= 60).astype(int)</code></li><li>accuracy = <code>(pred == y).mean()</code></li><li>อภิปรายว่าข้อมูลน้อยทำให้ผลเชื่อถือได้แค่ไหน</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>baseline accuracy 0.75
+model accuracy    0.92</pre></div>
     <div class="answer-gate" data-answer-id="20.4">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -235,26 +443,32 @@ print(f&quot;accuracy={correct / len(actual):.2f}&quot;)</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ตรวจข้อมูลตั้งแต่ขอบเขตฟังก์ชันทำให้ทั้ง command line และ GUI ใช้กติกาเดียวกัน</p><pre class="copyable"><code>def recommend(score, catalog):
-    if not 0 &lt;= score &lt;= 100:
-        raise ValueError(&quot;คะแนนต้องอยู่ระหว่าง 0 ถึง 100&quot;)
-    return [name for name, minimum in catalog if score &gt;= minimum]
+        <p>โมเดลต้องชนะกติกาง่าย ๆ ได้ก่อนจึงคุ้มที่จะใช้ ข้อนี้วัดกับข้อมูลที่ใช้ฝึกซึ่งให้ผลดีเกินจริง กับข้อมูลจริงควรแบ่ง train/test แบบบทที่ 17</p><pre class="copyable"><code>import pandas as pd
+from sklearn.linear_model import LogisticRegression
 
-catalog = [(&quot;Python&quot;, 0), (&quot;Data&quot;, 60), (&quot;AI&quot;, 75)]
-for score in (68, -1, 101):
-    try:
-        print(score, recommend(score, catalog))
-    except ValueError as error:
-        print(error)</code></pre>
+df = pd.read_csv(&quot;history.csv&quot;)
+X, y = df[[&quot;study_hours&quot;, &quot;prior_score&quot;]], df[&quot;passed&quot;]
+
+baseline = (df[&quot;prior_score&quot;] &gt;= 60).astype(int)
+model = LogisticRegression().fit(X, y)
+print(f&quot;baseline accuracy {(baseline == y).mean():.2f}&quot;)
+print(f&quot;model accuracy    {(model.predict(X) == y).mean():.2f}&quot;)</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 20.5</span><strong>เพิ่มเหตุผลประกอบคำแนะนำ</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>กรองวิชาตามคะแนนความพร้อมและแสดงชื่อพร้อมคะแนนขั้นต่ำของแต่ละวิชา ไม่แสดงชื่ออย่างเดียว</p>
-    <ul><li>ใช้รายการ dictionary ที่มีชื่อและเกณฑ์</li><li>กรองตามคะแนนผู้เรียน</li><li>แสดงชื่อและเกณฑ์ต่อบรรทัด</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>Python (minimum 0)
-Data (minimum 60)</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 20.5</span><strong>หน้าต่างค้นหาวิชา</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
+    <p>สร้างหน้าต่าง PySide6 ที่มี QComboBox เลือก track และ QListWidget แสดงวิชาใน track นั้น อัปเดตทันทีเมื่อเปลี่ยนตัวเลือก</p>
+    <div class="data-files"><div class="file-box"><span>ไฟล์ courses.csv</span><pre>code,name,credits,min_score,track
+CS101,Python Programming,3,0,core
+CS102,Data Structures,3,55,core
+DS201,Data Analysis with pandas,3,60,data
+DS202,Data Visualization,2,60,data
+AI301,Machine Learning,3,70,ai
+AI302,Neural Networks,3,80,ai
+UI201,GUI with PySide6,2,55,app</pre></div></div>
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ไฟล์ courses.csv</dd></div><div><dt>ต้องหา</dt><dd>ภาพ: เลือก track <code>data</code> แล้วแสดง 2 วิชา</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>addItems(sorted(df[&quot;track&quot;].unique()))</code></li><li>เชื่อม <code>currentTextChanged</code> กับ method อัปเดตรายการ</li><li>แยกฟังก์ชันกรองข้อมูลไว้นอก class</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><figure class="screenshot"><img src="../assets/gui/ch20-ex5.png" alt="หน้าต่างโปรแกรมที่ได้จากการรันโค้ด"><figcaption>หน้าต่างที่ได้จากการรันโค้ดนี้จริง (หลังจำลองการกรอกและกดปุ่ม)</figcaption></figure></div>
     <div class="answer-gate" data-answer-id="20.5">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -263,24 +477,55 @@ Data (minimum 60)</pre></div>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การบอกเหตุผลช่วยให้ผู้ใช้ตรวจสอบว่าระบบใช้เกณฑ์ใด</p><pre class="copyable"><code>catalog = [
-    {&quot;name&quot;: &quot;Python&quot;, &quot;minimum&quot;: 0},
-    {&quot;name&quot;: &quot;Data&quot;, &quot;minimum&quot;: 60},
-    {&quot;name&quot;: &quot;AI&quot;, &quot;minimum&quot;: 75},
-]
-score = 68
-for course in catalog:
-    if score &gt;= course[&quot;minimum&quot;]:
-        print(f&quot;{course[&#39;name&#39;]} (minimum {course[&#39;minimum&#39;]})&quot;)</code></pre>
+        <p><code>currentTextChanged</code> ส่งข้อความที่เลือกมาเป็นอาร์กิวเมนต์ให้ slot โดยตรง ฟังก์ชันกรองอยู่นอก class จึงเป็นชั้น logic ที่ทดสอบแยกได้</p><pre class="copyable"><code>import sys
+import pandas as pd
+from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QComboBox, QListWidget
+
+courses = pd.read_csv(&quot;courses.csv&quot;)
+
+def courses_in_track(track):
+    rows = courses[courses[&quot;track&quot;] == track]
+    return [f&quot;{r.code} {r.name}&quot; for r in rows.itertuples()]
+
+class TrackWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle(&quot;Course finder&quot;)
+        self.track = QComboBox()
+        self.track.addItems(sorted(courses[&quot;track&quot;].unique()))
+        self.list = QListWidget()
+        self.track.currentTextChanged.connect(self.refresh)
+        layout = QVBoxLayout(self)
+        layout.addWidget(self.track)
+        layout.addWidget(self.list)
+        self.refresh(self.track.currentText())
+
+    def refresh(self, track):
+        self.list.clear()
+        self.list.addItems(courses_in_track(track))
+
+app = QApplication(sys.argv)
+window = TrackWindow()
+window.resize(320, 200)
+window.show()
+sys.exit(app.exec())</code></pre>
       </div>
     </div>
   </article>
 <article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 20.6</span><strong>สร้างรายงานแผนเรียน</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>รับรายการวิชาที่แนะนำ สร้างรายงานนับจำนวนวิชาและหน่วยกิตรวม แล้วตรวจกรณีไม่มีวิชาแนะนำ</p>
-    <ul><li>แยกกรณีรายการว่าง</li><li>ใช้ sum รวม credits</li><li>แสดงคำอธิบายผลที่ไม่ชวนเข้าใจผิด</li></ul>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>Recommended courses: 2
-Total credits: 6</pre></div>
+    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 20.6</span><strong>ขยายโปรเจกต์ด้วยตัวเอง</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
+    <p>เพิ่มฟีเจอร์ให้ <code>recommend</code>: รับ <code>track</code> (ไม่บังคับ) เพื่อแนะนำเฉพาะ track ที่สนใจ แต่ต้องรวม <code>core</code> เสมอ พร้อม assert ทดสอบอย่างน้อย 3 กรณี</p>
+    <div class="data-files"><div class="file-box"><span>ไฟล์ courses.csv</span><pre>code,name,credits,min_score,track
+CS101,Python Programming,3,0,core
+CS102,Data Structures,3,55,core
+DS201,Data Analysis with pandas,3,60,data
+DS202,Data Visualization,2,60,data
+AI301,Machine Learning,3,70,ai
+AI302,Neural Networks,3,80,ai
+UI201,GUI with PySide6,2,55,app</pre></div></div>
+    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ไฟล์ courses.csv</dd></div><div><dt>ต้องหา</dt><dd><code>ผ่านการทดสอบ</code> และตัวอย่างผลแนะนำ track ai</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>พารามิเตอร์ <code>track=None</code> (ไม่ส่ง = ทุก track)</li><li>กรอง <code>track.isin([&quot;core&quot;, track])</code> เมื่อมีการระบุ</li><li>ทดสอบ: ไม่ระบุ track, ระบุ ai, ระบุ track ที่ไม่มีในข้อมูล</li></ol></div>
+    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>ผ่านการทดสอบ
+track ai: [&#39;AI302&#39;, &#39;AI301&#39;, &#39;CS102&#39;]</pre></div>
     <div class="answer-gate" data-answer-id="20.6">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -289,19 +534,31 @@ Total credits: 6</pre></div>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ระบบแนะนำควรรองรับกรณีผลลัพธ์ว่างและบอกสถานะอย่างตรงไปตรงมา</p><pre class="copyable"><code>plan = [{&quot;name&quot;: &quot;Python&quot;, &quot;credits&quot;: 3}, {&quot;name&quot;: &quot;Data&quot;, &quot;credits&quot;: 3}]
-if not plan:
-    print(&quot;No courses meet the current criteria.&quot;)
-else:
-    credits = sum(course[&quot;credits&quot;] for course in plan)
-    print(f&quot;Recommended courses: {len(plan)}&quot;)
-    print(f&quot;Total credits: {credits}&quot;)</code></pre>
+        <p>การเพิ่มพารามิเตอร์แบบมีค่าเริ่มต้น <code>track=None</code> ทำให้โค้ดเดิมที่เรียก <code>recommend(score)</code> ยังทำงานเหมือนเดิม และ assert ช่วยยืนยันว่าฟีเจอร์ใหม่ไม่ทำของเดิมพัง</p><pre class="copyable"><code>import pandas as pd
+
+courses = pd.read_csv(&quot;courses.csv&quot;)
+
+def recommend(score, max_credits=9, track=None):
+    pool = courses if track is None else courses[courses[&quot;track&quot;].isin([&quot;core&quot;, track])]
+    ready = pool[pool[&quot;min_score&quot;] &lt;= score].sort_values(&quot;min_score&quot;, ascending=False, kind=&quot;stable&quot;)
+    picked, total = [], 0
+    for _, row in ready.iterrows():
+        if total + row[&quot;credits&quot;] &lt;= max_credits:
+            picked.append(row[&quot;code&quot;])
+            total += row[&quot;credits&quot;]
+    return picked
+
+assert recommend(75, 12) == [&quot;AI301&quot;, &quot;DS201&quot;, &quot;DS202&quot;, &quot;CS102&quot;]
+assert set(recommend(85, 9, track=&quot;ai&quot;)) &lt;= {&quot;AI301&quot;, &quot;AI302&quot;, &quot;CS101&quot;, &quot;CS102&quot;}
+assert recommend(60, 9, track=&quot;music&quot;) == [&quot;CS102&quot;, &quot;CS101&quot;]
+print(&quot;ผ่านการทดสอบ&quot;)
+print(&quot;track ai:&quot;, recommend(85, 9, track=&quot;ai&quot;))</code></pre>
       </div>
     </div>
   </article></div>
       </section>
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-19.html">← บทก่อนหน้า</a><a class="pager-link" href="../index.html">จบบทเรียน · กลับหน้าสารบัญ →</a></nav>
-      <footer class="lesson-footer">Python programming · Lecture notes · ตัวอย่างรันตรวจด้วย Python จริง</footer>
+      <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
   <script src="../password.js"></script><script src="../assets/lesson.js"></script>
