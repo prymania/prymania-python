@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const chapters = [...document.querySelectorAll(".chapter-nav-item")];
+  const chapters = [...document.querySelectorAll(".course-nav .nav-chapter")];
   const filters = [...document.querySelectorAll(".filter")];
   const search = document.querySelector("#chapter-search");
   const status = document.querySelector("#search-status");
-  const nav = document.querySelector("#chapter-nav");
+  const nav = document.querySelector(".course-nav");
   let currentFilter = "all";
 
   function updateLinks() {
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       chapter.hidden = !(matchesFilter && matchesSearch);
       if (!chapter.hidden) visible++;
     });
-    nav.querySelectorAll(".toc-label[data-group]").forEach((label) => {
+    nav.querySelectorAll(".nav-label[data-group]").forEach((label) => {
       label.hidden = !chapters.some((chapter) => chapter.dataset.group === label.dataset.group && !chapter.hidden);
     });
     let empty = nav.querySelector(".chapter-empty");

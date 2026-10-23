@@ -3,235 +3,188 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#192044">
+  <meta name="theme-color" content="#ffffff">
   <meta name="description" content="เข้าใจส่วนประกอบของ neural network ตั้งแต่ neuron, activation, loss จนถึงการเรียนรู้ด้วย gradient descent">
-  <title>บทที่ 18 · แนวคิด Neural Network และการฝึกโมเดล | Python programming</title>
+  <title>บทที่ 18: แนวคิด Neural Network และการฝึกโมเดล | Python programming by Prymania</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Bai+Jamjuree:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="../assets/lesson.css">
+  <link rel="stylesheet" href="../assets/course-nav.css">
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
   <div class="lesson-shell">
-    <aside class="lesson-sidebar" aria-label="สารบัญบทเรียน">
-      <a class="lesson-brand" href="../index.html"><span class="brand-mark">Py</span><span><span class="brand-title">Python programming by Prymania</span><span class="brand-caption">LECTURE NOTES</span></span></a>
-      <nav class="lesson-toc chapter-navigation" aria-label="สารบัญรายวิชา">
-        <p class="toc-label">สารบัญ · 20 บทเรียน</p>
-        <p class="toc-label" data-group="foundation">เริ่มต้นกับ Python</p><details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเปิด Thonny เขียนไฟล์ .py แรก รันโปรแกรม และอ่าน error เบื้องต้น Python ทำงานอย่างไร เครื่องมือที่ใช้: Thonny Shell กับไฟล์ .py ต่างกันอย่างไร comment และการเยื้องบรรทัด อ่าน error ให้เป็น">
-      <summary><span class="toc-number">01</span><span class="chapter-nav-title">โครงสร้างโปรแกรม Python, IDE และการรัน</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-01.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-01.html#topic-1"><span class="topic-number">01.1</span>Python ทำงานอย่างไร</a></li><li><a href="chapter-01.html#topic-2"><span class="topic-number">01.2</span>เครื่องมือที่ใช้: Thonny</a></li><li><a href="chapter-01.html#topic-3"><span class="topic-number">01.3</span>Shell กับไฟล์ .py ต่างกันอย่างไร</a></li><li><a href="chapter-01.html#topic-4"><span class="topic-number">01.4</span>comment และการเยื้องบรรทัด</a></li><li><a href="chapter-01.html#topic-5"><span class="topic-number">01.5</span>อ่าน error ให้เป็น</a></li><li><a href="chapter-01.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลในตัวแปร รู้จักชนิดข้อมูล รับค่าด้วย input() และแสดงผลด้วย print() / f-string ตัวแปร: ตั้งชื่อให้ข้อมูล ชนิดข้อมูลพื้นฐาน 4 ชนิด แปลงชนิดข้อมูล รับค่าด้วย input() แสดงผลด้วย print() และ f-string ข้อผิดพลาดที่เจอบ่อย">
-      <summary><span class="toc-number">02</span><span class="chapter-nav-title">ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-02.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-02.html#topic-1"><span class="topic-number">02.1</span>ตัวแปร: ตั้งชื่อให้ข้อมูล</a></li><li><a href="chapter-02.html#topic-2"><span class="topic-number">02.2</span>ชนิดข้อมูลพื้นฐาน 4 ชนิด</a></li><li><a href="chapter-02.html#topic-3"><span class="topic-number">02.3</span>แปลงชนิดข้อมูล</a></li><li><a href="chapter-02.html#topic-4"><span class="topic-number">02.4</span>รับค่าด้วย input()</a></li><li><a href="chapter-02.html#topic-5"><span class="topic-number">02.5</span>แสดงผลด้วย print() และ f-string</a></li><li><a href="chapter-02.html#topic-6"><span class="topic-number">02.6</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-02.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และรวมเงื่อนไขด้วย and / or / not ตัวดำเนินการเลขคณิต ลำดับการคำนวณ เปรียบเทียบค่า ได้ผลเป็น True/False รวมเงื่อนไขด้วย and / or / not ตัวดำเนินการแบบย่อ">
-      <summary><span class="toc-number">03</span><span class="chapter-nav-title">ตัวดำเนินการและนิพจน์</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-03.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-03.html#topic-1"><span class="topic-number">03.1</span>ตัวดำเนินการเลขคณิต</a></li><li><a href="chapter-03.html#topic-2"><span class="topic-number">03.2</span>ลำดับการคำนวณ</a></li><li><a href="chapter-03.html#topic-3"><span class="topic-number">03.3</span>เปรียบเทียบค่า ได้ผลเป็น True/False</a></li><li><a href="chapter-03.html#topic-4"><span class="topic-number">03.4</span>รวมเงื่อนไขด้วย and / or / not</a></li><li><a href="chapter-03.html#topic-5"><span class="topic-number">03.5</span>ตัวดำเนินการแบบย่อ</a></li><li><a href="chapter-03.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if: ทำเมื่อเงื่อนไขเป็นจริง if-else: เลือก 1 ใน 2 ทาง elif: หลายทางเลือก เงื่อนไขหลายข้อ และ if ซ้อน ข้อผิดพลาดที่เจอบ่อย">
-      <summary><span class="toc-number">04</span><span class="chapter-nav-title">เงื่อนไขและการตัดสินใจ</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-04.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-04.html#topic-1"><span class="topic-number">04.1</span>if: ทำเมื่อเงื่อนไขเป็นจริง</a></li><li><a href="chapter-04.html#topic-2"><span class="topic-number">04.2</span>if-else: เลือก 1 ใน 2 ทาง</a></li><li><a href="chapter-04.html#topic-3"><span class="topic-number">04.3</span>elif: หลายทางเลือก</a></li><li><a href="chapter-04.html#topic-4"><span class="topic-number">04.4</span>เงื่อนไขหลายข้อ และ if ซ้อน</a></li><li><a href="chapter-04.html#topic-5"><span class="topic-number">04.5</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-04.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="การทำซ้ำด้วยลูป สั่งให้โปรแกรมทำงานซ้ำด้วย for และ while แทนการเขียนคำสั่งเดิมหลายครั้ง for กับ range() for วนผ่านข้อมูลทีละตัว สะสมผลรวมและนับจำนวน while: วนจนกว่าเงื่อนไขจะเป็นเท็จ break และ continue">
-      <summary><span class="toc-number">05</span><span class="chapter-nav-title">การทำซ้ำด้วยลูป</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-05.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-05.html#topic-1"><span class="topic-number">05.1</span>for กับ range()</a></li><li><a href="chapter-05.html#topic-2"><span class="topic-number">05.2</span>for วนผ่านข้อมูลทีละตัว</a></li><li><a href="chapter-05.html#topic-3"><span class="topic-number">05.3</span>สะสมผลรวมและนับจำนวน</a></li><li><a href="chapter-05.html#topic-4"><span class="topic-number">05.4</span>while: วนจนกว่าเงื่อนไขจะเป็นเท็จ</a></li><li><a href="chapter-05.html#topic-5"><span class="topic-number">05.5</span>break และ continue</a></li><li><a href="chapter-05.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด แยก ค้นหา และจัดรูปแบบข้อความด้วย index, slicing และ string method index: ตำแหน่งของตัวอักษร slicing: ตัดบางส่วน method ที่ใช้บ่อย ตรวจและวนข้อความ">
-      <summary><span class="toc-number">06</span><span class="chapter-nav-title">ข้อความและการจัดการ string</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-06.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-06.html#topic-1"><span class="topic-number">06.1</span>index: ตำแหน่งของตัวอักษร</a></li><li><a href="chapter-06.html#topic-2"><span class="topic-number">06.2</span>slicing: ตัดบางส่วน</a></li><li><a href="chapter-06.html#topic-3"><span class="topic-number">06.3</span>method ที่ใช้บ่อย</a></li><li><a href="chapter-06.html#topic-4"><span class="topic-number">06.4</span>ตรวจและวนข้อความ</a></li><li><a href="chapter-06.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เก็บข้อมูลหลายค่าในตัวแปรเดียว และเลือกโครงสร้างให้เหมาะกับงาน เลือกใช้แบบไหนดี list: รายการที่แก้ไขได้ tuple และ set dict: จับคู่ key กับ value">
-      <summary><span class="toc-number">07</span><span class="chapter-nav-title">โครงสร้างข้อมูล: list, tuple, set และ dict</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-07.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-07.html#topic-1"><span class="topic-number">07.1</span>เลือกใช้แบบไหนดี</a></li><li><a href="chapter-07.html#topic-2"><span class="topic-number">07.2</span>list: รายการที่แก้ไขได้</a></li><li><a href="chapter-07.html#topic-3"><span class="topic-number">07.3</span>tuple และ set</a></li><li><a href="chapter-07.html#topic-4"><span class="topic-number">07.4</span>dict: จับคู่ key กับ value</a></li><li><a href="chapter-07.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม รวมคำสั่งที่ทำงานหนึ่งอย่างเป็นฟังก์ชัน เรียกใช้ซ้ำได้ และแบ่งโปรแกรมใหญ่เป็นส่วนเล็ก def: สร้างฟังก์ชัน parameter: ส่งค่าเข้าฟังก์ชัน return: ส่งผลกลับ ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน">
-      <summary><span class="toc-number">08</span><span class="chapter-nav-title">ฟังก์ชันและการแบ่งโปรแกรม</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-08.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-08.html#topic-1"><span class="topic-number">08.1</span>def: สร้างฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-2"><span class="topic-number">08.2</span>parameter: ส่งค่าเข้าฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-3"><span class="topic-number">08.3</span>return: ส่งผลกลับ</a></li><li><a href="chapter-08.html#topic-4"><span class="topic-number">08.4</span>ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน</a></li><li><a href="chapter-08.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<p class="toc-label" data-group="practice">ฝึกเขียนและใช้งาน</p><details class="chapter-nav-item" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน error ให้เข้าใจ ดักจับข้อผิดพลาดด้วย try/except และหาสาเหตุเมื่อผลลัพธ์ผิด อ่าน traceback error ที่พบบ่อย try / except: ดักจับ error ดักหลายชนิด และดูข้อความ error raise: แจ้ง error เอง ไล่หาบั๊กเมื่อผลลัพธ์ผิด">
-      <summary><span class="toc-number">09</span><span class="chapter-nav-title">ข้อผิดพลาด การจัดการ exception และ debug</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-09.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-09.html#topic-1"><span class="topic-number">09.1</span>อ่าน traceback</a></li><li><a href="chapter-09.html#topic-2"><span class="topic-number">09.2</span>error ที่พบบ่อย</a></li><li><a href="chapter-09.html#topic-3"><span class="topic-number">09.3</span>try / except: ดักจับ error</a></li><li><a href="chapter-09.html#topic-4"><span class="topic-number">09.4</span>ดักหลายชนิด และดูข้อความ error</a></li><li><a href="chapter-09.html#topic-5"><span class="topic-number">09.5</span>raise: แจ้ง error เอง</a></li><li><a href="chapter-09.html#topic-6"><span class="topic-number">09.6</span>ไล่หาบั๊กเมื่อผลลัพธ์ผิด</a></li><li><a href="chapter-09.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนไฟล์ข้อความ CSV และ JSON เพื่อเก็บข้อมูลไว้ใช้ต่อหลังปิดโปรแกรม เปิดไฟล์ด้วย with open() อ่านทีละบรรทัด CSV: ข้อมูลตาราง JSON: บันทึก list/dict ทั้งก้อน เลือก CSV หรือ JSON">
-      <summary><span class="toc-number">10</span><span class="chapter-nav-title">ไฟล์ ข้อมูล CSV และ JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-10.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-10.html#topic-1"><span class="topic-number">10.1</span>เปิดไฟล์ด้วย with open()</a></li><li><a href="chapter-10.html#topic-2"><span class="topic-number">10.2</span>อ่านทีละบรรทัด</a></li><li><a href="chapter-10.html#topic-3"><span class="topic-number">10.3</span>CSV: ข้อมูลตาราง</a></li><li><a href="chapter-10.html#topic-4"><span class="topic-number">10.4</span>JSON: บันทึก list/dict ทั้งก้อน</a></li><li><a href="chapter-10.html#topic-5"><span class="topic-number">10.5</span>เลือก CSV หรือ JSON</a></li><li><a href="chapter-10.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="practice" data-search="โมดูล virtual environment และ pip นำโมดูลมาตรฐานมาใช้ สร้างโมดูลของตัวเอง และติดตั้งแพ็กเกจเพิ่มด้วย pip ใน virtual environment import: นำโมดูลมาใช้ โมดูลมาตรฐานที่ใช้บ่อย สร้างโมดูลเอง pip และ virtual environment ตรวจว่าติดตั้งแล้วหรือยัง">
-      <summary><span class="toc-number">11</span><span class="chapter-nav-title">โมดูล virtual environment และ pip</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-11.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-11.html#topic-1"><span class="topic-number">11.1</span>import: นำโมดูลมาใช้</a></li><li><a href="chapter-11.html#topic-2"><span class="topic-number">11.2</span>โมดูลมาตรฐานที่ใช้บ่อย</a></li><li><a href="chapter-11.html#topic-3"><span class="topic-number">11.3</span>สร้างโมดูลเอง</a></li><li><a href="chapter-11.html#topic-4"><span class="topic-number">11.4</span>pip และ virtual environment</a></li><li><a href="chapter-11.html#topic-5"><span class="topic-number">11.5</span>ตรวจว่าติดตั้งแล้วหรือยัง</a></li><li><a href="chapter-11.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมข้อมูลและการทำงานที่เกี่ยวข้องกันไว้ใน class แล้วสร้าง object ได้หลายตัว class คือแม่แบบ object คือของจริง __init__ และ self method: การทำงานของ object __str__: กำหนดวิธีแสดงผล ทำงานกับ object หลายตัว">
-      <summary><span class="toc-number">12</span><span class="chapter-nav-title">เขียนโปรแกรมเชิงวัตถุด้วย class</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-12.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-12.html#topic-1"><span class="topic-number">12.1</span>class คือแม่แบบ object คือของจริง</a></li><li><a href="chapter-12.html#topic-2"><span class="topic-number">12.2</span>__init__ และ self</a></li><li><a href="chapter-12.html#topic-3"><span class="topic-number">12.3</span>method: การทำงานของ object</a></li><li><a href="chapter-12.html#topic-4"><span class="topic-number">12.4</span>__str__: กำหนดวิธีแสดงผล</a></li><li><a href="chapter-12.html#topic-5"><span class="topic-number">12.5</span>ทำงานกับ object หลายตัว</a></li><li><a href="chapter-12.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON ขอข้อมูลจากบริการบนอินเทอร์เน็ตด้วย requests อ่านผลที่เป็น JSON และจัดการเมื่อเชื่อมต่อไม่สำเร็จ API ทำงานอย่างไร JSON กับ Python requests.get(): ขอข้อมูล ส่ง parameter รับมือเมื่อเรียกไม่สำเร็จ">
-      <summary><span class="toc-number">13</span><span class="chapter-nav-title">เรียกใช้ Web API และแลกเปลี่ยน JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-13.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-13.html#topic-1"><span class="topic-number">13.1</span>API ทำงานอย่างไร</a></li><li><a href="chapter-13.html#topic-2"><span class="topic-number">13.2</span>JSON กับ Python</a></li><li><a href="chapter-13.html#topic-3"><span class="topic-number">13.3</span>requests.get(): ขอข้อมูล</a></li><li><a href="chapter-13.html#topic-4"><span class="topic-number">13.4</span>ส่ง parameter</a></li><li><a href="chapter-13.html#topic-5"><span class="topic-number">13.5</span>รับมือเมื่อเรียกไม่สำเร็จ</a></li><li><a href="chapter-13.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<p class="toc-label" data-group="ai">ต่อยอดข้อมูลและ AI</p><details class="chapter-nav-item" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของงาน Data Science และ AI array ต่างจาก list อย่างไร สร้าง array แบบต่าง ๆ คำนวณทั้ง array (vectorization) กรองข้อมูลด้วยเงื่อนไข array 2 มิติและแกน (axis) ฟังก์ชันสถิติ">
-      <summary><span class="toc-number">14</span><span class="chapter-nav-title">NumPy สำหรับการคำนวณตัวเลข</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-14.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-14.html#topic-1"><span class="topic-number">14.1</span>array ต่างจาก list อย่างไร</a></li><li><a href="chapter-14.html#topic-2"><span class="topic-number">14.2</span>สร้าง array แบบต่าง ๆ</a></li><li><a href="chapter-14.html#topic-3"><span class="topic-number">14.3</span>คำนวณทั้ง array (vectorization)</a></li><li><a href="chapter-14.html#topic-4"><span class="topic-number">14.4</span>กรองข้อมูลด้วยเงื่อนไข</a></li><li><a href="chapter-14.html#topic-5"><span class="topic-number">14.5</span>array 2 มิติและแกน (axis)</a></li><li><a href="chapter-14.html#topic-6"><span class="topic-number">14.6</span>ฟังก์ชันสถิติ</a></li><li><a href="chapter-14.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน สำรวจ กรอง ทำความสะอาด และสรุปข้อมูลตารางด้วย pandas DataFrame DataFrame: ตารางข้อมูล อ่าน CSV และสำรวจข้อมูล เลือกและกรองข้อมูล เพิ่มคอลัมน์และเรียงข้อมูล จัดการค่าว่าง สรุปตามกลุ่มด้วย groupby">
-      <summary><span class="toc-number">15</span><span class="chapter-nav-title">จัดการตารางข้อมูลด้วย pandas</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-15.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-15.html#topic-1"><span class="topic-number">15.1</span>DataFrame: ตารางข้อมูล</a></li><li><a href="chapter-15.html#topic-2"><span class="topic-number">15.2</span>อ่าน CSV และสำรวจข้อมูล</a></li><li><a href="chapter-15.html#topic-3"><span class="topic-number">15.3</span>เลือกและกรองข้อมูล</a></li><li><a href="chapter-15.html#topic-4"><span class="topic-number">15.4</span>เพิ่มคอลัมน์และเรียงข้อมูล</a></li><li><a href="chapter-15.html#topic-5"><span class="topic-number">15.5</span>จัดการค่าว่าง</a></li><li><a href="chapter-15.html#topic-6"><span class="topic-number">15.6</span>สรุปตามกลุ่มด้วย groupby</a></li><li><a href="chapter-15.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib แปลงตัวเลขเป็นกราฟที่อ่านง่าย เลือกชนิดกราฟให้ตรงคำถาม และบันทึกเป็นไฟล์ภาพ กราฟแรก เลือกชนิดกราฟจากคำถาม กราฟแท่ง หลายเส้นในกราฟเดียว กราฟกระจายและฮิสโทแกรม บันทึกกราฟและภาษาไทย">
-      <summary><span class="toc-number">16</span><span class="chapter-nav-title">สร้างกราฟด้วย Matplotlib</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-16.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-16.html#topic-1"><span class="topic-number">16.1</span>กราฟแรก</a></li><li><a href="chapter-16.html#topic-2"><span class="topic-number">16.2</span>เลือกชนิดกราฟจากคำถาม</a></li><li><a href="chapter-16.html#topic-3"><span class="topic-number">16.3</span>กราฟแท่ง</a></li><li><a href="chapter-16.html#topic-4"><span class="topic-number">16.4</span>หลายเส้นในกราฟเดียว</a></li><li><a href="chapter-16.html#topic-5"><span class="topic-number">16.5</span>กราฟกระจายและฮิสโทแกรม</a></li><li><a href="chapter-16.html#topic-6"><span class="topic-number">16.6</span>บันทึกกราฟและภาษาไทย</a></li><li><a href="chapter-16.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn ให้คอมพิวเตอร์เรียนรู้รูปแบบจากตัวอย่าง แล้วทำนายข้อมูลใหม่ ด้วยขั้นตอนมาตรฐานของ scikit-learn Machine Learning คืออะไร ขั้นตอนมาตรฐาน แบ่งข้อมูล train/test fit และ predict วัดผลโมเดล Pipeline: รวมการเตรียมข้อมูลกับโมเดล">
-      <summary><span class="toc-number">17</span><span class="chapter-nav-title">Machine Learning เบื้องต้นด้วย scikit-learn</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-17.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-17.html#topic-1"><span class="topic-number">17.1</span>Machine Learning คืออะไร</a></li><li><a href="chapter-17.html#topic-2"><span class="topic-number">17.2</span>ขั้นตอนมาตรฐาน</a></li><li><a href="chapter-17.html#topic-3"><span class="topic-number">17.3</span>แบ่งข้อมูล train/test</a></li><li><a href="chapter-17.html#topic-4"><span class="topic-number">17.4</span>fit และ predict</a></li><li><a href="chapter-17.html#topic-5"><span class="topic-number">17.5</span>วัดผลโมเดล</a></li><li><a href="chapter-17.html#topic-6"><span class="topic-number">17.6</span>Pipeline: รวมการเตรียมข้อมูลกับโมเดล</a></li><li><a href="chapter-17.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล เข้าใจส่วนประกอบของ neural network ตั้งแต่ neuron, activation, loss จนถึงการเรียนรู้ด้วย gradient descent neuron: หน่วยคำนวณพื้นฐาน activation function layer: หลาย neuron พร้อมกัน loss: วัดว่าผิดมากแค่ไหน การเรียนรู้: gradient descent ใช้ library แทนการเขียนเอง" open>
-      <summary><span class="toc-number">18</span><span class="chapter-nav-title">แนวคิด Neural Network และการฝึกโมเดล</span></summary>
-      <ul class="chapter-subnav"><li><a href="#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="#topic-1"><span class="topic-number">18.1</span>neuron: หน่วยคำนวณพื้นฐาน</a></li><li><a href="#topic-2"><span class="topic-number">18.2</span>activation function</a></li><li><a href="#topic-3"><span class="topic-number">18.3</span>layer: หลาย neuron พร้อมกัน</a></li><li><a href="#topic-4"><span class="topic-number">18.4</span>loss: วัดว่าผิดมากแค่ไหน</a></li><li><a href="#topic-5"><span class="topic-number">18.5</span>การเรียนรู้: gradient descent</a></li><li><a href="#topic-6"><span class="topic-number">18.6</span>ใช้ library แทนการเขียนเอง</a></li><li><a href="#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<p class="toc-label" data-group="gui">GUI และโปรเจกต์</p><details class="chapter-nav-item" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปที่มีหน้าต่าง ปุ่ม และช่องกรอกข้อมูลด้วย PySide6 (Qt for Python) โครงสร้างแอปพื้นฐาน widget ที่ใช้บ่อย layout: จัดวาง widget signal และ slot: ทำงานเมื่อผู้ใช้กด เขียนหน้าต่างเป็น class">
-      <summary><span class="toc-number">19</span><span class="chapter-nav-title">สร้าง GUI สมัยใหม่ด้วย PySide6</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-19.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-19.html#topic-1"><span class="topic-number">19.1</span>โครงสร้างแอปพื้นฐาน</a></li><li><a href="chapter-19.html#topic-2"><span class="topic-number">19.2</span>widget ที่ใช้บ่อย</a></li><li><a href="chapter-19.html#topic-3"><span class="topic-number">19.3</span>layout: จัดวาง widget</a></li><li><a href="chapter-19.html#topic-4"><span class="topic-number">19.4</span>signal และ slot: ทำงานเมื่อผู้ใช้กด</a></li><li><a href="chapter-19.html#topic-5"><span class="topic-number">19.5</span>เขียนหน้าต่างเป็น class</a></li><li><a href="chapter-19.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI รวมทุกอย่างที่เรียนมาเป็นแอปแนะนำรายวิชา: ข้อมูลจาก CSV, กติกาแนะนำ, โมเดลทำนาย และหน้าต่าง PySide6 เริ่มจากโจทย์ ไม่ใช่โค้ด แยกเป็น 3 ชั้น ชั้นข้อมูล: โหลดรายวิชา ชั้น logic: กติกาแนะนำ + ทดสอบ เพิ่มโมเดล ML: ทำนายโอกาสผ่าน ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง">
-      <summary><span class="toc-number">20</span><span class="chapter-nav-title">โปรเจกต์ปลายทาง: Course Planner + AI</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-20.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-20.html#topic-1"><span class="topic-number">20.1</span>เริ่มจากโจทย์ ไม่ใช่โค้ด</a></li><li><a href="chapter-20.html#topic-2"><span class="topic-number">20.2</span>แยกเป็น 3 ชั้น</a></li><li><a href="chapter-20.html#topic-3"><span class="topic-number">20.3</span>ชั้นข้อมูล: โหลดรายวิชา</a></li><li><a href="chapter-20.html#topic-4"><span class="topic-number">20.4</span>ชั้น logic: กติกาแนะนำ + ทดสอบ</a></li><li><a href="chapter-20.html#topic-5"><span class="topic-number">20.5</span>เพิ่มโมเดล ML: ทำนายโอกาสผ่าน</a></li><li><a href="chapter-20.html#topic-6"><span class="topic-number">20.6</span>ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง</a></li><li><a href="chapter-20.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-      </nav>
-      <div class="sidebar-bottom">ตัวอย่างรันด้วย Python จริง<br>เลื่อนเพื่ออ่านหัวข้อถัดไป</div>
+    <aside class="lesson-sidebar" aria-label="เมนูบทเรียน">
+      <a class="lesson-brand" href="../index.html"><span class="brand-mark" aria-hidden="true">Py</span><span><span class="brand-title">Python programming<br>by Prymania</span><span class="brand-caption">LECTURE NOTES</span></span></a>
+      <!-- course-nav -->
+<button class="nav-toggle" type="button" aria-expanded="false">☰ สารบัญทุกบท</button>
+<nav class="course-nav" aria-label="สารบัญรายวิชา">
+<p class="nav-label" data-group="foundation">เริ่มต้นกับ Python</p>
+<details class="nav-chapter" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเปิด Thonny เขียนไฟล์ .py แรก รันโปรแกรม และอ่าน error เบื้องต้น Python ทำงานอย่างไร เครื่องมือที่ใช้: Thonny Shell กับไฟล์ .py ต่างกันอย่างไร comment และการเยื้องบรรทัด อ่าน error ให้เป็น"><summary><span class="nav-number">01</span><span class="nav-title">เริ่มต้น Python และ Thonny</span></summary><div class="nav-topics"><a href="chapter-01.html"><span class="toc-number">1</span>ภาพรวมของบท</a><a href="chapter-01.html#topic-1"><span class="toc-number">1.1</span>Python ทำงานอย่างไร</a><a href="chapter-01.html#topic-2"><span class="toc-number">1.2</span>เครื่องมือที่ใช้: Thonny</a><a href="chapter-01.html#topic-3"><span class="toc-number">1.3</span>Shell กับไฟล์ .py ต่างกันอย่างไร</a><a href="chapter-01.html#topic-4"><span class="toc-number">1.4</span>comment และการเยื้องบรรทัด</a><a href="chapter-01.html#topic-5"><span class="toc-number">1.5</span>อ่าน error ให้เป็น</a><a href="chapter-01.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-01.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลในตัวแปร รู้จักชนิดข้อมูล รับค่าด้วย input() และแสดงผลด้วย print() / f-string ตัวแปร: ตั้งชื่อให้ข้อมูล ชนิดข้อมูลพื้นฐาน 4 ชนิด แปลงชนิดข้อมูล รับค่าด้วย input() แสดงผลด้วย print() และ f-string ข้อผิดพลาดที่เจอบ่อย"><summary><span class="nav-number">02</span><span class="nav-title">ตัวแปรและชนิดข้อมูล</span></summary><div class="nav-topics"><a href="chapter-02.html"><span class="toc-number">2</span>ภาพรวมของบท</a><a href="chapter-02.html#topic-1"><span class="toc-number">2.1</span>ตัวแปร: ตั้งชื่อให้ข้อมูล</a><a href="chapter-02.html#topic-2"><span class="toc-number">2.2</span>ชนิดข้อมูลพื้นฐาน 4 ชนิด</a><a href="chapter-02.html#topic-3"><span class="toc-number">2.3</span>แปลงชนิดข้อมูล</a><a href="chapter-02.html#topic-4"><span class="toc-number">2.4</span>รับค่าด้วย input()</a><a href="chapter-02.html#topic-5"><span class="toc-number">2.5</span>แสดงผลด้วย print() และ f-string</a><a href="chapter-02.html#topic-6"><span class="toc-number">2.6</span>ข้อผิดพลาดที่เจอบ่อย</a><a href="chapter-02.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-02.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และรวมเงื่อนไขด้วย and / or / not ตัวดำเนินการเลขคณิต ลำดับการคำนวณ เปรียบเทียบค่า ได้ผลเป็น True/False รวมเงื่อนไขด้วย and / or / not ตัวดำเนินการแบบย่อ"><summary><span class="nav-number">03</span><span class="nav-title">ตัวดำเนินการ</span></summary><div class="nav-topics"><a href="chapter-03.html"><span class="toc-number">3</span>ภาพรวมของบท</a><a href="chapter-03.html#topic-1"><span class="toc-number">3.1</span>ตัวดำเนินการเลขคณิต</a><a href="chapter-03.html#topic-2"><span class="toc-number">3.2</span>ลำดับการคำนวณ</a><a href="chapter-03.html#topic-3"><span class="toc-number">3.3</span>เปรียบเทียบค่า ได้ผลเป็น True/False</a><a href="chapter-03.html#topic-4"><span class="toc-number">3.4</span>รวมเงื่อนไขด้วย and / or / not</a><a href="chapter-03.html#topic-5"><span class="toc-number">3.5</span>ตัวดำเนินการแบบย่อ</a><a href="chapter-03.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-03.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if: ทำเมื่อเงื่อนไขเป็นจริง if-else: เลือก 1 ใน 2 ทาง elif: หลายทางเลือก เงื่อนไขหลายข้อ และ if ซ้อน ข้อผิดพลาดที่เจอบ่อย"><summary><span class="nav-number">04</span><span class="nav-title">เงื่อนไข</span></summary><div class="nav-topics"><a href="chapter-04.html"><span class="toc-number">4</span>ภาพรวมของบท</a><a href="chapter-04.html#topic-1"><span class="toc-number">4.1</span>if: ทำเมื่อเงื่อนไขเป็นจริง</a><a href="chapter-04.html#topic-2"><span class="toc-number">4.2</span>if-else: เลือก 1 ใน 2 ทาง</a><a href="chapter-04.html#topic-3"><span class="toc-number">4.3</span>elif: หลายทางเลือก</a><a href="chapter-04.html#topic-4"><span class="toc-number">4.4</span>เงื่อนไขหลายข้อ และ if ซ้อน</a><a href="chapter-04.html#topic-5"><span class="toc-number">4.5</span>ข้อผิดพลาดที่เจอบ่อย</a><a href="chapter-04.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-04.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="การทำซ้ำด้วยลูป สั่งให้โปรแกรมทำงานซ้ำด้วย for และ while แทนการเขียนคำสั่งเดิมหลายครั้ง for กับ range() for วนผ่านข้อมูลทีละตัว สะสมผลรวมและนับจำนวน while: วนจนกว่าเงื่อนไขจะเป็นเท็จ break และ continue"><summary><span class="nav-number">05</span><span class="nav-title">การทำซ้ำ (ลูป)</span></summary><div class="nav-topics"><a href="chapter-05.html"><span class="toc-number">5</span>ภาพรวมของบท</a><a href="chapter-05.html#topic-1"><span class="toc-number">5.1</span>for กับ range()</a><a href="chapter-05.html#topic-2"><span class="toc-number">5.2</span>for วนผ่านข้อมูลทีละตัว</a><a href="chapter-05.html#topic-3"><span class="toc-number">5.3</span>สะสมผลรวมและนับจำนวน</a><a href="chapter-05.html#topic-4"><span class="toc-number">5.4</span>while: วนจนกว่าเงื่อนไขจะเป็นเท็จ</a><a href="chapter-05.html#topic-5"><span class="toc-number">5.5</span>break และ continue</a><a href="chapter-05.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-05.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด แยก ค้นหา และจัดรูปแบบข้อความด้วย index, slicing และ string method index: ตำแหน่งของตัวอักษร slicing: ตัดบางส่วน method ที่ใช้บ่อย ตรวจและวนข้อความ"><summary><span class="nav-number">06</span><span class="nav-title">ข้อความ (string)</span></summary><div class="nav-topics"><a href="chapter-06.html"><span class="toc-number">6</span>ภาพรวมของบท</a><a href="chapter-06.html#topic-1"><span class="toc-number">6.1</span>index: ตำแหน่งของตัวอักษร</a><a href="chapter-06.html#topic-2"><span class="toc-number">6.2</span>slicing: ตัดบางส่วน</a><a href="chapter-06.html#topic-3"><span class="toc-number">6.3</span>method ที่ใช้บ่อย</a><a href="chapter-06.html#topic-4"><span class="toc-number">6.4</span>ตรวจและวนข้อความ</a><a href="chapter-06.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-06.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เก็บข้อมูลหลายค่าในตัวแปรเดียว และเลือกโครงสร้างให้เหมาะกับงาน เลือกใช้แบบไหนดี list: รายการที่แก้ไขได้ tuple และ set dict: จับคู่ key กับ value"><summary><span class="nav-number">07</span><span class="nav-title">list · tuple · set · dict</span></summary><div class="nav-topics"><a href="chapter-07.html"><span class="toc-number">7</span>ภาพรวมของบท</a><a href="chapter-07.html#topic-1"><span class="toc-number">7.1</span>เลือกใช้แบบไหนดี</a><a href="chapter-07.html#topic-2"><span class="toc-number">7.2</span>list: รายการที่แก้ไขได้</a><a href="chapter-07.html#topic-3"><span class="toc-number">7.3</span>tuple และ set</a><a href="chapter-07.html#topic-4"><span class="toc-number">7.4</span>dict: จับคู่ key กับ value</a><a href="chapter-07.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-07.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม รวมคำสั่งที่ทำงานหนึ่งอย่างเป็นฟังก์ชัน เรียกใช้ซ้ำได้ และแบ่งโปรแกรมใหญ่เป็นส่วนเล็ก def: สร้างฟังก์ชัน parameter: ส่งค่าเข้าฟังก์ชัน return: ส่งผลกลับ ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน"><summary><span class="nav-number">08</span><span class="nav-title">ฟังก์ชัน</span></summary><div class="nav-topics"><a href="chapter-08.html"><span class="toc-number">8</span>ภาพรวมของบท</a><a href="chapter-08.html#topic-1"><span class="toc-number">8.1</span>def: สร้างฟังก์ชัน</a><a href="chapter-08.html#topic-2"><span class="toc-number">8.2</span>parameter: ส่งค่าเข้าฟังก์ชัน</a><a href="chapter-08.html#topic-3"><span class="toc-number">8.3</span>return: ส่งผลกลับ</a><a href="chapter-08.html#topic-4"><span class="toc-number">8.4</span>ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน</a><a href="chapter-08.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-08.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<p class="nav-label" data-group="practice">ฝึกเขียนและใช้งาน</p>
+<details class="nav-chapter" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน error ให้เข้าใจ ดักจับข้อผิดพลาดด้วย try/except และหาสาเหตุเมื่อผลลัพธ์ผิด อ่าน traceback error ที่พบบ่อย try / except: ดักจับ error ดักหลายชนิด และดูข้อความ error raise: แจ้ง error เอง ไล่หาบั๊กเมื่อผลลัพธ์ผิด"><summary><span class="nav-number">09</span><span class="nav-title">Error และการ debug</span></summary><div class="nav-topics"><a href="chapter-09.html"><span class="toc-number">9</span>ภาพรวมของบท</a><a href="chapter-09.html#topic-1"><span class="toc-number">9.1</span>อ่าน traceback</a><a href="chapter-09.html#topic-2"><span class="toc-number">9.2</span>error ที่พบบ่อย</a><a href="chapter-09.html#topic-3"><span class="toc-number">9.3</span>try / except: ดักจับ error</a><a href="chapter-09.html#topic-4"><span class="toc-number">9.4</span>ดักหลายชนิด และดูข้อความ error</a><a href="chapter-09.html#topic-5"><span class="toc-number">9.5</span>raise: แจ้ง error เอง</a><a href="chapter-09.html#topic-6"><span class="toc-number">9.6</span>ไล่หาบั๊กเมื่อผลลัพธ์ผิด</a><a href="chapter-09.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-09.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนไฟล์ข้อความ CSV และ JSON เพื่อเก็บข้อมูลไว้ใช้ต่อหลังปิดโปรแกรม เปิดไฟล์ด้วย with open() อ่านทีละบรรทัด CSV: ข้อมูลตาราง JSON: บันทึก list/dict ทั้งก้อน เลือก CSV หรือ JSON"><summary><span class="nav-number">10</span><span class="nav-title">ไฟล์ CSV และ JSON</span></summary><div class="nav-topics"><a href="chapter-10.html"><span class="toc-number">10</span>ภาพรวมของบท</a><a href="chapter-10.html#topic-1"><span class="toc-number">10.1</span>เปิดไฟล์ด้วย with open()</a><a href="chapter-10.html#topic-2"><span class="toc-number">10.2</span>อ่านทีละบรรทัด</a><a href="chapter-10.html#topic-3"><span class="toc-number">10.3</span>CSV: ข้อมูลตาราง</a><a href="chapter-10.html#topic-4"><span class="toc-number">10.4</span>JSON: บันทึก list/dict ทั้งก้อน</a><a href="chapter-10.html#topic-5"><span class="toc-number">10.5</span>เลือก CSV หรือ JSON</a><a href="chapter-10.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-10.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="practice" data-search="โมดูล virtual environment และ pip นำโมดูลมาตรฐานมาใช้ สร้างโมดูลของตัวเอง และติดตั้งแพ็กเกจเพิ่มด้วย pip ใน virtual environment import: นำโมดูลมาใช้ โมดูลมาตรฐานที่ใช้บ่อย สร้างโมดูลเอง pip และ virtual environment ตรวจว่าติดตั้งแล้วหรือยัง"><summary><span class="nav-number">11</span><span class="nav-title">โมดูลและ pip</span></summary><div class="nav-topics"><a href="chapter-11.html"><span class="toc-number">11</span>ภาพรวมของบท</a><a href="chapter-11.html#topic-1"><span class="toc-number">11.1</span>import: นำโมดูลมาใช้</a><a href="chapter-11.html#topic-2"><span class="toc-number">11.2</span>โมดูลมาตรฐานที่ใช้บ่อย</a><a href="chapter-11.html#topic-3"><span class="toc-number">11.3</span>สร้างโมดูลเอง</a><a href="chapter-11.html#topic-4"><span class="toc-number">11.4</span>pip และ virtual environment</a><a href="chapter-11.html#topic-5"><span class="toc-number">11.5</span>ตรวจว่าติดตั้งแล้วหรือยัง</a><a href="chapter-11.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-11.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมข้อมูลและการทำงานที่เกี่ยวข้องกันไว้ใน class แล้วสร้าง object ได้หลายตัว class คือแม่แบบ object คือของจริง __init__ และ self method: การทำงานของ object __str__: กำหนดวิธีแสดงผล ทำงานกับ object หลายตัว"><summary><span class="nav-number">12</span><span class="nav-title">class และ object</span></summary><div class="nav-topics"><a href="chapter-12.html"><span class="toc-number">12</span>ภาพรวมของบท</a><a href="chapter-12.html#topic-1"><span class="toc-number">12.1</span>class คือแม่แบบ object คือของจริง</a><a href="chapter-12.html#topic-2"><span class="toc-number">12.2</span>__init__ และ self</a><a href="chapter-12.html#topic-3"><span class="toc-number">12.3</span>method: การทำงานของ object</a><a href="chapter-12.html#topic-4"><span class="toc-number">12.4</span>__str__: กำหนดวิธีแสดงผล</a><a href="chapter-12.html#topic-5"><span class="toc-number">12.5</span>ทำงานกับ object หลายตัว</a><a href="chapter-12.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-12.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON ขอข้อมูลจากบริการบนอินเทอร์เน็ตด้วย requests อ่านผลที่เป็น JSON และจัดการเมื่อเชื่อมต่อไม่สำเร็จ API ทำงานอย่างไร JSON กับ Python requests.get(): ขอข้อมูล ส่ง parameter รับมือเมื่อเรียกไม่สำเร็จ"><summary><span class="nav-number">13</span><span class="nav-title">Web API</span></summary><div class="nav-topics"><a href="chapter-13.html"><span class="toc-number">13</span>ภาพรวมของบท</a><a href="chapter-13.html#topic-1"><span class="toc-number">13.1</span>API ทำงานอย่างไร</a><a href="chapter-13.html#topic-2"><span class="toc-number">13.2</span>JSON กับ Python</a><a href="chapter-13.html#topic-3"><span class="toc-number">13.3</span>requests.get(): ขอข้อมูล</a><a href="chapter-13.html#topic-4"><span class="toc-number">13.4</span>ส่ง parameter</a><a href="chapter-13.html#topic-5"><span class="toc-number">13.5</span>รับมือเมื่อเรียกไม่สำเร็จ</a><a href="chapter-13.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-13.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<p class="nav-label" data-group="ai">ต่อยอดข้อมูลและ AI</p>
+<details class="nav-chapter" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของ pandas, Matplotlib, scikit-learn และงาน AI ทั้งหมด ทำไมต้อง NumPy สร้าง array รูปร่าง: shape และ reshape เลือกข้อมูล: index และ slicing คำนวณทั้ง array และฟังก์ชันคณิตศาสตร์ broadcasting: คำนวณกับ array คนละขนาด กรองข้อมูลด้วยเงื่อนไข สรุปตามแกน (axis) สถิติ เรียงลำดับ และนับ ข้อผิดพลาดที่พบบ่อย NumPy ในงานจริง"><summary><span class="nav-number">14</span><span class="nav-title">NumPy</span></summary><div class="nav-topics"><a href="chapter-14.html"><span class="toc-number">14</span>ภาพรวมของบท</a><a href="chapter-14.html#topic-1"><span class="toc-number">14.1</span>ทำไมต้อง NumPy</a><a href="chapter-14.html#topic-2"><span class="toc-number">14.2</span>สร้าง array</a><a href="chapter-14.html#topic-3"><span class="toc-number">14.3</span>รูปร่าง: shape และ reshape</a><a href="chapter-14.html#topic-4"><span class="toc-number">14.4</span>เลือกข้อมูล: index และ slicing</a><a href="chapter-14.html#topic-5"><span class="toc-number">14.5</span>คำนวณทั้ง array และฟังก์ชันคณิตศาสตร์</a><a href="chapter-14.html#topic-6"><span class="toc-number">14.6</span>broadcasting: คำนวณกับ array คนละขนาด</a><a href="chapter-14.html#topic-7"><span class="toc-number">14.7</span>กรองข้อมูลด้วยเงื่อนไข</a><a href="chapter-14.html#topic-8"><span class="toc-number">14.8</span>สรุปตามแกน (axis)</a><a href="chapter-14.html#topic-9"><span class="toc-number">14.9</span>สถิติ เรียงลำดับ และนับ</a><a href="chapter-14.html#topic-10"><span class="toc-number">14.10</span>ข้อผิดพลาดที่พบบ่อย</a><a href="chapter-14.html#topic-11"><span class="toc-number">14.11</span>NumPy ในงานจริง</a><a href="chapter-14.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-14.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน สำรวจ กรอง ทำความสะอาด และสรุปข้อมูลตารางด้วย pandas DataFrame DataFrame: ตารางข้อมูล อ่าน CSV และสำรวจข้อมูล เลือกและกรองข้อมูล เพิ่มคอลัมน์และเรียงข้อมูล จัดการค่าว่าง สรุปตามกลุ่มด้วย groupby"><summary><span class="nav-number">15</span><span class="nav-title">pandas</span></summary><div class="nav-topics"><a href="chapter-15.html"><span class="toc-number">15</span>ภาพรวมของบท</a><a href="chapter-15.html#topic-1"><span class="toc-number">15.1</span>DataFrame: ตารางข้อมูล</a><a href="chapter-15.html#topic-2"><span class="toc-number">15.2</span>อ่าน CSV และสำรวจข้อมูล</a><a href="chapter-15.html#topic-3"><span class="toc-number">15.3</span>เลือกและกรองข้อมูล</a><a href="chapter-15.html#topic-4"><span class="toc-number">15.4</span>เพิ่มคอลัมน์และเรียงข้อมูล</a><a href="chapter-15.html#topic-5"><span class="toc-number">15.5</span>จัดการค่าว่าง</a><a href="chapter-15.html#topic-6"><span class="toc-number">15.6</span>สรุปตามกลุ่มด้วย groupby</a><a href="chapter-15.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-15.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib แปลงตัวเลขเป็นกราฟที่อ่านง่าย เลือกชนิดกราฟให้ตรงคำถาม และบันทึกเป็นไฟล์ภาพ กราฟแรก เลือกชนิดกราฟจากคำถาม กราฟแท่ง หลายเส้นในกราฟเดียว กราฟกระจายและฮิสโทแกรม บันทึกกราฟและภาษาไทย"><summary><span class="nav-number">16</span><span class="nav-title">Matplotlib</span></summary><div class="nav-topics"><a href="chapter-16.html"><span class="toc-number">16</span>ภาพรวมของบท</a><a href="chapter-16.html#topic-1"><span class="toc-number">16.1</span>กราฟแรก</a><a href="chapter-16.html#topic-2"><span class="toc-number">16.2</span>เลือกชนิดกราฟจากคำถาม</a><a href="chapter-16.html#topic-3"><span class="toc-number">16.3</span>กราฟแท่ง</a><a href="chapter-16.html#topic-4"><span class="toc-number">16.4</span>หลายเส้นในกราฟเดียว</a><a href="chapter-16.html#topic-5"><span class="toc-number">16.5</span>กราฟกระจายและฮิสโทแกรม</a><a href="chapter-16.html#topic-6"><span class="toc-number">16.6</span>บันทึกกราฟและภาษาไทย</a><a href="chapter-16.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-16.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn ให้คอมพิวเตอร์เรียนรู้รูปแบบจากตัวอย่าง แล้วทำนายข้อมูลใหม่ ด้วยขั้นตอนมาตรฐานของ scikit-learn Machine Learning คืออะไร ขั้นตอนมาตรฐาน แบ่งข้อมูล train/test fit และ predict วัดผลโมเดล Pipeline: รวมการเตรียมข้อมูลกับโมเดล"><summary><span class="nav-number">17</span><span class="nav-title">Machine Learning</span></summary><div class="nav-topics"><a href="chapter-17.html"><span class="toc-number">17</span>ภาพรวมของบท</a><a href="chapter-17.html#topic-1"><span class="toc-number">17.1</span>Machine Learning คืออะไร</a><a href="chapter-17.html#topic-2"><span class="toc-number">17.2</span>ขั้นตอนมาตรฐาน</a><a href="chapter-17.html#topic-3"><span class="toc-number">17.3</span>แบ่งข้อมูล train/test</a><a href="chapter-17.html#topic-4"><span class="toc-number">17.4</span>fit และ predict</a><a href="chapter-17.html#topic-5"><span class="toc-number">17.5</span>วัดผลโมเดล</a><a href="chapter-17.html#topic-6"><span class="toc-number">17.6</span>Pipeline: รวมการเตรียมข้อมูลกับโมเดล</a><a href="chapter-17.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-17.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล เข้าใจส่วนประกอบของ neural network ตั้งแต่ neuron, activation, loss จนถึงการเรียนรู้ด้วย gradient descent neuron: หน่วยคำนวณพื้นฐาน activation function layer: หลาย neuron พร้อมกัน loss: วัดว่าผิดมากแค่ไหน การเรียนรู้: gradient descent ใช้ library แทนการเขียนเอง" open><summary aria-current="page"><span class="nav-number">18</span><span class="nav-title">Neural Network</span></summary><div class="nav-topics"><a href="#lesson-content"><span class="toc-number">18</span>ภาพรวมของบท</a><a href="#topic-1"><span class="toc-number">18.1</span>neuron: หน่วยคำนวณพื้นฐาน</a><a href="#topic-2"><span class="toc-number">18.2</span>activation function</a><a href="#topic-3"><span class="toc-number">18.3</span>layer: หลาย neuron พร้อมกัน</a><a href="#topic-4"><span class="toc-number">18.4</span>loss: วัดว่าผิดมากแค่ไหน</a><a href="#topic-5"><span class="toc-number">18.5</span>การเรียนรู้: gradient descent</a><a href="#topic-6"><span class="toc-number">18.6</span>ใช้ library แทนการเขียนเอง</a><a href="#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<p class="nav-label" data-group="gui">GUI และโปรเจกต์</p>
+<details class="nav-chapter" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปที่มีหน้าต่าง ปุ่ม และช่องกรอกข้อมูลด้วย PySide6 (Qt for Python) โครงสร้างแอปพื้นฐาน widget ที่ใช้บ่อย layout: จัดวาง widget signal และ slot: ทำงานเมื่อผู้ใช้กด เขียนหน้าต่างเป็น class"><summary><span class="nav-number">19</span><span class="nav-title">GUI ด้วย PySide6</span></summary><div class="nav-topics"><a href="chapter-19.html"><span class="toc-number">19</span>ภาพรวมของบท</a><a href="chapter-19.html#topic-1"><span class="toc-number">19.1</span>โครงสร้างแอปพื้นฐาน</a><a href="chapter-19.html#topic-2"><span class="toc-number">19.2</span>widget ที่ใช้บ่อย</a><a href="chapter-19.html#topic-3"><span class="toc-number">19.3</span>layout: จัดวาง widget</a><a href="chapter-19.html#topic-4"><span class="toc-number">19.4</span>signal และ slot: ทำงานเมื่อผู้ใช้กด</a><a href="chapter-19.html#topic-5"><span class="toc-number">19.5</span>เขียนหน้าต่างเป็น class</a><a href="chapter-19.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-19.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI รวมทุกอย่างที่เรียนมาเป็นแอปแนะนำรายวิชา: ข้อมูลจาก CSV, กติกาแนะนำ, โมเดลทำนาย และหน้าต่าง PySide6 เริ่มจากโจทย์ ไม่ใช่โค้ด แยกเป็น 3 ชั้น ชั้นข้อมูล: โหลดรายวิชา ชั้น logic: กติกาแนะนำ + ทดสอบ เพิ่มโมเดล ML: ทำนายโอกาสผ่าน ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง"><summary><span class="nav-number">20</span><span class="nav-title">โปรเจกต์ Course Planner</span></summary><div class="nav-topics"><a href="chapter-20.html"><span class="toc-number">20</span>ภาพรวมของบท</a><a href="chapter-20.html#topic-1"><span class="toc-number">20.1</span>เริ่มจากโจทย์ ไม่ใช่โค้ด</a><a href="chapter-20.html#topic-2"><span class="toc-number">20.2</span>แยกเป็น 3 ชั้น</a><a href="chapter-20.html#topic-3"><span class="toc-number">20.3</span>ชั้นข้อมูล: โหลดรายวิชา</a><a href="chapter-20.html#topic-4"><span class="toc-number">20.4</span>ชั้น logic: กติกาแนะนำ + ทดสอบ</a><a href="chapter-20.html#topic-5"><span class="toc-number">20.5</span>เพิ่มโมเดล ML: ทำนายโอกาสผ่าน</a><a href="chapter-20.html#topic-6"><span class="toc-number">20.6</span>ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง</a><a href="chapter-20.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-20.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+</nav>
+<!-- /course-nav -->
+      <div class="sidebar-bottom">ตัวอย่างทุกชิ้นรันด้วย Python จริง</div>
     </aside>
     <main class="lesson-main" id="lesson-content">
       <div class="utility-row"><a href="../index.html">← สารบัญรายวิชา</a><span class="utility-code">CHAPTER 18 / 20</span></div>
-      <header class="lesson-header"><p class="lesson-kicker">CHAPTER 18 · ข้อมูลและ AI</p><h1>แนวคิด Neural Network และการฝึกโมเดล</h1><p>เข้าใจส่วนประกอบของ neural network ตั้งแต่ neuron, activation, loss จนถึงการเรียนรู้ด้วย gradient descent</p></header>
-      <section class="learning-goals"><strong>จบบทนี้แล้วทำได้</strong><p>อธิบายการทำงานของ neuron คำนวณ forward pass ด้วย NumPy เข้าใจ loss และการปรับ weight และใช้ MLPClassifier ได้</p></section>
-      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">เนื้อหา</h2>
-        <article class="subtopic" id="topic-1"><h3>18.1 neuron: หน่วยคำนวณพื้นฐาน</h3><p>neuron รับ input หลายค่า คูณแต่ละค่าด้วยน้ำหนัก (weight) รวมกันแล้วบวก bias ได้ค่า <code>z</code> จากนั้นส่งผ่าน activation function ได้ output weight และ bias คือค่าที่โมเดล “เรียนรู้”</p><figure class="figure"><img src="../assets/figures/neuron.svg" alt="neuron: input x1, x2, x3 คูณ weight w1, w2, w3 รวมกันบวก bias ได้ z แล้วผ่าน activation ได้ output"><figcaption>neuron: input x1, x2, x3 คูณ weight w1, w2, w3 รวมกันบวก bias ได้ z แล้วผ่าน activation ได้ output</figcaption></figure><div class="mini-run"><pre class="copyable"><code>import numpy as np
+      <header class="lesson-header"><p class="lesson-kicker">บทที่ 18 · ข้อมูลและ AI</p><h1>แนวคิด Neural Network และการฝึกโมเดล</h1><p>เข้าใจส่วนประกอบของ neural network ตั้งแต่ neuron, activation, loss จนถึงการเรียนรู้ด้วย gradient descent</p></header>
+      <section class="learning-goals"><strong>เมื่อจบบทนี้ นิสิตจะทำได้</strong><p>อธิบายการทำงานของ neuron คำนวณ forward pass ด้วย NumPy เข้าใจ loss และการปรับ weight และใช้ MLPClassifier ได้</p></section>
+      <section class="lesson-section" aria-label="เนื้อหา">
+        <article class="subtopic" id="topic-1"><h3>18.1 neuron: หน่วยคำนวณพื้นฐาน</h3><p>neuron รับ input หลายค่า คูณแต่ละค่าด้วยน้ำหนัก (weight) รวมกันแล้วบวก bias ได้ค่า <code>z</code> จากนั้นส่งผ่าน activation function ได้ output weight และ bias คือค่าที่โมเดล “เรียนรู้”</p><figure class="concept-figure"><img src="../assets/figures/neuron.svg" alt="neuron: input x1, x2, x3 คูณ weight w1, w2, w3 รวมกันบวก bias ได้ z แล้วผ่าน activation ได้ output" loading="lazy"><figcaption>neuron: input x1, x2, x3 คูณ weight w1, w2, w3 รวมกันบวก bias ได้ z แล้วผ่าน activation ได้ output</figcaption></figure><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_18_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-x = np.array([2.0, 1.0, 3.0])     # input
-w = np.array([0.5, -1.0, 0.25])   # weight
-b = 0.1                           # bias
-z = x @ w + b                     # x1*w1 + x2*w2 + x3*w3 + b
-print(f&quot;z = {z:.2f}&quot;)</code></pre><pre class="mini-output" aria-label="Output">z = 0.85</pre></div><p class="tip"><strong>จำง่าย ๆ</strong> <code>@</code> คือ dot product: คูณทีละตำแหน่งแล้วรวม</p></article><article class="subtopic" id="topic-2"><h3>18.2 activation function</h3><p>activation ทำให้ network เรียนรู้รูปแบบที่ไม่เป็นเส้นตรงได้ ถ้าไม่มี ต่อกี่ชั้นก็ยังเท่ากับสมการเส้นตรงหนึ่งเส้น</p><div class="table-wrap"><table class="concept-table"><thead><tr><th>ชื่อ</th><th>สูตร</th><th>ผล</th><th>ใช้บ่อยที่</th></tr></thead><tbody><tr><td>ReLU</td><td><code>max(0, z)</code></td><td>ค่าลบเป็น 0 ค่าบวกคงเดิม</td><td>ชั้นซ่อน (hidden layer)</td></tr><tr><td>Sigmoid</td><td><code>1 / (1 + e^-z)</code></td><td>ค่าระหว่าง 0–1</td><td>ชั้นสุดท้ายของงาน 2 คลาส</td></tr><tr><td>Softmax</td><td><code>e^z / sum(e^z)</code></td><td>ความน่าจะเป็นรวมกันได้ 1</td><td>ชั้นสุดท้ายของงานหลายคลาส</td></tr></tbody></table></div><div class="mini-run"><pre class="copyable"><code>import numpy as np
+x = np.<span class="tok-fn">array</span>([<span class="tok-num">2.0</span>, <span class="tok-num">1.0</span>, <span class="tok-num">3.0</span>])     <span class="tok-com"># input</span>
+w = np.<span class="tok-fn">array</span>([<span class="tok-num">0.5</span>, -<span class="tok-num">1.0</span>, <span class="tok-num">0.25</span>])   <span class="tok-com"># weight</span>
+b = <span class="tok-num">0.1</span>                           <span class="tok-com"># bias</span>
+z = x @ w + b                     <span class="tok-com"># x1*w1 + x2*w2 + x3*w3 + b</span>
+<span class="tok-fn">print</span>(<span class="tok-str">f"z = {z:.2f}"</span>)</code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>z = 0.85</pre></div></div><div class="callout tip"><span class="box-title">จำง่าย ๆ</span><p><code>@</code> คือ dot product: คูณทีละตำแหน่งแล้วรวม</p></div></article>
+<article class="subtopic" id="topic-2"><h3>18.2 activation function</h3><p>activation ทำให้ network เรียนรู้รูปแบบที่ไม่เป็นเส้นตรงได้ ถ้าไม่มี ต่อกี่ชั้นก็ยังเท่ากับสมการเส้นตรงหนึ่งเส้น</p><div class="table-scroll"><table class="comparison-table"><thead><tr><th>ชื่อ</th><th>สูตร</th><th>ผล</th><th>ใช้บ่อยที่</th></tr></thead><tbody><tr><td>ReLU</td><td><code>max(0, z)</code></td><td>ค่าลบเป็น 0 ค่าบวกคงเดิม</td><td>ชั้นซ่อน (hidden layer)</td></tr><tr><td>Sigmoid</td><td><code>1 / (1 + e^-z)</code></td><td>ค่าระหว่าง 0–1</td><td>ชั้นสุดท้ายของงาน 2 คลาส</td></tr><tr><td>Softmax</td><td><code>e^z / sum(e^z)</code></td><td>ความน่าจะเป็นรวมกันได้ 1</td><td>ชั้นสุดท้ายของงานหลายคลาส</td></tr></tbody></table></div><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_18_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-z = np.array([-2.0, 0.0, 1.5])
-relu = np.maximum(0, z)
-sigmoid = 1 / (1 + np.exp(-z))
-print(&quot;ReLU   &quot;, relu)
-print(&quot;Sigmoid&quot;, sigmoid.round(3))</code></pre><pre class="mini-output" aria-label="Output">ReLU    [0.  0.  1.5]
-Sigmoid [0.119 0.5   0.818]</pre></div></article><article class="subtopic" id="topic-3"><h3>18.3 layer: หลาย neuron พร้อมกัน</h3><p>หนึ่ง layer คือ neuron หลายตัวที่รับ input ชุดเดียวกัน คำนวณพร้อมกันด้วย matrix multiplication <code>X @ W + b</code> network คือ layer หลายชั้นต่อกัน output ของชั้นหนึ่งเป็น input ของชั้นถัดไป</p><div class="mini-run"><pre class="copyable"><code>import numpy as np
+z = np.<span class="tok-fn">array</span>([-<span class="tok-num">2.0</span>, <span class="tok-num">0.0</span>, <span class="tok-num">1.5</span>])
+relu = np.<span class="tok-fn">maximum</span>(<span class="tok-num">0</span>, z)
+sigmoid = <span class="tok-num">1</span> / (<span class="tok-num">1</span> + np.<span class="tok-fn">exp</span>(-z))
+<span class="tok-fn">print</span>(<span class="tok-str">"ReLU   "</span>, relu)
+<span class="tok-fn">print</span>(<span class="tok-str">"Sigmoid"</span>, sigmoid.<span class="tok-fn">round</span>(<span class="tok-num">3</span>))</code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>ReLU    [0.  0.  1.5]
+Sigmoid [0.119 0.5   0.818]</pre></div></div></article>
+<article class="subtopic" id="topic-3"><h3>18.3 layer: หลาย neuron พร้อมกัน</h3><p>หนึ่ง layer คือ neuron หลายตัวที่รับ input ชุดเดียวกัน คำนวณพร้อมกันด้วย matrix multiplication <code>X @ W + b</code> network คือ layer หลายชั้นต่อกัน output ของชั้นหนึ่งเป็น input ของชั้นถัดไป</p><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_18_3.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-X = np.array([[1.0, 2.0],          # 3 ตัวอย่าง × 2 feature
-              [0.5, -1.0],
-              [3.0, 0.0]])
-W1 = np.array([[0.2, -0.5, 1.0],    # 2 input → 3 neuron
-               [0.7, 0.1, -0.3]])
-b1 = np.array([0.0, 0.1, 0.2])
-hidden = np.maximum(0, X @ W1 + b1)
-print(hidden.shape)
-print(hidden.round(2))</code></pre><pre class="mini-output" aria-label="Output">(3, 3)
+<span class="tok-type">X</span> = np.<span class="tok-fn">array</span>([[<span class="tok-num">1.0</span>, <span class="tok-num">2.0</span>],          <span class="tok-com"># 3 ตัวอย่าง × 2 feature</span>
+              [<span class="tok-num">0.5</span>, -<span class="tok-num">1.0</span>],
+              [<span class="tok-num">3.0</span>, <span class="tok-num">0.0</span>]])
+<span class="tok-const">W1</span> = np.<span class="tok-fn">array</span>([[<span class="tok-num">0.2</span>, -<span class="tok-num">0.5</span>, <span class="tok-num">1.0</span>],    <span class="tok-com"># 2 input → 3 neuron</span>
+               [<span class="tok-num">0.7</span>, <span class="tok-num">0.1</span>, -<span class="tok-num">0.3</span>]])
+b1 = np.<span class="tok-fn">array</span>([<span class="tok-num">0.0</span>, <span class="tok-num">0.1</span>, <span class="tok-num">0.2</span>])
+hidden = np.<span class="tok-fn">maximum</span>(<span class="tok-num">0</span>, <span class="tok-type">X</span> @ <span class="tok-const">W1</span> + b1)
+<span class="tok-fn">print</span>(hidden.shape)
+<span class="tok-fn">print</span>(hidden.<span class="tok-fn">round</span>(<span class="tok-num">2</span>))</code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>(3, 3)
 [[1.6 0.  0.6]
  [0.  0.  1. ]
- [0.6 0.  3.2]]</pre></div></article><article class="subtopic" id="topic-4"><h3>18.4 loss: วัดว่าผิดมากแค่ไหน</h3><p>loss function เทียบผลทำนายกับคำตอบจริงเป็นตัวเลขตัวเดียว ยิ่งน้อยยิ่งดี เป้าหมายของการฝึกคือหา weight ที่ทำให้ loss ต่ำที่สุด</p><div class="mini-run"><pre class="copyable"><code>import numpy as np
+ [0.6 0.  3.2]]</pre></div></div></article>
+<article class="subtopic" id="topic-4"><h3>18.4 loss: วัดว่าผิดมากแค่ไหน</h3><p>loss function เทียบผลทำนายกับคำตอบจริงเป็นตัวเลขตัวเดียว ยิ่งน้อยยิ่งดี เป้าหมายของการฝึกคือหา weight ที่ทำให้ loss ต่ำที่สุด</p><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_18_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-actual = np.array([3.0, 5.0, 7.0])
-good = np.array([2.9, 5.2, 6.8])
-bad = np.array([1.0, 8.0, 4.0])
-mse = lambda pred: np.mean((actual - pred) ** 2)
-print(f&quot;MSE โมเดลดี  {mse(good):.3f}&quot;)
-print(f&quot;MSE โมเดลแย่ {mse(bad):.3f}&quot;)</code></pre><pre class="mini-output" aria-label="Output">MSE โมเดลดี  0.030
-MSE โมเดลแย่ 7.333</pre></div></article><article class="subtopic" id="topic-5"><h3>18.5 การเรียนรู้: gradient descent</h3><p>เริ่มจาก weight สุ่ม แล้ววนซ้ำ: ทำนาย → คำนวณ loss → หาทิศทางที่ loss ลด (gradient) → ขยับ weight ไปทางนั้นทีละน้อย (ขนาดก้าวคือ learning rate) กราฟด้านขวาแสดง loss ที่ลดลงทุกรอบ</p><div class="mini-run has-shot"><pre class="copyable"><code>import numpy as np
-import matplotlib.pyplot as plt
+actual = np.<span class="tok-fn">array</span>([<span class="tok-num">3.0</span>, <span class="tok-num">5.0</span>, <span class="tok-num">7.0</span>])
+good = np.<span class="tok-fn">array</span>([<span class="tok-num">2.9</span>, <span class="tok-num">5.2</span>, <span class="tok-num">6.8</span>])
+bad = np.<span class="tok-fn">array</span>([<span class="tok-num">1.0</span>, <span class="tok-num">8.0</span>, <span class="tok-num">4.0</span>])
+mse = <span class="tok-kw">lambda</span> pred: np.<span class="tok-fn">mean</span>((actual - pred) ** <span class="tok-num">2</span>)
+<span class="tok-fn">print</span>(<span class="tok-str">f"MSE โมเดลดี  {mse(good):.3f}"</span>)
+<span class="tok-fn">print</span>(<span class="tok-str">f"MSE โมเดลแย่ {mse(bad):.3f}"</span>)</code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>MSE โมเดลดี  0.030
+MSE โมเดลแย่ 7.333</pre></div></div></article>
+<article class="subtopic" id="topic-5"><h3>18.5 การเรียนรู้: gradient descent</h3><p>เริ่มจาก weight สุ่ม แล้ววนซ้ำ: ทำนาย → คำนวณ loss → หาทิศทางที่ loss ลด (gradient) → ขยับ weight ไปทางนั้นทีละน้อย (ขนาดก้าวคือ learning rate) กราฟด้านขวาแสดง loss ที่ลดลงทุกรอบ</p><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_18_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+<span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
 
-x = np.array([1, 2, 3, 4, 5], dtype=float)
-y = 2 * x + 1                       # คำตอบจริง: w=2, b=1
-w, b, lr = 0.0, 0.0, 0.02
+x = np.<span class="tok-fn">array</span>([<span class="tok-num">1</span>, <span class="tok-num">2</span>, <span class="tok-num">3</span>, <span class="tok-num">4</span>, <span class="tok-num">5</span>], dtype=<span class="tok-fn">float</span>)
+y = <span class="tok-num">2</span> * x + <span class="tok-num">1</span>                       <span class="tok-com"># คำตอบจริง: w=2, b=1</span>
+w, b, lr = <span class="tok-num">0.0</span>, <span class="tok-num">0.0</span>, <span class="tok-num">0.02</span>
 losses = []
-for epoch in range(200):
+<span class="tok-kw">for</span> epoch <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-num">200</span>):
     pred = w * x + b
     error = pred - y
-    losses.append(np.mean(error ** 2))
-    w -= lr * 2 * np.mean(error * x)   # ขยับตาม gradient
-    b -= lr * 2 * np.mean(error)
-print(f&quot;w={w:.2f} b={b:.2f} loss={losses[-1]:.4f}&quot;)
+    losses.<span class="tok-fn">append</span>(np.<span class="tok-fn">mean</span>(error ** <span class="tok-num">2</span>))
+    w -= lr * <span class="tok-num">2</span> * np.<span class="tok-fn">mean</span>(error * x)   <span class="tok-com"># ขยับตาม gradient</span>
+    b -= lr * <span class="tok-num">2</span> * np.<span class="tok-fn">mean</span>(error)
+<span class="tok-fn">print</span>(<span class="tok-str">f"w={w:.2f} b={b:.2f} loss={losses[-1]:.4f}"</span>)
 
-plt.plot(losses)
-plt.xlabel(&quot;epoch&quot;)
-plt.ylabel(&quot;MSE loss&quot;)
-plt.title(&quot;Loss decreases while training&quot;)
-plt.show()</code></pre><div class="mini-result"><pre class="mini-output" aria-label="Output">w=2.03 b=0.89 loss=0.0021</pre><figure class="screenshot"><img src="../assets/figures/ch18-loss.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div></div><p class="tip"><strong>จำง่าย ๆ</strong> learning rate ใหญ่ไปจะกระโดดข้ามจุดต่ำสุด เล็กไปจะเรียนรู้ช้า</p></article><article class="subtopic" id="topic-6"><h3>18.6 ใช้ library แทนการเขียนเอง</h3><p>งานจริงไม่ต้องเขียน gradient เอง scikit-learn มี <code>MLPClassifier</code> (neural network แบบหลายชั้น) ใช้ fit/predict เหมือนโมเดลอื่น ส่วนงานใหญ่อย่างภาพหรือภาษาใช้ PyTorch หรือ TensorFlow ซึ่งคำนวณ gradient ให้อัตโนมัติและใช้ GPU ได้</p><div class="mini-run"><pre class="copyable"><code>from sklearn.datasets import load_digits
-from sklearn.model_selection import train_test_split
-from sklearn.neural_network import MLPClassifier
+plt.<span class="tok-fn">plot</span>(losses)
+plt.<span class="tok-fn">xlabel</span>(<span class="tok-str">"epoch"</span>)
+plt.<span class="tok-fn">ylabel</span>(<span class="tok-str">"MSE loss"</span>)
+plt.<span class="tok-fn">title</span>(<span class="tok-str">"Loss decreases while training"</span>)
+plt.<span class="tok-fn">show</span>()</code></pre></div></div><div class="source-output is-gui"><span>ผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</span><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch18-loss.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div><pre class="gui-console">w=2.03 b=0.89 loss=0.0021</pre></div></div><div class="callout tip"><span class="box-title">จำง่าย ๆ</span><p>learning rate ใหญ่ไปจะกระโดดข้ามจุดต่ำสุด เล็กไปจะเรียนรู้ช้า</p></div></article>
+<article class="subtopic" id="topic-6"><h3>18.6 ใช้ library แทนการเขียนเอง</h3><p>งานจริงไม่ต้องเขียน gradient เอง scikit-learn มี <code>MLPClassifier</code> (neural network แบบหลายชั้น) ใช้ fit/predict เหมือนโมเดลอื่น ส่วนงานใหญ่อย่างภาพหรือภาษาใช้ PyTorch หรือ TensorFlow ซึ่งคำนวณ gradient ให้อัตโนมัติและใช้ GPU ได้</p><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_18_6.py</span></div><pre class="source-code"><code><span class="tok-kw">from</span> sklearn.datasets <span class="tok-kw">import</span> load_digits
+<span class="tok-kw">from</span> sklearn.model_selection <span class="tok-kw">import</span> train_test_split
+<span class="tok-kw">from</span> sklearn.neural_network <span class="tok-kw">import</span> <span class="tok-type">MLPClassifier</span>
 
-X, y = load_digits(return_X_y=True)          # ภาพตัวเลข 8x8 = 64 feature
-X_train, X_test, y_train, y_test = train_test_split(
-    X / 16, y, test_size=0.25, random_state=0, stratify=y)
-net = MLPClassifier(hidden_layer_sizes=(64,), max_iter=500, random_state=0)
-net.fit(X_train, y_train)
-print(f&quot;accuracy {net.score(X_test, y_test):.3f}&quot;)</code></pre><pre class="mini-output" aria-label="Output">accuracy 0.973</pre></div></article>
-        <h2 class="examples-heading">ตัวอย่างโปรแกรม</h2>
+<span class="tok-type">X</span>, y = <span class="tok-fn">load_digits</span>(return_X_y=<span class="tok-const">True</span>)          <span class="tok-com"># ภาพตัวเลข 8x8 = 64 feature</span>
+<span class="tok-type">X_train</span>, <span class="tok-type">X_test</span>, y_train, y_test = <span class="tok-fn">train_test_split</span>(
+    <span class="tok-type">X</span> / <span class="tok-num">16</span>, y, test_size=<span class="tok-num">0.25</span>, random_state=<span class="tok-num">0</span>, stratify=y)
+net = <span class="tok-type">MLPClassifier</span>(hidden_layer_sizes=(<span class="tok-num">64</span>,), max_iter=<span class="tok-num">500</span>, random_state=<span class="tok-num">0</span>)
+net.<span class="tok-fn">fit</span>(<span class="tok-type">X_train</span>, y_train)
+<span class="tok-fn">print</span>(<span class="tok-str">f"accuracy {net.score(X_test, y_test):.3f}"</span>)</code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>accuracy 0.973</pre></div></div></article>
+      </section>
+      <section class="lesson-section" id="chapter-examples" aria-labelledby="examples-heading">
+        <h2 id="examples-heading">ตัวอย่างโปรแกรม</h2>
         <div class="source-example">
-    <h4>ตัวอย่าง 18.1 · forward pass ของ network 2 ชั้น</h4>
+    <h4><span class="ex-num">ตัวอย่าง 18.1</span>forward pass ของ network 2 ชั้น</h4>
     <p class="concept-line">คำนวณ input → hidden (ReLU) → output (softmax) ด้วย NumPy เพื่อเห็นว่า network คือการคูณเมทริกซ์ต่อกัน</p>
     
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>import numpy as np
+    <div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">example_18_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-rng = np.random.default_rng(0)
-x = np.array([[0.8, 0.2, 0.5]])            # 1 ตัวอย่าง 3 feature
+rng = np.random.<span class="tok-fn">default_rng</span>(<span class="tok-num">0</span>)
+x = np.<span class="tok-fn">array</span>([[<span class="tok-num">0.8</span>, <span class="tok-num">0.2</span>, <span class="tok-num">0.5</span>]])            <span class="tok-com"># 1 ตัวอย่าง 3 feature</span>
 
-W1, b1 = rng.normal(0, 0.5, (3, 4)), np.zeros(4)   # 3 → 4
-W2, b2 = rng.normal(0, 0.5, (4, 2)), np.zeros(2)   # 4 → 2 คลาส
+<span class="tok-const">W1</span>, b1 = rng.<span class="tok-fn">normal</span>(<span class="tok-num">0</span>, <span class="tok-num">0.5</span>, (<span class="tok-num">3</span>, <span class="tok-num">4</span>)), np.<span class="tok-fn">zeros</span>(<span class="tok-num">4</span>)   <span class="tok-com"># 3 → 4</span>
+<span class="tok-const">W2</span>, b2 = rng.<span class="tok-fn">normal</span>(<span class="tok-num">0</span>, <span class="tok-num">0.5</span>, (<span class="tok-num">4</span>, <span class="tok-num">2</span>)), np.<span class="tok-fn">zeros</span>(<span class="tok-num">2</span>)   <span class="tok-com"># 4 → 2 คลาส</span>
 
-hidden = np.maximum(0, x @ W1 + b1)
-scores = hidden @ W2 + b2
-probs = np.exp(scores) / np.exp(scores).sum()
+hidden = np.<span class="tok-fn">maximum</span>(<span class="tok-num">0</span>, x @ <span class="tok-const">W1</span> + b1)
+scores = hidden @ <span class="tok-const">W2</span> + b2
+probs = np.<span class="tok-fn">exp</span>(scores) / np.<span class="tok-fn">exp</span>(scores).<span class="tok-fn">sum</span>()
 
-print(&quot;hidden:&quot;, hidden.round(3))
-print(&quot;ความน่าจะเป็น:&quot;, probs.round(3))
-print(&quot;ทำนายคลาส&quot;, probs.argmax())</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>hidden: [[0.    0.    0.231 0.147]]
+<span class="tok-fn">print</span>(<span class="tok-str">"hidden:"</span>, hidden.<span class="tok-fn">round</span>(<span class="tok-num">3</span>))
+<span class="tok-fn">print</span>(<span class="tok-str">"ความน่าจะเป็น:"</span>, probs.<span class="tok-fn">round</span>(<span class="tok-num">3</span>))
+<span class="tok-fn">print</span>(<span class="tok-str">"ทำนายคลาส"</span>, probs.<span class="tok-fn">argmax</span>())</code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>hidden: [[0.    0.    0.231 0.147]]
 ความน่าจะเป็น: [[0.482 0.518]]
-ทำนายคลาส 1</pre></div>
-    </div>
+ทำนายคลาส 1</pre></div></div>
     <div class="walkthrough"><strong>อธิบาย</strong><ol><li>ขนาดเมทริกซ์ต้องต่อกันได้: (1×3) @ (3×4) = (1×4) แล้ว (1×4) @ (4×2) = (1×2)</li><li>softmax แปลงคะแนนเป็นความน่าจะเป็นที่รวมกันได้ 1</li><li>weight ยังสุ่มอยู่ ผลทำนายจึงยังไม่มีความหมาย ต้องฝึกก่อน</li></ol></div>
   </div>
 <div class="source-example">
-    <h4>ตัวอย่าง 18.2 · ฝึก MLP ทายตัวเลขเขียนมือ</h4>
+    <h4><span class="ex-num">ตัวอย่าง 18.2</span>ฝึก MLP ทายตัวเลขเขียนมือ</h4>
     <p class="concept-line">ใช้ MLPClassifier กับภาพตัวเลข 0–9 แล้วดูตัวอย่างที่ทายผิด</p>
     
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.datasets import load_digits
-from sklearn.model_selection import train_test_split
-from sklearn.neural_network import MLPClassifier
+    <div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">example_18_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+<span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
+<span class="tok-kw">from</span> sklearn.datasets <span class="tok-kw">import</span> load_digits
+<span class="tok-kw">from</span> sklearn.model_selection <span class="tok-kw">import</span> train_test_split
+<span class="tok-kw">from</span> sklearn.neural_network <span class="tok-kw">import</span> <span class="tok-type">MLPClassifier</span>
 
-digits = load_digits()
-X_train, X_test, y_train, y_test = train_test_split(
-    digits.data / 16, digits.target, test_size=0.25, random_state=0, stratify=digits.target)
-net = MLPClassifier(hidden_layer_sizes=(64,), max_iter=500, random_state=0)
-net.fit(X_train, y_train)
-pred = net.predict(X_test)
-print(f&quot;accuracy {np.mean(pred == y_test):.3f}&quot;)
+digits = <span class="tok-fn">load_digits</span>()
+<span class="tok-type">X_train</span>, <span class="tok-type">X_test</span>, y_train, y_test = <span class="tok-fn">train_test_split</span>(
+    digits.data / <span class="tok-num">16</span>, digits.target, test_size=<span class="tok-num">0.25</span>, random_state=<span class="tok-num">0</span>, stratify=digits.target)
+net = <span class="tok-type">MLPClassifier</span>(hidden_layer_sizes=(<span class="tok-num">64</span>,), max_iter=<span class="tok-num">500</span>, random_state=<span class="tok-num">0</span>)
+net.<span class="tok-fn">fit</span>(<span class="tok-type">X_train</span>, y_train)
+pred = net.<span class="tok-fn">predict</span>(<span class="tok-type">X_test</span>)
+<span class="tok-fn">print</span>(<span class="tok-str">f"accuracy {np.mean(pred == y_test):.3f}"</span>)
 
-fig, axes = plt.subplots(1, 6, figsize=(9, 2))
-for ax, image, p, t in zip(axes, X_test[:6], pred[:6], y_test[:6]):
-    ax.imshow(image.reshape(8, 8), cmap=&quot;gray_r&quot;)
-    ax.set_title(f&quot;pred {p} / true {t}&quot;, fontsize=8)
-    ax.axis(&quot;off&quot;)
-plt.show()</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>accuracy 0.973</pre><figure class="screenshot"><img src="../assets/figures/ch18-digits.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div>
-    </div>
+fig, axes = plt.<span class="tok-fn">subplots</span>(<span class="tok-num">1</span>, <span class="tok-num">6</span>, figsize=(<span class="tok-num">9</span>, <span class="tok-num">2</span>))
+<span class="tok-kw">for</span> ax, image, p, t <span class="tok-kw">in</span> <span class="tok-fn">zip</span>(axes, <span class="tok-type">X_test</span>[:<span class="tok-num">6</span>], pred[:<span class="tok-num">6</span>], y_test[:<span class="tok-num">6</span>]):
+    ax.<span class="tok-fn">imshow</span>(image.<span class="tok-fn">reshape</span>(<span class="tok-num">8</span>, <span class="tok-num">8</span>), cmap=<span class="tok-str">"gray_r"</span>)
+    ax.<span class="tok-fn">set_title</span>(<span class="tok-str">f"pred {p} / true {t}"</span>, fontsize=<span class="tok-num">8</span>)
+    ax.<span class="tok-fn">axis</span>(<span class="tok-str">"off"</span>)
+plt.<span class="tok-fn">show</span>()</code></pre></div></div><div class="source-output is-gui"><span>ผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</span><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch18-digits.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div><pre class="gui-console">accuracy 0.973</pre></div></div>
     <div class="walkthrough"><strong>อธิบาย</strong><ol><li>หารด้วย 16 ปรับค่าพิกเซล (0–16) ให้อยู่ช่วง 0–1 ช่วยให้ฝึกได้ดีขึ้น</li><li>hidden layer 64 neuron เพียงชั้นเดียวก็ได้ accuracy สูงกับงานนี้</li><li>แสดงภาพพร้อมผลทาย ช่วยให้เห็นว่าโมเดลทำงานอย่างไรจริง ๆ</li></ol></div>
   </div>
       </section>
-      <section class="exercise-section" id="chapter-exercises" aria-labelledby="exercise-heading">
-        <h2 id="exercise-heading">แบบฝึกหัดท้ายบท</h2>
-        <p class="exercise-intro">เรียงจากง่ายไปยาก ลองเขียนเองให้ได้ output ตรงตัวอย่างก่อน แล้วค่อยเปิดเฉลย</p>
-        <div class="exercise-list"><article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 18.1</span><strong>คำนวณ neuron 1 ตัว</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>คำนวณ z = x·w + b เมื่อ x = [3, 2], w = [0.2, 0.5], b = 0.1 แล้วผ่าน ReLU</p>
+      <section class="chapter-end" id="chapter-exercises" aria-labelledby="end-heading">
+        <h2 id="end-heading">แบบฝึกหัดท้ายบท</h2>
+        <p>เรียงจากง่ายไปยาก ลองเขียนเองให้ได้ผลลัพธ์ตรงตัวอย่างก่อน แล้วค่อยเปิดเฉลย</p>
+        <div class="level-legend">ระดับความยาก: <span class="level level-1">ง่าย</span> <span class="level level-2">ปานกลาง</span> <span class="level level-3">ท้าทาย</span></div>
+        <article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 18.1</span>คำนวณ neuron 1 ตัว<span class="level level-1">ง่าย</span></h3>
+    <div class="ex-body"><p>คำนวณ z = x·w + b เมื่อ x = [3, 2], w = [0.2, 0.5], b = 0.1 แล้วผ่าน ReLU</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>x, w, b</dd></div><div><dt>ต้องหา</dt><dd><code>z = 1.70 output = 1.70</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>x @ w + b</code></li><li><code>max(0, z)</code></li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>z = 1.70 output = 1.70</pre></div>
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>x, w, b</dd></div><div><dt>ต้องหา</dt><dd><code>z = 1.70 output = 1.70</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>x @ w + b</code></li><li><code>max(0, z)</code></li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>z = 1.70 output = 1.70</pre></div>
     <div class="answer-gate" data-answer-id="18.1">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -240,21 +193,21 @@ plt.show()</code></pre></div>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>3×0.2 + 2×0.5 + 0.1 = 1.7 เป็นบวก ReLU จึงคงค่าเดิม</p><pre class="copyable"><code>import numpy as np
+        <p>3×0.2 + 2×0.5 + 0.1 = 1.7 เป็นบวก ReLU จึงคงค่าเดิม</p><div class="code-block"><div class="code-head"><span class="code-file">ex_18_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-x = np.array([3.0, 2.0])
-w = np.array([0.2, 0.5])
-z = x @ w + 0.1
-print(f&quot;z = {z:.2f} output = {max(0, z):.2f}&quot;)</code></pre>
+x = np.<span class="tok-fn">array</span>([<span class="tok-num">3.0</span>, <span class="tok-num">2.0</span>])
+w = np.<span class="tok-fn">array</span>([<span class="tok-num">0.2</span>, <span class="tok-num">0.5</span>])
+z = x @ w + <span class="tok-num">0.1</span>
+<span class="tok-fn">print</span>(<span class="tok-str">f"z = {z:.2f} output = {max(0, z):.2f}"</span>)</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 18.2</span><strong>เปรียบเทียบ activation</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>คำนวณ ReLU และ Sigmoid ของ z = −3, −1, 0, 1, 3 แสดงเป็นตาราง</p>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 18.2</span>เปรียบเทียบ activation<span class="level level-1">ง่าย</span></h3>
+    <div class="ex-body"><p>คำนวณ ReLU และ Sigmoid ของ z = −3, −1, 0, 1, 3 แสดงเป็นตาราง</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ค่า z 5 ค่า</dd></div><div><dt>ต้องหา</dt><dd>ตาราง z, ReLU, Sigmoid (ทศนิยม 3 ตำแหน่ง)</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>np.maximum(0, z)</code></li><li><code>1 / (1 + np.exp(-z))</code></li><li>วนแสดงทีละแถว</li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre> z    ReLU  Sigmoid
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ค่า z 5 ค่า</dd></div><div><dt>ต้องหา</dt><dd>ตาราง z, ReLU, Sigmoid (ทศนิยม 3 ตำแหน่ง)</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>np.maximum(0, z)</code></li><li><code>1 / (1 + np.exp(-z))</code></li><li>วนแสดงทีละแถว</li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre> z    ReLU  Sigmoid
   -3    0.0    0.047
   -1    0.0    0.269
    0    0.0    0.500
@@ -268,23 +221,23 @@ print(f&quot;z = {z:.2f} output = {max(0, z):.2f}&quot;)</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>Sigmoid บีบทุกค่าให้อยู่ 0–1 (z = 0 ได้ 0.5 พอดี) ส่วน ReLU ตัดค่าลบทิ้งเท่านั้น</p><pre class="copyable"><code>import numpy as np
+        <p>Sigmoid บีบทุกค่าให้อยู่ 0–1 (z = 0 ได้ 0.5 พอดี) ส่วน ReLU ตัดค่าลบทิ้งเท่านั้น</p><div class="code-block"><div class="code-head"><span class="code-file">ex_18_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-z = np.array([-3, -1, 0, 1, 3], dtype=float)
-relu = np.maximum(0, z)
-sigmoid = 1 / (1 + np.exp(-z))
-print(&quot; z    ReLU  Sigmoid&quot;)
-for a, r, s in zip(z, relu, sigmoid):
-    print(f&quot;{a:&gt;4.0f} {r:&gt;6.1f} {s:&gt;8.3f}&quot;)</code></pre>
+z = np.<span class="tok-fn">array</span>([-<span class="tok-num">3</span>, -<span class="tok-num">1</span>, <span class="tok-num">0</span>, <span class="tok-num">1</span>, <span class="tok-num">3</span>], dtype=<span class="tok-fn">float</span>)
+relu = np.<span class="tok-fn">maximum</span>(<span class="tok-num">0</span>, z)
+sigmoid = <span class="tok-num">1</span> / (<span class="tok-num">1</span> + np.<span class="tok-fn">exp</span>(-z))
+<span class="tok-fn">print</span>(<span class="tok-str">" z    ReLU  Sigmoid"</span>)
+<span class="tok-kw">for</span> a, r, s <span class="tok-kw">in</span> <span class="tok-fn">zip</span>(z, relu, sigmoid):
+    <span class="tok-fn">print</span>(<span class="tok-str">f"{a:&gt;4.0f} {r:&gt;6.1f} {s:&gt;8.3f}"</span>)</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 18.3</span><strong>layer แบบ batch</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>คำนวณ hidden layer ของข้อมูล 2 ตัวอย่างพร้อมกัน: X ขนาด 2×3, W ขนาด 3×2, b = [0.1, −0.2] แล้วผ่าน ReLU</p>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 18.3</span>layer แบบ batch<span class="level level-2">ปานกลาง</span></h3>
+    <div class="ex-body"><p>คำนวณ hidden layer ของข้อมูล 2 ตัวอย่างพร้อมกัน: X ขนาด 2×3, W ขนาด 3×2, b = [0.1, −0.2] แล้วผ่าน ReLU</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>X <code>[[1, 0, 2], [0, 1, 1]]</code> W <code>[[0.5, -0.3], [0.2, 0.8], [-0.1, 0.4]]</code></dd></div><div><dt>ต้องหา</dt><dd>array ขนาด (2, 2)</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>X @ W + b</code> คำนวณทุกตัวอย่างพร้อมกัน</li><li><code>np.maximum(0, ...)</code></li><li>แสดง shape เพื่อตรวจ</li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>(2, 2)
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>X <code>[[1, 0, 2], [0, 1, 1]]</code> W <code>[[0.5, -0.3], [0.2, 0.8], [-0.1, 0.4]]</code></dd></div><div><dt>ต้องหา</dt><dd>array ขนาด (2, 2)</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>X @ W + b</code> คำนวณทุกตัวอย่างพร้อมกัน</li><li><code>np.maximum(0, ...)</code></li><li>แสดง shape เพื่อตรวจ</li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>(2, 2)
 [[0.4 0.3]
  [0.2 1. ]]</pre></div>
     <div class="answer-gate" data-answer-id="18.3">
@@ -295,23 +248,23 @@ for a, r, s in zip(z, relu, sigmoid):
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>matrix multiplication คำนวณทุกตัวอย่างและทุก neuron ในคำสั่งเดียว นี่คือเหตุผลที่ GPU ซึ่งคูณเมทริกซ์เร็วมาก สำคัญกับ deep learning</p><pre class="copyable"><code>import numpy as np
+        <p>matrix multiplication คำนวณทุกตัวอย่างและทุก neuron ในคำสั่งเดียว นี่คือเหตุผลที่ GPU ซึ่งคูณเมทริกซ์เร็วมาก สำคัญกับ deep learning</p><div class="code-block"><div class="code-head"><span class="code-file">ex_18_3.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-X = np.array([[1, 0, 2], [0, 1, 1]], dtype=float)
-W = np.array([[0.5, -0.3], [0.2, 0.8], [-0.1, 0.4]])
-b = np.array([0.1, -0.2])
-out = np.maximum(0, X @ W + b)
-print(out.shape)
-print(out.round(2))</code></pre>
+<span class="tok-type">X</span> = np.<span class="tok-fn">array</span>([[<span class="tok-num">1</span>, <span class="tok-num">0</span>, <span class="tok-num">2</span>], [<span class="tok-num">0</span>, <span class="tok-num">1</span>, <span class="tok-num">1</span>]], dtype=<span class="tok-fn">float</span>)
+<span class="tok-type">W</span> = np.<span class="tok-fn">array</span>([[<span class="tok-num">0.5</span>, -<span class="tok-num">0.3</span>], [<span class="tok-num">0.2</span>, <span class="tok-num">0.8</span>], [-<span class="tok-num">0.1</span>, <span class="tok-num">0.4</span>]])
+b = np.<span class="tok-fn">array</span>([<span class="tok-num">0.1</span>, -<span class="tok-num">0.2</span>])
+out = np.<span class="tok-fn">maximum</span>(<span class="tok-num">0</span>, <span class="tok-type">X</span> @ <span class="tok-type">W</span> + b)
+<span class="tok-fn">print</span>(out.shape)
+<span class="tok-fn">print</span>(out.<span class="tok-fn">round</span>(<span class="tok-num">2</span>))</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 18.4</span><strong>loss ของงานจำแนก 2 คลาส</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>คำนวณ binary cross-entropy ของคำตอบจริง [1, 0, 1, 1] กับความน่าจะเป็นที่ทาย [0.9, 0.2, 0.6, 0.95]</p>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 18.4</span>loss ของงานจำแนก 2 คลาส<span class="level level-2">ปานกลาง</span></h3>
+    <div class="ex-body"><p>คำนวณ binary cross-entropy ของคำตอบจริง [1, 0, 1, 1] กับความน่าจะเป็นที่ทาย [0.9, 0.2, 0.6, 0.95]</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>y จริง และความน่าจะเป็น p</dd></div><div><dt>ต้องหา</dt><dd>ค่า loss ทศนิยม 3 ตำแหน่ง</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>สูตร <code>-mean(y*log(p) + (1-y)*log(1-p))</code></li><li>ใช้ <code>np.log</code></li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>cross-entropy = 0.223</pre></div>
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>y จริง และความน่าจะเป็น p</dd></div><div><dt>ต้องหา</dt><dd>ค่า loss ทศนิยม 3 ตำแหน่ง</dd></div></dl><strong>วิธีคิด</strong><ol><li>สูตร <code>-mean(y*log(p) + (1-y)*log(1-p))</code></li><li>ใช้ <code>np.log</code></li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>cross-entropy = 0.223</pre></div>
     <div class="answer-gate" data-answer-id="18.4">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -320,21 +273,21 @@ print(out.round(2))</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>cross-entropy ลงโทษหนักเมื่อมั่นใจแต่ทายผิด เช่น ตอบจริงเป็น 1 แต่ทาย 0.01 จะได้ loss สูงมาก จึงนิยมใช้กับงานจำแนก</p><pre class="copyable"><code>import numpy as np
+        <p>cross-entropy ลงโทษหนักเมื่อมั่นใจแต่ทายผิด เช่น ตอบจริงเป็น 1 แต่ทาย 0.01 จะได้ loss สูงมาก จึงนิยมใช้กับงานจำแนก</p><div class="code-block"><div class="code-head"><span class="code-file">ex_18_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-y = np.array([1, 0, 1, 1])
-p = np.array([0.9, 0.2, 0.6, 0.95])
-loss = -np.mean(y * np.log(p) + (1 - y) * np.log(1 - p))
-print(f&quot;cross-entropy = {loss:.3f}&quot;)</code></pre>
+y = np.<span class="tok-fn">array</span>([<span class="tok-num">1</span>, <span class="tok-num">0</span>, <span class="tok-num">1</span>, <span class="tok-num">1</span>])
+p = np.<span class="tok-fn">array</span>([<span class="tok-num">0.9</span>, <span class="tok-num">0.2</span>, <span class="tok-num">0.6</span>, <span class="tok-num">0.95</span>])
+loss = -np.<span class="tok-fn">mean</span>(y * np.<span class="tok-fn">log</span>(p) + (<span class="tok-num">1</span> - y) * np.<span class="tok-fn">log</span>(<span class="tok-num">1</span> - p))
+<span class="tok-fn">print</span>(<span class="tok-str">f"cross-entropy = {loss:.3f}"</span>)</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 18.5</span><strong>ฝึกด้วย gradient descent</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
-    <p>ใช้ gradient descent หา w, b ของเส้น y = 3x − 2 จากข้อมูล x = 0..9 เริ่มจาก w = b = 0, learning rate 0.01 ฝึก 1000 รอบ แสดงค่าทุก 250 รอบ</p>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 18.5</span>ฝึกด้วย gradient descent<span class="level level-3">ท้าทาย</span></h3>
+    <div class="ex-body"><p>ใช้ gradient descent หา w, b ของเส้น y = 3x − 2 จากข้อมูล x = 0..9 เริ่มจาก w = b = 0, learning rate 0.01 ฝึก 1000 รอบ แสดงค่าทุก 250 รอบ</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>x = 0..9 และ y = 3x − 2</dd></div><div><dt>ต้องหา</dt><dd>w เข้าใกล้ 3 และ b เข้าใกล้ −2</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>วนรอบ: ทำนาย → error → อัปเดต w, b</li><li>gradient ของ w คือ <code>2 * mean(error * x)</code> ของ b คือ <code>2 * mean(error)</code></li><li>พิมพ์เมื่อ <code>epoch % 250 == 0</code></li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>epoch    0: w=0.000 b=0.000 loss=206.5000
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>x = 0..9 และ y = 3x − 2</dd></div><div><dt>ต้องหา</dt><dd>w เข้าใกล้ 3 และ b เข้าใกล้ −2</dd></div></dl><strong>วิธีคิด</strong><ol><li>วนรอบ: ทำนาย → error → อัปเดต w, b</li><li>gradient ของ w คือ <code>2 * mean(error * x)</code> ของ b คือ <code>2 * mean(error)</code></li><li>พิมพ์เมื่อ <code>epoch % 250 == 0</code></li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>epoch    0: w=0.000 b=0.000 loss=206.5000
 epoch  250: w=2.906 b=-1.413 loss=0.0997
 epoch  500: w=2.977 b=-1.858 loss=0.0059
 epoch  750: w=2.994 b=-1.965 loss=0.0003
@@ -347,26 +300,26 @@ epoch 1000: w=2.999 b=-1.992 loss=0.0000</pre></div>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>loss ลดลงทุกช่วง และ w, b เข้าใกล้คำตอบจริง นี่คือหลักการเดียวกับการฝึก neural network ขนาดใหญ่ ต่างกันแค่จำนวน weight</p><pre class="copyable"><code>import numpy as np
+        <p>loss ลดลงทุกช่วง และ w, b เข้าใกล้คำตอบจริง นี่คือหลักการเดียวกับการฝึก neural network ขนาดใหญ่ ต่างกันแค่จำนวน weight</p><div class="code-block"><div class="code-head"><span class="code-file">ex_18_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-x = np.arange(10, dtype=float)
-y = 3 * x - 2
-w, b, lr = 0.0, 0.0, 0.01
-for epoch in range(1001):
+x = np.<span class="tok-fn">arange</span>(<span class="tok-num">10</span>, dtype=<span class="tok-fn">float</span>)
+y = <span class="tok-num">3</span> * x - <span class="tok-num">2</span>
+w, b, lr = <span class="tok-num">0.0</span>, <span class="tok-num">0.0</span>, <span class="tok-num">0.01</span>
+<span class="tok-kw">for</span> epoch <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-num">1001</span>):
     error = (w * x + b) - y
-    if epoch % 250 == 0:
-        print(f&quot;epoch {epoch:&gt;4}: w={w:.3f} b={b:.3f} loss={np.mean(error ** 2):.4f}&quot;)
-    w -= lr * 2 * np.mean(error * x)
-    b -= lr * 2 * np.mean(error)</code></pre>
+    <span class="tok-kw">if</span> epoch % <span class="tok-num">250</span> == <span class="tok-num">0</span>:
+        <span class="tok-fn">print</span>(<span class="tok-str">f"epoch {epoch:&gt;4}: w={w:.3f} b={b:.3f} loss={np.mean(error ** 2):.4f}"</span>)
+    w -= lr * <span class="tok-num">2</span> * np.<span class="tok-fn">mean</span>(error * x)
+    b -= lr * <span class="tok-num">2</span> * np.<span class="tok-fn">mean</span>(error)</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 18.6</span><strong>ปรับขนาด network</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
-    <p>ฝึก MLPClassifier กับ <code>load_digits</code> โดยลอง hidden layer 3 แบบ: (8,), (32,), (64, 32) แล้วเทียบ accuracy</p>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 18.6</span>ปรับขนาด network<span class="level level-3">ท้าทาย</span></h3>
+    <div class="ex-body"><p>ฝึก MLPClassifier กับ <code>load_digits</code> โดยลอง hidden layer 3 แบบ: (8,), (32,), (64, 32) แล้วเทียบ accuracy</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>load_digits แบ่ง 75/25 random_state=0 stratify, หารข้อมูลด้วย 16</dd></div><div><dt>ต้องหา</dt><dd>accuracy ของ 3 ขนาด</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>วนผ่าน tuple ของขนาด layer</li><li><code>MLPClassifier(hidden_layer_sizes=size, max_iter=3000, random_state=0)</code></li><li>เทียบ <code>score</code> บน test</li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>(8,)      accuracy 0.956
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>load_digits แบ่ง 75/25 random_state=0 stratify, หารข้อมูลด้วย 16</dd></div><div><dt>ต้องหา</dt><dd>accuracy ของ 3 ขนาด</dd></div></dl><strong>วิธีคิด</strong><ol><li>วนผ่าน tuple ของขนาด layer</li><li><code>MLPClassifier(hidden_layer_sizes=size, max_iter=3000, random_state=0)</code></li><li>เทียบ <code>score</code> บน test</li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>(8,)      accuracy 0.956
 (32,)     accuracy 0.973
 (64, 32)  accuracy 0.976</pre></div>
     <div class="answer-gate" data-answer-id="18.6">
@@ -377,25 +330,27 @@ for epoch in range(1001):
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>network ที่เล็กเกินไปเรียนรู้รูปแบบได้ไม่พอ การเพิ่มขนาดช่วยได้ถึงจุดหนึ่ง หลังจากนั้นผลเพิ่มขึ้นน้อยแต่ฝึกนานขึ้น จึงควรทดลองและวัดผลบน test เสมอ</p><pre class="copyable"><code>from sklearn.datasets import load_digits
-from sklearn.model_selection import train_test_split
-from sklearn.neural_network import MLPClassifier
+        <p>network ที่เล็กเกินไปเรียนรู้รูปแบบได้ไม่พอ การเพิ่มขนาดช่วยได้ถึงจุดหนึ่ง หลังจากนั้นผลเพิ่มขึ้นน้อยแต่ฝึกนานขึ้น จึงควรทดลองและวัดผลบน test เสมอ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_18_6.py</span></div><pre class="source-code"><code><span class="tok-kw">from</span> sklearn.datasets <span class="tok-kw">import</span> load_digits
+<span class="tok-kw">from</span> sklearn.model_selection <span class="tok-kw">import</span> train_test_split
+<span class="tok-kw">from</span> sklearn.neural_network <span class="tok-kw">import</span> <span class="tok-type">MLPClassifier</span>
 
-X, y = load_digits(return_X_y=True)
-X_train, X_test, y_train, y_test = train_test_split(
-    X / 16, y, test_size=0.25, random_state=0, stratify=y)
-for size in [(8,), (32,), (64, 32)]:
-    net = MLPClassifier(hidden_layer_sizes=size, max_iter=3000, random_state=0)
-    net.fit(X_train, y_train)
-    print(f&quot;{str(size):&lt;9} accuracy {net.score(X_test, y_test):.3f}&quot;)</code></pre>
+<span class="tok-type">X</span>, y = <span class="tok-fn">load_digits</span>(return_X_y=<span class="tok-const">True</span>)
+<span class="tok-type">X_train</span>, <span class="tok-type">X_test</span>, y_train, y_test = <span class="tok-fn">train_test_split</span>(
+    <span class="tok-type">X</span> / <span class="tok-num">16</span>, y, test_size=<span class="tok-num">0.25</span>, random_state=<span class="tok-num">0</span>, stratify=y)
+<span class="tok-kw">for</span> size <span class="tok-kw">in</span> [(<span class="tok-num">8</span>,), (<span class="tok-num">32</span>,), (<span class="tok-num">64</span>, <span class="tok-num">32</span>)]:
+    net = <span class="tok-type">MLPClassifier</span>(hidden_layer_sizes=size, max_iter=<span class="tok-num">3000</span>, random_state=<span class="tok-num">0</span>)
+    net.<span class="tok-fn">fit</span>(<span class="tok-type">X_train</span>, y_train)
+    <span class="tok-fn">print</span>(<span class="tok-str">f"{str(size):&lt;9} accuracy {net.score(X_test, y_test):.3f}"</span>)</code></pre></div>
       </div>
     </div>
-  </article></div>
+  </article>
       </section>
-      <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-17.html">← บทก่อนหน้า</a><a class="pager-link" href="chapter-19.html">บทถัดไป →</a></nav>
+      <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-17.html">← บทที่ 17</a><a class="pager-link" href="chapter-19.html">บทที่ 19 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script><script src="../assets/lesson.js"></script>
+  <script src="../password.js"></script>
+  <script src="../assets/lesson.js"></script>
+  <script src="../assets/course-nav.js"></script>
 </body>
 </html>

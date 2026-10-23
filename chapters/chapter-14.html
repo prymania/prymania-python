@@ -3,210 +3,382 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#192044">
-  <meta name="description" content="คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของงาน Data Science และ AI">
-  <title>บทที่ 14 · NumPy สำหรับการคำนวณตัวเลข | Python programming</title>
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของ pandas, Matplotlib, scikit-learn และงาน AI ทั้งหมด">
+  <title>บทที่ 14: NumPy สำหรับการคำนวณตัวเลข | Python programming by Prymania</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Bai+Jamjuree:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="../assets/lesson.css">
+  <link rel="stylesheet" href="../assets/course-nav.css">
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
   <div class="lesson-shell">
-    <aside class="lesson-sidebar" aria-label="สารบัญบทเรียน">
-      <a class="lesson-brand" href="../index.html"><span class="brand-mark">Py</span><span><span class="brand-title">Python programming by Prymania</span><span class="brand-caption">LECTURE NOTES</span></span></a>
-      <nav class="lesson-toc chapter-navigation" aria-label="สารบัญรายวิชา">
-        <p class="toc-label">สารบัญ · 20 บทเรียน</p>
-        <p class="toc-label" data-group="foundation">เริ่มต้นกับ Python</p><details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเปิด Thonny เขียนไฟล์ .py แรก รันโปรแกรม และอ่าน error เบื้องต้น Python ทำงานอย่างไร เครื่องมือที่ใช้: Thonny Shell กับไฟล์ .py ต่างกันอย่างไร comment และการเยื้องบรรทัด อ่าน error ให้เป็น">
-      <summary><span class="toc-number">01</span><span class="chapter-nav-title">โครงสร้างโปรแกรม Python, IDE และการรัน</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-01.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-01.html#topic-1"><span class="topic-number">01.1</span>Python ทำงานอย่างไร</a></li><li><a href="chapter-01.html#topic-2"><span class="topic-number">01.2</span>เครื่องมือที่ใช้: Thonny</a></li><li><a href="chapter-01.html#topic-3"><span class="topic-number">01.3</span>Shell กับไฟล์ .py ต่างกันอย่างไร</a></li><li><a href="chapter-01.html#topic-4"><span class="topic-number">01.4</span>comment และการเยื้องบรรทัด</a></li><li><a href="chapter-01.html#topic-5"><span class="topic-number">01.5</span>อ่าน error ให้เป็น</a></li><li><a href="chapter-01.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลในตัวแปร รู้จักชนิดข้อมูล รับค่าด้วย input() และแสดงผลด้วย print() / f-string ตัวแปร: ตั้งชื่อให้ข้อมูล ชนิดข้อมูลพื้นฐาน 4 ชนิด แปลงชนิดข้อมูล รับค่าด้วย input() แสดงผลด้วย print() และ f-string ข้อผิดพลาดที่เจอบ่อย">
-      <summary><span class="toc-number">02</span><span class="chapter-nav-title">ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-02.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-02.html#topic-1"><span class="topic-number">02.1</span>ตัวแปร: ตั้งชื่อให้ข้อมูล</a></li><li><a href="chapter-02.html#topic-2"><span class="topic-number">02.2</span>ชนิดข้อมูลพื้นฐาน 4 ชนิด</a></li><li><a href="chapter-02.html#topic-3"><span class="topic-number">02.3</span>แปลงชนิดข้อมูล</a></li><li><a href="chapter-02.html#topic-4"><span class="topic-number">02.4</span>รับค่าด้วย input()</a></li><li><a href="chapter-02.html#topic-5"><span class="topic-number">02.5</span>แสดงผลด้วย print() และ f-string</a></li><li><a href="chapter-02.html#topic-6"><span class="topic-number">02.6</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-02.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และรวมเงื่อนไขด้วย and / or / not ตัวดำเนินการเลขคณิต ลำดับการคำนวณ เปรียบเทียบค่า ได้ผลเป็น True/False รวมเงื่อนไขด้วย and / or / not ตัวดำเนินการแบบย่อ">
-      <summary><span class="toc-number">03</span><span class="chapter-nav-title">ตัวดำเนินการและนิพจน์</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-03.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-03.html#topic-1"><span class="topic-number">03.1</span>ตัวดำเนินการเลขคณิต</a></li><li><a href="chapter-03.html#topic-2"><span class="topic-number">03.2</span>ลำดับการคำนวณ</a></li><li><a href="chapter-03.html#topic-3"><span class="topic-number">03.3</span>เปรียบเทียบค่า ได้ผลเป็น True/False</a></li><li><a href="chapter-03.html#topic-4"><span class="topic-number">03.4</span>รวมเงื่อนไขด้วย and / or / not</a></li><li><a href="chapter-03.html#topic-5"><span class="topic-number">03.5</span>ตัวดำเนินการแบบย่อ</a></li><li><a href="chapter-03.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if: ทำเมื่อเงื่อนไขเป็นจริง if-else: เลือก 1 ใน 2 ทาง elif: หลายทางเลือก เงื่อนไขหลายข้อ และ if ซ้อน ข้อผิดพลาดที่เจอบ่อย">
-      <summary><span class="toc-number">04</span><span class="chapter-nav-title">เงื่อนไขและการตัดสินใจ</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-04.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-04.html#topic-1"><span class="topic-number">04.1</span>if: ทำเมื่อเงื่อนไขเป็นจริง</a></li><li><a href="chapter-04.html#topic-2"><span class="topic-number">04.2</span>if-else: เลือก 1 ใน 2 ทาง</a></li><li><a href="chapter-04.html#topic-3"><span class="topic-number">04.3</span>elif: หลายทางเลือก</a></li><li><a href="chapter-04.html#topic-4"><span class="topic-number">04.4</span>เงื่อนไขหลายข้อ และ if ซ้อน</a></li><li><a href="chapter-04.html#topic-5"><span class="topic-number">04.5</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-04.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="การทำซ้ำด้วยลูป สั่งให้โปรแกรมทำงานซ้ำด้วย for และ while แทนการเขียนคำสั่งเดิมหลายครั้ง for กับ range() for วนผ่านข้อมูลทีละตัว สะสมผลรวมและนับจำนวน while: วนจนกว่าเงื่อนไขจะเป็นเท็จ break และ continue">
-      <summary><span class="toc-number">05</span><span class="chapter-nav-title">การทำซ้ำด้วยลูป</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-05.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-05.html#topic-1"><span class="topic-number">05.1</span>for กับ range()</a></li><li><a href="chapter-05.html#topic-2"><span class="topic-number">05.2</span>for วนผ่านข้อมูลทีละตัว</a></li><li><a href="chapter-05.html#topic-3"><span class="topic-number">05.3</span>สะสมผลรวมและนับจำนวน</a></li><li><a href="chapter-05.html#topic-4"><span class="topic-number">05.4</span>while: วนจนกว่าเงื่อนไขจะเป็นเท็จ</a></li><li><a href="chapter-05.html#topic-5"><span class="topic-number">05.5</span>break และ continue</a></li><li><a href="chapter-05.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด แยก ค้นหา และจัดรูปแบบข้อความด้วย index, slicing และ string method index: ตำแหน่งของตัวอักษร slicing: ตัดบางส่วน method ที่ใช้บ่อย ตรวจและวนข้อความ">
-      <summary><span class="toc-number">06</span><span class="chapter-nav-title">ข้อความและการจัดการ string</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-06.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-06.html#topic-1"><span class="topic-number">06.1</span>index: ตำแหน่งของตัวอักษร</a></li><li><a href="chapter-06.html#topic-2"><span class="topic-number">06.2</span>slicing: ตัดบางส่วน</a></li><li><a href="chapter-06.html#topic-3"><span class="topic-number">06.3</span>method ที่ใช้บ่อย</a></li><li><a href="chapter-06.html#topic-4"><span class="topic-number">06.4</span>ตรวจและวนข้อความ</a></li><li><a href="chapter-06.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เก็บข้อมูลหลายค่าในตัวแปรเดียว และเลือกโครงสร้างให้เหมาะกับงาน เลือกใช้แบบไหนดี list: รายการที่แก้ไขได้ tuple และ set dict: จับคู่ key กับ value">
-      <summary><span class="toc-number">07</span><span class="chapter-nav-title">โครงสร้างข้อมูล: list, tuple, set และ dict</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-07.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-07.html#topic-1"><span class="topic-number">07.1</span>เลือกใช้แบบไหนดี</a></li><li><a href="chapter-07.html#topic-2"><span class="topic-number">07.2</span>list: รายการที่แก้ไขได้</a></li><li><a href="chapter-07.html#topic-3"><span class="topic-number">07.3</span>tuple และ set</a></li><li><a href="chapter-07.html#topic-4"><span class="topic-number">07.4</span>dict: จับคู่ key กับ value</a></li><li><a href="chapter-07.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม รวมคำสั่งที่ทำงานหนึ่งอย่างเป็นฟังก์ชัน เรียกใช้ซ้ำได้ และแบ่งโปรแกรมใหญ่เป็นส่วนเล็ก def: สร้างฟังก์ชัน parameter: ส่งค่าเข้าฟังก์ชัน return: ส่งผลกลับ ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน">
-      <summary><span class="toc-number">08</span><span class="chapter-nav-title">ฟังก์ชันและการแบ่งโปรแกรม</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-08.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-08.html#topic-1"><span class="topic-number">08.1</span>def: สร้างฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-2"><span class="topic-number">08.2</span>parameter: ส่งค่าเข้าฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-3"><span class="topic-number">08.3</span>return: ส่งผลกลับ</a></li><li><a href="chapter-08.html#topic-4"><span class="topic-number">08.4</span>ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน</a></li><li><a href="chapter-08.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<p class="toc-label" data-group="practice">ฝึกเขียนและใช้งาน</p><details class="chapter-nav-item" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน error ให้เข้าใจ ดักจับข้อผิดพลาดด้วย try/except และหาสาเหตุเมื่อผลลัพธ์ผิด อ่าน traceback error ที่พบบ่อย try / except: ดักจับ error ดักหลายชนิด และดูข้อความ error raise: แจ้ง error เอง ไล่หาบั๊กเมื่อผลลัพธ์ผิด">
-      <summary><span class="toc-number">09</span><span class="chapter-nav-title">ข้อผิดพลาด การจัดการ exception และ debug</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-09.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-09.html#topic-1"><span class="topic-number">09.1</span>อ่าน traceback</a></li><li><a href="chapter-09.html#topic-2"><span class="topic-number">09.2</span>error ที่พบบ่อย</a></li><li><a href="chapter-09.html#topic-3"><span class="topic-number">09.3</span>try / except: ดักจับ error</a></li><li><a href="chapter-09.html#topic-4"><span class="topic-number">09.4</span>ดักหลายชนิด และดูข้อความ error</a></li><li><a href="chapter-09.html#topic-5"><span class="topic-number">09.5</span>raise: แจ้ง error เอง</a></li><li><a href="chapter-09.html#topic-6"><span class="topic-number">09.6</span>ไล่หาบั๊กเมื่อผลลัพธ์ผิด</a></li><li><a href="chapter-09.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนไฟล์ข้อความ CSV และ JSON เพื่อเก็บข้อมูลไว้ใช้ต่อหลังปิดโปรแกรม เปิดไฟล์ด้วย with open() อ่านทีละบรรทัด CSV: ข้อมูลตาราง JSON: บันทึก list/dict ทั้งก้อน เลือก CSV หรือ JSON">
-      <summary><span class="toc-number">10</span><span class="chapter-nav-title">ไฟล์ ข้อมูล CSV และ JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-10.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-10.html#topic-1"><span class="topic-number">10.1</span>เปิดไฟล์ด้วย with open()</a></li><li><a href="chapter-10.html#topic-2"><span class="topic-number">10.2</span>อ่านทีละบรรทัด</a></li><li><a href="chapter-10.html#topic-3"><span class="topic-number">10.3</span>CSV: ข้อมูลตาราง</a></li><li><a href="chapter-10.html#topic-4"><span class="topic-number">10.4</span>JSON: บันทึก list/dict ทั้งก้อน</a></li><li><a href="chapter-10.html#topic-5"><span class="topic-number">10.5</span>เลือก CSV หรือ JSON</a></li><li><a href="chapter-10.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="practice" data-search="โมดูล virtual environment และ pip นำโมดูลมาตรฐานมาใช้ สร้างโมดูลของตัวเอง และติดตั้งแพ็กเกจเพิ่มด้วย pip ใน virtual environment import: นำโมดูลมาใช้ โมดูลมาตรฐานที่ใช้บ่อย สร้างโมดูลเอง pip และ virtual environment ตรวจว่าติดตั้งแล้วหรือยัง">
-      <summary><span class="toc-number">11</span><span class="chapter-nav-title">โมดูล virtual environment และ pip</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-11.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-11.html#topic-1"><span class="topic-number">11.1</span>import: นำโมดูลมาใช้</a></li><li><a href="chapter-11.html#topic-2"><span class="topic-number">11.2</span>โมดูลมาตรฐานที่ใช้บ่อย</a></li><li><a href="chapter-11.html#topic-3"><span class="topic-number">11.3</span>สร้างโมดูลเอง</a></li><li><a href="chapter-11.html#topic-4"><span class="topic-number">11.4</span>pip และ virtual environment</a></li><li><a href="chapter-11.html#topic-5"><span class="topic-number">11.5</span>ตรวจว่าติดตั้งแล้วหรือยัง</a></li><li><a href="chapter-11.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมข้อมูลและการทำงานที่เกี่ยวข้องกันไว้ใน class แล้วสร้าง object ได้หลายตัว class คือแม่แบบ object คือของจริง __init__ และ self method: การทำงานของ object __str__: กำหนดวิธีแสดงผล ทำงานกับ object หลายตัว">
-      <summary><span class="toc-number">12</span><span class="chapter-nav-title">เขียนโปรแกรมเชิงวัตถุด้วย class</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-12.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-12.html#topic-1"><span class="topic-number">12.1</span>class คือแม่แบบ object คือของจริง</a></li><li><a href="chapter-12.html#topic-2"><span class="topic-number">12.2</span>__init__ และ self</a></li><li><a href="chapter-12.html#topic-3"><span class="topic-number">12.3</span>method: การทำงานของ object</a></li><li><a href="chapter-12.html#topic-4"><span class="topic-number">12.4</span>__str__: กำหนดวิธีแสดงผล</a></li><li><a href="chapter-12.html#topic-5"><span class="topic-number">12.5</span>ทำงานกับ object หลายตัว</a></li><li><a href="chapter-12.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON ขอข้อมูลจากบริการบนอินเทอร์เน็ตด้วย requests อ่านผลที่เป็น JSON และจัดการเมื่อเชื่อมต่อไม่สำเร็จ API ทำงานอย่างไร JSON กับ Python requests.get(): ขอข้อมูล ส่ง parameter รับมือเมื่อเรียกไม่สำเร็จ">
-      <summary><span class="toc-number">13</span><span class="chapter-nav-title">เรียกใช้ Web API และแลกเปลี่ยน JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-13.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-13.html#topic-1"><span class="topic-number">13.1</span>API ทำงานอย่างไร</a></li><li><a href="chapter-13.html#topic-2"><span class="topic-number">13.2</span>JSON กับ Python</a></li><li><a href="chapter-13.html#topic-3"><span class="topic-number">13.3</span>requests.get(): ขอข้อมูล</a></li><li><a href="chapter-13.html#topic-4"><span class="topic-number">13.4</span>ส่ง parameter</a></li><li><a href="chapter-13.html#topic-5"><span class="topic-number">13.5</span>รับมือเมื่อเรียกไม่สำเร็จ</a></li><li><a href="chapter-13.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<p class="toc-label" data-group="ai">ต่อยอดข้อมูลและ AI</p><details class="chapter-nav-item" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของงาน Data Science และ AI array ต่างจาก list อย่างไร สร้าง array แบบต่าง ๆ คำนวณทั้ง array (vectorization) กรองข้อมูลด้วยเงื่อนไข array 2 มิติและแกน (axis) ฟังก์ชันสถิติ" open>
-      <summary><span class="toc-number">14</span><span class="chapter-nav-title">NumPy สำหรับการคำนวณตัวเลข</span></summary>
-      <ul class="chapter-subnav"><li><a href="#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="#topic-1"><span class="topic-number">14.1</span>array ต่างจาก list อย่างไร</a></li><li><a href="#topic-2"><span class="topic-number">14.2</span>สร้าง array แบบต่าง ๆ</a></li><li><a href="#topic-3"><span class="topic-number">14.3</span>คำนวณทั้ง array (vectorization)</a></li><li><a href="#topic-4"><span class="topic-number">14.4</span>กรองข้อมูลด้วยเงื่อนไข</a></li><li><a href="#topic-5"><span class="topic-number">14.5</span>array 2 มิติและแกน (axis)</a></li><li><a href="#topic-6"><span class="topic-number">14.6</span>ฟังก์ชันสถิติ</a></li><li><a href="#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน สำรวจ กรอง ทำความสะอาด และสรุปข้อมูลตารางด้วย pandas DataFrame DataFrame: ตารางข้อมูล อ่าน CSV และสำรวจข้อมูล เลือกและกรองข้อมูล เพิ่มคอลัมน์และเรียงข้อมูล จัดการค่าว่าง สรุปตามกลุ่มด้วย groupby">
-      <summary><span class="toc-number">15</span><span class="chapter-nav-title">จัดการตารางข้อมูลด้วย pandas</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-15.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-15.html#topic-1"><span class="topic-number">15.1</span>DataFrame: ตารางข้อมูล</a></li><li><a href="chapter-15.html#topic-2"><span class="topic-number">15.2</span>อ่าน CSV และสำรวจข้อมูล</a></li><li><a href="chapter-15.html#topic-3"><span class="topic-number">15.3</span>เลือกและกรองข้อมูล</a></li><li><a href="chapter-15.html#topic-4"><span class="topic-number">15.4</span>เพิ่มคอลัมน์และเรียงข้อมูล</a></li><li><a href="chapter-15.html#topic-5"><span class="topic-number">15.5</span>จัดการค่าว่าง</a></li><li><a href="chapter-15.html#topic-6"><span class="topic-number">15.6</span>สรุปตามกลุ่มด้วย groupby</a></li><li><a href="chapter-15.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib แปลงตัวเลขเป็นกราฟที่อ่านง่าย เลือกชนิดกราฟให้ตรงคำถาม และบันทึกเป็นไฟล์ภาพ กราฟแรก เลือกชนิดกราฟจากคำถาม กราฟแท่ง หลายเส้นในกราฟเดียว กราฟกระจายและฮิสโทแกรม บันทึกกราฟและภาษาไทย">
-      <summary><span class="toc-number">16</span><span class="chapter-nav-title">สร้างกราฟด้วย Matplotlib</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-16.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-16.html#topic-1"><span class="topic-number">16.1</span>กราฟแรก</a></li><li><a href="chapter-16.html#topic-2"><span class="topic-number">16.2</span>เลือกชนิดกราฟจากคำถาม</a></li><li><a href="chapter-16.html#topic-3"><span class="topic-number">16.3</span>กราฟแท่ง</a></li><li><a href="chapter-16.html#topic-4"><span class="topic-number">16.4</span>หลายเส้นในกราฟเดียว</a></li><li><a href="chapter-16.html#topic-5"><span class="topic-number">16.5</span>กราฟกระจายและฮิสโทแกรม</a></li><li><a href="chapter-16.html#topic-6"><span class="topic-number">16.6</span>บันทึกกราฟและภาษาไทย</a></li><li><a href="chapter-16.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn ให้คอมพิวเตอร์เรียนรู้รูปแบบจากตัวอย่าง แล้วทำนายข้อมูลใหม่ ด้วยขั้นตอนมาตรฐานของ scikit-learn Machine Learning คืออะไร ขั้นตอนมาตรฐาน แบ่งข้อมูล train/test fit และ predict วัดผลโมเดล Pipeline: รวมการเตรียมข้อมูลกับโมเดล">
-      <summary><span class="toc-number">17</span><span class="chapter-nav-title">Machine Learning เบื้องต้นด้วย scikit-learn</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-17.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-17.html#topic-1"><span class="topic-number">17.1</span>Machine Learning คืออะไร</a></li><li><a href="chapter-17.html#topic-2"><span class="topic-number">17.2</span>ขั้นตอนมาตรฐาน</a></li><li><a href="chapter-17.html#topic-3"><span class="topic-number">17.3</span>แบ่งข้อมูล train/test</a></li><li><a href="chapter-17.html#topic-4"><span class="topic-number">17.4</span>fit และ predict</a></li><li><a href="chapter-17.html#topic-5"><span class="topic-number">17.5</span>วัดผลโมเดล</a></li><li><a href="chapter-17.html#topic-6"><span class="topic-number">17.6</span>Pipeline: รวมการเตรียมข้อมูลกับโมเดล</a></li><li><a href="chapter-17.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล เข้าใจส่วนประกอบของ neural network ตั้งแต่ neuron, activation, loss จนถึงการเรียนรู้ด้วย gradient descent neuron: หน่วยคำนวณพื้นฐาน activation function layer: หลาย neuron พร้อมกัน loss: วัดว่าผิดมากแค่ไหน การเรียนรู้: gradient descent ใช้ library แทนการเขียนเอง">
-      <summary><span class="toc-number">18</span><span class="chapter-nav-title">แนวคิด Neural Network และการฝึกโมเดล</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-18.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-18.html#topic-1"><span class="topic-number">18.1</span>neuron: หน่วยคำนวณพื้นฐาน</a></li><li><a href="chapter-18.html#topic-2"><span class="topic-number">18.2</span>activation function</a></li><li><a href="chapter-18.html#topic-3"><span class="topic-number">18.3</span>layer: หลาย neuron พร้อมกัน</a></li><li><a href="chapter-18.html#topic-4"><span class="topic-number">18.4</span>loss: วัดว่าผิดมากแค่ไหน</a></li><li><a href="chapter-18.html#topic-5"><span class="topic-number">18.5</span>การเรียนรู้: gradient descent</a></li><li><a href="chapter-18.html#topic-6"><span class="topic-number">18.6</span>ใช้ library แทนการเขียนเอง</a></li><li><a href="chapter-18.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<p class="toc-label" data-group="gui">GUI และโปรเจกต์</p><details class="chapter-nav-item" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปที่มีหน้าต่าง ปุ่ม และช่องกรอกข้อมูลด้วย PySide6 (Qt for Python) โครงสร้างแอปพื้นฐาน widget ที่ใช้บ่อย layout: จัดวาง widget signal และ slot: ทำงานเมื่อผู้ใช้กด เขียนหน้าต่างเป็น class">
-      <summary><span class="toc-number">19</span><span class="chapter-nav-title">สร้าง GUI สมัยใหม่ด้วย PySide6</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-19.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-19.html#topic-1"><span class="topic-number">19.1</span>โครงสร้างแอปพื้นฐาน</a></li><li><a href="chapter-19.html#topic-2"><span class="topic-number">19.2</span>widget ที่ใช้บ่อย</a></li><li><a href="chapter-19.html#topic-3"><span class="topic-number">19.3</span>layout: จัดวาง widget</a></li><li><a href="chapter-19.html#topic-4"><span class="topic-number">19.4</span>signal และ slot: ทำงานเมื่อผู้ใช้กด</a></li><li><a href="chapter-19.html#topic-5"><span class="topic-number">19.5</span>เขียนหน้าต่างเป็น class</a></li><li><a href="chapter-19.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI รวมทุกอย่างที่เรียนมาเป็นแอปแนะนำรายวิชา: ข้อมูลจาก CSV, กติกาแนะนำ, โมเดลทำนาย และหน้าต่าง PySide6 เริ่มจากโจทย์ ไม่ใช่โค้ด แยกเป็น 3 ชั้น ชั้นข้อมูล: โหลดรายวิชา ชั้น logic: กติกาแนะนำ + ทดสอบ เพิ่มโมเดล ML: ทำนายโอกาสผ่าน ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง">
-      <summary><span class="toc-number">20</span><span class="chapter-nav-title">โปรเจกต์ปลายทาง: Course Planner + AI</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-20.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-20.html#topic-1"><span class="topic-number">20.1</span>เริ่มจากโจทย์ ไม่ใช่โค้ด</a></li><li><a href="chapter-20.html#topic-2"><span class="topic-number">20.2</span>แยกเป็น 3 ชั้น</a></li><li><a href="chapter-20.html#topic-3"><span class="topic-number">20.3</span>ชั้นข้อมูล: โหลดรายวิชา</a></li><li><a href="chapter-20.html#topic-4"><span class="topic-number">20.4</span>ชั้น logic: กติกาแนะนำ + ทดสอบ</a></li><li><a href="chapter-20.html#topic-5"><span class="topic-number">20.5</span>เพิ่มโมเดล ML: ทำนายโอกาสผ่าน</a></li><li><a href="chapter-20.html#topic-6"><span class="topic-number">20.6</span>ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง</a></li><li><a href="chapter-20.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-      </nav>
-      <div class="sidebar-bottom">ตัวอย่างรันด้วย Python จริง<br>เลื่อนเพื่ออ่านหัวข้อถัดไป</div>
+    <aside class="lesson-sidebar" aria-label="เมนูบทเรียน">
+      <a class="lesson-brand" href="../index.html"><span class="brand-mark" aria-hidden="true">Py</span><span><span class="brand-title">Python programming<br>by Prymania</span><span class="brand-caption">LECTURE NOTES</span></span></a>
+      <!-- course-nav -->
+<button class="nav-toggle" type="button" aria-expanded="false">☰ สารบัญทุกบท</button>
+<nav class="course-nav" aria-label="สารบัญรายวิชา">
+<p class="nav-label" data-group="foundation">เริ่มต้นกับ Python</p>
+<details class="nav-chapter" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเปิด Thonny เขียนไฟล์ .py แรก รันโปรแกรม และอ่าน error เบื้องต้น Python ทำงานอย่างไร เครื่องมือที่ใช้: Thonny Shell กับไฟล์ .py ต่างกันอย่างไร comment และการเยื้องบรรทัด อ่าน error ให้เป็น"><summary><span class="nav-number">01</span><span class="nav-title">เริ่มต้น Python และ Thonny</span></summary><div class="nav-topics"><a href="chapter-01.html"><span class="toc-number">1</span>ภาพรวมของบท</a><a href="chapter-01.html#topic-1"><span class="toc-number">1.1</span>Python ทำงานอย่างไร</a><a href="chapter-01.html#topic-2"><span class="toc-number">1.2</span>เครื่องมือที่ใช้: Thonny</a><a href="chapter-01.html#topic-3"><span class="toc-number">1.3</span>Shell กับไฟล์ .py ต่างกันอย่างไร</a><a href="chapter-01.html#topic-4"><span class="toc-number">1.4</span>comment และการเยื้องบรรทัด</a><a href="chapter-01.html#topic-5"><span class="toc-number">1.5</span>อ่าน error ให้เป็น</a><a href="chapter-01.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-01.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลในตัวแปร รู้จักชนิดข้อมูล รับค่าด้วย input() และแสดงผลด้วย print() / f-string ตัวแปร: ตั้งชื่อให้ข้อมูล ชนิดข้อมูลพื้นฐาน 4 ชนิด แปลงชนิดข้อมูล รับค่าด้วย input() แสดงผลด้วย print() และ f-string ข้อผิดพลาดที่เจอบ่อย"><summary><span class="nav-number">02</span><span class="nav-title">ตัวแปรและชนิดข้อมูล</span></summary><div class="nav-topics"><a href="chapter-02.html"><span class="toc-number">2</span>ภาพรวมของบท</a><a href="chapter-02.html#topic-1"><span class="toc-number">2.1</span>ตัวแปร: ตั้งชื่อให้ข้อมูล</a><a href="chapter-02.html#topic-2"><span class="toc-number">2.2</span>ชนิดข้อมูลพื้นฐาน 4 ชนิด</a><a href="chapter-02.html#topic-3"><span class="toc-number">2.3</span>แปลงชนิดข้อมูล</a><a href="chapter-02.html#topic-4"><span class="toc-number">2.4</span>รับค่าด้วย input()</a><a href="chapter-02.html#topic-5"><span class="toc-number">2.5</span>แสดงผลด้วย print() และ f-string</a><a href="chapter-02.html#topic-6"><span class="toc-number">2.6</span>ข้อผิดพลาดที่เจอบ่อย</a><a href="chapter-02.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-02.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และรวมเงื่อนไขด้วย and / or / not ตัวดำเนินการเลขคณิต ลำดับการคำนวณ เปรียบเทียบค่า ได้ผลเป็น True/False รวมเงื่อนไขด้วย and / or / not ตัวดำเนินการแบบย่อ"><summary><span class="nav-number">03</span><span class="nav-title">ตัวดำเนินการ</span></summary><div class="nav-topics"><a href="chapter-03.html"><span class="toc-number">3</span>ภาพรวมของบท</a><a href="chapter-03.html#topic-1"><span class="toc-number">3.1</span>ตัวดำเนินการเลขคณิต</a><a href="chapter-03.html#topic-2"><span class="toc-number">3.2</span>ลำดับการคำนวณ</a><a href="chapter-03.html#topic-3"><span class="toc-number">3.3</span>เปรียบเทียบค่า ได้ผลเป็น True/False</a><a href="chapter-03.html#topic-4"><span class="toc-number">3.4</span>รวมเงื่อนไขด้วย and / or / not</a><a href="chapter-03.html#topic-5"><span class="toc-number">3.5</span>ตัวดำเนินการแบบย่อ</a><a href="chapter-03.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-03.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if: ทำเมื่อเงื่อนไขเป็นจริง if-else: เลือก 1 ใน 2 ทาง elif: หลายทางเลือก เงื่อนไขหลายข้อ และ if ซ้อน ข้อผิดพลาดที่เจอบ่อย"><summary><span class="nav-number">04</span><span class="nav-title">เงื่อนไข</span></summary><div class="nav-topics"><a href="chapter-04.html"><span class="toc-number">4</span>ภาพรวมของบท</a><a href="chapter-04.html#topic-1"><span class="toc-number">4.1</span>if: ทำเมื่อเงื่อนไขเป็นจริง</a><a href="chapter-04.html#topic-2"><span class="toc-number">4.2</span>if-else: เลือก 1 ใน 2 ทาง</a><a href="chapter-04.html#topic-3"><span class="toc-number">4.3</span>elif: หลายทางเลือก</a><a href="chapter-04.html#topic-4"><span class="toc-number">4.4</span>เงื่อนไขหลายข้อ และ if ซ้อน</a><a href="chapter-04.html#topic-5"><span class="toc-number">4.5</span>ข้อผิดพลาดที่เจอบ่อย</a><a href="chapter-04.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-04.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="การทำซ้ำด้วยลูป สั่งให้โปรแกรมทำงานซ้ำด้วย for และ while แทนการเขียนคำสั่งเดิมหลายครั้ง for กับ range() for วนผ่านข้อมูลทีละตัว สะสมผลรวมและนับจำนวน while: วนจนกว่าเงื่อนไขจะเป็นเท็จ break และ continue"><summary><span class="nav-number">05</span><span class="nav-title">การทำซ้ำ (ลูป)</span></summary><div class="nav-topics"><a href="chapter-05.html"><span class="toc-number">5</span>ภาพรวมของบท</a><a href="chapter-05.html#topic-1"><span class="toc-number">5.1</span>for กับ range()</a><a href="chapter-05.html#topic-2"><span class="toc-number">5.2</span>for วนผ่านข้อมูลทีละตัว</a><a href="chapter-05.html#topic-3"><span class="toc-number">5.3</span>สะสมผลรวมและนับจำนวน</a><a href="chapter-05.html#topic-4"><span class="toc-number">5.4</span>while: วนจนกว่าเงื่อนไขจะเป็นเท็จ</a><a href="chapter-05.html#topic-5"><span class="toc-number">5.5</span>break และ continue</a><a href="chapter-05.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-05.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด แยก ค้นหา และจัดรูปแบบข้อความด้วย index, slicing และ string method index: ตำแหน่งของตัวอักษร slicing: ตัดบางส่วน method ที่ใช้บ่อย ตรวจและวนข้อความ"><summary><span class="nav-number">06</span><span class="nav-title">ข้อความ (string)</span></summary><div class="nav-topics"><a href="chapter-06.html"><span class="toc-number">6</span>ภาพรวมของบท</a><a href="chapter-06.html#topic-1"><span class="toc-number">6.1</span>index: ตำแหน่งของตัวอักษร</a><a href="chapter-06.html#topic-2"><span class="toc-number">6.2</span>slicing: ตัดบางส่วน</a><a href="chapter-06.html#topic-3"><span class="toc-number">6.3</span>method ที่ใช้บ่อย</a><a href="chapter-06.html#topic-4"><span class="toc-number">6.4</span>ตรวจและวนข้อความ</a><a href="chapter-06.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-06.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เก็บข้อมูลหลายค่าในตัวแปรเดียว และเลือกโครงสร้างให้เหมาะกับงาน เลือกใช้แบบไหนดี list: รายการที่แก้ไขได้ tuple และ set dict: จับคู่ key กับ value"><summary><span class="nav-number">07</span><span class="nav-title">list · tuple · set · dict</span></summary><div class="nav-topics"><a href="chapter-07.html"><span class="toc-number">7</span>ภาพรวมของบท</a><a href="chapter-07.html#topic-1"><span class="toc-number">7.1</span>เลือกใช้แบบไหนดี</a><a href="chapter-07.html#topic-2"><span class="toc-number">7.2</span>list: รายการที่แก้ไขได้</a><a href="chapter-07.html#topic-3"><span class="toc-number">7.3</span>tuple และ set</a><a href="chapter-07.html#topic-4"><span class="toc-number">7.4</span>dict: จับคู่ key กับ value</a><a href="chapter-07.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-07.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม รวมคำสั่งที่ทำงานหนึ่งอย่างเป็นฟังก์ชัน เรียกใช้ซ้ำได้ และแบ่งโปรแกรมใหญ่เป็นส่วนเล็ก def: สร้างฟังก์ชัน parameter: ส่งค่าเข้าฟังก์ชัน return: ส่งผลกลับ ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน"><summary><span class="nav-number">08</span><span class="nav-title">ฟังก์ชัน</span></summary><div class="nav-topics"><a href="chapter-08.html"><span class="toc-number">8</span>ภาพรวมของบท</a><a href="chapter-08.html#topic-1"><span class="toc-number">8.1</span>def: สร้างฟังก์ชัน</a><a href="chapter-08.html#topic-2"><span class="toc-number">8.2</span>parameter: ส่งค่าเข้าฟังก์ชัน</a><a href="chapter-08.html#topic-3"><span class="toc-number">8.3</span>return: ส่งผลกลับ</a><a href="chapter-08.html#topic-4"><span class="toc-number">8.4</span>ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน</a><a href="chapter-08.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-08.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<p class="nav-label" data-group="practice">ฝึกเขียนและใช้งาน</p>
+<details class="nav-chapter" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน error ให้เข้าใจ ดักจับข้อผิดพลาดด้วย try/except และหาสาเหตุเมื่อผลลัพธ์ผิด อ่าน traceback error ที่พบบ่อย try / except: ดักจับ error ดักหลายชนิด และดูข้อความ error raise: แจ้ง error เอง ไล่หาบั๊กเมื่อผลลัพธ์ผิด"><summary><span class="nav-number">09</span><span class="nav-title">Error และการ debug</span></summary><div class="nav-topics"><a href="chapter-09.html"><span class="toc-number">9</span>ภาพรวมของบท</a><a href="chapter-09.html#topic-1"><span class="toc-number">9.1</span>อ่าน traceback</a><a href="chapter-09.html#topic-2"><span class="toc-number">9.2</span>error ที่พบบ่อย</a><a href="chapter-09.html#topic-3"><span class="toc-number">9.3</span>try / except: ดักจับ error</a><a href="chapter-09.html#topic-4"><span class="toc-number">9.4</span>ดักหลายชนิด และดูข้อความ error</a><a href="chapter-09.html#topic-5"><span class="toc-number">9.5</span>raise: แจ้ง error เอง</a><a href="chapter-09.html#topic-6"><span class="toc-number">9.6</span>ไล่หาบั๊กเมื่อผลลัพธ์ผิด</a><a href="chapter-09.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-09.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนไฟล์ข้อความ CSV และ JSON เพื่อเก็บข้อมูลไว้ใช้ต่อหลังปิดโปรแกรม เปิดไฟล์ด้วย with open() อ่านทีละบรรทัด CSV: ข้อมูลตาราง JSON: บันทึก list/dict ทั้งก้อน เลือก CSV หรือ JSON"><summary><span class="nav-number">10</span><span class="nav-title">ไฟล์ CSV และ JSON</span></summary><div class="nav-topics"><a href="chapter-10.html"><span class="toc-number">10</span>ภาพรวมของบท</a><a href="chapter-10.html#topic-1"><span class="toc-number">10.1</span>เปิดไฟล์ด้วย with open()</a><a href="chapter-10.html#topic-2"><span class="toc-number">10.2</span>อ่านทีละบรรทัด</a><a href="chapter-10.html#topic-3"><span class="toc-number">10.3</span>CSV: ข้อมูลตาราง</a><a href="chapter-10.html#topic-4"><span class="toc-number">10.4</span>JSON: บันทึก list/dict ทั้งก้อน</a><a href="chapter-10.html#topic-5"><span class="toc-number">10.5</span>เลือก CSV หรือ JSON</a><a href="chapter-10.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-10.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="practice" data-search="โมดูล virtual environment และ pip นำโมดูลมาตรฐานมาใช้ สร้างโมดูลของตัวเอง และติดตั้งแพ็กเกจเพิ่มด้วย pip ใน virtual environment import: นำโมดูลมาใช้ โมดูลมาตรฐานที่ใช้บ่อย สร้างโมดูลเอง pip และ virtual environment ตรวจว่าติดตั้งแล้วหรือยัง"><summary><span class="nav-number">11</span><span class="nav-title">โมดูลและ pip</span></summary><div class="nav-topics"><a href="chapter-11.html"><span class="toc-number">11</span>ภาพรวมของบท</a><a href="chapter-11.html#topic-1"><span class="toc-number">11.1</span>import: นำโมดูลมาใช้</a><a href="chapter-11.html#topic-2"><span class="toc-number">11.2</span>โมดูลมาตรฐานที่ใช้บ่อย</a><a href="chapter-11.html#topic-3"><span class="toc-number">11.3</span>สร้างโมดูลเอง</a><a href="chapter-11.html#topic-4"><span class="toc-number">11.4</span>pip และ virtual environment</a><a href="chapter-11.html#topic-5"><span class="toc-number">11.5</span>ตรวจว่าติดตั้งแล้วหรือยัง</a><a href="chapter-11.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-11.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมข้อมูลและการทำงานที่เกี่ยวข้องกันไว้ใน class แล้วสร้าง object ได้หลายตัว class คือแม่แบบ object คือของจริง __init__ และ self method: การทำงานของ object __str__: กำหนดวิธีแสดงผล ทำงานกับ object หลายตัว"><summary><span class="nav-number">12</span><span class="nav-title">class และ object</span></summary><div class="nav-topics"><a href="chapter-12.html"><span class="toc-number">12</span>ภาพรวมของบท</a><a href="chapter-12.html#topic-1"><span class="toc-number">12.1</span>class คือแม่แบบ object คือของจริง</a><a href="chapter-12.html#topic-2"><span class="toc-number">12.2</span>__init__ และ self</a><a href="chapter-12.html#topic-3"><span class="toc-number">12.3</span>method: การทำงานของ object</a><a href="chapter-12.html#topic-4"><span class="toc-number">12.4</span>__str__: กำหนดวิธีแสดงผล</a><a href="chapter-12.html#topic-5"><span class="toc-number">12.5</span>ทำงานกับ object หลายตัว</a><a href="chapter-12.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-12.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON ขอข้อมูลจากบริการบนอินเทอร์เน็ตด้วย requests อ่านผลที่เป็น JSON และจัดการเมื่อเชื่อมต่อไม่สำเร็จ API ทำงานอย่างไร JSON กับ Python requests.get(): ขอข้อมูล ส่ง parameter รับมือเมื่อเรียกไม่สำเร็จ"><summary><span class="nav-number">13</span><span class="nav-title">Web API</span></summary><div class="nav-topics"><a href="chapter-13.html"><span class="toc-number">13</span>ภาพรวมของบท</a><a href="chapter-13.html#topic-1"><span class="toc-number">13.1</span>API ทำงานอย่างไร</a><a href="chapter-13.html#topic-2"><span class="toc-number">13.2</span>JSON กับ Python</a><a href="chapter-13.html#topic-3"><span class="toc-number">13.3</span>requests.get(): ขอข้อมูล</a><a href="chapter-13.html#topic-4"><span class="toc-number">13.4</span>ส่ง parameter</a><a href="chapter-13.html#topic-5"><span class="toc-number">13.5</span>รับมือเมื่อเรียกไม่สำเร็จ</a><a href="chapter-13.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-13.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<p class="nav-label" data-group="ai">ต่อยอดข้อมูลและ AI</p>
+<details class="nav-chapter" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของ pandas, Matplotlib, scikit-learn และงาน AI ทั้งหมด ทำไมต้อง NumPy สร้าง array รูปร่าง: shape และ reshape เลือกข้อมูล: index และ slicing คำนวณทั้ง array และฟังก์ชันคณิตศาสตร์ broadcasting: คำนวณกับ array คนละขนาด กรองข้อมูลด้วยเงื่อนไข สรุปตามแกน (axis) สถิติ เรียงลำดับ และนับ ข้อผิดพลาดที่พบบ่อย NumPy ในงานจริง" open><summary aria-current="page"><span class="nav-number">14</span><span class="nav-title">NumPy</span></summary><div class="nav-topics"><a href="#lesson-content"><span class="toc-number">14</span>ภาพรวมของบท</a><a href="#topic-1"><span class="toc-number">14.1</span>ทำไมต้อง NumPy</a><a href="#topic-2"><span class="toc-number">14.2</span>สร้าง array</a><a href="#topic-3"><span class="toc-number">14.3</span>รูปร่าง: shape และ reshape</a><a href="#topic-4"><span class="toc-number">14.4</span>เลือกข้อมูล: index และ slicing</a><a href="#topic-5"><span class="toc-number">14.5</span>คำนวณทั้ง array และฟังก์ชันคณิตศาสตร์</a><a href="#topic-6"><span class="toc-number">14.6</span>broadcasting: คำนวณกับ array คนละขนาด</a><a href="#topic-7"><span class="toc-number">14.7</span>กรองข้อมูลด้วยเงื่อนไข</a><a href="#topic-8"><span class="toc-number">14.8</span>สรุปตามแกน (axis)</a><a href="#topic-9"><span class="toc-number">14.9</span>สถิติ เรียงลำดับ และนับ</a><a href="#topic-10"><span class="toc-number">14.10</span>ข้อผิดพลาดที่พบบ่อย</a><a href="#topic-11"><span class="toc-number">14.11</span>NumPy ในงานจริง</a><a href="#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน สำรวจ กรอง ทำความสะอาด และสรุปข้อมูลตารางด้วย pandas DataFrame DataFrame: ตารางข้อมูล อ่าน CSV และสำรวจข้อมูล เลือกและกรองข้อมูล เพิ่มคอลัมน์และเรียงข้อมูล จัดการค่าว่าง สรุปตามกลุ่มด้วย groupby"><summary><span class="nav-number">15</span><span class="nav-title">pandas</span></summary><div class="nav-topics"><a href="chapter-15.html"><span class="toc-number">15</span>ภาพรวมของบท</a><a href="chapter-15.html#topic-1"><span class="toc-number">15.1</span>DataFrame: ตารางข้อมูล</a><a href="chapter-15.html#topic-2"><span class="toc-number">15.2</span>อ่าน CSV และสำรวจข้อมูล</a><a href="chapter-15.html#topic-3"><span class="toc-number">15.3</span>เลือกและกรองข้อมูล</a><a href="chapter-15.html#topic-4"><span class="toc-number">15.4</span>เพิ่มคอลัมน์และเรียงข้อมูล</a><a href="chapter-15.html#topic-5"><span class="toc-number">15.5</span>จัดการค่าว่าง</a><a href="chapter-15.html#topic-6"><span class="toc-number">15.6</span>สรุปตามกลุ่มด้วย groupby</a><a href="chapter-15.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-15.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib แปลงตัวเลขเป็นกราฟที่อ่านง่าย เลือกชนิดกราฟให้ตรงคำถาม และบันทึกเป็นไฟล์ภาพ กราฟแรก เลือกชนิดกราฟจากคำถาม กราฟแท่ง หลายเส้นในกราฟเดียว กราฟกระจายและฮิสโทแกรม บันทึกกราฟและภาษาไทย"><summary><span class="nav-number">16</span><span class="nav-title">Matplotlib</span></summary><div class="nav-topics"><a href="chapter-16.html"><span class="toc-number">16</span>ภาพรวมของบท</a><a href="chapter-16.html#topic-1"><span class="toc-number">16.1</span>กราฟแรก</a><a href="chapter-16.html#topic-2"><span class="toc-number">16.2</span>เลือกชนิดกราฟจากคำถาม</a><a href="chapter-16.html#topic-3"><span class="toc-number">16.3</span>กราฟแท่ง</a><a href="chapter-16.html#topic-4"><span class="toc-number">16.4</span>หลายเส้นในกราฟเดียว</a><a href="chapter-16.html#topic-5"><span class="toc-number">16.5</span>กราฟกระจายและฮิสโทแกรม</a><a href="chapter-16.html#topic-6"><span class="toc-number">16.6</span>บันทึกกราฟและภาษาไทย</a><a href="chapter-16.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-16.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn ให้คอมพิวเตอร์เรียนรู้รูปแบบจากตัวอย่าง แล้วทำนายข้อมูลใหม่ ด้วยขั้นตอนมาตรฐานของ scikit-learn Machine Learning คืออะไร ขั้นตอนมาตรฐาน แบ่งข้อมูล train/test fit และ predict วัดผลโมเดล Pipeline: รวมการเตรียมข้อมูลกับโมเดล"><summary><span class="nav-number">17</span><span class="nav-title">Machine Learning</span></summary><div class="nav-topics"><a href="chapter-17.html"><span class="toc-number">17</span>ภาพรวมของบท</a><a href="chapter-17.html#topic-1"><span class="toc-number">17.1</span>Machine Learning คืออะไร</a><a href="chapter-17.html#topic-2"><span class="toc-number">17.2</span>ขั้นตอนมาตรฐาน</a><a href="chapter-17.html#topic-3"><span class="toc-number">17.3</span>แบ่งข้อมูล train/test</a><a href="chapter-17.html#topic-4"><span class="toc-number">17.4</span>fit และ predict</a><a href="chapter-17.html#topic-5"><span class="toc-number">17.5</span>วัดผลโมเดล</a><a href="chapter-17.html#topic-6"><span class="toc-number">17.6</span>Pipeline: รวมการเตรียมข้อมูลกับโมเดล</a><a href="chapter-17.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-17.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล เข้าใจส่วนประกอบของ neural network ตั้งแต่ neuron, activation, loss จนถึงการเรียนรู้ด้วย gradient descent neuron: หน่วยคำนวณพื้นฐาน activation function layer: หลาย neuron พร้อมกัน loss: วัดว่าผิดมากแค่ไหน การเรียนรู้: gradient descent ใช้ library แทนการเขียนเอง"><summary><span class="nav-number">18</span><span class="nav-title">Neural Network</span></summary><div class="nav-topics"><a href="chapter-18.html"><span class="toc-number">18</span>ภาพรวมของบท</a><a href="chapter-18.html#topic-1"><span class="toc-number">18.1</span>neuron: หน่วยคำนวณพื้นฐาน</a><a href="chapter-18.html#topic-2"><span class="toc-number">18.2</span>activation function</a><a href="chapter-18.html#topic-3"><span class="toc-number">18.3</span>layer: หลาย neuron พร้อมกัน</a><a href="chapter-18.html#topic-4"><span class="toc-number">18.4</span>loss: วัดว่าผิดมากแค่ไหน</a><a href="chapter-18.html#topic-5"><span class="toc-number">18.5</span>การเรียนรู้: gradient descent</a><a href="chapter-18.html#topic-6"><span class="toc-number">18.6</span>ใช้ library แทนการเขียนเอง</a><a href="chapter-18.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-18.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<p class="nav-label" data-group="gui">GUI และโปรเจกต์</p>
+<details class="nav-chapter" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปที่มีหน้าต่าง ปุ่ม และช่องกรอกข้อมูลด้วย PySide6 (Qt for Python) โครงสร้างแอปพื้นฐาน widget ที่ใช้บ่อย layout: จัดวาง widget signal และ slot: ทำงานเมื่อผู้ใช้กด เขียนหน้าต่างเป็น class"><summary><span class="nav-number">19</span><span class="nav-title">GUI ด้วย PySide6</span></summary><div class="nav-topics"><a href="chapter-19.html"><span class="toc-number">19</span>ภาพรวมของบท</a><a href="chapter-19.html#topic-1"><span class="toc-number">19.1</span>โครงสร้างแอปพื้นฐาน</a><a href="chapter-19.html#topic-2"><span class="toc-number">19.2</span>widget ที่ใช้บ่อย</a><a href="chapter-19.html#topic-3"><span class="toc-number">19.3</span>layout: จัดวาง widget</a><a href="chapter-19.html#topic-4"><span class="toc-number">19.4</span>signal และ slot: ทำงานเมื่อผู้ใช้กด</a><a href="chapter-19.html#topic-5"><span class="toc-number">19.5</span>เขียนหน้าต่างเป็น class</a><a href="chapter-19.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-19.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI รวมทุกอย่างที่เรียนมาเป็นแอปแนะนำรายวิชา: ข้อมูลจาก CSV, กติกาแนะนำ, โมเดลทำนาย และหน้าต่าง PySide6 เริ่มจากโจทย์ ไม่ใช่โค้ด แยกเป็น 3 ชั้น ชั้นข้อมูล: โหลดรายวิชา ชั้น logic: กติกาแนะนำ + ทดสอบ เพิ่มโมเดล ML: ทำนายโอกาสผ่าน ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง"><summary><span class="nav-number">20</span><span class="nav-title">โปรเจกต์ Course Planner</span></summary><div class="nav-topics"><a href="chapter-20.html"><span class="toc-number">20</span>ภาพรวมของบท</a><a href="chapter-20.html#topic-1"><span class="toc-number">20.1</span>เริ่มจากโจทย์ ไม่ใช่โค้ด</a><a href="chapter-20.html#topic-2"><span class="toc-number">20.2</span>แยกเป็น 3 ชั้น</a><a href="chapter-20.html#topic-3"><span class="toc-number">20.3</span>ชั้นข้อมูล: โหลดรายวิชา</a><a href="chapter-20.html#topic-4"><span class="toc-number">20.4</span>ชั้น logic: กติกาแนะนำ + ทดสอบ</a><a href="chapter-20.html#topic-5"><span class="toc-number">20.5</span>เพิ่มโมเดล ML: ทำนายโอกาสผ่าน</a><a href="chapter-20.html#topic-6"><span class="toc-number">20.6</span>ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง</a><a href="chapter-20.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-20.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+</nav>
+<!-- /course-nav -->
+      <div class="sidebar-bottom">ตัวอย่างทุกชิ้นรันด้วย Python จริง</div>
     </aside>
     <main class="lesson-main" id="lesson-content">
       <div class="utility-row"><a href="../index.html">← สารบัญรายวิชา</a><span class="utility-code">CHAPTER 14 / 20</span></div>
-      <header class="lesson-header"><p class="lesson-kicker">CHAPTER 14 · ข้อมูลและ AI</p><h1>NumPy สำหรับการคำนวณตัวเลข</h1><p>คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของงาน Data Science และ AI</p></header>
-      <section class="learning-goals"><strong>จบบทนี้แล้วทำได้</strong><p>สร้าง array คำนวณทั้ง array โดยไม่ต้องวนลูป กรองข้อมูลด้วยเงื่อนไข และสรุปค่าตามแถว/คอลัมน์</p></section>
-      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">เนื้อหา</h2>
-        <article class="subtopic" id="topic-1"><h3>14.1 array ต่างจาก list อย่างไร</h3><p>NumPy array เก็บตัวเลขชนิดเดียวกันและคำนวณกับทุกค่าพร้อมกันได้ ส่วน list ต้องวนลูปเอง เริ่มใช้ด้วย <code>import numpy as np</code></p><div class="table-wrap"><table class="concept-table"><thead><tr><th>เขียน</th><th>list</th><th>NumPy array</th></tr></thead><tbody><tr><td><code>x * 2</code></td><td><code>[1, 2, 1, 2]</code> (ซ้ำรายการ)</td><td><code>[2, 4]</code> (คูณทุกค่า)</td></tr><tr><td><code>x + 10</code></td><td>TypeError</td><td><code>[11, 12]</code></td></tr><tr><td>ความเร็วกับข้อมูลล้านค่า</td><td>ช้า</td><td>เร็วกว่ามาก</td></tr></tbody></table></div><div class="mini-run"><pre class="copyable"><code>import numpy as np
+      <header class="lesson-header"><p class="lesson-kicker">บทที่ 14 · ข้อมูลและ AI</p><h1>NumPy สำหรับการคำนวณตัวเลข</h1><p>คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของ pandas, Matplotlib, scikit-learn และงาน AI ทั้งหมด</p></header>
+      <section class="learning-goals"><strong>เมื่อจบบทนี้ นิสิตจะทำได้</strong><p>สร้างและปรับรูปร่าง array เลือกข้อมูลด้วย index/slicing คำนวณทั้งชุดโดยไม่ต้องวนลูป ใช้ broadcasting กรองข้อมูลด้วยเงื่อนไข สรุปตามแถว/คอลัมน์ และนำไปแก้โจทย์จริงได้</p></section>
+      <section class="lesson-section" aria-label="เนื้อหา">
+        <article class="subtopic" id="topic-1"><h3>14.1 ทำไมต้อง NumPy</h3><p>NumPy (Numerical Python) คือแพ็กเกจสำหรับคำนวณตัวเลขจำนวนมาก หัวใจของมันคือ <code>ndarray</code> ที่เก็บตัวเลขชนิดเดียวกันเรียงติดกันในหน่วยความจำ จึงสั่งคำนวณทั้งชุดได้ในคำสั่งเดียว (เรียกว่า vectorization) และทำงานเร็วกว่าการวนลูปกับ list หลายสิบเท่า pandas, Matplotlib และ scikit-learn ที่จะเรียนต่อจากนี้ล้วนสร้างอยู่บน NumPy ติดตั้งด้วย <code>pip install numpy</code> แล้ว import ด้วยชื่อย่อ <code>np</code> ตามธรรมเนียม</p><div class="table-scroll"><table class="comparison-table"><thead><tr><th>เขียน</th><th>list</th><th>NumPy array</th></tr></thead><tbody><tr><td><code>x * 2</code></td><td><code>[1, 2, 1, 2]</code> (ทำซ้ำรายการ)</td><td><code>[2 4]</code> (คูณทุกค่า)</td></tr><tr><td><code>x + 10</code></td><td>TypeError</td><td><code>[11 12]</code></td></tr><tr><td>ชนิดข้อมูลในตัว</td><td>ปนกันได้</td><td>ชนิดเดียวทั้ง array</td></tr><tr><td>ข้อมูลล้านค่า</td><td>ช้า ต้องวนลูป</td><td>เร็ว คำนวณทั้งชุด</td></tr></tbody></table></div><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_14_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-prices = np.array([120, 80, 45, 300])
-print(prices * 2)
-print(prices.shape, prices.dtype)
-print([120, 80] * 2)</code></pre><pre class="mini-output" aria-label="Output">[240 160  90 600]
-(4,) int64
-[120, 80, 120, 80]</pre></div></article><article class="subtopic" id="topic-2"><h3>14.2 สร้าง array แบบต่าง ๆ</h3><p>นอกจากแปลงจาก list แล้ว NumPy มีฟังก์ชันสร้าง array ที่ใช้บ่อย</p><div class="table-wrap"><table class="concept-table"><thead><tr><th>คำสั่ง</th><th>ได้</th></tr></thead><tbody><tr><td><code>np.arange(0, 10, 2)</code></td><td><code>[0 2 4 6 8]</code> (เหมือน range)</td></tr><tr><td><code>np.linspace(0, 1, 5)</code></td><td><code>[0. 0.25 0.5 0.75 1.]</code> (แบ่งช่วงเท่า ๆ กัน)</td></tr><tr><td><code>np.zeros(3)</code> / <code>np.ones(3)</code></td><td><code>[0. 0. 0.]</code> / <code>[1. 1. 1.]</code></td></tr><tr><td><code>np.array([[1, 2], [3, 4]])</code></td><td>array 2 มิติ ขนาด (2, 2)</td></tr></tbody></table></div><div class="mini-run"><pre class="copyable"><code>import numpy as np
+prices = [<span class="tok-num">120</span>, <span class="tok-num">80</span>, <span class="tok-num">45</span>, <span class="tok-num">300</span>]
 
-print(np.arange(1, 6))
-print(np.linspace(0, 100, 5))
-grid = np.zeros((2, 3))
-print(grid.shape)</code></pre><pre class="mini-output" aria-label="Output">[1 2 3 4 5]
-[  0.  25.  50.  75. 100.]
-(2, 3)</pre></div></article><article class="subtopic" id="topic-3"><h3>14.3 คำนวณทั้ง array (vectorization)</h3><p>เครื่องหมายคำนวณทำงานกับทุกค่าทีละตำแหน่ง ทั้ง array กับตัวเลข และ array กับ array ขนาดเท่ากัน</p><div class="mini-run"><pre class="copyable"><code>import numpy as np
+<span class="tok-com"># list: ต้องวนลูปเอง</span>
+with_vat = []
+<span class="tok-kw">for</span> p <span class="tok-kw">in</span> prices:
+    with_vat.<span class="tok-fn">append</span>(<span class="tok-fn">round</span>(p * <span class="tok-num">1.07</span>, <span class="tok-num">2</span>))
+<span class="tok-fn">print</span>(with_vat)
 
-price = np.array([100, 250, 80])
-qty = np.array([2, 1, 5])
-total = price * qty
-print(total)
-print(total * 1.07)
-print(total.sum())</code></pre><pre class="mini-output" aria-label="Output">[200 250 400]
-[214.  267.5 428. ]
-850</pre></div></article><article class="subtopic" id="topic-4"><h3>14.4 กรองข้อมูลด้วยเงื่อนไข</h3><p>เปรียบเทียบ array ได้ผลเป็น array ของ True/False (mask) นำไปเลือกเฉพาะค่าที่ตรงเงื่อนไขได้ <code>np.where</code> เลือกค่าตามเงื่อนไขทีละตำแหน่ง</p><div class="mini-run"><pre class="copyable"><code>import numpy as np
+<span class="tok-com"># NumPy: คำนวณทั้งชุดในบรรทัดเดียว</span>
+arr = np.<span class="tok-fn">array</span>(prices)
+<span class="tok-fn">print</span>(np.<span class="tok-fn">round</span>(arr * <span class="tok-num">1.07</span>, <span class="tok-num">2</span>))</code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>[128.4, 85.6, 48.15, 321.0]
+[128.4   85.6   48.15 321.  ]</pre></div></div><div class="callout tip"><span class="box-title">จำง่าย ๆ</span><p>คิดแบบ NumPy คือ “สั่งทั้งชุด” แทน “วนทีละตัว” ถ้าเห็นตัวเองเขียน for กับ array ให้ลองหาคำสั่งที่ทำทั้งชุดได้ก่อน</p></div></article>
+<article class="subtopic" id="topic-2"><h3>14.2 สร้าง array</h3><p>สร้างจาก list ด้วย <code>np.array()</code> หรือใช้ฟังก์ชันสร้างอัตโนมัติ ทุกค่าใน array ต้องเป็นชนิดเดียวกัน (ดูได้จาก <code>dtype</code>) ถ้ามีทศนิยมแม้ค่าเดียว ทั้ง array จะเป็น float การสุ่มให้ใช้ <code>np.random.default_rng(seed)</code> ซึ่งใส่ seed แล้วจะได้ผลเดิมทุกครั้ง เหมาะกับการทดลองและตรวจงาน</p><div class="table-scroll"><table class="comparison-table"><thead><tr><th>คำสั่ง</th><th>ได้</th></tr></thead><tbody><tr><td><code>np.array([3, 1, 4])</code></td><td>จาก list</td></tr><tr><td><code>np.arange(0, 20, 5)</code></td><td><code>[0 5 10 15]</code> เหมือน range</td></tr><tr><td><code>np.linspace(0, 1, 5)</code></td><td><code>[0. 0.25 0.5 0.75 1.]</code> แบ่งช่วงเท่า ๆ กัน (รวมปลาย)</td></tr><tr><td><code>np.zeros(3)</code>, <code>np.ones(3)</code>, <code>np.full(3, 7)</code></td><td>เติมด้วย 0, 1 หรือค่าที่กำหนด</td></tr><tr><td><code>rng.integers(1, 7, size=10)</code></td><td>จำนวนเต็มสุ่ม 1–6 จำนวน 10 ค่า</td></tr><tr><td><code>rng.normal(65, 10, size=5)</code></td><td>ค่าสุ่มแบบกระจายปกติ เฉลี่ย 65 ส่วนเบี่ยงเบน 10</td></tr></tbody></table></div><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_14_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-scores = np.array([45, 78, 92, 30, 66])
-print(scores &gt;= 50)
-print(scores[scores &gt;= 50])
-print((scores &gt;= 50).sum(), &quot;คนผ่าน&quot;)
-print(np.where(scores &gt;= 50, &quot;ผ่าน&quot;, &quot;ตก&quot;))</code></pre><pre class="mini-output" aria-label="Output">[False  True  True False  True]
-[78 92 66]
-3 คนผ่าน
-[&#39;ตก&#39; &#39;ผ่าน&#39; &#39;ผ่าน&#39; &#39;ตก&#39; &#39;ผ่าน&#39;]</pre></div></article><article class="subtopic" id="topic-5"><h3>14.5 array 2 มิติและแกน (axis)</h3><p>array 2 มิติเหมือนตาราง เข้าถึงด้วย <code>[แถว, คอลัมน์]</code> เวลาสรุปค่าให้ระบุ <code>axis</code>: <code>axis=0</code> สรุปลงตามแนวตั้ง (ได้ค่าต่อคอลัมน์) และ <code>axis=1</code> สรุปตามแนวนอน (ได้ค่าต่อแถว)</p><figure class="figure"><img src="../assets/figures/numpy-axis.svg" alt="array 2 มิติ 3 แถว 4 คอลัมน์: axis=0 รวมลงแนวตั้งได้ผลต่อคอลัมน์ axis=1 รวมตามแนวนอนได้ผลต่อแถว"><figcaption>array 2 มิติ 3 แถว 4 คอลัมน์: axis=0 รวมลงแนวตั้งได้ผลต่อคอลัมน์ axis=1 รวมตามแนวนอนได้ผลต่อแถว</figcaption></figure><div class="mini-run"><pre class="copyable"><code>import numpy as np
+a = np.<span class="tok-fn">array</span>([<span class="tok-num">3</span>, <span class="tok-num">1</span>, <span class="tok-num">4</span>, <span class="tok-num">1</span>, <span class="tok-num">5</span>])
+<span class="tok-fn">print</span>(a, a.dtype)
+<span class="tok-fn">print</span>(np.<span class="tok-fn">array</span>([<span class="tok-num">1.5</span>, <span class="tok-num">2</span>, <span class="tok-num">3</span>]).dtype)      <span class="tok-com"># มีทศนิยม ทั้งหมดจึงเป็น float</span>
+<span class="tok-fn">print</span>(np.<span class="tok-fn">arange</span>(<span class="tok-num">0</span>, <span class="tok-num">20</span>, <span class="tok-num">5</span>))
+<span class="tok-fn">print</span>(np.<span class="tok-fn">linspace</span>(<span class="tok-num">0</span>, <span class="tok-num">1</span>, <span class="tok-num">5</span>))
+<span class="tok-fn">print</span>(np.<span class="tok-fn">full</span>(<span class="tok-num">4</span>, <span class="tok-num">7</span>))
 
-sales = np.array([[10, 12, 9, 14],
-                  [7, 8, 11, 6],
-                  [15, 13, 12, 18]])
-print(sales[0, 2], sales[2])
-print(sales.sum(axis=0))
-print(sales.sum(axis=1))</code></pre><pre class="mini-output" aria-label="Output">9 [15 13 12 18]
+rng = np.random.<span class="tok-fn">default_rng</span>(<span class="tok-num">42</span>)         <span class="tok-com"># seed เดิม = สุ่มได้ผลเดิม</span>
+<span class="tok-fn">print</span>(rng.<span class="tok-fn">integers</span>(<span class="tok-num">1</span>, <span class="tok-num">7</span>, size=<span class="tok-num">10</span>))      <span class="tok-com"># ทอยลูกเต๋า 10 ครั้ง</span></code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>[3 1 4 1 5] int64
+float64
+[ 0  5 10 15]
+[0.   0.25 0.5  0.75 1.  ]
+[7 7 7 7]
+[1 5 4 3 3 6 1 5 2 1]</pre></div></div></article>
+<article class="subtopic" id="topic-3"><h3>14.3 รูปร่าง: shape และ reshape</h3><p>array มีได้หลายมิติ <code>shape</code> บอกขนาดแต่ละมิติ (เช่น <code>(3, 4)</code> คือ 3 แถว 4 คอลัมน์) <code>ndim</code> บอกจำนวนมิติ และ <code>size</code> บอกจำนวนสมาชิกทั้งหมด <code>reshape()</code> จัดข้อมูลชุดเดิมเป็นรูปร่างใหม่ ใส่ <code>-1</code> ได้หนึ่งมิติเพื่อให้ NumPy คำนวณขนาดเอง และ <code>.T</code> สลับแถวกับคอลัมน์</p><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_14_3.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+
+a = np.<span class="tok-fn">arange</span>(<span class="tok-num">1</span>, <span class="tok-num">13</span>)
+<span class="tok-fn">print</span>(a.shape, a.ndim, a.size)
+m = a.<span class="tok-fn">reshape</span>(<span class="tok-num">3</span>, <span class="tok-num">4</span>)          <span class="tok-com"># 3 แถว 4 คอลัมน์</span>
+<span class="tok-fn">print</span>(m)
+<span class="tok-fn">print</span>(m.shape, m.ndim)
+<span class="tok-fn">print</span>(a.<span class="tok-fn">reshape</span>(<span class="tok-num">2</span>, -<span class="tok-num">1</span>).shape)    <span class="tok-com"># -1 = ให้ NumPy คำนวณเอง</span>
+<span class="tok-fn">print</span>(m.<span class="tok-type">T</span>.shape)                  <span class="tok-com"># สลับแถวกับคอลัมน์</span></code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>(12,) 1 12
+[[ 1  2  3  4]
+ [ 5  6  7  8]
+ [ 9 10 11 12]]
+(3, 4) 2
+(2, 6)
+(4, 3)</pre></div></div><div class="callout tip"><span class="box-title">จำง่าย ๆ</span><p>reshape ต้องมีจำนวนสมาชิกเท่าเดิม 12 ค่าจัดเป็น 3×4 หรือ 2×6 ได้ แต่ 5×3 ไม่ได้</p></div></article>
+<article class="subtopic" id="topic-4"><h3>14.4 เลือกข้อมูล: index และ slicing</h3><p>array 1 มิติใช้ index และ slicing เหมือน list ส่วน array 2 มิติเขียน <code>m[แถว, คอลัมน์]</code> ในวงเล็บเดียว ใช้ <code>:</code> แทน “ทั้งหมด” ในมิตินั้น และส่ง list ของ index เพื่อเลือกหลายตำแหน่งพร้อมกันได้</p><figure class="concept-figure"><img src="../assets/figures/numpy-slicing.svg" alt="m[1] เลือกทั้งแถว 1, m[:, 0] เลือกทั้งคอลัมน์ 0 และ m[1:, 2:] เลือกมุมขวาล่าง" loading="lazy"><figcaption>m[1] เลือกทั้งแถว 1, m[:, 0] เลือกทั้งคอลัมน์ 0 และ m[1:, 2:] เลือกมุมขวาล่าง</figcaption></figure><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_14_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+
+m = np.<span class="tok-fn">arange</span>(<span class="tok-num">1</span>, <span class="tok-num">13</span>).<span class="tok-fn">reshape</span>(<span class="tok-num">3</span>, <span class="tok-num">4</span>)
+<span class="tok-fn">print</span>(m[<span class="tok-num">0</span>, <span class="tok-num">2</span>])          <span class="tok-com"># แถว 0 คอลัมน์ 2</span>
+<span class="tok-fn">print</span>(m[<span class="tok-num">1</span>])             <span class="tok-com"># ทั้งแถว 1</span>
+<span class="tok-fn">print</span>(m[:, <span class="tok-num">0</span>])          <span class="tok-com"># ทั้งคอลัมน์ 0</span>
+<span class="tok-fn">print</span>(m[<span class="tok-num">1</span>:, <span class="tok-num">2</span>:])        <span class="tok-com"># มุมขวาล่าง</span>
+<span class="tok-fn">print</span>(m[[<span class="tok-num">0</span>, <span class="tok-num">2</span>], -<span class="tok-num">1</span>])    <span class="tok-com"># แถว 0 กับ 2 คอลัมน์สุดท้าย</span></code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>3
+[5 6 7 8]
+[1 5 9]
+[[ 7  8]
+ [11 12]]
+[ 4 12]</pre></div></div></article>
+<article class="subtopic" id="topic-5"><h3>14.5 คำนวณทั้ง array และฟังก์ชันคณิตศาสตร์</h3><p>เครื่องหมาย <code>+ - * / ** // %</code> ทำงานกับทุกค่าทีละตำแหน่ง ทั้ง array กับตัวเลข และ array กับ array ที่ขนาดเท่ากัน นอกจากนี้ NumPy มีฟังก์ชันคณิตศาสตร์ (ufunc) ที่ทำกับทุกค่าพร้อมกัน</p><div class="table-scroll"><table class="comparison-table"><thead><tr><th>ฟังก์ชัน</th><th>ทำอะไร</th></tr></thead><tbody><tr><td><code>np.sqrt</code>, <code>np.abs</code>, <code>np.exp</code>, <code>np.log</code></td><td>รากที่สอง ค่าสัมบูรณ์ เลขชี้กำลัง ลอการิทึม</td></tr><tr><td><code>np.round(a, 2)</code></td><td>ปัดทศนิยม</td></tr><tr><td><code>np.maximum(a, b)</code>, <code>np.minimum(a, b)</code></td><td>เลือกค่ามาก/น้อยกว่าทีละตำแหน่ง</td></tr><tr><td><code>np.sin</code>, <code>np.cos</code>, <code>np.pi</code></td><td>ตรีโกณมิติ</td></tr></tbody></table></div><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_14_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+
+price = np.<span class="tok-fn">array</span>([<span class="tok-num">100</span>, <span class="tok-num">250</span>, <span class="tok-num">80</span>])
+qty = np.<span class="tok-fn">array</span>([<span class="tok-num">2</span>, <span class="tok-num">1</span>, <span class="tok-num">5</span>])
+total = price * qty               <span class="tok-com"># คูณคู่ตำแหน่งเดียวกัน</span>
+<span class="tok-fn">print</span>(total, total.<span class="tok-fn">sum</span>())
+<span class="tok-fn">print</span>(np.<span class="tok-fn">sqrt</span>(np.<span class="tok-fn">array</span>([<span class="tok-num">4</span>, <span class="tok-num">9</span>, <span class="tok-num">16</span>])))
+<span class="tok-fn">print</span>(np.<span class="tok-fn">round</span>(np.<span class="tok-fn">array</span>([<span class="tok-num">2.456</span>, <span class="tok-num">3.14159</span>]), <span class="tok-num">1</span>))
+<span class="tok-fn">print</span>(np.<span class="tok-fn">maximum</span>(np.<span class="tok-fn">array</span>([<span class="tok-num">3</span>, <span class="tok-num">8</span>, <span class="tok-num">1</span>]), <span class="tok-num">5</span>))   <span class="tok-com"># ค่าที่น้อยกว่า 5 กลายเป็น 5</span></code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>[200 250 400] 850
+[2. 3. 4.]
+[2.5 3.1]
+[5 8 5]</pre></div></div></article>
+<article class="subtopic" id="topic-6"><h3>14.6 broadcasting: คำนวณกับ array คนละขนาด</h3><p>เมื่อขนาดไม่เท่ากัน NumPy จะ “ยืด” array ที่เล็กกว่าให้เท่ากับอีกตัวโดยไม่ต้องคัดลอกจริง เช่น บวกคะแนนพิเศษรายวิชา (3 ค่า) ให้ทุกคนในตาราง 2×3 กติกาคือเทียบ shape จากขวาไปซ้าย แต่ละมิติต้องเท่ากัน หรือฝั่งใดฝั่งหนึ่งเป็น 1</p><figure class="concept-figure"><img src="../assets/figures/numpy-broadcast.svg" alt="scores (2,3) + bonus (3,) → NumPy ยืด bonus ให้ทุกแถวแล้วบวกทีละตำแหน่ง ได้ผล (2,3)" loading="lazy"><figcaption>scores (2,3) + bonus (3,) → NumPy ยืด bonus ให้ทุกแถวแล้วบวกทีละตำแหน่ง ได้ผล (2,3)</figcaption></figure><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_14_6.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+
+scores = np.<span class="tok-fn">array</span>([[<span class="tok-num">70</span>, <span class="tok-num">80</span>, <span class="tok-num">65</span>],
+                   [<span class="tok-num">55</span>, <span class="tok-num">90</span>, <span class="tok-num">72</span>]])       <span class="tok-com"># 2 คน × 3 วิชา</span>
+bonus = np.<span class="tok-fn">array</span>([<span class="tok-num">5</span>, <span class="tok-num">0</span>, <span class="tok-num">10</span>])            <span class="tok-com"># คะแนนพิเศษรายวิชา</span>
+<span class="tok-fn">print</span>(scores + bonus)                   <span class="tok-com"># bonus ถูกบวกให้ทุกแถว</span>
+
+weights = np.<span class="tok-fn">array</span>([<span class="tok-num">0.3</span>, <span class="tok-num">0.3</span>, <span class="tok-num">0.4</span>])
+<span class="tok-fn">print</span>((scores * weights).<span class="tok-fn">sum</span>(axis=<span class="tok-num">1</span>))   <span class="tok-com"># คะแนนถ่วงน้ำหนักของแต่ละคน</span>
+
+per_person = np.<span class="tok-fn">array</span>([<span class="tok-num">2</span>, -<span class="tok-num">3</span>]).<span class="tok-fn">reshape</span>(-<span class="tok-num">1</span>, <span class="tok-num">1</span>)   <span class="tok-com"># (2, 1) = หนึ่งค่าต่อคน</span>
+<span class="tok-fn">print</span>(scores + per_person)              <span class="tok-com"># บวกตามแถวแทนตามคอลัมน์</span></code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>[[75 80 75]
+ [60 90 82]]
+[71.  72.3]
+[[72 82 67]
+ [52 87 69]]</pre></div></div><div class="callout tip"><span class="box-title">จำง่าย ๆ</span><p>ถ้าต้องการให้ค่าหนึ่งชุดไปตามแถว (หนึ่งค่าต่อคน) ให้ <code>reshape(-1, 1)</code> ก่อน ไม่อย่างนั้น <code>(2, 3) + (2,)</code> จะเกิด ValueError: operands could not be broadcast</p></div></article>
+<article class="subtopic" id="topic-7"><h3>14.7 กรองข้อมูลด้วยเงื่อนไข</h3><p>เปรียบเทียบ array ได้ผลเป็น array ของ True/False ที่เรียกว่า mask นำ mask ไปใส่ในวงเล็บเหลี่ยมเพื่อดึงเฉพาะค่าที่ตรงเงื่อนไข หรือใช้แก้ค่าเฉพาะตำแหน่งนั้นก็ได้ หลายเงื่อนไขเชื่อมด้วย <code>&amp;</code> (และ) <code>|</code> (หรือ) <code>~</code> (ไม่) และต้องใส่วงเล็บครอบแต่ละเงื่อนไข</p><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_14_7.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+
+scores = np.<span class="tok-fn">array</span>([<span class="tok-num">45</span>, <span class="tok-num">78</span>, <span class="tok-num">92</span>, <span class="tok-num">30</span>, <span class="tok-num">66</span>, <span class="tok-num">88</span>])
+passed = scores &gt;= <span class="tok-num">50</span>
+<span class="tok-fn">print</span>(passed)
+<span class="tok-fn">print</span>(scores[passed], passed.<span class="tok-fn">sum</span>(), <span class="tok-str">"คนผ่าน"</span>)
+<span class="tok-fn">print</span>(scores[(scores &gt;= <span class="tok-num">60</span>) &amp; (scores &lt; <span class="tok-num">90</span>)])
+<span class="tok-fn">print</span>(np.<span class="tok-fn">where</span>(scores &gt;= <span class="tok-num">50</span>, <span class="tok-str">"ผ่าน"</span>, <span class="tok-str">"ตก"</span>))
+<span class="tok-fn">print</span>(np.<span class="tok-fn">clip</span>(scores + <span class="tok-num">15</span>, <span class="tok-num">0</span>, <span class="tok-num">100</span>))     <span class="tok-com"># บวก 15 แต่ไม่ให้เกิน 100</span>
+scores[scores &lt; <span class="tok-num">40</span>] = <span class="tok-num">40</span>                <span class="tok-com"># แก้เฉพาะค่าที่ตรงเงื่อนไข</span>
+<span class="tok-fn">print</span>(scores)</code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>[False  True  True False  True  True]
+[78 92 66 88] 4 คนผ่าน
+[78 66 88]
+[&#39;ตก&#39; &#39;ผ่าน&#39; &#39;ผ่าน&#39; &#39;ตก&#39; &#39;ผ่าน&#39; &#39;ผ่าน&#39;]
+[ 60  93 100  45  81 100]
+[45 78 92 40 66 88]</pre></div></div><div class="callout tip"><span class="box-title">จำง่าย ๆ</span><p><code>True</code> นับเป็น 1 จึงนับจำนวนที่ผ่านได้ด้วย <code>mask.sum()</code> และหาสัดส่วนได้ด้วย <code>mask.mean()</code></p></div></article>
+<article class="subtopic" id="topic-8"><h3>14.8 สรุปตามแกน (axis)</h3><p>ฟังก์ชันสรุป เช่น <code>sum</code>, <code>mean</code>, <code>max</code> ถ้าไม่ระบุ axis จะสรุปทั้ง array เป็นค่าเดียว <code>axis=0</code> สรุปลงตามแนวตั้งได้ผลต่อคอลัมน์ <code>axis=1</code> สรุปตามแนวนอนได้ผลต่อแถว <code>argmax</code> บอกตำแหน่งของค่ามากสุด และ <code>cumsum</code> ให้ผลรวมสะสม</p><figure class="concept-figure"><img src="../assets/figures/numpy-axis.svg" alt="array 2 มิติ 3 แถว 4 คอลัมน์: axis=0 รวมลงแนวตั้งได้ผลต่อคอลัมน์ axis=1 รวมตามแนวนอนได้ผลต่อแถว" loading="lazy"><figcaption>array 2 มิติ 3 แถว 4 คอลัมน์: axis=0 รวมลงแนวตั้งได้ผลต่อคอลัมน์ axis=1 รวมตามแนวนอนได้ผลต่อแถว</figcaption></figure><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_14_8.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+
+sales = np.<span class="tok-fn">array</span>([[<span class="tok-num">10</span>, <span class="tok-num">12</span>, <span class="tok-num">9</span>, <span class="tok-num">14</span>],
+                  [<span class="tok-num">7</span>, <span class="tok-num">8</span>, <span class="tok-num">11</span>, <span class="tok-num">6</span>],
+                  [<span class="tok-num">15</span>, <span class="tok-num">13</span>, <span class="tok-num">12</span>, <span class="tok-num">18</span>]])
+<span class="tok-fn">print</span>(sales.<span class="tok-fn">sum</span>())               <span class="tok-com"># ทั้งตาราง</span>
+<span class="tok-fn">print</span>(sales.<span class="tok-fn">sum</span>(axis=<span class="tok-num">0</span>))         <span class="tok-com"># ต่อคอลัมน์</span>
+<span class="tok-fn">print</span>(sales.<span class="tok-fn">sum</span>(axis=<span class="tok-num">1</span>))         <span class="tok-com"># ต่อแถว</span>
+<span class="tok-fn">print</span>(sales.<span class="tok-fn">argmax</span>(axis=<span class="tok-num">1</span>))      <span class="tok-com"># คอลัมน์ที่มากสุดของแต่ละแถว</span>
+<span class="tok-fn">print</span>(sales[<span class="tok-num">0</span>].<span class="tok-fn">cumsum</span>())         <span class="tok-com"># ผลรวมสะสมของแถวแรก</span></code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>135
 [32 33 32 38]
-[45 32 58]</pre></div></article><article class="subtopic" id="topic-6"><h3>14.6 ฟังก์ชันสถิติ</h3><p>array มีฟังก์ชันสรุปข้อมูลในตัว ใช้ได้ทั้งแบบ <code>arr.mean()</code> และ <code>np.mean(arr)</code></p><div class="table-wrap"><table class="concept-table"><thead><tr><th>ฟังก์ชัน</th><th>ได้</th></tr></thead><tbody><tr><td><code>sum()</code>, <code>mean()</code></td><td>ผลรวม, ค่าเฉลี่ย</td></tr><tr><td><code>max()</code>, <code>min()</code></td><td>ค่ามากสุด, น้อยสุด</td></tr><tr><td><code>argmax()</code>, <code>argmin()</code></td><td>ตำแหน่ง (index) ของค่ามากสุด/น้อยสุด</td></tr><tr><td><code>std()</code></td><td>ส่วนเบี่ยงเบนมาตรฐาน</td></tr><tr><td><code>np.round(arr, 2)</code></td><td>ปัดทศนิยม</td></tr></tbody></table></div><div class="mini-run"><pre class="copyable"><code>import numpy as np
+[45 32 58]
+[3 2 3]
+[10 22 31 45]</pre></div></div><div class="callout tip"><span class="box-title">จำง่าย ๆ</span><p>จำง่าย ๆ: axis คือมิติที่ถูก “ยุบหาย” ตาราง (3, 4) ยุบ axis=1 เหลือ (3,) คือหนึ่งค่าต่อแถว</p></div></article>
+<article class="subtopic" id="topic-9"><h3>14.9 สถิติ เรียงลำดับ และนับ</h3><p>NumPy มีฟังก์ชันสถิติพร้อมใช้ และ <code>argsort()</code> คืนตำแหน่ง (index) ที่เรียงจากน้อยไปมาก นำไปเปิดค่าอื่นที่ผูกกันอยู่ได้ เช่น เรียงชื่อตามคะแนน ส่วน <code>np.unique(..., return_counts=True)</code> นับว่าแต่ละค่ามีกี่ตัว</p><div class="table-scroll"><table class="comparison-table"><thead><tr><th>ฟังก์ชัน</th><th>ได้</th></tr></thead><tbody><tr><td><code>mean</code>, <code>median</code>, <code>std</code></td><td>ค่าเฉลี่ย มัธยฐาน ส่วนเบี่ยงเบนมาตรฐาน</td></tr><tr><td><code>np.percentile(a, 75)</code></td><td>ค่าที่ 75% ของข้อมูลต่ำกว่า</td></tr><tr><td><code>np.sort(a)</code></td><td>ค่าเรียงจากน้อยไปมาก</td></tr><tr><td><code>np.argsort(a)</code></td><td>index ที่ทำให้เรียงได้ (ใช้จัดอันดับ)</td></tr><tr><td><code>np.unique(a, return_counts=True)</code></td><td>ค่าที่ไม่ซ้ำ + จำนวนของแต่ละค่า</td></tr></tbody></table></div><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_14_9.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-temps = np.array([31.5, 33.2, 29.8, 34.6, 32.1])
-print(temps.mean().round(2), temps.max())
-print(&quot;ร้อนสุดวันที่&quot;, temps.argmax() + 1)</code></pre><pre class="mini-output" aria-label="Output">32.24 34.6
-ร้อนสุดวันที่ 4</pre></div></article>
-        <h2 class="examples-heading">ตัวอย่างโปรแกรม</h2>
+names = np.<span class="tok-fn">array</span>([<span class="tok-str">"Hobi"</span>, <span class="tok-str">"SUGA"</span>, <span class="tok-str">"RM"</span>, <span class="tok-str">"Jungkook"</span>, <span class="tok-str">"Mark"</span>, <span class="tok-str">"JayB"</span>])
+scores = np.<span class="tok-fn">array</span>([<span class="tok-num">82</span>, <span class="tok-num">67</span>, <span class="tok-num">91</span>, <span class="tok-num">75</span>, <span class="tok-num">58</span>, <span class="tok-num">75</span>])
+
+order = np.<span class="tok-fn">argsort</span>(scores)[::-<span class="tok-num">1</span>]       <span class="tok-com"># index เรียงจากมากไปน้อย</span>
+<span class="tok-fn">print</span>(names[order])
+<span class="tok-fn">print</span>(scores[order])
+<span class="tok-fn">print</span>(<span class="tok-str">"มัธยฐาน"</span>, np.<span class="tok-fn">median</span>(scores), <span class="tok-str">"P75"</span>, np.<span class="tok-fn">percentile</span>(scores, <span class="tok-num">75</span>))
+
+grades = np.<span class="tok-fn">array</span>([<span class="tok-str">"A"</span>, <span class="tok-str">"C"</span>, <span class="tok-str">"A"</span>, <span class="tok-str">"B"</span>, <span class="tok-str">"D"</span>, <span class="tok-str">"B"</span>])
+values, counts = np.<span class="tok-fn">unique</span>(grades, return_counts=<span class="tok-const">True</span>)
+<span class="tok-fn">print</span>(<span class="tok-fn">dict</span>(<span class="tok-fn">zip</span>(values.<span class="tok-fn">tolist</span>(), counts.<span class="tok-fn">tolist</span>())))</code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>[&#39;RM&#39; &#39;Hobi&#39; &#39;Jungkook&#39; &#39;JayB&#39; &#39;SUGA&#39; &#39;Mark&#39;]
+[91 82 75 75 67 58]
+มัธยฐาน 75.0 P75 80.25
+{&#39;A&#39;: 2, &#39;B&#39;: 2, &#39;C&#39;: 1, &#39;D&#39;: 1}</pre></div></div></article>
+<article class="subtopic" id="topic-10"><h3>14.10 ข้อผิดพลาดที่พบบ่อย</h3><p>ความผิดพลาดกับ NumPy ส่วนใหญ่มาจากเรื่องขนาด ชนิดข้อมูล และการที่ slice ยังเชื่อมกับข้อมูลเดิม (เรียกว่า view) ถ้าแก้ค่าใน slice ข้อมูลต้นฉบับจะเปลี่ยนตาม ให้ใช้ <code>.copy()</code> เมื่อต้องการแยกออกมา</p><div class="table-scroll"><table class="comparison-table"><thead><tr><th>อาการ</th><th>สาเหตุ</th><th>แก้โดย</th></tr></thead><tbody><tr><td><code>ValueError: operands could not be broadcast</code></td><td>shape ไม่เข้ากัน</td><td>ตรวจ <code>.shape</code> แล้ว <code>reshape</code></td></tr><tr><td><code>ValueError: The truth value of an array ... is ambiguous</code></td><td>ใช้ <code>and</code>/<code>or</code>/<code>if</code> กับ array</td><td>ใช้ <code>&amp;</code> <code>|</code> และ <code>.any()</code>/<code>.all()</code></td></tr><tr><td>ทศนิยมหายไป</td><td>ใส่ทศนิยมลง array ชนิด int</td><td>สร้างเป็น float ตั้งแต่แรก</td></tr><tr><td>ข้อมูลเดิมเปลี่ยนเอง</td><td>แก้ค่าใน slice (view)</td><td>ใช้ <code>.copy()</code></td></tr></tbody></table></div><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_14_10.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+
+a = np.<span class="tok-fn">array</span>([<span class="tok-num">10</span>, <span class="tok-num">20</span>, <span class="tok-num">30</span>, <span class="tok-num">40</span>])
+part = a[<span class="tok-num">1</span>:<span class="tok-num">3</span>]          <span class="tok-com"># slice คือ view ของข้อมูลเดิม</span>
+part[<span class="tok-num">0</span>] = <span class="tok-num">99</span>
+<span class="tok-fn">print</span>(a)               <span class="tok-com"># a เปลี่ยนตามด้วย</span>
+safe = a[<span class="tok-num">1</span>:<span class="tok-num">3</span>].<span class="tok-fn">copy</span>()   <span class="tok-com"># copy() แยกออกจากของเดิม</span>
+safe[<span class="tok-num">0</span>] = <span class="tok-num">0</span>
+<span class="tok-fn">print</span>(a)
+
+b = np.<span class="tok-fn">array</span>([<span class="tok-num">1</span>, <span class="tok-num">2</span>, <span class="tok-num">3</span>])
+b[<span class="tok-num">0</span>] = <span class="tok-num">2.9</span>             <span class="tok-com"># array ชนิด int จึงถูกตัดเหลือ 2</span>
+<span class="tok-fn">print</span>(b, b.dtype)</code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>[10 99 30 40]
+[10 99 30 40]
+[2 2 3] int64</pre></div></div></article>
+<article class="subtopic" id="topic-11"><h3>14.11 NumPy ในงานจริง</h3><p>ข้อมูลแทบทุกชนิดในคอมพิวเตอร์เก็บเป็นตัวเลขหลายมิติได้ จึงใช้ NumPy ได้กว้างมาก ตัวอย่างนี้สร้างภาพขาวดำ 8×8 จาก array (0 = ดำ, 255 = ขาว) แล้วกลับสีด้วยการลบเพียงครั้งเดียว ซึ่งเป็นหลักเดียวกับโปรแกรมแต่งภาพ</p><div class="table-scroll"><table class="comparison-table"><thead><tr><th>งาน</th><th>ข้อมูลในรูป array</th></tr></thead><tbody><tr><td>ตารางข้อมูล (pandas)</td><td>แต่ละคอลัมน์คือ array 1 มิติ</td></tr><tr><td>ภาพถ่าย</td><td>array (สูง, กว้าง, 3) ค่าสี RGB 0–255</td></tr><tr><td>เสียง</td><td>array 1 มิติของความดังในแต่ละช่วงเวลา</td></tr><tr><td>Machine Learning</td><td>X เป็น array (ตัวอย่าง, feature)</td></tr><tr><td>จำลองสถานการณ์</td><td>สุ่มค่าจำนวนมากด้วย <code>rng</code> แล้วสรุปผล</td></tr></tbody></table></div><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_14_11.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+<span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
+
+img = np.<span class="tok-fn">zeros</span>((<span class="tok-num">8</span>, <span class="tok-num">8</span>), dtype=<span class="tok-fn">int</span>)   <span class="tok-com"># ภาพดำทั้งภาพ</span>
+img[<span class="tok-num">2</span>:<span class="tok-num">6</span>, <span class="tok-num">2</span>:<span class="tok-num">6</span>] = <span class="tok-num">255</span>                 <span class="tok-com"># สี่เหลี่ยมสีขาวตรงกลาง</span>
+img[<span class="tok-num">3</span>:<span class="tok-num">5</span>, <span class="tok-num">3</span>:<span class="tok-num">5</span>] = <span class="tok-num">120</span>                 <span class="tok-com"># จุดสีเทาด้านใน</span>
+<span class="tok-fn">print</span>(img.shape, img.<span class="tok-fn">min</span>(), img.<span class="tok-fn">max</span>())
+
+fig, (left, right) = plt.<span class="tok-fn">subplots</span>(<span class="tok-num">1</span>, <span class="tok-num">2</span>, figsize=(<span class="tok-num">6</span>, <span class="tok-num">3</span>))
+left.<span class="tok-fn">imshow</span>(img, cmap=<span class="tok-str">"gray"</span>, vmin=<span class="tok-num">0</span>, vmax=<span class="tok-num">255</span>)
+left.<span class="tok-fn">set_title</span>(<span class="tok-str">"img"</span>)
+right.<span class="tok-fn">imshow</span>(<span class="tok-num">255</span> - img, cmap=<span class="tok-str">"gray"</span>, vmin=<span class="tok-num">0</span>, vmax=<span class="tok-num">255</span>)
+right.<span class="tok-fn">set_title</span>(<span class="tok-str">"255 - img"</span>)
+<span class="tok-kw">for</span> ax <span class="tok-kw">in</span> (left, right):
+    ax.<span class="tok-fn">set_xticks</span>([])        <span class="tok-com"># ซ่อนตัวเลขแกน แต่คงกรอบภาพไว้</span>
+    ax.<span class="tok-fn">set_yticks</span>([])
+plt.<span class="tok-fn">show</span>()</code></pre></div></div><div class="source-output is-gui"><span>ผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</span><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch14-image.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div><pre class="gui-console">(8, 8) 0 255</pre></div></div></article>
+      </section>
+      <section class="lesson-section" id="chapter-examples" aria-labelledby="examples-heading">
+        <h2 id="examples-heading">ตัวอย่างโปรแกรม</h2>
         <div class="source-example">
-    <h4>ตัวอย่าง 14.1 · ปรับคะแนนทั้งห้อง</h4>
-    <p class="concept-line">บวกคะแนนพิเศษ จำกัดไม่ให้เกิน 100 และสรุปผลโดยไม่ใช้ลูปเลย</p>
+    <h4><span class="ex-num">ตัวอย่าง 14.1</span>วิเคราะห์คะแนนทั้งห้อง</h4>
+    <p class="concept-line">คะแนน 3 ครั้งของนักเรียน 6 คน → คะแนนถ่วงน้ำหนัก → ตัดเกรด → จัดอันดับ โดยไม่ใช้ลูปในการคำนวณเลย</p>
     
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>import numpy as np
+    <div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">example_14_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-scores = np.array([45, 78, 92, 30, 66, 88, 97])
-adjusted = np.minimum(scores + 5, 100)
+names = np.<span class="tok-fn">array</span>([<span class="tok-str">"Hobi"</span>, <span class="tok-str">"SUGA"</span>, <span class="tok-str">"RM"</span>, <span class="tok-str">"Jungkook"</span>, <span class="tok-str">"Mark"</span>, <span class="tok-str">"JayB"</span>])
+scores = np.<span class="tok-fn">array</span>([[<span class="tok-num">78</span>, <span class="tok-num">85</span>, <span class="tok-num">90</span>],
+                   [<span class="tok-num">62</span>, <span class="tok-num">70</span>, <span class="tok-num">58</span>],
+                   [<span class="tok-num">95</span>, <span class="tok-num">88</span>, <span class="tok-num">92</span>],
+                   [<span class="tok-num">45</span>, <span class="tok-num">52</span>, <span class="tok-num">60</span>],
+                   [<span class="tok-num">88</span>, <span class="tok-num">79</span>, <span class="tok-num">84</span>],
+                   [<span class="tok-num">70</span>, <span class="tok-num">65</span>, <span class="tok-num">73</span>]])
+weights = np.<span class="tok-fn">array</span>([<span class="tok-num">0.3</span>, <span class="tok-num">0.3</span>, <span class="tok-num">0.4</span>])
 
-print(&quot;ก่อน:&quot;, scores)
-print(&quot;หลัง:&quot;, adjusted)
-print(f&quot;เฉลี่ย {scores.mean():.1f} → {adjusted.mean():.1f}&quot;)
-print(&quot;ผ่าน&quot;, (adjusted &gt;= 50).sum(), &quot;จาก&quot;, adjusted.size, &quot;คน&quot;)</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>ก่อน: [45 78 92 30 66 88 97]
-หลัง: [ 50  83  97  35  71  93 100]
-เฉลี่ย 70.9 → 75.6
-ผ่าน 6 จาก 7 คน</pre></div>
-    </div>
-    <div class="walkthrough"><strong>อธิบาย</strong><ol><li><code>scores + 5</code> บวกทุกคนพร้อมกัน</li><li><code>np.minimum(..., 100)</code> เลือกค่าที่น้อยกว่าทีละตำแหน่ง ค่าที่เกิน 100 จึงกลายเป็น 100</li><li><code>(adjusted &gt;= 50).sum()</code> นับ True เป็นจำนวนคนผ่าน</li></ol></div>
+final = (scores * weights).<span class="tok-fn">sum</span>(axis=<span class="tok-num">1</span>)
+grades = np.<span class="tok-fn">select</span>([final &gt;= <span class="tok-num">80</span>, final &gt;= <span class="tok-num">70</span>, final &gt;= <span class="tok-num">60</span>, final &gt;= <span class="tok-num">50</span>],
+                   [<span class="tok-str">"A"</span>, <span class="tok-str">"B"</span>, <span class="tok-str">"C"</span>, <span class="tok-str">"D"</span>], default=<span class="tok-str">"F"</span>)
+order = np.<span class="tok-fn">argsort</span>(final)[::-<span class="tok-num">1</span>]
+
+<span class="tok-fn">print</span>(<span class="tok-str">f"เฉลี่ยทั้งห้อง {final.mean():.2f}  ส่วนเบี่ยงเบน {final.std():.2f}"</span>)
+<span class="tok-fn">print</span>(<span class="tok-str">"เฉลี่ยรายครั้ง:"</span>, scores.<span class="tok-fn">mean</span>(axis=<span class="tok-num">0</span>).<span class="tok-fn">round</span>(<span class="tok-num">1</span>))
+<span class="tok-fn">print</span>(<span class="tok-str">"ครั้งที่ยากที่สุด: ครั้งที่"</span>, scores.<span class="tok-fn">mean</span>(axis=<span class="tok-num">0</span>).<span class="tok-fn">argmin</span>() + <span class="tok-num">1</span>)
+<span class="tok-kw">for</span> rank, i <span class="tok-kw">in</span> <span class="tok-fn">enumerate</span>(order, start=<span class="tok-num">1</span>):
+    <span class="tok-fn">print</span>(<span class="tok-str">f"{rank}. {names[i]:&lt;9}{final[i]:6.1f}  {grades[i]}"</span>)</code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>เฉลี่ยทั้งห้อง 74.32  ส่วนเบี่ยงเบน 13.58
+เฉลี่ยรายครั้ง: [73.  73.2 76.2]
+ครั้งที่ยากที่สุด: ครั้งที่ 1
+1. RM         91.7  A
+2. Hobi       84.9  A
+3. Mark       83.7  A
+4. JayB       69.7  C
+5. SUGA       62.8  C
+6. Jungkook   53.1  D</pre></div></div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li><code>scores * weights</code> ใช้ broadcasting คูณน้ำหนักให้ทุกแถว แล้ว <code>sum(axis=1)</code> รวมเป็นหนึ่งค่าต่อคน</li><li><code>np.select</code> คือ if/elif หลายชั้นแบบทำทั้ง array: เลือกค่าตามเงื่อนไขแรกที่เป็นจริง</li><li><code>argsort()[::-1]</code> ได้ลำดับ index จากคะแนนมากไปน้อย ใช้เปิดทั้งชื่อ คะแนน และเกรดที่ตำแหน่งเดียวกัน</li><li>ลูป for ที่เหลือใช้แค่จัดรูปแบบการแสดงผล ไม่ได้ใช้คำนวณ</li></ol></div>
   </div>
 <div class="source-example">
-    <h4>ตัวอย่าง 14.2 · ยอดขายรายสาขา</h4>
-    <p class="concept-line">ใช้ array 2 มิติ (สาขา × วัน) แล้วสรุปตามแกน</p>
+    <h4><span class="ex-num">ตัวอย่าง 14.2</span>ยอดขายรายสาขาและอัตราการเติบโต</h4>
+    <p class="concept-line">ตารางสาขา × เดือน: หายอดรายเดือน การเติบโตเทียบเดือนก่อน สัดส่วนของแต่ละสาขา และจุดที่ขายดีที่สุด</p>
     
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>import numpy as np
+    <div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">example_14_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-branches = [&quot;Bangkok&quot;, &quot;Chiang Mai&quot;, &quot;Phuket&quot;]
-sales = np.array([[120, 135, 98, 150],
-                  [80, 92, 101, 88],
-                  [60, 75, 70, 95]])
+branches = np.<span class="tok-fn">array</span>([<span class="tok-str">"Bangkok"</span>, <span class="tok-str">"Chiang Mai"</span>, <span class="tok-str">"Phuket"</span>])
+months = np.<span class="tok-fn">array</span>([<span class="tok-str">"Jan"</span>, <span class="tok-str">"Feb"</span>, <span class="tok-str">"Mar"</span>, <span class="tok-str">"Apr"</span>])
+sales = np.<span class="tok-fn">array</span>([[<span class="tok-num">120</span>, <span class="tok-num">135</span>, <span class="tok-num">98</span>, <span class="tok-num">150</span>],
+                  [<span class="tok-num">80</span>, <span class="tok-num">92</span>, <span class="tok-num">101</span>, <span class="tok-num">88</span>],
+                  [<span class="tok-num">60</span>, <span class="tok-num">75</span>, <span class="tok-num">70</span>, <span class="tok-num">95</span>]])        <span class="tok-com"># หน่วย: พันบาท</span>
 
-per_branch = sales.sum(axis=1)
-per_day = sales.sum(axis=0)
-best = per_branch.argmax()
+monthly = sales.<span class="tok-fn">sum</span>(axis=<span class="tok-num">0</span>)
+growth = np.<span class="tok-fn">diff</span>(monthly) / monthly[:-<span class="tok-num">1</span>] * <span class="tok-num">100</span>
+share = sales.<span class="tok-fn">sum</span>(axis=<span class="tok-num">1</span>) / sales.<span class="tok-fn">sum</span>() * <span class="tok-num">100</span>
 
-print(&quot;รวมรายสาขา:&quot;, per_branch)
-print(&quot;รวมรายวัน:&quot;, per_day)
-print(f&quot;สาขาที่ขายดีสุด: {branches[best]} ({per_branch[best]})&quot;)</code></pre></div>
-      <div class="output-field"><span>Output</span><pre>รวมรายสาขา: [503 361 300]
-รวมรายวัน: [260 302 269 333]
-สาขาที่ขายดีสุด: Bangkok (503)</pre></div>
-    </div>
-    <div class="walkthrough"><strong>อธิบาย</strong><ol><li>แถว = สาขา คอลัมน์ = วัน</li><li><code>axis=1</code> รวมแนวนอนได้ยอดต่อสาขา <code>axis=0</code> รวมแนวตั้งได้ยอดต่อวัน</li><li><code>argmax()</code> ให้ตำแหน่ง นำไปเปิดชื่อสาขาจาก list</li></ol></div>
+<span class="tok-fn">print</span>(<span class="tok-str">"ยอดรวมรายเดือน:"</span>, monthly)
+<span class="tok-kw">for</span> month, g <span class="tok-kw">in</span> <span class="tok-fn">zip</span>(months[<span class="tok-num">1</span>:], growth):
+    <span class="tok-fn">print</span>(<span class="tok-str">f"  {month}: {g:+.1f}% จากเดือนก่อน"</span>)
+<span class="tok-kw">for</span> name, s <span class="tok-kw">in</span> <span class="tok-fn">zip</span>(branches, share):
+    <span class="tok-fn">print</span>(<span class="tok-str">f"  {name:&lt;11}{s:5.1f}% ของยอดทั้งหมด"</span>)
+row, col = np.<span class="tok-fn">unravel_index</span>(sales.<span class="tok-fn">argmax</span>(), sales.shape)
+<span class="tok-fn">print</span>(<span class="tok-str">f"สูงสุด {sales.max()} พันบาท: {branches[row]} เดือน {months[col]}"</span>)</code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>ยอดรวมรายเดือน: [260 302 269 333]
+  Feb: +16.2% จากเดือนก่อน
+  Mar: -10.9% จากเดือนก่อน
+  Apr: +23.8% จากเดือนก่อน
+  Bangkok     43.2% ของยอดทั้งหมด
+  Chiang Mai  31.0% ของยอดทั้งหมด
+  Phuket      25.8% ของยอดทั้งหมด
+สูงสุด 150 พันบาท: Bangkok เดือน Apr</pre></div></div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li><code>np.diff</code> หาผลต่างของค่าที่อยู่ติดกัน หารด้วยเดือนก่อนหน้า (<code>monthly[:-1]</code>) ได้อัตราการเติบโต</li><li><code>:+.1f</code> แสดงเครื่องหมาย + หรือ − ทุกครั้ง อ่านทิศทางได้ทันที</li><li><code>argmax()</code> ของตาราง 2 มิติให้ตำแหน่งแบบนับเรียง <code>np.unravel_index</code> แปลงกลับเป็น (แถว, คอลัมน์)</li></ol></div>
+  </div>
+<div class="source-example">
+    <h4><span class="ex-num">ตัวอย่าง 14.3</span>ข้อมูลเซ็นเซอร์: ทำให้เรียบและหาค่าผิดปกติ</h4>
+    <p class="concept-line">อุณหภูมิ 48 ชั่วโมงที่มีสัญญาณรบกวน หาค่าเฉลี่ยเคลื่อนที่ แล้วตรวจจุดที่ห่างจากแนวโน้มมากผิดปกติ</p>
+    
+    <div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">example_14_3.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+<span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
+
+rng = np.random.<span class="tok-fn">default_rng</span>(<span class="tok-num">7</span>)
+hours = np.<span class="tok-fn">arange</span>(<span class="tok-num">48</span>)
+temp = <span class="tok-num">30</span> + <span class="tok-num">3</span> * np.<span class="tok-fn">sin</span>(hours / <span class="tok-num">24</span> * <span class="tok-num">2</span> * np.pi) + rng.<span class="tok-fn">normal</span>(<span class="tok-num">0</span>, <span class="tok-num">0.4</span>, <span class="tok-num">48</span>)
+temp[[<span class="tok-num">15</span>, <span class="tok-num">33</span>]] += [<span class="tok-num">4</span>, -<span class="tok-num">5</span>]                  <span class="tok-com"># จำลองค่าผิดปกติจากเซ็นเซอร์</span>
+
+smooth = np.<span class="tok-fn">convolve</span>(temp, np.<span class="tok-fn">ones</span>(<span class="tok-num">5</span>) / <span class="tok-num">5</span>, mode=<span class="tok-str">"same"</span>)
+residual = temp - smooth
+outliers = np.<span class="tok-fn">abs</span>(residual) &gt; <span class="tok-num">2.5</span> * residual[<span class="tok-num">2</span>:-<span class="tok-num">2</span>].<span class="tok-fn">std</span>()
+outliers[[<span class="tok-num">0</span>, <span class="tok-num">1</span>, -<span class="tok-num">2</span>, -<span class="tok-num">1</span>]] = <span class="tok-const">False</span>           <span class="tok-com"># ขอบข้อมูลเฉลี่ยได้ไม่ครบ 5 ค่า</span>
+<span class="tok-fn">print</span>(<span class="tok-str">"ชั่วโมงที่ผิดปกติ:"</span>, hours[outliers])
+<span class="tok-fn">print</span>(<span class="tok-str">f"เฉลี่ย {temp.mean():.2f} °C  สูงสุด {temp.max():.2f} °C"</span>)
+
+plt.<span class="tok-fn">figure</span>(figsize=(<span class="tok-num">8</span>, <span class="tok-num">3.2</span>))
+plt.<span class="tok-fn">plot</span>(hours, temp, alpha=<span class="tok-num">0.6</span>, label=<span class="tok-str">"sensor"</span>)
+plt.<span class="tok-fn">plot</span>(hours[<span class="tok-num">2</span>:-<span class="tok-num">2</span>], smooth[<span class="tok-num">2</span>:-<span class="tok-num">2</span>], label=<span class="tok-str">"moving average (5 h)"</span>)
+plt.<span class="tok-fn">scatter</span>(hours[outliers], temp[outliers], color=<span class="tok-str">"red"</span>, zorder=<span class="tok-num">3</span>, label=<span class="tok-str">"outlier"</span>)
+plt.<span class="tok-fn">xlabel</span>(<span class="tok-str">"hour"</span>)
+plt.<span class="tok-fn">ylabel</span>(<span class="tok-str">"°C"</span>)
+plt.<span class="tok-fn">legend</span>()
+plt.<span class="tok-fn">show</span>()</code></pre></div></div><div class="source-output is-gui"><span>ผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</span><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch14-sensor.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div><pre class="gui-console">ชั่วโมงที่ผิดปกติ: [15 33]
+เฉลี่ย 29.85 °C  สูงสุด 33.43 °C</pre></div></div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li><code>np.convolve(temp, np.ones(5) / 5, mode=&quot;same&quot;)</code> คือค่าเฉลี่ยของ 5 ชั่วโมงรอบ ๆ แต่ละจุด ทำให้เส้นเรียบขึ้น</li><li><code>residual</code> คือระยะห่างจากแนวโน้ม จุดที่ห่างเกิน 2.5 เท่าของส่วนเบี่ยงเบนมาตรฐานถือว่าผิดปกติ</li><li>2 ค่าแรกและ 2 ค่าท้ายมีข้อมูลรอบ ๆ ไม่ครบ 5 ค่า (<code>mode=&quot;same&quot;</code> เติม 0 ให้) ค่าเฉลี่ยตรงขอบจึงต่ำผิดปกติ ทั้งการตรวจและการวาดจึงใช้เฉพาะ <code>[2:-2]</code></li><li>ทั้งหมดเป็นการคำนวณทั้ง array ใช้ได้เหมือนเดิมแม้ข้อมูลมีเป็นล้านจุด</li></ol></div>
+  </div>
+<div class="source-example">
+    <h4><span class="ex-num">ตัวอย่าง 14.4</span>จำลองทอยลูกเต๋า 100,000 ครั้ง</h4>
+    <p class="concept-line">ใช้การสุ่มจำนวนมากประมาณความน่าจะเป็น (Monte Carlo) แล้วเทียบกับทฤษฎี</p>
+    
+    <div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">example_14_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+<span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
+
+rng = np.random.<span class="tok-fn">default_rng</span>(<span class="tok-num">2024</span>)
+rolls = rng.<span class="tok-fn">integers</span>(<span class="tok-num">1</span>, <span class="tok-num">7</span>, size=(<span class="tok-num">100_000</span>, <span class="tok-num">2</span>))    <span class="tok-com"># 100,000 แถว × ลูกเต๋า 2 ลูก</span>
+sums = rolls.<span class="tok-fn">sum</span>(axis=<span class="tok-num">1</span>)
+counts = np.<span class="tok-fn">bincount</span>(sums, minlength=<span class="tok-num">13</span>)[<span class="tok-num">2</span>:]     <span class="tok-com"># นับผลรวม 2 ถึง 12</span>
+prob = counts / counts.<span class="tok-fn">sum</span>()
+
+<span class="tok-fn">print</span>(<span class="tok-str">f"โอกาสได้ 7  ≈ {prob[5]:.3f} (ทฤษฎี 6/36 = {6 / 36:.3f})"</span>)
+<span class="tok-fn">print</span>(<span class="tok-str">f"โอกาสได้ 10 ขึ้นไป ≈ {(sums &gt;= 10).mean():.3f} (ทฤษฎี 6/36 = {6 / 36:.3f})"</span>)
+<span class="tok-fn">print</span>(<span class="tok-str">f"โอกาสได้ดับเบิล ≈ {(rolls[:, 0] == rolls[:, 1]).mean():.3f}"</span>)
+
+plt.<span class="tok-fn">bar</span>(np.<span class="tok-fn">arange</span>(<span class="tok-num">2</span>, <span class="tok-num">13</span>), prob, color=<span class="tok-str">"#3776ab"</span>)
+plt.<span class="tok-fn">xticks</span>(<span class="tok-fn">range</span>(<span class="tok-num">2</span>, <span class="tok-num">13</span>))
+plt.<span class="tok-fn">xlabel</span>(<span class="tok-str">"sum of two dice"</span>)
+plt.<span class="tok-fn">ylabel</span>(<span class="tok-str">"probability"</span>)
+plt.<span class="tok-fn">show</span>()</code></pre></div></div><div class="source-output is-gui"><span>ผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</span><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch14-dice.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div><pre class="gui-console">โอกาสได้ 7  ≈ 0.167 (ทฤษฎี 6/36 = 0.167)
+โอกาสได้ 10 ขึ้นไป ≈ 0.166 (ทฤษฎี 6/36 = 0.167)
+โอกาสได้ดับเบิล ≈ 0.165</pre></div></div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li>สร้างผลทอยทั้งหมดในคำสั่งเดียวเป็นตาราง (100000, 2) ไม่ต้องวนลูปแสนรอบ</li><li><code>np.bincount</code> นับว่าแต่ละผลรวมเกิดกี่ครั้ง แล้วหารด้วยจำนวนทั้งหมดได้ความน่าจะเป็น</li><li><code>(เงื่อนไข).mean()</code> คือสัดส่วนของ True ใช้ประมาณความน่าจะเป็นของเหตุการณ์ใดก็ได้</li></ol></div>
+  </div>
+<div class="source-example">
+    <h4><span class="ex-num">ตัวอย่าง 14.5</span>หาร้านที่ใกล้ลูกค้าที่สุด</h4>
+    <p class="concept-line">คำนวณระยะทางจากลูกค้าทุกคนไปทุกร้านพร้อมกันด้วย broadcasting 3 มิติ</p>
+    
+    <div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">example_14_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+
+shops = np.<span class="tok-fn">array</span>([[<span class="tok-num">2.0</span>, <span class="tok-num">3.0</span>], [<span class="tok-num">8.0</span>, <span class="tok-num">1.0</span>], [<span class="tok-num">5.0</span>, <span class="tok-num">7.0</span>], [<span class="tok-num">1.0</span>, <span class="tok-num">9.0</span>]])   <span class="tok-com"># พิกัด (x, y) กม.</span>
+shop_names = np.<span class="tok-fn">array</span>([<span class="tok-str">"A"</span>, <span class="tok-str">"B"</span>, <span class="tok-str">"C"</span>, <span class="tok-str">"D"</span>])
+customers = np.<span class="tok-fn">array</span>([[<span class="tok-num">1.0</span>, <span class="tok-num">1.0</span>], [<span class="tok-num">6.0</span>, <span class="tok-num">6.0</span>], [<span class="tok-num">9.0</span>, <span class="tok-num">2.0</span>]])
+
+diff = customers[:, np.newaxis, :] - shops[np.newaxis, :, :]   <span class="tok-com"># (3,1,2) - (1,4,2) → (3,4,2)</span>
+dist = np.<span class="tok-fn">sqrt</span>((diff ** <span class="tok-num">2</span>).<span class="tok-fn">sum</span>(axis=<span class="tok-num">2</span>))                         <span class="tok-com"># (3, 4): ลูกค้า × ร้าน</span>
+<span class="tok-fn">print</span>(dist.<span class="tok-fn">round</span>(<span class="tok-num">2</span>))
+
+nearest = dist.<span class="tok-fn">argmin</span>(axis=<span class="tok-num">1</span>)
+<span class="tok-kw">for</span> k, i <span class="tok-kw">in</span> <span class="tok-fn">enumerate</span>(nearest):
+    <span class="tok-fn">print</span>(<span class="tok-str">f"ลูกค้า {k + 1} {customers[k]} → ร้าน {shop_names[i]} ({dist[k, i]:.2f} กม.)"</span>)</code></pre></div></div><div class="source-output"><span>ผลลัพธ์</span><pre>[[ 2.24  7.    7.21  8.  ]
+ [ 5.    5.39  1.41  5.83]
+ [ 7.07  1.41  6.4  10.63]]
+ลูกค้า 1 [1. 1.] → ร้าน A (2.24 กม.)
+ลูกค้า 2 [6. 6.] → ร้าน C (1.41 กม.)
+ลูกค้า 3 [9. 2.] → ร้าน B (1.41 กม.)</pre></div></div>
+    <div class="walkthrough"><strong>อธิบาย</strong><ol><li><code>np.newaxis</code> เพิ่มมิติขนาด 1 ทำให้ลูกค้า (3,1,2) กับร้าน (1,4,2) ยืดเป็น (3,4,2) ได้ทุกคู่ลูกค้า–ร้าน</li><li>ระยะทาง = √(Δx² + Δy²) คำนวณทุกคู่พร้อมกัน ได้ตาราง 3 × 4</li><li><code>argmin(axis=1)</code> เลือกร้านที่ระยะน้อยสุดของแต่ละลูกค้า แนวคิดเดียวกันนี้ใช้ใน KNN ของบทที่ 17</li></ol></div>
   </div>
       </section>
-      <section class="exercise-section" id="chapter-exercises" aria-labelledby="exercise-heading">
-        <h2 id="exercise-heading">แบบฝึกหัดท้ายบท</h2>
-        <p class="exercise-intro">เรียงจากง่ายไปยาก ลองเขียนเองให้ได้ output ตรงตัวอย่างก่อน แล้วค่อยเปิดเฉลย</p>
-        <div class="exercise-list"><article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 14.1</span><strong>แปลงสกุลเงิน</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>ราคาสินค้าเป็นดอลลาร์ <code>[12.5, 40, 7.99, 120]</code> ให้แปลงเป็นบาท (1 USD = 35.5 บาท) ปัดทศนิยม 2 ตำแหน่ง</p>
+      <section class="chapter-end" id="chapter-exercises" aria-labelledby="end-heading">
+        <h2 id="end-heading">แบบฝึกหัดท้ายบท</h2>
+        <p>เรียงจากง่ายไปยาก ลองเขียนเองให้ได้ผลลัพธ์ตรงตัวอย่างก่อน แล้วค่อยเปิดเฉลย</p>
+        <div class="level-legend">ระดับความยาก: <span class="level level-1">ง่าย</span> <span class="level level-2">ปานกลาง</span> <span class="level level-3">ท้าทาย</span></div>
+        <article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 14.1</span>แปลงสกุลเงิน<span class="level level-1">ง่าย</span></h3>
+    <div class="ex-body"><p>ราคาสินค้าเป็นดอลลาร์ <code>[12.5, 40, 7.99, 120]</code> ให้แปลงเป็นบาท (1 USD = 35.5 บาท) ปัดทศนิยม 2 ตำแหน่ง</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>array ราคา USD และอัตราแลกเปลี่ยน</dd></div><div><dt>ต้องหา</dt><dd>array ราคาเป็นบาท</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>สร้าง <code>np.array</code></li><li>คูณด้วย 35.5 ทั้ง array</li><li><code>np.round(..., 2)</code></li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>[ 443.75 1420.    283.64 4260.  ]</pre></div>
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>array ราคา USD และอัตราแลกเปลี่ยน</dd></div><div><dt>ต้องหา</dt><dd>array ราคาเป็นบาท</dd></div></dl><strong>วิธีคิด</strong><ol><li>สร้าง <code>np.array</code></li><li>คูณด้วย 35.5 ทั้ง array</li><li><code>np.round(..., 2)</code></li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>[ 443.75 1420.    283.64 4260.  ]</pre></div>
     <div class="answer-gate" data-answer-id="14.1">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -215,20 +387,21 @@ print(f&quot;สาขาที่ขายดีสุด: {branches[best]} ({p
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>คูณครั้งเดียวได้ทุกค่า ไม่ต้องเขียนลูปเหมือน list</p><pre class="copyable"><code>import numpy as np
+        <p>คูณครั้งเดียวได้ทุกค่า ไม่ต้องเขียนลูปเหมือน list</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-usd = np.array([12.5, 40, 7.99, 120])
-thb = np.round(usd * 35.5, 2)
-print(thb)</code></pre>
+usd = np.<span class="tok-fn">array</span>([<span class="tok-num">12.5</span>, <span class="tok-num">40</span>, <span class="tok-num">7.99</span>, <span class="tok-num">120</span>])
+thb = np.<span class="tok-fn">round</span>(usd * <span class="tok-num">35.5</span>, <span class="tok-num">2</span>)
+<span class="tok-fn">print</span>(thb)</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 14.2</span><strong>สถิติอุณหภูมิ</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>อุณหภูมิ 7 วัน <code>[31, 33, 29, 35, 34, 30, 32]</code> ให้หาค่าเฉลี่ย ค่าสูงสุด และวันที่ร้อนที่สุด (วันที่ 1–7)</p>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 14.2</span>สถิติอุณหภูมิ<span class="level level-1">ง่าย</span></h3>
+    <div class="ex-body"><p>อุณหภูมิ 7 วัน <code>[31, 33, 29, 35, 34, 30, 32]</code> ให้หาค่าเฉลี่ย ค่าสูงสุด วันที่ร้อนที่สุด (วันที่ 1–7) และจำนวนวันที่สูงกว่าค่าเฉลี่ย</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>array อุณหภูมิ 7 ค่า</dd></div><div><dt>ต้องหา</dt><dd><code>เฉลี่ย 32.0 สูงสุด 35 (วันที่ 4)</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>mean()</code>, <code>max()</code></li><li><code>argmax()</code> ได้ index เริ่ม 0 ต้อง +1 เป็นวันที่</li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>เฉลี่ย 32.0 สูงสุด 35 (วันที่ 4)</pre></div>
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>array อุณหภูมิ 7 ค่า</dd></div><div><dt>ต้องหา</dt><dd><code>เฉลี่ย 32.0 สูงสุด 35 (วันที่ 4)</code> และ <code>สูงกว่าค่าเฉลี่ย 3 วัน</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>mean()</code>, <code>max()</code></li><li><code>argmax()</code> ได้ index เริ่ม 0 ต้อง +1 เป็นวันที่</li><li><code>(temps &gt; temps.mean()).sum()</code> นับวัน</li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>เฉลี่ย 32.0 สูงสุด 35 (วันที่ 4)
+สูงกว่าค่าเฉลี่ย 3 วัน</pre></div>
     <div class="answer-gate" data-answer-id="14.2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -237,20 +410,23 @@ print(thb)</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>argmax</code> บอกตำแหน่ง ไม่ใช่ค่า ใช้เมื่ออยากรู้ว่าค่ามากสุดอยู่ที่ไหน</p><pre class="copyable"><code>import numpy as np
+        <p><code>argmax</code> บอกตำแหน่ง ไม่ใช่ค่า และผลเปรียบเทียบเป็น True/False ที่นำมา <code>sum()</code> นับได้ทันที</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-temps = np.array([31, 33, 29, 35, 34, 30, 32])
-print(f&quot;เฉลี่ย {temps.mean():.1f} สูงสุด {temps.max()} (วันที่ {temps.argmax() + 1})&quot;)</code></pre>
+temps = np.<span class="tok-fn">array</span>([<span class="tok-num">31</span>, <span class="tok-num">33</span>, <span class="tok-num">29</span>, <span class="tok-num">35</span>, <span class="tok-num">34</span>, <span class="tok-num">30</span>, <span class="tok-num">32</span>])
+<span class="tok-fn">print</span>(<span class="tok-str">f"เฉลี่ย {temps.mean():.1f} สูงสุด {temps.max()} (วันที่ {temps.argmax() + 1})"</span>)
+<span class="tok-fn">print</span>(<span class="tok-str">f"สูงกว่าค่าเฉลี่ย {(temps &gt; temps.mean()).sum()} วัน"</span>)</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 14.3</span><strong>คัดสินค้าราคาเกินงบ</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>ราคาสินค้า <code>[250, 1200, 89, 560, 3200, 45]</code> งบ 600 บาท ให้แสดงสินค้าที่ซื้อได้ จำนวน และราคารวมถ้าซื้อทุกชิ้นที่ซื้อได้</p>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 14.3</span>สำรวจตารางข้อมูล<span class="level level-1">ง่าย</span></h3>
+    <div class="ex-body"><p>สร้างตัวเลข 1–24 แล้วจัดเป็นตาราง 4 แถว 6 คอลัมน์ จากนั้นแสดง shape, แถวที่ 3 (index 2), คอลัมน์สุดท้าย และผลรวมของ 2 แถวแรก</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>array ราคาและงบ 600</dd></div><div><dt>ต้องหา</dt><dd>ราคาที่ ≤ 600, จำนวน 4 ชิ้น, รวม 944</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>สร้าง mask <code>prices &lt;= 600</code></li><li><code>prices[mask]</code> เลือกค่า</li><li><code>.size</code> และ <code>.sum()</code></li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>[250  89 560  45]
-4 ชิ้น รวม 944 บาท</pre></div>
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ตัวเลข 1 ถึง 24</dd></div><div><dt>ต้องหา</dt><dd><code>(4, 6)</code>, <code>[13 14 15 16 17 18]</code>, <code>[ 6 12 18 24]</code> และ <code>78</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>np.arange(1, 25).reshape(4, 6)</code></li><li>แถวใช้ <code>t[2]</code> คอลัมน์ใช้ <code>t[:, -1]</code></li><li>2 แถวแรกคือ <code>t[:2]</code> แล้ว <code>.sum()</code></li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>(4, 6)
+[13 14 15 16 17 18]
+[ 6 12 18 24]
+78</pre></div>
     <div class="answer-gate" data-answer-id="14.3">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -259,21 +435,23 @@ print(f&quot;เฉลี่ย {temps.mean():.1f} สูงสุด {temps.max
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>mask เป็น array ของ True/False ขนาดเท่าข้อมูล ใช้ในวงเล็บเหลี่ยมเพื่อดึงเฉพาะตำแหน่งที่เป็น True</p><pre class="copyable"><code>import numpy as np
+        <p><code>t[2]</code> ได้ทั้งแถว ส่วนคอลัมน์ต้องใช้ <code>t[:, ...]</code> คือ “ทุกแถว ที่คอลัมน์นี้” และ slicing <code>t[:2]</code> ใช้กับแถวได้เหมือน list</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_3.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-prices = np.array([250, 1200, 89, 560, 3200, 45])
-affordable = prices[prices &lt;= 600]
-print(affordable)
-print(f&quot;{affordable.size} ชิ้น รวม {affordable.sum()} บาท&quot;)</code></pre>
+t = np.<span class="tok-fn">arange</span>(<span class="tok-num">1</span>, <span class="tok-num">25</span>).<span class="tok-fn">reshape</span>(<span class="tok-num">4</span>, <span class="tok-num">6</span>)
+<span class="tok-fn">print</span>(t.shape)
+<span class="tok-fn">print</span>(t[<span class="tok-num">2</span>])
+<span class="tok-fn">print</span>(t[:, -<span class="tok-num">1</span>])
+<span class="tok-fn">print</span>(t[:<span class="tok-num">2</span>].<span class="tok-fn">sum</span>())</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 14.4</span><strong>ตัดเกรดทั้งห้อง</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>ใช้ <code>np.where</code> ซ้อนกันตัดเกรดคะแนน <code>[85, 62, 74, 48, 91]</code>: ≥ 80 = A, ≥ 60 = B, ที่เหลือ = C</p>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 14.4</span>คัดสินค้าราคาไม่เกินงบ<span class="level level-2">ปานกลาง</span></h3>
+    <div class="ex-body"><p>ราคาสินค้า <code>[250, 1200, 89, 560, 3200, 45]</code> งบ 600 บาท ให้แสดงสินค้าที่ซื้อได้ จำนวน และราคารวมถ้าซื้อทุกชิ้นที่ซื้อได้</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>array คะแนน 5 ค่า</dd></div><div><dt>ต้องหา</dt><dd><code>[&#39;A&#39; &#39;B&#39; &#39;B&#39; &#39;C&#39; &#39;A&#39;]</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>np.where(เงื่อนไข, ค่าถ้าจริง, ค่าถ้าเท็จ)</code></li><li>ใส่ <code>np.where</code> อีกชั้นในช่องค่าถ้าเท็จ</li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>[&#39;A&#39; &#39;B&#39; &#39;B&#39; &#39;C&#39; &#39;A&#39;]</pre></div>
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>array ราคาและงบ 600</dd></div><div><dt>ต้องหา</dt><dd>ราคาที่ ≤ 600, <code>4 ชิ้น รวม 944 บาท</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>สร้าง mask <code>prices &lt;= 600</code></li><li><code>prices[mask]</code> เลือกค่า</li><li><code>.size</code> และ <code>.sum()</code></li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>[250  89 560  45]
+4 ชิ้น รวม 944 บาท</pre></div>
     <div class="answer-gate" data-answer-id="14.4">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -282,22 +460,26 @@ print(f&quot;{affordable.size} ชิ้น รวม {affordable.sum()} บา�
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>np.where</code> เหมือน if-else ที่ทำกับทุกตำแหน่งพร้อมกัน ซ้อนได้เมื่อมีหลายเงื่อนไข</p><pre class="copyable"><code>import numpy as np
+        <p>mask เป็น array ของ True/False ขนาดเท่าข้อมูล ใช้ในวงเล็บเหลี่ยมเพื่อดึงเฉพาะตำแหน่งที่เป็น True</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-scores = np.array([85, 62, 74, 48, 91])
-grades = np.where(scores &gt;= 80, &quot;A&quot;, np.where(scores &gt;= 60, &quot;B&quot;, &quot;C&quot;))
-print(grades)</code></pre>
+prices = np.<span class="tok-fn">array</span>([<span class="tok-num">250</span>, <span class="tok-num">1200</span>, <span class="tok-num">89</span>, <span class="tok-num">560</span>, <span class="tok-num">3200</span>, <span class="tok-num">45</span>])
+affordable = prices[prices &lt;= <span class="tok-num">600</span>]
+<span class="tok-fn">print</span>(affordable)
+<span class="tok-fn">print</span>(<span class="tok-str">f"{affordable.size} ชิ้น รวม {affordable.sum()} บาท"</span>)</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 14.5</span><strong>คะแนนรายวิชา</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
-    <p>ตารางคะแนนนักเรียน 3 คน × 4 วิชา ให้หาค่าเฉลี่ยของแต่ละคน ค่าเฉลี่ยของแต่ละวิชา และวิชาที่ยากที่สุด (เฉลี่ยต่ำสุด)</p>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 14.5</span>ตัดเกรดด้วย np.select<span class="level level-2">ปานกลาง</span></h3>
+    <div class="ex-body"><p>คะแนน <code>[85, 62, 74, 48, 91, 55]</code> ของ Hobi, SUGA, RM, Jungkook, Mark, JayB ให้ตัดเกรด ≥ 80 = A, ≥ 70 = B, ≥ 60 = C, ≥ 50 = D, ที่เหลือ = F แล้วแสดงชื่อคู่กับเกรด</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd><code>[[80, 72, 90, 65], [70, 68, 85, 60], [90, 75, 95, 70]]</code> และวิชา Math, Sci, Eng, Thai</dd></div><div><dt>ต้องหา</dt><dd>เฉลี่ยรายคน, เฉลี่ยรายวิชา และ <code>วิชาที่ยากสุด: Thai</code></dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>รายคน = เฉลี่ยตามแถว <code>axis=1</code></li><li>รายวิชา = เฉลี่ยตามคอลัมน์ <code>axis=0</code></li><li><code>argmin()</code> หาวิชาเฉลี่ยต่ำสุด</li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>รายคน: [76.75 70.75 82.5 ]
-รายวิชา: [80.   71.67 90.   65.  ]
-วิชาที่ยากสุด: Thai</pre></div>
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>array ชื่อและคะแนน 6 คน</dd></div><div><dt>ต้องหา</dt><dd><code>Hobi: A</code>, <code>SUGA: C</code>, <code>RM: B</code>, <code>Jungkook: F</code>, <code>Mark: A</code>, <code>JayB: D</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>np.select(รายการเงื่อนไข, รายการค่า, default=&quot;F&quot;)</code></li><li>เรียงเงื่อนไขจากมากไปน้อยเหมือน elif</li><li>ใช้ <code>zip</code> แสดงคู่ชื่อ–เกรด</li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>Hobi: A
+SUGA: C
+RM: B
+Jungkook: F
+Mark: A
+JayB: D</pre></div>
     <div class="answer-gate" data-answer-id="14.5">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -306,25 +488,23 @@ print(grades)</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>จำง่าย ๆ: <code>axis</code> คือแกนที่ถูก “ยุบ” หายไป <code>axis=1</code> ยุบคอลัมน์ทิ้งเหลือค่าต่อแถว</p><pre class="copyable"><code>import numpy as np
+        <p><code>np.select</code> เลือกค่าจากเงื่อนไขแรกที่เป็นจริงของแต่ละตำแหน่ง เหมือน if/elif แต่ทำกับทั้ง array และอ่านง่ายกว่า <code>np.where</code> ซ้อนหลายชั้น</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-subjects = [&quot;Math&quot;, &quot;Sci&quot;, &quot;Eng&quot;, &quot;Thai&quot;]
-scores = np.array([[80, 72, 90, 65],
-                   [70, 68, 85, 60],
-                   [90, 75, 95, 70]])
-print(&quot;รายคน:&quot;, scores.mean(axis=1).round(2))
-by_subject = scores.mean(axis=0).round(2)
-print(&quot;รายวิชา:&quot;, by_subject)
-print(&quot;วิชาที่ยากสุด:&quot;, subjects[by_subject.argmin()])</code></pre>
+names = np.<span class="tok-fn">array</span>([<span class="tok-str">"Hobi"</span>, <span class="tok-str">"SUGA"</span>, <span class="tok-str">"RM"</span>, <span class="tok-str">"Jungkook"</span>, <span class="tok-str">"Mark"</span>, <span class="tok-str">"JayB"</span>])
+scores = np.<span class="tok-fn">array</span>([<span class="tok-num">85</span>, <span class="tok-num">62</span>, <span class="tok-num">74</span>, <span class="tok-num">48</span>, <span class="tok-num">91</span>, <span class="tok-num">55</span>])
+grades = np.<span class="tok-fn">select</span>([scores &gt;= <span class="tok-num">80</span>, scores &gt;= <span class="tok-num">70</span>, scores &gt;= <span class="tok-num">60</span>, scores &gt;= <span class="tok-num">50</span>],
+                   [<span class="tok-str">"A"</span>, <span class="tok-str">"B"</span>, <span class="tok-str">"C"</span>, <span class="tok-str">"D"</span>], default=<span class="tok-str">"F"</span>)
+<span class="tok-kw">for</span> name, grade <span class="tok-kw">in</span> <span class="tok-fn">zip</span>(names, grades):
+    <span class="tok-fn">print</span>(<span class="tok-str">f"{name}: {grade}"</span>)</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 14.6</span><strong>ปรับสเกลข้อมูล</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
-    <p>ปรับส่วนสูง <code>[150, 165, 172, 180, 158]</code> ให้อยู่ในช่วง 0–1 ด้วยสูตร (x − min) / (max − min) ซึ่งเป็นขั้นเตรียมข้อมูลก่อนใช้ ML</p>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 14.6</span>ค่าไฟฟ้าแบบขั้นบันได<span class="level level-2">ปานกลาง</span></h3>
+    <div class="ex-body"><p>บ้าน 4 หลังใช้ไฟ <code>[90, 150, 230, 410]</code> หน่วย คิดค่าไฟ: 150 หน่วยแรกหน่วยละ 3.25 บาท ส่วนที่เกิน 150 หน่วยละ 4.22 บาท คำนวณค่าไฟทุกหลังโดยไม่ใช้ if หรือลูป</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>array ส่วนสูง 5 ค่า</dd></div><div><dt>ต้องหา</dt><dd>ค่าตั้งแต่ 0.0 ถึง 1.0 ทศนิยม 2 ตำแหน่ง</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>หา <code>min()</code> และ <code>max()</code></li><li>ใช้สูตรกับทั้ง array ครั้งเดียว</li><li>ตรวจว่าค่าน้อยสุดได้ 0 มากสุดได้ 1</li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><pre>[0.   0.5  0.73 1.   0.27]</pre></div>
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>หน่วยไฟของ 4 หลังและอัตราค่าไฟ 2 ขั้น</dd></div><div><dt>ต้องหา</dt><dd>ค่าไฟ 292.5, 487.5, 825.1 และ 1584.7 บาท</dd></div></dl><strong>วิธีคิด</strong><ol><li>ส่วนขั้นแรก = <code>np.minimum(units, 150)</code></li><li>ส่วนที่เกิน = <code>np.maximum(units - 150, 0)</code></li><li>คูณอัตราแต่ละขั้นแล้วบวกกัน</li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>[ 292.5  487.5  825.1 1584.7]</pre></div>
     <div class="answer-gate" data-answer-id="14.6">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -333,19 +513,188 @@ print(&quot;วิชาที่ยากสุด:&quot;, subjects[by_subject.
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การปรับให้ทุก feature อยู่ในช่วงเดียวกัน (min-max scaling) ช่วยให้โมเดล ML บางแบบเรียนรู้ได้ดีขึ้น จะได้ใช้อีกครั้งในบทที่ 17</p><pre class="copyable"><code>import numpy as np
+        <p><code>minimum</code> และ <code>maximum</code> แทน if ได้: บ้านที่ใช้ไม่ถึง 150 หน่วย ส่วนเกินจะเป็น 0 อัตโนมัติ แนวคิดนี้ใช้คิดภาษีหรือค่าส่งแบบขั้นบันไดได้เหมือนกัน</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_6.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-heights = np.array([150, 165, 172, 180, 158])
-scaled = (heights - heights.min()) / (heights.max() - heights.min())
-print(scaled.round(2))</code></pre>
+units = np.<span class="tok-fn">array</span>([<span class="tok-num">90</span>, <span class="tok-num">150</span>, <span class="tok-num">230</span>, <span class="tok-num">410</span>])
+first = np.<span class="tok-fn">minimum</span>(units, <span class="tok-num">150</span>)
+extra = np.<span class="tok-fn">maximum</span>(units - <span class="tok-num">150</span>, <span class="tok-num">0</span>)
+bill = first * <span class="tok-num">3.25</span> + extra * <span class="tok-num">4.22</span>
+<span class="tok-fn">print</span>(np.<span class="tok-fn">round</span>(bill, <span class="tok-num">2</span>))</code></pre></div>
       </div>
     </div>
-  </article></div>
+  </article>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 14.7</span>ตารางสูตรคูณด้วย broadcasting<span class="level level-2">ปานกลาง</span></h3>
+    <div class="ex-body"><p>สร้างตารางสูตรคูณแม่ 1–9 ขนาด 9×9 ในบรรทัดเดียวด้วย broadcasting แล้วแสดงแถวของแม่ 7 และผลของ 7 × 8</p></div>
+    
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ตัวเลข 1 ถึง 9</dd></div><div><dt>ต้องหา</dt><dd><code>(9, 9)</code>, <code>[ 7 14 21 28 35 42 49 56 63]</code> และ <code>56</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>n = np.arange(1, 10)</code></li><li><code>n.reshape(-1, 1) * n</code> ได้ (9, 1) × (9,) → (9, 9)</li><li>แม่ 7 อยู่แถว index 6</li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>(9, 9)
+[ 7 14 21 28 35 42 49 56 63]
+56</pre></div>
+    <div class="answer-gate" data-answer-id="14.7">
+      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
+      <form class="password-form" hidden>
+        <label>รหัสผ่านข้อ 14.7<input type="password" autocomplete="off" required></label>
+        <button class="password-submit" type="submit">เปิดเฉลย</button>
+        <p class="password-message" aria-live="polite"></p>
+      </form>
+      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
+        <p>คอลัมน์ (9, 1) คูณกับแถว (9,) ถูกยืดเป็น 9 × 9 ทุกคู่ เป็นรูปแบบเดียวกับการหาระยะทางทุกคู่ในตัวอย่างร้านใกล้ที่สุด</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_7.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+
+n = np.<span class="tok-fn">arange</span>(<span class="tok-num">1</span>, <span class="tok-num">10</span>)
+table = n.<span class="tok-fn">reshape</span>(-<span class="tok-num">1</span>, <span class="tok-num">1</span>) * n
+<span class="tok-fn">print</span>(table.shape)
+<span class="tok-fn">print</span>(table[<span class="tok-num">6</span>])
+<span class="tok-fn">print</span>(table[<span class="tok-num">6</span>, <span class="tok-num">7</span>])</code></pre></div>
+      </div>
+    </div>
+  </article>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 14.8</span>คะแนนรายวิชา<span class="level level-3">ท้าทาย</span></h3>
+    <div class="ex-body"><p>ตารางคะแนนนักเรียน 3 คน × 4 วิชา ให้หาค่าเฉลี่ยของแต่ละคน ค่าเฉลี่ยของแต่ละวิชา และวิชาที่ยากที่สุด (เฉลี่ยต่ำสุด)</p></div>
+    
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd><code>[[80, 72, 90, 65], [70, 68, 85, 60], [90, 75, 95, 70]]</code> และวิชา Math, Sci, Eng, Thai</dd></div><div><dt>ต้องหา</dt><dd>เฉลี่ยรายคน, เฉลี่ยรายวิชา และ <code>วิชาที่ยากสุด: Thai</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>รายคน = เฉลี่ยตามแถว <code>axis=1</code></li><li>รายวิชา = เฉลี่ยตามคอลัมน์ <code>axis=0</code></li><li><code>argmin()</code> หาวิชาเฉลี่ยต่ำสุด</li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>รายคน: [76.75 70.75 82.5 ]
+รายวิชา: [80.   71.67 90.   65.  ]
+วิชาที่ยากสุด: Thai</pre></div>
+    <div class="answer-gate" data-answer-id="14.8">
+      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
+      <form class="password-form" hidden>
+        <label>รหัสผ่านข้อ 14.8<input type="password" autocomplete="off" required></label>
+        <button class="password-submit" type="submit">เปิดเฉลย</button>
+        <p class="password-message" aria-live="polite"></p>
+      </form>
+      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
+        <p>จำง่าย ๆ: <code>axis</code> คือแกนที่ถูกยุบหายไป <code>axis=1</code> ยุบคอลัมน์ทิ้งเหลือค่าต่อแถว</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_8.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+
+subjects = np.<span class="tok-fn">array</span>([<span class="tok-str">"Math"</span>, <span class="tok-str">"Sci"</span>, <span class="tok-str">"Eng"</span>, <span class="tok-str">"Thai"</span>])
+scores = np.<span class="tok-fn">array</span>([[<span class="tok-num">80</span>, <span class="tok-num">72</span>, <span class="tok-num">90</span>, <span class="tok-num">65</span>],
+                   [<span class="tok-num">70</span>, <span class="tok-num">68</span>, <span class="tok-num">85</span>, <span class="tok-num">60</span>],
+                   [<span class="tok-num">90</span>, <span class="tok-num">75</span>, <span class="tok-num">95</span>, <span class="tok-num">70</span>]])
+<span class="tok-fn">print</span>(<span class="tok-str">"รายคน:"</span>, scores.<span class="tok-fn">mean</span>(axis=<span class="tok-num">1</span>).<span class="tok-fn">round</span>(<span class="tok-num">2</span>))
+by_subject = scores.<span class="tok-fn">mean</span>(axis=<span class="tok-num">0</span>).<span class="tok-fn">round</span>(<span class="tok-num">2</span>)
+<span class="tok-fn">print</span>(<span class="tok-str">"รายวิชา:"</span>, by_subject)
+<span class="tok-fn">print</span>(<span class="tok-str">"วิชาที่ยากสุด:"</span>, subjects[by_subject.<span class="tok-fn">argmin</span>()])</code></pre></div>
+      </div>
+    </div>
+  </article>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 14.9</span>ปรับสเกลข้อมูลทุกคอลัมน์<span class="level level-3">ท้าทาย</span></h3>
+    <div class="ex-body"><p>ข้อมูลคน 5 คน 3 feature (ส่วนสูง ซม., น้ำหนัก กก., อายุ ปี) ให้ปรับทุกคอลัมน์เป็นช่วง 0–1 ด้วยสูตร (x − min) / (max − min) ของคอลัมน์นั้น ซึ่งเป็นขั้นเตรียมข้อมูลก่อนใช้ ML</p></div>
+    
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd><code>[[150, 45, 19], [165, 60, 22], [172, 68, 20], [180, 75, 25], [158, 52, 21]]</code></dd></div><div><dt>ต้องหา</dt><dd>ตาราง 5 × 3 ทุกคอลัมน์มีค่าต่ำสุด 0 และสูงสุด 1</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>X.min(axis=0)</code> และ <code>X.max(axis=0)</code> ได้ค่าของแต่ละคอลัมน์ (3 ค่า)</li><li>broadcasting ลบและหารให้ทุกแถวในบรรทัดเดียว</li><li>ตรวจด้วย <code>.min(axis=0)</code> และ <code>.max(axis=0)</code> ของผลลัพธ์</li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>[[0.   0.   0.  ]
+ [0.5  0.5  0.5 ]
+ [0.73 0.77 0.17]
+ [1.   1.   1.  ]
+ [0.27 0.23 0.33]]
+[0. 0. 0.] [1. 1. 1.]</pre></div>
+    <div class="answer-gate" data-answer-id="14.9">
+      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
+      <form class="password-form" hidden>
+        <label>รหัสผ่านข้อ 14.9<input type="password" autocomplete="off" required></label>
+        <button class="password-submit" type="submit">เปิดเฉลย</button>
+        <p class="password-message" aria-live="polite"></p>
+      </form>
+      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
+        <p>แต่ละ feature มีหน่วยและช่วงต่างกันมาก การปรับให้อยู่ช่วงเดียวกันช่วยให้โมเดลอย่าง KNN ไม่ถูก feature ที่ตัวเลขใหญ่ครอบงำ (บทที่ 17 ทำแบบเดียวกันด้วย StandardScaler)</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_9.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+
+<span class="tok-type">X</span> = np.<span class="tok-fn">array</span>([[<span class="tok-num">150</span>, <span class="tok-num">45</span>, <span class="tok-num">19</span>],
+              [<span class="tok-num">165</span>, <span class="tok-num">60</span>, <span class="tok-num">22</span>],
+              [<span class="tok-num">172</span>, <span class="tok-num">68</span>, <span class="tok-num">20</span>],
+              [<span class="tok-num">180</span>, <span class="tok-num">75</span>, <span class="tok-num">25</span>],
+              [<span class="tok-num">158</span>, <span class="tok-num">52</span>, <span class="tok-num">21</span>]], dtype=<span class="tok-fn">float</span>)
+low, high = <span class="tok-type">X</span>.<span class="tok-fn">min</span>(axis=<span class="tok-num">0</span>), <span class="tok-type">X</span>.<span class="tok-fn">max</span>(axis=<span class="tok-num">0</span>)
+scaled = (<span class="tok-type">X</span> - low) / (high - low)
+<span class="tok-fn">print</span>(scaled.<span class="tok-fn">round</span>(<span class="tok-num">2</span>))
+<span class="tok-fn">print</span>(scaled.<span class="tok-fn">min</span>(axis=<span class="tok-num">0</span>), scaled.<span class="tok-fn">max</span>(axis=<span class="tok-num">0</span>))</code></pre></div>
+      </div>
+    </div>
+  </article>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 14.10</span>ระยะทางรวมของเส้นทาง<span class="level level-3">ท้าทาย</span></h3>
+    <div class="ex-body"><p>เส้นทางวิ่งผ่านจุด (x, y) เป็นกิโลเมตร <code>[[0, 0], [3, 4], [6, 8], [6, 12], [9, 16]]</code> ให้หาระยะของแต่ละช่วง ระยะรวม และช่วงที่ยาวที่สุด</p></div>
+    
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>พิกัด 5 จุดตามลำดับ</dd></div><div><dt>ต้องหา</dt><dd><code>[5. 5. 4. 5.]</code>, <code>รวม 19.0 กม.</code> และ <code>ช่วงที่ยาวสุด: ช่วงที่ 1</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>np.diff(points, axis=0)</code> ได้ Δx, Δy ของแต่ละช่วง (4 แถว)</li><li>ระยะแต่ละช่วง = <code>np.sqrt((d ** 2).sum(axis=1))</code></li><li><code>argmax()</code> + 1 ได้หมายเลขช่วง</li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>[5. 5. 4. 5.]
+รวม 19.0 กม.
+ช่วงที่ยาวสุด: ช่วงที่ 1</pre></div>
+    <div class="answer-gate" data-answer-id="14.10">
+      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
+      <form class="password-form" hidden>
+        <label>รหัสผ่านข้อ 14.10<input type="password" autocomplete="off" required></label>
+        <button class="password-submit" type="submit">เปิดเฉลย</button>
+        <p class="password-message" aria-live="polite"></p>
+      </form>
+      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
+        <p><code>np.diff</code> ตามแกน 0 ลบแถวถัดไปด้วยแถวก่อนหน้า ได้การเปลี่ยนแปลงของแต่ละช่วง ถ้ามีหลายช่วงยาวเท่ากัน <code>argmax</code> จะคืนช่วงแรกที่เจอ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_10.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+
+points = np.<span class="tok-fn">array</span>([[<span class="tok-num">0</span>, <span class="tok-num">0</span>], [<span class="tok-num">3</span>, <span class="tok-num">4</span>], [<span class="tok-num">6</span>, <span class="tok-num">8</span>], [<span class="tok-num">6</span>, <span class="tok-num">12</span>], [<span class="tok-num">9</span>, <span class="tok-num">16</span>]])
+steps = np.<span class="tok-fn">diff</span>(points, axis=<span class="tok-num">0</span>)
+lengths = np.<span class="tok-fn">sqrt</span>((steps ** <span class="tok-num">2</span>).<span class="tok-fn">sum</span>(axis=<span class="tok-num">1</span>))
+<span class="tok-fn">print</span>(lengths)
+<span class="tok-fn">print</span>(<span class="tok-str">f"รวม {lengths.sum():.1f} กม."</span>)
+<span class="tok-fn">print</span>(<span class="tok-str">f"ช่วงที่ยาวสุด: ช่วงที่ {lengths.argmax() + 1}"</span>)</code></pre></div>
+      </div>
+    </div>
+  </article>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 14.11</span>ค่าเฉลี่ยเคลื่อนที่ของยอดขาย<span class="level level-3">ท้าทาย</span></h3>
+    <div class="ex-body"><p>ยอดขาย 10 วัน <code>[20, 22, 19, 25, 30, 24, 35, 28, 40, 33]</code> ให้หาค่าเฉลี่ยเคลื่อนที่ 3 วัน และหาว่าวันไหนบ้าง (วันที่ 4 เป็นต้นไป) ที่ขายได้มากกว่าค่าเฉลี่ยของ 3 วันก่อนหน้า</p></div>
+    
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>array ยอดขาย 10 วัน</dd></div><div><dt>ต้องหา</dt><dd>ค่าเฉลี่ยเคลื่อนที่ 8 ค่า และวันที่ <code>[4 5 7 9]</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>np.convolve(sales, np.ones(3) / 3, mode=&quot;valid&quot;)</code> ได้ค่าเฉลี่ยของทุกช่วง 3 วัน</li><li>ค่าเฉลี่ยของ 3 วันก่อนวันที่ i คือ <code>ma[i - 3]</code> จึงเทียบ <code>sales[3:]</code> กับ <code>ma[:-1]</code></li><li>แปลง index เป็นวันที่ด้วย +4</li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>[20.3 22.  24.7 26.3 29.7 29.  34.3 33.7]
+วันที่ขายเกินค่าเฉลี่ย 3 วันก่อนหน้า: [4 5 7 9]</pre></div>
+    <div class="answer-gate" data-answer-id="14.11">
+      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
+      <form class="password-form" hidden>
+        <label>รหัสผ่านข้อ 14.11<input type="password" autocomplete="off" required></label>
+        <button class="password-submit" type="submit">เปิดเฉลย</button>
+        <p class="password-message" aria-live="polite"></p>
+      </form>
+      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
+        <p><code>mode=&quot;valid&quot;</code> คืนเฉพาะช่วงที่มีข้อมูลครบ 3 วัน จึงได้ 8 ค่าจาก 10 วัน การจับตำแหน่งให้ตรงกัน (<code>sales[3:]</code> คู่กับ <code>ma[:-1]</code>) คือจุดที่ต้องคิดให้ดีในโจทย์ข้อมูลตามเวลา</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_11.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+
+sales = np.<span class="tok-fn">array</span>([<span class="tok-num">20</span>, <span class="tok-num">22</span>, <span class="tok-num">19</span>, <span class="tok-num">25</span>, <span class="tok-num">30</span>, <span class="tok-num">24</span>, <span class="tok-num">35</span>, <span class="tok-num">28</span>, <span class="tok-num">40</span>, <span class="tok-num">33</span>])
+ma = np.<span class="tok-fn">convolve</span>(sales, np.<span class="tok-fn">ones</span>(<span class="tok-num">3</span>) / <span class="tok-num">3</span>, mode=<span class="tok-str">"valid"</span>)
+<span class="tok-fn">print</span>(ma.<span class="tok-fn">round</span>(<span class="tok-num">1</span>))
+above = sales[<span class="tok-num">3</span>:] &gt; ma[:-<span class="tok-num">1</span>]
+<span class="tok-fn">print</span>(<span class="tok-str">"วันที่ขายเกินค่าเฉลี่ย 3 วันก่อนหน้า:"</span>, np.<span class="tok-fn">flatnonzero</span>(above) + <span class="tok-num">4</span>)</code></pre></div>
+      </div>
+    </div>
+  </article>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 14.12</span>ประมาณความน่าจะเป็นด้วยการสุ่ม<span class="level level-3">ท้าทาย</span></h3>
+    <div class="ex-body"><p>ทอยลูกเต๋า 4 ลูกพร้อมกัน โอกาสที่จะมีเลข 6 อย่างน้อย 1 ลูกเป็นเท่าไร ให้จำลอง 200,000 ครั้งด้วย <code>default_rng(1)</code> แล้วเทียบกับทฤษฎี 1 − (5/6)⁴</p></div>
+    
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ลูกเต๋า 4 ลูก จำลอง 200,000 ครั้ง</dd></div><div><dt>ต้องหา</dt><dd>ค่าจากการจำลองใกล้ 0.518</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>rng.integers(1, 7, size=(200_000, 4))</code></li><li><code>(rolls == 6).any(axis=1)</code> ได้ True เมื่อแถวนั้นมี 6 อย่างน้อยหนึ่งลูก</li><li><code>.mean()</code> คือความน่าจะเป็นโดยประมาณ</li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>จำลอง  0.5165
+ทฤษฎี 0.5177</pre></div>
+    <div class="answer-gate" data-answer-id="14.12">
+      <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
+      <form class="password-form" hidden>
+        <label>รหัสผ่านข้อ 14.12<input type="password" autocomplete="off" required></label>
+        <button class="password-submit" type="submit">เปิดเฉลย</button>
+        <p class="password-message" aria-live="polite"></p>
+      </form>
+      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
+        <p><code>any(axis=1)</code> ตรวจทีละแถวว่ามี True อย่างน้อยหนึ่งค่าหรือไม่ การจำลองจำนวนมากให้คำตอบใกล้ทฤษฎี และใช้ได้แม้กับปัญหาที่คำนวณด้วยสูตรยาก</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_12.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
+
+rng = np.random.<span class="tok-fn">default_rng</span>(<span class="tok-num">1</span>)
+rolls = rng.<span class="tok-fn">integers</span>(<span class="tok-num">1</span>, <span class="tok-num">7</span>, size=(<span class="tok-num">200_000</span>, <span class="tok-num">4</span>))
+has_six = (rolls == <span class="tok-num">6</span>).<span class="tok-fn">any</span>(axis=<span class="tok-num">1</span>)
+<span class="tok-fn">print</span>(<span class="tok-str">f"จำลอง  {has_six.mean():.4f}"</span>)
+<span class="tok-fn">print</span>(<span class="tok-str">f"ทฤษฎี {1 - (5 / 6) ** 4:.4f}"</span>)</code></pre></div>
+      </div>
+    </div>
+  </article>
       </section>
-      <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-13.html">← บทก่อนหน้า</a><a class="pager-link" href="chapter-15.html">บทถัดไป →</a></nav>
+      <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-13.html">← บทที่ 13</a><a class="pager-link" href="chapter-15.html">บทที่ 15 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script><script src="../assets/lesson.js"></script>
+  <script src="../password.js"></script>
+  <script src="../assets/lesson.js"></script>
+  <script src="../assets/course-nav.js"></script>
 </body>
 </html>

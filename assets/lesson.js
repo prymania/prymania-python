@@ -1,46 +1,53 @@
-async function copyCode(text) {
+function copyText(text) {
   if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
-  const helper = document.createElement("textarea");
-  helper.value = text;
-  helper.setAttribute("readonly", "");
-  helper.style.position = "fixed";
-  helper.style.opacity = "0";
-  document.body.append(helper);
-  helper.select();
-  try {
-    if (!document.execCommand("copy")) throw new Error("Clipboard API unavailable");
-  } finally {
-    helper.remove();
-  }
+  return new Promise((resolve, reject) => {
+    const helper = document.createElement("textarea");
+    helper.value = text;
+    helper.setAttribute("readonly", "");
+    helper.style.position = "fixed";
+    helper.style.opacity = "0";
+    document.body.append(helper);
+    helper.select();
+    try {
+      document.execCommand("copy") ? resolve() : reject(new Error("Clipboard API unavailable"));
+    } catch (error) {
+      reject(error);
+    } finally {
+      helper.remove();
+    }
+  });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll("pre.copyable").forEach((pre) => {
-    const wrap = document.createElement("div");
-    wrap.className = "code-wrap";
-    pre.replaceWith(wrap);
-    wrap.append(pre);
+// ปุ่มคัดลอกอยู่ในแถบชื่อไฟล์ของแผงโค้ด
+function addCopyButtons() {
+  document.querySelectorAll(".code-block > pre").forEach((pre) => {
+    const head = pre.parentElement.querySelector(".code-head");
+    if (!head || head.querySelector(".copy-button")) return;
     const button = document.createElement("button");
     button.type = "button";
     button.className = "copy-button";
-    button.textContent = "คัดลอกโค้ด";
+    button.textContent = "คัดลอก";
     button.setAttribute("aria-label", "คัดลอก source code");
-    button.addEventListener("click", async () => {
-      try {
-        await copyCode(pre.innerText);
+    button.addEventListener("click", () => {
+      copyText(pre.innerText).then(() => {
         button.textContent = "คัดลอกแล้ว ✓";
         button.classList.add("copied");
-      } catch (error) {
+      }, (error) => {
         button.textContent = "คัดลอกไม่สำเร็จ";
         console.error("Could not copy source code", error);
-      }
-      setTimeout(() => {
-        button.textContent = "คัดลอกโค้ด";
-        button.classList.remove("copied");
-      }, 1600);
+      }).finally(() => {
+        setTimeout(() => {
+          button.textContent = "คัดลอก";
+          button.classList.remove("copied");
+        }, 1600);
+      });
     });
-    wrap.append(button);
+    head.append(button);
   });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  addCopyButtons();
 
   document.querySelectorAll(".answer-gate").forEach((gate) => {
     const openButton = gate.querySelector(".answer-open");
@@ -56,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       const password = window.EXERCISE_PASSWORDS?.[gate.dataset.answerId];
-      if (password && input.value === password) {
+      if (password && input.value.trim() === password) {
         answer.hidden = false;
         form.hidden = true;
         answer.querySelector("h4")?.focus();

@@ -101,19 +101,19 @@ print("=" * 30)`,
     [
       task("Hello, Python", 1, {
         task: "สร้างไฟล์ `hello.py` ใน Thonny ให้แสดงข้อความ 2 บรรทัด",
-        given: "ข้อความ `Hello, Python!` และ `My name is Nina.`",
+        given: "ข้อความ `Hello, Python!` และ `My name is Hobi.`",
         want: "ข้อความ 2 บรรทัดตามลำดับใน Shell",
         checklist: ["`Ctrl + N` เปิดไฟล์ใหม่", "เขียน `print()` 2 บรรทัด", "บันทึกเป็น `hello.py` แล้วกด `F5`"],
         code: `print("Hello, Python!")
-print("My name is Nina.")`,
+print("My name is Hobi.")`,
         explain: "หนึ่ง `print()` แสดงหนึ่งบรรทัด การบันทึกเป็นไฟล์ทำให้กลับมารันซ้ำหรือส่งงานได้"
       }),
       task("แนะนำตัว 3 บรรทัด", 1, {
         task: "แสดงชื่อ สาขา และชั้นปีของตัวเอง บรรทัดละ 1 ข้อมูล",
-        given: "ข้อมูลของตัวเอง (ตัวอย่าง: Arun, Computer Science, ปี 1)",
+        given: "ข้อมูลของตัวเอง (ตัวอย่าง: JayB, Computer Science, ปี 1)",
         want: "3 บรรทัด ขึ้นต้นด้วย `Name:`, `Major:`, `Year:`",
         checklist: ["เขียน `print()` 3 คำสั่ง", "ชั้นปีเป็นตัวเลข ไม่ต้องมีเครื่องหมายคำพูดก็ได้", "รันแล้วตรวจลำดับบรรทัด"],
-        code: `print("Name: Arun")
+        code: `print("Name: JayB")
 print("Major: Computer Science")
 print("Year:", 1)`,
         explain: "`print(\"Year:\", 1)` แสดงข้อความและตัวเลขต่อกัน โดย Python เว้นวรรคระหว่างค่าให้อัตโนมัติ"
@@ -164,8 +164,8 @@ print("ค่าเทอมรวม", 1200 * 18 + 3500, "บาท")`,
     ["ตัวแปร: ตั้งชื่อให้ข้อมูล",
       "เขียน `ชื่อ = ค่า` แล้ว Python จะจำค่านั้นไว้ในชื่อนั้น เครื่องหมาย `=` หมายถึง “เก็บค่าทางขวาไว้ในชื่อทางซ้าย” ไม่ใช่ “เท่ากับ” แบบคณิตศาสตร์ ถ้ากำหนดค่าใหม่ ค่าเดิมจะถูกแทนที่",
       {
-        figure: { src: "assets/figures/variables.svg", alt: "ตัวแปร name, age, height ชี้ไปยังค่า \"Nina\", 19 และ 1.72 ซึ่งมีชนิด str, int และ float" },
-        code: `name = "Nina"
+        figure: { src: "assets/figures/variables.svg", alt: "ตัวแปร name, age, height ชี้ไปยังค่า \"Hobi\", 19 และ 1.72 ซึ่งมีชนิด str, int และ float" },
+        code: `name = "Hobi"
 age = 19
 age = age + 1      # เอาค่าเดิม (19) มาบวก 1 แล้วเก็บกลับ
 print(name, age)`,
@@ -179,7 +179,7 @@ print(name, age)`,
           rows: [
             ["`int`", "`19`, `-5`, `0`", "จำนวนเต็ม เช่น อายุ จำนวนชิ้น"],
             ["`float`", "`1.72`, `65.5`", "จำนวนทศนิยม เช่น ราคา ส่วนสูง"],
-            ["`str`", "`\"Nina\"`, `\"19\"`", "ข้อความ ต้องอยู่ในเครื่องหมายคำพูด"],
+            ["`str`", "`\"Hobi\"`, `\"19\"`", "ข้อความ ต้องอยู่ในเครื่องหมายคำพูด"],
             ["`bool`", "`True`, `False`", "ค่าจริง/เท็จ เช่น ลงทะเบียนแล้วหรือยัง"]
           ]
         },
@@ -215,7 +215,7 @@ print("อายุ " + str(19) + " ปี")`
 age = int(input("อายุ: "))
 print("สวัสดี", name)
 print("ปีหน้าคุณจะอายุ", age + 1, "ปี")`,
-        stdin: "Nina\n19\n",
+        stdin: "Hobi\n19\n",
         tip: "รับตัวเลขให้ใช้รูปแบบ `int(input(...))` หรือ `float(input(...))` เสมอ"
       }],
     ["แสดงผลด้วย print() และ f-string",
@@ -257,7 +257,7 @@ print("A", "B", "C", sep="-")`,
     {
       title: "บัตรแนะนำตัว",
       idea: "รับข้อมูล 3 ค่า แล้วจัดผลลัพธ์เป็นบัตรด้วย f-string",
-      stdin: "Nina\nComputer Science\n2\n",
+      stdin: "Hobi\nComputer Science\n2\n",
       code: `name = input("ชื่อ: ")
 major = input("สาขา: ")
 year = int(input("ชั้นปี: "))
@@ -297,10 +297,10 @@ print(f"ชำระ      {total + vat:,.2f} บาท")`,
   [
     task("แนะนำตัวเอง", 1, {
       task: "เก็บชื่อ อายุ และส่วนสูงไว้ในตัวแปร แล้วแสดงเป็นประโยคเดียว",
-      given: "ชื่อ Beam, อายุ 20, ส่วนสูง 1.75 (กำหนดค่าในโค้ดได้เลย ไม่ต้องรับค่า)",
-      want: "ข้อความ `Beam อายุ 20 ปี สูง 1.75 เมตร`",
+      given: "ชื่อ SUGA, อายุ 20, ส่วนสูง 1.75 (กำหนดค่าในโค้ดได้เลย ไม่ต้องรับค่า)",
+      want: "ข้อความ `SUGA อายุ 20 ปี สูง 1.75 เมตร`",
       checklist: ["สร้างตัวแปร 3 ตัว: ข้อความ (`str`), จำนวนเต็ม (`int`), ทศนิยม (`float`)", "ใช้ f-string รวมทั้ง 3 ค่าเป็นประโยค"],
-      code: `name = "Beam"
+      code: `name = "SUGA"
 age = 20
 height = 1.75
 print(f"{name} อายุ {age} ปี สูง {height} เมตร")`,
@@ -319,10 +319,10 @@ print(type(False))`,
     }),
     task("ทักทายผู้ใช้", 1, {
       task: "ถามชื่อผู้ใช้ แล้วกล่าวทักทายด้วยชื่อนั้น",
-      given: "ชื่อที่ผู้ใช้พิมพ์ (ตัวอย่างพิมพ์ว่า Mali)",
-      want: "`สวัสดี Mali ยินดีต้อนรับ!`",
+      given: "ชื่อที่ผู้ใช้พิมพ์ (ตัวอย่างพิมพ์ว่า RM)",
+      want: "`สวัสดี RM ยินดีต้อนรับ!`",
       checklist: ["ใช้ `input(\"ชื่อของคุณ: \")` รับชื่อ", "ไม่ต้องแปลงชนิด เพราะชื่อเป็นข้อความอยู่แล้ว", "แสดงผลด้วย f-string"],
-      stdin: "Mali\n",
+      stdin: "RM\n",
       code: `name = input("ชื่อของคุณ: ")
 print(f"สวัสดี {name} ยินดีต้อนรับ!")`,
       explain: "`input()` คืนค่าเป็น `str` ซึ่งตรงกับข้อมูลที่ต้องการอยู่แล้ว จึงนำไปใส่ใน f-string ได้ทันที"
@@ -1030,7 +1030,7 @@ print(len(word))`
               ["`count(x)`", "`\"banana\".count(\"a\")`", "`3`"]
             ]
           },
-          code: `name = "  nina SUWAN  "
+          code: `name = "  hobi JUNG  "
 clean = name.strip().title()
 print(clean)
 print(name)          # ข้อความเดิมไม่เปลี่ยน`
@@ -1038,7 +1038,7 @@ print(name)          # ข้อความเดิมไม่เปลี่
       ["ตรวจและวนข้อความ",
         "ใช้ `in` ตรวจว่ามีข้อความย่อยอยู่หรือไม่ และใช้ for วนทีละตัวอักษรได้",
         {
-          code: `email = "mali@example.com"
+          code: `email = "rm@example.com"
 print("@" in email)
 
 vowels = 0
@@ -1052,7 +1052,7 @@ print("สระ", vowels, "ตัว")`
       {
         title: "จัดรูปชื่อให้เรียบร้อย",
         idea: "ทำความสะอาดข้อความที่ผู้ใช้พิมพ์มาไม่เรียบร้อย แล้วสร้างชื่อย่อ",
-        stdin: "  nina   SUWAN  \n",
+        stdin: "  hobi   JUNG  \n",
         code: `raw = input("ชื่อ-นามสกุล: ")
 parts = raw.split()
 first = parts[0].title()
@@ -1070,7 +1070,7 @@ print(f"username: {first.lower()}.{last[:3].lower()}")`,
       {
         title: "แยกอีเมล",
         idea: "หาตำแหน่ง `@` แล้วตัดส่วนหน้าและส่วนหลัง",
-        stdin: "mali.s@student.ac.th\n",
+        stdin: "rm.k@student.ac.th\n",
         code: `email = input("อีเมล: ").strip().lower()
 at = email.find("@")
 
@@ -1178,7 +1178,7 @@ print(sentence.title())`,
               ["`list`", "`[1, 2, 2]`", "มี", "ได้", "ได้", "รายการทั่วไป เช่น คะแนนทั้งห้อง"],
               ["`tuple`", "`(13.7, 100.5)`", "มี", "ไม่ได้", "ได้", "ข้อมูลชุดที่ไม่ควรเปลี่ยน เช่น พิกัด"],
               ["`set`", "`{\"a\", \"b\"}`", "ไม่มี", "ได้", "ไม่ได้", "ตัดค่าซ้ำ / หาค่าร่วม"],
-              ["`dict`", "`{\"Nina\": 88}`", "มี", "ได้", "key ห้ามซ้ำ", "จับคู่ key กับ value เช่น ชื่อ → คะแนน"]
+              ["`dict`", "`{\"Hobi\": 88}`", "มี", "ได้", "key ห้ามซ้ำ", "จับคู่ key กับ value เช่น ชื่อ → คะแนน"]
             ]
           }
         }],
@@ -1219,13 +1219,13 @@ print(sorted(set([3, 1, 3, 2, 1])))`
       ["dict: จับคู่ key กับ value",
         "dict เก็บข้อมูลเป็นคู่ `key: value` ค้นหาด้วย key แทนตำแหน่ง ใช้ `get()` เมื่อไม่แน่ใจว่ามี key หรือไม่ และใช้ `.items()` วนผ่านทุกคู่",
         {
-          code: `scores = {"Nina": 88, "Beam": 72}
-scores["Mali"] = 95          # เพิ่ม / แก้ไข
-print(scores["Nina"])
-print(scores.get("Tom", "ไม่พบ"))
+          code: `scores = {"Hobi": 88, "SUGA": 72}
+scores["RM"] = 95          # เพิ่ม / แก้ไข
+print(scores["Hobi"])
+print(scores.get("Jungkook", "ไม่พบ"))
 for name, score in scores.items():
     print(name, score)`,
-          tip: "`scores[\"Tom\"]` ถ้าไม่มี key จะเกิด `KeyError` ส่วน `get()` คืนค่าที่กำหนดแทน"
+          tip: "`scores[\"Jungkook\"]` ถ้าไม่มี key จะเกิด `KeyError` ส่วน `get()` คืนค่าที่กำหนดแทน"
         }]
     ],
     [
@@ -1296,32 +1296,32 @@ for item in items:
         explain: "รูปแบบ “list ว่าง + append ในลูป” ใช้สร้างรายการจากข้อมูลที่ผู้ใช้กรอก"
       }),
       task("ตัดชื่อซ้ำ", 2, {
-        task: "รายชื่อผู้ลงทะเบียน `[\"Nok\", \"Beam\", \"Nok\", \"Mali\", \"Beam\"]` มีชื่อซ้ำ ให้หาจำนวนคนจริงและรายชื่อเรียงตามตัวอักษร",
+        task: "รายชื่อผู้ลงทะเบียน `[\"JayB\", \"SUGA\", \"JayB\", \"RM\", \"SUGA\"]` มีชื่อซ้ำ ให้หาจำนวนคนจริงและรายชื่อเรียงตามตัวอักษร",
         given: "list ที่มีชื่อซ้ำ",
-        want: "`3 คน: ['Beam', 'Mali', 'Nok']`",
+        want: "`3 คน: ['JayB', 'RM', 'SUGA']`",
         checklist: ["แปลงเป็น `set()` เพื่อตัดค่าซ้ำ", "`sorted()` เรียงและคืนเป็น list", "`len()` นับจำนวน"],
-        code: `names = ["Nok", "Beam", "Nok", "Mali", "Beam"]
+        code: `names = ["JayB", "SUGA", "JayB", "RM", "SUGA"]
 unique = sorted(set(names))
 print(f"{len(unique)} คน: {unique}")`,
         explain: "set ไม่เก็บค่าซ้ำ แต่ไม่มีลำดับ จึงใช้ `sorted()` ให้ผลลัพธ์เรียงแน่นอนทุกครั้ง"
       }),
       task("สมุดโทรศัพท์", 2, {
-        task: "มี dict เบอร์โทร `{\"Nina\": \"081-111-2222\", \"Beam\": \"089-333-4444\"}` ให้รับชื่อแล้วแสดงเบอร์ ถ้าไม่มีให้แสดง `ไม่พบรายชื่อ`",
-        given: "ชื่อที่ผู้ใช้ค้นหา เช่น Tom",
-        want: "`Tom: ไม่พบรายชื่อ`",
+        task: "มี dict เบอร์โทร `{\"Hobi\": \"081-111-2222\", \"SUGA\": \"089-333-4444\"}` ให้รับชื่อแล้วแสดงเบอร์ ถ้าไม่มีให้แสดง `ไม่พบรายชื่อ`",
+        given: "ชื่อที่ผู้ใช้ค้นหา เช่น Jungkook",
+        want: "`Jungkook: ไม่พบรายชื่อ`",
         checklist: ["ใช้ `get(name, \"ไม่พบรายชื่อ\")`", "ไม่ต้องใช้ if เพราะ get จัดการกรณีไม่พบให้"],
-        stdin: "Tom\n",
-        code: `phones = {"Nina": "081-111-2222", "Beam": "089-333-4444"}
+        stdin: "Jungkook\n",
+        code: `phones = {"Hobi": "081-111-2222", "SUGA": "089-333-4444"}
 name = input("ค้นหาชื่อ: ")
 print(f"{name}: {phones.get(name, 'ไม่พบรายชื่อ')}")`,
         explain: "`phones[name]` จะเกิด KeyError เมื่อไม่มีชื่อ ส่วน `get()` คืนค่าสำรองแทน โปรแกรมจึงไม่หยุดทำงาน"
       }),
       task("นักเรียนที่ผ่าน", 3, {
-        task: "จาก dict คะแนน `{\"Nina\": 88, \"Beam\": 45, \"Mali\": 72, \"Tom\": 39}` ให้สร้าง list ชื่อคนที่ได้ตั้งแต่ 50 และหาคนที่ได้คะแนนสูงสุด",
+        task: "จาก dict คะแนน `{\"Hobi\": 88, \"SUGA\": 45, \"RM\": 72, \"Jungkook\": 39}` ให้สร้าง list ชื่อคนที่ได้ตั้งแต่ 50 และหาคนที่ได้คะแนนสูงสุด",
         given: "dict ชื่อ → คะแนน",
-        want: "`ผ่าน: ['Nina', 'Mali']` และ `สูงสุด: Nina (88)`",
+        want: "`ผ่าน: ['Hobi', 'RM']` และ `สูงสุด: Hobi (88)`",
         checklist: ["วน `.items()` ได้ทั้งชื่อและคะแนน", "ถ้า `>= 50` ให้ `append` ชื่อลง list", "หาคนสูงสุดด้วยตัวแปร `best_name`, `best_score` ระหว่างวน"],
-        code: `scores = {"Nina": 88, "Beam": 45, "Mali": 72, "Tom": 39}
+        code: `scores = {"Hobi": 88, "SUGA": 45, "RM": 72, "Jungkook": 39}
 passed = []
 best_name, best_score = "", -1
 for name, score in scores.items():
@@ -1334,15 +1334,15 @@ print(f"สูงสุด: {best_name} ({best_score})")`,
         explain: "ลูปเดียวทำได้สองงาน: คัดกรองคนผ่าน และติดตามค่าสูงสุด `best_score` เริ่มที่ -1 เพื่อให้คะแนนแรกถูกเก็บแน่นอน"
       }),
       task("วิชาที่ลงร่วมกัน", 3, {
-        task: "Nina ลงวิชา Python, Math, English ส่วน Beam ลง Python, Physics, English ให้หาวิชาที่ลงเหมือนกัน วิชาที่ Nina ลงคนเดียว และวิชาทั้งหมด",
+        task: "Hobi ลงวิชา Python, Math, English ส่วน SUGA ลง Python, Physics, English ให้หาวิชาที่ลงเหมือนกัน วิชาที่ Hobi ลงคนเดียว และวิชาทั้งหมด",
         given: "วิชาของ 2 คน",
-        want: "วิชาร่วม, วิชาเฉพาะ Nina, วิชาทั้งหมด (เรียงตามตัวอักษร)",
+        want: "วิชาร่วม, วิชาเฉพาะ Hobi, วิชาทั้งหมด (เรียงตามตัวอักษร)",
         checklist: ["เก็บเป็น set 2 ชุด", "`&` ค่าร่วม, `-` ค่าต่าง, `|` รวมทั้งหมด", "ใช้ `sorted()` ก่อนแสดง"],
-        code: `nina = {"Python", "Math", "English"}
-beam = {"Python", "Physics", "English"}
-print("ลงร่วมกัน:", sorted(nina & beam))
-print("Nina คนเดียว:", sorted(nina - beam))
-print("ทั้งหมด:", sorted(nina | beam))`,
+        code: `hobi = {"Python", "Math", "English"}
+suga = {"Python", "Physics", "English"}
+print("ลงร่วมกัน:", sorted(hobi & suga))
+print("Hobi คนเดียว:", sorted(hobi - suga))
+print("ทั้งหมด:", sorted(hobi | suga))`,
         explain: "การดำเนินการ set ตรงกับแผนภาพเวนน์: `&` ส่วนที่ซ้อนกัน `-` ส่วนที่มีแต่ฝั่งซ้าย `|` ทั้งหมด"
       })
     ]),
@@ -1368,9 +1368,9 @@ greet()`
           code: `def greet(name, greeting="สวัสดี"):
     print(f"{greeting} {name}")
 
-greet("Nina")
-greet("Beam", "หวัดดี")
-greet(greeting="Hello", name="Mali")`
+greet("Hobi")
+greet("SUGA", "หวัดดี")
+greet(greeting="Hello", name="RM")`
         }],
       ["return: ส่งผลกลับ",
         "`return` ส่งค่ากลับไปให้ผู้เรียกนำไปใช้ต่อ เช่น เก็บในตัวแปรหรือคำนวณต่อ ต่างจาก `print` ที่แค่แสดงบนจอ",

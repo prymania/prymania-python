@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 210" role="img" aria-labelledby="t">
+  <title id="t">เลือกข้อมูลจาก array 3x4: m[1] ได้ทั้งแถว 1, m[:, 0] ได้ทั้งคอลัมน์ 0, m[1:, 2:] ได้มุมขวาล่าง</title>
+  <style>
+    text { font-family: "Leelawadee UI", Tahoma, sans-serif; fill: #202440; }
+    .mono { font-family: Consolas, "Courier New", monospace; }
+    .v { font-size: 14px; }
+    .cap { font-size: 15px; font-weight: 700; }
+    .cell { fill: #fffefa; stroke: #c9cfd8; }
+  </style>
+  <defs>
+    <g id="grid">
+      <rect x="0" y="0" width="200" height="120" class="cell"/>
+      <path d="M50 0V120M100 0V120M150 0V120M0 40H200M0 80H200" stroke="#c9cfd8"/>
+    </g>
+    <g id="nums" class="mono v" text-anchor="middle">
+      <text x="25" y="25">1</text><text x="75" y="25">2</text><text x="125" y="25">3</text><text x="175" y="25">4</text>
+      <text x="25" y="65">5</text><text x="75" y="65">6</text><text x="125" y="65">7</text><text x="175" y="65">8</text>
+      <text x="25" y="105">9</text><text x="75" y="105">10</text><text x="125" y="105">11</text><text x="175" y="105">12</text>
+    </g>
+  </defs>
+  <g transform="translate(30,30)">
+    <use href="#grid"/>
+    <rect x="0" y="40" width="200" height="40" fill="#3776ab" opacity=".22" stroke="#3776ab" stroke-width="2"/>
+    <use href="#nums"/>
+    <text x="100" y="152" text-anchor="middle" class="cap mono">m[1]</text>
+    <text x="100" y="174" text-anchor="middle" font-size="13" fill="#586477">ทั้งแถว 1 → [5 6 7 8]</text>
+  </g>
+  <g transform="translate(280,30)">
+    <use href="#grid"/>
+    <rect x="0" y="0" width="50" height="120" fill="#ffd43b" opacity=".45" stroke="#b58900" stroke-width="2"/>
+    <use href="#nums"/>
+    <text x="100" y="152" text-anchor="middle" class="cap mono">m[:, 0]</text>
+    <text x="100" y="174" text-anchor="middle" font-size="13" fill="#586477">ทุกแถว คอลัมน์ 0 → [1 5 9]</text>
+  </g>
+  <g transform="translate(530,30)">
+    <use href="#grid"/>
+    <rect x="100" y="40" width="100" height="80" fill="#1e7a4c" opacity=".2" stroke="#1e7a4c" stroke-width="2"/>
+    <use href="#nums"/>
+    <text x="100" y="152" text-anchor="middle" class="cap mono">m[1:, 2:]</text>
+    <text x="100" y="174" text-anchor="middle" font-size="13" fill="#586477">แถว 1 ขึ้นไป คอลัมน์ 2 ขึ้นไป</text>
+  </g>
+  <text x="380" y="18" text-anchor="middle" font-size="13" fill="#586477" class="mono">m = np.arange(1, 13).reshape(3, 4)   ·   m[แถว, คอลัมน์]</text>
+</svg>

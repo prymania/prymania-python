@@ -24,7 +24,8 @@ Builder รันตัวอย่างและเฉลยแบบฝึก
 index.html                         หน้าแรกพร้อมเมนูบทแบบยุบ/ขยายและหัวข้อย่อยด้านซ้าย ค้นหา และกรองบท
 chapters/chapter-01.html ...       หน้าแต่ละบท (สร้างอัตโนมัติ)
 assets/site.css, site.js           ธีมหน้าแรกและเครื่องมือค้นหา
-assets/lesson.css, lesson.js       รูปแบบบทเรียน ปุ่มคัดลอก และเปิดเฉลย
+assets/lesson.css, lesson.js       รูปแบบบทเรียน (layout และธีมโค้ดเดียวกับเว็บ Java) ปุ่มคัดลอก และเปิดเฉลย
+assets/course-nav.css, .js         เมนูด้านซ้ายที่ใช้ร่วมกันทุกหน้า (จำบทที่กางและตำแหน่งเมนูข้ามหน้า)
 assets/python-path.svg             ภาพประกอบเส้นทางการเรียนรู้
 assets/figures/*.svg               ภาพประกอบแนวคิด (เขียนด้วยมือ)
 assets/figures/*.png, assets/gui/  กราฟและภาพหน้าต่างที่ builder สร้างจากการรันโค้ดจริง
@@ -33,12 +34,13 @@ tools/lesson-builder/course-practice.mjs   บทที่ 9–13
 tools/lesson-builder/course-data-ai.mjs    บทที่ 14–18
 tools/lesson-builder/course-gui.mjs        บทที่ 19–20
 tools/lesson-builder/course-helpers.mjs    รูปแบบข้อมูลบท หัวข้อ ตัวอย่าง และโจทย์
+tools/lesson-builder/highlight.mjs         ระบายสี syntax ของ Python ตอน build
 tools/lesson-builder/build.mjs     รัน source และสร้างหน้าเว็บ
 requirements.txt                   แพ็กเกจ data/AI/GUI สำหรับตัวอย่าง
 password.js                        รหัสผ่านฝั่ง browser สำหรับแบบฝึกหัด
 ```
 
-แก้เนื้อหาที่ `tools/lesson-builder/course-*.mjs` แล้วรัน builder ใหม่ อย่าแก้ HTML ใน `chapters/` โดยตรง เพราะการ build จะเขียนทับ
+แก้เนื้อหาที่ `tools/lesson-builder/course-*.mjs` แล้วรัน builder ใหม่ เมนูด้านซ้ายถูกเขียนใหม่ทุกครั้งที่ build ทั้งในหน้าบทและใน `index.html` ระหว่าง `<!-- course-nav -->` กับ `<!-- /course-nav -->` (ถ้าเพิ่มบทใหม่ ให้เพิ่มชื่อสั้นใน `NAV_TITLES` ของ `build.mjs`) อย่าแก้ HTML ใน `chapters/` โดยตรง เพราะการ build จะเขียนทับ
 
 แต่ละหัวข้อเป็นย่อหน้าสั้น ๆ และเพิ่ม `code`, `table`, `figure` หรือ `tip` ได้ แบบฝึกหัดมี `given`/`want`/`checklist` ซึ่งแสดงเป็นกล่อง "เข้าใจโจทย์" ฟิลด์เสริมที่ใช้ได้ทั้งหัวข้อ ตัวอย่าง และโจทย์:
 

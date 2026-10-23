@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 190" role="img" aria-labelledby="t">
+  <title id="t">broadcasting: scores ขนาด 2x3 บวก bonus ขนาด 3 โดย NumPy ยืด bonus ให้ทุกแถวแล้วบวกทีละตำแหน่ง</title>
+  <style>
+    text { font-family: "Leelawadee UI", Tahoma, sans-serif; fill: #202440; }
+    .mono { font-family: Consolas, "Courier New", monospace; font-size: 15px; }
+    .cap { fill: #586477; font-size: 13px; }
+    .op { font-size: 26px; font-weight: 700; fill: #586477; }
+  </style>
+  <g transform="translate(20,40)">
+    <rect width="180" height="80" fill="#fffefa" stroke="#3776ab" stroke-width="1.5"/>
+    <path d="M60 0V80M120 0V80M0 40H180" stroke="#c9cfd8"/>
+    <g class="mono" text-anchor="middle"><text x="30" y="26">70</text><text x="90" y="26">80</text><text x="150" y="26">65</text><text x="30" y="66">55</text><text x="90" y="66">90</text><text x="150" y="66">72</text></g>
+    <text x="90" y="108" text-anchor="middle" class="cap mono">scores (2, 3)</text>
+  </g>
+  <text x="222" y="90" class="op">+</text>
+  <g transform="translate(250,40)">
+    <rect width="180" height="40" fill="#fff4cc" stroke="#b58900" stroke-width="1.5"/>
+    <rect y="40" width="180" height="40" fill="#fffaea" stroke="#b58900" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <path d="M60 0V80M120 0V80" stroke="#e6d7a0"/>
+    <g class="mono" text-anchor="middle"><text x="30" y="26">5</text><text x="90" y="26">0</text><text x="150" y="26">10</text><text x="30" y="66" fill="#a48a3c">5</text><text x="90" y="66" fill="#a48a3c">0</text><text x="150" y="66" fill="#a48a3c">10</text></g>
+    <text x="90" y="108" text-anchor="middle" class="cap mono">bonus (3,) → ยืดเป็น (2, 3)</text>
+    <text x="90" y="128" text-anchor="middle" class="cap">แถวเส้นประ = แถวที่ NumPy ใช้ซ้ำให้</text>
+  </g>
+  <text x="452" y="90" class="op">=</text>
+  <g transform="translate(482,40)">
+    <rect width="180" height="80" fill="#e5f4eb" stroke="#1e7a4c" stroke-width="1.5"/>
+    <path d="M60 0V80M120 0V80M0 40H180" stroke="#bfe3cc"/>
+    <g class="mono" text-anchor="middle"><text x="30" y="26">75</text><text x="90" y="26">80</text><text x="150" y="26">75</text><text x="30" y="66">60</text><text x="90" y="66">90</text><text x="150" y="66">82</text></g>
+    <text x="90" y="108" text-anchor="middle" class="cap mono">ผลลัพธ์ (2, 3)</text>
+  </g>
+  <text x="380" y="22" text-anchor="middle" class="cap">เทียบ shape จากขวาไปซ้าย: ขนาดเท่ากัน หรือฝั่งหนึ่งเป็น 1 (หรือไม่มี) จึงบวกกันได้</text>
+</svg>

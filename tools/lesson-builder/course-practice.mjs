@@ -1,10 +1,10 @@
 import { chapter, task, figure } from "./course-helpers.mjs";
 
 const studentsCsv = `name,score
-Nina,88
-Beam,72
-Mali,95
-Tom,45
+Hobi,88
+SUGA,72
+RM,95
+Jungkook,45
 `;
 
 // ส่วนที่ 2: ฝึกเขียนและใช้งาน (บทที่ 9–13)
@@ -286,7 +286,7 @@ with open("students.csv", encoding="utf-8") as f:
         {
           code: `import json
 
-profile = {"name": "Nina", "skills": ["Python", "SQL"], "year": 2}
+profile = {"name": "Hobi", "skills": ["Python", "SQL"], "year": 2}
 with open("profile.json", "w", encoding="utf-8") as f:
     json.dump(profile, f, ensure_ascii=False, indent=2)
 
@@ -393,7 +393,7 @@ print(f"{lines} บรรทัด {words} คำ")`,
       task("หาคนคะแนนสูงสุดจาก CSV", 2, {
         task: "อ่าน `students.csv` แล้วแสดงชื่อและคะแนนของคนที่ได้คะแนนสูงสุด",
         given: "ไฟล์ students.csv",
-        want: "`สูงสุด: Mali 95 คะแนน`",
+        want: "`สูงสุด: RM 95 คะแนน`",
         files: { "students.csv": studentsCsv },
         checklist: ["ใช้ `csv.DictReader`", "แปลงคะแนนเป็น `int` ก่อนเปรียบเทียบ", "เก็บแถวที่ดีที่สุดระหว่างวน"],
         code: `import csv
@@ -558,7 +558,7 @@ except ModuleNotFoundError:
         code: `import random
 
 random.seed(7)
-names = ["Nina", "Beam", "Mali", "Tom", "Ploy", "Arun"]
+names = ["Hobi", "SUGA", "RM", "Jungkook", "Mark", "JayB"]
 random.shuffle(names)
 
 for i in range(0, len(names), 2):
@@ -679,7 +679,7 @@ print([line.split(">=")[0] for line in content.split()])`,
       ["class คือแม่แบบ object คือของจริง",
         "class อธิบายว่าสิ่งหนึ่งมีข้อมูล (attribute) อะไร และทำอะไรได้ (method) ส่วน object คือของจริงที่สร้างจาก class แต่ละตัวมีข้อมูลของตัวเอง",
         {
-          figure: figure("class-object.svg", "class Student เป็นแม่แบบที่มี name, score และ method grade() สร้าง object ได้หลายตัว เช่น Nina 88 และ Beam 72")
+          figure: figure("class-object.svg", "class Student เป็นแม่แบบที่มี name, score และ method grade() สร้าง object ได้หลายตัว เช่น Hobi 88 และ SUGA 72")
         }],
       ["__init__ และ self",
         "`__init__` ทำงานอัตโนมัติตอนสร้าง object ใช้กำหนดค่าเริ่มต้น `self` คือ object ตัวที่กำลังสร้าง/ใช้งานอยู่ `self.name = name` จึงหมายถึงเก็บ name ไว้ใน object นี้",
@@ -689,11 +689,11 @@ print([line.split(">=")[0] for line in content.split()])`,
         self.name = name
         self.score = score
 
-a = Student("Nina", 88)
-b = Student("Beam", 72)
+a = Student("Hobi", 88)
+b = Student("SUGA", 72)
 print(a.name, a.score)
 print(b.name, b.score)`,
-          tip: "ตอนสร้าง `Student(\"Nina\", 88)` ไม่ต้องส่ง self Python ใส่ให้เอง"
+          tip: "ตอนสร้าง `Student(\"Hobi\", 88)` ไม่ต้องส่ง self Python ใส่ให้เอง"
         }],
       ["method: การทำงานของ object",
         "method คือฟังก์ชันใน class รับ `self` เป็นพารามิเตอร์แรกเสมอ จึงอ่านและแก้ข้อมูลของ object ได้",
@@ -709,7 +709,7 @@ print(b.name, b.score)`,
     def add_bonus(self, points):
         self.score += points
 
-s = Student("Tom", 45)
+s = Student("Jungkook", 45)
 print(s.grade())
 s.add_bonus(10)
 print(s.score, s.grade())`
@@ -735,7 +735,7 @@ print(Product("Notebook", 1290))`
         self.name = name
         self.score = score
 
-students = [Student("Nina", 88), Student("Beam", 72), Student("Mali", 95)]
+students = [Student("Hobi", 88), Student("SUGA", 72), Student("RM", 95)]
 for s in students:
     print(s.name, s.score)
 best = max(students, key=lambda s: s.score)
@@ -764,15 +764,15 @@ print("สูงสุด:", best.name)`,
     def __str__(self):
         return f"{self.owner}: {self.balance:,} บาท"
 
-a = BankAccount("Nina", 1000)
-b = BankAccount("Beam")
+a = BankAccount("Hobi", 1000)
+b = BankAccount("SUGA")
 a.deposit(500)
 a.withdraw(300)
 b.withdraw(100)
 print(a)
 print(b)`,
         steps: [
-          "`balance=0` เป็นค่าเริ่มต้น บัญชีของ Beam จึงเริ่มที่ 0",
+          "`balance=0` เป็นค่าเริ่มต้น บัญชีของ SUGA จึงเริ่มที่ 0",
           "`withdraw` ตรวจยอดก่อนหัก ผู้ใช้ class ไม่ต้องเขียนเงื่อนไขนี้ซ้ำเอง",
           "a และ b เป็นคนละ object ยอดเงินจึงแยกกัน"
         ]
@@ -857,9 +857,9 @@ print(c.value)`,
         explain: "object จำสถานะ (value) ไว้ระหว่างการเรียก method แต่ละครั้ง"
       }),
       task("แสดง object ให้อ่านง่าย", 2, {
-        task: "สร้าง class `Book` มี title, author, pages และ `__str__` ให้ `print(book)` ได้ `\"Python 101\" โดย Ada (320 หน้า)`",
-        given: "หนังสือ Python 101, Ada, 320 หน้า",
-        want: "`\"Python 101\" โดย Ada (320 หน้า)`",
+        task: "สร้าง class `Book` มี title, author, pages และ `__str__` ให้ `print(book)` ได้ `\"Python 101\" โดย Mark (320 หน้า)`",
+        given: "หนังสือ Python 101, Mark, 320 หน้า",
+        want: "`\"Python 101\" โดย Mark (320 หน้า)`",
         checklist: ["เขียน `__str__(self)` คืนข้อความ", "ใช้ f-string รวม attribute"],
         code: `class Book:
     def __init__(self, title, author, pages):
@@ -870,7 +870,7 @@ print(c.value)`,
     def __str__(self):
         return f'"{self.title}" โดย {self.author} ({self.pages} หน้า)'
 
-print(Book("Python 101", "Ada", 320))`,
+print(Book("Python 101", "Mark", 320))`,
         explain: "`print()` เรียก `__str__` ให้อัตโนมัติ ใช้ `'...'` ครอบ f-string เพราะข้างในมี `\"` อยู่แล้ว"
       }),
       task("กระปุกออมสิน", 2, {
@@ -897,8 +897,8 @@ print(f"ออมแล้ว {bank.saved} / {bank.goal} บาท ({bank.progre
       }),
       task("ห้องเรียน", 3, {
         task: "สร้าง class `Student` (name, score) และ `Classroom` ที่มี method `add()`, `average()` และ `top()` คืนนักเรียนคะแนนสูงสุด",
-        given: "Nina 88, Beam 72, Mali 95",
-        want: "`เฉลี่ย 85.00` และ `สูงสุด Mali`",
+        given: "Hobi 88, SUGA 72, RM 95",
+        want: "`เฉลี่ย 85.00` และ `สูงสุด RM`",
         checklist: ["Classroom เก็บ list ของ Student", "`average()` ใช้ sum ของคะแนนทุกคน", "`top()` ใช้ `max(..., key=lambda s: s.score)`"],
         code: `class Student:
     def __init__(self, name, score):
@@ -919,7 +919,7 @@ class Classroom:
         return max(self.students, key=lambda s: s.score)
 
 room = Classroom()
-for name, score in [("Nina", 88), ("Beam", 72), ("Mali", 95)]:
+for name, score in [("Hobi", 88), ("SUGA", 72), ("RM", 95)]:
     room.add(Student(name, score))
 print(f"เฉลี่ย {room.average():.2f}")
 print("สูงสุด", room.top().name)`,
@@ -1091,13 +1091,13 @@ print(users[0])`,
     ],
     [
       task("อ่าน JSON ซ้อนชั้น", 1, {
-        task: "จากข้อความ JSON `{\"course\": \"Python\", \"teacher\": {\"name\": \"Ada\"}, \"topics\": [\"loop\", \"function\", \"class\"]}` ให้แสดงชื่อผู้สอนและจำนวนหัวข้อ",
+        task: "จากข้อความ JSON `{\"course\": \"Python\", \"teacher\": {\"name\": \"Mark\"}, \"topics\": [\"loop\", \"function\", \"class\"]}` ให้แสดงชื่อผู้สอนและจำนวนหัวข้อ",
         given: "ข้อความ JSON",
-        want: "`ผู้สอน Ada สอน 3 หัวข้อ`",
+        want: "`ผู้สอน Mark สอน 3 หัวข้อ`",
         checklist: ["`json.loads()` แปลงเป็น dict", "ซ้อนชั้นใช้ `data[\"teacher\"][\"name\"]`", "`len()` นับ list"],
         code: `import json
 
-text = '{"course": "Python", "teacher": {"name": "Ada"}, "topics": ["loop", "function", "class"]}'
+text = '{"course": "Python", "teacher": {"name": "Mark"}, "topics": ["loop", "function", "class"]}'
 data = json.loads(text)
 print(f"ผู้สอน {data['teacher']['name']} สอน {len(data['topics'])} หัวข้อ")`,
         explain: "JSON ที่ซ้อนกันเข้าถึงทีละชั้นด้วยวงเล็บเหลี่ยมต่อกัน เหมือน dict ใน dict"
@@ -1140,12 +1140,12 @@ print(f"เสร็จ {done} งาน ค้าง {len(todos) - done} งา
       }),
       task("สร้าง JSON ส่งให้ API", 2, {
         task: "สร้าง dict ข้อมูลการลงทะเบียน (ชื่อ, วิชา, ยืนยันแล้ว = True, หมายเหตุ = ไม่มี) แล้วแปลงเป็นข้อความ JSON ที่จัดย่อหน้า",
-        given: "Nina, ลงวิชา Python และ Data, ยืนยันแล้ว, ไม่มีหมายเหตุ",
+        given: "Hobi, ลงวิชา Python และ Data, ยืนยันแล้ว, ไม่มีหมายเหตุ",
         want: "ข้อความ JSON ที่มี `true` และ `null`",
         checklist: ["ใช้ `True` และ `None` ใน Python", "`json.dumps(data, indent=2, ensure_ascii=False)`"],
         code: `import json
 
-data = {"name": "Nina", "courses": ["Python", "Data"], "confirmed": True, "note": None}
+data = {"name": "Hobi", "courses": ["Python", "Data"], "confirmed": True, "note": None}
 print(json.dumps(data, indent=2, ensure_ascii=False))`,
         explain: "ตอนส่งข้อมูลไป API ต้องแปลงเป็น JSON ก่อน `True` กลายเป็น `true` และ `None` กลายเป็น `null` ตามมาตรฐาน JSON"
       }),

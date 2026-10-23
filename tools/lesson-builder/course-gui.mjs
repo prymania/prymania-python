@@ -94,7 +94,7 @@ sys.exit(app.exec())`
       ["signal และ slot: ทำงานเมื่อผู้ใช้กด",
         "เมื่อผู้ใช้ทำอะไรกับ widget จะเกิด signal เช่น ปุ่มส่ง `clicked` เราเชื่อม signal กับฟังก์ชัน (slot) ด้วย `.connect(ฟังก์ชัน)` ใส่แค่ชื่อฟังก์ชัน ไม่ต้องมีวงเล็บ",
         {
-          window: shot("ch19-signal", "name.setText('Nina')\nbutton.click()"),
+          window: shot("ch19-signal", "name.setText('Hobi')\nbutton.click()"),
           code: `import sys
 from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout,
                                QLineEdit, QPushButton, QLabel)
@@ -267,7 +267,7 @@ app = QApplication(sys.argv)
 window = QWidget()
 window.setWindowTitle("About me")
 layout = QVBoxLayout(window)
-for text in ["ชื่อ: Nina", "สาขา: Computer Science", "งานอดิเรก: ถ่ายภาพ"]:
+for text in ["ชื่อ: Hobi", "สาขา: Computer Science", "งานอดิเรก: ถ่ายภาพ"]:
     layout.addWidget(QLabel(text))
 window.resize(260, 120)
 window.show()

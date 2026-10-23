@@ -3,164 +3,122 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#192044">
+  <meta name="theme-color" content="#ffffff">
   <meta name="description" content="แปลงตัวเลขเป็นกราฟที่อ่านง่าย เลือกชนิดกราฟให้ตรงคำถาม และบันทึกเป็นไฟล์ภาพ">
-  <title>บทที่ 16 · สร้างกราฟด้วย Matplotlib | Python programming</title>
+  <title>บทที่ 16: สร้างกราฟด้วย Matplotlib | Python programming by Prymania</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Bai+Jamjuree:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="../assets/lesson.css">
+  <link rel="stylesheet" href="../assets/course-nav.css">
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
   <div class="lesson-shell">
-    <aside class="lesson-sidebar" aria-label="สารบัญบทเรียน">
-      <a class="lesson-brand" href="../index.html"><span class="brand-mark">Py</span><span><span class="brand-title">Python programming by Prymania</span><span class="brand-caption">LECTURE NOTES</span></span></a>
-      <nav class="lesson-toc chapter-navigation" aria-label="สารบัญรายวิชา">
-        <p class="toc-label">สารบัญ · 20 บทเรียน</p>
-        <p class="toc-label" data-group="foundation">เริ่มต้นกับ Python</p><details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเปิด Thonny เขียนไฟล์ .py แรก รันโปรแกรม และอ่าน error เบื้องต้น Python ทำงานอย่างไร เครื่องมือที่ใช้: Thonny Shell กับไฟล์ .py ต่างกันอย่างไร comment และการเยื้องบรรทัด อ่าน error ให้เป็น">
-      <summary><span class="toc-number">01</span><span class="chapter-nav-title">โครงสร้างโปรแกรม Python, IDE และการรัน</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-01.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-01.html#topic-1"><span class="topic-number">01.1</span>Python ทำงานอย่างไร</a></li><li><a href="chapter-01.html#topic-2"><span class="topic-number">01.2</span>เครื่องมือที่ใช้: Thonny</a></li><li><a href="chapter-01.html#topic-3"><span class="topic-number">01.3</span>Shell กับไฟล์ .py ต่างกันอย่างไร</a></li><li><a href="chapter-01.html#topic-4"><span class="topic-number">01.4</span>comment และการเยื้องบรรทัด</a></li><li><a href="chapter-01.html#topic-5"><span class="topic-number">01.5</span>อ่าน error ให้เป็น</a></li><li><a href="chapter-01.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลในตัวแปร รู้จักชนิดข้อมูล รับค่าด้วย input() และแสดงผลด้วย print() / f-string ตัวแปร: ตั้งชื่อให้ข้อมูล ชนิดข้อมูลพื้นฐาน 4 ชนิด แปลงชนิดข้อมูล รับค่าด้วย input() แสดงผลด้วย print() และ f-string ข้อผิดพลาดที่เจอบ่อย">
-      <summary><span class="toc-number">02</span><span class="chapter-nav-title">ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-02.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-02.html#topic-1"><span class="topic-number">02.1</span>ตัวแปร: ตั้งชื่อให้ข้อมูล</a></li><li><a href="chapter-02.html#topic-2"><span class="topic-number">02.2</span>ชนิดข้อมูลพื้นฐาน 4 ชนิด</a></li><li><a href="chapter-02.html#topic-3"><span class="topic-number">02.3</span>แปลงชนิดข้อมูล</a></li><li><a href="chapter-02.html#topic-4"><span class="topic-number">02.4</span>รับค่าด้วย input()</a></li><li><a href="chapter-02.html#topic-5"><span class="topic-number">02.5</span>แสดงผลด้วย print() และ f-string</a></li><li><a href="chapter-02.html#topic-6"><span class="topic-number">02.6</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-02.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และรวมเงื่อนไขด้วย and / or / not ตัวดำเนินการเลขคณิต ลำดับการคำนวณ เปรียบเทียบค่า ได้ผลเป็น True/False รวมเงื่อนไขด้วย and / or / not ตัวดำเนินการแบบย่อ">
-      <summary><span class="toc-number">03</span><span class="chapter-nav-title">ตัวดำเนินการและนิพจน์</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-03.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-03.html#topic-1"><span class="topic-number">03.1</span>ตัวดำเนินการเลขคณิต</a></li><li><a href="chapter-03.html#topic-2"><span class="topic-number">03.2</span>ลำดับการคำนวณ</a></li><li><a href="chapter-03.html#topic-3"><span class="topic-number">03.3</span>เปรียบเทียบค่า ได้ผลเป็น True/False</a></li><li><a href="chapter-03.html#topic-4"><span class="topic-number">03.4</span>รวมเงื่อนไขด้วย and / or / not</a></li><li><a href="chapter-03.html#topic-5"><span class="topic-number">03.5</span>ตัวดำเนินการแบบย่อ</a></li><li><a href="chapter-03.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if: ทำเมื่อเงื่อนไขเป็นจริง if-else: เลือก 1 ใน 2 ทาง elif: หลายทางเลือก เงื่อนไขหลายข้อ และ if ซ้อน ข้อผิดพลาดที่เจอบ่อย">
-      <summary><span class="toc-number">04</span><span class="chapter-nav-title">เงื่อนไขและการตัดสินใจ</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-04.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-04.html#topic-1"><span class="topic-number">04.1</span>if: ทำเมื่อเงื่อนไขเป็นจริง</a></li><li><a href="chapter-04.html#topic-2"><span class="topic-number">04.2</span>if-else: เลือก 1 ใน 2 ทาง</a></li><li><a href="chapter-04.html#topic-3"><span class="topic-number">04.3</span>elif: หลายทางเลือก</a></li><li><a href="chapter-04.html#topic-4"><span class="topic-number">04.4</span>เงื่อนไขหลายข้อ และ if ซ้อน</a></li><li><a href="chapter-04.html#topic-5"><span class="topic-number">04.5</span>ข้อผิดพลาดที่เจอบ่อย</a></li><li><a href="chapter-04.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="การทำซ้ำด้วยลูป สั่งให้โปรแกรมทำงานซ้ำด้วย for และ while แทนการเขียนคำสั่งเดิมหลายครั้ง for กับ range() for วนผ่านข้อมูลทีละตัว สะสมผลรวมและนับจำนวน while: วนจนกว่าเงื่อนไขจะเป็นเท็จ break และ continue">
-      <summary><span class="toc-number">05</span><span class="chapter-nav-title">การทำซ้ำด้วยลูป</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-05.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-05.html#topic-1"><span class="topic-number">05.1</span>for กับ range()</a></li><li><a href="chapter-05.html#topic-2"><span class="topic-number">05.2</span>for วนผ่านข้อมูลทีละตัว</a></li><li><a href="chapter-05.html#topic-3"><span class="topic-number">05.3</span>สะสมผลรวมและนับจำนวน</a></li><li><a href="chapter-05.html#topic-4"><span class="topic-number">05.4</span>while: วนจนกว่าเงื่อนไขจะเป็นเท็จ</a></li><li><a href="chapter-05.html#topic-5"><span class="topic-number">05.5</span>break และ continue</a></li><li><a href="chapter-05.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด แยก ค้นหา และจัดรูปแบบข้อความด้วย index, slicing และ string method index: ตำแหน่งของตัวอักษร slicing: ตัดบางส่วน method ที่ใช้บ่อย ตรวจและวนข้อความ">
-      <summary><span class="toc-number">06</span><span class="chapter-nav-title">ข้อความและการจัดการ string</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-06.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-06.html#topic-1"><span class="topic-number">06.1</span>index: ตำแหน่งของตัวอักษร</a></li><li><a href="chapter-06.html#topic-2"><span class="topic-number">06.2</span>slicing: ตัดบางส่วน</a></li><li><a href="chapter-06.html#topic-3"><span class="topic-number">06.3</span>method ที่ใช้บ่อย</a></li><li><a href="chapter-06.html#topic-4"><span class="topic-number">06.4</span>ตรวจและวนข้อความ</a></li><li><a href="chapter-06.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เก็บข้อมูลหลายค่าในตัวแปรเดียว และเลือกโครงสร้างให้เหมาะกับงาน เลือกใช้แบบไหนดี list: รายการที่แก้ไขได้ tuple และ set dict: จับคู่ key กับ value">
-      <summary><span class="toc-number">07</span><span class="chapter-nav-title">โครงสร้างข้อมูล: list, tuple, set และ dict</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-07.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-07.html#topic-1"><span class="topic-number">07.1</span>เลือกใช้แบบไหนดี</a></li><li><a href="chapter-07.html#topic-2"><span class="topic-number">07.2</span>list: รายการที่แก้ไขได้</a></li><li><a href="chapter-07.html#topic-3"><span class="topic-number">07.3</span>tuple และ set</a></li><li><a href="chapter-07.html#topic-4"><span class="topic-number">07.4</span>dict: จับคู่ key กับ value</a></li><li><a href="chapter-07.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม รวมคำสั่งที่ทำงานหนึ่งอย่างเป็นฟังก์ชัน เรียกใช้ซ้ำได้ และแบ่งโปรแกรมใหญ่เป็นส่วนเล็ก def: สร้างฟังก์ชัน parameter: ส่งค่าเข้าฟังก์ชัน return: ส่งผลกลับ ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน">
-      <summary><span class="toc-number">08</span><span class="chapter-nav-title">ฟังก์ชันและการแบ่งโปรแกรม</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-08.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-08.html#topic-1"><span class="topic-number">08.1</span>def: สร้างฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-2"><span class="topic-number">08.2</span>parameter: ส่งค่าเข้าฟังก์ชัน</a></li><li><a href="chapter-08.html#topic-3"><span class="topic-number">08.3</span>return: ส่งผลกลับ</a></li><li><a href="chapter-08.html#topic-4"><span class="topic-number">08.4</span>ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน</a></li><li><a href="chapter-08.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<p class="toc-label" data-group="practice">ฝึกเขียนและใช้งาน</p><details class="chapter-nav-item" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน error ให้เข้าใจ ดักจับข้อผิดพลาดด้วย try/except และหาสาเหตุเมื่อผลลัพธ์ผิด อ่าน traceback error ที่พบบ่อย try / except: ดักจับ error ดักหลายชนิด และดูข้อความ error raise: แจ้ง error เอง ไล่หาบั๊กเมื่อผลลัพธ์ผิด">
-      <summary><span class="toc-number">09</span><span class="chapter-nav-title">ข้อผิดพลาด การจัดการ exception และ debug</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-09.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-09.html#topic-1"><span class="topic-number">09.1</span>อ่าน traceback</a></li><li><a href="chapter-09.html#topic-2"><span class="topic-number">09.2</span>error ที่พบบ่อย</a></li><li><a href="chapter-09.html#topic-3"><span class="topic-number">09.3</span>try / except: ดักจับ error</a></li><li><a href="chapter-09.html#topic-4"><span class="topic-number">09.4</span>ดักหลายชนิด และดูข้อความ error</a></li><li><a href="chapter-09.html#topic-5"><span class="topic-number">09.5</span>raise: แจ้ง error เอง</a></li><li><a href="chapter-09.html#topic-6"><span class="topic-number">09.6</span>ไล่หาบั๊กเมื่อผลลัพธ์ผิด</a></li><li><a href="chapter-09.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนไฟล์ข้อความ CSV และ JSON เพื่อเก็บข้อมูลไว้ใช้ต่อหลังปิดโปรแกรม เปิดไฟล์ด้วย with open() อ่านทีละบรรทัด CSV: ข้อมูลตาราง JSON: บันทึก list/dict ทั้งก้อน เลือก CSV หรือ JSON">
-      <summary><span class="toc-number">10</span><span class="chapter-nav-title">ไฟล์ ข้อมูล CSV และ JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-10.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-10.html#topic-1"><span class="topic-number">10.1</span>เปิดไฟล์ด้วย with open()</a></li><li><a href="chapter-10.html#topic-2"><span class="topic-number">10.2</span>อ่านทีละบรรทัด</a></li><li><a href="chapter-10.html#topic-3"><span class="topic-number">10.3</span>CSV: ข้อมูลตาราง</a></li><li><a href="chapter-10.html#topic-4"><span class="topic-number">10.4</span>JSON: บันทึก list/dict ทั้งก้อน</a></li><li><a href="chapter-10.html#topic-5"><span class="topic-number">10.5</span>เลือก CSV หรือ JSON</a></li><li><a href="chapter-10.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="practice" data-search="โมดูล virtual environment และ pip นำโมดูลมาตรฐานมาใช้ สร้างโมดูลของตัวเอง และติดตั้งแพ็กเกจเพิ่มด้วย pip ใน virtual environment import: นำโมดูลมาใช้ โมดูลมาตรฐานที่ใช้บ่อย สร้างโมดูลเอง pip และ virtual environment ตรวจว่าติดตั้งแล้วหรือยัง">
-      <summary><span class="toc-number">11</span><span class="chapter-nav-title">โมดูล virtual environment และ pip</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-11.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-11.html#topic-1"><span class="topic-number">11.1</span>import: นำโมดูลมาใช้</a></li><li><a href="chapter-11.html#topic-2"><span class="topic-number">11.2</span>โมดูลมาตรฐานที่ใช้บ่อย</a></li><li><a href="chapter-11.html#topic-3"><span class="topic-number">11.3</span>สร้างโมดูลเอง</a></li><li><a href="chapter-11.html#topic-4"><span class="topic-number">11.4</span>pip และ virtual environment</a></li><li><a href="chapter-11.html#topic-5"><span class="topic-number">11.5</span>ตรวจว่าติดตั้งแล้วหรือยัง</a></li><li><a href="chapter-11.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมข้อมูลและการทำงานที่เกี่ยวข้องกันไว้ใน class แล้วสร้าง object ได้หลายตัว class คือแม่แบบ object คือของจริง __init__ และ self method: การทำงานของ object __str__: กำหนดวิธีแสดงผล ทำงานกับ object หลายตัว">
-      <summary><span class="toc-number">12</span><span class="chapter-nav-title">เขียนโปรแกรมเชิงวัตถุด้วย class</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-12.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-12.html#topic-1"><span class="topic-number">12.1</span>class คือแม่แบบ object คือของจริง</a></li><li><a href="chapter-12.html#topic-2"><span class="topic-number">12.2</span>__init__ และ self</a></li><li><a href="chapter-12.html#topic-3"><span class="topic-number">12.3</span>method: การทำงานของ object</a></li><li><a href="chapter-12.html#topic-4"><span class="topic-number">12.4</span>__str__: กำหนดวิธีแสดงผล</a></li><li><a href="chapter-12.html#topic-5"><span class="topic-number">12.5</span>ทำงานกับ object หลายตัว</a></li><li><a href="chapter-12.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON ขอข้อมูลจากบริการบนอินเทอร์เน็ตด้วย requests อ่านผลที่เป็น JSON และจัดการเมื่อเชื่อมต่อไม่สำเร็จ API ทำงานอย่างไร JSON กับ Python requests.get(): ขอข้อมูล ส่ง parameter รับมือเมื่อเรียกไม่สำเร็จ">
-      <summary><span class="toc-number">13</span><span class="chapter-nav-title">เรียกใช้ Web API และแลกเปลี่ยน JSON</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-13.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-13.html#topic-1"><span class="topic-number">13.1</span>API ทำงานอย่างไร</a></li><li><a href="chapter-13.html#topic-2"><span class="topic-number">13.2</span>JSON กับ Python</a></li><li><a href="chapter-13.html#topic-3"><span class="topic-number">13.3</span>requests.get(): ขอข้อมูล</a></li><li><a href="chapter-13.html#topic-4"><span class="topic-number">13.4</span>ส่ง parameter</a></li><li><a href="chapter-13.html#topic-5"><span class="topic-number">13.5</span>รับมือเมื่อเรียกไม่สำเร็จ</a></li><li><a href="chapter-13.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<p class="toc-label" data-group="ai">ต่อยอดข้อมูลและ AI</p><details class="chapter-nav-item" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของงาน Data Science และ AI array ต่างจาก list อย่างไร สร้าง array แบบต่าง ๆ คำนวณทั้ง array (vectorization) กรองข้อมูลด้วยเงื่อนไข array 2 มิติและแกน (axis) ฟังก์ชันสถิติ">
-      <summary><span class="toc-number">14</span><span class="chapter-nav-title">NumPy สำหรับการคำนวณตัวเลข</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-14.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-14.html#topic-1"><span class="topic-number">14.1</span>array ต่างจาก list อย่างไร</a></li><li><a href="chapter-14.html#topic-2"><span class="topic-number">14.2</span>สร้าง array แบบต่าง ๆ</a></li><li><a href="chapter-14.html#topic-3"><span class="topic-number">14.3</span>คำนวณทั้ง array (vectorization)</a></li><li><a href="chapter-14.html#topic-4"><span class="topic-number">14.4</span>กรองข้อมูลด้วยเงื่อนไข</a></li><li><a href="chapter-14.html#topic-5"><span class="topic-number">14.5</span>array 2 มิติและแกน (axis)</a></li><li><a href="chapter-14.html#topic-6"><span class="topic-number">14.6</span>ฟังก์ชันสถิติ</a></li><li><a href="chapter-14.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน สำรวจ กรอง ทำความสะอาด และสรุปข้อมูลตารางด้วย pandas DataFrame DataFrame: ตารางข้อมูล อ่าน CSV และสำรวจข้อมูล เลือกและกรองข้อมูล เพิ่มคอลัมน์และเรียงข้อมูล จัดการค่าว่าง สรุปตามกลุ่มด้วย groupby">
-      <summary><span class="toc-number">15</span><span class="chapter-nav-title">จัดการตารางข้อมูลด้วย pandas</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-15.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-15.html#topic-1"><span class="topic-number">15.1</span>DataFrame: ตารางข้อมูล</a></li><li><a href="chapter-15.html#topic-2"><span class="topic-number">15.2</span>อ่าน CSV และสำรวจข้อมูล</a></li><li><a href="chapter-15.html#topic-3"><span class="topic-number">15.3</span>เลือกและกรองข้อมูล</a></li><li><a href="chapter-15.html#topic-4"><span class="topic-number">15.4</span>เพิ่มคอลัมน์และเรียงข้อมูล</a></li><li><a href="chapter-15.html#topic-5"><span class="topic-number">15.5</span>จัดการค่าว่าง</a></li><li><a href="chapter-15.html#topic-6"><span class="topic-number">15.6</span>สรุปตามกลุ่มด้วย groupby</a></li><li><a href="chapter-15.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib แปลงตัวเลขเป็นกราฟที่อ่านง่าย เลือกชนิดกราฟให้ตรงคำถาม และบันทึกเป็นไฟล์ภาพ กราฟแรก เลือกชนิดกราฟจากคำถาม กราฟแท่ง หลายเส้นในกราฟเดียว กราฟกระจายและฮิสโทแกรม บันทึกกราฟและภาษาไทย" open>
-      <summary><span class="toc-number">16</span><span class="chapter-nav-title">สร้างกราฟด้วย Matplotlib</span></summary>
-      <ul class="chapter-subnav"><li><a href="#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="#topic-1"><span class="topic-number">16.1</span>กราฟแรก</a></li><li><a href="#topic-2"><span class="topic-number">16.2</span>เลือกชนิดกราฟจากคำถาม</a></li><li><a href="#topic-3"><span class="topic-number">16.3</span>กราฟแท่ง</a></li><li><a href="#topic-4"><span class="topic-number">16.4</span>หลายเส้นในกราฟเดียว</a></li><li><a href="#topic-5"><span class="topic-number">16.5</span>กราฟกระจายและฮิสโทแกรม</a></li><li><a href="#topic-6"><span class="topic-number">16.6</span>บันทึกกราฟและภาษาไทย</a></li><li><a href="#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn ให้คอมพิวเตอร์เรียนรู้รูปแบบจากตัวอย่าง แล้วทำนายข้อมูลใหม่ ด้วยขั้นตอนมาตรฐานของ scikit-learn Machine Learning คืออะไร ขั้นตอนมาตรฐาน แบ่งข้อมูล train/test fit และ predict วัดผลโมเดล Pipeline: รวมการเตรียมข้อมูลกับโมเดล">
-      <summary><span class="toc-number">17</span><span class="chapter-nav-title">Machine Learning เบื้องต้นด้วย scikit-learn</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-17.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-17.html#topic-1"><span class="topic-number">17.1</span>Machine Learning คืออะไร</a></li><li><a href="chapter-17.html#topic-2"><span class="topic-number">17.2</span>ขั้นตอนมาตรฐาน</a></li><li><a href="chapter-17.html#topic-3"><span class="topic-number">17.3</span>แบ่งข้อมูล train/test</a></li><li><a href="chapter-17.html#topic-4"><span class="topic-number">17.4</span>fit และ predict</a></li><li><a href="chapter-17.html#topic-5"><span class="topic-number">17.5</span>วัดผลโมเดล</a></li><li><a href="chapter-17.html#topic-6"><span class="topic-number">17.6</span>Pipeline: รวมการเตรียมข้อมูลกับโมเดล</a></li><li><a href="chapter-17.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล เข้าใจส่วนประกอบของ neural network ตั้งแต่ neuron, activation, loss จนถึงการเรียนรู้ด้วย gradient descent neuron: หน่วยคำนวณพื้นฐาน activation function layer: หลาย neuron พร้อมกัน loss: วัดว่าผิดมากแค่ไหน การเรียนรู้: gradient descent ใช้ library แทนการเขียนเอง">
-      <summary><span class="toc-number">18</span><span class="chapter-nav-title">แนวคิด Neural Network และการฝึกโมเดล</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-18.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-18.html#topic-1"><span class="topic-number">18.1</span>neuron: หน่วยคำนวณพื้นฐาน</a></li><li><a href="chapter-18.html#topic-2"><span class="topic-number">18.2</span>activation function</a></li><li><a href="chapter-18.html#topic-3"><span class="topic-number">18.3</span>layer: หลาย neuron พร้อมกัน</a></li><li><a href="chapter-18.html#topic-4"><span class="topic-number">18.4</span>loss: วัดว่าผิดมากแค่ไหน</a></li><li><a href="chapter-18.html#topic-5"><span class="topic-number">18.5</span>การเรียนรู้: gradient descent</a></li><li><a href="chapter-18.html#topic-6"><span class="topic-number">18.6</span>ใช้ library แทนการเขียนเอง</a></li><li><a href="chapter-18.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<p class="toc-label" data-group="gui">GUI และโปรเจกต์</p><details class="chapter-nav-item" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปที่มีหน้าต่าง ปุ่ม และช่องกรอกข้อมูลด้วย PySide6 (Qt for Python) โครงสร้างแอปพื้นฐาน widget ที่ใช้บ่อย layout: จัดวาง widget signal และ slot: ทำงานเมื่อผู้ใช้กด เขียนหน้าต่างเป็น class">
-      <summary><span class="toc-number">19</span><span class="chapter-nav-title">สร้าง GUI สมัยใหม่ด้วย PySide6</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-19.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-19.html#topic-1"><span class="topic-number">19.1</span>โครงสร้างแอปพื้นฐาน</a></li><li><a href="chapter-19.html#topic-2"><span class="topic-number">19.2</span>widget ที่ใช้บ่อย</a></li><li><a href="chapter-19.html#topic-3"><span class="topic-number">19.3</span>layout: จัดวาง widget</a></li><li><a href="chapter-19.html#topic-4"><span class="topic-number">19.4</span>signal และ slot: ทำงานเมื่อผู้ใช้กด</a></li><li><a href="chapter-19.html#topic-5"><span class="topic-number">19.5</span>เขียนหน้าต่างเป็น class</a></li><li><a href="chapter-19.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-<details class="chapter-nav-item" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI รวมทุกอย่างที่เรียนมาเป็นแอปแนะนำรายวิชา: ข้อมูลจาก CSV, กติกาแนะนำ, โมเดลทำนาย และหน้าต่าง PySide6 เริ่มจากโจทย์ ไม่ใช่โค้ด แยกเป็น 3 ชั้น ชั้นข้อมูล: โหลดรายวิชา ชั้น logic: กติกาแนะนำ + ทดสอบ เพิ่มโมเดล ML: ทำนายโอกาสผ่าน ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง">
-      <summary><span class="toc-number">20</span><span class="chapter-nav-title">โปรเจกต์ปลายทาง: Course Planner + AI</span></summary>
-      <ul class="chapter-subnav"><li><a href="chapter-20.html#lesson-content"><span class="topic-number">↳</span>ภาพรวมและตัวอย่าง</a></li><li><a href="chapter-20.html#topic-1"><span class="topic-number">20.1</span>เริ่มจากโจทย์ ไม่ใช่โค้ด</a></li><li><a href="chapter-20.html#topic-2"><span class="topic-number">20.2</span>แยกเป็น 3 ชั้น</a></li><li><a href="chapter-20.html#topic-3"><span class="topic-number">20.3</span>ชั้นข้อมูล: โหลดรายวิชา</a></li><li><a href="chapter-20.html#topic-4"><span class="topic-number">20.4</span>ชั้น logic: กติกาแนะนำ + ทดสอบ</a></li><li><a href="chapter-20.html#topic-5"><span class="topic-number">20.5</span>เพิ่มโมเดล ML: ทำนายโอกาสผ่าน</a></li><li><a href="chapter-20.html#topic-6"><span class="topic-number">20.6</span>ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง</a></li><li><a href="chapter-20.html#chapter-exercises"><span class="topic-number">✎</span>แบบฝึกหัดท้ายบท</a></li></ul>
-    </details>
-      </nav>
-      <div class="sidebar-bottom">ตัวอย่างรันด้วย Python จริง<br>เลื่อนเพื่ออ่านหัวข้อถัดไป</div>
+    <aside class="lesson-sidebar" aria-label="เมนูบทเรียน">
+      <a class="lesson-brand" href="../index.html"><span class="brand-mark" aria-hidden="true">Py</span><span><span class="brand-title">Python programming<br>by Prymania</span><span class="brand-caption">LECTURE NOTES</span></span></a>
+      <!-- course-nav -->
+<button class="nav-toggle" type="button" aria-expanded="false">☰ สารบัญทุกบท</button>
+<nav class="course-nav" aria-label="สารบัญรายวิชา">
+<p class="nav-label" data-group="foundation">เริ่มต้นกับ Python</p>
+<details class="nav-chapter" data-group="foundation" data-search="โครงสร้างโปรแกรม Python, IDE และการรัน ติดตั้งและเปิด Thonny เขียนไฟล์ .py แรก รันโปรแกรม และอ่าน error เบื้องต้น Python ทำงานอย่างไร เครื่องมือที่ใช้: Thonny Shell กับไฟล์ .py ต่างกันอย่างไร comment และการเยื้องบรรทัด อ่าน error ให้เป็น"><summary><span class="nav-number">01</span><span class="nav-title">เริ่มต้น Python และ Thonny</span></summary><div class="nav-topics"><a href="chapter-01.html"><span class="toc-number">1</span>ภาพรวมของบท</a><a href="chapter-01.html#topic-1"><span class="toc-number">1.1</span>Python ทำงานอย่างไร</a><a href="chapter-01.html#topic-2"><span class="toc-number">1.2</span>เครื่องมือที่ใช้: Thonny</a><a href="chapter-01.html#topic-3"><span class="toc-number">1.3</span>Shell กับไฟล์ .py ต่างกันอย่างไร</a><a href="chapter-01.html#topic-4"><span class="toc-number">1.4</span>comment และการเยื้องบรรทัด</a><a href="chapter-01.html#topic-5"><span class="toc-number">1.5</span>อ่าน error ให้เป็น</a><a href="chapter-01.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-01.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="ตัวแปร ชนิดข้อมูล และการรับ/แสดงผล เก็บข้อมูลในตัวแปร รู้จักชนิดข้อมูล รับค่าด้วย input() และแสดงผลด้วย print() / f-string ตัวแปร: ตั้งชื่อให้ข้อมูล ชนิดข้อมูลพื้นฐาน 4 ชนิด แปลงชนิดข้อมูล รับค่าด้วย input() แสดงผลด้วย print() และ f-string ข้อผิดพลาดที่เจอบ่อย"><summary><span class="nav-number">02</span><span class="nav-title">ตัวแปรและชนิดข้อมูล</span></summary><div class="nav-topics"><a href="chapter-02.html"><span class="toc-number">2</span>ภาพรวมของบท</a><a href="chapter-02.html#topic-1"><span class="toc-number">2.1</span>ตัวแปร: ตั้งชื่อให้ข้อมูล</a><a href="chapter-02.html#topic-2"><span class="toc-number">2.2</span>ชนิดข้อมูลพื้นฐาน 4 ชนิด</a><a href="chapter-02.html#topic-3"><span class="toc-number">2.3</span>แปลงชนิดข้อมูล</a><a href="chapter-02.html#topic-4"><span class="toc-number">2.4</span>รับค่าด้วย input()</a><a href="chapter-02.html#topic-5"><span class="toc-number">2.5</span>แสดงผลด้วย print() และ f-string</a><a href="chapter-02.html#topic-6"><span class="toc-number">2.6</span>ข้อผิดพลาดที่เจอบ่อย</a><a href="chapter-02.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-02.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="ตัวดำเนินการและนิพจน์ คำนวณตัวเลข เปรียบเทียบค่า และรวมเงื่อนไขด้วย and / or / not ตัวดำเนินการเลขคณิต ลำดับการคำนวณ เปรียบเทียบค่า ได้ผลเป็น True/False รวมเงื่อนไขด้วย and / or / not ตัวดำเนินการแบบย่อ"><summary><span class="nav-number">03</span><span class="nav-title">ตัวดำเนินการ</span></summary><div class="nav-topics"><a href="chapter-03.html"><span class="toc-number">3</span>ภาพรวมของบท</a><a href="chapter-03.html#topic-1"><span class="toc-number">3.1</span>ตัวดำเนินการเลขคณิต</a><a href="chapter-03.html#topic-2"><span class="toc-number">3.2</span>ลำดับการคำนวณ</a><a href="chapter-03.html#topic-3"><span class="toc-number">3.3</span>เปรียบเทียบค่า ได้ผลเป็น True/False</a><a href="chapter-03.html#topic-4"><span class="toc-number">3.4</span>รวมเงื่อนไขด้วย and / or / not</a><a href="chapter-03.html#topic-5"><span class="toc-number">3.5</span>ตัวดำเนินการแบบย่อ</a><a href="chapter-03.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-03.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="เงื่อนไขและการตัดสินใจ ให้โปรแกรมเลือกทำงานตามสถานการณ์ด้วย if, elif และ else if: ทำเมื่อเงื่อนไขเป็นจริง if-else: เลือก 1 ใน 2 ทาง elif: หลายทางเลือก เงื่อนไขหลายข้อ และ if ซ้อน ข้อผิดพลาดที่เจอบ่อย"><summary><span class="nav-number">04</span><span class="nav-title">เงื่อนไข</span></summary><div class="nav-topics"><a href="chapter-04.html"><span class="toc-number">4</span>ภาพรวมของบท</a><a href="chapter-04.html#topic-1"><span class="toc-number">4.1</span>if: ทำเมื่อเงื่อนไขเป็นจริง</a><a href="chapter-04.html#topic-2"><span class="toc-number">4.2</span>if-else: เลือก 1 ใน 2 ทาง</a><a href="chapter-04.html#topic-3"><span class="toc-number">4.3</span>elif: หลายทางเลือก</a><a href="chapter-04.html#topic-4"><span class="toc-number">4.4</span>เงื่อนไขหลายข้อ และ if ซ้อน</a><a href="chapter-04.html#topic-5"><span class="toc-number">4.5</span>ข้อผิดพลาดที่เจอบ่อย</a><a href="chapter-04.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-04.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="การทำซ้ำด้วยลูป สั่งให้โปรแกรมทำงานซ้ำด้วย for และ while แทนการเขียนคำสั่งเดิมหลายครั้ง for กับ range() for วนผ่านข้อมูลทีละตัว สะสมผลรวมและนับจำนวน while: วนจนกว่าเงื่อนไขจะเป็นเท็จ break และ continue"><summary><span class="nav-number">05</span><span class="nav-title">การทำซ้ำ (ลูป)</span></summary><div class="nav-topics"><a href="chapter-05.html"><span class="toc-number">5</span>ภาพรวมของบท</a><a href="chapter-05.html#topic-1"><span class="toc-number">5.1</span>for กับ range()</a><a href="chapter-05.html#topic-2"><span class="toc-number">5.2</span>for วนผ่านข้อมูลทีละตัว</a><a href="chapter-05.html#topic-3"><span class="toc-number">5.3</span>สะสมผลรวมและนับจำนวน</a><a href="chapter-05.html#topic-4"><span class="toc-number">5.4</span>while: วนจนกว่าเงื่อนไขจะเป็นเท็จ</a><a href="chapter-05.html#topic-5"><span class="toc-number">5.5</span>break และ continue</a><a href="chapter-05.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-05.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="ข้อความและการจัดการ string ตัด แยก ค้นหา และจัดรูปแบบข้อความด้วย index, slicing และ string method index: ตำแหน่งของตัวอักษร slicing: ตัดบางส่วน method ที่ใช้บ่อย ตรวจและวนข้อความ"><summary><span class="nav-number">06</span><span class="nav-title">ข้อความ (string)</span></summary><div class="nav-topics"><a href="chapter-06.html"><span class="toc-number">6</span>ภาพรวมของบท</a><a href="chapter-06.html#topic-1"><span class="toc-number">6.1</span>index: ตำแหน่งของตัวอักษร</a><a href="chapter-06.html#topic-2"><span class="toc-number">6.2</span>slicing: ตัดบางส่วน</a><a href="chapter-06.html#topic-3"><span class="toc-number">6.3</span>method ที่ใช้บ่อย</a><a href="chapter-06.html#topic-4"><span class="toc-number">6.4</span>ตรวจและวนข้อความ</a><a href="chapter-06.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-06.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="โครงสร้างข้อมูล: list, tuple, set และ dict เก็บข้อมูลหลายค่าในตัวแปรเดียว และเลือกโครงสร้างให้เหมาะกับงาน เลือกใช้แบบไหนดี list: รายการที่แก้ไขได้ tuple และ set dict: จับคู่ key กับ value"><summary><span class="nav-number">07</span><span class="nav-title">list · tuple · set · dict</span></summary><div class="nav-topics"><a href="chapter-07.html"><span class="toc-number">7</span>ภาพรวมของบท</a><a href="chapter-07.html#topic-1"><span class="toc-number">7.1</span>เลือกใช้แบบไหนดี</a><a href="chapter-07.html#topic-2"><span class="toc-number">7.2</span>list: รายการที่แก้ไขได้</a><a href="chapter-07.html#topic-3"><span class="toc-number">7.3</span>tuple และ set</a><a href="chapter-07.html#topic-4"><span class="toc-number">7.4</span>dict: จับคู่ key กับ value</a><a href="chapter-07.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-07.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="foundation" data-search="ฟังก์ชันและการแบ่งโปรแกรม รวมคำสั่งที่ทำงานหนึ่งอย่างเป็นฟังก์ชัน เรียกใช้ซ้ำได้ และแบ่งโปรแกรมใหญ่เป็นส่วนเล็ก def: สร้างฟังก์ชัน parameter: ส่งค่าเข้าฟังก์ชัน return: ส่งผลกลับ ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน"><summary><span class="nav-number">08</span><span class="nav-title">ฟังก์ชัน</span></summary><div class="nav-topics"><a href="chapter-08.html"><span class="toc-number">8</span>ภาพรวมของบท</a><a href="chapter-08.html#topic-1"><span class="toc-number">8.1</span>def: สร้างฟังก์ชัน</a><a href="chapter-08.html#topic-2"><span class="toc-number">8.2</span>parameter: ส่งค่าเข้าฟังก์ชัน</a><a href="chapter-08.html#topic-3"><span class="toc-number">8.3</span>return: ส่งผลกลับ</a><a href="chapter-08.html#topic-4"><span class="toc-number">8.4</span>ตัวแปรในฟังก์ชันเป็นของฟังก์ชัน</a><a href="chapter-08.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-08.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<p class="nav-label" data-group="practice">ฝึกเขียนและใช้งาน</p>
+<details class="nav-chapter" data-group="practice" data-search="ข้อผิดพลาด การจัดการ exception และ debug อ่าน error ให้เข้าใจ ดักจับข้อผิดพลาดด้วย try/except และหาสาเหตุเมื่อผลลัพธ์ผิด อ่าน traceback error ที่พบบ่อย try / except: ดักจับ error ดักหลายชนิด และดูข้อความ error raise: แจ้ง error เอง ไล่หาบั๊กเมื่อผลลัพธ์ผิด"><summary><span class="nav-number">09</span><span class="nav-title">Error และการ debug</span></summary><div class="nav-topics"><a href="chapter-09.html"><span class="toc-number">9</span>ภาพรวมของบท</a><a href="chapter-09.html#topic-1"><span class="toc-number">9.1</span>อ่าน traceback</a><a href="chapter-09.html#topic-2"><span class="toc-number">9.2</span>error ที่พบบ่อย</a><a href="chapter-09.html#topic-3"><span class="toc-number">9.3</span>try / except: ดักจับ error</a><a href="chapter-09.html#topic-4"><span class="toc-number">9.4</span>ดักหลายชนิด และดูข้อความ error</a><a href="chapter-09.html#topic-5"><span class="toc-number">9.5</span>raise: แจ้ง error เอง</a><a href="chapter-09.html#topic-6"><span class="toc-number">9.6</span>ไล่หาบั๊กเมื่อผลลัพธ์ผิด</a><a href="chapter-09.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-09.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="practice" data-search="ไฟล์ ข้อมูล CSV และ JSON อ่านและเขียนไฟล์ข้อความ CSV และ JSON เพื่อเก็บข้อมูลไว้ใช้ต่อหลังปิดโปรแกรม เปิดไฟล์ด้วย with open() อ่านทีละบรรทัด CSV: ข้อมูลตาราง JSON: บันทึก list/dict ทั้งก้อน เลือก CSV หรือ JSON"><summary><span class="nav-number">10</span><span class="nav-title">ไฟล์ CSV และ JSON</span></summary><div class="nav-topics"><a href="chapter-10.html"><span class="toc-number">10</span>ภาพรวมของบท</a><a href="chapter-10.html#topic-1"><span class="toc-number">10.1</span>เปิดไฟล์ด้วย with open()</a><a href="chapter-10.html#topic-2"><span class="toc-number">10.2</span>อ่านทีละบรรทัด</a><a href="chapter-10.html#topic-3"><span class="toc-number">10.3</span>CSV: ข้อมูลตาราง</a><a href="chapter-10.html#topic-4"><span class="toc-number">10.4</span>JSON: บันทึก list/dict ทั้งก้อน</a><a href="chapter-10.html#topic-5"><span class="toc-number">10.5</span>เลือก CSV หรือ JSON</a><a href="chapter-10.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-10.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="practice" data-search="โมดูล virtual environment และ pip นำโมดูลมาตรฐานมาใช้ สร้างโมดูลของตัวเอง และติดตั้งแพ็กเกจเพิ่มด้วย pip ใน virtual environment import: นำโมดูลมาใช้ โมดูลมาตรฐานที่ใช้บ่อย สร้างโมดูลเอง pip และ virtual environment ตรวจว่าติดตั้งแล้วหรือยัง"><summary><span class="nav-number">11</span><span class="nav-title">โมดูลและ pip</span></summary><div class="nav-topics"><a href="chapter-11.html"><span class="toc-number">11</span>ภาพรวมของบท</a><a href="chapter-11.html#topic-1"><span class="toc-number">11.1</span>import: นำโมดูลมาใช้</a><a href="chapter-11.html#topic-2"><span class="toc-number">11.2</span>โมดูลมาตรฐานที่ใช้บ่อย</a><a href="chapter-11.html#topic-3"><span class="toc-number">11.3</span>สร้างโมดูลเอง</a><a href="chapter-11.html#topic-4"><span class="toc-number">11.4</span>pip และ virtual environment</a><a href="chapter-11.html#topic-5"><span class="toc-number">11.5</span>ตรวจว่าติดตั้งแล้วหรือยัง</a><a href="chapter-11.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-11.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="practice" data-search="เขียนโปรแกรมเชิงวัตถุด้วย class รวมข้อมูลและการทำงานที่เกี่ยวข้องกันไว้ใน class แล้วสร้าง object ได้หลายตัว class คือแม่แบบ object คือของจริง __init__ และ self method: การทำงานของ object __str__: กำหนดวิธีแสดงผล ทำงานกับ object หลายตัว"><summary><span class="nav-number">12</span><span class="nav-title">class และ object</span></summary><div class="nav-topics"><a href="chapter-12.html"><span class="toc-number">12</span>ภาพรวมของบท</a><a href="chapter-12.html#topic-1"><span class="toc-number">12.1</span>class คือแม่แบบ object คือของจริง</a><a href="chapter-12.html#topic-2"><span class="toc-number">12.2</span>__init__ และ self</a><a href="chapter-12.html#topic-3"><span class="toc-number">12.3</span>method: การทำงานของ object</a><a href="chapter-12.html#topic-4"><span class="toc-number">12.4</span>__str__: กำหนดวิธีแสดงผล</a><a href="chapter-12.html#topic-5"><span class="toc-number">12.5</span>ทำงานกับ object หลายตัว</a><a href="chapter-12.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-12.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="practice" data-search="เรียกใช้ Web API และแลกเปลี่ยน JSON ขอข้อมูลจากบริการบนอินเทอร์เน็ตด้วย requests อ่านผลที่เป็น JSON และจัดการเมื่อเชื่อมต่อไม่สำเร็จ API ทำงานอย่างไร JSON กับ Python requests.get(): ขอข้อมูล ส่ง parameter รับมือเมื่อเรียกไม่สำเร็จ"><summary><span class="nav-number">13</span><span class="nav-title">Web API</span></summary><div class="nav-topics"><a href="chapter-13.html"><span class="toc-number">13</span>ภาพรวมของบท</a><a href="chapter-13.html#topic-1"><span class="toc-number">13.1</span>API ทำงานอย่างไร</a><a href="chapter-13.html#topic-2"><span class="toc-number">13.2</span>JSON กับ Python</a><a href="chapter-13.html#topic-3"><span class="toc-number">13.3</span>requests.get(): ขอข้อมูล</a><a href="chapter-13.html#topic-4"><span class="toc-number">13.4</span>ส่ง parameter</a><a href="chapter-13.html#topic-5"><span class="toc-number">13.5</span>รับมือเมื่อเรียกไม่สำเร็จ</a><a href="chapter-13.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-13.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<p class="nav-label" data-group="ai">ต่อยอดข้อมูลและ AI</p>
+<details class="nav-chapter" data-group="ai" data-search="NumPy สำหรับการคำนวณตัวเลข คำนวณข้อมูลตัวเลขจำนวนมากพร้อมกันด้วย array ซึ่งเป็นพื้นฐานของ pandas, Matplotlib, scikit-learn และงาน AI ทั้งหมด ทำไมต้อง NumPy สร้าง array รูปร่าง: shape และ reshape เลือกข้อมูล: index และ slicing คำนวณทั้ง array และฟังก์ชันคณิตศาสตร์ broadcasting: คำนวณกับ array คนละขนาด กรองข้อมูลด้วยเงื่อนไข สรุปตามแกน (axis) สถิติ เรียงลำดับ และนับ ข้อผิดพลาดที่พบบ่อย NumPy ในงานจริง"><summary><span class="nav-number">14</span><span class="nav-title">NumPy</span></summary><div class="nav-topics"><a href="chapter-14.html"><span class="toc-number">14</span>ภาพรวมของบท</a><a href="chapter-14.html#topic-1"><span class="toc-number">14.1</span>ทำไมต้อง NumPy</a><a href="chapter-14.html#topic-2"><span class="toc-number">14.2</span>สร้าง array</a><a href="chapter-14.html#topic-3"><span class="toc-number">14.3</span>รูปร่าง: shape และ reshape</a><a href="chapter-14.html#topic-4"><span class="toc-number">14.4</span>เลือกข้อมูล: index และ slicing</a><a href="chapter-14.html#topic-5"><span class="toc-number">14.5</span>คำนวณทั้ง array และฟังก์ชันคณิตศาสตร์</a><a href="chapter-14.html#topic-6"><span class="toc-number">14.6</span>broadcasting: คำนวณกับ array คนละขนาด</a><a href="chapter-14.html#topic-7"><span class="toc-number">14.7</span>กรองข้อมูลด้วยเงื่อนไข</a><a href="chapter-14.html#topic-8"><span class="toc-number">14.8</span>สรุปตามแกน (axis)</a><a href="chapter-14.html#topic-9"><span class="toc-number">14.9</span>สถิติ เรียงลำดับ และนับ</a><a href="chapter-14.html#topic-10"><span class="toc-number">14.10</span>ข้อผิดพลาดที่พบบ่อย</a><a href="chapter-14.html#topic-11"><span class="toc-number">14.11</span>NumPy ในงานจริง</a><a href="chapter-14.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-14.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="ai" data-search="จัดการตารางข้อมูลด้วย pandas อ่าน สำรวจ กรอง ทำความสะอาด และสรุปข้อมูลตารางด้วย pandas DataFrame DataFrame: ตารางข้อมูล อ่าน CSV และสำรวจข้อมูล เลือกและกรองข้อมูล เพิ่มคอลัมน์และเรียงข้อมูล จัดการค่าว่าง สรุปตามกลุ่มด้วย groupby"><summary><span class="nav-number">15</span><span class="nav-title">pandas</span></summary><div class="nav-topics"><a href="chapter-15.html"><span class="toc-number">15</span>ภาพรวมของบท</a><a href="chapter-15.html#topic-1"><span class="toc-number">15.1</span>DataFrame: ตารางข้อมูล</a><a href="chapter-15.html#topic-2"><span class="toc-number">15.2</span>อ่าน CSV และสำรวจข้อมูล</a><a href="chapter-15.html#topic-3"><span class="toc-number">15.3</span>เลือกและกรองข้อมูล</a><a href="chapter-15.html#topic-4"><span class="toc-number">15.4</span>เพิ่มคอลัมน์และเรียงข้อมูล</a><a href="chapter-15.html#topic-5"><span class="toc-number">15.5</span>จัดการค่าว่าง</a><a href="chapter-15.html#topic-6"><span class="toc-number">15.6</span>สรุปตามกลุ่มด้วย groupby</a><a href="chapter-15.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-15.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="ai" data-search="สร้างกราฟด้วย Matplotlib แปลงตัวเลขเป็นกราฟที่อ่านง่าย เลือกชนิดกราฟให้ตรงคำถาม และบันทึกเป็นไฟล์ภาพ กราฟแรก เลือกชนิดกราฟจากคำถาม กราฟแท่ง หลายเส้นในกราฟเดียว กราฟกระจายและฮิสโทแกรม บันทึกกราฟและภาษาไทย" open><summary aria-current="page"><span class="nav-number">16</span><span class="nav-title">Matplotlib</span></summary><div class="nav-topics"><a href="#lesson-content"><span class="toc-number">16</span>ภาพรวมของบท</a><a href="#topic-1"><span class="toc-number">16.1</span>กราฟแรก</a><a href="#topic-2"><span class="toc-number">16.2</span>เลือกชนิดกราฟจากคำถาม</a><a href="#topic-3"><span class="toc-number">16.3</span>กราฟแท่ง</a><a href="#topic-4"><span class="toc-number">16.4</span>หลายเส้นในกราฟเดียว</a><a href="#topic-5"><span class="toc-number">16.5</span>กราฟกระจายและฮิสโทแกรม</a><a href="#topic-6"><span class="toc-number">16.6</span>บันทึกกราฟและภาษาไทย</a><a href="#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="ai" data-search="Machine Learning เบื้องต้นด้วย scikit-learn ให้คอมพิวเตอร์เรียนรู้รูปแบบจากตัวอย่าง แล้วทำนายข้อมูลใหม่ ด้วยขั้นตอนมาตรฐานของ scikit-learn Machine Learning คืออะไร ขั้นตอนมาตรฐาน แบ่งข้อมูล train/test fit และ predict วัดผลโมเดล Pipeline: รวมการเตรียมข้อมูลกับโมเดล"><summary><span class="nav-number">17</span><span class="nav-title">Machine Learning</span></summary><div class="nav-topics"><a href="chapter-17.html"><span class="toc-number">17</span>ภาพรวมของบท</a><a href="chapter-17.html#topic-1"><span class="toc-number">17.1</span>Machine Learning คืออะไร</a><a href="chapter-17.html#topic-2"><span class="toc-number">17.2</span>ขั้นตอนมาตรฐาน</a><a href="chapter-17.html#topic-3"><span class="toc-number">17.3</span>แบ่งข้อมูล train/test</a><a href="chapter-17.html#topic-4"><span class="toc-number">17.4</span>fit และ predict</a><a href="chapter-17.html#topic-5"><span class="toc-number">17.5</span>วัดผลโมเดล</a><a href="chapter-17.html#topic-6"><span class="toc-number">17.6</span>Pipeline: รวมการเตรียมข้อมูลกับโมเดล</a><a href="chapter-17.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-17.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="ai" data-search="แนวคิด Neural Network และการฝึกโมเดล เข้าใจส่วนประกอบของ neural network ตั้งแต่ neuron, activation, loss จนถึงการเรียนรู้ด้วย gradient descent neuron: หน่วยคำนวณพื้นฐาน activation function layer: หลาย neuron พร้อมกัน loss: วัดว่าผิดมากแค่ไหน การเรียนรู้: gradient descent ใช้ library แทนการเขียนเอง"><summary><span class="nav-number">18</span><span class="nav-title">Neural Network</span></summary><div class="nav-topics"><a href="chapter-18.html"><span class="toc-number">18</span>ภาพรวมของบท</a><a href="chapter-18.html#topic-1"><span class="toc-number">18.1</span>neuron: หน่วยคำนวณพื้นฐาน</a><a href="chapter-18.html#topic-2"><span class="toc-number">18.2</span>activation function</a><a href="chapter-18.html#topic-3"><span class="toc-number">18.3</span>layer: หลาย neuron พร้อมกัน</a><a href="chapter-18.html#topic-4"><span class="toc-number">18.4</span>loss: วัดว่าผิดมากแค่ไหน</a><a href="chapter-18.html#topic-5"><span class="toc-number">18.5</span>การเรียนรู้: gradient descent</a><a href="chapter-18.html#topic-6"><span class="toc-number">18.6</span>ใช้ library แทนการเขียนเอง</a><a href="chapter-18.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-18.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<p class="nav-label" data-group="gui">GUI และโปรเจกต์</p>
+<details class="nav-chapter" data-group="gui" data-search="สร้าง GUI สมัยใหม่ด้วย PySide6 สร้างแอปที่มีหน้าต่าง ปุ่ม และช่องกรอกข้อมูลด้วย PySide6 (Qt for Python) โครงสร้างแอปพื้นฐาน widget ที่ใช้บ่อย layout: จัดวาง widget signal และ slot: ทำงานเมื่อผู้ใช้กด เขียนหน้าต่างเป็น class"><summary><span class="nav-number">19</span><span class="nav-title">GUI ด้วย PySide6</span></summary><div class="nav-topics"><a href="chapter-19.html"><span class="toc-number">19</span>ภาพรวมของบท</a><a href="chapter-19.html#topic-1"><span class="toc-number">19.1</span>โครงสร้างแอปพื้นฐาน</a><a href="chapter-19.html#topic-2"><span class="toc-number">19.2</span>widget ที่ใช้บ่อย</a><a href="chapter-19.html#topic-3"><span class="toc-number">19.3</span>layout: จัดวาง widget</a><a href="chapter-19.html#topic-4"><span class="toc-number">19.4</span>signal และ slot: ทำงานเมื่อผู้ใช้กด</a><a href="chapter-19.html#topic-5"><span class="toc-number">19.5</span>เขียนหน้าต่างเป็น class</a><a href="chapter-19.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-19.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+<details class="nav-chapter" data-group="gui" data-search="โปรเจกต์ปลายทาง: Course Planner + AI รวมทุกอย่างที่เรียนมาเป็นแอปแนะนำรายวิชา: ข้อมูลจาก CSV, กติกาแนะนำ, โมเดลทำนาย และหน้าต่าง PySide6 เริ่มจากโจทย์ ไม่ใช่โค้ด แยกเป็น 3 ชั้น ชั้นข้อมูล: โหลดรายวิชา ชั้น logic: กติกาแนะนำ + ทดสอบ เพิ่มโมเดล ML: ทำนายโอกาสผ่าน ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง"><summary><span class="nav-number">20</span><span class="nav-title">โปรเจกต์ Course Planner</span></summary><div class="nav-topics"><a href="chapter-20.html"><span class="toc-number">20</span>ภาพรวมของบท</a><a href="chapter-20.html#topic-1"><span class="toc-number">20.1</span>เริ่มจากโจทย์ ไม่ใช่โค้ด</a><a href="chapter-20.html#topic-2"><span class="toc-number">20.2</span>แยกเป็น 3 ชั้น</a><a href="chapter-20.html#topic-3"><span class="toc-number">20.3</span>ชั้นข้อมูล: โหลดรายวิชา</a><a href="chapter-20.html#topic-4"><span class="toc-number">20.4</span>ชั้น logic: กติกาแนะนำ + ทดสอบ</a><a href="chapter-20.html#topic-5"><span class="toc-number">20.5</span>เพิ่มโมเดล ML: ทำนายโอกาสผ่าน</a><a href="chapter-20.html#topic-6"><span class="toc-number">20.6</span>ชั้น UI และสิ่งที่ต้องตรวจก่อนส่ง</a><a href="chapter-20.html#chapter-examples"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a><a href="chapter-20.html#chapter-exercises"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a></div></details>
+</nav>
+<!-- /course-nav -->
+      <div class="sidebar-bottom">ตัวอย่างทุกชิ้นรันด้วย Python จริง</div>
     </aside>
     <main class="lesson-main" id="lesson-content">
       <div class="utility-row"><a href="../index.html">← สารบัญรายวิชา</a><span class="utility-code">CHAPTER 16 / 20</span></div>
-      <header class="lesson-header"><p class="lesson-kicker">CHAPTER 16 · ข้อมูลและ AI</p><h1>สร้างกราฟด้วย Matplotlib</h1><p>แปลงตัวเลขเป็นกราฟที่อ่านง่าย เลือกชนิดกราฟให้ตรงคำถาม และบันทึกเป็นไฟล์ภาพ</p></header>
-      <section class="learning-goals"><strong>จบบทนี้แล้วทำได้</strong><p>วาดกราฟเส้น แท่ง กระจาย และฮิสโทแกรม ใส่ชื่อกราฟ/แกน/legend และบันทึกกราฟเป็นไฟล์</p></section>
-      <section class="lesson-section" aria-labelledby="lesson-heading"><h2 id="lesson-heading">เนื้อหา</h2>
-        <article class="subtopic" id="topic-1"><h3>16.1 กราฟแรก</h3><p><code>import matplotlib.pyplot as plt</code> แล้ววาดด้วย <code>plt.plot(x, y)</code> ใส่ชื่อกราฟและชื่อแกน แล้ว <code>plt.show()</code> เพื่อเปิดหน้าต่างกราฟ</p><div class="mini-run has-shot"><pre class="copyable"><code>import matplotlib.pyplot as plt
+      <header class="lesson-header"><p class="lesson-kicker">บทที่ 16 · ข้อมูลและ AI</p><h1>สร้างกราฟด้วย Matplotlib</h1><p>แปลงตัวเลขเป็นกราฟที่อ่านง่าย เลือกชนิดกราฟให้ตรงคำถาม และบันทึกเป็นไฟล์ภาพ</p></header>
+      <section class="learning-goals"><strong>เมื่อจบบทนี้ นิสิตจะทำได้</strong><p>วาดกราฟเส้น แท่ง กระจาย และฮิสโทแกรม ใส่ชื่อกราฟ/แกน/legend และบันทึกกราฟเป็นไฟล์</p></section>
+      <section class="lesson-section" aria-label="เนื้อหา">
+        <article class="subtopic" id="topic-1"><h3>16.1 กราฟแรก</h3><p><code>import matplotlib.pyplot as plt</code> แล้ววาดด้วย <code>plt.plot(x, y)</code> ใส่ชื่อกราฟและชื่อแกน แล้ว <code>plt.show()</code> เพื่อเปิดหน้าต่างกราฟ</p><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_16_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
 
-days = [1, 2, 3, 4, 5]
-hours = [1.5, 2, 1, 3, 2.5]
+days = [<span class="tok-num">1</span>, <span class="tok-num">2</span>, <span class="tok-num">3</span>, <span class="tok-num">4</span>, <span class="tok-num">5</span>]
+hours = [<span class="tok-num">1.5</span>, <span class="tok-num">2</span>, <span class="tok-num">1</span>, <span class="tok-num">3</span>, <span class="tok-num">2.5</span>]
 
-plt.plot(days, hours, marker=&quot;o&quot;)
-plt.title(&quot;Study hours&quot;)
-plt.xlabel(&quot;Day&quot;)
-plt.ylabel(&quot;Hours&quot;)
-plt.show()</code></pre><div class="mini-result"><figure class="screenshot"><img src="../assets/figures/ch16-first.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div></div></article><article class="subtopic" id="topic-2"><h3>16.2 เลือกชนิดกราฟจากคำถาม</h3><p>เริ่มจากถามว่าอยากให้คนดูเห็นอะไร แล้วเลือกกราฟที่ตอบคำถามนั้น</p><div class="table-wrap"><table class="concept-table"><thead><tr><th>อยากเห็น</th><th>กราฟ</th><th>คำสั่ง</th></tr></thead><tbody><tr><td>การเปลี่ยนแปลงตามเวลา</td><td>เส้น</td><td><code>plt.plot(x, y)</code></td></tr><tr><td>เปรียบเทียบกลุ่ม</td><td>แท่ง</td><td><code>plt.bar(names, values)</code></td></tr><tr><td>ความสัมพันธ์ 2 ตัวแปร</td><td>กระจาย</td><td><code>plt.scatter(x, y)</code></td></tr><tr><td>การกระจายของข้อมูล</td><td>ฮิสโทแกรม</td><td><code>plt.hist(values, bins=10)</code></td></tr><tr><td>สัดส่วนของทั้งหมด (ไม่เกิน 5 ส่วน)</td><td>วงกลม</td><td><code>plt.pie(values, labels=names)</code></td></tr></tbody></table></div></article><article class="subtopic" id="topic-3"><h3>16.3 กราฟแท่ง</h3><p>กราฟแท่งเหมาะกับเปรียบเทียบค่าของแต่ละกลุ่ม ใส่ตัวเลขบนแท่งด้วย <code>plt.bar_label()</code> ช่วยให้อ่านค่าได้ทันที</p><div class="mini-run has-shot"><pre class="copyable"><code>import matplotlib.pyplot as plt
+plt.<span class="tok-fn">plot</span>(days, hours, marker=<span class="tok-str">"o"</span>)
+plt.<span class="tok-fn">title</span>(<span class="tok-str">"Study hours"</span>)
+plt.<span class="tok-fn">xlabel</span>(<span class="tok-str">"Day"</span>)
+plt.<span class="tok-fn">ylabel</span>(<span class="tok-str">"Hours"</span>)
+plt.<span class="tok-fn">show</span>()</code></pre></div></div><div class="source-output is-gui"><span>ผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</span><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-first.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div></div></article>
+<article class="subtopic" id="topic-2"><h3>16.2 เลือกชนิดกราฟจากคำถาม</h3><p>เริ่มจากถามว่าอยากให้คนดูเห็นอะไร แล้วเลือกกราฟที่ตอบคำถามนั้น</p><div class="table-scroll"><table class="comparison-table"><thead><tr><th>อยากเห็น</th><th>กราฟ</th><th>คำสั่ง</th></tr></thead><tbody><tr><td>การเปลี่ยนแปลงตามเวลา</td><td>เส้น</td><td><code>plt.plot(x, y)</code></td></tr><tr><td>เปรียบเทียบกลุ่ม</td><td>แท่ง</td><td><code>plt.bar(names, values)</code></td></tr><tr><td>ความสัมพันธ์ 2 ตัวแปร</td><td>กระจาย</td><td><code>plt.scatter(x, y)</code></td></tr><tr><td>การกระจายของข้อมูล</td><td>ฮิสโทแกรม</td><td><code>plt.hist(values, bins=10)</code></td></tr><tr><td>สัดส่วนของทั้งหมด (ไม่เกิน 5 ส่วน)</td><td>วงกลม</td><td><code>plt.pie(values, labels=names)</code></td></tr></tbody></table></div></article>
+<article class="subtopic" id="topic-3"><h3>16.3 กราฟแท่ง</h3><p>กราฟแท่งเหมาะกับเปรียบเทียบค่าของแต่ละกลุ่ม ใส่ตัวเลขบนแท่งด้วย <code>plt.bar_label()</code> ช่วยให้อ่านค่าได้ทันที</p><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_16_3.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
 
-branches = [&quot;Bangkok&quot;, &quot;Chiang Mai&quot;, &quot;Phuket&quot;]
-revenue = [5005, 1860, 1820]
+branches = [<span class="tok-str">"Bangkok"</span>, <span class="tok-str">"Chiang Mai"</span>, <span class="tok-str">"Phuket"</span>]
+revenue = [<span class="tok-num">5005</span>, <span class="tok-num">1860</span>, <span class="tok-num">1820</span>]
 
-bars = plt.bar(branches, revenue, color=&quot;#4a6fa5&quot;)
-plt.bar_label(bars)
-plt.title(&quot;Revenue by branch&quot;)
-plt.ylabel(&quot;Baht&quot;)
-plt.show()</code></pre><div class="mini-result"><figure class="screenshot"><img src="../assets/figures/ch16-bar.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div></div></article><article class="subtopic" id="topic-4"><h3>16.4 หลายเส้นในกราฟเดียว</h3><p>เรียก <code>plot</code> หลายครั้งเพื่อวาดหลายเส้น ใส่ <code>label=</code> ให้แต่ละเส้น แล้ว <code>plt.legend()</code> แสดงคำอธิบาย สำหรับงานที่ซับซ้อนขึ้นนิยมเขียนแบบ <code>fig, ax = plt.subplots()</code></p><div class="mini-run has-shot"><pre class="copyable"><code>import matplotlib.pyplot as plt
+bars = plt.<span class="tok-fn">bar</span>(branches, revenue, color=<span class="tok-str">"#4a6fa5"</span>)
+plt.<span class="tok-fn">bar_label</span>(bars)
+plt.<span class="tok-fn">title</span>(<span class="tok-str">"Revenue by branch"</span>)
+plt.<span class="tok-fn">ylabel</span>(<span class="tok-str">"Baht"</span>)
+plt.<span class="tok-fn">show</span>()</code></pre></div></div><div class="source-output is-gui"><span>ผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</span><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-bar.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div></div></article>
+<article class="subtopic" id="topic-4"><h3>16.4 หลายเส้นในกราฟเดียว</h3><p>เรียก <code>plot</code> หลายครั้งเพื่อวาดหลายเส้น ใส่ <code>label=</code> ให้แต่ละเส้น แล้ว <code>plt.legend()</code> แสดงคำอธิบาย สำหรับงานที่ซับซ้อนขึ้นนิยมเขียนแบบ <code>fig, ax = plt.subplots()</code></p><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_16_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
 
-months = [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;]
-coffee = [120, 135, 150, 160, 155]
-tea = [80, 78, 95, 110, 120]
+months = [<span class="tok-str">"Jan"</span>, <span class="tok-str">"Feb"</span>, <span class="tok-str">"Mar"</span>, <span class="tok-str">"Apr"</span>, <span class="tok-str">"May"</span>]
+coffee = [<span class="tok-num">120</span>, <span class="tok-num">135</span>, <span class="tok-num">150</span>, <span class="tok-num">160</span>, <span class="tok-num">155</span>]
+tea = [<span class="tok-num">80</span>, <span class="tok-num">78</span>, <span class="tok-num">95</span>, <span class="tok-num">110</span>, <span class="tok-num">120</span>]
 
-fig, ax = plt.subplots()
-ax.plot(months, coffee, marker=&quot;o&quot;, label=&quot;Coffee&quot;)
-ax.plot(months, tea, marker=&quot;s&quot;, label=&quot;Tea&quot;)
-ax.set_title(&quot;Monthly sales&quot;)
-ax.set_ylabel(&quot;Cups&quot;)
-ax.legend()
-ax.grid(alpha=0.3)
-plt.show()</code></pre><div class="mini-result"><figure class="screenshot"><img src="../assets/figures/ch16-multi.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div></div></article><article class="subtopic" id="topic-5"><h3>16.5 กราฟกระจายและฮิสโทแกรม</h3><p><code>scatter</code> ดูว่า 2 ตัวแปรสัมพันธ์กันไหม ส่วน <code>hist</code> ดูว่าข้อมูลส่วนใหญ่อยู่ช่วงไหน ใช้ <code>subplots(1, 2)</code> วาดสองกราฟคู่กันได้</p><div class="mini-run has-shot"><pre class="copyable"><code>import matplotlib.pyplot as plt
-import numpy as np
+fig, ax = plt.<span class="tok-fn">subplots</span>()
+ax.<span class="tok-fn">plot</span>(months, coffee, marker=<span class="tok-str">"o"</span>, label=<span class="tok-str">"Coffee"</span>)
+ax.<span class="tok-fn">plot</span>(months, tea, marker=<span class="tok-str">"s"</span>, label=<span class="tok-str">"Tea"</span>)
+ax.<span class="tok-fn">set_title</span>(<span class="tok-str">"Monthly sales"</span>)
+ax.<span class="tok-fn">set_ylabel</span>(<span class="tok-str">"Cups"</span>)
+ax.<span class="tok-fn">legend</span>()
+ax.<span class="tok-fn">grid</span>(alpha=<span class="tok-num">0.3</span>)
+plt.<span class="tok-fn">show</span>()</code></pre></div></div><div class="source-output is-gui"><span>ผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</span><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-multi.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div></div></article>
+<article class="subtopic" id="topic-5"><h3>16.5 กราฟกระจายและฮิสโทแกรม</h3><p><code>scatter</code> ดูว่า 2 ตัวแปรสัมพันธ์กันไหม ส่วน <code>hist</code> ดูว่าข้อมูลส่วนใหญ่อยู่ช่วงไหน ใช้ <code>subplots(1, 2)</code> วาดสองกราฟคู่กันได้</p><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_16_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
+<span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-rng = np.random.default_rng(0)
-hours = rng.uniform(0, 10, 60)
-scores = np.clip(45 + 5 * hours + rng.normal(0, 6, 60), 0, 100)
+rng = np.random.<span class="tok-fn">default_rng</span>(<span class="tok-num">0</span>)
+hours = rng.<span class="tok-fn">uniform</span>(<span class="tok-num">0</span>, <span class="tok-num">10</span>, <span class="tok-num">60</span>)
+scores = np.<span class="tok-fn">clip</span>(<span class="tok-num">45</span> + <span class="tok-num">5</span> * hours + rng.<span class="tok-fn">normal</span>(<span class="tok-num">0</span>, <span class="tok-num">6</span>, <span class="tok-num">60</span>), <span class="tok-num">0</span>, <span class="tok-num">100</span>)
 
-fig, (left, right) = plt.subplots(1, 2, figsize=(9, 3.5))
-left.scatter(hours, scores, alpha=0.7)
-left.set_title(&quot;Hours vs score&quot;)
-left.set_xlabel(&quot;Study hours&quot;)
-right.hist(scores, bins=8, color=&quot;#e07a5f&quot;, edgecolor=&quot;white&quot;)
-right.set_title(&quot;Score distribution&quot;)
-fig.tight_layout()
-plt.show()</code></pre><div class="mini-result"><figure class="screenshot"><img src="../assets/figures/ch16-scatter-hist.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div></div></article><article class="subtopic" id="topic-6"><h3>16.6 บันทึกกราฟและภาษาไทย</h3><p><code>plt.savefig(&quot;chart.png&quot;, dpi=150)</code> บันทึกกราฟเป็นไฟล์ภาพ ต้องเรียกก่อน <code>plt.show()</code> ถ้าจะใช้ชื่อภาษาไทยในกราฟ ให้ตั้งฟอนต์ที่มีภาษาไทยก่อนวาด</p><div class="mini-run has-shot"><pre class="copyable"><code>import matplotlib.pyplot as plt
+fig, (left, right) = plt.<span class="tok-fn">subplots</span>(<span class="tok-num">1</span>, <span class="tok-num">2</span>, figsize=(<span class="tok-num">9</span>, <span class="tok-num">3.5</span>))
+left.<span class="tok-fn">scatter</span>(hours, scores, alpha=<span class="tok-num">0.7</span>)
+left.<span class="tok-fn">set_title</span>(<span class="tok-str">"Hours vs score"</span>)
+left.<span class="tok-fn">set_xlabel</span>(<span class="tok-str">"Study hours"</span>)
+right.<span class="tok-fn">hist</span>(scores, bins=<span class="tok-num">8</span>, color=<span class="tok-str">"#e07a5f"</span>, edgecolor=<span class="tok-str">"white"</span>)
+right.<span class="tok-fn">set_title</span>(<span class="tok-str">"Score distribution"</span>)
+fig.<span class="tok-fn">tight_layout</span>()
+plt.<span class="tok-fn">show</span>()</code></pre></div></div><div class="source-output is-gui"><span>ผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</span><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-scatter-hist.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div></div></article>
+<article class="subtopic" id="topic-6"><h3>16.6 บันทึกกราฟและภาษาไทย</h3><p><code>plt.savefig(&quot;chart.png&quot;, dpi=150)</code> บันทึกกราฟเป็นไฟล์ภาพ ต้องเรียกก่อน <code>plt.show()</code> ถ้าจะใช้ชื่อภาษาไทยในกราฟ ให้ตั้งฟอนต์ที่มีภาษาไทยก่อนวาด</p><div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">topic_16_6.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
 
-plt.rcParams[&quot;font.family&quot;] = &quot;Tahoma&quot;     # ฟอนต์ที่มีภาษาไทยใน Windows
+plt.rcParams[<span class="tok-str">"font.family"</span>] = <span class="tok-str">"Tahoma"</span>     <span class="tok-com"># ฟอนต์ที่มีภาษาไทยใน Windows</span>
 
-plt.bar([&quot;กาแฟ&quot;, &quot;ชา&quot;, &quot;เค้ก&quot;], [83, 37, 14], color=&quot;#81b29a&quot;)
-plt.title(&quot;จำนวนที่ขายได้&quot;)
-plt.savefig(&quot;sales_th.png&quot;, dpi=150, bbox_inches=&quot;tight&quot;)
-plt.show()</code></pre><div class="mini-result"><figure class="screenshot"><img src="../assets/figures/ch16-thai.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div></div><p class="tip"><strong>จำง่าย ๆ</strong> ถ้าภาษาไทยขึ้นเป็นสี่เหลี่ยม แปลว่าฟอนต์ไม่มีภาษาไทย บน Mac ลองใช้ <code>&quot;Thonburi&quot;</code></p></article>
-        <h2 class="examples-heading">ตัวอย่างโปรแกรม</h2>
+plt.<span class="tok-fn">bar</span>([<span class="tok-str">"กาแฟ"</span>, <span class="tok-str">"ชา"</span>, <span class="tok-str">"เค้ก"</span>], [<span class="tok-num">83</span>, <span class="tok-num">37</span>, <span class="tok-num">14</span>], color=<span class="tok-str">"#81b29a"</span>)
+plt.<span class="tok-fn">title</span>(<span class="tok-str">"จำนวนที่ขายได้"</span>)
+plt.<span class="tok-fn">savefig</span>(<span class="tok-str">"sales_th.png"</span>, dpi=<span class="tok-num">150</span>, bbox_inches=<span class="tok-str">"tight"</span>)
+plt.<span class="tok-fn">show</span>()</code></pre></div></div><div class="source-output is-gui"><span>ผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</span><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-thai.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div></div><div class="callout tip"><span class="box-title">จำง่าย ๆ</span><p>ถ้าภาษาไทยขึ้นเป็นสี่เหลี่ยม แปลว่าฟอนต์ไม่มีภาษาไทย บน Mac ลองใช้ <code>&quot;Thonburi&quot;</code></p></div></article>
+      </section>
+      <section class="lesson-section" id="chapter-examples" aria-labelledby="examples-heading">
+        <h2 id="examples-heading">ตัวอย่างโปรแกรม</h2>
         <div class="source-example">
-    <h4>ตัวอย่าง 16.1 · กราฟยอดขายจาก CSV</h4>
+    <h4><span class="ex-num">ตัวอย่าง 16.1</span>กราฟยอดขายจาก CSV</h4>
     <p class="concept-line">ใช้ pandas สรุปข้อมูล แล้วส่งผลให้ Matplotlib วาด</p>
-    <div class="data-files"><div class="file-box"><span>ไฟล์ sales.csv</span><pre>date,branch,product,qty,price
+    <div class="data-files"><div class="file-box"><div class="file-head">ไฟล์ข้อมูล <b>sales.csv</b> (อยู่โฟลเดอร์เดียวกับโปรแกรม)</div><pre>date,branch,product,qty,price
 2026-01-05,Bangkok,Coffee,30,55
 2026-01-05,Chiang Mai,Coffee,18,50
 2026-01-05,Bangkok,Tea,12,45
@@ -170,59 +128,54 @@ plt.show()</code></pre><div class="mini-result"><figure class="screenshot"><img 
 2026-01-07,Phuket,Tea,10,50
 2026-01-07,Bangkok,Coffee,35,55
 2026-01-07,Chiang Mai,Cake,6,80</pre></div></div>
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>import pandas as pd
-import matplotlib.pyplot as plt
+    <div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">example_16_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
+<span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
 
-df = pd.read_csv(&quot;sales.csv&quot;)
-df[&quot;revenue&quot;] = df[&quot;qty&quot;] * df[&quot;price&quot;]
-by_product = df.groupby(&quot;product&quot;)[&quot;revenue&quot;].sum().sort_values()
+df = pd.<span class="tok-fn">read_csv</span>(<span class="tok-str">"sales.csv"</span>)
+df[<span class="tok-str">"revenue"</span>] = df[<span class="tok-str">"qty"</span>] * df[<span class="tok-str">"price"</span>]
+by_product = df.<span class="tok-fn">groupby</span>(<span class="tok-str">"product"</span>)[<span class="tok-str">"revenue"</span>].<span class="tok-fn">sum</span>().<span class="tok-fn">sort_values</span>()
 
-fig, ax = plt.subplots(figsize=(6, 3.2))
-bars = ax.barh(by_product.index, by_product.values, color=&quot;#3d5a80&quot;)
-ax.bar_label(bars, fmt=&quot;{:,.0f}&quot;, padding=3)
-ax.set_title(&quot;Revenue by product&quot;)
-ax.set_xlabel(&quot;Baht&quot;)
-fig.tight_layout()
-plt.show()</code></pre></div>
-      <div class="output-field"><span>Output</span><figure class="screenshot"><img src="../assets/figures/ch16-example-pandas.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div>
-    </div>
+fig, ax = plt.<span class="tok-fn">subplots</span>(figsize=(<span class="tok-num">6</span>, <span class="tok-num">3.2</span>))
+bars = ax.<span class="tok-fn">barh</span>(by_product.index, by_product.values, color=<span class="tok-str">"#3d5a80"</span>)
+ax.<span class="tok-fn">bar_label</span>(bars, fmt=<span class="tok-str">"{:,.0f}"</span>, padding=<span class="tok-num">3</span>)
+ax.<span class="tok-fn">set_title</span>(<span class="tok-str">"Revenue by product"</span>)
+ax.<span class="tok-fn">set_xlabel</span>(<span class="tok-str">"Baht"</span>)
+fig.<span class="tok-fn">tight_layout</span>()
+plt.<span class="tok-fn">show</span>()</code></pre></div></div><div class="source-output is-gui"><span>ผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</span><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-example-pandas.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div></div>
     <div class="walkthrough"><strong>อธิบาย</strong><ol><li>pandas ทำงานคำนวณ Matplotlib ทำงานวาด แยกหน้าที่กันชัดเจน</li><li><code>sort_values()</code> ก่อนวาด ทำให้แท่งเรียงจากน้อยไปมาก อ่านง่าย</li><li><code>barh</code> คือแท่งแนวนอน เหมาะเมื่อชื่อกลุ่มยาว</li></ol></div>
   </div>
 <div class="source-example">
-    <h4>ตัวอย่าง 16.2 · แดชบอร์ด 2 กราฟ</h4>
+    <h4><span class="ex-num">ตัวอย่าง 16.2</span>แดชบอร์ด 2 กราฟ</h4>
     <p class="concept-line">รวมกราฟเส้นและกราฟวงกลมในภาพเดียวด้วย <code>subplots</code></p>
     
-    <div class="source-grid">
-      <div class="source-field"><span>Python source</span><pre class="copyable"><code>import matplotlib.pyplot as plt
+    <div class="source-example-grid"><div class="source-field"><div class="code-block"><div class="code-head"><span class="code-file">example_16_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
 
-months = [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;, &quot;Jun&quot;]
-visitors = [320, 410, 380, 520, 610, 580]
-channels = {&quot;Search&quot;: 45, &quot;Social&quot;: 30, &quot;Direct&quot;: 25}
+months = [<span class="tok-str">"Jan"</span>, <span class="tok-str">"Feb"</span>, <span class="tok-str">"Mar"</span>, <span class="tok-str">"Apr"</span>, <span class="tok-str">"May"</span>, <span class="tok-str">"Jun"</span>]
+visitors = [<span class="tok-num">320</span>, <span class="tok-num">410</span>, <span class="tok-num">380</span>, <span class="tok-num">520</span>, <span class="tok-num">610</span>, <span class="tok-num">580</span>]
+channels = {<span class="tok-str">"Search"</span>: <span class="tok-num">45</span>, <span class="tok-str">"Social"</span>: <span class="tok-num">30</span>, <span class="tok-str">"Direct"</span>: <span class="tok-num">25</span>}
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 3.6))
-ax1.plot(months, visitors, marker=&quot;o&quot;, color=&quot;#2a9d8f&quot;)
-ax1.fill_between(months, visitors, alpha=0.15, color=&quot;#2a9d8f&quot;)
-ax1.set_title(&quot;Website visitors&quot;)
-ax2.pie(channels.values(), labels=channels.keys(), autopct=&quot;%1.0f%%&quot;,
-        colors=[&quot;#264653&quot;, &quot;#e9c46a&quot;, &quot;#f4a261&quot;])
-ax2.set_title(&quot;Traffic source&quot;)
-fig.tight_layout()
-plt.show()</code></pre></div>
-      <div class="output-field"><span>Output</span><figure class="screenshot"><img src="../assets/figures/ch16-example-dashboard.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div>
-    </div>
+fig, (ax1, ax2) = plt.<span class="tok-fn">subplots</span>(<span class="tok-num">1</span>, <span class="tok-num">2</span>, figsize=(<span class="tok-num">10</span>, <span class="tok-num">3.6</span>))
+ax1.<span class="tok-fn">plot</span>(months, visitors, marker=<span class="tok-str">"o"</span>, color=<span class="tok-str">"#2a9d8f"</span>)
+ax1.<span class="tok-fn">fill_between</span>(months, visitors, alpha=<span class="tok-num">0.15</span>, color=<span class="tok-str">"#2a9d8f"</span>)
+ax1.<span class="tok-fn">set_title</span>(<span class="tok-str">"Website visitors"</span>)
+ax2.<span class="tok-fn">pie</span>(channels.<span class="tok-fn">values</span>(), labels=channels.<span class="tok-fn">keys</span>(), autopct=<span class="tok-str">"%1.0f%%"</span>,
+        colors=[<span class="tok-str">"#264653"</span>, <span class="tok-str">"#e9c46a"</span>, <span class="tok-str">"#f4a261"</span>])
+ax2.<span class="tok-fn">set_title</span>(<span class="tok-str">"Traffic source"</span>)
+fig.<span class="tok-fn">tight_layout</span>()
+plt.<span class="tok-fn">show</span>()</code></pre></div></div><div class="source-output is-gui"><span>ผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</span><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-example-dashboard.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div></div>
     <div class="walkthrough"><strong>อธิบาย</strong><ol><li><code>subplots(1, 2)</code> สร้าง 1 แถว 2 กราฟ ได้ ax1 และ ax2 แยกกัน</li><li><code>fill_between</code> แรเงาใต้เส้นให้เห็นปริมาณ</li><li><code>autopct</code> แสดงเปอร์เซ็นต์บนกราฟวงกลม</li></ol></div>
   </div>
       </section>
-      <section class="exercise-section" id="chapter-exercises" aria-labelledby="exercise-heading">
-        <h2 id="exercise-heading">แบบฝึกหัดท้ายบท</h2>
-        <p class="exercise-intro">เรียงจากง่ายไปยาก ลองเขียนเองให้ได้ output ตรงตัวอย่างก่อน แล้วค่อยเปิดเฉลย</p>
-        <div class="exercise-list"><article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 16.1</span><strong>กราฟน้ำหนักรายสัปดาห์</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>วาดกราฟเส้นน้ำหนัก 6 สัปดาห์ <code>[68, 67.5, 67.2, 66.8, 66.9, 66.1]</code> มีจุดที่แต่ละค่า ชื่อกราฟ และชื่อแกน</p>
+      <section class="chapter-end" id="chapter-exercises" aria-labelledby="end-heading">
+        <h2 id="end-heading">แบบฝึกหัดท้ายบท</h2>
+        <p>เรียงจากง่ายไปยาก ลองเขียนเองให้ได้ผลลัพธ์ตรงตัวอย่างก่อน แล้วค่อยเปิดเฉลย</p>
+        <div class="level-legend">ระดับความยาก: <span class="level level-1">ง่าย</span> <span class="level level-2">ปานกลาง</span> <span class="level level-3">ท้าทาย</span></div>
+        <article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 16.1</span>กราฟน้ำหนักรายสัปดาห์<span class="level level-1">ง่าย</span></h3>
+    <div class="ex-body"><p>วาดกราฟเส้นน้ำหนัก 6 สัปดาห์ <code>[68, 67.5, 67.2, 66.8, 66.9, 66.1]</code> มีจุดที่แต่ละค่า ชื่อกราฟ และชื่อแกน</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>น้ำหนัก 6 สัปดาห์</dd></div><div><dt>ต้องหา</dt><dd>กราฟเส้นที่มี marker ชื่อกราฟ แกน x = Week แกน y = kg</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li>สร้าง x ด้วย <code>range(1, 7)</code></li><li><code>plt.plot(x, y, marker=&quot;o&quot;)</code></li><li><code>title</code>, <code>xlabel</code>, <code>ylabel</code> แล้ว <code>show()</code></li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><figure class="screenshot"><img src="../assets/figures/ch16-ex1.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div>
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>น้ำหนัก 6 สัปดาห์</dd></div><div><dt>ต้องหา</dt><dd>กราฟเส้นที่มี marker ชื่อกราฟ แกน x = Week แกน y = kg</dd></div></dl><strong>วิธีคิด</strong><ol><li>สร้าง x ด้วย <code>range(1, 7)</code></li><li><code>plt.plot(x, y, marker=&quot;o&quot;)</code></li><li><code>title</code>, <code>xlabel</code>, <code>ylabel</code> แล้ว <code>show()</code></li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</strong><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-ex1.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div>
     <div class="answer-gate" data-answer-id="16.1">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -231,23 +184,23 @@ plt.show()</code></pre></div>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ข้อมูลตามเวลาใช้กราฟเส้น marker ช่วยให้เห็นว่าค่าจริงอยู่ตรงไหน</p><pre class="copyable"><code>import matplotlib.pyplot as plt
+        <p>ข้อมูลตามเวลาใช้กราฟเส้น marker ช่วยให้เห็นว่าค่าจริงอยู่ตรงไหน</p><div class="code-block"><div class="code-head"><span class="code-file">ex_16_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
 
-weight = [68, 67.5, 67.2, 66.8, 66.9, 66.1]
-plt.plot(range(1, 7), weight, marker=&quot;o&quot;)
-plt.title(&quot;Weight per week&quot;)
-plt.xlabel(&quot;Week&quot;)
-plt.ylabel(&quot;kg&quot;)
-plt.show()</code></pre>
+weight = [<span class="tok-num">68</span>, <span class="tok-num">67.5</span>, <span class="tok-num">67.2</span>, <span class="tok-num">66.8</span>, <span class="tok-num">66.9</span>, <span class="tok-num">66.1</span>]
+plt.<span class="tok-fn">plot</span>(<span class="tok-fn">range</span>(<span class="tok-num">1</span>, <span class="tok-num">7</span>), weight, marker=<span class="tok-str">"o"</span>)
+plt.<span class="tok-fn">title</span>(<span class="tok-str">"Weight per week"</span>)
+plt.<span class="tok-fn">xlabel</span>(<span class="tok-str">"Week"</span>)
+plt.<span class="tok-fn">ylabel</span>(<span class="tok-str">"kg"</span>)
+plt.<span class="tok-fn">show</span>()</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 16.2</span><strong>กราฟแท่งคะแนนวิชา</strong><span class="difficulty difficulty-1">★ ง่าย</span></h3>
-    <p>วาดกราฟแท่งคะแนนเฉลี่ย 4 วิชา (Math 72, Sci 68, Eng 85, Art 90) พร้อมตัวเลขบนแท่ง</p>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 16.2</span>กราฟแท่งคะแนนวิชา<span class="level level-1">ง่าย</span></h3>
+    <div class="ex-body"><p>วาดกราฟแท่งคะแนนเฉลี่ย 4 วิชา (Math 72, Sci 68, Eng 85, Art 90) พร้อมตัวเลขบนแท่ง</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ชื่อวิชาและคะแนน</dd></div><div><dt>ต้องหา</dt><dd>กราฟแท่ง 4 แท่ง มีตัวเลขบนแท่ง</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>bars = plt.bar(names, values)</code></li><li><code>plt.bar_label(bars)</code></li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><figure class="screenshot"><img src="../assets/figures/ch16-ex2.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div>
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ชื่อวิชาและคะแนน</dd></div><div><dt>ต้องหา</dt><dd>กราฟแท่ง 4 แท่ง มีตัวเลขบนแท่ง</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>bars = plt.bar(names, values)</code></li><li><code>plt.bar_label(bars)</code></li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</strong><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-ex2.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div>
     <div class="answer-gate" data-answer-id="16.2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -256,24 +209,24 @@ plt.show()</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>ylim(0, 100)</code> ให้แกน y เริ่มที่ 0 กราฟแท่งที่ไม่เริ่มที่ 0 จะทำให้ความต่างดูเกินจริง</p><pre class="copyable"><code>import matplotlib.pyplot as plt
+        <p><code>ylim(0, 100)</code> ให้แกน y เริ่มที่ 0 กราฟแท่งที่ไม่เริ่มที่ 0 จะทำให้ความต่างดูเกินจริง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_16_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
 
-subjects = [&quot;Math&quot;, &quot;Sci&quot;, &quot;Eng&quot;, &quot;Art&quot;]
-scores = [72, 68, 85, 90]
-bars = plt.bar(subjects, scores, color=&quot;#6d597a&quot;)
-plt.bar_label(bars)
-plt.title(&quot;Average score by subject&quot;)
-plt.ylim(0, 100)
-plt.show()</code></pre>
+subjects = [<span class="tok-str">"Math"</span>, <span class="tok-str">"Sci"</span>, <span class="tok-str">"Eng"</span>, <span class="tok-str">"Art"</span>]
+scores = [<span class="tok-num">72</span>, <span class="tok-num">68</span>, <span class="tok-num">85</span>, <span class="tok-num">90</span>]
+bars = plt.<span class="tok-fn">bar</span>(subjects, scores, color=<span class="tok-str">"#6d597a"</span>)
+plt.<span class="tok-fn">bar_label</span>(bars)
+plt.<span class="tok-fn">title</span>(<span class="tok-str">"Average score by subject"</span>)
+plt.<span class="tok-fn">ylim</span>(<span class="tok-num">0</span>, <span class="tok-num">100</span>)
+plt.<span class="tok-fn">show</span>()</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 16.3</span><strong>เปรียบเทียบ 2 เส้น</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>วาดอุณหภูมิสูงสุดของกรุงเทพฯ และเชียงใหม่ 7 วันในกราฟเดียว มี legend และเส้นตาราง</p>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 16.3</span>เปรียบเทียบ 2 เส้น<span class="level level-2">ปานกลาง</span></h3>
+    <div class="ex-body"><p>วาดอุณหภูมิสูงสุดของกรุงเทพฯ และเชียงใหม่ 7 วันในกราฟเดียว มี legend และเส้นตาราง</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>BKK <code>[34, 35, 33, 36, 35, 34, 33]</code> CNX <code>[30, 31, 29, 32, 33, 31, 30]</code></dd></div><div><dt>ต้องหา</dt><dd>2 เส้นสีต่างกัน มี legend</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>plot</code> สองครั้งพร้อม <code>label=</code></li><li><code>plt.legend()</code></li><li><code>plt.grid(alpha=0.3)</code></li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><figure class="screenshot"><img src="../assets/figures/ch16-ex3.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div>
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>BKK <code>[34, 35, 33, 36, 35, 34, 33]</code> CNX <code>[30, 31, 29, 32, 33, 31, 30]</code></dd></div><div><dt>ต้องหา</dt><dd>2 เส้นสีต่างกัน มี legend</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>plot</code> สองครั้งพร้อม <code>label=</code></li><li><code>plt.legend()</code></li><li><code>plt.grid(alpha=0.3)</code></li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</strong><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-ex3.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div>
     <div class="answer-gate" data-answer-id="16.3">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -282,24 +235,24 @@ plt.show()</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ถ้าไม่ใส่ <code>label</code> คำสั่ง <code>legend()</code> จะไม่รู้ว่าจะเขียนชื่ออะไร</p><pre class="copyable"><code>import matplotlib.pyplot as plt
+        <p>ถ้าไม่ใส่ <code>label</code> คำสั่ง <code>legend()</code> จะไม่รู้ว่าจะเขียนชื่ออะไร</p><div class="code-block"><div class="code-head"><span class="code-file">ex_16_3.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
 
-days = [&quot;Mon&quot;, &quot;Tue&quot;, &quot;Wed&quot;, &quot;Thu&quot;, &quot;Fri&quot;, &quot;Sat&quot;, &quot;Sun&quot;]
-plt.plot(days, [34, 35, 33, 36, 35, 34, 33], marker=&quot;o&quot;, label=&quot;Bangkok&quot;)
-plt.plot(days, [30, 31, 29, 32, 33, 31, 30], marker=&quot;o&quot;, label=&quot;Chiang Mai&quot;)
-plt.title(&quot;Max temperature (C)&quot;)
-plt.legend()
-plt.grid(alpha=0.3)
-plt.show()</code></pre>
+days = [<span class="tok-str">"Mon"</span>, <span class="tok-str">"Tue"</span>, <span class="tok-str">"Wed"</span>, <span class="tok-str">"Thu"</span>, <span class="tok-str">"Fri"</span>, <span class="tok-str">"Sat"</span>, <span class="tok-str">"Sun"</span>]
+plt.<span class="tok-fn">plot</span>(days, [<span class="tok-num">34</span>, <span class="tok-num">35</span>, <span class="tok-num">33</span>, <span class="tok-num">36</span>, <span class="tok-num">35</span>, <span class="tok-num">34</span>, <span class="tok-num">33</span>], marker=<span class="tok-str">"o"</span>, label=<span class="tok-str">"Bangkok"</span>)
+plt.<span class="tok-fn">plot</span>(days, [<span class="tok-num">30</span>, <span class="tok-num">31</span>, <span class="tok-num">29</span>, <span class="tok-num">32</span>, <span class="tok-num">33</span>, <span class="tok-num">31</span>, <span class="tok-num">30</span>], marker=<span class="tok-str">"o"</span>, label=<span class="tok-str">"Chiang Mai"</span>)
+plt.<span class="tok-fn">title</span>(<span class="tok-str">"Max temperature (C)"</span>)
+plt.<span class="tok-fn">legend</span>()
+plt.<span class="tok-fn">grid</span>(alpha=<span class="tok-num">0.3</span>)
+plt.<span class="tok-fn">show</span>()</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 16.4</span><strong>ฮิสโทแกรมคะแนน</strong><span class="difficulty difficulty-2">★★ ปานกลาง</span></h3>
-    <p>สร้างคะแนนสุ่ม 200 คน (ค่าเฉลี่ย 65 ส่วนเบี่ยงเบน 12) ด้วย <code>np.random.default_rng(1)</code> แล้ววาดฮิสโทแกรม 15 ช่อง พร้อมเส้นแนวตั้งที่ค่าเฉลี่ย</p>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 16.4</span>ฮิสโทแกรมคะแนน<span class="level level-2">ปานกลาง</span></h3>
+    <div class="ex-body"><p>สร้างคะแนนสุ่ม 200 คน (ค่าเฉลี่ย 65 ส่วนเบี่ยงเบน 12) ด้วย <code>np.random.default_rng(1)</code> แล้ววาดฮิสโทแกรม 15 ช่อง พร้อมเส้นแนวตั้งที่ค่าเฉลี่ย</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>คะแนนสุ่ม 200 ค่า</dd></div><div><dt>ต้องหา</dt><dd>ฮิสโทแกรมและเส้นค่าเฉลี่ยสีแดง</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>rng.normal(65, 12, 200)</code></li><li><code>plt.hist(scores, bins=15)</code></li><li><code>plt.axvline(scores.mean(), color=&quot;red&quot;)</code></li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><figure class="screenshot"><img src="../assets/figures/ch16-ex4.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div>
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>คะแนนสุ่ม 200 ค่า</dd></div><div><dt>ต้องหา</dt><dd>ฮิสโทแกรมและเส้นค่าเฉลี่ยสีแดง</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>rng.normal(65, 12, 200)</code></li><li><code>plt.hist(scores, bins=15)</code></li><li><code>plt.axvline(scores.mean(), color=&quot;red&quot;)</code></li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</strong><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-ex4.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div>
     <div class="answer-gate" data-answer-id="16.4">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -308,23 +261,23 @@ plt.show()</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ฮิสโทแกรมแสดงว่าคะแนนส่วนใหญ่อยู่ช่วงไหน เส้นค่าเฉลี่ยช่วยให้เห็นจุดกลางทันที</p><pre class="copyable"><code>import matplotlib.pyplot as plt
-import numpy as np
+        <p>ฮิสโทแกรมแสดงว่าคะแนนส่วนใหญ่อยู่ช่วงไหน เส้นค่าเฉลี่ยช่วยให้เห็นจุดกลางทันที</p><div class="code-block"><div class="code-head"><span class="code-file">ex_16_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
+<span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-rng = np.random.default_rng(1)
-scores = rng.normal(65, 12, 200)
-plt.hist(scores, bins=15, color=&quot;#90be6d&quot;, edgecolor=&quot;white&quot;)
-plt.axvline(scores.mean(), color=&quot;red&quot;, linestyle=&quot;--&quot;, label=f&quot;mean {scores.mean():.1f}&quot;)
-plt.title(&quot;Score distribution&quot;)
-plt.legend()
-plt.show()</code></pre>
+rng = np.random.<span class="tok-fn">default_rng</span>(<span class="tok-num">1</span>)
+scores = rng.<span class="tok-fn">normal</span>(<span class="tok-num">65</span>, <span class="tok-num">12</span>, <span class="tok-num">200</span>)
+plt.<span class="tok-fn">hist</span>(scores, bins=<span class="tok-num">15</span>, color=<span class="tok-str">"#90be6d"</span>, edgecolor=<span class="tok-str">"white"</span>)
+plt.<span class="tok-fn">axvline</span>(scores.<span class="tok-fn">mean</span>(), color=<span class="tok-str">"red"</span>, linestyle=<span class="tok-str">"--"</span>, label=<span class="tok-str">f"mean {scores.mean():.1f}"</span>)
+plt.<span class="tok-fn">title</span>(<span class="tok-str">"Score distribution"</span>)
+plt.<span class="tok-fn">legend</span>()
+plt.<span class="tok-fn">show</span>()</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 16.5</span><strong>กราฟจาก DataFrame</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
-    <p>อ่าน <code>sales.csv</code> สรุปจำนวนชิ้นรายวันแยกสินค้า (pivot) แล้ววาดกราฟแท่งแบบกลุ่มด้วย <code>table.plot(kind=&quot;bar&quot;)</code></p>
-    <div class="data-files"><div class="file-box"><span>ไฟล์ sales.csv</span><pre>date,branch,product,qty,price
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 16.5</span>กราฟจาก DataFrame<span class="level level-3">ท้าทาย</span></h3>
+    <div class="ex-body"><p>อ่าน <code>sales.csv</code> สรุปจำนวนชิ้นรายวันแยกสินค้า (pivot) แล้ววาดกราฟแท่งแบบกลุ่มด้วย <code>table.plot(kind=&quot;bar&quot;)</code></p></div>
+    <div class="data-files"><div class="file-box"><div class="file-head">ไฟล์ข้อมูล <b>sales.csv</b> (อยู่โฟลเดอร์เดียวกับโปรแกรม)</div><pre>date,branch,product,qty,price
 2026-01-05,Bangkok,Coffee,30,55
 2026-01-05,Chiang Mai,Coffee,18,50
 2026-01-05,Bangkok,Tea,12,45
@@ -334,8 +287,8 @@ plt.show()</code></pre>
 2026-01-07,Phuket,Tea,10,50
 2026-01-07,Bangkok,Coffee,35,55
 2026-01-07,Chiang Mai,Cake,6,80</pre></div></div>
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>ไฟล์ sales.csv</dd></div><div><dt>ต้องหา</dt><dd>กราฟแท่งกลุ่ม: แกน x เป็นวัน แต่ละวันมีแท่งของ Cake, Coffee, Tea</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>pivot_table(index=&quot;date&quot;, columns=&quot;product&quot;, values=&quot;qty&quot;, aggfunc=&quot;sum&quot;, fill_value=0)</code></li><li>DataFrame มี <code>.plot()</code> ที่เรียก Matplotlib ให้</li><li>หมุนชื่อแกน x ด้วย <code>rot=0</code></li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><figure class="screenshot"><img src="../assets/figures/ch16-ex5.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div>
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ไฟล์ sales.csv</dd></div><div><dt>ต้องหา</dt><dd>กราฟแท่งกลุ่ม: แกน x เป็นวัน แต่ละวันมีแท่งของ Cake, Coffee, Tea</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>pivot_table(index=&quot;date&quot;, columns=&quot;product&quot;, values=&quot;qty&quot;, aggfunc=&quot;sum&quot;, fill_value=0)</code></li><li>DataFrame มี <code>.plot()</code> ที่เรียก Matplotlib ให้</li><li>หมุนชื่อแกน x ด้วย <code>rot=0</code></li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</strong><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-ex5.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div>
     <div class="answer-gate" data-answer-id="16.5">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -344,26 +297,26 @@ plt.show()</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>DataFrame.plot()</code> ใช้ index เป็นแกน x และวาดแต่ละคอลัมน์เป็นหนึ่งชุดข้อมูลให้อัตโนมัติ</p><pre class="copyable"><code>import pandas as pd
-import matplotlib.pyplot as plt
+        <p><code>DataFrame.plot()</code> ใช้ index เป็นแกน x และวาดแต่ละคอลัมน์เป็นหนึ่งชุดข้อมูลให้อัตโนมัติ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_16_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
+<span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
 
-df = pd.read_csv(&quot;sales.csv&quot;)
-table = df.pivot_table(index=&quot;date&quot;, columns=&quot;product&quot;, values=&quot;qty&quot;,
-                       aggfunc=&quot;sum&quot;, fill_value=0)
-ax = table.plot(kind=&quot;bar&quot;, rot=0, figsize=(7, 3.5))
-ax.set_title(&quot;Units sold per day&quot;)
-ax.set_ylabel(&quot;Units&quot;)
-plt.tight_layout()
-plt.show()</code></pre>
+df = pd.<span class="tok-fn">read_csv</span>(<span class="tok-str">"sales.csv"</span>)
+table = df.<span class="tok-fn">pivot_table</span>(index=<span class="tok-str">"date"</span>, columns=<span class="tok-str">"product"</span>, values=<span class="tok-str">"qty"</span>,
+                       aggfunc=<span class="tok-str">"sum"</span>, fill_value=<span class="tok-num">0</span>)
+ax = table.<span class="tok-fn">plot</span>(kind=<span class="tok-str">"bar"</span>, rot=<span class="tok-num">0</span>, figsize=(<span class="tok-num">7</span>, <span class="tok-num">3.5</span>))
+ax.<span class="tok-fn">set_title</span>(<span class="tok-str">"Units sold per day"</span>)
+ax.<span class="tok-fn">set_ylabel</span>(<span class="tok-str">"Units"</span>)
+plt.<span class="tok-fn">tight_layout</span>()
+plt.<span class="tok-fn">show</span>()</code></pre></div>
       </div>
     </div>
   </article>
-<article class="exercise">
-    <h3 class="exercise-heading"><span class="exercise-id">ข้อ 16.6</span><strong>ความสัมพันธ์ชั่วโมงเรียนกับคะแนน</strong><span class="difficulty difficulty-3">★★★ ท้าทาย</span></h3>
-    <p>วาด scatter ชั่วโมงอ่านหนังสือกับคะแนนของนักเรียน 8 คน แล้วลากเส้นแนวโน้มด้วย <code>np.polyfit</code> (ดีกรี 1)</p>
+<article class="end-exercise">
+    <h3><span class="exercise-id">ข้อ 16.6</span>ความสัมพันธ์ชั่วโมงเรียนกับคะแนน<span class="level level-3">ท้าทาย</span></h3>
+    <div class="ex-body"><p>วาด scatter ชั่วโมงอ่านหนังสือกับคะแนนของนักเรียน 8 คน แล้วลากเส้นแนวโน้มด้วย <code>np.polyfit</code> (ดีกรี 1)</p></div>
     
-    <div class="task-brief"><strong>เข้าใจโจทย์</strong><dl><div><dt>โจทย์ให้</dt><dd>hours <code>[2, 4, 5, 6, 7, 8, 9, 10]</code> scores <code>[50, 58, 62, 65, 70, 74, 80, 85]</code></dd></div><div><dt>ต้องหา</dt><dd>จุด 8 จุด และเส้นตรงแนวโน้ม</dd></div></dl><p class="brief-label">วิธีคิด</p><ol><li><code>plt.scatter(x, y)</code></li><li><code>slope, intercept = np.polyfit(x, y, 1)</code></li><li>วาดเส้น <code>slope * x + intercept</code></li></ol></div>
-    <div class="sample-output"><strong>ตัวอย่างผลลัพธ์</strong><figure class="screenshot"><img src="../assets/figures/ch16-ex6.png" alt="กราฟที่ได้จากการรันโค้ด"><figcaption>กราฟที่ได้จากการรันโค้ดนี้จริง</figcaption></figure></div>
+    <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>hours <code>[2, 4, 5, 6, 7, 8, 9, 10]</code> scores <code>[50, 58, 62, 65, 70, 74, 80, 85]</code></dd></div><div><dt>ต้องหา</dt><dd>จุด 8 จุด และเส้นตรงแนวโน้ม</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>plt.scatter(x, y)</code></li><li><code>slope, intercept = np.polyfit(x, y, 1)</code></li><li>วาดเส้น <code>slope * x + intercept</code></li></ol></div>
+    <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</strong><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-ex6.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div>
     <div class="answer-gate" data-answer-id="16.6">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
@@ -372,28 +325,30 @@ plt.show()</code></pre>
         <p class="password-message" aria-live="polite"></p>
       </form>
       <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>polyfit</code> หาเส้นตรงที่ใกล้ทุกจุดที่สุด ความชัน (slope) บอกว่าอ่านเพิ่ม 1 ชั่วโมง คะแนนเพิ่มประมาณเท่าไร ซึ่งเป็นแนวคิดเดียวกับ Linear Regression ในบทถัดไป</p><pre class="copyable"><code>import matplotlib.pyplot as plt
-import numpy as np
+        <p><code>polyfit</code> หาเส้นตรงที่ใกล้ทุกจุดที่สุด ความชัน (slope) บอกว่าอ่านเพิ่ม 1 ชั่วโมง คะแนนเพิ่มประมาณเท่าไร ซึ่งเป็นแนวคิดเดียวกับ Linear Regression ในบทถัดไป</p><div class="code-block"><div class="code-head"><span class="code-file">ex_16_6.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
+<span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
 
-hours = np.array([2, 4, 5, 6, 7, 8, 9, 10])
-scores = np.array([50, 58, 62, 65, 70, 74, 80, 85])
-slope, intercept = np.polyfit(hours, scores, 1)
+hours = np.<span class="tok-fn">array</span>([<span class="tok-num">2</span>, <span class="tok-num">4</span>, <span class="tok-num">5</span>, <span class="tok-num">6</span>, <span class="tok-num">7</span>, <span class="tok-num">8</span>, <span class="tok-num">9</span>, <span class="tok-num">10</span>])
+scores = np.<span class="tok-fn">array</span>([<span class="tok-num">50</span>, <span class="tok-num">58</span>, <span class="tok-num">62</span>, <span class="tok-num">65</span>, <span class="tok-num">70</span>, <span class="tok-num">74</span>, <span class="tok-num">80</span>, <span class="tok-num">85</span>])
+slope, intercept = np.<span class="tok-fn">polyfit</span>(hours, scores, <span class="tok-num">1</span>)
 
-plt.scatter(hours, scores, label=&quot;students&quot;)
-plt.plot(hours, slope * hours + intercept, color=&quot;red&quot;,
-         label=f&quot;trend: {slope:.1f} points/hour&quot;)
-plt.xlabel(&quot;Study hours&quot;)
-plt.ylabel(&quot;Score&quot;)
-plt.legend()
-plt.show()</code></pre>
+plt.<span class="tok-fn">scatter</span>(hours, scores, label=<span class="tok-str">"students"</span>)
+plt.<span class="tok-fn">plot</span>(hours, slope * hours + intercept, color=<span class="tok-str">"red"</span>,
+         label=<span class="tok-str">f"trend: {slope:.1f} points/hour"</span>)
+plt.<span class="tok-fn">xlabel</span>(<span class="tok-str">"Study hours"</span>)
+plt.<span class="tok-fn">ylabel</span>(<span class="tok-str">"Score"</span>)
+plt.<span class="tok-fn">legend</span>()
+plt.<span class="tok-fn">show</span>()</code></pre></div>
       </div>
     </div>
-  </article></div>
+  </article>
       </section>
-      <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-15.html">← บทก่อนหน้า</a><a class="pager-link" href="chapter-17.html">บทถัดไป →</a></nav>
+      <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-15.html">← บทที่ 15</a><a class="pager-link" href="chapter-17.html">บทที่ 17 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script><script src="../assets/lesson.js"></script>
+  <script src="../password.js"></script>
+  <script src="../assets/lesson.js"></script>
+  <script src="../assets/course-nav.js"></script>
 </body>
 </html>
