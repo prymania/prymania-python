@@ -26,6 +26,11 @@ chapters/chapter-01.html ...       หน้าแต่ละบท (สร้�
 assets/site.css, site.js           ธีมหน้าแรกและเครื่องมือค้นหา
 assets/lesson.css, lesson.js       รูปแบบบทเรียน (layout และธีมโค้ดเดียวกับเว็บ Java) ปุ่มคัดลอก และเปิดเฉลย
 assets/course-nav.css, .js         เมนูด้านซ้ายที่ใช้ร่วมกันทุกหน้า (จำบทที่กางและตำแหน่งเมนูข้ามหน้า)
+assets/course-extras.css           ฟีเจอร์ที่ย้ายมาจากเว็บ Calculus: ปากกา ภาคผนวก รูปผู้สอน ซ่อน/แสดงเมนู
+assets/ink.js                      ปากกาเขียนบนหน้าเว็บ (Apple Pencil/เมาส์) หมึกเก็บใน localStorage คีย์ ink:python/<ไฟล์>
+assets/icon/prymania.jpg           รูปผู้สอนท้ายเมนู (ครอปและลบ EXIF/GPS แล้ว ห้ามแทนด้วยไฟล์ต้นฉบับ)
+chapters/appendix-*.html           ภาคผนวก A เกณฑ์คะแนน, B วิธีใช้ปากกา (สร้างอัตโนมัติ)
+tools/lesson-builder/appendix/     ★ เนื้อหาภาคผนวกเป็น HTML — แก้ที่นี่ (ตัวเลขคะแนนต้องตรงกับตาราง "การวัดผล" ใน index.html)
 assets/python-path.svg             ภาพประกอบเส้นทางการเรียนรู้
 assets/figures/*.svg               ภาพประกอบแนวคิด (เขียนด้วยมือ)
 assets/figures/*.png, assets/gui/  กราฟและภาพหน้าต่างที่ builder สร้างจากการรันโค้ดจริง

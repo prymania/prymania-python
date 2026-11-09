@@ -48,6 +48,8 @@ const NAV_TITLES = {
 };
 const LEVELS = { 1: "ง่าย", 2: "ปานกลาง", 3: "ท้าทาย" };
 
+const pad = (n) => String(n).padStart(2, "0");
+
 function esc(value) {
   return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#39;");
@@ -280,31 +282,64 @@ function renderExercise(exercise, chapterNo, exerciseNo) {
   </article>`;
 }
 
+// ---------------- ภาคผนวก (เนื้อหาเขียนเป็น HTML ใน tools/lesson-builder/appendix/) ----------------
+
+// คัดลอกมาจากเว็บ Calculus (D:/_claudeCalculus/build/src/appendix-c-course.html, appendix-d-pen.html)
+// หัวข้อในเมนูดึงจาก <h2 id="..."> ของแต่ละไฟล์
+const APPENDICES = [
+  { letter: "A", file: "appendix-a-course.html", src: "a-course.html", nav: "เกณฑ์คะแนน", title: "เกณฑ์คะแนน",
+    kicker: "ภาคผนวก A · COURSE GUIDE", sub: "คะแนนมาจากไหน ตัดเกรดอย่างไร และข้อตกลงที่เราใช้ร่วมกันตลอดเทอม" },
+  { letter: "B", file: "appendix-b-pen.html", src: "b-pen.html", nav: "วิธีใช้ปากกา", title: "วิธีใช้ปากกาเขียนบนหน้าเว็บ",
+    kicker: "ภาคผนวก B · HOW TO", sub: "เขียน ไฮไลต์ และจดโน้ตทับบทเรียนด้วย Apple Pencil หรือเมาส์ พร้อมวิธีบันทึกและสำรองหมึก" },
+].map((appendix) => {
+  const body = fs.readFileSync(path.join(HERE, "appendix", appendix.src), "utf8").replace(/^<!--[^\n]*-->\r?\n/, "");
+  const topics = [...body.matchAll(/<h2 id="([^"]+)">([^<]+)<\/h2>/g)].map(([, id, heading]) => [id, heading]);
+  return { ...appendix, body, topics };
+});
+
 // ---------------- เมนูด้านซ้าย (ใช้ร่วมกันทุกหน้า รวม index.html) ----------------
 
-// base: path ไปโฟลเดอร์ chapters/ จากหน้าที่แสดง, current: เลขบทของหน้านี้ (ถ้าเป็นหน้าบท)
+// base: path ไปโฟลเดอร์ chapters/ จากหน้าที่แสดง, current: ชื่อไฟล์ของหน้านี้ (ถ้าเป็นหน้าบทหรือภาคผนวก)
+// คลิกชื่อบทแล้วเปิดหน้านั้นเลย ส่วนลูกศรด้านขวาใช้กาง/พับหัวข้อย่อย
 function renderCourseNav({ base = "", current = null } = {}) {
+  const entry = ({ file, number, title, group, links, search }) => {
+    const here = file === current;
+    const href = (hash) => (here ? hash : `${base}${file}${hash}`);
+    const titleHref = here ? "#lesson-content" : `${base}${file}`;
+    return `<details class="nav-chapter" data-group="${group}" data-search="${esc(search)}"${here ? " open" : ""}><summary${here ? ' aria-current="page"' : ""}><span class="nav-number">${number}</span><a class="nav-title" href="${titleHref}">${esc(title)}</a></summary><div class="nav-topics">${links(href).join("")}</div></details>`;
+  };
   let previousGroup = "";
   const items = chapters.map((chapter, index) => {
     const number = index + 1;
-    const file = `chapter-${String(number).padStart(2, "0")}.html`;
-    const here = number === current;
-    const href = (hash) => (here ? hash : `${base}${file}${hash === "#lesson-content" ? "" : hash}`);
     const label = chapter.group === previousGroup ? "" : `<p class="nav-label" data-group="${chapter.group}">${GROUPS[chapter.group].nav}</p>\n`;
     previousGroup = chapter.group;
-    const links = [
-      `<a href="${href("#lesson-content")}"><span class="toc-number">${number}</span>ภาพรวมของบท</a>`,
-      ...chapter.concepts.map(([heading], i) => `<a href="${href(`#topic-${i + 1}`)}"><span class="toc-number">${number}.${i + 1}</span>${esc(heading)}</a>`),
-      `<a href="${href("#chapter-examples")}"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a>`,
-      `<a href="${href("#chapter-exercises")}"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a>`,
-    ];
-    const search = `${chapter.title} ${chapter.summary} ${chapter.concepts.map(([heading]) => heading).join(" ")}`;
-    return `${label}<details class="nav-chapter" data-group="${chapter.group}" data-search="${esc(search)}"${here ? " open" : ""}><summary${here ? ' aria-current="page"' : ""}><span class="nav-number">${String(number).padStart(2, "0")}</span><span class="nav-title">${esc(navTitle(chapter))}</span></summary><div class="nav-topics">${links.join("")}</div></details>`;
+    return label + entry({
+      file: `chapter-${pad(number)}.html`,
+      number: pad(number),
+      title: navTitle(chapter),
+      group: chapter.group,
+      search: `${chapter.title} ${chapter.summary} ${chapter.concepts.map(([heading]) => heading).join(" ")}`,
+      links: (href) => [
+        ...chapter.concepts.map(([heading], i) => `<a href="${href(`#topic-${i + 1}`)}"><span class="toc-number">${number}.${i + 1}</span>${esc(heading)}</a>`),
+        `<a href="${href("#chapter-examples")}"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a>`,
+        `<a href="${href("#chapter-exercises")}"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a>`,
+      ],
+    });
   });
+  const appendices = APPENDICES.map((appendix) => entry({
+    file: appendix.file,
+    number: appendix.letter,
+    title: appendix.nav,
+    group: "appendix",
+    search: `ภาคผนวก ${appendix.title} ${appendix.sub} ${appendix.topics.map(([, heading]) => heading).join(" ")}`,
+    links: (href) => appendix.topics.map(([id, heading], i) => `<a href="${href(`#${id}`)}"><span class="toc-number">${appendix.letter}.${i + 1}</span>${esc(heading)}</a>`),
+  }));
   return `<!-- course-nav -->
 <button class="nav-toggle" type="button" aria-expanded="false">☰ สารบัญทุกบท</button>
 <nav class="course-nav" aria-label="สารบัญรายวิชา">
 ${items.join("\n")}
+<p class="nav-label" data-group="appendix">ภาคผนวก</p>
+${appendices.join("\n")}
 </nav>
 <!-- /course-nav -->`;
 }
@@ -319,42 +354,64 @@ const FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Bai+Jamjuree:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">`;
 
-function renderChapter(chapter, index) {
-  const number = index + 1;
-  const pad = (n) => String(n).padStart(2, "0");
-  const previous = number === 1
-    ? `<a class="pager-link secondary" href="../index.html">← สารบัญรายวิชา</a>`
-    : `<a class="pager-link secondary" href="chapter-${pad(number - 1)}.html">← บทที่ ${number - 1}</a>`;
-  const next = number === chapters.length
-    ? `<a class="pager-link" href="../index.html">จบบทเรียน · กลับหน้าสารบัญ →</a>`
-    : `<a class="pager-link" href="chapter-${pad(number + 1)}.html">บทที่ ${number + 1} →</a>`;
-  const topics = chapter.concepts.map((concept, i) => renderTopic(concept, number, i + 1)).join("\n");
-  const examples = chapter.examples.map((example, i) => renderExample(example, number, i + 1)).join("\n");
-  const exercises = chapter.exercises.map((exercise, i) => renderExercise(exercise, number, i + 1)).join("\n");
-  const legend = Object.entries(LEVELS).map(([level, name]) => `<span class="level level-${level}">${name}</span>`).join(" ");
+// โครงหน้าที่ใช้ร่วมกันทั้งหน้าบทและภาคผนวก
+// สคริปต์ใน <head> อ่านค่าซ่อนเมนูก่อนแสดงหน้า เมนูจึงไม่กระพริบ
+function pageShell({ file, title, description, main, mainClass = "" }) {
   return `<!doctype html>
 <html lang="th">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="${esc(chapter.summary)}">
-  <title>บทที่ ${number}: ${esc(chapter.title)} | Python programming by Prymania</title>
+  <meta name="description" content="${esc(description)}">
+  <title>${title} | Python programming by Prymania</title>
   ${FONTS}
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
-  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="../assets/course-extras.css">
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
   <div class="lesson-shell">
+    <button class="side-show" type="button" aria-label="แสดงเมนูบทเรียน">☰ เมนู</button>
     <aside class="lesson-sidebar" aria-label="เมนูบทเรียน">
+      <button class="side-hide" type="button" aria-label="ซ่อนเมนู" title="ซ่อนเมนู">«</button>
       <a class="lesson-brand" href="../index.html"><span class="brand-mark" aria-hidden="true">Py</span><span><span class="brand-title">Python programming<br>by Prymania</span><span class="brand-caption">LECTURE NOTES</span></span></a>
-      ${renderCourseNav({ current: number })}
+      ${renderCourseNav({ current: file })}
+      <figure class="side-photo"><img src="../assets/icon/prymania.jpg" alt="อ. พรทิวา ปะวะระ (อ. พราย)" width="360" height="480" loading="lazy"><figcaption>อ. พรทิวา ปะวะระ (อ. พราย)</figcaption></figure>
       <div class="sidebar-bottom">ตัวอย่างทุกชิ้นรันด้วย Python จริง</div>
     </aside>
-    <main class="lesson-main" id="lesson-content">
-      <div class="utility-row"><a href="../index.html">← สารบัญรายวิชา</a><span class="utility-code">CHAPTER ${pad(number)} / ${pad(chapters.length)}</span></div>
+    <main class="lesson-main${mainClass}" id="lesson-content">
+      ${main}
+      <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
+    </main>
+  </div>
+  <script src="../password.js"></script>
+  <script src="../assets/lesson.js"></script>
+  <script src="../assets/course-nav.js"></script>
+  <script defer src="../assets/ink.js"></script>
+</body>
+</html>`;
+}
+
+function renderChapter(chapter, index) {
+  const number = index + 1;
+  const previous = number === 1
+    ? `<a class="pager-link secondary" href="../index.html">← สารบัญรายวิชา</a>`
+    : `<a class="pager-link secondary" href="chapter-${pad(number - 1)}.html">← บทที่ ${number - 1}</a>`;
+  const next = number === chapters.length
+    ? `<a class="pager-link" href="${APPENDICES[0].file}">ภาคผนวก ${APPENDICES[0].letter} · ${APPENDICES[0].nav} →</a>`
+    : `<a class="pager-link" href="chapter-${pad(number + 1)}.html">บทที่ ${number + 1} →</a>`;
+  const topics = chapter.concepts.map((concept, i) => renderTopic(concept, number, i + 1)).join("\n");
+  const examples = chapter.examples.map((example, i) => renderExample(example, number, i + 1)).join("\n");
+  const exercises = chapter.exercises.map((exercise, i) => renderExercise(exercise, number, i + 1)).join("\n");
+  const legend = Object.entries(LEVELS).map(([level, name]) => `<span class="level level-${level}">${name}</span>`).join(" ");
+  return pageShell({
+    file: `chapter-${pad(number)}.html`,
+    title: `บทที่ ${number}: ${esc(chapter.title)}`,
+    description: chapter.summary,
+    main: `<div class="utility-row"><a href="../index.html">← สารบัญรายวิชา</a><span class="utility-code">CHAPTER ${pad(number)} / ${pad(chapters.length)}</span></div>
       <header class="lesson-header"><p class="lesson-kicker">บทที่ ${number} · ${GROUPS[chapter.group].kicker}</p><h1>${esc(chapter.title)}</h1><p>${fmt(chapter.summary)}</p></header>
       <section class="learning-goals"><strong>เมื่อจบบทนี้ นิสิตจะทำได้</strong><p>${fmt(chapter.outcome)}</p></section>
       <section class="lesson-section" aria-label="เนื้อหา">
@@ -370,15 +427,31 @@ function renderChapter(chapter, index) {
         <div class="level-legend">ระดับความยาก: ${legend}</div>
         ${exercises}
       </section>
-      <nav class="lesson-pager" aria-label="เปลี่ยนบท">${previous}${next}</nav>
-      <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
-    </main>
-  </div>
-  <script src="../password.js"></script>
-  <script src="../assets/lesson.js"></script>
-  <script src="../assets/course-nav.js"></script>
-</body>
-</html>`;
+      <nav class="lesson-pager" aria-label="เปลี่ยนบท">${previous}${next}</nav>`,
+  });
+}
+
+function renderAppendix(appendix, index) {
+  const before = index === 0 ? null : APPENDICES[index - 1];
+  const after = APPENDICES[index + 1];
+  const previous = before
+    ? `<a class="pager-link secondary" href="${before.file}">← ภาคผนวก ${before.letter} · ${before.nav}</a>`
+    : `<a class="pager-link secondary" href="chapter-${pad(chapters.length)}.html">← บทที่ ${chapters.length}</a>`;
+  const next = after
+    ? `<a class="pager-link" href="${after.file}">ภาคผนวก ${after.letter} · ${after.nav} →</a>`
+    : `<a class="pager-link" href="../index.html">กลับหน้าสารบัญ →</a>`;
+  return pageShell({
+    file: appendix.file,
+    title: `ภาคผนวก ${appendix.letter}: ${esc(appendix.title)}`,
+    description: appendix.sub,
+    mainClass: " pastel",
+    main: `<div class="utility-row"><a href="../index.html">← สารบัญรายวิชา</a><span class="utility-code">APPENDIX ${appendix.letter}</span></div>
+      <header class="lesson-header"><p class="lesson-kicker">${esc(appendix.kicker)}</p><h1>${esc(appendix.title)}</h1><p>${esc(appendix.sub)}</p></header>
+      <section class="appendix-body">
+${appendix.body}
+      </section>
+      <nav class="lesson-pager" aria-label="เปลี่ยนหน้า">${previous}${next}</nav>`,
+  });
 }
 
 // ---------------- สร้างไฟล์ ----------------
@@ -389,13 +462,17 @@ const passwordEntries = [];
 
 for (const [index, chapter] of chapters.entries()) {
   if (chapter.exercises.length < 6) throw new Error(`Chapter ${index + 1} must have at least six exercises.`);
-  const file = `chapter-${String(index + 1).padStart(2, "0")}.html`;
+  const file = `chapter-${pad(index + 1)}.html`;
   fs.writeFileSync(path.join(OUT, file), renderChapter(chapter, index), "utf8");
   chapter.exercises.forEach((_, exerciseIndex) => {
-    const exerciseId = `${String(index + 1).padStart(2, "0")}.${exerciseIndex + 1}`;
-    passwordEntries.push(`  "${exerciseId}": "py${String(index + 1).padStart(2, "0")}${String(exerciseIndex + 1).padStart(2, "0")}"`);
+    const exerciseId = `${pad(index + 1)}.${exerciseIndex + 1}`;
+    passwordEntries.push(`  "${exerciseId}": "py${pad(index + 1)}${pad(exerciseIndex + 1)}"`);
   });
   console.log(`${file}: ${chapter.concepts.length} หัวข้อ, ${chapter.examples.length} ตัวอย่าง, ${chapter.exercises.length} แบบฝึกหัด`);
+}
+for (const [index, appendix] of APPENDICES.entries()) {
+  fs.writeFileSync(path.join(OUT, appendix.file), renderAppendix(appendix, index), "utf8");
+  console.log(`${appendix.file}: ภาคผนวก ${appendix.letter}, ${appendix.topics.length} หัวข้อ`);
 }
 
 // เมนูใน index.html อยู่ระหว่าง <!-- course-nav --> กับ <!-- /course-nav -->
@@ -405,4 +482,4 @@ const NAV_MARKER = /<!-- course-nav -->[\s\S]*?<!-- \/course-nav -->/;
 if (!NAV_MARKER.test(indexHtml)) throw new Error("index.html: missing <!-- course-nav --> marker");
 fs.writeFileSync(indexPath, indexHtml.replace(NAV_MARKER, () => renderCourseNav({ base: "chapters/" })), "utf8");
 fs.writeFileSync(path.join(ROOT, "password.js"), `window.EXERCISE_PASSWORDS = {\n${passwordEntries.join(",\n")}\n};\n`, "utf8");
-console.log(`สร้างเสร็จ ${chapters.length} บท, ${passwordEntries.length} ชุดรหัสเฉลย`);
+console.log(`สร้างเสร็จ ${chapters.length} บท + ${APPENDICES.length} ภาคผนวก, ${passwordEntries.length} ชุดรหัสเฉลย`);

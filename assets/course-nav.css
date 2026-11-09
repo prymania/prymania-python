@@ -12,6 +12,8 @@
 .nav-chapter > summary:focus-visible { outline: 3px solid #8fb3d6; outline-offset: 1px; }
 .nav-number { width: 23px; flex: 0 0 23px; color: #2b5f8e; font: 600 11px "JetBrains Mono", Consolas, monospace; }
 .nav-title { min-width: 0; }
+/* ชื่อบทเป็นลิงก์เปิดหน้าบท (จากเว็บ Calculus) ลูกศรด้านขวายังใช้กาง/พับหัวข้อย่อย */
+a.nav-title { flex: 1; color: inherit; text-decoration: none; }
 .nav-topics { display: grid; gap: 1px; margin: 3px 0 7px 19px; border-left: 2px solid #dce2ea; padding-left: 6px; }
 .nav-topics a { display: flex; align-items: flex-start; gap: 7px; border-radius: 4px; padding: 4px 7px; color: #3a4658; font-size: 12.5px; line-height: 1.5; text-decoration: none; }
 .nav-topics a:hover, .nav-topics a:focus-visible { background: #e6eff7; color: #17202d; }

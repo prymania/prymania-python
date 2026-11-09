@@ -1,5 +1,5 @@
 // เมนูด้านซ้าย (ใช้ร่วมกันใน index.html และทุกหน้าบท)
-// - คลิกชื่อบทเพื่อกาง/พับหัวข้อย่อย โดยไม่พับบทอื่น จึงไม่มีอะไรด้านบนขยับ
+// - คลิกชื่อบทเพื่อเปิดหน้าบทนั้น ส่วนลูกศรด้านขวากาง/พับหัวข้อย่อย โดยไม่พับบทอื่น จึงไม่มีอะไรด้านบนขยับ
 // - คลิกหัวข้อย่อยแล้วเปลี่ยนหน้า: หน้าใหม่วางหัวข้อนั้นไว้ตำแหน่งเดิมบนจอ เมนูจึงไม่กระโดด
 // - ไฮไลต์หัวข้อย่อยที่กำลังอ่านอยู่
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,7 +19,16 @@ document.addEventListener("DOMContentLoaded", () => {
     toggle.setAttribute("aria-expanded", String(open));
   });
 
-  // จำลิงก์ที่คลิกและระยะจากขอบบนของเมนู ก่อนออกจากหน้า
+  // จอกว้าง: ปุ่ม « ซ่อนเมนู / ☰ เมนู แสดงกลับ (จำค่าไว้ทุกหน้า) — จาก nav.js ของเว็บ Calculus
+  // สคริปต์ใน <head> ของทุกหน้าอ่านค่านี้ก่อนแสดงหน้า เมนูจึงไม่กระพริบ
+  const side = (collapsed) => {
+    document.documentElement.classList.toggle("side-collapsed", collapsed);
+    try { localStorage.setItem("side-collapsed", collapsed ? "1" : "0"); } catch {}
+  };
+  document.querySelector(".side-hide")?.addEventListener("click", () => side(true));
+  document.querySelector(".side-show")?.addEventListener("click", () => side(false));
+
+  // จำลิงก์ที่คลิก (ชื่อบทหรือหัวข้อย่อย) และระยะจากขอบบนของเมนู ก่อนออกจากหน้า
   nav.addEventListener("click", (event) => {
     const link = event.target.closest("a");
     if (!link) return;
@@ -45,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // เปิดบทเดิมที่กางไว้ในหน้าก่อน ความสูงของเมนูด้านบนจึงเท่าเดิม
   saved?.open?.forEach((i) => { if (chaptersInNav[i]) chaptersInNav[i].open = true; });
   const link = saved?.page === location.pathname
-    ? [...nav.querySelectorAll(".nav-chapter[open] .nav-topics a")].find((a) => a.getAttribute("href") === saved.hash)
+    ? [...nav.querySelectorAll(".nav-chapter[open] .nav-topics a, .nav-chapter[open] a.nav-title")].find((a) => a.getAttribute("href") === saved.hash)
     : null;
   const restore = () => {
     if (!scrolls()) return;
