@@ -14,7 +14,7 @@
 <div class="pen-demo" aria-hidden="true">
   <span class="pd-pen" style="background:#17202d"></span><span class="pd-pen" style="background:#e0533f"></span><span class="pd-pen" style="background:#2f80ed"></span><span class="pd-pen" style="background:#14a08e"></span>
   <span class="pd-hl" style="background:#FFD6EE"></span><span class="pd-hl" style="background:#CED1F8"></span><span class="pd-hl" style="background:#EAFF4F"></span>
-  <span class="pd-ico">🧽</span><span class="pd-ico">↶</span><span class="pd-ico">🗑</span><span class="pd-ico">⬇️</span><span class="pd-ico">⬆️</span><span class="pd-ico pd-x">✕</span>
+  <span class="pd-ico">🧽</span><span class="pd-ico">↶</span><span class="pd-ico">📒</span><span class="pd-ico">🗑</span><span class="pd-ico">⬇️</span><span class="pd-ico">⬆️</span><span class="pd-ico pd-x">✕</span>
 </div>
 <table class="tbl">
 <tr><th>ปุ่ม</th><th>ใช้ทำอะไร</th></tr>
@@ -22,6 +22,7 @@
 <tr><td>ไฮไลต์ ชมพู · ม่วง · เหลือง</td><td>ปากกาเส้นหนาสีอ่อน ใช้ระบายทับข้อความ ตัวหนังสือข้างใต้ยังอ่านชัด</td></tr>
 <tr><td>🧽 ยางลบ</td><td>แตะหรือลากผ่านเส้นไหน เส้นนั้นหายทั้งเส้น<br>แตะ 🧽 อีกครั้ง หรือแตะสี เพื่อกลับไปเขียน</td></tr>
 <tr><td>↶ ย้อนกลับ</td><td>ลบเส้นล่าสุดทีละเส้น</td></tr>
+<tr><td>📒 กระดานทด</td><td>เปิดกระดาษเปล่าเต็มจอทับบทเรียน (ดูหัวข้อถัดไป) แตะอีกครั้งเพื่อกลับไปบทเรียน</td></tr>
 <tr><td>🗑 ล้างหน้า</td><td>ลบหมึกทั้งหมดของหน้านี้ ต้องแตะ <b>2 ครั้ง</b> กันกดพลาด</td></tr>
 <tr><td>⬇️ สำรอง</td><td>บันทึกหมึกของ<b>ทุกหน้า</b>เป็นไฟล์ .json (ดูหัวข้อถัดไป)</td></tr>
 <tr><td>⬆️ นำกลับ</td><td>โหลดหมึกจากไฟล์สำรองกลับเข้ามา</td></tr>
@@ -31,6 +32,23 @@
 <div class="box tip"><div class="box-t">💡 ซ่อนเมนูซ้ายให้มีที่เขียนมากขึ้น</div>
 <p>บน iPad และคอม กด <b>«</b> ข้างโลโก้เพื่อซ่อนเมนูซ้าย และกด <b>☰ เมนู</b> มุมซ้ายบนเพื่อแสดงกลับ</p>
 <p>ซ่อนหรือแสดงเมนูแล้ว หมึกยังอยู่ตรงตำแหน่งเดิมบนเนื้อหา</p></div>
+
+<h2 id="s5">กระดานทด (กระดาษเปล่า)</h2>
+<p>ใช้เมื่อต้องการพื้นที่เขียนเยอะ เช่น แก้โจทย์ยาว หรือวาดกราฟ โดยไม่ต้องเขียนทับเนื้อหา</p>
+<div class="pen-demo" aria-hidden="true"><span class="pd-ico">≡</span><span class="pd-ico">‹</span><span class="pd-ico" style="width:auto;padding:0 6px;font:600 13px var(--f-mono)">2/3</span><span class="pd-ico">›</span><span class="pd-ico">＋</span></div>
+<table class="tbl">
+<tr><th>ปุ่ม (ขึ้นเฉพาะตอนเปิดกระดาน)</th><th>ใช้ทำอะไร</th></tr>
+<tr><td>≡ ▦ ▢ ชนิดกระดาษ</td><td>แตะเพื่อสลับ เส้นบรรทัด → ตาราง (เหมาะกับวาดกราฟ) → กระดาษว่าง</td></tr>
+<tr><td>‹ 2/3 ›</td><td>เปลี่ยนหน้า ตัวเลขบอกหน้าปัจจุบัน/จำนวนหน้าทั้งหมด</td></tr>
+<tr><td>＋ เพิ่มหน้า</td><td>เพิ่มหน้าใหม่ต่อจากหน้าที่เปิดอยู่</td></tr>
+<tr><td>🗑 บนกระดาน</td><td>หน้ามีหมึก → ล้างหน้านั้น · หน้าว่าง → <b>ลบหน้าทิ้ง</b> (แตะ 2 ครั้งทั้งสองกรณี)</td></tr>
+</table>
+<div class="kv">
+<span>แยกตามบท</span><span>กระดานของแต่ละบทแยกกัน เปิดกระดานในบทที่ 4 จะเห็นเฉพาะหน้าที่เขียนในบทที่ 4</span>
+<span>บันทึกอัตโนมัติ</span><span>เหมือนหมึกบนบทเรียน และ ⬇️ สำรองกระดานไปด้วย</span>
+<span>เลื่อนกระดาษ</span><span>ใช้นิ้วเลื่อนขึ้นลง กระดาษแต่ละหน้ายาวพอเขียนได้หลายจอ</span>
+<span>ปิดปากกา (✕)</span><span>ออกจากกระดานกลับไปบทเรียนด้วย</span>
+</div>
 
 <h2 id="s3">การบันทึกและสำรองหมึก</h2>
 <p>หมึก<b>บันทึกอัตโนมัติ</b>ทุกเส้น แยกตามหน้า ปิดแล้วเปิดหน้าเดิมอีกครั้งหมึกยังอยู่</p>
