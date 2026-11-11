@@ -2,6 +2,104 @@
 
 เว็บไซต์บทเรียน Python ภาษาไทยแบบ local สำหรับผู้เรียนที่เขียนโปรแกรมภาษาอื่นได้ แต่ยังไม่เคยใช้ Python บทที่ 1 แนะนำโครงสร้างโปรแกรม, Thonny และการรัน บทที่ 2 รวมตัวแปรกับชนิดข้อมูล ก่อนต่อยอดไปสู่ NumPy, pandas, visualization, machine learning และ GUI ด้วย PySide6
 
+---
+
+## 🧑‍🏫 คู่มือผู้สอน (อ่านตรงนี้ก่อน)
+
+### ภาพรวม: มี 2 รีโป
+
+```text
+                      โฟลเดอร์ D:\_claudePython ในเครื่อง
+                 ┌──────────────────────────────────────────────┐
+                 │  เว็บ (index.html, chapters/, assets/, sw.js) │
+                 │  tools/  (ตัวสร้างเว็บ)                        │
+                 │  private/ (ต้นฉบับมีเฉลย + รหัส) 🔒            │
+                 └──────────────┬──────────────────┬────────────┘
+       git push (หรือปุ่ม Sync)  │                  │  .\backup.ps1
+         ส่งทุกอย่าง ยกเว้น private/ ▼                  ▼  ส่งทุกอย่าง รวม private/
+   ┌───────────────────────────────┐   ┌────────────────────────────────────┐
+   │ prymania-python     🌐 Public  │   │ prymania-python-backup   🔒 Private │
+   │ เว็บที่นิสิตเปิด (GitHub Pages)    │   │ สำรองไว้กู้คืน ถ้าเครื่องเสีย            │
+   │ .git                           │   │ .git-backup                         │
+   └───────────────────────────────┘   └────────────────────────────────────┘
+```
+
+- `private/` อยู่ใน `.gitignore` จึง**ไม่ขึ้นรีโป Public** นิสิตจึงไม่เห็นเฉลยและรหัส
+- รีโป backup ใช้ git อีกชุดในโฟลเดอร์ซ่อน `.git-backup` สั่งด้วย `.\backup.ps1` อย่างเดียว
+
+### อยากทำอะไร แก้ที่ไหน
+
+| อยากทำ | แก้ที่ |
+| --- | --- |
+| แก้เนื้อหา ตัวอย่าง แบบฝึกหัด เฉลย | `private/course/course-*.mjs` (บท 1–8 basics, 9–13 practice, 14–18 data-ai, 19–20 gui) |
+| เปลี่ยนรหัสดูเฉลยของบท | `private/passwords.json` |
+| ใส่ลิงก์ Quiz Google Form ของบท | `QUIZ_FORMS` ใน `tools/lesson-builder/build.mjs` (ใส่ id จาก `/forms/d/<id>/`) |
+| เปลี่ยนลิงก์เช็คชื่อ | `CHECKIN_URL` ใน `tools/lesson-builder/build.mjs` |
+| แก้เกณฑ์คะแนน / ข้อตกลง | `tools/lesson-builder/appendix/a-course.html` **และ** ตาราง "การวัดผล" ใน `index.html` ให้ตรงกัน |
+| แก้หน้าวิธีใช้ปากกา | `tools/lesson-builder/appendix/b-pen.html` |
+| แก้หน้าแรก | `index.html` (ยกเว้นเมนูซ้ายระหว่าง `<!-- course-nav -->` ซึ่ง build เขียนทับ) |
+| แก้สี / หน้าตา / ปากกา | `assets/*.css`, `assets/ink.js` |
+
+**ห้ามแก้ `chapters/*.html` และ `sw.js` ตรง ๆ** เพราะ build เขียนทับทุกครั้ง
+
+### ทุกครั้งที่แก้เว็บ: build → ดู → push 2 ที่
+
+เปิด Terminal ใน VS Code (Ctrl+`) แล้วพิมพ์ทีละบรรทัด:
+
+```powershell
+node tools/lesson-builder/build.mjs        # 1. สร้างหน้าเว็บใหม่ (รอจนขึ้น "สร้างเสร็จ")
+python -m http.server 8000                 # 2. เปิด http://localhost:8000 ดูก่อน แล้วกด Ctrl+C เพื่อหยุด
+git add -A
+git commit -m "อธิบายสั้น ๆ ว่าแก้อะไร"
+git push                                   # 3. ขึ้นเว็บนิสิต (รอ 1–2 นาที)
+.\backup.ps1                               # 4. สำรองทุกอย่างรวม private/ ขึ้นรีโป backup
+```
+
+> ⚠️ **ปุ่ม Sync / Commit ใน VS Code ทำได้แค่ข้อ 3** ไม่ได้สำรอง `private/` — ต้องรัน `.\backup.ps1` เองทุกครั้งที่แก้ `private/`
+>
+> ถ้า PowerShell บอกว่ารันสคริปต์ไม่ได้ (running scripts is disabled) ให้ใช้ `powershell -ExecutionPolicy Bypass -File .\backup.ps1`
+
+### ข้อห้าม
+
+- ❌ ห้ามเอา `private/` ออกจาก `.gitignore` และห้าม `git add -f private` ในรีโปหลัก — เฉลยจะขึ้นรีโป Public
+- ❌ ห้ามเปลี่ยนรีโป `prymania-python-backup` เป็น Public
+- ❌ ห้ามลบโฟลเดอร์ `.git-backup` (ถ้าลบไปแล้ว ทำตาม "ตั้งเครื่องใหม่" ข้อ 3–4)
+- ❌ ห้ามแชร์ไฟล์ `private/passwords.json` ให้นิสิต บอกรหัสในห้องเรียนเท่านั้น
+- ⚠️ ประวัติ git เก่าของรีโป Public (ก่อน commit 8136a9e) ยังมีเฉลยและรหัสชุดเก่า (`py0101`…) อยู่ รหัสชุดเก่าใช้กับเว็บปัจจุบันไม่ได้แล้ว
+
+### ตั้งเครื่องใหม่ (หรือกู้คืนเมื่อเครื่องเสีย)
+
+ต้องมี Git, Node.js 18+, Python 3.12+ แล้วพิมพ์ใน PowerShell:
+
+```powershell
+cd D:\
+git clone https://github.com/prymania/prymania-python.git _claudePython                  # 1. รีโปเว็บ
+cd _claudePython
+git clone --bare https://github.com/prymania/prymania-python-backup.git .git-backup      # 2. รีโป backup
+git --git-dir=.git-backup config core.bare false
+git --git-dir=.git-backup --work-tree=. checkout main -- private                        # 3. ดึง private/ กลับมา
+git --git-dir=.git-backup --work-tree=. reset -q                                         # 4. ให้ backup รู้สถานะไฟล์ปัจจุบัน
+Set-Content .git-backup\info\exclude ".venv/`n.git-backup/`n__pycache__/"
+python -m venv .venv                                                                     # 5. แพ็กเกจสำหรับ build
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+node tools/lesson-builder/build.mjs                                                      # 6. ลอง build
+```
+
+ถ้ารีโปเว็บหายด้วย: รีโป backup มีทุกไฟล์ ใช้ `git clone https://github.com/prymania/prymania-python-backup.git` ได้ทันที (แต่อย่า push โฟลเดอร์นั้นไปรีโป Public)
+
+### แก้ปัญหา
+
+| อาการ | ทำอย่างไร |
+| --- | --- |
+| build บอก `ไม่พบ private/passwords.json` | ยังไม่มี `private/` ในเครื่อง → ทำ "ตั้งเครื่องใหม่" ข้อ 2–4 |
+| push แล้วเว็บยังเป็นของเก่า | รอ 1–2 นาที แล้วรีเฟรช 1–2 ครั้ง (เว็บมีสำเนา offline โหลดของใหม่ในการเปิดครั้งถัดไป) |
+| นิสิตใส่รหัสถูกแต่เปิดเฉลยไม่ได้ | ตรวจว่าแก้ `passwords.json` แล้ว build + push หรือยัง · ต้องเปิดผ่าน https (เว็บจริง) หรือไฟล์ในเครื่อง |
+| `backup.ps1` ขึ้น `STOP: private/ is tracked by the PUBLIC repo` | ห้าม push อะไร ให้ถามผู้ช่วยก่อน (มีคนเผลอ add `private/` เข้ารีโปหลัก) |
+| `backup.ps1` push ไม่ผ่าน / ถามรหัส | login GitHub ใหม่ใน VS Code แล้วรันซ้ำ |
+| หัวข้อ "เก็บคะแนนท้ายบท" ไม่ขึ้น | บทนั้นยังไม่มี id ใน `QUIZ_FORMS` → ใส่แล้ว build + push |
+
+---
+
 ## เปิดเว็บไซต์
 
 เปิด `index.html` ด้วย browser ได้โดยตรง ไม่ต้องเปิด web server และหน้าบทเรียน/ตัวอย่างข้อความทำงานแบบ offline
