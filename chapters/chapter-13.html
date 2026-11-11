@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -155,20 +155,14 @@ users = [{<span class="tok-str">"name"</span>: u[<span class="tok-str">"name"</s
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ข้อความ JSON</dd></div><div><dt>ต้องหา</dt><dd><code>ผู้สอน Mark สอน 3 หัวข้อ</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>json.loads()</code> แปลงเป็น dict</li><li>ซ้อนชั้นใช้ <code>data[&quot;teacher&quot;][&quot;name&quot;]</code></li><li><code>len()</code> นับ list</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>ผู้สอน Mark สอน 3 หัวข้อ</pre></div>
-    <div class="answer-gate" data-answer-id="13.1">
+    <div class="answer-gate" data-answer-id="13.1" data-chapter="13">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 13.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 13 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>JSON ที่ซ้อนกันเข้าถึงทีละชั้นด้วยวงเล็บเหลี่ยมต่อกัน เหมือน dict ใน dict</p><div class="code-block"><div class="code-head"><span class="code-file">ex_13_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> json
-
-text = <span class="tok-str">'{"course": "Python", "teacher": {"name": "Mark"}, "topics": ["loop", "function", "class"]}'</span>
-data = json.<span class="tok-fn">loads</span>(text)
-<span class="tok-fn">print</span>(<span class="tok-str">f"ผู้สอน {data['teacher']['name']} สอน {len(data['topics'])} หัวข้อ"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="ukFlu7dqe62lmYq4ni/BTGArpEvUqV2DTL5k3ZImD+zSAGyt9L3f4qMDBN/Sjk/Olu6fNtZ4c9X84WiJ265fREaYDxZ6xVxYLY6HfGUuWcUG+9JKIn3dalltzNzBHZEdn6kxDT1D0pzVpHsx4Wq7Po4bkHJh5vYT6k0mLuqHNk9/8EHyReIjrda5IRn0ZP015SZlJrRK/PlwmGZm/+pkzp1EEk+JD9dQ3qGNlMuysAIVZT5kNKA3mHGu/cz1Vr/d4q65uoVGwW1sQGm+RHcgvTJyve7uImGBMdh8Hlkti6vTvbtMQSkMr2pUmU+WfW/CHz0XTpvvdP/G0WFuLrRtWv8+VuN1K0HomQ3euib9T2QCOCW6VdDsVin89aaTZBpWbUy2EhkawZRHlVxcDeKnRRC6B0hJTGrvUmmQjomqui87EzFoq0PfVqxmhF8L7FDSdMRw4cr1N8R+UFlQX5xdisrQ5fFtebVjnbOzKqF2llk4ohO+HpR/ArPypZZM1jvL+i5fHfDHlwU4e4PZ9/QyJg4QtE+AFIjWY7id41b76hn+TM6ql9nHDaBiZmniHOTl1J2ngNZvkVz4rnlYfRQtjDsuecFDuHCJAoBVyHfpdoHcaQyHgcKM/Z3Ktr2WyX7AWntDbJJ0beA2arUGfIBX//jn1KuR327jHF/YpiHaeytaH9Ss0sDruaN7KQbxJll++TU7cFTwMLLaXSL326I9cnvl5HR5F4VrDLHD19TJkji4axnlgx8bI9PrHU/KWfrIblQYfE2SY3ABGLmCnNZTAmwX5hsUaLUNbecYSy4fsUOCCDNEOwFeNL6DiY01sTEdqhBE/kKOBXGmFTfhsAVgZ4jff8xgiPis49hwVjBX1tB6o7E8NE+NdipZnnz7pVoqnTuHLtfnQlj6wh4ac5I4MlBdPoDuNmYoMMfzwnQCZGFuDNOqh73z88I1nXoHKQqjsd7FGxo8vJYqWogNCTUAEp8CJIis665pxAe7nmkzaqAZub6JsikZRoh8soFbSZ78FE5HQL+s/Ix5iqh1g82K8LpnFcOyl0xldIHuZglWvAqBQS+ZtfKJ/kl7L9aHiYoPfLDcEruzdBemX9lNdAHa"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -179,21 +173,14 @@ data = json.<span class="tok-fn">loads</span>(text)
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · จากข้อมูลตัวอย่างของ API (ไม่ได้ต่ออินเทอร์เน็ตจริงตอนสร้างหน้า)</strong><pre>ชื่อ: Ervin Howell
 อีเมล: Shanna@melissa.tv
 เมือง: Wisokyburgh</pre></div>
-    <div class="answer-gate" data-answer-id="13.2">
+    <div class="answer-gate" data-answer-id="13.2" data-chapter="13">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 13.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 13 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>เปิด URL นี้ในเบราว์เซอร์ก่อนจะเห็นโครงสร้าง JSON ทั้งหมด ช่วยให้รู้ว่าต้องใช้ key อะไร</p><div class="code-block"><div class="code-head"><span class="code-file">ex_13_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> requests
-
-user = requests.<span class="tok-fn">get</span>(<span class="tok-str">"https://jsonplaceholder.typicode.com/users/2"</span>, timeout=<span class="tok-num">5</span>).<span class="tok-fn">json</span>()
-<span class="tok-fn">print</span>(<span class="tok-str">"ชื่อ:"</span>, user[<span class="tok-str">"name"</span>])
-<span class="tok-fn">print</span>(<span class="tok-str">"อีเมล:"</span>, user[<span class="tok-str">"email"</span>])
-<span class="tok-fn">print</span>(<span class="tok-str">"เมือง:"</span>, user[<span class="tok-str">"address"</span>][<span class="tok-str">"city"</span>])</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="bC4UNtnuBl39WmN5q/1zVwwjrwGxS0LGbKTD8QE1qgfW9yqv2mDRMt2ewRtmnOSkJ5qeC79nT0TOMOUT5M7LAGFYlPAF6Twp20sWv55l00WF2PAPMA/n7yCDj0wAG4gDlz2wr+1VAMCay4nC9UL0vt/tXZ/fc9YMmOXmHpSO6rUJczc5uZHWUigq/KEIZHFX2uU7qpM4Ba8DL2Ixz/U/s9N7lhE/zjodZVKjtpZ6BlJ/51Nq4csP+vlxtbrvmd5Ow923mNy0S7DQ31VFVZg8L0ClzhM4opIbw55p3vJoav4FbB0BYnN/izN1vaXybcMBVSl61VCy1YlFZZtQ1bGNj/e1tAykWgcBI085O7AQwUe1ivzKuO7fi5u/dOgSYHoj/E0Ek4LU0Ybmcr3TcKNNxL7UgTkhZHiJc4P+7HIQHGgjUrPgkbwZXuDzw+EaPks8q8Sp5yu2ENVaTd6t9rHGOOIzyw/leiUBO6fgIi8zIYtF+FUBenqh+H/I66JoZQz3AqbmMWRryPss6qJSe1nIhM5SmKhyvd4fq6un7pvb+SzMmWgSDLSYKqtrewJMyplZj6mkZK1kIpV885lvQ/ZxCO4cGUF0ovjObl76pVmNFS8giQ8F00fqbw7VbJH4TQjOgMxtiVp9OsZS72NFPeK00AhAgOA2B6Yp0mN42VYlc9/B7UfjS2dwR1uGsCMBBm+1rjdZ8d2emEITgW5wKBQ/i7LtVvWrFChTUsnuy3H4NdiLOXcd5666vQMQbIb7XA+0kGyniMtcYCqv5VjOX2PRPrBILKfkTAUEWQlp6kRyz9KrHYbY51+lPacSzkF/p/JJC2HBrZ2BamhoXpH47GzbQYKBSbFBt1hy65DPfOfJVI6tZpEoZTmcMia+M/fgH1tRgdBuqTLdC4TSELYoTGQMPj+Q4FaHPkQQn9UbZuPKNTO+X03JXWl9RT+UpW4MOquL4oxCrhpYUmj3MkFao2OI0wBs1N1BHW19RQg8Wp5pobcKLqycXTn0Xalr79MnpeRBbVMhaVGf2NZw/Gp4UHaJ80cLR88mtruHI8b6U6d9pRPgeWrDag+28P2ACR7rEFScheXohIyWp9wz4RSPMfg09siwMbZmJJFqmLyZSVhIWB+0SUJ5+CnaWLwyfT9N0FBYF4lnNSNOcmw7VwDWAmgrMS+odtN3bvboIDsM0aix45ruvUJIRil4TwLFeWPxt11qwM5YE88ZWCeZ6bWE7VoeDSSwFi72aglpc6Q+aKFStPaaBJd0W/LxCvbqExeZCtw/WF3F9vvY9EDoPikAbKfVo1qilaZRdjFJGugMdnX/unCuRWhnT+heX1F7fd4Btev1I4TMngYSs7tRx7nLCnN/+uIAslQA0Rd8bZjyJ1u5SZjsqFo/m3Aa7BkJPVw7nxyuSCv0jTz/zigl86jEeBUF8t6C5na6LEOi+Fdk8rX/dlQtfE3Bf2GBJmsEMyDXwca9P/c0+KcOonOFnPYw5sgoxReKHreK9XY0aZQDzOezrrpRLhoxqIvgFNpjQ3W3"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -202,24 +189,14 @@ user = requests.<span class="tok-fn">get</span>(<span class="tok-str">"https://j
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>API <code>/todos</code> พร้อม <code>params={&quot;userId&quot;: 1}</code></dd></div><div><dt>ต้องหา</dt><dd><code>เสร็จ 2 งาน ค้าง 2 งาน</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>ส่ง <code>params</code> แทนการต่อ URL เอง</li><li><code>completed</code> เป็น True/False</li><li><code>sum(t[&quot;completed&quot;] for t in todos)</code> นับ True</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · จากข้อมูลตัวอย่างของ API (ไม่ได้ต่ออินเทอร์เน็ตจริงตอนสร้างหน้า)</strong><pre>เสร็จ 2 งาน ค้าง 2 งาน</pre></div>
-    <div class="answer-gate" data-answer-id="13.3">
+    <div class="answer-gate" data-answer-id="13.3" data-chapter="13">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 13.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 13 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>true</code> ใน JSON กลายเป็น <code>True</code> ของ Python และ True นับเป็น 1 เมื่อนำมา <code>sum</code></p><div class="code-block"><div class="code-head"><span class="code-file">ex_13_3.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> requests
-
-todos = requests.<span class="tok-fn">get</span>(
-    <span class="tok-str">"https://jsonplaceholder.typicode.com/todos"</span>,
-    params={<span class="tok-str">"userId"</span>: <span class="tok-num">1</span>},
-    timeout=<span class="tok-num">5</span>,
-).<span class="tok-fn">json</span>()
-done = <span class="tok-fn">sum</span>(t[<span class="tok-str">"completed"</span>] <span class="tok-kw">for</span> t <span class="tok-kw">in</span> todos)
-<span class="tok-fn">print</span>(<span class="tok-str">f"เสร็จ {done} งาน ค้าง {len(todos) - done} งาน"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="coQcVcA+zbgpUR69mEP7evXUx4sFueXDUdJp8elX20hINfqIfe0QSBDbSbhN/DSK3/Pbhqh1fVysy4Bp+Ia/wEdQebgFt3KieF/I8ef1GMNotNnomftJ864ARfxhT7PhB1UBWWKzI1oWr32L0mzXNghQ76XdyHS8CJUlPml+wlFYmxKkZaFTyqtMOcxlBExOATbm1N8qMkJc0b6i+y9pWJlzX9+ymSwoJl8SjKNvt3LGctWhze6j2Si+q+FgWTxqmKlayZD2Gku1+d9IRkEoUCcy/casxRfS2eYKiHwJls4o5oEytoFYklfPwWag4T4kodtMV1oLFrEA7Z8slhSWyDHbWAq96k7KsdIwrO/gxAaGoeQVQTQMLxE3WY8dBllwTPF5mn9FpepgBK8yK6E1w3uzZ+vYAalnFajaFDvIISw4lgnIhevp4UgTxtYFq2koEHJbRjKiKxAKnpHDV/3Gp3Wl1UlZlyz910pxDNdyobn9YZTzQ4VJnOb7MG4KteUa/qdR4jLRK57jrDn/Da1JDXIEjZzFA+SAtwn+Otxj+1pE08aKAZ5Mw88vGvvvJJCbCnQ8IBDK8/5m6uc2V3xNox01o4wpZajXph2/+4zXhA9gxbH8EgBellxP6tpqOUHOD78Ru9z09Hw0bhO73G48px5p9tJKgsoVTTa19AWA0+asrhxNhPgBp1llE4H6f+lPERDHX012lXIunoMfcHj3Hqu4KaIpvAXz+sXNhnFQDFh6G/e6AOqXJC/24sbTftONXCRAQIInWwOa4ZMBrDx1JF8NmYU19+oLTOKNPV+IpaUZSG1QOQAs8gytgO/YnY2a/xTybc3O82Qw+tmN2AqHZVjsQ0eSCiJsbZyCRIAGEb2GqEEpamS8PvSDdz1+8bH2Y1ZJ2t2GfO3sI5gBUTaBq29a0GcnBlHasZeKLwfHdVyTfblUN6CKzC3sy9dwms3futG3HRGPdLz2n82ildZkdMN8O1jxIWWIFlRbv4uPYu/0IU6cKTY2xdhPefcVWRriY1c/zrmDe+69i4j1Nu2zyXle1+TJ+EkE0RxxaLvpK0mO8SdaEri/l06uBz8JQnWvGpPV5V1f7ATBtSco1Lsq4nMu/k/lrafdQsEvUiJE1tDpjoibixw5/BCU9N1ojfZ//AYFc8NLvFHp8VC630nilly4q+qUI6CTJeXTSlNxzDdxCMpwuhDDYc/qoMZHfasCC+naQsN+PFf1GCNzV14rJ+vpM4M0rk56TjiSNslveNAF7UkbnuCsQ0yfdEWVuRICSvmhcUAJVefTNPuKmJ5ggRuhPi/5wkcikXm5+wUm+ldDuAvg6VZh3XE/5SY0h/+TQPGEjrZtorAXzEE3VAshmRqBkPgTqh5+qJStwiYXJAj2U3SWU+dHFL6tXAs8/cOBq6AWsrFJMxqRoeEdIDw/"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -236,19 +213,14 @@ done = <span class="tok-fn">sum</span>(t[<span class="tok-str">"completed"</span
   &quot;confirmed&quot;: true,
   &quot;note&quot;: null
 }</pre></div>
-    <div class="answer-gate" data-answer-id="13.4">
+    <div class="answer-gate" data-answer-id="13.4" data-chapter="13">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 13.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 13 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ตอนส่งข้อมูลไป API ต้องแปลงเป็น JSON ก่อน <code>True</code> กลายเป็น <code>true</code> และ <code>None</code> กลายเป็น <code>null</code> ตามมาตรฐาน JSON</p><div class="code-block"><div class="code-head"><span class="code-file">ex_13_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> json
-
-data = {<span class="tok-str">"name"</span>: <span class="tok-str">"Hobi"</span>, <span class="tok-str">"courses"</span>: [<span class="tok-str">"Python"</span>, <span class="tok-str">"Data"</span>], <span class="tok-str">"confirmed"</span>: <span class="tok-const">True</span>, <span class="tok-str">"note"</span>: <span class="tok-const">None</span>}
-<span class="tok-fn">print</span>(json.<span class="tok-fn">dumps</span>(data, indent=<span class="tok-num">2</span>, ensure_ascii=<span class="tok-const">False</span>))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="8s/W1QLl2ADURuu+UQGdPD+6GjiTCnPN6BeFFrOSzMT0iMGh2kfbTz1my+HgbbW+aYX+b6PTcHOPYe8cMvh7sAR5MS+kOBfaG1uDhyj3nCYEDg5sKmCvK99YAvILtk0N42W9p94FHweVc8M1lj97L5vLmziwcFAKRfjo3RQXGqRiXV9ZelZKkE1qs4N7k6SeEqhd8gXQqMpgtpJ/O+AlPOxMxJGqtFYWefbtcllwPRcYk1DcK3mi1LZbw4nYIm2eIiV1rYnus0L66p/eXLMQQlRBm3c8SEnJdAYAVI+y3yaNqlfBlp0iMp2mzg7jHOJ21wefUG1lq/ckkC91ruqKfKDJvQhVcnPTljIn0CQtrRyMSSVTHgS8s+zt6JWE3MhHvEvOSf6AOJgpK7De6IvDrgduMzjcIQ8ytbWrtexh/itsJ8fkZTcCADOLloQP8PZD7S9jCNLfYyztUqVSw7n0nagAi2DCn8aUg51K2GnnltkkKe6yY7ZX6kyxgJxT+dKrrFO8gaT6+bZSqPaHR2p3gDdbnSnmljI2IlaBmZEcgUzMfZ398tsBs2fDed163Uc2hxE9accBjcT9KYJ3iotaZ73PpBf+t846SgXFJqlNFlDvx5QwC2Q/RREcD0FPZUIZXCU9ApwevLQ+HSPJPmdlyMRrAdve+3jCw1SzAuE87KYKFIORyhKkm0RvQ74MFVN6G+7/TSQ7mnhk1daylzBKKAhIpUbE3JkgooB8kpPHcdhEHwQG2ZsGRLEWNXKyIZYo9Hu28hrhdSaeAxhpaZxawGf65cGztcodUitCdATttNXVbWSVkIY0VMdT9U+ttpdbewuVpji7bpzYqBlzGTDQeJ7juJnRSDxgHDlcGzGbjPooPhRwytAVPsTF00bdYoEFdI5GVSZQ2I9O4JONEqIYXQGye19SgyI/MLcxFA4dYmMMa9w8Dyhi/z7i7Hi6zkXu2uFX7s2t/BHLsh8etn1jvlNV7sycrnPu7xFm0YSYEF9z1iR4XYqaIM8K/prNU87JRqbCUaGi+PwpoyNaIwU2Jw3SrJofjT3CkIQbKiN54Gx+4IFoaVVRcZblJMZPKXKAZ/7o5SCEaZXx81cknvZ/V2dl/74S/mKybFmd4HN2hRoaUOSRpc2pCowOLeHHyPMPxesfJzDTeY5JsPMefL9oa3tPlJbzEgImDIUZRRrtHUvbqqnPIwR+uHJ75scBIyYFEDTN5xu52OmpOF/Nsf0b2BK3VDAAw4P994/E1whoX1+TIF3jT/zlwXr64NVrFohosK/P2BzAWwYaoKntv8KO7p/MIqvCBkSZWBfnCd8mGMeXOXK37I2OKgKo+WjskLDYc8I2P9kVIujsVOqlCEsoQPA8aOyq8PoU4DyMUHZ8S1ehln0kE8ot0YBlk+pmuskD9ybtwPi8pWYBCq/df1UrSktW3cCVBKUfkMF7ok/SmeC3+LvV378="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -257,30 +229,14 @@ data = {<span class="tok-str">"name"</span>: <span class="tok-str">"Hobi"</span>
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>user_id = 999 (API ตอบ 404)</dd></div><div><dt>ต้องหา</dt><dd><code>ไม่พบผู้ใช้ 999</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>ใส่ <code>timeout=5</code></li><li><code>raise_for_status()</code> แล้วดัก <code>requests.RequestException</code></li><li>ผู้เรียกตรวจ <code>is None</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · จากข้อมูลตัวอย่างของ API (ไม่ได้ต่ออินเทอร์เน็ตจริงตอนสร้างหน้า)</strong><pre>ไม่พบผู้ใช้ 999</pre></div>
-    <div class="answer-gate" data-answer-id="13.5">
+    <div class="answer-gate" data-answer-id="13.5" data-chapter="13">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 13.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 13 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>RequestException</code> เป็นแม่ของ error ทุกแบบใน requests (Timeout, ConnectionError, HTTPError) ดักตัวเดียวครอบคลุมทุกกรณี</p><div class="code-block"><div class="code-head"><span class="code-file">ex_13_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> requests
-
-<span class="tok-kw">def</span> <span class="tok-fn">get_user</span>(user_id):
-    <span class="tok-kw">try</span>:
-        response = requests.<span class="tok-fn">get</span>(<span class="tok-str">f"https://jsonplaceholder.typicode.com/users/{user_id}"</span>, timeout=<span class="tok-num">5</span>)
-        response.<span class="tok-fn">raise_for_status</span>()
-        <span class="tok-kw">return</span> response.<span class="tok-fn">json</span>()
-    <span class="tok-kw">except</span> requests.<span class="tok-type">RequestException</span>:
-        <span class="tok-kw">return</span> <span class="tok-const">None</span>
-
-user = <span class="tok-fn">get_user</span>(<span class="tok-num">999</span>)
-<span class="tok-kw">if</span> user <span class="tok-kw">is</span> <span class="tok-const">None</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">"ไม่พบผู้ใช้ 999"</span>)
-<span class="tok-kw">else</span>:
-    <span class="tok-fn">print</span>(user[<span class="tok-str">"name"</span>])</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -290,32 +246,22 @@ user = <span class="tok-fn">get_user</span>(<span class="tok-num">999</span>)
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>รายการโพสต์ที่มี userId</dd></div><div><dt>ต้องหา</dt><dd><code>userId 1: 2 โพสต์</code> และ <code>userId 2: 3 โพสต์</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>นับด้วย dict และ <code>get(key, 0) + 1</code> (บทที่ 7)</li><li><code>sorted(counts.items())</code> เรียงตาม key</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · จากข้อมูลตัวอย่างของ API (ไม่ได้ต่ออินเทอร์เน็ตจริงตอนสร้างหน้า)</strong><pre>userId 1: 2 โพสต์
 userId 2: 3 โพสต์</pre></div>
-    <div class="answer-gate" data-answer-id="13.6">
+    <div class="answer-gate" data-answer-id="13.6" data-chapter="13">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 13.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 13 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ข้อมูลจาก API คือ list/dict ธรรมดา จึงใช้เทคนิคการนับจากบทก่อน ๆ ได้ทั้งหมด</p><div class="code-block"><div class="code-head"><span class="code-file">ex_13_6.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> requests
-
-posts = requests.<span class="tok-fn">get</span>(<span class="tok-str">"https://jsonplaceholder.typicode.com/posts"</span>, timeout=<span class="tok-num">5</span>).<span class="tok-fn">json</span>()
-counts = {}
-<span class="tok-kw">for</span> post <span class="tok-kw">in</span> posts:
-    counts[post[<span class="tok-str">"userId"</span>]] = counts.<span class="tok-fn">get</span>(post[<span class="tok-str">"userId"</span>], <span class="tok-num">0</span>) + <span class="tok-num">1</span>
-
-<span class="tok-kw">for</span> user_id, n <span class="tok-kw">in</span> <span class="tok-fn">sorted</span>(counts.<span class="tok-fn">items</span>()):
-    <span class="tok-fn">print</span>(<span class="tok-str">f"userId {user_id}: {n} โพสต์"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="gQDbRF1+/QXIlX3hDtzdoaLelRwLPwR1emK1Yd+zrBN6d0mqraVRzdpTBrPgH7bb/htFYZP17uN+mfSlHCv7Na92Y36hDyli4P9/cr24HCFn0vW+dCAE4W7F5lziwfHSG/5wS3fGCXtTMLVFZzVUiaXSy0k1ES/gHZAig5Hi4VPzvsgbf0NYMq14T0CPytfIMqTaF2EjZlrC/0l3QXAGxZhcnABOR8F10j8NOD1R0lVNVtFQWGJ+MsxgoFOc4N0Oi+xSgSQEVnGezCHLuQSdKhK2WgQ4qKWxWionZhmFeR8bVe6WLhGod5Z01J17p5FOfdKjmPo4CkHm/2zUkvY8zHKk0ggcptmjSLp0F1CoKI6AHfQMqOTH4iRiLGeRZK78Vfn2l/Ko5HvOgl2iYU2vbQhOjdT5NdS74zgJR5eDQzWUfOkHlwVSnQLyIC4WFGx0w3nSkZMi0MkatkVuvXbmyFYJy0Vaiid4l2ynbLMa3fDvk9ZASt7LBVTPjJXg+JBVYiZ2BLXxlbQy5k/QSAAc3sTgtpvXjIBD0KpsxZc2MLmqQIscqYS1WsZhvksxC/I3nFVaujIikN0OGoTpV/FzTX2Lf7wpKavHjZD5pua8sL7PIzZryNV8eHvdsZEQtLCpo0oh81caZvgDfbgKKJ/9AxAsxRxmfaLT+iSKC5drJ9pxUfC7UyiXt01sGoXs82YjGEPZpR1pvPmDVDsmOGr+77+lb4GIPnR0c5z3O1fc6EmNPEU8hk8cfds6TtIt729MWpQp93FkQt0kJy5JHSQzcvi0AazDNmW77hKZga5SxOQ6kZGGFweGkyRpGtFqncKcE8mUyp1wf0D4fg8qt4X34qPtVhz5nV1DDb7W2YVeHp5iGj9LwMeJJqAqX7HBzwYrvZ5tw18kF3pXL9DtRE9vEAkuSC3NMDahm3+sHOzMd2ip5HVqM5sxssLLUwC6w/aa/wVwgRdfbXeJxIMYD3mxg23C9uiD9ZoRLdwgyu2dZdsSCsg5DHQVaML8lGMJDUmHeLqwHvn12NvoQIblMT2Rg47EAlsx/auhadPBJpHWh0Mc0e5tcPPcWUdIJDJ+hCoL97Y1cPoWutFQJAK2FRz5I7QVk59naO2QvECDvX0hvVZWYa4uAhqa2w/uTPHJvvyzBH+nUaDGelArgO7FCK8/10OY7MqZf34e9hizPSiPryeW0+8mKqdrTQ8BEDlB3AwmwV2PyAFqyKum4F7/MlEGu4sJVJWO50VkHUjr7TwGX+fR2fpII6LbjUJSPxizsJdX4U7N4/bmpdWDZA0JSKLiRnT6QflRtOu0Ia9ua4IatjxGZAiRkKXfOPIEi/D7WBn8x23izBHLTT0uoTHkYz2PDyFlQf2a0ENawWt3OmkVmGyBVWViG3ChDMBqQnENy72RXKwuLvUS41gRyI80cyLu/o/gPcuX5g8ZuD41PLCW5BURqVbefDbEVTEMSq2bbkseYRGvf9qvy6WXI1fIqFvODGQK1qqbnbs+Vhmjaqeq/CVE8Hrco1WUkD8xnhozGr2vlEmgGEDz0/RJARUk75DcDcpGsILtU7BkDHDJH7Tunxz9UzizzwJK5L4xm+O+MzKDl4DpDU7WN0Yh7/rpsyzAWMEjOjPY5NVCZjbvfLU5M1F3CK/zt23QcyQZ3tFgVCSmhuc="></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-12.html">← บทที่ 12</a><a class="pager-link" href="chapter-14.html">บทที่ 14 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

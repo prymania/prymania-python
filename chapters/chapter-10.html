@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -162,22 +162,14 @@ path.<span class="tok-fn">write_text</span>(json.<span class="tok-fn">dumps</spa
 บันทึก: <b class="stdin">ทำแบบฝึกหัดเสร็จ</b>
 เรียนเรื่องไฟล์
 ทำแบบฝึกหัดเสร็จ</pre></div>
-    <div class="answer-gate" data-answer-id="10.1">
+    <div class="answer-gate" data-answer-id="10.1" data-chapter="10">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 10.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 10 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ถ้าใช้ <code>&quot;w&quot;</code> บันทึกวันที่สองจะลบวันแรกทิ้ง โหมด <code>&quot;a&quot;</code> จึงเหมาะกับ log หรือบันทึกสะสม</p><div class="code-block"><div class="code-head"><span class="code-file">ex_10_1.py</span></div><pre class="source-code"><code><span class="tok-kw">for</span> _ <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-num">2</span>):
-    text = <span class="tok-fn">input</span>(<span class="tok-str">"บันทึก: "</span>)
-    <span class="tok-kw">with</span> <span class="tok-fn">open</span>(<span class="tok-str">"diary.txt"</span>, <span class="tok-str">"a"</span>, encoding=<span class="tok-str">"utf-8"</span>) <span class="tok-kw">as</span> f:
-        f.<span class="tok-fn">write</span>(text + <span class="tok-str">"\n"</span>)
-
-<span class="tok-kw">with</span> <span class="tok-fn">open</span>(<span class="tok-str">"diary.txt"</span>, encoding=<span class="tok-str">"utf-8"</span>) <span class="tok-kw">as</span> f:
-    <span class="tok-fn">print</span>(f.<span class="tok-fn">read</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="cQmUbEsVID3rj2s2xeznnvuxHchAZ2z8Sskb0yS6nUcdJHEHDSMFff3OwQjf9UmCePPGYJZOOuRW1lBZbLBIX1mM1qcBXklJiyloR15Ktoi0NaJSNkx2D9EbQa8OATCX65dMBmMIzEFmJG+4cbu/e0X537lLvZ2q6FgCinhOrIamBA/nVrL36FgpQoGwhS2Zwq1FldHf5hBLilKesyCU+vo/Sn4tGI+3TMy4JytB8SRDs7c3mfLDJXYI8f8bPSJGq/OKzSg6CvW+FFM3Iypg868VxfdFTlenfdTbzwbhTS+scOWWGD6mCmUDtbhU+hAwggvSA5ZS9dOltum36AHdti2JQFxhGdYH4tJIIT7qJ5tJdgbeOjAYOxvEHciAIBV7VYey59VaYJq/USASSTvbJRxoqBL9iydbVlgi+SIaH2MKe9g3adfxQ48QSNuOQabq8P7VUlU0Rx1KaqxD4rOvSgVGX8IEJUeAkTg9/ifn7hPYlCr2BaaGDb1Xl4o4G0kqrRvtnZrMh1FEDGfvZeJTGFGJJVeUQp9Olg/kvWPBKgV0uk2dXlqd7NZOE4uZP8pP42CDhlF2QYMSgx+XAh0+GNzw//pRVLRkPNDgNJ1Jq0gwPdX8AjZMXZ38vjHbhkIvI5mXRG6OrJNYsV2E2Elo4/NSjrB2aiQhhOGsHk/cOBO5XlaLBqKnf7jMa5Mgw2N/20DMxdxXZh7VCHJy8rAJEigWsyAYjS5IpkSkekyVr15EZj6FCfupdIwVi95I+VDoj60+nIbont2qo6wsXKhpxWM7GXkB3t6H8tAmMxyrwxxyvN8WKT6Mx3Ud8+CJhx55vvseN5HjY+NVG0+rSplq3lhqHecChIuk0u9BoXJwxrkyJ2H/unZbVci3PGdUBL/rKQ0OupDZ4ZVO0pLdAArs6DmPYYQX7/DLndCVM20v+YYpAF+QhdUoqs1QXwrclliFdoyYGSX+8rp2E5tTjgATu1AUZuIJt2Ry4hvJ/CA9TAJJ1ZcOisjx23je+CcqNIS/zbp4r2DdmLG/DEhcCMIWYuzx2Ee7Z1GsVc8dTdVsQTIP2PkdUCHij5nuhvFaUFae2rHw9tS/N8oWCHdJ7xPkwCLEi9kgj0Gm1ghSg1h/LUwiPzbANc7+YbwSDLUmnMvXfjVAv6PvHBqg00Xqs9QyBDW59gOG6qlf1CtymtKiOEQet2ci/jDIlFl1NWVYrF3AoZpQSfKEEXBjowzSPCqvAtinFJdkDx05MWHuJXrk6bzd5DGCFOzBJAz9izm2kLAreF7yI3wYBZ1V8xRA894AzfoDv21wVX1cFlniCZqVZX6m8W/0hcvYKtyb7ubi6R2d/KslOZsx1E1IH06ZXPFp06oyXYV5I0tNZ1o9zQvU10hctd2fo7aLLcwfrCWAVhhRlgCPfZzNT3V3ZX/ZEvBqsUgeyN4UXf/yJGV8QIfVmcpKuofeUYi0GkbTPnCoy8+iIwTMSvSyBZrcWaNdNiunGZIejpyfFHNomDld6XJXil/PLc6MKgIbz7nDmuFFoo64RkyjXVlxk/dA7q/iAo2jOQiccJmtZpEb6AIL6jAz3EhpxbA/Hgq0DB4TM/M/0xdDyZ+Bg6UuogqYjT4FqjH3ZgkWvhfeNc1CQf3pKKKWo3Cgs9p9V1rUbWw/9PUCL6K98FDNle1KYRa7e8hKvKDnIHAWiNP30dnPhpXkHu9Wxoqv0rGyTMnqcDFI9hVHE9p+0p05UDW6rqMU12gVG1HhU7wAXI+4jV00q4Q6lA=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -188,22 +180,14 @@ Python is powerful
 learn it step by step today</pre></div></div>
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ไฟล์ poem.txt (3 บรรทัด)</dd></div><div><dt>ต้องหา</dt><dd><code>3 บรรทัด 12 คำ</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>วนอ่านทีละบรรทัด นับบรรทัด</li><li><code>len(line.split())</code> นับคำในบรรทัด</li><li>สะสมทั้งสองค่า</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>3 บรรทัด 12 คำ</pre></div>
-    <div class="answer-gate" data-answer-id="10.2">
+    <div class="answer-gate" data-answer-id="10.2" data-chapter="10">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 10.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 10 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การวนทีละบรรทัดใช้หน่วยความจำน้อย อ่านไฟล์ขนาดใหญ่ได้ และ <code>split()</code> ตัด <code>\n</code> ท้ายบรรทัดให้เอง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_10_2.py</span></div><pre class="source-code"><code>lines = <span class="tok-num">0</span>
-words = <span class="tok-num">0</span>
-<span class="tok-kw">with</span> <span class="tok-fn">open</span>(<span class="tok-str">"poem.txt"</span>, encoding=<span class="tok-str">"utf-8"</span>) <span class="tok-kw">as</span> f:
-    <span class="tok-kw">for</span> line <span class="tok-kw">in</span> f:
-        lines += <span class="tok-num">1</span>
-        words += <span class="tok-fn">len</span>(line.<span class="tok-fn">split</span>())
-<span class="tok-fn">print</span>(<span class="tok-str">f"{lines} บรรทัด {words} คำ"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="7CHmmSH7MJt0WgRPaZfoU9BAc8ulWjQKVP60BtB5pybS81j7EqYJ4DUDwi7eAi1nXODpNHTbEGXgJaoytwTOwVw9YyrCrdatPfb1nz8W9Upri6xDHSqIo7dVe4t6gWZxP7Bw5+WHWik3hvH0KRqqh5yRnBppK9BouZ4M7dFf1/w8WoOlMrxlGdj/1X5K6V/u6wiY3gNjIzEbkNM2ueP+R8wAJlY4BnOFqhgskO2baNddnZTePlxn6yZyQ9ruyuz55Ggh9LbgE/uXGGirDGEBb2iKnbRKMiAKE/tMahcRsRMMjjYDUbYEEIyHlyH4qJl5eV2380SkDbo5e03AsnfYv15IShJHmPyTL2AmUQwXZ2crPcGiSrnXdOvQHpS+8Te+FIPjpfE0ZgkpOxBcTEAWsgjGCj6F92Gyn7M400deT1j50RnOpNuBib9k+ekdQYkioYdfmRbIlhlfhDu6g5+pDj1SFtPqVqdQ+7VmBkd4T6T60tYdL3Sq5z7tC88fq8CS7yk3wdV7U0qvc8Ziua65cNSL/o+9R2bKbVgk1qLvthue5r+ZJaMQigbgVXvrYz7Wj34JSEwEXSGYlpMznY84g4xH/fU5VEpXKa4//vB/3mu3kuRB/Uf6s/v+uT82PlMRe8s950VJdGU29AjgrQo4l5qqrdEo3mfMfkeLpJaWclQTA7FFlAhomTbytXwIGYKk87nSX2ZVgfMCgdAc23YQ1SdiIP8lpEBUOVGhNo3iWLnbA+sMza7ffQvTwpJBVv/OiXdZ0by0ZpYe219cyEI1J28cuRvNeAJmKyZMKdw7bmjM0Y7QCSRD2rcZa3dl/mQFZsUyM8Y8j2NNzHyAzXotFN2mhLtvhnceraq00D3j6ll7dgmHOKZj815I1wysdKY749IK61ByKob2NKWyY34IcqLhbKWxY39EOGKeTlcZfZaetbG0AHv24UQSCfEx3OUDuwh/Kuu+iGw9wK4YSKv0vUAROnvuKTxb7mBw5xHneSaC2+UWJAlBCl+6Smrvok3RpOXXeDtrHpkH3nF4+9qwVUcUlo152pKsUylNrczb1sR9x6VbDiE2gAnaxlFQhfZTPevRYbDVRcd/DW1Eom/ug8twXJHzPg+goxZsIuitTj5MgZFztbMf0/l1mgSOmtdh82/Qy/gXL3vWUpdobr4++gJnJmrJK1WmCzQu4V/ownprb1SDrbYzcmDRph28lmZXGnCtFa19ViAz0rSHfkfBGWGaeGUZBK3rp/5O46PbTqCEgyxHJI52EIImAtx1nSbPbL2mK/KF4HiKSjnUlnjW5wb9BeZ+G37qF7HBytjh8sFzoI1sVVYQou0LwTv5X+8AY5UH9nCWCwO1yD7GUqShKn8Q7u0ujmWMbJLQjuhwZ8rNP6tyEekJ299nCaPADJenkETc67oJ7j9kk4/VCHy8p89ekWkqdEhfstn8l7tZLyEno+iGCVwHZFbncZU+fskE8k75SYVLCEt+"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -216,23 +200,14 @@ RM,95
 Jungkook,45</pre></div></div>
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ไฟล์ students.csv</dd></div><div><dt>ต้องหา</dt><dd><code>สูงสุด: RM 95 คะแนน</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>ใช้ <code>csv.DictReader</code></li><li>แปลงคะแนนเป็น <code>int</code> ก่อนเปรียบเทียบ</li><li>เก็บแถวที่ดีที่สุดระหว่างวน</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>สูงสุด: RM 95 คะแนน</pre></div>
-    <div class="answer-gate" data-answer-id="10.3">
+    <div class="answer-gate" data-answer-id="10.3" data-chapter="10">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 10.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 10 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ถ้าไม่แปลงเป็น int การเปรียบเทียบข้อความ <code>&quot;95&quot; &gt; &quot;100&quot;</code> จะได้ True เพราะเทียบทีละตัวอักษร</p><div class="code-block"><div class="code-head"><span class="code-file">ex_10_3.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> csv
-
-best = <span class="tok-const">None</span>
-<span class="tok-kw">with</span> <span class="tok-fn">open</span>(<span class="tok-str">"students.csv"</span>, encoding=<span class="tok-str">"utf-8"</span>) <span class="tok-kw">as</span> f:
-    <span class="tok-kw">for</span> row <span class="tok-kw">in</span> csv.<span class="tok-type">DictReader</span>(f):
-        <span class="tok-kw">if</span> best <span class="tok-kw">is</span> <span class="tok-const">None</span> <span class="tok-kw">or</span> <span class="tok-fn">int</span>(row[<span class="tok-str">"score"</span>]) &gt; <span class="tok-fn">int</span>(best[<span class="tok-str">"score"</span>]):
-            best = row
-<span class="tok-fn">print</span>(<span class="tok-str">f"สูงสุด: {best['name']} {best['score']} คะแนน"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="ImPS3B/c/ow5g+79ybN46rwHrxgHODTlXfvkZDMCjnHDb1CcB4dwNutHl18c9SewS/vxdXgVRd9u0ml+Ms3q6rArVNS+2PPCWMPwepFJO9Z98f8F43IUbVm4e0YxnovygDVs1dv7YzaL//x5x3Pv1rpxveSNleT3sFdmD9XkVaNFX/qNhtCQ6Kb3PF60G7OY4ww9Kqwiuph8QLa88yP6gIQ6U6jgxAIalYboBq7V3QQwXj/Zwvkdton8y75MoVTXMf9MpWUcSiRLIyT8c0F0PvjL96Il1f4FTMhoaNtdl0BnE2vIxmxDSH8v7r3uKxJnOFDEd9P3tpKqn1i/jP+ji1V7PJsUHgfmGigUucQ04Z8vzFVutbXhT9BoFmM6yNTTPPFcpOmKH55tDfT2NP0d1k7xPaaKUGj37peyjMknEBSHQmNyIC9LyNgSaOclmVZDHN6A0sCk/4tPhc83yqjCi4rmT0gvu8crvQcrEQzkYbGRVT6jgKLtTVJHlubt+Jtg9JviNfTjP+BgAl4QlU4DIL/mFE4lJQE64HImHGNno0z18Ob24q9Y5Doaj2m4RIJNpYcBvLw6JJCL13LvTTZuvDdGD96p7H3Xg6TalQ943IA7XO/DbxXc+ni5GqBULf+Wrro4khT0bVigBgNY6HHSnCpJY8/oMrG+BHFdyVBojM7HBHOirG57yfQwWiez11jjDjK4MKRbDff9MRtnO62ylnemeYOPlQZOt+x1PVFdV5rpp3kptaGjPerp75IrfiEew/FOiB2LUknqA68SIhMj085aVbkwsELYHktFceuWUK+2HCI9W8iLZI74OSjnHNPprMuBtydF7y+CnLFQrso6+j7H9xUJmrXKwFCmxVMOejNRiZYcB2RuZKS3682siDy/BKh9SFB6Fu5NoL/RnMNaoF50m43BogN6I2VWFzXoiWoUyzn8nVi0dL5PKV2XYP7IL1pejRcSl+Tn+d82qySLmsus6K8Nrp9kOeS1NZZVH5NhqeSa810j7g2+hkodXmPLKfAO0KZpYiHEFvl1k2/ooBD0o4MQQL8NeuVhgRmOTa0iJPhqqN5l7mWs/BJW2B7NJcooJXQxH6vwZrOGKVVx5Wwga5I8AFrSHcQDXr/7Qi6mZ0/grV1TmZ3WEEH9gl410wSxp9B2pxuB+j7+ECNC9uvV7+ek8KbM42gatTAGbhrOHooB4mrHrrAujuQ1KwjByU9ZZaJ2FHPKcGTJe+jnMhITL0bIXTgVwmqUD66BUge5b2quWHvKduHszDeoemTwGP6BqOiGY74lkr67llXw2AnGHRsFEegl99Msv1/xUw8k6f/AZLNv2h0heQd//bLFQaXozKsn8tcoX6uew+b41f7/yv0oyaGnUYcQaGGnuORmpyK8G7px6PTEipoqWB9BNdLT4mNwhtMKRjK8jyCrlYeXqRa8HGSH/Vasy94V3k8RiVGu3dEb/xrfvldkKBxM+teXQY0p/JATjvne6GYuljf4KWjcmzI4GdHogpEX5Zm6jzKUVLTplsVLXQ6CYcR16+nfjxULEQUOnqCJJ9omf/jiE7B0GGSHRfpjed9U2BlHp6AKI/it4fuLwmI5Sg2bm0f0B1IKIEgursPTSlVSWr1XDPsB0HtsnC5RMIK+M+nm/+4k40u0svQt49YkS28MvgL1fjeCS0gXq5T1pe3ak/z9ZE7pOIDZ9bOKRbKtU4GL+To7x9OMXMNDZBN5qtsKgC7qiOKRuqJpfBQxCD0EA/2Q5xJPBDFsGPlEVfOJHxlsFvvcjYXoVXWxAt498xmdSmfOxBhYzlGGbQCLgk8G"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -244,25 +219,14 @@ best = <span class="tok-const">None</span>
 pen,12
 notebook,45
 eraser,8</pre></div>
-    <div class="answer-gate" data-answer-id="10.4">
+    <div class="answer-gate" data-answer-id="10.4" data-chapter="10">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 10.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 10 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>csv.writer</code> ใส่ <code>,</code> และจัดการข้อความที่มีจุลภาคให้เอง ปลอดภัยกว่าการต่อข้อความด้วยมือ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_10_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> csv
-
-products = [[<span class="tok-str">"pen"</span>, <span class="tok-num">12</span>], [<span class="tok-str">"notebook"</span>, <span class="tok-num">45</span>], [<span class="tok-str">"eraser"</span>, <span class="tok-num">8</span>]]
-<span class="tok-kw">with</span> <span class="tok-fn">open</span>(<span class="tok-str">"products.csv"</span>, <span class="tok-str">"w"</span>, encoding=<span class="tok-str">"utf-8"</span>, newline=<span class="tok-str">""</span>) <span class="tok-kw">as</span> f:
-    writer = csv.<span class="tok-fn">writer</span>(f)
-    writer.<span class="tok-fn">writerow</span>([<span class="tok-str">"name"</span>, <span class="tok-str">"price"</span>])
-    writer.<span class="tok-fn">writerows</span>(products)
-
-<span class="tok-kw">with</span> <span class="tok-fn">open</span>(<span class="tok-str">"products.csv"</span>, encoding=<span class="tok-str">"utf-8"</span>) <span class="tok-kw">as</span> f:
-    <span class="tok-fn">print</span>(f.<span class="tok-fn">read</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -272,30 +236,14 @@ products = [[<span class="tok-str">"pen"</span>, <span class="tok-num">12</span>
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ยังไม่มีไฟล์ settings.json</dd></div><div><dt>ต้องหา</dt><dd>แสดงค่าก่อนและหลังเปลี่ยน และไฟล์ถูกสร้างขึ้น</dd></div></dl><strong>วิธีคิด</strong><ol><li>ใช้ try/except <code>FileNotFoundError</code> ตอนโหลด</li><li>แก้ค่าใน dict</li><li>บันทึกด้วย <code>json.dump(..., indent=2)</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>ก่อน: {&#39;theme&#39;: &#39;light&#39;, &#39;font_size&#39;: 14}
 ในไฟล์: {&#39;theme&#39;: &#39;dark&#39;, &#39;font_size&#39;: 14}</pre></div>
-    <div class="answer-gate" data-answer-id="10.5">
+    <div class="answer-gate" data-answer-id="10.5" data-chapter="10">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 10.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 10 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การดัก FileNotFoundError ทำให้โปรแกรมทำงานได้ตั้งแต่ครั้งแรกที่ยังไม่มีไฟล์ ครั้งต่อไปจะโหลดค่าที่บันทึกไว้</p><div class="code-block"><div class="code-head"><span class="code-file">ex_10_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> json
-
-<span class="tok-kw">try</span>:
-    <span class="tok-kw">with</span> <span class="tok-fn">open</span>(<span class="tok-str">"settings.json"</span>, encoding=<span class="tok-str">"utf-8"</span>) <span class="tok-kw">as</span> f:
-        settings = json.<span class="tok-fn">load</span>(f)
-<span class="tok-kw">except</span> <span class="tok-type">FileNotFoundError</span>:
-    settings = {<span class="tok-str">"theme"</span>: <span class="tok-str">"light"</span>, <span class="tok-str">"font_size"</span>: <span class="tok-num">14</span>}
-<span class="tok-fn">print</span>(<span class="tok-str">"ก่อน:"</span>, settings)
-
-settings[<span class="tok-str">"theme"</span>] = <span class="tok-str">"dark"</span>
-<span class="tok-kw">with</span> <span class="tok-fn">open</span>(<span class="tok-str">"settings.json"</span>, <span class="tok-str">"w"</span>, encoding=<span class="tok-str">"utf-8"</span>) <span class="tok-kw">as</span> f:
-    json.<span class="tok-fn">dump</span>(settings, f, indent=<span class="tok-num">2</span>)
-
-<span class="tok-kw">with</span> <span class="tok-fn">open</span>(<span class="tok-str">"settings.json"</span>, encoding=<span class="tok-str">"utf-8"</span>) <span class="tok-kw">as</span> f:
-    <span class="tok-fn">print</span>(<span class="tok-str">"ในไฟล์:"</span>, json.<span class="tok-fn">load</span>(f))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -329,36 +277,22 @@ Jungkook,45</pre></div></div>
     &quot;passed&quot;: false
   }
 ]</pre></div>
-    <div class="answer-gate" data-answer-id="10.6">
+    <div class="answer-gate" data-answer-id="10.6" data-chapter="10">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 10.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 10 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>JSON เก็บชนิดข้อมูลไว้ได้ ตัวเลขจึงยังเป็นตัวเลขและ True กลายเป็น <code>true</code> ในไฟล์ ซึ่งโหลดกลับเป็น True ได้</p><div class="code-block"><div class="code-head"><span class="code-file">ex_10_6.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> csv
-<span class="tok-kw">import</span> json
-
-<span class="tok-kw">with</span> <span class="tok-fn">open</span>(<span class="tok-str">"students.csv"</span>, encoding=<span class="tok-str">"utf-8"</span>) <span class="tok-kw">as</span> f:
-    rows = <span class="tok-fn">list</span>(csv.<span class="tok-type">DictReader</span>(f))
-<span class="tok-kw">for</span> row <span class="tok-kw">in</span> rows:
-    row[<span class="tok-str">"score"</span>] = <span class="tok-fn">int</span>(row[<span class="tok-str">"score"</span>])
-    row[<span class="tok-str">"passed"</span>] = row[<span class="tok-str">"score"</span>] &gt;= <span class="tok-num">50</span>
-
-<span class="tok-kw">with</span> <span class="tok-fn">open</span>(<span class="tok-str">"students.json"</span>, <span class="tok-str">"w"</span>, encoding=<span class="tok-str">"utf-8"</span>) <span class="tok-kw">as</span> f:
-    json.<span class="tok-fn">dump</span>(rows, f, indent=<span class="tok-num">2</span>)
-<span class="tok-kw">with</span> <span class="tok-fn">open</span>(<span class="tok-str">"students.json"</span>, encoding=<span class="tok-str">"utf-8"</span>) <span class="tok-kw">as</span> f:
-    <span class="tok-fn">print</span>(f.<span class="tok-fn">read</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-09.html">← บทที่ 9</a><a class="pager-link" href="chapter-11.html">บทที่ 11 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

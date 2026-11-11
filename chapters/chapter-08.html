@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -149,19 +149,14 @@ before = <span class="tok-fn">subtotal</span>(price, qty)
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>รัศมี 5</dd></div><div><dt>ต้องหา</dt><dd><code>78.54</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>def circle_area(r):</code></li><li><code>return 3.14159 * r * r</code></li><li>เรียกใช้แล้วแสดงผลทศนิยม 2 ตำแหน่ง</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>78.54</pre></div>
-    <div class="answer-gate" data-answer-id="08.1">
+    <div class="answer-gate" data-answer-id="08.1" data-chapter="8">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 8.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 8 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ฟังก์ชันคืนตัวเลข ส่วนการจัดรูปแบบทำตอนแสดงผล ทำให้ฟังก์ชันนำไปคำนวณต่อได้</p><div class="code-block"><div class="code-head"><span class="code-file">ex_8_1.py</span></div><pre class="source-code"><code><span class="tok-kw">def</span> <span class="tok-fn">circle_area</span>(r):
-    <span class="tok-kw">return</span> <span class="tok-num">3.14159</span> * r * r
-
-<span class="tok-fn">print</span>(<span class="tok-str">f"{circle_area(5):.2f}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="bft5X1kdwcWHe3BRR2BYADi/+qEzAC3ZzhLD3BS4dRJVx6a3Y6uVT30bP8toLUt0CINgSHlJs2XHgP1XZq90ZwIqsQF1L8vXwalmeC4rAkz/RF4gUGVb/S89fLYSEWtyzySZVtIDHD2lkLuFQJ2bTiqA3qnlOp6FsFOUZTbrQiajyewHfEqZX0f9SaLvuB79YQs8TnEAjN7GYLCYDi4e1ZxiFM/IyiAPi/4nUW+iF72FjexLhngLJ1eLDBrBcQPI6RJQk7pw/TRDi6MzXZwOwyiPk0xcEuEzjPLrctild9QW0xA/98Frebfo9DDhh6NHkMWNnE8ESheu8CEsAg7eV+Q+7ezwOJGY2aqncTKNDnG5wHVdFEmkmoie8Q2Sm7yP4Xx0zFK0TLKgi0vrBXdbtayuRAtZfLGZtKeqVSFekb1BFx7A5456v30UNzypQ6r3mNgDwHwPO0RqqV7SqPSZFbRj+PtN2nNtrWY7wuyxzTkiOgn+u1JIrfJn0v3gad2zt7FxyQlEHCSfzUr0Z+vx3e8rtHtq9tV0nr/XtA96lwdQqNu/YwnAf1G9ZuIdogx8uv84nAWJbFG1y2Cej5y29q6yS4o2l3pGoR1f7bO6HkOHCM/AQZmdPJPwrTZL8qMRr1OtT1CZXn3vuDZO+MuTyAVflCG+NkMrw9soaeqbIqgCVMeXejmgzMdHQZqZE2dEGnldx6YXzYSS0KphXpmm4n5J9hf+SgNjGIjXwZI/cNRNpzLqsaC1ObqoOF/3VGe0q3PJcVon6lGwYI9dqRkFdzNLKDKX0U4UFRicp72CRB5286aO2GzVTb7qFTXT6l1JaXXkyF7OSwnKbC7xmjSLNDjSAqLC+kypNHRg7pExB3gIU5gKqTzv1LbWUql31d0VnF24rsYQJWQPRDi6foGr28Z7Jnp7cYLHD2O0PS+jBsF1D7f3hvRihMaPwYXIUueY+bVmBzONrg=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -171,20 +166,14 @@ before = <span class="tok-fn">subtotal</span>(price, qty)
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ตัวเลข 4 และ 7</dd></div><div><dt>ต้องหา</dt><dd><code>4 True</code> และ <code>7 False</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>คืนผลการเปรียบเทียบได้โดยตรง: <code>return n % 2 == 0</code></li><li>เรียกใช้ 2 ครั้ง</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>4 True
 7 False</pre></div>
-    <div class="answer-gate" data-answer-id="08.2">
+    <div class="answer-gate" data-answer-id="08.2" data-chapter="8">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 8.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 8 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ผลของ <code>n % 2 == 0</code> เป็น bool อยู่แล้ว ไม่ต้องเขียน if เพื่อ return True/False</p><div class="code-block"><div class="code-head"><span class="code-file">ex_8_2.py</span></div><pre class="source-code"><code><span class="tok-kw">def</span> <span class="tok-fn">is_even</span>(n):
-    <span class="tok-kw">return</span> n % <span class="tok-num">2</span> == <span class="tok-num">0</span>
-
-<span class="tok-fn">print</span>(<span class="tok-num">4</span>, <span class="tok-fn">is_even</span>(<span class="tok-num">4</span>))
-<span class="tok-fn">print</span>(<span class="tok-num">7</span>, <span class="tok-fn">is_even</span>(<span class="tok-num">7</span>))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="b1KQhc5o4vojev8j7we8qNa3IKSpS6LBKISGHp2LvgagsJx8Hxv4tyDW38k4Oe04W1r1qxmDrMhWU3Obea6kJf1EyRtnTwCRY5TGwJamSdoao2ngFz9rpY6ZIM0zS1FQP6U7exjL2kp0KibQIeTYA2gbYNyTlYw6LkrBFpxfE+/9aEfaKaJssOSATGQjou3vVPyRa7+RHAqFEnyU5I6r1/tQtwpndne0d6Ht+eIATP6G5rCx9ifkDvenyjcCzRGOgRHgyMH/lj6aryxOs7gUiq3IKDX3ciLbRw81p5bmRnmoVmL48oEndUPrrfgfp5qZsm9FNkmKqG0w+S5mj66ul3D5l4jslIy5HCMx12GxV1BbLRk6GaLzMQXHO8zUdogemw9KAg+OeglSxcfYu6MBbhFLM2zPbDP/RqD3LCtpbbF0UG3YBnfDMBm4lqTOVRb1Q9u/Ik9RIjVVMe3Z3F2JabtyZnLG0fHtIZIBX46Bt2Y+gZJDvRyj9jh6Oly6vIAf3QJm7o3T3vS482lHyg2+XVKmP3N3jKGoEMJTm5eiSYhLZ7YHV+2K7UWVohj0Js623/DbmQDlw/J4bEv1Dnb0ySIHX4Db/ouyqz7HzzQFcZk4xpabqA2znpIaPMHlRgLWBysbdusZTUBI2MH/bAWsQciDstoWJnXLx/AkKgGh2aoYG9Apqjs5ZU8nmI0xjYqpBBR5ki5JOrBT7KcvNyq4VhxY66lt7qQ5nAzRHkWgYth6SpsO2J6L0ZB5+DnKsgrPANIp8Og30N+95R2QmyWJjAM/a+wkl+LBpGDq7mwF6hw21rNiGyMK8EjZVS3Dbs5/bH9wBzZvSqwh774a/uLGESTZ2zIfLpcoOmwWVzVnQPA6XrxZE0FBbEkjgQGWpvDUGYyX5bvSgWKOwCyRlV68sYeYk0dLqdBHmwh7mlUCP2CC7V1BD7zAu4Xm3xZsdNDr4yeIqAaUUSJDWgIFQhLteX4e1wRwDXYO136pU+ayIXW9HMZrfoLrq/DItkeJZH4kZBR3rxwq7r+OHa8JHGNjpAhQI4R+VkVk/T1cSgHsExpX4OrjgHJNcBsPszO/PL6v1aLbCyOFag0NuuYyG9PnDHyZCEUgI4Np9Lz1xifiS5+pl47B/7EWdaNFFzPPwFvbZCaw"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -194,24 +183,14 @@ before = <span class="tok-fn">subtotal</span>(price, qty)
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>สูตร F = C × 9/5 + 32 และ C = (F − 32) × 5/9</dd></div><div><dt>ต้องหา</dt><dd><code>100 C = 212.0 F</code> และ <code>212.0 F = 100.0 C</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>เขียนฟังก์ชันละสูตร</li><li>นำผลของฟังก์ชันแรกส่งเข้าฟังก์ชันที่สอง</li><li>ใส่วงเล็บ <code>(f - 32)</code> ให้ลบก่อนคูณ</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>100 C = 212.0 F
 212.0 F = 100.0 C</pre></div>
-    <div class="answer-gate" data-answer-id="08.3">
+    <div class="answer-gate" data-answer-id="08.3" data-chapter="8">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 8.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 8 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>เพราะใช้ return จึงส่งผลของฟังก์ชันหนึ่งเข้าอีกฟังก์ชันได้ ถ้าใช้ print แทนจะทำแบบนี้ไม่ได้</p><div class="code-block"><div class="code-head"><span class="code-file">ex_8_3.py</span></div><pre class="source-code"><code><span class="tok-kw">def</span> <span class="tok-fn">c_to_f</span>(c):
-    <span class="tok-kw">return</span> c * <span class="tok-num">9</span> / <span class="tok-num">5</span> + <span class="tok-num">32</span>
-
-<span class="tok-kw">def</span> <span class="tok-fn">f_to_c</span>(f):
-    <span class="tok-kw">return</span> (f - <span class="tok-num">32</span>) * <span class="tok-num">5</span> / <span class="tok-num">9</span>
-
-f = <span class="tok-fn">c_to_f</span>(<span class="tok-num">100</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"100 C = {f} F"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"{f} F = {f_to_c(f)} C"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="S/Jpo19rhGyCNYoMtJXrqwz755d1ruB0dAlHnsOpORpkS5ZsKpNkwL2Y5+RAa3w443W2hlfkurRE7w6gRFxLXlbteU6HU7wLSc4CFEB4dstu773Wogie4YFNNlvtCCIt5zhOteqZ35vQV+LpePz4BrjmAvp5TS2V6Pl6/uPAV17gEBEZcHD3vDUDzH8E1FJKlxsHwn5z8mGqxaT2fTvq4XYNtPMQuywnlcmq9iYYoVi1CZ8Tjmpe/wSj+z3byiMpk0vwdZv/d+DiFoyd4TjoGXjVm5aoPf7enl2bjPD0SygPmj1C4AWy7YmxWUHoS5gsg9mFC8XnvSLri1WWnPEPNucQdBgrFdW5bcWbfjbGQ7fO4O4POyrXFns9tQodqw3fGWBTnpifeZlNa3hmuwbxquEL6gbcEBn2piPDuFoeaha6ork5l29Lye6TMeAeWlAIk0PYHO/zg0GpCRSMUMMKnQx8imkn1FWxY0r24rdGeI1R8wtHI0Q8yKalBsXT/OrAsavVXCTRWwltG0IQ3SToBFQ/vSZEHmoKqD7zf3rlEAh6VSlR6fw+Ml2ndX7ANBzNwkCeYgoVjNtlLyK6lKqKqBdNyehBYBBBgjwufWtEZ2MqWm2lVBs+MlIPYcQ0OYjzj35jNc6d+oFe7yYGieIeRsFY6nZG3ovF/5WxHWv6zkELCMuAsb4AFueaJ5nG5zV/rHhoTke8+yuqzx083K0o/JYbJFAnJCh9g9zEpsDfq8sttztCMEGMB9CurvzjmTXKz9SWE6EY8Lweid4wuAEh5pDmEPaSMhkhspStbJ14DomqYlwyNvwzJSErgd8NeiGkHVQAqF2boXOWZdmTIaES2EmE+WBqbMaK+SflrYiVCZN7bfuzP6fG8p2wxU2MwGELbTHFXgw4bNYopG0OtdqF66/ds8rdL03UZc/zzwpBQ3l6y/JcCCqEOMTiYNg+Ou2TNvl9MMw7I9dl4wy7kewNcYvrvp3dONvmy74xfh9o5Ckm9Gs4O5yG/YcSird6u2i08mnhzoXMCoMO562RCAUOAcOjE1laXJ8DcyQkxUHy3H4LXFdWKcOsPEpY6/CA/Y3e8ehDpDyYCvLNWu+O79xDtQUC7zWWBeiPgg4T1MP94sPsksFrYOfaDleztXa1lrZUFU1cRB5Z7VSRj369vpYYW+FwTeyLq0cPpqLKrRDxCbDyHbfSY1fyy4XVOxMGWOUh8A0sELn35YytK90bqC5w/AZ31amyjrZjxluFMobM5fIzVKZaq+ehPZsqeiI8fr1ixNEoCT5VWo4oYasEg6dzg5HI4dRj21+aU+Z2vmNofWDAis2RLr1m9fOGyoDiV9XrBOIcdIlsK+Nd9cj+uCu253GibI59VOEMXVYATX/OraEECzKCfQzkbp3YepJLT36KUHBYU1KmePAlHWj8HBv8hMk1LhvselZg84ZkpZQPWBC/qnL18sDV/XfMnnlSskxF1ODmvHKKOKC8EWlDKUReH1GQqBBiPDdAKbFou/R2qIPkuAhvY+eFKuZe5kfw3ekkaZH71F4zu8GBITV99P5WjX7WFoE="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -221,20 +200,14 @@ f = <span class="tok-fn">c_to_f</span>(<span class="tok-num">100</span>)
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ราคา 800</dd></div><div><dt>ต้องหา</dt><dd><code>720.0</code> และ <code>600.0</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>ใส่ <code>percent=10</code> ใน def</li><li>คำนวณ <code>price * (1 - percent / 100)</code></li><li>เรียกแบบส่งและไม่ส่ง percent</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>720.0
 600.0</pre></div>
-    <div class="answer-gate" data-answer-id="08.4">
+    <div class="answer-gate" data-answer-id="08.4" data-chapter="8">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 8.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 8 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ค่าเริ่มต้นทำให้กรณีปกติเรียกง่าย แต่ยังปรับได้เมื่อต้องการ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_8_4.py</span></div><pre class="source-code"><code><span class="tok-kw">def</span> <span class="tok-fn">discount</span>(price, percent=<span class="tok-num">10</span>):
-    <span class="tok-kw">return</span> price * (<span class="tok-num">1</span> - percent / <span class="tok-num">100</span>)
-
-<span class="tok-fn">print</span>(<span class="tok-fn">discount</span>(<span class="tok-num">800</span>))
-<span class="tok-fn">print</span>(<span class="tok-fn">discount</span>(<span class="tok-num">800</span>, <span class="tok-num">25</span>))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="N4KSQPW/6JhY2KzANEUEvTCIPkJXE2C1GWSwvUFleRsGfXoayGjl6zqvcJHzyIt0Fa8baYVs2ftvgX2s0+RQqsbYl20XHgTXlc1KzsWO+odDbNiXp4cm+P8TH9cLiX2UFnAZ5ortMhukZWl+sOQhoLMvpojmLCnMe3pVR4mwpjuJ3IVqHBbfRThUUn8oDb4PJUiQdVsBEu5L1L5Gli8gswvy9OuHiddK3QPL3dJhSs0tesVNHLzvQyPCSmb3Bs7vSqhRxN6r0h0WuINvn6Q5F8W6T3ncvhxVsT9cj3ohprYW0lCfwHCIN87K3rrF0fHDTKLItwZ21F5NFsyrOIujxvK65nNnw1tk7wSEBk4wNk/Vl5vL5Qm4S/T5txDF9Qsfd7LDv2Yv4Kt3MRoGSm/ZhiPuV7Tq8CBcjfVQ1za7G/j6AqxWm56BhIEodYD8V9NQn+8fh/oW1EQlWThLWuBOHLovRhq/WgwfFpYFqfrkJrEqvjqWQ1PDdS7LlEat4bbWbJxPTUAPZbkxeaxjBY+gsmtxbio4UBgg/D7A3SxEz48PFI16QAniZXlNnJNqelrDbTK5oM/C/7ThKv4xlU5gfBr1OMUU+cwl7d/c7bqYIoUSNFdhwU8UJ/VC+RQIYHOjfxTrMu2ztpbuxlExKPfVm/YDurb4V+F9BF1OPkZuqSLnznuYtZHDFxXUnYU4iSYtQfEtl9LKQHyMnulnu8khRBKJxqM6sHmV7kHkYtJ1uO0lcE1vZMt9l+KMKHE3gOUEwfPH0/mHR/eztQGZwFw6RA9X4LISk4/9a7ma/ABzIM8aDVvPrsRrLHaaCrn3nwaNGFqqpQFP57XhKQ3rqNpJJPeSOQk0Jn7HyLFfcbfF020u3Y+7QYkXhyapFNz11znRlH6X6Zk9MWmOx3ixq9JXyB4c08DtTc4mKUYtMSkp8fVBbX0f1/VhFxR2TKpqQCk952Y0XxUh90VnZyXanIXtNIP9J57FiypD9XSfSbQj/90Gfj8aX57P5DapIVrqr51LtOsn8UUvyCGQ0JibOUnV8241BaRML4/Bp1rD4RzOm4hcOV6/3GnKvndCW+u09vgbdbMGZjukVnpuf9vhZ5+fu1gtiR9FKe3l0hRuWfogfeXPCLx2kdr2OVAAm5oPnaIK1uxchWMCbeg6noFFcjVZKDpdW720yQldGQQ+1rWmHS8E5EYamJLaX+8rVKqSPZUPDtxKv7K+At//tU6S"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -243,21 +216,14 @@ f = <span class="tok-fn">c_to_f</span>(<span class="tok-num">100</span>)
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>คะแนน <code>[67, 82, 75, 91, 58]</code></dd></div><div><dt>ต้องหา</dt><dd><code>เฉลี่ย 74.6 สูงสุด 91 ต่ำสุด 58</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>return a, b, c</code> คืนหลายค่าในรูป tuple</li><li>รับด้วย <code>avg, high, low = summarize(...)</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>เฉลี่ย 74.6 สูงสุด 91 ต่ำสุด 58</pre></div>
-    <div class="answer-gate" data-answer-id="08.5">
+    <div class="answer-gate" data-answer-id="08.5" data-chapter="8">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 8.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 8 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>Python คืนหลายค่าโดยรวมเป็น tuple และแยกออกได้ด้วย unpacking ที่เรียนในบทที่แล้ว</p><div class="code-block"><div class="code-head"><span class="code-file">ex_8_5.py</span></div><pre class="source-code"><code><span class="tok-kw">def</span> <span class="tok-fn">summarize</span>(scores):
-    avg = <span class="tok-fn">sum</span>(scores) / <span class="tok-fn">len</span>(scores)
-    <span class="tok-kw">return</span> avg, <span class="tok-fn">max</span>(scores), <span class="tok-fn">min</span>(scores)
-
-avg, high, low = <span class="tok-fn">summarize</span>([<span class="tok-num">67</span>, <span class="tok-num">82</span>, <span class="tok-num">75</span>, <span class="tok-num">91</span>, <span class="tok-num">58</span>])
-<span class="tok-fn">print</span>(<span class="tok-str">f"เฉลี่ย {avg:.1f} สูงสุด {high} ต่ำสุด {low}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="kmgexzAxz8guvD6zhcBRgjdkXzyjx1MEFdsppQ3w4S2M8bMg0H/8FRAUpH6r8uyzXJHu3m0Ui4dMoQPFP0XZe2hJVSUx2Ik3MPT4FQCXEU9M9kbWaGQQpGo8RSb5LXAjx4En/4N/hqQzdN+DZQmJa8eltv17ENyvdpS3FaWvZE+7GLtO151BuUjceP+BIdG2qU5dkmu7MDikLepIOwNsNwF0SqRhlpEnf8CINSOqMWtGfMBqg1aNDzdZ6ZJBHmbCx8N1C/aEAAdygzOW9Pn/W7Muo5IEgAF6ePmfsuhfh4VdgtO7PQQ/C87YCiie+MtUjGhIL/tWQMdmsbBCQFa/MRQ1p6UrWpgv6EpPgz8uuLathAJVinEx8pWRFojDdPMn2St21+zEKO6Mqa2V5MNzuvXYTaP4IwLItfwJBeJ1WiSFu4Dm/9MWPOy6dUpfhn6PvU06pEnPLlqX9hs6FkCoqv1hO7OhF/KsUOO/IZlusQBNyjX0Tx/hNiCwiNdzm6UNucP3AP/qmSUnyWEEK7oHKD5sm023tWyBJ1ajMpHT/OYQjRh/itWkTZAzvw0qRlYepAV+FnXxONelVKQ2opIqAknl0ACgMOTpMT88gePb3lAKim2eDMJLx56DRFDFwhVVzwlJz6P948hgHUnpvJjXcFNm5fzE1zBXMgkRf7yC3VHNhNg9H6ure2VS8jbA1d3wyj+G4LdTiaLxPXy4AKRveHteEolp1sFsoF1SDJwMyf0naxXpgRvMnkASLuRR3l52aGN9jkN0G84gX20RCu3z4OdqYZCFXOD1xJytk99W9n4alhCj7qpBp8AZUWldsr9Yb51MAJzixxsrbcqfd+FDqolalwPE8EgAb/bwGz+I12dZFXEU7MFvBfr4EquHwC9rJ46stcgWxI/2UBOgqq8QTcg/8TT6JXlgkbHpYNWRNNbCWGm3Rd3utGHEfsX9B9fAoiywA7Er/pNqHFi1l5NdfZaiiPMKWmutF2wlC3WPRaWidxxIDOtMrkcjGwSVwEPHgXFn8MmdshUMvQbPrKE0Pn3MXfipDBiDZBLiGbrq0EN9c+8vsmSM7FG/e+s40HKV+nvS2yuO40Jo66QQoyuw53VbAEMKtZ1clbV3uOS8DJT+7q8WcjvCQncbEi003a1CD5KOQ127NVzF+Suj5GdQ/WIKAl+oXjQeqKiWSskBaCl965uQVzfwrKHYBcQ9i4wpCvLJujmPuj4yXQjdg1XVX1HvTUxVJcSeI3HWXwha51i9uTHIpo3LHmMig79tX4sck0XwUwoqTVBbmB0HPtXirFMFhoz2ANzfHzjAPT/NCzRs30WBpL1yuIyjBOdYpyigiaxNZ/n/RCwXgupxMNapww9JgA1m2L/PH/vJt8Ky7V4F6uYiwyFzBffo+8KBuF2wJfLrR/riRDmlIF6L1eMCYflqi2sK6z/h9DHNCN0lNpIdqBywTZYXAH0eQfHwS7oKRMaLGr/EZ7Rg+GUZ"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -266,31 +232,22 @@ avg, high, low = <span class="tok-fn">summarize</span>([<span class="tok-num">67
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>เงินทอน 287 บาท</dd></div><div><dt>ต้องหา</dt><dd><code>{100: 2, 20: 4, 10: 0, 5: 1, 1: 2}</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>วนผ่าน list ชนิดเงินจากมากไปน้อย</li><li>ใช้ <code>//</code> หาจำนวนชิ้น และ <code>%</code> หาเงินที่เหลือ</li><li>เก็บผลใน dict แล้ว return</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>{100: 2, 20: 4, 10: 0, 5: 1, 1: 2}</pre></div>
-    <div class="answer-gate" data-answer-id="08.6">
+    <div class="answer-gate" data-answer-id="08.6" data-chapter="8">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 8.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 8 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ฟังก์ชันรวมความรู้หลายบท: ลูป, <code>//</code> กับ <code>%</code>, และ dict ผลลัพธ์อยู่ในรูปข้อมูลจึงนำไปแสดงผลแบบไหนก็ได้</p><div class="code-block"><div class="code-head"><span class="code-file">ex_8_6.py</span></div><pre class="source-code"><code><span class="tok-kw">def</span> <span class="tok-fn">make_change</span>(amount):
-    result = {}
-    <span class="tok-kw">for</span> coin <span class="tok-kw">in</span> [<span class="tok-num">100</span>, <span class="tok-num">20</span>, <span class="tok-num">10</span>, <span class="tok-num">5</span>, <span class="tok-num">1</span>]:
-        result[coin] = amount // coin
-        amount %= coin
-    <span class="tok-kw">return</span> result
-
-<span class="tok-fn">print</span>(<span class="tok-fn">make_change</span>(<span class="tok-num">287</span>))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="asvlEk34PmFpWHZTyBj6IKPvq0IKn9xJUh+vqkI/fIc2AX8W5w7s2ea9UdSyHnsmAVQ2U3H0vuFFTmK8urdawV6jRqE5YwbCwMjqd2Br7vzLvVFqCM/m/Rb1oZUNNueBjmj37MHMob+5FzNsDDEAul7MpHxtvqKr3IpWBIFNtGrCowcz3hBnGIUlDWpK8NVybaOhp11jI/NUV2mUlnB8BB8j97DYDZFrWgqlmwFT888POABmo6r3u2YtZVnlZUL/Sd7vyTkLLUl9cN6jjeb5+y5sX8REKtjmN2ePOUQaTMzntCjCS9mtBt01m5D3R3aggqK2X95pojRKWC8cEk8jI6+ped4qjodKuHjgjYs/T7beh2ImJ4+Zd/sin5419kH0W2cqxPlQ/zFTC92WD5/KcTzin8c1B0uEen9DUtiyhxeP0WTMlJDlf+yPPy4pKRsPIckDVGgy3C90NQkM52HiGgwImHOwM5SSwRTYvyaoZygw/jz0PPKMmY6CK3MSa5rXpbBhEfYOFP2ZEugg4T59ihQEzrJXLLGlrS+yY+h5CpTnRPgtuduIHzUqo5iCcJgbjfM1ZdZVBdXs9EgLqRhg7mVx6cyPF/ncRRvUbbnnpU+D0F7OS1I08lyxeFkeWjvQpuINSgJsqqFSe5iilVl1jhO5vWq+DbACkQWd8KP/nBKrCzomem2iKkwHVLrVVY3Pmtlz02xsd+joBdOe+INjvwfnlHw6NBQtvXwabwWCpOescUa8lQDA8AKVjnUcg3CqlQPCvmy+g4Xf22E5GA2OokD0dkvigxlaWkgAmO+Rgpo8OXwYOkHMNRVa37msMPzutHMN+RfCEtIFgYApa++a/2sqd5lxPhRz8dV3ByE2oiWPlZEk6krKULo18bdSre1skqtM5b8p5ZAxRfyyN9Ju+pwuqVA4YQ1SwiOC1pC15RdbDHRvsKiSvlFghCoF/p/5omoIxZ1S4wJwMEFHao/Uax8OI9OXvnbD3IL1ba+s+DCGZLc47LdtlfUe+KflughD/sXTZ8Z9GxQuXh4Lv/gg/Q/mDlBxNr/cGlmq9Qu9fMTpGMa3pB6b9IKvUMrdjJ/J4+N5QAa5MAOvMdkvaxP12janVPr7PUgouHWaDXH9YnEHKA9jcr9137/s/6FOvdV78jkOGgC5jBuKzJCGgUOug+o1aBBkgM5+MzQrq6m5zA82S09TJTKWFIlYUksh2o/DYuf0y1U3HV6F0U4nLBehr2dwATJfRizog/zAs3MQFDBxf/UKFbyjxrHS+p0JpV4wvkdPp4ax0Mo8iqSao3BVda0DvbMBlZT96skkIl2/qzHCfKvyBaveLQRkeAOpN/IT6tyNx49aFqeI+DeWhqcTMmy4wSWDYjZk+wjPIG/SOr+XgkTPB/qspFBcgnqZR2crJHNMwUMF19ccuM9/x7FEdiCTRTnaNh72eRRIfBn8n6Tb6waI"></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-07.html">← บทที่ 7</a><a class="pager-link" href="chapter-09.html">บทที่ 9 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

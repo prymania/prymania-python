@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -154,20 +154,14 @@ score = <span class="tok-fn">int</span>(<span class="tok-fn">input</span>(<span 
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>n เช่น 10</dd></div><div><dt>ต้องหา</dt><dd><code>ผลรวม 1 ถึง 10 = 55</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>ตั้ง <code>total = 0</code> ก่อนลูป</li><li>วน <code>range(1, n + 1)</code> เพื่อให้รวม n ด้วย</li><li>บวกสะสม <code>total += i</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>n: <b class="stdin">10</b>
 ผลรวม 1 ถึง 10 = 55</pre></div>
-    <div class="answer-gate" data-answer-id="05.1">
+    <div class="answer-gate" data-answer-id="05.1" data-chapter="5">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 5.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 5 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>range</code> ไม่รวมตัวสุดท้าย จึงต้องใช้ <code>n + 1</code> ไม่อย่างนั้นจะได้แค่ 1 ถึง n - 1</p><div class="code-block"><div class="code-head"><span class="code-file">ex_5_1.py</span></div><pre class="source-code"><code>n = <span class="tok-fn">int</span>(<span class="tok-fn">input</span>(<span class="tok-str">"n: "</span>))
-total = <span class="tok-num">0</span>
-<span class="tok-kw">for</span> i <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-num">1</span>, n + <span class="tok-num">1</span>):
-    total += i
-<span class="tok-fn">print</span>(<span class="tok-str">f"ผลรวม 1 ถึง {n} = {total}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="FyMGjz1NBG854HGxm2LUsijf8kzJYBVG7Sq4GLLfCpFsldtvcFZRzM1gm3ORNI/HNwMiq7UyZy3ddUCLZcaEvtvf6JtBktH02QscnLGT/vgkxdEn4nhzdlD9y6ZBOan52YWlB3Iwd/UNGzuDtu4Bd3FG00RNT3PORif1b/DdjRhidf4FHj1Pjdb/eqVFELyFF5jQ7K3EJJ46hpl99KNz3kAisCFzaSrHf8bL9xf18nhShHENwfgqQFqW9i0oNXwnMSzeeLHUGqmToEMoEvwnQu72f0N7/7r22AhFN7CBK/z/3Iq6aKcDyliDyAxRkSLUqbXlygsyseefzw9+OfB6QdGPaCFCUVxxVfDQepycv+9Ba0+323kzKFLrnG6VdfyOjswUQAUzE+8U1Qo8mTFZe+yDTdPEDHxwuauqWnmTeTj3+mv4xF+0yFi0GH06H9iWM3xTYr9MFiU1ugkryRZI7GH+l2j+muahaiTxD9hYuh2YelSYIsKib8VEerpdo2Gz9av5hf04cPQgLmTZ5H9UtyQ0AHuxUPox9BTgYFqhtKaIxhS+ZhNx5TVE12edT1FkLEFJMy5tC2+5zbyH5YGBd6TfwSiCM5OPnJtnprrBh7w9JevxLg4x17m2U/WcmmxBYidwoOagNYNP/RKViKTWDFxHezDeGpgft6ir9xe94rhkdjuzP3q4BkzBhedWkTc8VoBxH46UspyjO3VqxXaIpPyq6NiwtHxCfk2cRll5/6gjiTEFBOSyc1okaY9BdApgZB11/OqXwskg9XS3ex94E96UpYqstxpj8qx4F2LYUiRHlV7U5jrE7Tg+5BSkzOAGtb1GS55jp296x+8/zTNd+FnQz29AVPtyb2hX9lymGKv7bmH3pbsF+mmoyTRY7/F5rTUpmHeoCYEUdqrGeUziwxQGsDMtds2rhpWkgYbfRZa4TK4fCc352gYruGkYsrQiZ5ntDKW8fREztxNLjqu1dhFUXrQFSJTjDaZFCt4qZPzn3g5LYduUGGllW+VYOZR9KZvF1yeVA7m/MtbOCfjBTITosV8MVMk5XmnusWiDq7irGJewJOyAzJahAQZBnEIsHRnW+nx0zg6UM4KJIxuJ3N4MeE6rJOc+a9OF3NCIlrMAeViuIG36GwYIZeetdDPgD9dv9psOBvD31JbIQhXZemBxW/nEAG70P35nAyIt"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -176,20 +170,14 @@ total = <span class="tok-num">0</span>
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ช่วง 1 ถึง 50</dd></div><div><dt>ต้องหา</dt><dd><code>หาร 3 ลงตัว 16 ตัว</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>ตั้งตัวนับ <code>count = 0</code></li><li>วนทุกตัวเลข แล้วใช้ if ตรวจ <code>n % 3 == 0</code></li><li>เพิ่มตัวนับเฉพาะตอนเงื่อนไขจริง</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>หาร 3 ลงตัว 16 ตัว</pre></div>
-    <div class="answer-gate" data-answer-id="05.2">
+    <div class="answer-gate" data-answer-id="05.2" data-chapter="5">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 5.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 5 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>รูปแบบ “ตัวนับ + if ในลูป” ใช้นับอะไรก็ได้ที่ตรงเงื่อนไข</p><div class="code-block"><div class="code-head"><span class="code-file">ex_5_2.py</span></div><pre class="source-code"><code>count = <span class="tok-num">0</span>
-<span class="tok-kw">for</span> n <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-num">1</span>, <span class="tok-num">51</span>):
-    <span class="tok-kw">if</span> n % <span class="tok-num">3</span> == <span class="tok-num">0</span>:
-        count += <span class="tok-num">1</span>
-<span class="tok-fn">print</span>(<span class="tok-str">f"หาร 3 ลงตัว {count} ตัว"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="w9pLgsWH8BJFJUscNiRqecYib15McO7H+jM8aXSy9LKJttyn6YOhhXwh5Od9TBFs9eXY6NtYCEJF9Tl8hPj9AwBIEavdWv4uvu98G1nQ7fSoQjTXgegAqpVRAta+4yyJuuDVYaohW8YjpbB46TST2Qxdhnn5X4tJS4nyMkLg1Xz1gPsLwb6ToqiAzwRbiyocTsbbussAy68YxejNX0pLXFUrePgE8fKnwenkbd86+QMLEt2a0kWx61XoAZQHL35+zhd5UD3rsBEFhglyHOc8Vfqqjq5FNxZ/ucYPbi+ppM3tpFLnR+iBVjsxs8HquST7fQ7uPqr3RQ2MP+yL997qFpiGZAHM/vuUNYYclNRlOrau2swe25Hq1PfRCjTc+RWQFhUOT+9a+pG2v1Y46YAiPuWiZv6jwjR4SgNh4hZzVsjsHvL6G7//d0rJnkEXEDY46sHEv74I5GKnCTvlI+3oY9uqBcswLWUR50kdcmRVk2sswTyq2ddJeIxAvg12GKV7Qnw17z+XOPygq84hLeBEB0Sznl4/teW4+nF/fEYI3/Wvwsr/1/Ct1F7ZN/y84RTIMuq4QWmNI51hyMyoci65NiQ9RzlmHx+5Up5iJpZxtxDynavlg0Ll1TazNepIzVuh5vbiH03954/Z2jN0cN5d1i1uQotB5vNDJIoZOoMZVkX8AQSVEDywUM4S342IGAOM07tUw+fJLJzhahi5gojyjj1zMRULjwpuFqFFjDrzPNzmgyQuqdPF/5YlancJf1cMmzOaofERtK/xxocXEr7ftB/m5IxoqspY0K7uG5hJBUo4Jq20UpHpsKTjwb+rXZNYqHI4SE36gfYqKbHNHIslf1ZgHe8JuHFwfXi4x8Jt9eMLIn5vR9DPJ8EMfd+Q+nYJWDMhxCYOacYQ6JFhD5bzqT79O/iAP17db9Hhuj0hvwJPUaii/dJwCMxVD4GCrmjHbW4BhBs30Ta1LIG9N1DDbV7IZntI1EJ261ji67IKY2yVCsuAcNCB7cU3C3NMVs2gDVUafYWd1xaqWDVzsjrX/ZpdYTxECKgrmSA4xvAvRj/KrP90HuCFplkaUEOHfDTYXvDUx/icjoW9vYAdEHyNhNHTBsNDUJgB9euo4M057VWHZDxenzW+kmFz//xe5oNXmD5Gq7MDg/M0hLtlrgUi6ulP"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -202,18 +190,14 @@ total = <span class="tok-num">0</span>
 **
 ***
 ****</pre></div>
-    <div class="answer-gate" data-answer-id="05.3">
+    <div class="answer-gate" data-answer-id="05.3" data-chapter="5">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 5.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 5 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การคูณข้อความด้วยจำนวนเต็มคือการทำซ้ำข้อความ ใช้คู่กับตัวแปรรอบของลูปได้</p><div class="code-block"><div class="code-head"><span class="code-file">ex_5_3.py</span></div><pre class="source-code"><code>height = <span class="tok-fn">int</span>(<span class="tok-fn">input</span>(<span class="tok-str">"ความสูง: "</span>))
-<span class="tok-kw">for</span> i <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-num">1</span>, height + <span class="tok-num">1</span>):
-    <span class="tok-fn">print</span>(<span class="tok-str">"*"</span> * i)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="ZPZ9mu3W5qRn28JtsDcGEH+EFqxJLwL2jpPXtkE4y5wYfNd4B6E9zIU7ywjC182mdRFhiC2we2GqmfRR6E93sTa8OMK9XFV81Rag0kGGDwn3o/qU0qGogjdK4dQKDkKJRSkPFRn+DTXwVzktEv3nfamQrx8ICCWFxD2lb0hdfafCNjIgp/MTVTcse74PpjGkGn77GR58EQZElzFoXWD/ZIgeyyd8D+s6W4Pe2SeQquocMHevTda/RCPAbXHgi+BdeD/GutGapmof7lnxXHkn+YSZBuKBuiErCVUEH/yY69b0C+CaO0LBXM3W47XoOsN/R+BBjm9muxTqAnFazhI/KaECXL4PdEykPpYgEaAlpaZPrCjG9sE4ogUpOOt7b8VkhzqC1HxpDkh2v4GKI/XkwR97b3opKpkvhgGn8NjoD4L/0Lx4DPW24+LKz73CLD5QZ9+R++gnCoGjYqHULrWer7tOLlP/9rr4ezT1FmJqHirkhlFXCnbPgKrBKpuoLv9v4bji4P2igIfOJioigWNCC7iMBBK8ws+p+9HOrJqmNIvVAre4ORvGquIHEQ1PRwMAcDQSIJJKOVMwSyGx6Nm2d3ISYUn8o82uWAhUE+/5hrhknO5hQ1CKKFYvOi2FrA37WjDU5slkj5kKPOxiKd5iqWGVIPyhhgJVQ9oBKqsB9O3GjzuQwwr3n0KfRUiAUgrERIckk2K5oftWdVpxaCEnvP8P/h2oJ2wox85t8CUNpxNartvmtgRN7d2jRAEGTNEDDFK2t1hk713aH5dkpbr7EcTOv5wQyQBMCVI61OuK2q6gOsg0P5IvF8e4qqNHfkV4UHVcdQIzu6e0ufuT4ntfJuGqmSkbnLGeNHVxbXs2HExrnAWcmMEfOExaKJW3n+ewBEIrg17uZl778PIbYA3ThLgBha1e2Nmlru1Y9fLQht2gNIX8kqTUaZYZkMImvFUZwNLiSBlRJpbGEXGe1ahvAAesURJ41SctgAk48Q9BwQhc00yKOhbI6pLoyOllos9OrG7LFPn9SR4f+vEkTlq5oGPCduDqG/C0b5OxjBwmIfer6EwL3PoopQKptEL8niyM638vo8ZwAxt+WoUS7hFkodbpnpwPeysZcVj0JAEuU9n5mZzb99TP"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -227,21 +211,14 @@ total = <span class="tok-num">0</span>
 คะแนน: <b class="stdin">91</b>
 คะแนน: <b class="stdin">58</b>
 คะแนนสูงสุด 91</pre></div>
-    <div class="answer-gate" data-answer-id="05.4">
+    <div class="answer-gate" data-answer-id="05.4" data-chapter="5">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 5.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 5 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>เทียบทีละค่ากับค่ามากสุดที่เจอมาแล้ว เป็นวิธีพื้นฐานของ <code>max()</code> ส่วน <code>_</code> ใช้เป็นชื่อตัวแปรเมื่อไม่ได้ใช้ค่ารอบ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_5_4.py</span></div><pre class="source-code"><code>best = <span class="tok-fn">int</span>(<span class="tok-fn">input</span>(<span class="tok-str">"คะแนน: "</span>))
-<span class="tok-kw">for</span> _ <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-num">4</span>):
-    score = <span class="tok-fn">int</span>(<span class="tok-fn">input</span>(<span class="tok-str">"คะแนน: "</span>))
-    <span class="tok-kw">if</span> score &gt; best:
-        best = score
-<span class="tok-fn">print</span>(<span class="tok-str">f"คะแนนสูงสุด {best}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="ty1mrWrCCU7l8rwTohgHShMnBBU6LZJWuo3iZWcfjRmBpU1X1vH0F6Nomh6FAjHcI1n7JJxtNhXpJA1QOb064edSAfG7ajWE5e/9fpze2nLtZEP1maMVXwnpc5s3VAXONzZ99af6U0WnpRDkISpcm8B6+/bX65kSvBFDypPUyNCm08jBjqnWMBU8BltzhfmBy/wOfRnZiYJlhknYt4YcZewhrFhKSN+E2d8voM4HfilRpI6eR5P1aSZeCfYO/6KVXCwK1pdPS5Bbv4ZgcA9BU9zBItzgwy4FNsqtt1cZYgfDv3ZRsF0s+kXxHWL+IbAjeaqPO44zoMQdGLsdPJyJTUJy6CVp2Q1yHZZSy96fy6Qk5bg2NcKm93rdpb07T305eELbR5RaduQJFLFWsjhIO5jE2pmRpEGsTQsmSW+a+NaXD2rtQjcilHT2haRHWDc8P9snc1mUFvPtyXhWeWzhSSi9XagNu8bamg+43Cvk0f3myaZMhI+DMpXdAF0vM9Qs1638mMNxpScxZErl/S2hCQdCqd8f8hRszwREIgUKXHN9swMeghUzM+jeoNJ0vyBSKdBcCzUr2DJXbsJ6ULSAZ7hE1fMzVrQcleWk/WRL52dnuKAaOtaMA9Cw7E4eNy2pIamWLaLgaWUA7yOIsXt8q85Bo66MMQo8x+pqD5y5rnmGfsE7RNkmvGJW0aJfqMsi7+ZfAaDC4DBDFAyjRjkzzDhmJi+sJV1/Ii8NbuDisvyMKzDWwhdY8z3kCGKNC7V+TeElrPu6v3fxyePcISghK1k7ueGx//NR1tpZp1TSofhXShJcYYAd/ZIKbfQUz4V2MwrSFtQ00GKibFHTWDl7dF2GDLfGa9QxiNKwWOnVlk4o0FZtWScOMrdznOzZXx00KvT0HPlZPHVOjXPVKfsqzG0C4cRe64d18QmspIKC0DQzYsrUipq8cxk5dNvtvtVJ12vglF7sEj1B2HdsEY2KZouK+iR95rGbge9pr1Yqc8pD5Xp2+wqe1moVwSlQwlykgsg20XlZGi/HafkeCPus3jnfFqNFV/YVaFegkeHzgjZB9AU+X73Ha/pczJ/iIU6FtgyhyqHR4/iu7rfbX1q/IhsTrn0INzEDnmD8Kcl+i5X5AbXfD6gO76ZaKf6XuFTHAlpx2dcYxpLwdus8Jv+0z0IM9C4XTOblcwNBCZ+Y30mlr/1IoGHa0RV0IFZDHOyBN1Rv0P2Z2pcdv7/MjN0GlUqckdE08jjEz3K49vIPDFMtXxwayzJ9TmiZih2W5obpFY8Mfw7YR0K19PNwE1ZQCl+F2W6vfBX+AlfAsUIeJf9ym3wwbzTfVbO+0+7KzHTNkjB8Yk3XjQWwa4kKO9i88MR82C3Iy7FiMnuN87rgDuY6zZGMLUa4fgvvRaqWjK9yfll1CkfqnqCRL2sYUL3lGj86ygODM1qtR9EBxN7AgMR3m0kgJo75Fidi5kkcInUsl9R2Yg+oG5CAqVamO3MLMckHx3DEVUhheJx0FG7+e5B+YDX5sSdtXtHyFAw="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -255,26 +232,14 @@ total = <span class="tok-num">0</span>
 น้อยไป
 ทายเลข 1-100: <b class="stdin">37</b>
 ถูกต้อง! ทาย 3 ครั้ง</pre></div>
-    <div class="answer-gate" data-answer-id="05.5">
+    <div class="answer-gate" data-answer-id="05.5" data-chapter="5">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 5.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 5 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ลูปจบเองเมื่อ <code>guess == secret</code> จึงไม่ต้องใช้ break ข้อความ “ถูกต้อง” อยู่นอกลูปเพราะทำครั้งเดียวตอนจบ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_5_5.py</span></div><pre class="source-code"><code>secret = <span class="tok-num">37</span>
-guess = <span class="tok-num">0</span>
-tries = <span class="tok-num">0</span>
-<span class="tok-kw">while</span> guess != secret:
-    guess = <span class="tok-fn">int</span>(<span class="tok-fn">input</span>(<span class="tok-str">"ทายเลข 1-100: "</span>))
-    tries += <span class="tok-num">1</span>
-    <span class="tok-kw">if</span> guess &gt; secret:
-        <span class="tok-fn">print</span>(<span class="tok-str">"มากไป"</span>)
-    <span class="tok-kw">elif</span> guess &lt; secret:
-        <span class="tok-fn">print</span>(<span class="tok-str">"น้อยไป"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"ถูกต้อง! ทาย {tries} ครั้ง"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="7XsEmcms1ASXvfMAFowxg9hT5QMrI+8FBj+bEO7ba2LfKsMvrGu7RX8Jzq8LmvUSqmrHgCK1Quc8zKkgYanmfSzkhI/fsaCuknlNqwrHeot+dWI/k+VrXjpJhYwLR48WNPe5ARP/ehwkY9hDoLNhxA2u8k6mobQf0C/Iy+3mc1jAf8mbZeL3mKGzLX98Kn6RGXm9dl+EUl1g95ohK6k5W6p143d0PFwqn5S4GqsfA3qILT5MeXyP/EwfLwbt4yt5Lu+TNo8vnUSZeH1s7X84UpTOws9ms2XIN7uwFnet8DEEWc7DD1VeLFOSZmluPoxvQTPkfGp7XtBF5p6Ygw+Tavk2ssTeofNKTmsYYH/7j94wBkGE5stXuPeUogteqHDWhQSopYrH0376qu4WbsYquI+MJthVmXy6f47aSsTT2HochpT9LIfubGMEvBDaCMtZLGOUkgfG32oRO8tzKFnal+VSUQHdhk/IU3TKxArLKNc9dCyNZnXerWcLnQ1ksHjb4IsUFHuF28aqRT11Gr9x72bSp3VfUMgyCSX6JPwUfa6fzzG2m7ukFumbRO97h7QmTzea4Lw5XnRb7PLxom+PJWD1QAHTVbI5j/dmIQpu7nPBhoOcgevOQfNYdDLfKrgXwbKVcnPmzSDYtBVitxiTT8FZbFHQGZMBYzkSDJH8XZY/UPIQxArW8SDxeRjmVHb89cjJ5LBAcoUPDfYmScXj7GgLt8z48T/9x6gJ7KIF0+AFdGsDaoc6PkG56OgNVjUn5VyUdyer8RKbxt5rRa8de1RJcDD78dtoQEA468Sjubjr/XX8nPjp3KUdMX8sTcepjV0aWp+K26Cat4atiMFC5hb6+nQm9X/Np1tbdSRYmP16DAprr84pfhOuONLCwncK5avwtr8COvRUKGtLHDXgCHkQ+GrTREXvOZ71PCoFaXsGqwQj1ErOaqIs/82S3I8YpywXQtDTt8BnCopfl8MTn4hVQjGWB84yxKJcvBBAiKs/txYSb/HnEvcZkAcuwCwWDNisAx8aFz3eTFuYvfgck09vuMo2Q83vfBHoLywlU9NUzxScKvoHgm3frPFWizsh/ioArE+ICR9FxJxxAA1bPYgjH08eknfs4eYCz34NPK9kXaRZIaCfV4sSeTHFPTDxJuB+YmCkfZG16Sz8ngQm7T0l5hyJsXskQkQBdKhB1kO/Vs6HYJSODTe20jmi6l+NdSFuwu9NaBkuiB0x6VPtO+OzT4R5PGSiFnNcWlVTzAsXgDm+8n1Cz7ZGs4P3EyXPz1Z2DNCXdp5BYyBs4/FYUBtBaJ9NL/jLBStyjLlvxaeEBbhz7DSs9XQaYUx0xC/UXPd8So7fZ4M+hTA5ofavJwFq/kc1B3fY+IYquFD6cUHHqpY6TrbhdUf2fmJ7E9zyq7gUg2xY/ZczFB855kLdYwpodmOKtxPFqbWHOx9NaCy8YId6IUJIO7Hk8A4ytqHo3+NGe5pT2Grfk+IL7nxVwZy/KUFKVPgYHdWezRu9fHDkqe+2R3KOauEsipEvQDh+7v1gYcAKGrDr2v3UW+vabPjfGqAbldyaJnPKsTx5OgaUfPWbvDV3eY9o2qU9BfxUNJlvH2roJDJ5mGjEkx7eQ6qggx1BP8LyV7tBGP5q7lhV+QHKsy40SupjN9eHVOPY0uMBJAo0g2bFnLOAjb9XFn0L3xx5H7jDagQJ3xCin9wc/05P3uMfp80n"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -286,35 +251,22 @@ tries = <span class="tok-num">0</span>
 PIN ไม่ถูกต้อง
 PIN: <b class="stdin">1234</b>
 เข้าสู่ระบบสำเร็จ</pre></div>
-    <div class="answer-gate" data-answer-id="05.6">
+    <div class="answer-gate" data-answer-id="05.6" data-chapter="5">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 5.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 5 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>break</code> หยุดถามทันทีเมื่อถูก ตัวแปร <code>success</code> บอกว่าออกจากลูปเพราะถูก หรือเพราะครบ 3 ครั้ง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_5_6.py</span></div><pre class="source-code"><code>success = <span class="tok-const">False</span>
-<span class="tok-kw">for</span> attempt <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-num">3</span>):
-    pin = <span class="tok-fn">input</span>(<span class="tok-str">"PIN: "</span>)
-    <span class="tok-kw">if</span> pin == <span class="tok-str">"1234"</span>:
-        success = <span class="tok-const">True</span>
-        <span class="tok-kw">break</span>
-    <span class="tok-fn">print</span>(<span class="tok-str">"PIN ไม่ถูกต้อง"</span>)
-
-<span class="tok-kw">if</span> success:
-    <span class="tok-fn">print</span>(<span class="tok-str">"เข้าสู่ระบบสำเร็จ"</span>)
-<span class="tok-kw">else</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">"บัตรถูกระงับ"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="SsLPfUfmfhUyRLHVtdDzxCCAa2BXHmUxAqw/FDFDkezo6L2gCIocpMq/rFSsAy9nkC7UbZr/fQ7swrpCJELCdb2yld41TKxxvNv9lRDre6HKR0aN0G7t5s9Si+ioeShKFJdwwQy704IRhnfrd2efMtzs0pkScmzq0vpf2r0O7y+z1jEOdeCuxWpvlVSSDARCU75YZCdW2H8DZp2ZGzSlg4BNww72NiNnRtEFn9dQTLZxcERA6DszJhiE3FlJDtk/E3Xe+oYTwNkd9w4XL9wgwvmzSCs2AnjEAhGEag1AuPSVe1U0BOQSI6axLgCpEuNyWZu+NCVNUh3Y6iQewVNOXCyFB130DeSWWt/LVhmzW+6JrhZhObyS5E3rcJv3Kq9AiJNX+LzZCBlMT7jnFUnsIYCuHEDG7+LeqO7oRpOVm5VNlUJwyFefQLWUVPNl8Maeuje5N2sqvR+hqZPP/4xxYAz9DZQ+4r8xVopgx+oQ6XpuzKTyBeR6nI23u2ScOjYDKDbO6N3/S5f1gpWmwnxS7feGAm1w5HLFPbiJAQoPzFA6JbhTBV368hizm62GV9bYr4oDxEWafoDS8KnptcgfXgRb51Q5GS2KtxBzVjlqmGxHGRIo52iZnV/1/9nwgA9jhsGJYk6c8AQ0JaSV9/NJ/tVtRTLv4tfvgLumN+T4TF0N8kf3eC4tEsFl+RdGv0HxXcwlBdC8LWl3hZ7gDWqV3FZ1EtQHg+1Ols0JfelkG9IezIHjcKXB+fKe2rgheAEMmVbPsMZOe2+b50lq/VmapgPOVWLvU+2MkFiVunjyxid7TdLmlIThFhMBIFvBQUblZz794pRo9uVmty73T2UeclFOTLeqkJhgggZTvPsUoG6q7drDVR6h6D596aAKRbYUJIq87xek5DVAQkGgczi4CVnlROYpGTskhyGstYCVnHUiS+MjIYLgVoQr/CGpEBGTIAO+zzuyP+r14gZViQS44p1OMlE575gz5xnl/XT6L3vX4h7K5IETShoSKhmmsxMl9VKDLZapJjG5XSmBomywm5qq49Vgen0MACR4iJj7kyDZn2NzG74IYHP8MlypCAF3MiLC/SEZ+/IzmyexBS7slPpGiW2gDZFRibOQpoY3cQdZ+48d01DRTv8PuK0PLZuX5vuCy8Zvf3G4iy/lOZPlsvHbLoQDbo6DeFfFRPQoiXjnfsePEGkFTVJ4sMIM4c+FGPtkyLnsduUvMHofRx203tcl3ZWSx5HN9Gec4WZBol/OzxKExguam2b27lEbBwF9yPhCToB5jvKgK5zxHZS16NQr+Sz6WnmtFTIuC7gLUz7HGqFxF81VOHboxYTKByDcGSxRm9hKcglM1WbDyPedJXaRqE9Ue5mSfQOmE6QhYAYOrP/H18cKzfKb1esrxpfMXOq8o9ULUeBwVcUmNEg18ELQzRO74iIzkIhLZuRs5K1WUiSBrUbVlfwX6gHnmqMnqTDvq+TQ5EiB7f0WCZmS5PKdgZeGrI7tOABdIZPvt5I/X+igmkhNLVsEGRqDjCTEoFsP23wnKvBU8I7xObSd+ceag6td4KHEJVLO/3XOjZgCndqrcvmMPHlIPPvNf75mXh8PphS+RFLTKHxqd+2oUE5kojnH5mLlC+BayS5ouUS7HDVId4T9f+DXqzOLERrCHgjJXaEUMdBZbW/mD1k0/G5yW6IvqADDkHDWo0scN9Ks4MkxPfjrFGNubbGoZZoKwAqeocIiNv8CNU1DSllScI7QJkx24FRJ1YHrJTFGazf7rHk9vNgY9I1oQn59EMxLNTorTdz08B3Lw4Q="></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-04.html">← บทที่ 4</a><a class="pager-link" href="chapter-06.html">บทที่ 6 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

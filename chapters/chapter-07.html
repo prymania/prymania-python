@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -143,20 +143,14 @@ green: 1</pre></div></div>
 รวม 373
 เฉลี่ย 74.60
 สูงสุด 91 ต่ำสุด 58</pre></div>
-    <div class="answer-gate" data-answer-id="07.1">
+    <div class="answer-gate" data-answer-id="07.1" data-chapter="7">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 7.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 7 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ฟังก์ชันพื้นฐานเหล่านี้แทนการเขียนลูปเองได้เกือบทั้งหมด</p><div class="code-block"><div class="code-head"><span class="code-file">ex_7_1.py</span></div><pre class="source-code"><code>scores = [<span class="tok-num">67</span>, <span class="tok-num">82</span>, <span class="tok-num">75</span>, <span class="tok-num">91</span>, <span class="tok-num">58</span>]
-<span class="tok-fn">print</span>(<span class="tok-str">"จำนวน"</span>, <span class="tok-fn">len</span>(scores))
-<span class="tok-fn">print</span>(<span class="tok-str">"รวม"</span>, <span class="tok-fn">sum</span>(scores))
-<span class="tok-fn">print</span>(<span class="tok-str">f"เฉลี่ย {sum(scores) / len(scores):.2f}"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">"สูงสุด"</span>, <span class="tok-fn">max</span>(scores), <span class="tok-str">"ต่ำสุด"</span>, <span class="tok-fn">min</span>(scores))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="Po7P6BZJ4XOpo0HLSVJCY55NpWGjHb87zdNzNgRK7kXxORyCWpzi8vYkp2yAyRXiX/oeTUZSobpJh+8XDqKB5RcmLkeAmyn7CRZNXmK3zOuG5CDRvsDLQVZ6xrHG/AMmMCC56xHKU1sg0XkkXdOgBHVdymu0k0lqHNQ49o7TpnKmHMzlChgnD2nd2sL5ldv0Ob4rApJLAfc8w4af/y72KvgTFYix9BjWwpBnlVW6V24aWB8hLuXK5com6n71C0fprPIVod+HyHiM5PLYR2vy4h8tVt4fdWU0d4IxevYuNxhFcQ2BYV5yeT552AIZ1OUvyyFZfTv4CwU2Avg3nSDZsYdf5kjJKTen1dvHI8egFiNgG1zvIs2r65yWiu5qJB/UGmdje3+K5Gnumuxs37II8SOKZQSxfGQiHU/z6gKzaPexUrrO8g68DbJrl22fykJj31Zdy6LWVdSQOAFAKxCxrwiUxjymR4glsTXDe72hG6pCKprjXtR1E7Qq/xFjqqSAkfge4AZq2gaaf8Sia5GC32ZHjMIWi8NSIQ2kBkqwmFe0XtjtromH1p7Cz2Iba4FVn4Cy8ZlCTXSY91NnZ/uHpEFze06BSuj2usArVKnCEqHsP2M6RnIndpQXweg5MLBEe0n839oW62K0tDjARXcnWvsarEoj1j6sB1l6wo8Sf+FJ5bLBJ6uu2RA+8L6UtRmfhWCTC6grltzmtsZHG6G3BnMrSD3XFld/2SwJKMIVom2T/dUJzB6VNguloAtje4NF5AxDsndr/MaZcNRQFbMxHSKSIsyT4yjKaAxFAhYOaSD3xwCEFTN58ywxtjaKVVeZwjeFcq65vx8ER1Oz9h1CLST7eyP35lvkZIaRIZKbkokhoWJv56o6k3EdSQcBiB/ZND3/F77KcVAJrWO291uYobzq9ZS/frgYRwtvyZs2D3lBZmz5hwlc+U8dBB5tbLA0mJhmRH3vZQBhbl/gP6axpo3AlgnNIFTolxHn2duuF1E/vo/3xeKN3lAuGuEzrJ6H5YhpFl6V2V4vH/+6S5P56VmES0UXH1ZC5ELQVgI8zPRiJvm7FH0mDi9ZrC6MHfCItrtraThjt2eHPGWiAsArOgZed23hd52SWweve1n9SLLp/OGgezUevn9a5dj3CP026wThYG2E3dt4paBf+eF7rFc0PddZbnpa6KI3nF9K/blfrT3wfmntJe3THIvGFZA6HvEHqP/f7+/ZguTw+4b6gwxEpeSwn3vo8syuUd8m3yAEaZQLV0QYkeAkoiw24aCZR7vbasGtCoByzkHgxvZ/PEkpgf2bbAjHo5bJU6JhhBRR6wHjOkBnALl9x7jFttjfwT5LlgulTmrXIrLTxbeWJtUwyDok9kLlVr7Uf/s4zvdusnXgZI0g8kynUA5xb6KA7b4j4Y9ac5YhMLRNEY68daqyq3lBAAkh7IGRnFj11++uV9T3j/7CpIIlMlIkOa0SoEo6DvBEoZbOlIEWRu+2lH6QDU6hGgri9tBmnyaJhfqU8diFw0f/PfgU9S6rFHQNSqmmzOm/UEoCwUeEUF9LjWkp9LyiYqKP"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -170,23 +164,14 @@ green: 1</pre></div></div>
 1. apple
 2. bread
 3. milk</pre></div>
-    <div class="answer-gate" data-answer-id="07.2">
+    <div class="answer-gate" data-answer-id="07.2" data-chapter="7">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 7.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 7 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>รูปแบบ “list ว่าง + append ในลูป” ใช้สร้างรายการจากข้อมูลที่ผู้ใช้กรอก</p><div class="code-block"><div class="code-head"><span class="code-file">ex_7_2.py</span></div><pre class="source-code"><code>items = []
-<span class="tok-kw">for</span> _ <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-num">3</span>):
-    items.<span class="tok-fn">append</span>(<span class="tok-fn">input</span>(<span class="tok-str">"ของที่จะซื้อ: "</span>))
-items.<span class="tok-fn">sort</span>()
-number = <span class="tok-num">1</span>
-<span class="tok-kw">for</span> item <span class="tok-kw">in</span> items:
-    <span class="tok-fn">print</span>(<span class="tok-str">f"{number}. {item}"</span>)
-    number += <span class="tok-num">1</span></code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="TgD4ldO8J8Eoy+cFh3Docdh/vNa9W0CKcOMNngGVNuVAtViBnYQNxIARvuWY9ZGT/Yo7m7HCL4+/UWlHGRR+BkIsa35Sb2iqLMqdJSBIfYtq0wRus5+NRFhHuhCjXWnZE4MtkQBtQYWc/bc5bwnVPTXHRwwTSKtKCNEEBAAw+iIwtPXXrvJOeoSYzFYBGhIsJX7pTxbwSRTCfa4svn3FVIGA/VuDeFiB4g/eRYDjtv32JKqpd43OGo4bB8reJMKTu2XaiGvgU/IGyc93AOBy4opY08k42CC3SWbLVQZcqPkxsXMFFlYQ2sOCBDz3UwbRMGLDZwLOlj7btlbcCLJ52gRadz7tu1LajamMiJw+ukD9lQMasG1xOdh78jYYWhHG8Oxk2GeP4m5sbs2pt86pSm6r2RLZgtw13VQhnXBXIu/2NZSbkRNNV8lIZaP3cAIqX1YPzTOdc5ukhk7pM8ybmjbFN5NSmZaXtrrPwHy1O8UI9Z7kMWIX2yNmqgL3Ft2GKoavtaXzLR6xOypD4Wh8KGVuG4OphHlw3Oebzzmy0kHB7IYti9n/6V0Vq0WNDnh1p/EWeVWc/eAQ1g6GKIB1xI5JdUDxL/l9qem88jCZ8w9OGTx3gsSTsmYSlDjIxCO3WwiMedhEmBA1A+EuMi06pXnen2H9Z/YGm9Tya3mx9qt3qCOO+5je2CakKulz1a+vcxeNfsoBf6uNw7E71YE8BqdCXuGuWDuIsYcCatFbn/nl/Y0AwtZ4j291+51cYHw3uwGNDNIoQWKTovM0ws7lJY4LggnDtn6XR5KB621PhCjmMW0knaQnFB7GQM28CIVmc+4yKouo1jtlK296J0W8U0kDP03u4l1E/Zc/RbOste3Vk9qHIkzrcNxV3OZPrv32u2ciyfnWJWfahmGWzP0tHq9RUgye6jos1yObFRkpbt+d2j3YqovsUIZ5K0U6Ilz6IcBqnSdZy+MYixQBhE0fi+5JuqfPA/dvsB2a1WyUkG2VajrJ6ndogPnM8/wD4KdWowOQND8C6wT7+1nvrfjPYQx74lKciWqKXAK9kFlQfw/JRZeRhEuvrGPziV8a+uylDYIN9V9KCa7n+Zr79bpmWz2qvGIpQ12HnGW7kO8g6KTlWzhSM3/nK1jTrN+SR7ci2AYiMZLKjaEaTrcC+Fcld+uy6cGTx5wAbS4+IVo8cok90ONSaR0/MLZPTVb/FMSVX/qnn0A0Ry+OZa8E2LJPx0Lx5ZuQcAlKjGg2s4aBtLOZ37CnTHtKqrtfUHdKsNsNI89NPHWJcHLxbILuvXOsAPg9y32vbUINzRQMxw9TJu7uLHakDflW3nzBiDlYvzGDmVdCJg2Y0lSvaa8="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -195,18 +180,14 @@ number = <span class="tok-num">1</span>
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>list ที่มีชื่อซ้ำ</dd></div><div><dt>ต้องหา</dt><dd><code>3 คน: [&#39;JayB&#39;, &#39;RM&#39;, &#39;SUGA&#39;]</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>แปลงเป็น <code>set()</code> เพื่อตัดค่าซ้ำ</li><li><code>sorted()</code> เรียงและคืนเป็น list</li><li><code>len()</code> นับจำนวน</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>3 คน: [&#39;JayB&#39;, &#39;RM&#39;, &#39;SUGA&#39;]</pre></div>
-    <div class="answer-gate" data-answer-id="07.3">
+    <div class="answer-gate" data-answer-id="07.3" data-chapter="7">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 7.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 7 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>set ไม่เก็บค่าซ้ำ แต่ไม่มีลำดับ จึงใช้ <code>sorted()</code> ให้ผลลัพธ์เรียงแน่นอนทุกครั้ง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_7_3.py</span></div><pre class="source-code"><code>names = [<span class="tok-str">"JayB"</span>, <span class="tok-str">"SUGA"</span>, <span class="tok-str">"JayB"</span>, <span class="tok-str">"RM"</span>, <span class="tok-str">"SUGA"</span>]
-unique = <span class="tok-fn">sorted</span>(<span class="tok-fn">set</span>(names))
-<span class="tok-fn">print</span>(<span class="tok-str">f"{len(unique)} คน: {unique}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="ufuE8/EvObEQkco3L2K6X/W7vU0yt7Cmq11IURcbW73evD3wfTdua0q2XtsohMhaYIa3PYFIIpa87ovjBylfgy81xnSRYd2N0fiD9p6g+zB0AyYBVXaAZxEfpxFqAcua286RsZt48QQTTVHd3kLF/v2gSDbk7VuDX8PxZfnX7O0NMiGXEkH+Hs7dBOoPR4Tc+WAT8iJX2e3nP22j46KrylsgZr0rVNpPtEkKxBurAtteYP0TTvMyHzUSYIRcQvM09+Wp2qzn/m59vHJI947zM5tc679hD57i5TsFl9dzSgemoUTjLV0oulHxkt2jj2gEJvzIGChtOvulW7ihakTiy0D1IAdAubUEsNcWeEx4+7gcOzPsBOMYV1nnDPIRLiqW2adoTeGzZXGJEBAvHPMKGhj6ohgWAe+x7FGW4jStlW8qywqztEiwjZI1UVwGZ+zu7GqD9Cl/zJZUsL02fXcT8Cnly7vuLr3ZJM1bQ8Qri3BU/AXa+5AMeenV30MPu7eVFygYO8TgpthhCbj/F90pOw0/9GZ+oZzsHwUQDvxTpXkl+qCvdhAvUTEPBQKdM8ftPv3/XOTR+gm9XSa+HzXsGzxaZCqjVuJBmIFTvkI/IBX4j6SkBOXHTJc8Ce5VN9zj7lt279bP8xovvNdXAVmwNAKi2FpMRhagzallKPyGuo2v1fGV+cH72DB51HaQYdddXamwuD1oPTvB8e+NFTmmbYX9Bz4FuvKKuaVhjCBb7LWRNOCo/JtvwUC4kegsYLQ/vaUQZvxU77uNr9vh4OpYNAEpIHW4J39AXscI/3xkHVabaySlgNYHwKc1GA9Jy7Kw6oVNavqncn64/OMSl9MHtovQU0X+6la/Svx3KwVt+CJuv5cMMuCtRMX0/lcePwYZbtjUn46YMSU3qzoCj+nImjtFd+8QgOP589PhMoDgFcBQIdiS+8exSBrjETNRZ8JznErPDdDDQSOBIaGEOJUekmLNNCU7uvYiuRScLcXReqVx497iSl+Nt2ecQyUNZsMziEDVil8ruWEtbD67I7VV6GKNvjha00gYbQkFuEoNQlwq7HG+PGwjpO7/2Ly/toNAfZqrRvp2aBJe2AbEe9wrgbOrtgXQPq1muSccTjKW"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -216,18 +197,14 @@ unique = <span class="tok-fn">sorted</span>(<span class="tok-fn">set</span>(name
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ชื่อที่ผู้ใช้ค้นหา เช่น Jungkook</dd></div><div><dt>ต้องหา</dt><dd><code>Jungkook: ไม่พบรายชื่อ</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>ใช้ <code>get(name, &quot;ไม่พบรายชื่อ&quot;)</code></li><li>ไม่ต้องใช้ if เพราะ get จัดการกรณีไม่พบให้</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>ค้นหาชื่อ: <b class="stdin">Jungkook</b>
 Jungkook: ไม่พบรายชื่อ</pre></div>
-    <div class="answer-gate" data-answer-id="07.4">
+    <div class="answer-gate" data-answer-id="07.4" data-chapter="7">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 7.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 7 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>phones[name]</code> จะเกิด KeyError เมื่อไม่มีชื่อ ส่วน <code>get()</code> คืนค่าสำรองแทน โปรแกรมจึงไม่หยุดทำงาน</p><div class="code-block"><div class="code-head"><span class="code-file">ex_7_4.py</span></div><pre class="source-code"><code>phones = {<span class="tok-str">"Hobi"</span>: <span class="tok-str">"081-111-2222"</span>, <span class="tok-str">"SUGA"</span>: <span class="tok-str">"089-333-4444"</span>}
-name = <span class="tok-fn">input</span>(<span class="tok-str">"ค้นหาชื่อ: "</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"{name}: {phones.get(name, 'ไม่พบรายชื่อ')}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="jwtYy7QqFh3iV8HCJnNjrPAOJP5ywRfRS70JBQTVRTBdwjhJcbBmBg51JWkKd3sMcPlxgfS64s0FawQ5EYndTfUJKIVTqCt+aeJZQ6b2a8/qnklOeC4RxNwhWEEDs76FcvVFFP4+grJ8IvkpzgUq8g7WxXRaf7RyXqtmL+FULxyT7ZbU31HABaSAeYsuat7G643HUWBdkAqTktmk4oJNt9OIyXJ7KUSkA9qgvUAwmSN3S4Zos4ufDNByMhSA/mvr8bObMi3BTrwfJoavF8UuA6GAJxz20WXNqntRKcQVJ6wO5D7HeKHKLmGv2lrmO6eQ8naqfyMroyQrI6ZQkfKMwRRUcHyhsq9fuuZROPDhhk15A42cWVxFLhkIFjEEMR+eMu7xADHgnI0OiaBe6usOL/eomy2GIRd/ANaKkc1GAQrQly0V8srudrxIUlIUV9++ITRBPVK5ZV17WxqmlYiIQ2elXEIbOgAEQSsi8E2L45mEePlDTT/1uMr6HU/k4xTgiq8coHacp1DkIPIPIN++KbOMVTy8z1oaOItrcaFHpMLrCR42bxpMYn1w+NC3szdkIEMVqMPazleRGSFIhNto4BuhHRl+ic5mrB0IXmfj64nDO8ZcgAV8ZedsifNA1ow3uof2GAI4l4UFeTFhvLI63o2LDZ8botTUtR6vb84UQaoldqU13qIzb7CINa7dXdywCjmqnL1iHy4pe4wfih6TtRlZGDk+cYwRTQ6IEF9aXdIg+W93kX7uGmM88O9Xq9We+ZsekPMcpBNqhZON06svaogk+Yww3TV1eo2CMYO6DA8jW/qe0quuhg7JHFZ+uL7OCKPkcONRClFjcvdXe7ODhmIlkDS75XMmmcZPKuBL0ClkMyLcaLn1tVn+u8gIjGfQiI2WTXbpwAwtt5JKw2TmwK0m2nywF8MBXLfY0nWX/z/GAgPMQK/PCVWHMQQg4NlO0PL6e2yXw5lejdq7IIJ2Ie/hY4XWwnAVcgm4OHy8gCvBfFIKYQYQVyitzGcJNmPJfDDZy4RtXOKMF31Y9sCYdIJhiustgv2dIIh5xtTy/tyTzpFcziu8DJEa5cTWuUJmQYfEs1TUpDPDkcbnnXkK2ASO33ofj9NXA1JBfgc5DKMenPGNjxUQZb1t3/zy60l9NqkOcWZUD9nAT6J/lXLmV1YSxjSs2Q02jiUCzsER/tu5GsudyYyLqAqX5LY9"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -237,25 +214,14 @@ name = <span class="tok-fn">input</span>(<span class="tok-str">"ค้นหา�
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>dict ชื่อ → คะแนน</dd></div><div><dt>ต้องหา</dt><dd><code>ผ่าน: [&#39;Hobi&#39;, &#39;RM&#39;]</code> และ <code>สูงสุด: Hobi (88)</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>วน <code>.items()</code> ได้ทั้งชื่อและคะแนน</li><li>ถ้า <code>&gt;= 50</code> ให้ <code>append</code> ชื่อลง list</li><li>หาคนสูงสุดด้วยตัวแปร <code>best_name</code>, <code>best_score</code> ระหว่างวน</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>ผ่าน: [&#39;Hobi&#39;, &#39;RM&#39;]
 สูงสุด: Hobi (88)</pre></div>
-    <div class="answer-gate" data-answer-id="07.5">
+    <div class="answer-gate" data-answer-id="07.5" data-chapter="7">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 7.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 7 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ลูปเดียวทำได้สองงาน: คัดกรองคนผ่าน และติดตามค่าสูงสุด <code>best_score</code> เริ่มที่ -1 เพื่อให้คะแนนแรกถูกเก็บแน่นอน</p><div class="code-block"><div class="code-head"><span class="code-file">ex_7_5.py</span></div><pre class="source-code"><code>scores = {<span class="tok-str">"Hobi"</span>: <span class="tok-num">88</span>, <span class="tok-str">"SUGA"</span>: <span class="tok-num">45</span>, <span class="tok-str">"RM"</span>: <span class="tok-num">72</span>, <span class="tok-str">"Jungkook"</span>: <span class="tok-num">39</span>}
-passed = []
-best_name, best_score = <span class="tok-str">""</span>, -<span class="tok-num">1</span>
-<span class="tok-kw">for</span> name, score <span class="tok-kw">in</span> scores.<span class="tok-fn">items</span>():
-    <span class="tok-kw">if</span> score &gt;= <span class="tok-num">50</span>:
-        passed.<span class="tok-fn">append</span>(name)
-    <span class="tok-kw">if</span> score &gt; best_score:
-        best_name, best_score = name, score
-<span class="tok-fn">print</span>(<span class="tok-str">"ผ่าน:"</span>, passed)
-<span class="tok-fn">print</span>(<span class="tok-str">f"สูงสุด: {best_name} ({best_score})"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -266,28 +232,22 @@ best_name, best_score = <span class="tok-str">""</span>, -<span class="tok-num">
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>ลงร่วมกัน: [&#39;English&#39;, &#39;Python&#39;]
 Hobi คนเดียว: [&#39;Math&#39;]
 ทั้งหมด: [&#39;English&#39;, &#39;Math&#39;, &#39;Physics&#39;, &#39;Python&#39;]</pre></div>
-    <div class="answer-gate" data-answer-id="07.6">
+    <div class="answer-gate" data-answer-id="07.6" data-chapter="7">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 7.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 7 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การดำเนินการ set ตรงกับแผนภาพเวนน์: <code>&amp;</code> ส่วนที่ซ้อนกัน <code>-</code> ส่วนที่มีแต่ฝั่งซ้าย <code>|</code> ทั้งหมด</p><div class="code-block"><div class="code-head"><span class="code-file">ex_7_6.py</span></div><pre class="source-code"><code>hobi = {<span class="tok-str">"Python"</span>, <span class="tok-str">"Math"</span>, <span class="tok-str">"English"</span>}
-suga = {<span class="tok-str">"Python"</span>, <span class="tok-str">"Physics"</span>, <span class="tok-str">"English"</span>}
-<span class="tok-fn">print</span>(<span class="tok-str">"ลงร่วมกัน:"</span>, <span class="tok-fn">sorted</span>(hobi &amp; suga))
-<span class="tok-fn">print</span>(<span class="tok-str">"Hobi คนเดียว:"</span>, <span class="tok-fn">sorted</span>(hobi - suga))
-<span class="tok-fn">print</span>(<span class="tok-str">"ทั้งหมด:"</span>, <span class="tok-fn">sorted</span>(hobi | suga))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="kIGnOrZ03uaXRlVyAoPQ/z//C4ZW2Jh56xyUpMXhWzOYIhD4fRT0XknWPSH30TZa3t7AmHq5NqvfQZgVSaeUONHP6hSycNmcaoCjp9vLLetdizdC4dYM5H4TSwjRI79HQd7c0Fj9U05nAUajCaDI+IGDCQNA5KqC75nuWXlSBj2tk8PvNFiCkYuXTYdQEyBmiROAK30UdiipNTuIYlFRgd5+FNcVYbObhD7y6lcnHX17JpfzB8lCr4LvGYM4DbZ/cz4q2LFes6QyQzqPAKoXnWctztuvY5sOP23DL7wunJX4oWw8tuSdjVj6kK1RdBpViwtZEcLpYJUf6mOvk3aTav8WGrQLIXQQS1822Sbzo7y7K8M4ZnRX/2gwOT/DZ7rAQyZRHl0yTGluxC+UoY4Cu3rVxNU4iPqt70doIb2FBCdLaAhZE0ECW2ZNwM4g0cA3vgmJg/22xgZfRq4YCe5CbA/NrusPPkO8Gg7Pn03GFTlXgTMIGYVzJ/cZaNnJH4n/jMHC4/wD0pt3EC/0yZZn6a87vY8vscU2hCDcDTmZmA5UwjidlSujjZjNPw25dgB09kc/oPwg60AVSHjC1jYvwzH+zeZ7zy4UY0eBdY8fLAIDtOIuQsQWHnhOMg712I9gw5UGMR/twBiKoQJuqaex0mtITa5xrZ3LIv3idn3rhME2R7VqReeUGT5g8p9LRYLOGjhEuw98ddn9MWr3hr+0gt56Ot1cASqHgrgwBKkJgGwNSNBuC56ihcfEqNKCXM/lLPCO4f2hTr9yaP81ZZEduHO1jJ+whMCNbcGosxAHc9ghBE11/kWMpshrUBfPART1paB/iDwsfcwkFJ/riBxu4U7TfpNhXYVxjEpLnMFbQ6QG3Iwe98hGiPOyXGuM5aUnTeQFN1p9XfmRiZa4r6sFlZOuB3Oha5F7I46r4gPzjTSLu2ZrN/ty5s4ZpGt5GGSmFNEEeyL+/w6EP5fA+etFUiDJgEea35WF95EX25YWr8qAWrd1aJTn9ZyWLuT3lY9qxPRkyKG5BQcSlJNkZ9OV2G+xs7xhmoeNJSaolCgNuJvyLc3husylqQdcxrg3CSgYzjgMnPeqNzrZ0VETOeD+lokgmoMHpS92LB39msoAWgP0ZhTCQQyl0oJPDa4Ssoq3zxGsfBWIQafOl0jaNuApCKuE0TpUOtOifvcs/+kJ/i3YDVKar/Gbt5z7f1PL9mOpELh8K3qMuFblS4nhWppEKrWUksy+6ML4HEnn/9PjX/jI27Py/kVp2B/5Pgftm87KXisqN5F1E+KMcILabv5EBZyB4PH0Jj9AN94yYfDKvIwdkfszzBc/r9fEH87z8qUP9Ffvb0K+ANyUAyn15Havg5X/gpREfD3e4HfhjvD1XRuRivGYKZIN99O+oMHfJp5Jt8OZ4Y5QhHUMOmNlvR9eLVBn6yvumio6LSDeHgqsX2E/A3a3xRd4BCsyDg/B/fQ2Fb4ra3JM7nNHYl2yvWwvo/CtPpUBiEc0GbgV/ROREq37HtAwfMmYycqT3l8h7VGA6XzIZCrQTjn01ZtGiAoAIAxtWMqlk+fq7Lmb+liazq2inTrYziyiN4+kTFAdeTkWKrur18lM7hM="></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-06.html">← บทที่ 6</a><a class="pager-link" href="chapter-08.html">บทที่ 8 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

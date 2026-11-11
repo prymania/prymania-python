@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -298,20 +298,14 @@ data    2
 ai      2
 app     1
 Name: count, dtype: int64</pre></div>
-    <div class="answer-gate" data-answer-id="20.1">
+    <div class="answer-gate" data-answer-id="20.1" data-chapter="20">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 20.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 20 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>สำรวจข้อมูลก่อนเริ่มเขียน logic ทุกครั้ง จะรู้ว่าข้อมูลมีอะไรและครบหรือไม่</p><div class="code-block"><div class="code-head"><span class="code-file">ex_20_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
-
-df = pd.<span class="tok-fn">read_csv</span>(<span class="tok-str">"courses.csv"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"{len(df)} วิชา รวม {df['credits'].sum()} หน่วยกิต"</span>)
-<span class="tok-fn">print</span>(df[<span class="tok-str">"track"</span>].<span class="tok-fn">value_counts</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="RjBSnMTIcs1KsnnFXb3bUnND+QTxxtlGj0eS1AfnHLn9td777aJd4JtbQS8irUZcjrpMjvHLxMg7FI6rVoic1N84BOSH9xBLznZSA6JIVJHNsmIEsRb/E0Oa8pV9T/Ja52J0J5d4FNtlzEByw5ASwDhbKlxDkMIN83LjkockH0J7oxK2eOslNRFelctzcGZQ2v1+PlXf0g5huGBWq4PvRg2t0GbjwKeAOwbVswSG3r9SgtAFnnq3O5dCBVv8fFm7h76VCndgY6MxMb1+8Q6wBNo2CHGnIXBCJ8gYfBgTOXZL/JUvLci/WZHfMJb1esghUT98YofGnSIVHyF3FmPDDtm8KeikKFI9wyX15t4FwaqesowRUe3IgoKM4uI90NFduYjz6RjCPXnmont3ApWwEqfCIbqtL5KbovTcHp4Hh/oZqaTSBeSn/VVTPU4dEKCEQzMpGoVptfCyXkztECqUQ3NM3Wxnz4gLFRTE17CA0ccalIcMqzioW874q4feL0Sqc4162eDKMNjv7/i1Cnin6P8ObuKrowQnxcg0NSXK97/9b6uPUco2WiomA5uJVGQw5DbBYJlQf1ID/vbnT5bI8lOaEk2IQB62DIzkTrSvoUKP7hL+dn6EqHXnQrlFDq0lmdHWJwnMEzV0L1XYqfihTpxk+w5rQ3EANC9g/uj2S8vhqANeuMfPAsR9ndVKIyr1wHdX9x95IXZVj/NiMJLR+A/yvBLaoHm14CQYrxhxCtzYbu2GBbSyt3GI9E5bRLJq2lihij/SxjidCZh+nq0Brfv/x9bQvPP6jXiOfgFdhictSPqJwmCoABo9ZFA8kxLesqbjri7CD+cvLopZOUIBhnJmRKK0B9xn8u0f93t1XTZNVkxGxzt6SsW44Eqs0k0+Lx0Hc+nRbESv1uAAH/A9VJhM0Ob8ASeW4D+AAiayejj9lPm7VlzeUW/AyrrzU0sfYTRH6zAfUVLlQ8S145dxfGGvAUn/mxu21DuCKHLKGTLvDi/LXHZdyJt/4IpeWnyfFJ15g2oE93kpsWcPgQkRYRTuSDYC1sH2wM0BS2VCyFjQitOvGDAl3RpnzwYKqg5LLDYppIpG0DpUhnSC/7EV6V61YD4GUsK1/c6AcCkHIvFVpAjxWxHgCVfdt82Uy+x9PMkB1nGv+UWRM93GTKvHdSJgC8nkJK9Ryeqf4Nb4CmQvgGk="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -328,23 +322,14 @@ UI201,GUI with PySide6,2,55,app</pre></div></div>
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ไฟล์ courses.csv</dd></div><div><dt>ต้องหา</dt><dd>รายชื่อวิชาของ track data และ ai</dd></div></dl><strong>วิธีคิด</strong><ol><li>กรอง <code>df[df[&quot;track&quot;] == track]</code></li><li>คืน <code>[&quot;name&quot;].tolist()</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>data: [&#39;Data Analysis with pandas&#39;, &#39;Data Visualization&#39;]
 ai: [&#39;Machine Learning&#39;, &#39;Neural Networks&#39;]</pre></div>
-    <div class="answer-gate" data-answer-id="20.2">
+    <div class="answer-gate" data-answer-id="20.2" data-chapter="20">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 20.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 20 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ฟังก์ชันรับ DataFrame เป็นพารามิเตอร์ ไม่ได้อ่านไฟล์เอง จึงทดสอบกับข้อมูลชุดอื่นได้ง่าย</p><div class="code-block"><div class="code-head"><span class="code-file">ex_20_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
-
-<span class="tok-kw">def</span> <span class="tok-fn">courses_in_track</span>(df, track):
-    <span class="tok-kw">return</span> df[df[<span class="tok-str">"track"</span>] == track][<span class="tok-str">"name"</span>].<span class="tok-fn">tolist</span>()
-
-df = pd.<span class="tok-fn">read_csv</span>(<span class="tok-str">"courses.csv"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">"data:"</span>, <span class="tok-fn">courses_in_track</span>(df, <span class="tok-str">"data"</span>))
-<span class="tok-fn">print</span>(<span class="tok-str">"ai:"</span>, <span class="tok-fn">courses_in_track</span>(df, <span class="tok-str">"ai"</span>))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="YXYRcGDdTGsH/qSy2JnNOgq0uqPV4LKZ2Ahyyr7r0FKDrHWMElH0wErYKktKosh6kcSZdVpU91UYMRgGPjrIbBm7092HAPf0t0xukBuEUiyjdBVd8ka3I/HgWADJhMe5G0mnUkC3jfzXKtz6iBUOpUrShz4GYMy7BFMcDEK/FUuYi+Nc72AP2Fi2xIK6+1r0jTRJOTUrnLn6q5Wozvl9dk5Wy62WWs+qsbo/Hc45NwY1FTAt4uIAPf6YJ99OyG+lX9tn+CLeBpAIUOmpZs/pmj4w3h8bl0CLjwZgw2qABINryrHcxu/KJFZu3j4VkHgXl0O9I/Mxh2ZinXJcQsvOJY1UADEA508f/O2rhq0hP3RVmVXuF++bfmRMO2gamsnmSni/WdOLDXeqr8cS2q9VUMrr1gQyQXsogBlFPUYG8TZyeJ8yi+9uib901sYz0NGCqTaPGk3UHOUH+nwL2/oCSJwbn0Hpv4KY9R1tVbdPc12abEOyvj2ArHQqbQ5T795NjEBIhu2i71uiVLzeea7lXFMU4kLgb+wNJu/8IE39lQyuop6A11mGXzLK8dN7GdAGu8VAlZbRX3Ig/uIKPDIgbcgDRprDxgiAIJYHBK2Kd6aUGFyUWTBfYi5mQ/d8YidP94VcPhmWpg9ZNKS0AaMl1PYr5KwYolmFPVveACg16qtl84RDGowg5HKTfUrmi/oRL1SB6mp67ux+rMcLj0SuGNzrSGq3qYikgiAiCunlcFzisZt6nS9vklNvDtvqXWHVjdgHCgfeo4jej/gHt3LxKOiXq73CVyRWbex431zsNH/jCJXR/iXPTsaKrwS6Z+zl5edz/BVw1IhGsHRSJGAUazYGMuQyC5lm6L8c+kA0kCDWCmWvsuLQKXaGJ+6xIHIiK41wIoIc9iiz88CievW+YkB7dzmlA68MO1gczEdW/H1Wpyu/qBGxsBmvDqdAB5WCtK9pAUHviJfoXsiwKkqloCw7LceKvY0GiVIQWfQbDokjgLm+ElWR8OmXf2pNNksxWXen8Pjsvr4RH4rKsXHC/vRX5KD619eFxiBHDoOnJKWMO4nnLWj2EpqJb0Tdu/2HlAuphB30TQCFHo4p8ObBiCPuagQHngPP5RUPl3G+2jnoUxkz9z5k7HfCxDEXWX0qsxV1J96g/o//9hIGochHehilzm0WxSl3s2CfOWYkfMd1lDjsv6VNACmud5wcxY/tnLOuw2iKK5zvd2RJFR/sTl9uJz2lAVT/F8MbQR6p6o6n1w4cg2KSQ2sMIzn4vh6p+T87k7BJAxzlVWXnxjMjjhkdVcytOSDrT1RNTWZnZSufMagc/LsulTfYLBRucn+ExtnpP7FyHXZmhJR3mNlYNlpoius2CcNLeEyFuh612qzWN/+Gpn7S5NwYnXlGcBWJ5B7niXTYJ3cP6hHe2fUFdshN1jy5t+NckSCnPKrCVa119zLMupP9YBhYKWdsmMLar0nhhbTlzqMNkIMw4BvU1jtFKZq07H9qs6YNZxGQdqdLtVx99H8/dbBY8RO+bD7HfXWQEcYNZ3D1OJQXEVfk3IPyA8pXtIOfspXKIYedbt51kMUgToIwbHKgRcn1kiG9jRlUQUNhv5iXhWM/PYSZ4UEUMsosCycC/xUIYh2nkxIG"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -353,27 +338,14 @@ df = pd.<span class="tok-fn">read_csv</span>(<span class="tok-str">"courses.csv"
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ค่าขอบ 0, 54, 55, 69, 70, 100</dd></div><div><dt>ต้องหา</dt><dd><code>ผ่านการทดสอบ 6 กรณี</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>เก็บกรณีทดสอบเป็น list ของ (input, expected)</li><li>วน <code>assert level(x) == expected</code></li><li>ทดสอบทั้งสองฝั่งของทุกขอบ</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>ผ่านการทดสอบ 6 กรณี</pre></div>
-    <div class="answer-gate" data-answer-id="20.3">
+    <div class="answer-gate" data-answer-id="20.3" data-chapter="20">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 20.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 20 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>บั๊กเงื่อนไขส่วนใหญ่อยู่ที่ค่าขอบ (เช่น ใช้ <code>&gt;</code> แทน <code>&gt;=</code>) การทดสอบทั้ง 54/55 และ 69/70 จับได้ทันที</p><div class="code-block"><div class="code-head"><span class="code-file">ex_20_3.py</span></div><pre class="source-code"><code><span class="tok-kw">def</span> <span class="tok-fn">level</span>(score):
-    <span class="tok-kw">if</span> score &gt;= <span class="tok-num">70</span>:
-        <span class="tok-kw">return</span> <span class="tok-str">"advanced"</span>
-    <span class="tok-kw">if</span> score &gt;= <span class="tok-num">55</span>:
-        <span class="tok-kw">return</span> <span class="tok-str">"intermediate"</span>
-    <span class="tok-kw">return</span> <span class="tok-str">"beginner"</span>
-
-cases = [(<span class="tok-num">0</span>, <span class="tok-str">"beginner"</span>), (<span class="tok-num">54</span>, <span class="tok-str">"beginner"</span>), (<span class="tok-num">55</span>, <span class="tok-str">"intermediate"</span>),
-         (<span class="tok-num">69</span>, <span class="tok-str">"intermediate"</span>), (<span class="tok-num">70</span>, <span class="tok-str">"advanced"</span>), (<span class="tok-num">100</span>, <span class="tok-str">"advanced"</span>)]
-<span class="tok-kw">for</span> score, expected <span class="tok-kw">in</span> cases:
-    <span class="tok-kw">assert</span> <span class="tok-fn">level</span>(score) == expected, <span class="tok-str">f"level({score}) ควรได้ {expected}"</span>
-<span class="tok-fn">print</span>(<span class="tok-str">f"ผ่านการทดสอบ {len(cases)} กรณี"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -395,25 +367,14 @@ cases = [(<span class="tok-num">0</span>, <span class="tok-str">"beginner"</span
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ไฟล์ history.csv</dd></div><div><dt>ต้องหา</dt><dd>accuracy ของ baseline และโมเดล</dd></div></dl><strong>วิธีคิด</strong><ol><li>baseline: <code>(df[&quot;prior_score&quot;] &gt;= 60).astype(int)</code></li><li>accuracy = <code>(pred == y).mean()</code></li><li>อภิปรายว่าข้อมูลน้อยทำให้ผลเชื่อถือได้แค่ไหน</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>baseline accuracy 0.75
 model accuracy    0.92</pre></div>
-    <div class="answer-gate" data-answer-id="20.4">
+    <div class="answer-gate" data-answer-id="20.4" data-chapter="20">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 20.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 20 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>โมเดลต้องชนะกติกาง่าย ๆ ได้ก่อนจึงคุ้มที่จะใช้ ข้อนี้วัดกับข้อมูลที่ใช้ฝึกซึ่งให้ผลดีเกินจริง กับข้อมูลจริงควรแบ่ง train/test แบบบทที่ 17</p><div class="code-block"><div class="code-head"><span class="code-file">ex_20_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
-<span class="tok-kw">from</span> sklearn.linear_model <span class="tok-kw">import</span> <span class="tok-type">LogisticRegression</span>
-
-df = pd.<span class="tok-fn">read_csv</span>(<span class="tok-str">"history.csv"</span>)
-<span class="tok-type">X</span>, y = df[[<span class="tok-str">"study_hours"</span>, <span class="tok-str">"prior_score"</span>]], df[<span class="tok-str">"passed"</span>]
-
-baseline = (df[<span class="tok-str">"prior_score"</span>] &gt;= <span class="tok-num">60</span>).<span class="tok-fn">astype</span>(<span class="tok-fn">int</span>)
-model = <span class="tok-type">LogisticRegression</span>().<span class="tok-fn">fit</span>(<span class="tok-type">X</span>, y)
-<span class="tok-fn">print</span>(<span class="tok-str">f"baseline accuracy {(baseline == y).mean():.2f}"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"model accuracy    {(model.predict(X) == y).mean():.2f}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -429,47 +390,14 @@ AI302,Neural Networks,3,80,ai
 UI201,GUI with PySide6,2,55,app</pre></div></div>
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ไฟล์ courses.csv</dd></div><div><dt>ต้องหา</dt><dd>ภาพ: เลือก track <code>data</code> แล้วแสดง 2 วิชา</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>addItems(sorted(df[&quot;track&quot;].unique()))</code></li><li>เชื่อม <code>currentTextChanged</code> กับ method อัปเดตรายการ</li><li>แยกฟังก์ชันกรองข้อมูลไว้นอก class</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · หน้าต่างที่ได้จากการรันโค้ดนี้ (จำลองการกรอกและกดปุ่มแล้ว)</strong><div class="gui-stage"><figure class="gui-shot"><div class="gui-titlebar">Course finder</div><img src="../assets/gui/ch20-ex5.png" alt="ภาพหน้าต่าง Course finder" loading="lazy"></figure></div></div>
-    <div class="answer-gate" data-answer-id="20.5">
+    <div class="answer-gate" data-answer-id="20.5" data-chapter="20">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 20.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 20 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>currentTextChanged</code> ส่งข้อความที่เลือกมาเป็นอาร์กิวเมนต์ให้ slot โดยตรง ฟังก์ชันกรองอยู่นอก class จึงเป็นชั้น logic ที่ทดสอบแยกได้</p><div class="code-block"><div class="code-head"><span class="code-file">ex_20_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> sys
-<span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
-<span class="tok-kw">from</span> <span class="tok-type">PySide6</span>.<span class="tok-type">QtWidgets</span> <span class="tok-kw">import</span> <span class="tok-type">QApplication</span>, <span class="tok-type">QWidget</span>, <span class="tok-type">QVBoxLayout</span>, <span class="tok-type">QComboBox</span>, <span class="tok-type">QListWidget</span>
-
-courses = pd.<span class="tok-fn">read_csv</span>(<span class="tok-str">"courses.csv"</span>)
-
-<span class="tok-kw">def</span> <span class="tok-fn">courses_in_track</span>(track):
-    rows = courses[courses[<span class="tok-str">"track"</span>] == track]
-    <span class="tok-kw">return</span> [<span class="tok-str">f"{r.code} {r.name}"</span> <span class="tok-kw">for</span> r <span class="tok-kw">in</span> rows.<span class="tok-fn">itertuples</span>()]
-
-<span class="tok-kw">class</span> <span class="tok-type">TrackWindow</span>(<span class="tok-type">QWidget</span>):
-    <span class="tok-kw">def</span> <span class="tok-fn">__init__</span>(<span class="tok-const">self</span>):
-        <span class="tok-fn">super</span>().<span class="tok-fn">__init__</span>()
-        <span class="tok-const">self</span>.<span class="tok-fn">setWindowTitle</span>(<span class="tok-str">"Course finder"</span>)
-        <span class="tok-const">self</span>.track = <span class="tok-type">QComboBox</span>()
-        <span class="tok-const">self</span>.track.<span class="tok-fn">addItems</span>(<span class="tok-fn">sorted</span>(courses[<span class="tok-str">"track"</span>].<span class="tok-fn">unique</span>()))
-        <span class="tok-const">self</span>.<span class="tok-fn">list</span> = <span class="tok-type">QListWidget</span>()
-        <span class="tok-const">self</span>.track.currentTextChanged.<span class="tok-fn">connect</span>(<span class="tok-const">self</span>.refresh)
-        layout = <span class="tok-type">QVBoxLayout</span>(<span class="tok-const">self</span>)
-        layout.<span class="tok-fn">addWidget</span>(<span class="tok-const">self</span>.track)
-        layout.<span class="tok-fn">addWidget</span>(<span class="tok-const">self</span>.<span class="tok-fn">list</span>)
-        <span class="tok-const">self</span>.<span class="tok-fn">refresh</span>(<span class="tok-const">self</span>.track.<span class="tok-fn">currentText</span>())
-
-    <span class="tok-kw">def</span> <span class="tok-fn">refresh</span>(<span class="tok-const">self</span>, track):
-        <span class="tok-const">self</span>.<span class="tok-fn">list</span>.<span class="tok-fn">clear</span>()
-        <span class="tok-const">self</span>.<span class="tok-fn">list</span>.<span class="tok-fn">addItems</span>(<span class="tok-fn">courses_in_track</span>(track))
-
-app = <span class="tok-type">QApplication</span>(sys.argv)
-window = <span class="tok-type">TrackWindow</span>()
-window.<span class="tok-fn">resize</span>(<span class="tok-num">320</span>, <span class="tok-num">200</span>)
-window.<span class="tok-fn">show</span>()
-sys.<span class="tok-fn">exit</span>(app.<span class="tok-fn">exec</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -486,42 +414,22 @@ UI201,GUI with PySide6,2,55,app</pre></div></div>
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ไฟล์ courses.csv</dd></div><div><dt>ต้องหา</dt><dd><code>ผ่านการทดสอบ</code> และตัวอย่างผลแนะนำ track ai</dd></div></dl><strong>วิธีคิด</strong><ol><li>พารามิเตอร์ <code>track=None</code> (ไม่ส่ง = ทุก track)</li><li>กรอง <code>track.isin([&quot;core&quot;, track])</code> เมื่อมีการระบุ</li><li>ทดสอบ: ไม่ระบุ track, ระบุ ai, ระบุ track ที่ไม่มีในข้อมูล</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>ผ่านการทดสอบ
 track ai: [&#39;AI302&#39;, &#39;AI301&#39;, &#39;CS102&#39;]</pre></div>
-    <div class="answer-gate" data-answer-id="20.6">
+    <div class="answer-gate" data-answer-id="20.6" data-chapter="20">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 20.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 20 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การเพิ่มพารามิเตอร์แบบมีค่าเริ่มต้น <code>track=None</code> ทำให้โค้ดเดิมที่เรียก <code>recommend(score)</code> ยังทำงานเหมือนเดิม และ assert ช่วยยืนยันว่าฟีเจอร์ใหม่ไม่ทำของเดิมพัง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_20_6.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
-
-courses = pd.<span class="tok-fn">read_csv</span>(<span class="tok-str">"courses.csv"</span>)
-
-<span class="tok-kw">def</span> <span class="tok-fn">recommend</span>(score, max_credits=<span class="tok-num">9</span>, track=<span class="tok-const">None</span>):
-    pool = courses <span class="tok-kw">if</span> track <span class="tok-kw">is</span> <span class="tok-const">None</span> <span class="tok-kw">else</span> courses[courses[<span class="tok-str">"track"</span>].<span class="tok-fn">isin</span>([<span class="tok-str">"core"</span>, track])]
-    ready = pool[pool[<span class="tok-str">"min_score"</span>] &lt;= score].<span class="tok-fn">sort_values</span>(<span class="tok-str">"min_score"</span>, ascending=<span class="tok-const">False</span>, kind=<span class="tok-str">"stable"</span>)
-    picked, total = [], <span class="tok-num">0</span>
-    <span class="tok-kw">for</span> _, row <span class="tok-kw">in</span> ready.<span class="tok-fn">iterrows</span>():
-        <span class="tok-kw">if</span> total + row[<span class="tok-str">"credits"</span>] &lt;= max_credits:
-            picked.<span class="tok-fn">append</span>(row[<span class="tok-str">"code"</span>])
-            total += row[<span class="tok-str">"credits"</span>]
-    <span class="tok-kw">return</span> picked
-
-<span class="tok-kw">assert</span> <span class="tok-fn">recommend</span>(<span class="tok-num">75</span>, <span class="tok-num">12</span>) == [<span class="tok-str">"AI301"</span>, <span class="tok-str">"DS201"</span>, <span class="tok-str">"DS202"</span>, <span class="tok-str">"CS102"</span>]
-<span class="tok-kw">assert</span> <span class="tok-fn">set</span>(<span class="tok-fn">recommend</span>(<span class="tok-num">85</span>, <span class="tok-num">9</span>, track=<span class="tok-str">"ai"</span>)) &lt;= {<span class="tok-str">"AI301"</span>, <span class="tok-str">"AI302"</span>, <span class="tok-str">"CS101"</span>, <span class="tok-str">"CS102"</span>}
-<span class="tok-kw">assert</span> <span class="tok-fn">recommend</span>(<span class="tok-num">60</span>, <span class="tok-num">9</span>, track=<span class="tok-str">"music"</span>) == [<span class="tok-str">"CS102"</span>, <span class="tok-str">"CS101"</span>]
-<span class="tok-fn">print</span>(<span class="tok-str">"ผ่านการทดสอบ"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">"track ai:"</span>, <span class="tok-fn">recommend</span>(<span class="tok-num">85</span>, <span class="tok-num">9</span>, track=<span class="tok-str">"ai"</span>))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-19.html">← บทที่ 19</a><a class="pager-link" href="appendix-a-course.html">ภาคผนวก A · เกณฑ์คะแนน →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

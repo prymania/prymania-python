@@ -84,3 +84,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { rootMargin: "0px 0px -60% 0px" });
   links.forEach((_, target) => observer.observe(target));
 });
+
+// เปิดเว็บได้แม้ไม่มีเน็ต (service worker: sw.js ที่รากเว็บ สร้างโดย build.mjs) — จาก nav.js ของเว็บ Calculus
+// ไฟล์นี้อยู่ใน assets/ จึงหา sw.js จากตำแหน่งของสคริปต์เอง ใช้ได้ทั้ง index.html และ chapters/*.html
+(() => {
+  if (!("serviceWorker" in navigator) || location.protocol === "file:") return;
+  const script = document.currentScript;
+  if (!script) return;
+  addEventListener("load", () => {
+    navigator.serviceWorker.register(new URL("../sw.js", script.src)).catch(() => {});
+  });
+})();

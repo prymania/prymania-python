@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -119,17 +119,14 @@ credits = <span class="tok-num">3</span>
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ข้อความ <code>Hello, Python!</code> และ <code>My name is Hobi.</code></dd></div><div><dt>ต้องหา</dt><dd>ข้อความ 2 บรรทัดตามลำดับใน Shell</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>Ctrl + N</code> เปิดไฟล์ใหม่</li><li>เขียน <code>print()</code> 2 บรรทัด</li><li>บันทึกเป็น <code>hello.py</code> แล้วกด <code>F5</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>Hello, Python!
 My name is Hobi.</pre></div>
-    <div class="answer-gate" data-answer-id="01.1">
+    <div class="answer-gate" data-answer-id="01.1" data-chapter="1">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 1.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 1 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>หนึ่ง <code>print()</code> แสดงหนึ่งบรรทัด การบันทึกเป็นไฟล์ทำให้กลับมารันซ้ำหรือส่งงานได้</p><div class="code-block"><div class="code-head"><span class="code-file">ex_1_1.py</span></div><pre class="source-code"><code><span class="tok-fn">print</span>(<span class="tok-str">"Hello, Python!"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">"My name is Hobi."</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="b559wNT77tA+vA8MDMaca0nskpooMXPztlzF6bSedLp5Sk9vSOdJHsey6JVX5iifVXDBCS6PveaoSKG84r+z0+DRH56sAzpqtt5lQ9Ru16LB4LfeZ/JUW7zJh9jsZ23rYNCkKInVdZGsflRBwSarDdkkmHE5i2QiH6QhqYRQKtwb8tpcjkJLYl0NJS2pDP54Bo0mqiGlXPmXt7clw11zfmdUOsPM/HlwD+WWBVylSuK6hYmxBF9BbS2R3eBa7Bm27zTJYBsbQLT8wAgAPyiomMcu//KLJGZ21Aej85+1CQ7fLw4liAZACbgC9Rhk2g5R48gHvlZBiYMVkq87/+Vg7CrrI9z2HuLQUb9LzYdF7sv3DD+vAjEGoMEDM/LS/4xfPU8L/AguC45C9TcQQbghFcHqhhbZre3yE3VgHGsD3Lro5FFFAh4Cba2aZ0mXuSYTaxazvtgsaQSklNhRxOsItjHTFTcmhSVSwlp8t/Y/sqAbcpLodtmNn9EVandcXAki9nA14ML7FRuZfkeCbvAjO3pK6rX1vKZxgprhszHOv2d5R2kZ/CJjePMzy9vxv6tsSGBrYB5zUSgkWwcjpUxE8XMR6NQORBRufpJdyjM2lC2EThMJfgeRcTZnbkAXJ2VDtkcsEfA/RbRmkf1C2D6rFnmWRZ3+9J4SBa5ArPyS62ajfe1E08lcJkGUm1+Mlno2O0PZ+CGl8/hmqHxW6t4f1efKMkRrEFTp6SJHoIWGO8skYJr5rPq/LOzekbouI7g/kRwHNV3ExF4z9f2YwUNhevNjN62TKLPWnab8vs8i/8wcbbKaUZbqAzsXrIvNsj2P+yX7tf0ZGk9LVy/RuZe8KCrPy8kFu19j"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -140,18 +137,14 @@ My name is Hobi.</pre></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>Name: JayB
 Major: Computer Science
 Year: 1</pre></div>
-    <div class="answer-gate" data-answer-id="01.2">
+    <div class="answer-gate" data-answer-id="01.2" data-chapter="1">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 1.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 1 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>print(&quot;Year:&quot;, 1)</code> แสดงข้อความและตัวเลขต่อกัน โดย Python เว้นวรรคระหว่างค่าให้อัตโนมัติ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_1_2.py</span></div><pre class="source-code"><code><span class="tok-fn">print</span>(<span class="tok-str">"Name: JayB"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">"Major: Computer Science"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">"Year:"</span>, <span class="tok-num">1</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="jaoEMMBB+0KH9yY31/Cy1B+q/5pefpU+JCW3+WS2J2HcMMwbIrGB2oqoUkUteTlPWB3Hs0kgY//hXukVHQc3vXvPXlyJW41t8QbH9izRSNz5w4G1PxxMCRCrPBwChldLg/2CizWqpe3CONRKzexMWOdV4LBq0pKaHtsekSvrUv+IWRruAxDnAiWlm4v+bHBphl0SATJFmu522a+vent8Tt+Kg+vcdnyg5l4SnK6xOS5FjUJ9KZDvDUvyAMT8NBZqU7WjHR7qjZWmUfcRzmJbC3w9ufUKtfZjSqCssNmjOjyz1AwdQM5GyWGcRxAcFhPx22RMfJq3t6a+5pL/390bxzx14nXrjEKNRzNVEBfmJQe5eacSvGiWvr/z5h+pL0JhIJD78XR31BmkB2x+YHCqzS4NhfJRkw1m6Abz0iHZdjfXEQpf4b0Hn1ANtsczah45mjZ4206LxwhjscO9H3PYfiiDWjf7kQXPda/9hTNkKmJF35y99ZAru8J7NXfmNSBatE5SNNCporSPLjhUqjGjXbbQuJOm0W5ZyYNHHzIHGq+cUWjT+nDW/A2eudedLfvm4EClWqj5SqqxBBLH/0NTN4FzZWUl9y1cjs7/ae6dzLmOJWeFm+aNQkQlXpjal5gDbConjac+8sXbIrQwGF0M3n7A6rFxjUOfcXhsAcg8UbH/DrerImbW8a1mv8r+9SH0Cv5ra2PETwNe8zEqqRBvBL7obZASDPAVurMfYwIe4Z9H2wE7ru9fzjOmAeBgUWj2mvHMVbVLYGtjEZFm7wCF/I54fHihoHMjL6Y/ms9aueJtr7YmY2nw9C54OrvQ/N1xeIH0mBCPAM/S3M67XssvBczzRk8LkfoHrY1YgOCqQV6j9kHFTK8L/7jbVUIslNRV+hUpE6EybHnGekCaV56Khn/NytDnwuRB4psz1STQI8r/xKdVHFxBGe5eaCwX5G9oRDsXsbGjiT8jGo7Wf9kDnim1vU7u85kSRGn1y4M6weY+bpQGKvQ="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -161,17 +154,14 @@ Year: 1</pre></div>
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>โค้ด 2 บรรทัด ต่างกันแค่เครื่องหมายคำพูด</dd></div><div><dt>ต้องหา</dt><dd>อธิบายได้ว่าทำไมผลต่างกัน</dd></div></dl><strong>วิธีคิด</strong><ol><li>ทายผลแต่ละบรรทัดก่อน</li><li>รันแล้วเทียบกับที่ทาย</li><li>สังเกตว่าเครื่องหมายคำพูดเปลี่ยนความหมายอย่างไร</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>5 + 7
 12</pre></div>
-    <div class="answer-gate" data-answer-id="01.3">
+    <div class="answer-gate" data-answer-id="01.3" data-chapter="1">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 1.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 1 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ในเครื่องหมายคำพูดคือข้อความ จึงแสดงตามที่เขียน <code>5 + 7</code> ส่วนที่ไม่มีเครื่องหมายคำพูดคือการคำนวณ จึงได้ <code>12</code></p><div class="code-block"><div class="code-head"><span class="code-file">ex_1_3.py</span></div><pre class="source-code"><code><span class="tok-fn">print</span>(<span class="tok-str">"5 + 7"</span>)
-<span class="tok-fn">print</span>(<span class="tok-num">5</span> + <span class="tok-num">7</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="7QqbOvYf1+7H9gVQaJpW1uYa0kD3BzZgJazuQ963+DA4ecOT+OAkjj27XKGOgIE3EuDshMo5yrBbGXY8DUDhLWsMTzcgTmQ9rF6mNGTIGcwKDaMrmF8tUmSE1Hq1c+eiKfod86hqGOVHt2IttOACAAzPWWrXMZnZIBwouDrWhaZ0ncfR0xn1ZGzMtgQH26ggo38Te8WzA765Bgqf57Bg8eXy9a/8sSb8RnosewcTThzFADS4XOX+8bIynM9UegmgtADeZShN/d/vkVAVVXomHcRPdn6BbUd+eQWxDlKj25rvsbGbO/jOH64bMGnYhRD4KEImVwlaQIlZ6D3LXp31OuHNfsXNP913Zxi8QgETcfS3v7Ur+r4UarSMnpeY3cHSFd3VXzS48OJUSewKg0dAEMLaA32hiPCwz75f1LKe+xCqPuy5sEPjM66aAyHygvN1+LNVwwMxLjGxpRAkiiKDl6wyKtbtaIcJfbILcHAeljASm1wd2vLdnLk226Gyh6Jb3iVl7fofHs7IHjDU0oO/sNUIR0ukY0tB8xlYsoFBB+g0l/L8fXRzHdV1yn9jgIUCr5xn6ikaMwyeXHgbi2MUfO0xfU4asjBUyBO1OYtdeqMYnEyiJzQk27yS0k5nJbbKWYlM9zAAEGnF81f5v+4ff9/KoG3aRs4QrFMQ3r9squmkbLOtN9Gs006EKm/N9DVEcXE12L9H1Tbtg7c1+XE5vKWK0nJ0Y8HhlHZzQ1xuzVY4x3Zvlnq1Vxt5nEci/kSTw65uzL28FeelV/XS8dJydFxq/ztbSgRzdbywVEHC76532A6nepPH24/AIF4oDSoZvfiV++oG62JUcwOEjE23Ovk8U6dq+XdyiQTowQ2cUjkg0oWTZEGk/287HyvE/Roa2P/g8d0Ch51ltGUttD3EIe1Aeee7xrSj8bJseiBtEGcr4u7sswov4OUd11pB4N+yOqpvTbOX54vp7EjSl2yJNhr0R46T/A=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -180,16 +170,14 @@ Year: 1</pre></div>
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>โค้ดที่ขาดเครื่องหมายคำพูดปิด</dd></div><div><dt>ต้องหา</dt><dd>แสดง <code>Open the file</code> ได้ไม่มี error</dd></div></dl><strong>วิธีคิด</strong><ol><li>รันแล้วอ่านบรรทัดล่างสุด: <code>SyntaxError: unterminated string literal</code></li><li>ดูเลขบรรทัดที่ error แจ้ง</li><li>เติม <code>&quot;</code> ปิดข้อความก่อน <code>)</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>Open the file</pre></div>
-    <div class="answer-gate" data-answer-id="01.4">
+    <div class="answer-gate" data-answer-id="01.4" data-chapter="1">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 1.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 1 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ข้อความต้องเปิดและปิดด้วยเครื่องหมายคำพูดคู่เดียวกัน <code>unterminated string</code> แปลว่าข้อความไม่ถูกปิด</p><div class="code-block"><div class="code-head"><span class="code-file">ex_1_4.py</span></div><pre class="source-code"><code><span class="tok-fn">print</span>(<span class="tok-str">"Open the file"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="q/8HioCcAh8XAXL/8+Vsp0Y67/eqpvqzfL/2tC0/+p6b6Mjx1X8+qEbnk8K6Y1eC1eiU/0utM7IjDaqPMFRFKVaVVIYhE2uS0U9ZE5hzTzWNKfg7aEQVAu97yANJ7YcFc/MVmfLeM/Ng4qOlpd/CpRvfcTAxWxPjTDDzb1+SIcQ4wuAwaLnLWWLnDGO7g+wwds6yBhbgaJInCmFomcwWaonaMaKkEzOubnwTMyNfqQ4orweD9t5UgkthCgtBjOn92OK9rtFeUBLGgdjargrGNop/yjId5BjcjsvsXFEw3U21kp9n0Q54vZTY1hRfbDDYWzeqPV0+tbRtpC0rRI78cUoeidJRgQam97yI9GxGtfGjG1BpTq0rmv/3LAgjDNexEsZQ7z7KvWx72VKGBeK6M90yCVhJ1TVEDeYgLS/H5tSDfs2tNg3zdmNrC3ld5ujRsv6PLQClT/tlx1WHN0WvossFwkO5f/QG5vZe2NYlAe14J3kHYoekjmPyOVLLQpiDKSI8oFRZ7nMV8I2781sSn25FNdRLuIetWZ6zhOp4Tv70J+8f/FsJGLMiGTamunlKTbVBa7M4ZJXv4pXXYVIXBWGaFuABhijOVgphBXYp4KRWCRQ3kuLPRCvslaraIqslYKzyzZCARTz89dsoO9JVNlyL0p2aSUxt0jpcnaPj2YjUzLj3nPzstq4SulXG8fynqv6P0RV6c3YnGjq2v0wtzc3R533U86ljqTUfLDlOIMMyEV2D3TefHvD/Hg5E78r5Pzqiu3bOv4Lesa9eewDUYyQcaY0="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -199,17 +187,14 @@ Year: 1</pre></div>
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>โค้ด 2 บรรทัดที่มีชื่อผิด</dd></div><div><dt>ต้องหา</dt><dd>แสดง <code>Welcome</code> และ <code>Thonny</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>แก้ทีละบรรทัด รันใหม่ทุกครั้ง</li><li>บรรทัดแรก: สะกด <code>print</code> ผิด</li><li>บรรทัดสอง: <code>Thonny</code> เป็นข้อความ ต้องใส่เครื่องหมายคำพูด</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>Welcome
 Thonny</pre></div>
-    <div class="answer-gate" data-answer-id="01.5">
+    <div class="answer-gate" data-answer-id="01.5" data-chapter="1">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 1.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 1 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>NameError</code> แปลว่า Python ไม่รู้จักชื่อนั้น อาจเป็นเพราะสะกดคำสั่งผิด หรือลืมใส่เครื่องหมายคำพูดให้ข้อความ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_1_5.py</span></div><pre class="source-code"><code><span class="tok-fn">print</span>(<span class="tok-str">"Welcome"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">"Thonny"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="G409zmS/ttjJFda1HqB+AdCH7x5qJ+S0jWTWft3RoRsIKUMOx/ivWUYHIQjpKsyukJA8CqSUgxSfihi+CFy/6YoKjmYBsTUr89/a+TNrbOCwdd9H8PsUgR1Eij849TK2/loyP5+ycwNt3OiI60GUf97hDgbFBf+bq25wXJpAIdIEs4lTEjozFVc2j7Oml5TnrkfZUg7XZmeivJYawy+0cKUjWSV/9MrguzQLVdbflqx0WYqLSXAaZDOk+Wc0usHnHeNR8HjRWHNulFa9XPcyr6BItCn2oN5Dl9bmbw8O4l+8BsiGDOZEkTry59b+njvL1Gg/DwCel4icL4lSQxUJVrKijk1sJzAN6heV9BDaCTyDS0v0CdZ6PGT3Rrvds6kXgk6B3AQJ7nR7lwKvKlAQuKTkMz4usQK17D623AQG6A+gBEgq++q7ZB0gmlUSik03sQoK0I/5z3lodswvj9gRohrc8zQ2IqQXuJgfA4fsrcw6VwSyJCeeUY6HE8n1jzqAtsVxevXRr0Pr8L7gbjEVUSOZF1/yOeIQj/W9xhfGO8hYqc+1XnDpvAXH5Its9v/NEQsKd2qjcHGjoWGAWK31FJnTpSY+80cllyteVq4pP8jpzf2wg2a/lAB5HddGndvLnJQqtJiMXMGqgZHD7eQGgogN1Ci/sXll/EUtJoW86nilRGiMi8RWlQQV6cbTtmJHA4J+pG+toA0JpM40k9taRvaN23H6YuQSZD6Q2Le1P91+BJhRWqhqtZeEzQz1zuHmUN/wONKgbjOqdxAelHTk9y7UZf1PwYjTeWqWoBwLVeVuUOYE0o5drd/g4SkBy/GiPOYXV9BuBchm6/7puYc84Qu78PKTQpMFjBQbXy0ywve5Wvgh3Mb0MMoy7fxN/tG08s3hx1LqcK0mrrNrQBlQgFrNtdE="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -218,25 +203,22 @@ Thonny</pre></div>
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ค่าหน่วยกิต 1200, จำนวน 18 หน่วยกิต, ค่าบำรุง 3500</dd></div><div><dt>ต้องหา</dt><dd><code>ค่าเทอมรวม 25100 บาท</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>เขียน comment บอกว่าโปรแกรมทำอะไร</li><li>คำนวณ <code>1200 * 18 + 3500</code> ใน <code>print()</code></li><li>ลองทดในใจก่อนว่าได้เท่าไร แล้วเทียบผล</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>ค่าเทอมรวม 25100 บาท</pre></div>
-    <div class="answer-gate" data-answer-id="01.6">
+    <div class="answer-gate" data-answer-id="01.6" data-chapter="1">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 1.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 1 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>Python คำนวณคูณก่อนบวกเหมือนคณิตศาสตร์ comment ช่วยให้คนอ่านรู้ที่มาของตัวเลข</p><div class="code-block"><div class="code-head"><span class="code-file">ex_1_6.py</span></div><pre class="source-code"><code><span class="tok-com"># คำนวณค่าเทอม: ค่าหน่วยกิต x จำนวนหน่วยกิต + ค่าบำรุง</span>
-<span class="tok-fn">print</span>(<span class="tok-str">"ค่าเทอมรวม"</span>, <span class="tok-num">1200</span> * <span class="tok-num">18</span> + <span class="tok-num">3500</span>, <span class="tok-str">"บาท"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="KvaY90Fuzpj5mWJHNPaksmnBukwxXznmC3lBjJUnhDvpX4twtYn4L+Lc9RHA3fQPPlg1w+0OUM3LlzpN/Zp3537WztlskS6ictD9mNKYn+S7ggQW/N47Y31fmfmdqZtxNBEQN/vrHANiHyG7RJhNq1MK+HyY/4NVt7xzArkDCqmsFzXKftEOdDPV6j8fhrCht3IXzlAWRLCRZrtYLyvK00tgRfeyNCpVHxAMswsl8Wvbu2n8MrVAhlYRG74LiRvXz0DiR5omcph/VKsUsthpmBog24Ss41Yl4HKkBe7hsmXFL7qD1HJrAeIoo4vFskWBsQE8sdB8JCQGrshUjhRV+AineL9Eb6ubJ2OhCSbp6ah6dVEZeEfxUf7xjkhwXZU+QGCVH8Jo5yDbqVfMG8jMGXZaCuJNtzY4jWp0p73SnAPeOdrgw7OzGM0EMNkRO8M6BqHkhQAUwFOaOUOrGoXsIrekP40xuLIjDgkECzcCL3r0qQDmFyfIovv0LbiBp5Pjx6iQ8l4YN9+bIzEx7tDZP0yzSpl90jac9gTt3/ypFgi2+BAlp0WTeQUkJ4syn/1xe2Tlb6PKQEEPSYbZPlnO1LL3xg82RVOCWUZ3lo7/gmtP7ddYS84aaEQNb8I5PI6v1QrbCMJPeQA1L3WJClxanlW2Y7SsmVW7CxMCMlqmcGcG9Csef+DzUTfWPvjfRZvr+oMp89meah0240cTAN4KFtlT+bldkYDNX+K5ulT0JkGMpVzq4aUpfeDF9P9v71FLTYRwYHxxSNEy+3eS5mxe2Qe2zrPSITdTRf9usp51er3l90n9SUkP1XLFftRsl3TqrSGu2Y1KMK37EmZplrrfqSzxkoIEkXVR29j+DP8J8/eNaZRtLe8HvxaNU5Fs9hu7oWTJyMfJWWfqKerqlD+wSbcBDFIRbN4RJ+PHhOtagiievxsG7lBIIRBldmvrXaMACkN5CMz37M8jMrDe9ro0swWmN87w0v+GtmprlBZH9h9QGnz4Rb9gYWZHZMiRYr8NkDjCaO0o4vzjJ/F4tNckw8LTRk/tYOi35UbhE3kHWeEeI7GNjKHn+5f7fGo+oX0vxybMZe7wSJdGDu1j1WVuA/pmftJEm0WwIqEj5ePjCal9iBwaVkKXZrtpDa+uHR5WCvtoilFfZZQM2I8="></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="../index.html">← สารบัญรายวิชา</a><a class="pager-link" href="chapter-02.html">บทที่ 2 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -130,17 +130,14 @@ at = email.<span class="tok-fn">find</span>(<span class="tok-str">"@"</span>)
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>คำ เช่น <code>Bangkok</code></dd></div><div><dt>ต้องหา</dt><dd><code>ตัวแรก B ตัวสุดท้าย k ยาว 7 ตัวอักษร</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>ตัวแรกคือ <code>[0]</code></li><li>ตัวสุดท้ายคือ <code>[-1]</code></li><li>ความยาวใช้ <code>len()</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>คำ: <b class="stdin">Bangkok</b>
 ตัวแรก B ตัวสุดท้าย k ยาว 7 ตัวอักษร</pre></div>
-    <div class="answer-gate" data-answer-id="06.1">
+    <div class="answer-gate" data-answer-id="06.1" data-chapter="6">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 6.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 6 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>index ติดลบช่วยให้ไม่ต้องคำนวณ <code>len(word) - 1</code> เอง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_6_1.py</span></div><pre class="source-code"><code>word = <span class="tok-fn">input</span>(<span class="tok-str">"คำ: "</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"ตัวแรก {word[0]} ตัวสุดท้าย {word[-1]} ยาว {len(word)} ตัวอักษร"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="3au42MGsomLSUrdHQOl6Pi00tdC5qMwIUiWX8WV7oPNt7o6IW8UKXmNUyjoef93U69upZ03Sn3gq0jMpt3xkx8j5YKJXrm1tjXqw7AnpHdhwJQyL0odtw83CRJx0Ve597KZqCpwb0w//D4r1lwh8cRwp3zXUfC1wze6M+1QobokVf7wN4HTJ1ntpD568W/Z/+3HsVBnPOAOwlxnL4/e9AG9CczTnxjtjyHj+xyu/JKKtcBz3d9cLpCVVaML91bD8v1nqO4id2ReqYuCB8uKQ9HhhTczWwYwHJeQi6IryTFyY3FfyeOciRZJK14uUTH0pHlvLuAmR5DfB1eItrvF2a4ksQ7VufEh2V96u4JiA46k21nkwlV25ccDSY5YiMBCz5eLxc0SEhJpjV4RzvwopgzLMdpI6+iVuh59xMq8Im4ov03AOmO7XMeLvHrvSmxjPjuXPSiIU6aFzj8YdoZdHe967nUObbq+1YVKh2nxq3fCvfTEmWT3bZg7TlkOxTX2w+Ds5gU7gqXpCpJDKl2aTAQeJRN2OyQmFQWAu9atp2BmcZIdo/A8XFzDZ9fE5Fwn4oeZeULx+dvO7B7dqcAB/7pNwVHtF3JPjPfcsGngIXGt7vA67GUtq0SCf1ce5o1Sp9FKZNuOM0Mm2aMB9dQjo2r6rl2g2yRzSGCOb10EzsKlz9tkVpRtxLk7DePA9HTKxyTZyZcj2MfYbl/Uy0BRRKrFLu6I9NwQJ6H6hcfS6m+tjf5D1CWQNvcJwe1SHn7UcUBxLcC9nFi/+kUSoPwien0AbLXf0IJS3TIYg2uipJmxcLk+Bi5ZSJuPqgmNnw5eDuJVYjqF9d4/Zou6YH5dr3TJU"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -150,18 +147,14 @@ at = email.<span class="tok-fn">find</span>(<span class="tok-str">"@"</span>)
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>คำ เช่น <code>Level</code></dd></div><div><dt>ต้องหา</dt><dd><code>Level อ่านกลับหลังได้เหมือนเดิม: True</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>แปลงเป็นตัวพิมพ์เล็กด้วย <code>lower()</code></li><li>กลับหลังด้วย <code>[::-1]</code></li><li>เทียบด้วย <code>==</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>คำ: <b class="stdin">Level</b>
 Level อ่านกลับหลังได้เหมือนเดิม: True</pre></div>
-    <div class="answer-gate" data-answer-id="06.2">
+    <div class="answer-gate" data-answer-id="06.2" data-chapter="6">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 6.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 6 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ถ้าไม่แปลงเป็นตัวเล็กก่อน <code>Level</code> กับ <code>leveL</code> จะไม่เท่ากัน</p><div class="code-block"><div class="code-head"><span class="code-file">ex_6_2.py</span></div><pre class="source-code"><code>word = <span class="tok-fn">input</span>(<span class="tok-str">"คำ: "</span>)
-clean = word.<span class="tok-fn">lower</span>()
-<span class="tok-fn">print</span>(<span class="tok-str">f"{word} อ่านกลับหลังได้เหมือนเดิม: {clean == clean[::-1]}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="w7GLhHPSdrHUjmcL9plNjJRYFTF3xRZp+0A40/6f61EyA3uioe5uJfL1lc0/cSMrv9dotiNNsyzf+/ZQjBmzWLIm6k//E+N7JTLQozjFPd8tK7kDed5PTfB52PWMVlUJfz3Say+rJIf0QtkI9n3srkGl4t+lICTK+9xDzpJOk+hjOEbgd7kpnPq0mf7R7YkuX+Sf6TYRt4Vo703URzmpkVauoY3vefiU+B2hvtaI3OqZpbcD6lsAVcdlHaIHvOYDHTTJTfd0a6zMdaTCKJHc0MUFxHED6/k8BmidR+e2d8Hgv/ZWEpGwjEtFsyueHHKnC03gOqwcV0LmKVfJR7hkP/c1buaHPENGtxXZgCWACrAynqieRYe4/fAsxepc8HSk7ygmN+0fhUy+pmKrg+WikPjj2jOZPuIUqupmX0BTLN5JuO5oAg7BsYTUouxzJuxKtSMVavEDagVFqgLRiE6UBZEpovfVRoRtQjiIVQQWGR2mLhP3FZIUgtgqEcJ9EmGpEizXpSMi4B1qmWqU3rY/LVCVNry7XvlYLLxquyjBF9sCsQtzpqLAd84KFbzLV6bzFCIW3UPICICqoU00V13WpoAdlvJw91qkAJYYQkc/iuL1o8UYM9qf/i7bk9E7aTw0vGayR5Ib1HmO2D9CM+zKKnd8l7P1ANN9H9PwvbgK1zRz3geKoU/HP6yXBk1LZ7WtakoW/aBREHD4wCbuTaUG+DK/IyghbDLYPPeEZDowcayqdhVlFxFa0OZ4hyXYXSLqAWws8s842sJgbOV80LmVkfFTrTLJXGPXdYB1AvjccL2BZBPQV+rU8A5Q0TuUBgsNkOHvry2kVEf/YMVQuXAAYukgAphNtG5vQpSCimgETi7qXnDcM5zOwCXpC/BswjkQ+C/6UyyPKF1OeGe2C0aE49SYvkEUBV7BbpAU7VpxkPEPi6V7uEkN48G/2GstJ0N0BHAQD1g="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -171,21 +164,14 @@ clean = word.<span class="tok-fn">lower</span>()
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ประโยค เช่น <code>Python Is Fun</code></dd></div><div><dt>ต้องหา</dt><dd><code>มีสระ 3 ตัว</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>แปลงเป็นตัวเล็กก่อน</li><li>วนทีละตัวอักษร</li><li>ตรวจด้วย <code>ch in &quot;aeiou&quot;</code> แล้วนับ</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>ประโยค: <b class="stdin">Python Is Fun</b>
 มีสระ 3 ตัว</pre></div>
-    <div class="answer-gate" data-answer-id="06.3">
+    <div class="answer-gate" data-answer-id="06.3" data-chapter="6">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 6.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 6 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>in</code> กับข้อความใช้ตรวจว่าตัวอักษรอยู่ในกลุ่มที่สนใจหรือไม่ สั้นกว่าเขียน <code>or</code> 5 ครั้ง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_6_3.py</span></div><pre class="source-code"><code>text = <span class="tok-fn">input</span>(<span class="tok-str">"ประโยค: "</span>).<span class="tok-fn">lower</span>()
-count = <span class="tok-num">0</span>
-<span class="tok-kw">for</span> ch <span class="tok-kw">in</span> text:
-    <span class="tok-kw">if</span> ch <span class="tok-kw">in</span> <span class="tok-str">"aeiou"</span>:
-        count += <span class="tok-num">1</span>
-<span class="tok-fn">print</span>(<span class="tok-str">f"มีสระ {count} ตัว"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="ewgXcRVg6f/dUfuCNTbSufQpO7ONMRs36piovo5AuK5pTyvOSrXG2eIKQvfGH2CxUSkRmDDSrAhnTwZwobqC92RTgb/sdZac1Awwm8BHL08d/MiOERPSdH3GFonmB7AQmYmHezlVb9D1GyUb9sqZ3SlVazoLvL22XBej3kx3nqpJzJ4bENITcX/FTHPHbUZ4u6oU+IrWE/y0RO7a8KytgkqKpxw4TGEznQOAhGwE7sOHB5ATCgWMLc7oTo8e/LZKoo0Pzy9JBc6oy9uRilDskX+2KVk8wWhOt82oE3jpa7vA78fXXSgJrX2PgB8GXjO0oSdf6ZvfkAWAHG4ksmNE7IfTJaE+4fYRrVqNP8B76oSvoDa2MR2S1STvA5Nhc4g8fyHqgxQpfWGAkSV9Q+WkpL9Hp40yBFkvi3prFJeCHKylTqec9dskEkyLH69GDQXMiyfz+nTx1CoYIqSy/KpFWk/GvCz9Jqv3uy1PnRFDQ5XZIZ+6MFLNRG2rPFH/euNfIiw57QgfWnmvXB6BRYkjtVrWsX8Dofjq6hZLN8rwWGT7s0y3L3rIRYgHrN1qsCwqrWlefJPE6TowEc30P4aWWbIsGIibx/eSQIcOzYwMC9khAoGHxLQWhJjUoFgccFUjceVFNgu4NQJy49lVjVyXEK2Ox+cXwXXSP6w9Al7yrgw9mBccSSp+6eGdpjtYp5qc6INb3xMe2UsFSIw6xSYOMxVAP6MA2GKBjs7pd2VSJVRrS40SExCBmKPXl2HNxTLzkd5l7t7YSnhXnOOjPTQsDhKwjZmxVMB3sx1mWPwfYWpoffJkniov5+vJN+Guo7Ltc1JBqTzVZpChZuDlrJEF9cfSYFy8hx4QsHO4uqL54vXWvrFxqGFWho7oDNZLiP9Tfzv0UbP59VDdxouq7EK+MsCRW5AzyDOU0IQNLeKMa9F6Pof7+UgvlBXb9Qqvlf0Z5sYnq5+nRG/sUSxa59Ir2RDjsEz/6fqXR4yYtUuOEl+BshfMZ9emezvfuZfQjBu901M2w068aeqgi9x08BGvL0+rc2eQAKNhjyueX2P0iQz+4EPT7S0HtIyJnnJprWpYwewNDPmEy70BcvoWo0x2u5hexr7137HRSNvmwN7vk9EKYt1xxTyJ1UsdSJbv9biKeT2Sx6SVw47YBxn/Fpi/viCWsoq48J1GhHUq2IOF6AI9pVEQwqxf2ayJGGIC4m6kv4qwgr6pEFRExv2tIvFQzpgnIuIoH+w0lWeYwTWu/Txgrr4voJKopJ+AFSqOy+G+ZD7mujQpbglY3pB1VPKFxwsJQDCecmFfW8vZDlveZC14pgAcXWgnTkBI/avgaw=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -195,18 +181,14 @@ count = <span class="tok-num">0</span>
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>หัวข้อ เช่น <code>  Learn   Python Basics  </code></dd></div><div><dt>ต้องหา</dt><dd><code>learn-python-basics</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>lower()</code> ทำเป็นตัวเล็ก</li><li><code>split()</code> แยกคำ (ช่องว่างซ้ำหายไปเอง)</li><li><code>&quot;-&quot;.join(...)</code> เชื่อมคำ</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>หัวข้อ: <b class="stdin">  Learn   Python Basics  </b>
 learn-python-basics</pre></div>
-    <div class="answer-gate" data-answer-id="06.4">
+    <div class="answer-gate" data-answer-id="06.4" data-chapter="6">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 6.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 6 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>split()</code> แบบไม่ใส่ตัวคั่นจัดการช่องว่างหัวท้ายและช่องว่างซ้ำให้ทั้งหมด จึงไม่ต้อง <code>strip()</code> แยก</p><div class="code-block"><div class="code-head"><span class="code-file">ex_6_4.py</span></div><pre class="source-code"><code>title = <span class="tok-fn">input</span>(<span class="tok-str">"หัวข้อ: "</span>)
-slug = <span class="tok-str">"-"</span>.<span class="tok-fn">join</span>(title.<span class="tok-fn">lower</span>().<span class="tok-fn">split</span>())
-<span class="tok-fn">print</span>(slug)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="+6wlYuF4Y563Dn8fOJP2aIW7yiZg4AqmshcJP2fmtCDrNhPTXU9Z3IQ2fb3GSCbVes4QrGiswSM2EV/qc1o9+dWqDF4VdSp/+pZdJX0ihPzFh3vjXg/HcQQY2cr1VBAkYvZ1AAl6D2UQnztB7vIq73WU3xBoMDO6Puv7nXAHtYLdqBlxDIEA24fEMtbFStWzG9WTSrVQ11kCVb2OBWOZdsZa42QDJzz+7TfHKY9ZDdFGNnW0cpyXGTTSJwFcsIudGYsZ5+8FMHqdtdqaAFzaSOd0rnNTidBhuL6eNkeJfSXXa4ZTe9+mpADlnidrGf+oDyvkqhwZJfvcNXvaUKL4YRHCYQUtPuPEqTJAtJvpSDH/ztWm+v9WkIGm5ZW1wieooLG2bn5//a1xcA5BaV6dcYPBRSUWZxPuKHhEkgdk2OfvNHYSSYyWOOzByMmhF9MOOFMjYHHS/FbWEdBzC5Yw0noFc5RM/RfYvqu6V7etCVvfbE1oXi+tGokeC6sPkHHH3psuyoL8zITKSPH9MPUVjh3hBVYvgdRB0DB0/i+nwBivXzmg5XFQaT54oOb8evLWwO8BFCim8VIUpr+XqNcuZuQ8xiR2wfR/9Tmy2IvYZ7r67fM/brbPXbGPztkHELzUySAs2Zna6Q7cOvkanm4jOocofNLQv7IpuCk7V/u08ih4GfBWAuT7GJAgbkxh+WRfxGhhD5q870jOSl+Kr+lIJclZNDSlMAN4/kLEM1aGMWer7fcPNmZU51auD4u38VMWc6Ti7glMZBe8vwRK12b3V5ZidGo6uhrd+d71By4z4Hjifz8/n8E0I3fI1eKqbnbUId20fzO/AQ6xrcQX3nF9iOhMuVPfEYFOmIH1h7rueKE0lR2UEleHaKyuTASw8lOp7G74e8Z9D7aJGfAPY5W1h2LB7CDdyIdtMW72nxv4b5BNtwPkCD8kckKvmq0w71FcdDaaM2Ua+0AKyyTRBXtaGwet5y0hjpbx2OTRDje6Vy3WDD02MQhhQPnNQn0G8QRPBEn4B752Gg4NLB7oZFzpzH+52Lr96W4fJfZ+KXXGHk92QHwsW2pB8jwA27N0"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -216,20 +198,14 @@ slug = <span class="tok-str">"-"</span>.<span class="tok-fn">join</span>(title.<
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>เบอร์ เช่น <code>081-234-5678</code></dd></div><div><dt>ต้องหา</dt><dd><code>******5678</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>ลบขีดด้วย <code>replace(&quot;-&quot;, &quot;&quot;)</code></li><li>ตรวจว่ายาว 10 ตัวและเป็นตัวเลขทั้งหมดด้วย <code>isdigit()</code></li><li>สร้าง <code>&quot;*&quot; * 6</code> ต่อด้วย 4 ตัวท้าย <code>[-4:]</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>เบอร์โทร: <b class="stdin">081-234-5678</b>
 ******5678</pre></div>
-    <div class="answer-gate" data-answer-id="06.5">
+    <div class="answer-gate" data-answer-id="06.5" data-chapter="6">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 6.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 6 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ทำความสะอาดข้อมูลก่อน (ลบขีด) แล้วตรวจรูปแบบ ค่อยจัดรูปผลลัพธ์ เป็นลำดับที่ใช้ได้กับข้อมูลจากผู้ใช้ทุกแบบ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_6_5.py</span></div><pre class="source-code"><code>phone = <span class="tok-fn">input</span>(<span class="tok-str">"เบอร์โทร: "</span>).<span class="tok-fn">replace</span>(<span class="tok-str">"-"</span>, <span class="tok-str">""</span>)
-<span class="tok-kw">if</span> <span class="tok-fn">len</span>(phone) == <span class="tok-num">10</span> <span class="tok-kw">and</span> phone.<span class="tok-fn">isdigit</span>():
-    <span class="tok-fn">print</span>(<span class="tok-str">"*"</span> * <span class="tok-num">6</span> + phone[-<span class="tok-num">4</span>:])
-<span class="tok-kw">else</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">"เบอร์โทรไม่ถูกต้อง"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="8kv0YxuoRyiNb2vzOr2dvIXrJPJrk1T4psrGuNbM1wHz0uckB7r7QmhLuUswuJvqNMlJSKSxO3eUNcABf6eYsOV9FHcUhs9jhbtesPeIqIJg+m+n8OrUP9yTY2I/OdpX1je64PeGfcvb83fVMbCeGLp0XCcDcf+V7mBHpbamMeSqrWgTqXGgykrkFf2dAnzTdYSdEGNaSLfEgyn3EFmKJqbG9MC1T0xba5oQIY4gyiX6jVbfmiKZI8dbkggkbYV6tNV52LuTHFjIdr8FC8k3SZKm5gkfncVgrigZUWI/Ia0/0F/QHMi0r4hotIiU+F/AUbzUqVrK6DVSY3961h/ZElrrhx1PYakTR8aNJ3q7RCpciMB4RurD5cc1qXnim3pOfS1BaW+dZh+aUWV332akr+3ZuzgOpzkuJd+5nesgtlcYhGs5lMu+1Y3WeL14OIqwNQj3o82RMvA1Ij0PYBxgHj0hVAzvTLJbDlqGDV4lhGd+Eixpif4eoAD9HdZnSOVkMUXlB1UJ96Q9NpOhe+FErjwBTdH+P+krvm99qTz73hKK/y3iWYbX5uo1e+CQAKuZlExI+Xm4WLbvitwF6pH4UUgkLMpuWOEF1cwo9k/UjJbPdttxxYG85G7UPrEh09vizUg96L1FQMA3r65MulmJyKL8hgx6ag40Uu7doNScy/ILzLaP1yy4K6AJsKfwL0/0sEHAshB8RTkOy3PJUdPcH0ElibqMRE0ZX+ymUvu43nGgQ4h7u+Fj85vpLPkCmCay/ekEDBntJJqpG3x8mA0kMTsEWrjrr92Iikg9OxZK44UxVcR5QNQsg0Z1ZeQlhiGNzD/0FhFZmo9bFsSWTpwWJOZ1AYqYOPjKw4sFe+2m/Qt3sWGMnX5dRAqWzPZjTfn+ZaTGMQOZ9v3UpRLaECirYOW3dTp2XbnpytRW5fv+b14s3jrEml7AatYQpT43AovYfJo0WQ1jHbwXEVq/gpd+r9iofcqpqRo4IhAMuX0jAFtLGa6mNvJ4K4AQFVWuK8qRU6yC6fLUJBOcfqLLJFs5XKgWoHADcKA7NvUhMYg5PAByHyKzxIag8Uaw4aKJf1VU+VPx8E0Ua2XAHk4DQDeoppgvUdTm3WfIEJA6jDSxd06SHV5TV1MlXTIvwIZyoZ0RF+zIhe8IUxHUp5j3AUfwzgiTvII8M9VfchGPZgMA6CSraanxaz2RY0RJsLhqwamv6RrGfsuxzXz1lzYdLkoo41jLnjdpLTE2KgFDpUC23y0qHsBHDdqeJznLMVAldNnNf40MqJiceFpLj8/CxJ0sF65gAqbezn/v1JYiIVjyc8uufse8Rje2pXqktBilPxOsjKobo3ifK4IGbZQ2AYbA0S9mRrJ2vLr+J6FWdHL3QnxcNXgAMO/xyLJVDT5EAXGyFQ8mu1ibo/dRb6MuIafB6cf0DXjPckJaYlEfPorGbnq6KYUhkrw+6YA2Gpc+NvYSmSx5AzKQivWz+ew6bGO8blyLejfYzYQIEEdsaAx/Uprw77omGKhHu2w+CL+lpuCrHVpPeIG3xIiQ/c8xwh+Wr67+9QoMWzLR3xszIHD+Jlohbhejr/cBp9tvijGTys92kmEHjJq9JgSOPHCPobnAW71QMekvxMm6Sfmxs7EmjsKb2DGbR7n53EhaNyun9VV//XDgGW/y9g=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -241,32 +217,22 @@ slug = <span class="tok-str">"-"</span>.<span class="tok-fn">join</span>(title.<
 จำนวนคำ: 4
 คำยาวสุด: programming
 Python Makes Programming Fun</pre></div>
-    <div class="answer-gate" data-answer-id="06.6">
+    <div class="answer-gate" data-answer-id="06.6" data-chapter="6">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 6.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 6 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>เริ่ม <code>longest</code> เป็นข้อความว่าง (ยาว 0) คำแรกจึงถูกเก็บเสมอ แล้วแทนที่เมื่อเจอคำที่ยาวกว่า</p><div class="code-block"><div class="code-head"><span class="code-file">ex_6_6.py</span></div><pre class="source-code"><code>sentence = <span class="tok-fn">input</span>(<span class="tok-str">"ประโยค: "</span>)
-words = sentence.<span class="tok-fn">split</span>()
-longest = <span class="tok-str">""</span>
-<span class="tok-kw">for</span> word <span class="tok-kw">in</span> words:
-    <span class="tok-kw">if</span> <span class="tok-fn">len</span>(word) &gt; <span class="tok-fn">len</span>(longest):
-        longest = word
-<span class="tok-fn">print</span>(<span class="tok-str">"จำนวนคำ:"</span>, <span class="tok-fn">len</span>(words))
-<span class="tok-fn">print</span>(<span class="tok-str">"คำยาวสุด:"</span>, longest)
-<span class="tok-fn">print</span>(sentence.<span class="tok-fn">title</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="tSg4MbYVfaMesTUbU3wPBVRnUMSeFeiGVZrM7HmSmXzE1sJDrXlbOsEhrfPV720/wNxzPQYa89W39qtZLwDLHU6mo7Xvus0WlgY5oVvx6qK+0NikGvFHpjaXE5NrzITFcSE/QBnLlADGzhIzpZCxfyJNv5qa3qDNXjT4i5d4h/SIgMRyOGACDm7v8nmdvv+2b+mUHmFnpJQ7lUjk9UB5M5lQ9a3N/BsPmI2eUCwTnksx+AFOGogw931NAZU3B1P5NLlrCFswa+AZ5bnlBPmOwQFKDGTWOcKkCV+3BUcQfnQzL8aziAxwlg3+WcxWQJj7gooWKee57qND20XaAnRgnFvO731frzowYpYD9ysVNX/z21iveR95TUaQNGbdzc0f5isyhWlhBxsT4Eligvb1lM9soipQcjkx8oWNCbyznfhfzNzRx1kMx/NmSPWKvI4XtMgaZUtw0455x39moKyz+jjsVnNcEbWY+F7zDryPa2AX1QUSZdvKVZmlDRiu8+kZZWtt6XKOBweENXA4IH5OpCDNf9U7CuOthxppo5bL3Ewdie3X/NlobWnyOHGh8fVR2LIqd2muHhN//yx4Fr3Ici0fheSXwAbZyBRS0NHtp391YCM2ovQ/HWWGvDBPRbLlKiyvCTTnSdN5F0YQLTpDLUhJanxTQqQ5PXtltB4OJJHgbdgGNZCmMCF9CD9b8hFY+Kh4U0st6FbGU8xkS8i8n8plllFMQZKJL5wiPptzQ/uBpX+oRk/bDeReDDpyVtvDwjHh/Sr89e+yjL0ahnTeHNhIoR7GBAgw5lcImlxHoZh3hq3mokvZ5lMX0guD2pdEQAVrFqGdn3tdkazIq2UU2b13Z/72WgI6PptsBNlkBJ5zmKHB3mZrz69hCbz3PlRuyR31uA0U6NAlQ1o04R1XWVYbRv7VmYdEV701/llUPgLG7+U4Vh2FbbcFLaJ5YptapybAGLTMg4WnnBmdiJo70vVez3OkCR5Dd8sTuVZTRrQRYfByTjQwcLSPWQ+Xc/glsDRcwJJVK0f6CYe8LF1gUAc3bHDcPoNvT8jCxvFNFdBsSfUTLrvtoBQCi6SjPJMU7PtuNtFgMsRZwhb00gqBAuD8n/TfKxB+owSnjhzLPUT6dNpd/t+kAJXWUY4kGwCP3XmSEDYEYhZLhunGl7w4f6CwYPtpj65A2F8YqQBsUBLv48dQyo7eljAD7ObVBkctJgxcFNKAoZv8rbLC8NdwGraCQSCXYFaerPU9IcRckaaWS4OPY7KBjL/Nl92YLocjkpkpyZRhTcdUDz/PJ+bBx64LkRVuSkCqiYLyLkur4/Y+cEH7YtmEpPdzfo/ivVSj3Lkh0AshKkExkAWK/w7lCRjJ9VlZen3jDNNxoQG4YnlVJbxLFKkwI4/rXRM2MQF6qYDJCENne7IoNqsOamKDhPeED61D2BL6uQC5Bip7xOvhWimVpb6F1ursn2D/h9PfkElH9sJjyXM/kAVRCLZ/cX+/8Ge2NbRtvHjwu9AYzWUZXhI2w6pSQOd/dJnhIG/ey/0wOkbdCmyb2MKSk43DTln8U0sGMx381FRTkg10ai91KUxiw29sP5AcrWgJT72Ltu4ysXy52oswbwUYT2g4LXzwicu+usUpyQk="></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-05.html">← บทที่ 5</a><a class="pager-link" href="chapter-07.html">บทที่ 7 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

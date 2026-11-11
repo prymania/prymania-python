@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -155,20 +155,14 @@ debug: 70 240
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ข้อความที่ผู้ใช้พิมพ์ เช่น <code>12a</code></dd></div><div><dt>ต้องหา</dt><dd><code>กรุณาพิมพ์ตัวเลข</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>ใส่ <code>int(input(...))</code> ใน <code>try</code></li><li>ดัก <code>ValueError</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>ตัวเลข: <b class="stdin">12a</b>
 กรุณาพิมพ์ตัวเลข</pre></div>
-    <div class="answer-gate" data-answer-id="09.1">
+    <div class="answer-gate" data-answer-id="09.1" data-chapter="9">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 9.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 9 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>int(&quot;12a&quot;)</code> เกิด ValueError โปรแกรมจึงกระโดดไปที่ except โดยไม่ทำบรรทัด print ใน try</p><div class="code-block"><div class="code-head"><span class="code-file">ex_9_1.py</span></div><pre class="source-code"><code><span class="tok-kw">try</span>:
-    n = <span class="tok-fn">int</span>(<span class="tok-fn">input</span>(<span class="tok-str">"ตัวเลข: "</span>))
-    <span class="tok-fn">print</span>(n ** <span class="tok-num">2</span>)
-<span class="tok-kw">except</span> <span class="tok-type">ValueError</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">"กรุณาพิมพ์ตัวเลข"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="Z/c2POZ+v22mxVenSUD2tztoMrEeNBUw/JAH66o0UgYf58nKunIR3+zJvacpGgmCSSoqn4mZQfXaHue2pehEBfBHFzOrvGszc8vQH3Btl3YLBHhjAR8+nAhpqpdayJrb+fS+jre44imu/xKAqyffSkjfedwnCobjaKCeSwqVaKxT0mSZqqeZ1h6DwfEKwlmBSb388XfnrK7EF0uIP3T9/o6NN4JbtmGCtInP2XRjICRK9LgZ2Onsj3vYZgUjtrca2QhG63dk1HyubdjAOxoBNK/vUn3AuCvSZ97cXx8L48Y2vkNOPi0BbbYBHeTZ4QzPShv+POKFzWcUIA22+Sl50rsghQROdhEZL0RvDkNxBpYUnuUQCIvDjgnqGrpoIMEyN3nbA2TgZFxnRe2ocNgTX4HWCUiPwfLPd39r/qkEverjYtGBhNgoKxKgXUKEaFJii9z5nk1I95PWZsjFPGXrEKBTb9Qo1/nN0HEAO+JrT9SpeEjFu5C1+SsN/HNA6mhujm4YDuMoOdPz+fN2EfgvmMz4+TXHFqP1OynHBV1ZxoX9LxAhxz9pDqIUosYq5rWwLZx50XMihsHO/bE/p32wwZxLxbRQgQjniRJ7rBVjjlRc77GfqCi7nwaxxBwA9Nmr93dNgTzck02gwSJt/0emXLoaQetFJKteM6Od1gYpnIuSC1KAqlXiKZj6SzrujVR2faMdbebzInWQvRjbv1gcVMwKGkEBVE3N+Rk+6ADYovB4VWV3IUnAxjn5yMsfEHxO47NNYkK+4a6o1hxKEFFGfv1GCmKLrBEd18kOuBtm1VKGUWGl1cay+YeQ1Utm0AmRTPUGLIYxCBqkR6iZrHKffUnMuNdgiw9Z4RMvD52NvFbtcRH4Rqbx5Q7ilPDd8UGJezc51aIorrCU7hf3q4uFGeNy9kZoLPpuSG0eRVn9pLOATH0OwJ0CqZgqPLZHLAkP5ITcApvAeFA3RFzucIIJVYucimXSfGpgpLoi0j4G/Cd15vTkAmUpplQtRsm3J74M4A48pG7Y0O72GIW4Rhu2YH5/oPRa9l4qgaQ8R1d5IZVvTdqPM5EYgT1EbL+Qs8cvnty1Dkp+UuIUsI0ADX2KiCBrql5SAgfXnQQNuIiyuSXqb+6t9ZAeTqJ4DXYoSzF80FYOEXtQDry5Q+WnrhqXoA=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -179,27 +173,14 @@ debug: 70 240
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>IndexError
 KeyError
 TypeError</pre></div>
-    <div class="answer-gate" data-answer-id="09.2">
+    <div class="answer-gate" data-answer-id="09.2" data-chapter="9">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 9.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 9 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>list มีตำแหน่ง 0–2 จึงเกิน (IndexError), dict ไม่มี key <code>b</code> (KeyError) และบวกข้อความกับตัวเลขไม่ได้ (TypeError) ข้อนี้ใช้ <code>Exception</code> เพื่อสำรวจเท่านั้น งานจริงควรระบุชนิด</p><div class="code-block"><div class="code-head"><span class="code-file">ex_9_2.py</span></div><pre class="source-code"><code><span class="tok-kw">try</span>:
-    [<span class="tok-num">1</span>, <span class="tok-num">2</span>, <span class="tok-num">3</span>][<span class="tok-num">3</span>]
-<span class="tok-kw">except</span> <span class="tok-type">Exception</span> <span class="tok-kw">as</span> e:
-    <span class="tok-fn">print</span>(<span class="tok-fn">type</span>(e).__name__)
-<span class="tok-kw">try</span>:
-    {<span class="tok-str">"a"</span>: <span class="tok-num">1</span>}[<span class="tok-str">"b"</span>]
-<span class="tok-kw">except</span> <span class="tok-type">Exception</span> <span class="tok-kw">as</span> e:
-    <span class="tok-fn">print</span>(<span class="tok-fn">type</span>(e).__name__)
-<span class="tok-kw">try</span>:
-    <span class="tok-str">"5"</span> + <span class="tok-num">5</span>
-<span class="tok-kw">except</span> <span class="tok-type">Exception</span> <span class="tok-kw">as</span> e:
-    <span class="tok-fn">print</span>(<span class="tok-fn">type</span>(e).__name__)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -210,23 +191,14 @@ TypeError</pre></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>ตัวตั้ง: <b class="stdin">15</b>
 ตัวหาร: <b class="stdin">0</b>
 หารด้วยศูนย์ไม่ได้</pre></div>
-    <div class="answer-gate" data-answer-id="09.3">
+    <div class="answer-gate" data-answer-id="09.3" data-chapter="9">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 9.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 9 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>Python เลือก except ที่ตรงกับชนิด error ที่เกิดจริง จึงบอกผู้ใช้ได้ตรงสาเหตุ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_9_3.py</span></div><pre class="source-code"><code><span class="tok-kw">try</span>:
-    a = <span class="tok-fn">float</span>(<span class="tok-fn">input</span>(<span class="tok-str">"ตัวตั้ง: "</span>))
-    b = <span class="tok-fn">float</span>(<span class="tok-fn">input</span>(<span class="tok-str">"ตัวหาร: "</span>))
-    <span class="tok-fn">print</span>(<span class="tok-str">f"ผลหาร {a / b:.2f}"</span>)
-<span class="tok-kw">except</span> <span class="tok-type">ValueError</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">"กรุณาพิมพ์ตัวเลข"</span>)
-<span class="tok-kw">except</span> <span class="tok-type">ZeroDivisionError</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">"หารด้วยศูนย์ไม่ได้"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="jM1N0S4JCL76aZzf9xZVJyooD5UfMIoDG3XjK8uGxLUux3loLnwtjFhOie7FDa0f5b0qHZgCAKIRT+vN6NM8Jze60peRF/Kr5e9CL83eYkvUihmB5VQrmBwyEZHjyBTvZBZSzii73yngQH5RkDmUdJu5m9ItUsIQB9Uu1ZCDzGuN4CxIkpKZ+GkuFysns9p5+UE4+m1VS+5FNntFPNpiXzUjwxOXFLoFGR64r4ORyupQWbVsP3YJG7iZqx0tAQ4Ewd/YhQmTgm+a2jubbnT3P1Me05b8OaaGyKRHoH92D13kUHSfGKOZ5/QUXH9kUcnve8XzB5Nw8ETJNcbQYta6a4Ts5YTc5Kk5GoA/6vRVFXxeiOBWhhHCz6Yog2j/7y7nIeWkadc0kTO6g8eVwBnrLxXcC7lGjRjnZ7se/wNdBnG0aKKXrcVm2rghwUugPhxdLL3ef3Z7JdIEodPT6PugHW0q81roxnrk8ndjv+6BbrOuPkDtDUOzHvw7EYuKz0XHjyTgLxStG9EXbJpuikSpZ15h4cbg0wBOZrllHF6tlYqaZTVt6RwUziTfzNEQomCV0fQRUUbVM2gJRHKKNt6y6LQUD+1Te6jmQz8FeHapnoYcpTDydN55tM2QJpQ+DHZ6BwueCQqpWAkPPAAJKg0NKxoC6c1+gheXyLI0MBX6DGOOS9TAVeM3LjPbJh7LAGQRWwleYdwlpKXYebF36rt+cnUd4viqYJNFw5ADsZhHxwIt01nh8BsmsAMX436TV0rcdWIfEqaUvoaM/ZdwN75gKiftTvWsyg5DiesjZfk+NcKGpmaU5TocRaTnbsxgzesuhQKwG6ZvuF51zIJhXk25DAEMN4CHOaSb9oNnHGCyKmWp+K1FvW3IL4XUP9VCBEfYZ3ffp1m120CS6Huj9ATTE5D6mJPnYx7cUxYSr1uFzbOXNeM/85SynWnctuAntKDw8Cx0qlxgepnvu69Key5Qhl1a126ZWYatNEHqcVt3Y/aQtQz0ggKvNCfXp+ReE49a4OWZQP7IAfQhWwilE9qoHdavNdmygXMfPyAAhiCq2I9mr3n25EY3eD6sdtNTpB16dMbDyo+PM1bD4onKpKUJSK+i6H63M9OL7cC8FxmOnMVBFCcNqIDjH2dg5//P3wyivr/aOIOsoXFKpmoVQ9BHdvt92BbUAQmL3srufvoos+rswZXewLpEi4Sf9BuXtP+9tMszrNt7Y75/pzZS4MaoYYXBi8PYCMYVVNYloN+Cy8qLBKhK+n9nhtQ/o55SuWViCgAPqvJQJX2XCMauAYuLhhUdFGVBbv9QhtBqEjBPSYIfw6fGvtrCMKyc21TRlDWd/LzhIja+w9Su1P6DcNYWjrTgmR0uLQInH/KNuC6s0Y220Gv/IvjUUTn3DYyOzNUM/J9T88kXDbER9dNoMz+5+DmTziJ43MYxmlLn8asBOkveq7X20ajoVpk4kiG+/EObZsmhvlWTgF+BBAL6kgB+1o6hMn2iTapZiMu669xs3BCFUIdWjoU4wqDaJRGBAQ5ZS+u9g0gF3d3pkZB1Gt0M5IRReI2zH2HD2IAZJ7S1bs21GFqgBjnWN0I068bJgj0/LodP/pyJaDOLB19B0GAug6YE5er7c1Co/L66ZvD2aBQT3h0dJ/Fi702V"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -237,25 +209,14 @@ TypeError</pre></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>ใช้ได้: 85
 ผิดพลาด: คะแนน 120 อยู่นอกช่วง 0-100
 ผิดพลาด: คะแนน -3 อยู่นอกช่วง 0-100</pre></div>
-    <div class="answer-gate" data-answer-id="09.4">
+    <div class="answer-gate" data-answer-id="09.4" data-chapter="9">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 9.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 9 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ฟังก์ชันตรวจกติกาแล้ว raise ส่วนผู้เรียกตัดสินใจเองว่าจะแสดงผลหรือจัดการอย่างไร</p><div class="code-block"><div class="code-head"><span class="code-file">ex_9_4.py</span></div><pre class="source-code"><code><span class="tok-kw">def</span> <span class="tok-fn">check_score</span>(score):
-    <span class="tok-kw">if</span> <span class="tok-kw">not</span> <span class="tok-num">0</span> &lt;= score &lt;= <span class="tok-num">100</span>:
-        <span class="tok-kw">raise</span> <span class="tok-type">ValueError</span>(<span class="tok-str">f"คะแนน {score} อยู่นอกช่วง 0-100"</span>)
-    <span class="tok-kw">return</span> score
-
-<span class="tok-kw">for</span> s <span class="tok-kw">in</span> [<span class="tok-num">85</span>, <span class="tok-num">120</span>, -<span class="tok-num">3</span>]:
-    <span class="tok-kw">try</span>:
-        <span class="tok-fn">print</span>(<span class="tok-str">"ใช้ได้:"</span>, <span class="tok-fn">check_score</span>(s))
-    <span class="tok-kw">except</span> <span class="tok-type">ValueError</span> <span class="tok-kw">as</span> e:
-        <span class="tok-fn">print</span>(<span class="tok-str">"ผิดพลาด:"</span>, e)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="pLV4ebWBf8rJ6lWv+d84x4NwkG9OJCXfuILazPOziqKzI+HxlTPFBXpQIzGg6VkLr6LYHkqO52PO5f/BNVP9q2nuSxdSlwASdhNlm8SdQf9c7Y8kQCQL38tyE8J0ZB9i7uYibtp2bsoNK0f4zUdjsng2RXHKTr0wFbspCejta0XyxHXmKi4CO2+oU9VLXJInbDMa2x0BoxmxCNoTQFSq8BOTrHHJEZeqXjBkEUFvx/5wDwj4BnjTG1v72m8mq3+wv88+0h8xaGDQF1VWTs4u/1UiBZT4eo/PoYlKOKA3i5907+cYkzL4p+8VH5BLGeRPB2lzH00Q9mSXRWfEbSLJSvFqBqli/M+fpNsxt9DB6vRdTwDR0Zw0FZdi+b7p1otdxDZiWQbvVt3x/uAzBdquXf2lPGJDR+Flgr1OfQqCb1Tg9ZEVw0pt3L1nm1lGrMCz3d+x2O6uA6yjNlLVW3IiLYYRlIRcDLjPQKFYQsrANyQsVdsxpCci4h89ek1qImlnAsNOkgbWiCAdBLh5aZ/iklGPJzjsCwZADLPQOrZtLlVBbRbAiqA/bU5cei28GjNu1R1maecNrU+egZYQ/LzXdPN3rlBYk5PoQyh0uGxnHSJcbn/D9dtWh2sMnAOdUKefp6NWpH5O4dkJ+y30WYNp5m6YGRJzZTIHZgc1OKMVGH9YNr672y5vF37eAc9Stx844uxBUnn4pMBKCehJBQKmgDEjEu/4msJlJtbetHlzSJbI68zqoffMVKEdWyUzhKpj2XJ/XqPBwrdFochPhnXtqdsfEnrsiOtZQfNL/RaPIl7TauR8YIgW/+dsAiZBnAAIAtYfduWjGS1YnnJK9YwBph1s6c4k+pJhwB9+RpYD7wlW6ANc5g7R6SaEEcvhTvqYpIwCIG1XyePo1ZRhUUpR236OjZjN+oW/B/81TcaheT1sQkyAu6lWspy75jCfkLq+7hI3fHHXr71nWRSF3tIFT9oMWAGa3ssU+CjfWQSdBGojsWIQg5mKsRSSv2cc2UyuVpfiedD6i3BxjiC76mSTP1YgSCXkpqguQWj00hgDn/2rF4u/2xVYFzx19cCEBmYvXDxh8WKtCn8L2l9d8ikZZkSxcY4tJiMsoewwWzMID4kly4xnepUu0wufU0VX18vb9UPI6/wmc2TiB0BqTWg18gZWl0IdXyigag9occRBnCJjBV4eeRsJn9343W0UqcgXgxLGFaVUeoxQFiLEipByHCkp7Hv1kdyvwFe3yKjC9SdzNoX5CZkRjPdULJO12Vc9iHvo1Jyluc/vNGcUORKVjWkcqwXb37OJqQg/BIKyv3nQv/u4DXaZVzveQWpA7dZZZQFTlzfW/YtD3ePHXe1jKHAEau8g9bOjW7vhZx/4up/SG/EFhyf6BOjBTyoGM3Io2iC0oQTUS3bK1dxohOG3x8qgK75kEmX5Rva0cFDVXjqoHoI6iPiWpZvcpLgjRazPO0205ue0ofD0In5u9F5byLeVGlwDSIkjF/H48t1WO/Ekb5DuQc+ymut1fKWIo8ZvIX4kw3dC0HgvwNObIEMN/LmItwPmpvJWW8NY66ij8T9QGTlElMuAsDsbppyJ2/s0kykj6C5liWbA5oOiGCHEssFlRzCDEv8F59TprCrJquCPNXS4/zmd9pZwWfMMbmXiN+8G4VZfJdLfebQHGKpveCMiDIBcXjsBqPUnbxG78VOFuj63744M5k69j0RFhXOR+TnPpRtCpWcqOhLynjjx4Q6BUKFZvKUhVYDkxrEjdjpy+JjONHr7piXeMlpj1/6DDqfGgxuBBAh2RurNwfrAzsuVxffgFyQdWQ9AOLiR5iBsLd6QCbcLYyVTI85wfb5QdxxycjxPiLHo2PZrWymbRjPZoEkJluMi3Qd1DX1JWVPcuVMSRmQedYjKJYSedo91Bh2Nsd5d/mH/FeE/Cm2NDSMTcF1tXHcSEd/ZkBLGlGeanum3PHTZZjCk0k/1JZgojEGMrCdntQ=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -264,21 +225,14 @@ TypeError</pre></div>
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>โค้ดที่รันได้แต่ผลผิด (logic error)</dd></div><div><dt>ต้องหา</dt><dd><code>เฉลี่ย 80.00</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>พิมพ์ <code>total</code> ทุกรอบ จะเห็นว่าไม่สะสม</li><li><code>total = s</code> ทับค่าเดิม ต้องเป็น <code>total += s</code></li><li>ลบบรรทัด debug ออกเมื่อแก้เสร็จ</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>เฉลี่ย 80.00</pre></div>
-    <div class="answer-gate" data-answer-id="09.5">
+    <div class="answer-gate" data-answer-id="09.5" data-chapter="9">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 9.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 9 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>โค้ดเดิม <code>total = s</code> ทับค่าทุกรอบ จึงเหลือแค่ค่าสุดท้าย (70) แล้วหาร 3 ได้ 23.33 การพิมพ์ <code>total</code> ทุกรอบจะเห็นทันทีว่าไม่สะสม และการใช้ <code>len()</code> แทนเลข 3 ป้องกันบั๊กเมื่อจำนวนคะแนนเปลี่ยน</p><div class="code-block"><div class="code-head"><span class="code-file">ex_9_5.py</span></div><pre class="source-code"><code>scores = [<span class="tok-num">80</span>, <span class="tok-num">90</span>, <span class="tok-num">70</span>]
-total = <span class="tok-num">0</span>
-<span class="tok-kw">for</span> s <span class="tok-kw">in</span> scores:
-    total += s
-average = total / <span class="tok-fn">len</span>(scores)
-<span class="tok-fn">print</span>(<span class="tok-str">f"เฉลี่ย {average:.2f}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="bQlQPxcL5e+nVsqwFV8T4UQW9Xp6LxKX+p5SvUT5jV8HrHY6BufPYuM2zSygYe7CC4OkdmOA5lg5Ox0ZhBW77m71BHRqK8bKcoUILPuharN9bWTa6PRzh6rOGwkgihJyX6DKNzBLO007gPafzT41Gth5R69hdKfqTNsbujyVBNmA5mWUZPKLL2AVK9qAO8gVQgS7TXrWdelipODc57ZplHBAUUdKX4gFDX7k6F8725GQrrE6vqhVJ4HbWua/YavNYC84cLqebjop5XWJ//U3NEXa7VWDKOlgQf6zk6tPOxM7XyZe0ShCT6q/S2KQvgXSwxhA/7DrdBecU0b26qkQgiOxXeZR2p2M6Rd5Fsp31dG4XZCssOu6kvCibxT8wMFiqEnOlrUoIl6mI6aOpxVeWqiER0shxVcTiTtTc3f+3qgqXnokj3OWznQbhoF64yTj8LAovTwgFKr51pvS95azyXc6Qip4EmPJenyC3jacxCxuhFbCL61c+sM9D/cPkB/u7T52vP76aIhdMCqDoj8nPAaqWm77GidyEelffIXzlBUBANhvqiYJ6e9R/gW3rabwR0iZ+xZYxqx37EMyntN9a30sq/mwE3UVM6J/5fKVLfgsgPqEpgpsG33WRYXLiWmrQZAIRxJyP7+1k2qI+rrj7l152AAhao0ygN2HyPRGiH5kFnRjpd0dKDojkKkyU9hlK7gbV67Liw/Ordhbf/JtZYNWDcZK6TRkjHMt9yMsUrISrz47B6iNV6vD81N0dhXE8W568bkrIgquSH2aEmogsV19OwYZMPriW4My7iy1zG2jPilhMAH5+zTCU7CNGprJCVSk3Q9QeagwjMzeABcz1UgIapZSnIxtQobVzoYD3Z9uuAvJ58B1naScJud8B7/I6CI07GO1n4IWmopR6Ve0ui6X2Cpm0PSYcW4jdsBs7GtRtLN4LmItzz3xdm0cqyafudx9gxX9t6LTS+0IjChL81RpTtEwGTWJGwjNYsAD+0JQ9wLLMG85UTQSZx6dbCCjU+oWcsn7+MP7+pnE1lYkgeCBwEJEFoR0l9Ugg+THn+RMBDWM0psoeeJV2DTEuDN37p4NwM9FKur+eDHIzvKkRG1uIAxXL9dPAI9DsAh0Y907GPqXBhYIANC2Hq0dygU8nOhFcBDzjv3bpeWOFj7gbPIeLHfkqSGX9OmQq5YuNgKxpD/p1GA3lxT1rsFg8Nr0iCvPZ40q8al9LJsNhni7XojIRiJpvoATkmY496tXHFOZJOMfNF8DTPWGeb4SxaVQgRh9/4Ba0e3cmUD7hL9+0FfVq2Et+R9zY+0V0UzIHRvLWVucNQNV6dI//ahPtwo+uz/AzIiPb2RDRf5xS6BrE/ppPQxbWMirrrbudJeUSqZWd8kP96T0ngQqiZ7pH0DxZOGbu3uznN2v9finkT0o/vi8tj1D4loVJjl6B9tXcpE3/LqNAeEgcAaAyjYP/ztcKnSALVDgHeU0AIoDNLqiShHF0Fi2NGGomsJeKlWvUrR7D/QNVg=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -287,32 +241,22 @@ average = total / <span class="tok-fn">len</span>(scores)
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>list ราคาที่บางค่าแปลงไม่ได้</dd></div><div><dt>ต้องหา</dt><dd><code>รวม 245.50 บาท (ข้าม 2 ค่า)</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>วนทีละค่า แปลงด้วย <code>float()</code> ใน try</li><li>สำเร็จ: บวกเข้า total / ล้มเหลว: เพิ่มตัวนับ skipped</li><li>try อยู่ในลูป ค่าที่ผิดจึงไม่หยุดทั้งโปรแกรม</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>รวม 245.50 บาท (ข้าม 2 ค่า)</pre></div>
-    <div class="answer-gate" data-answer-id="09.6">
+    <div class="answer-gate" data-answer-id="09.6" data-chapter="9">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 9.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 9 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ข้อมูลจริงมักมีค่าเสีย การวาง try ไว้ในลูปทำให้จัดการทีละค่า และนับค่าที่ข้ามไว้รายงานได้</p><div class="code-block"><div class="code-head"><span class="code-file">ex_9_6.py</span></div><pre class="source-code"><code>prices = [<span class="tok-str">"120"</span>, <span class="tok-str">"abc"</span>, <span class="tok-str">"80.5"</span>, <span class="tok-str">""</span>, <span class="tok-str">"45"</span>]
-total = <span class="tok-num">0</span>
-skipped = <span class="tok-num">0</span>
-<span class="tok-kw">for</span> text <span class="tok-kw">in</span> prices:
-    <span class="tok-kw">try</span>:
-        total += <span class="tok-fn">float</span>(text)
-    <span class="tok-kw">except</span> <span class="tok-type">ValueError</span>:
-        skipped += <span class="tok-num">1</span>
-<span class="tok-fn">print</span>(<span class="tok-str">f"รวม {total:.2f} บาท (ข้าม {skipped} ค่า)"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="M4+uRqex7Sgus+jWz9RHX848P818Xwm6ZweTPM5h6VZhzAB8qtGM3ptas7CVJpfR4V/21XLHR5smMZ0sJV6H/kXqBibq8xOoTRwA7hGe6jdgbYtwNDURhGaLQFZlFiBqtEs+h+eVK8IJz29LdpYXkWmdKSD/iPg+DQdQej2ycMDuxBFq7BoR3IDJd8CeqWkaJ0q7KnBWIRMi5YkqKFAy4CP2VGu+Gi9pIseIyAxA6/lYmkKCctx7IAWkOikkHR9u5HLzaX78BcUkbw0FL2tsciZ4jzqcN3DPpdPaHGdeZ9mDO+lptYPirVlKBDXFXw/5Quz4iXgLQLOQX45n49A39Vi3pLOa7rx2waQLwdu4gHWkahq7GghNAd44ajY1/hTJk4isj0QAGHdZuYdExUMHsNls2VCvCaiHhkYJbhSmSukb352MfT2sFeSzk8KogpjGRBmZKi5e+V6oxmrcu1ceSuLV3RF5GI0O1C/DUndjzUq4jRNYZisgTkUGQOz7SVpV3jUZGQ+Y0MtzHAtSFBgDnI+stDqUuENeioCSze1x2SITsUhcYmS6PSk7iPaHSAauPIBKIRcz7+TknNhYHyGM6DOx2j2GE1NmoNDRq2WxYvsuaKwd2rf1CPBDhmjpxaZ4GET5p/wke0FYhF9eM1/5GthnK4AIknlEYGHyYcypbd1+0Py1WX8BUqF9ePuCyJBvd2/g6Wij40RXqDDmQkLFs8mBd4sbvWBPjNUEJpa1sST7T/5OMytWIgRVr+q+3E2T9F8mZ+wW/k3FTh9FHyGE/jzR40Py/HHpvVRvFQ2lWFpv+qSDyN3bQyOweDupLbIdUAM5U8/ixpDiv2Lc9mawdxFAHDLAvr0zRONJyYad4zwhU77MXAoMdT8ff7h/8rIZPARIQOLWBSzN9B/5RNj9eV2dIhOnsnH1epdZM4v0oQWPcwRp7YxGfpZMfeVlKLhYib0siJ2wYvq0DRMax9bcJA5fCTdFjftjIrqqW2bZrDueiBh8Dd+sy6uu/XuqQENkRHR7xH1q4AO+3ueD9NODqJ3IT0Wa/G0ZzTjgWXyJk4eSsZ3N8GJtPyFWLWm3yW1a1J9TejiBjUqZu/zqRQ10J18guBSFP/7A48UgPALhB88BRvgNDCWanrqjPRtuPgHsJicdLl+0g3NZFNUrbJ6Er9bIBJdso06TBVcsvbCqvDshYA2eeQJvSgA17LC8udUmmrEbvZ/6POX60k4qI+SjmwTKVWOH5HhZ4PbKNKbTsnKT3JMOJvFPv6rVp9h7DLXEI7Sdlx+yKY6TJU7YeuNM+7h9bbeUKb2/b07g1fpXznNHQr5qw2+jS/UBCseNrlMqNDVtqkhuP8fyJJDnRn0SseVYY/aE7n00VlQ7hzVENeiKx/g7ke5Uv7Z8uAumWX+Uayv2v1JJrdnlFYk/6HwR89AAYaG7b+3qTyU7b0quo/AgIGi6a76h3jRW3gVxFyFKduzF1AxkBUKvdWmfh5IefaDZzTORNUa2RQA/361IzMyHna1TIAKPdirEMX3j8zbBgnuwjioaCBZaqS/xO1VKOU+Gr8qVLm0zyz2cd5IDjKcyJ3l9TvM9Rd+1zLBKcXQRbMy33TOg5r4nF10cej7x"></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-08.html">← บทที่ 8</a><a class="pager-link" href="chapter-10.html">บทที่ 10 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

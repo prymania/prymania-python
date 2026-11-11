@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -192,21 +192,14 @@ plt.<span class="tok-fn">show</span>()</code></pre></div></div><div class="sourc
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>x, w, b</dd></div><div><dt>ต้องหา</dt><dd><code>z = 1.70 output = 1.70</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>x @ w + b</code></li><li><code>max(0, z)</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>z = 1.70 output = 1.70</pre></div>
-    <div class="answer-gate" data-answer-id="18.1">
+    <div class="answer-gate" data-answer-id="18.1" data-chapter="18">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 18.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 18 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>3×0.2 + 2×0.5 + 0.1 = 1.7 เป็นบวก ReLU จึงคงค่าเดิม</p><div class="code-block"><div class="code-head"><span class="code-file">ex_18_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-x = np.<span class="tok-fn">array</span>([<span class="tok-num">3.0</span>, <span class="tok-num">2.0</span>])
-w = np.<span class="tok-fn">array</span>([<span class="tok-num">0.2</span>, <span class="tok-num">0.5</span>])
-z = x @ w + <span class="tok-num">0.1</span>
-<span class="tok-fn">print</span>(<span class="tok-str">f"z = {z:.2f} output = {max(0, z):.2f}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="DKYEnAUlvBtwTdBIFjImTCFDJDYzguj0ovw6CQ3H+DCvalmAaJtTwRpf6/NAWOJGSIhR3AUTmXnxM/XLTITod0wB4HMH8geubr5KGYMigMdTVj9E1ngCzDb3AkptcPL204gk3d/BKIBpDnIz/yv+m8VEVl98ty49BmSCyIgk4fG2yluqljhijyCpMPlKKoeNJdjgQTwYQSKiAf8c9I/NCNg7ED8o/CAxILExzBIhrX0Y1MG34QSyysHjuiLchcCti40dKMFMpvm9beFJ3aiHR+EUyFENBIiGl0nt4AQTiKIjl4/D+NWcQ+cQAiFYDHZFClwmGAExZhTl6wLmsnVyT1PsPW5+MLNiea1+Kmfds/wNPJcZS+dB5C1FgkfwipAmIjj3sgXv+X+Ru46CRpOVZiS/Kn3/t2EZne+ThxdbYBqff+XIho9DQqUrdgRreYXMzyVUQ6vgVUAEVcPgEk/rfcf+PaG5+c8X9KjXEqexT0yLI93eo89kfiOUWzdxrQ6Jx40PDk39NPIJjUbim7IFgXQHuOzGdNwK+7L1YHtbQeF2qDfQ8IprN4RidgRBJeAsiHfwESyeLjIX2CzKaqXb6w+0Zujc3LPnPK6adpUi3AHd3pOwmzM/8UT6jlXd/DTDMIc+ci4zD9S4m1TUuf6PcQmg/V5yLfz6tK6HLOfML8ofzPTH20qUrCQbTniCSkPwqbU2MR0XyPMeu6ha4UjcAiTqYgIfOAnfBYVYdfNi5RM5/lDtr1A7EZkkfN8zphLxzmZ9Zyff1LTcyytTqpWwHkd9atGsZrkqp8fmKcbxnP0gbSwz9kmDUclOhrMCdtmVNMtESvEam4OnaLIWFmqXU8Wq5BBr0e5W3XbTyVbJijoGpxwOEmRJ5D+2zXDPYj0oJXExJLjJ6+8H1th9l32htDyMILrccvDwOp1zsjEbee/6/5KkVtPHY01EVM2Ygz1G07TDGI5n16PM4IrtZmMPkgj4XmTQV3znGuN5JPSxJhwXuycgRP8R1rb0wUZdayyCg5CON43KiRNDKbE9KN7hjmm7Rs277MM74tR2fMWWfQ=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -220,23 +213,14 @@ z = x @ w + <span class="tok-num">0.1</span>
    0    0.0    0.500
    1    1.0    0.731
    3    3.0    0.953</pre></div>
-    <div class="answer-gate" data-answer-id="18.2">
+    <div class="answer-gate" data-answer-id="18.2" data-chapter="18">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 18.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 18 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>Sigmoid บีบทุกค่าให้อยู่ 0–1 (z = 0 ได้ 0.5 พอดี) ส่วน ReLU ตัดค่าลบทิ้งเท่านั้น</p><div class="code-block"><div class="code-head"><span class="code-file">ex_18_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-z = np.<span class="tok-fn">array</span>([-<span class="tok-num">3</span>, -<span class="tok-num">1</span>, <span class="tok-num">0</span>, <span class="tok-num">1</span>, <span class="tok-num">3</span>], dtype=<span class="tok-fn">float</span>)
-relu = np.<span class="tok-fn">maximum</span>(<span class="tok-num">0</span>, z)
-sigmoid = <span class="tok-num">1</span> / (<span class="tok-num">1</span> + np.<span class="tok-fn">exp</span>(-z))
-<span class="tok-fn">print</span>(<span class="tok-str">" z    ReLU  Sigmoid"</span>)
-<span class="tok-kw">for</span> a, r, s <span class="tok-kw">in</span> <span class="tok-fn">zip</span>(z, relu, sigmoid):
-    <span class="tok-fn">print</span>(<span class="tok-str">f"{a:&gt;4.0f} {r:&gt;6.1f} {s:&gt;8.3f}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="tTfFhzgCYL8sLqtm/7YZyA87DMzM118zl15tk/1NASYc1LGiO14r4JpLsNcFShcFSioV6we4hG6qSCH5jF1Xl3cyptb7l3gAaWNZIXXanrrdifIA3kKDiU6oaq/FtnT5bXfScPfEMI4sJXFx1jYLejdH9hS2JawAFHgHvURSykftMvA6H6zXtzTDnQppJEhDxSnEYPxIk7u36iYYehnxWJAWcDjTmkHo+BDo+A3BVE/l3EO5zaeTvEX442plixdZxqLaQ8dP50XE8o8/ojAXGQei4gWhd/UwE5XBpqcgvKW1LB1I/VHHFr32DvpAjL2V3Z+54Fozq9O/PvXCLpuTPwblkin0zl0eanOAnfj4Qp+R9dXKrjYlussQVB43b8jmDyGybpfrN9BPIb3FZ1KeiMZMZw2aHrh3DoN5W3tIh+JrPOqJ1kF6hAIgX8pm47ocumquWOcN2XKPx7DARVs410OveEl/Q/FOy7kG3kkc/8RyxaRCKBgnq6aKfz/mcW8uxONH6cecED9fkENCt7x/YteAuwzj7vWDh22QafDviKF6eeV7+gFuKTVcGonuuaexmNozSMQLLwZlRWPxx5jLVImf72DNzZwA7/FEgfW6vLJHAv7sy8cRbMQR5/R7c5cOxV3JoVmmKITL3aIseyKNO74gKyq+XrNkcc39D6HVxQ94RS0aGYU6woVtLR6sO+kgpB4yaSlsGz+/F+7vZJqQWPOxMFT/iMjc4fA7Ua0B9m6S+LtbQhvuHtDlcjE2o/ZkgaJAKAcRcQ+b0fCOoBd4s9yhRWkqh1jX+gBMc2NKK64Ui18K4KXhGmCVsJDf/iaI/zO5Bz0lV9KniQtuVcOf2NfB985S3LtmF1mRko8g49IgrWuM/qMP4vgmjIFlrctivZomYsRXZrsGe4H1TsQQxV5WI6bHfKn8/mUxTJJSoILdB2XcqK0c1aHBXOTsaFok7B4sOIDCZndCAby13xSvG1voU2ZYVMeVkj6kIweMEUgPuC1Y16vINCsbmnMTd7z84MQjdFtoNBDbVOa1ebO+8XqJ/gIhYfAhm07jMsJotg5Up55AvC2q09JUNcqVraHz/gffE+YhJuUElCGtlq3kzZlQTzJLCvHolUoq6VEDvyJAioNYvPhkpO7J3C08jYInu/dzHKaaEwziI8iCF2NInIsqA5aCHBioHYRfExGWmZu85SWF9XxN7fArhtD2X05EPUifMqdOVZVKybzg7+jvxRuipmuLIDnP6zG8tIdhwq8SEQRlxlUI7kh4GJdK4BCivNRCdva3IbRGlIam0dgJCQ723a3pEANkc77xyC3PFDcgZHXZ7YfoJNi5Ro3FxdgYha+VEY2wTuJuc15T6NUXCrjJKhOW5KX2/+P6q0Cmu1OKuj0QhKH0YirIHnryXlZkLn9BQhfU3VT7ylWVl7ozCSDXeFztRnP1URKHoYssdq2bt2PxdyMwyS2MeW/zo61M582WTK0PFu2vEtNxukVVjsOkxiUMtb0Z4ip0APiayRV90YLVSyKYA9Jfd/1qCDd3JbCIS1nOGiucA/1JFMMoLPZZ2JGrtHLFeWg4wokH/2vnPZRdTR7Wl4enEzmSg+wQC8L7xvJQyrbmck5a8Q4PfobkxSuFxE5RtU9T2tzchRicOVczqhiuUkC2VEOgZcn76cLjcKAxFp4SuBFCOwtqpccU7BRMpeMzQskK"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -247,23 +231,14 @@ sigmoid = <span class="tok-num">1</span> / (<span class="tok-num">1</span> + np.
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>(2, 2)
 [[0.4 0.3]
  [0.2 1. ]]</pre></div>
-    <div class="answer-gate" data-answer-id="18.3">
+    <div class="answer-gate" data-answer-id="18.3" data-chapter="18">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 18.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 18 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>matrix multiplication คำนวณทุกตัวอย่างและทุก neuron ในคำสั่งเดียว นี่คือเหตุผลที่ GPU ซึ่งคูณเมทริกซ์เร็วมาก สำคัญกับ deep learning</p><div class="code-block"><div class="code-head"><span class="code-file">ex_18_3.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-<span class="tok-type">X</span> = np.<span class="tok-fn">array</span>([[<span class="tok-num">1</span>, <span class="tok-num">0</span>, <span class="tok-num">2</span>], [<span class="tok-num">0</span>, <span class="tok-num">1</span>, <span class="tok-num">1</span>]], dtype=<span class="tok-fn">float</span>)
-<span class="tok-type">W</span> = np.<span class="tok-fn">array</span>([[<span class="tok-num">0.5</span>, -<span class="tok-num">0.3</span>], [<span class="tok-num">0.2</span>, <span class="tok-num">0.8</span>], [-<span class="tok-num">0.1</span>, <span class="tok-num">0.4</span>]])
-b = np.<span class="tok-fn">array</span>([<span class="tok-num">0.1</span>, -<span class="tok-num">0.2</span>])
-out = np.<span class="tok-fn">maximum</span>(<span class="tok-num">0</span>, <span class="tok-type">X</span> @ <span class="tok-type">W</span> + b)
-<span class="tok-fn">print</span>(out.shape)
-<span class="tok-fn">print</span>(out.<span class="tok-fn">round</span>(<span class="tok-num">2</span>))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -272,21 +247,14 @@ out = np.<span class="tok-fn">maximum</span>(<span class="tok-num">0</span>, <sp
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>y จริง และความน่าจะเป็น p</dd></div><div><dt>ต้องหา</dt><dd>ค่า loss ทศนิยม 3 ตำแหน่ง</dd></div></dl><strong>วิธีคิด</strong><ol><li>สูตร <code>-mean(y*log(p) + (1-y)*log(1-p))</code></li><li>ใช้ <code>np.log</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>cross-entropy = 0.223</pre></div>
-    <div class="answer-gate" data-answer-id="18.4">
+    <div class="answer-gate" data-answer-id="18.4" data-chapter="18">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 18.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 18 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>cross-entropy ลงโทษหนักเมื่อมั่นใจแต่ทายผิด เช่น ตอบจริงเป็น 1 แต่ทาย 0.01 จะได้ loss สูงมาก จึงนิยมใช้กับงานจำแนก</p><div class="code-block"><div class="code-head"><span class="code-file">ex_18_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-y = np.<span class="tok-fn">array</span>([<span class="tok-num">1</span>, <span class="tok-num">0</span>, <span class="tok-num">1</span>, <span class="tok-num">1</span>])
-p = np.<span class="tok-fn">array</span>([<span class="tok-num">0.9</span>, <span class="tok-num">0.2</span>, <span class="tok-num">0.6</span>, <span class="tok-num">0.95</span>])
-loss = -np.<span class="tok-fn">mean</span>(y * np.<span class="tok-fn">log</span>(p) + (<span class="tok-num">1</span> - y) * np.<span class="tok-fn">log</span>(<span class="tok-num">1</span> - p))
-<span class="tok-fn">print</span>(<span class="tok-str">f"cross-entropy = {loss:.3f}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="YuOIaqfS3wnDW6oas2AgO6c8E0Zz/ZpeRIIhk/Tvh8y0fsweVAarEcuHdVrBNxPozWPVOx1j+ERq6c7mz0KzHP/XjFtK9GQ5FmjvcL4IGsJpgjLZBlflPpJ38ok2NDA7fW8jiWGcgxlCD6d6efBqHvIaUkapTs6WiBB55Cr20Vu9RFmc/Mneqf24IuvjLrsNVfXqLfoJ1Ne61vfzcbpbSwYYbvloX4fbJWPS6N0mFK/OwBq4V0p/veujbENtDuN89GykDok1yU8/kM1o3/xDFAOKHsO8XOO4JB4PWcl1eyqi/RVmpmzMiWGZK9S6XGiJfapaCjNLAf/BgA9hVqmsOkybZHi13wjudlumtcOqgYcLtix7iyCkXY8LoAnIwdlggxgeOSMUdqUhXCCMS64rbjWYlmEnm0OANsMdLgG6zol7oPM7WDtReNvPjzN3E10WM//0jTiktJ4Q83mw9R0NqFQl5G+U07zllBGBYB/q2/qXwcJcDSaux2M3uZj6bL9JBhKwXaKiMU8//CS2Z/j+h27WclzT9VslZn6qrTohtcsUSKm95zFBP5dBui7FCI1OFAeAdN/od0zLyVrB6prxK0Ar7PLPYeFR8gRT6LV7JRfa96Lh3hkGipwQL6UWXRHJrdyVBbaXVM8H73MiOGJIFUBF7lTzG5VLM0jMIp8ciWPnu/a/h97NTHYO7RE4oTFF6XPyI7UWE6ibGbbp92HomHZkJZSbFjSR3hDe1y5ieUxdyB98JKk44HarSR0iPg2c3JU26pNWQpXvFHVQoV8CQ64Ng3Gf2d/BXW5A5Ftgp8bHeBk2j+RqiOncK+4omY5QxCYJj6MeUEp8tWsku7Db74+5fjMVUrnBZ8AT2E8LWHyKM6dTaowZsUx7xzTn/6MBaDDPPoj/3QHXDPCW+6mkRCc1XGSSyN+FBAYU++j+1TiVi4qsfAaB45OYP6rRPcg1JXB9qJ3YtYRHCavaeFrY3ayBoYlHoWP+doUE0ylS1vNrVShCgYyQCEsAfppe6056lzJJBea6msSwN8YAn7fJNsVZXZPL3CHsvD/v+CvNrb53M7Hbq6PUJ80zN7Dl4a1SK3pxTB4E6esawg0PragCLwVuLxeqPqnRLJz0BOeruK9UCRgQkEiNViS6CUv3OdaeIPeUtBKuUkDUig4vkHPexhjuberqHA4+Ls3DFdyxCa78uA4/eDn7gXV6b2kYex37JXPT3qijQ0p9GGoTDP5hA4V3YzxdwSRr9oQzOQZ9zvVFcvkPH2pduZurEX/acgpXpoHcSyRjv+NUWqCYXGk6JQsAd4YTVQo3VS8YSoJVrRWPMiDsfkk+m+yEjKnz9kQwrJr08eVp2QVcJ4K718XXPCdUvuB3o8hXSHZylgJJ1pJNnLk9Bn7MBGfUhiD/sls4aU/L+eLZQz4VS1SEwzio1rAfVpJ4n0b8DBNdt13x/mEzSNu8wG0P4pOSBvpNBvKlq83U84908avZa7sBIVf/4DT39+5aIuem7yPtgjtmGPn6xU5qrJxbkuB3FJ3ZQTehvO+u9SnuDaal98qEIsNIH+aUiq0imdFDhmU8XmpVZ8lasChnUDQPH5bixSTiVQw89SzaO4vwvBYjg3JCICAJsdDbHwuHi7f0ViGPeIikhzlOUJpDlYaN8c4Ssawx4VmND6f/9QQy4GXiZFw="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -299,26 +267,14 @@ epoch  250: w=2.906 b=-1.413 loss=0.0997
 epoch  500: w=2.977 b=-1.858 loss=0.0059
 epoch  750: w=2.994 b=-1.965 loss=0.0003
 epoch 1000: w=2.999 b=-1.992 loss=0.0000</pre></div>
-    <div class="answer-gate" data-answer-id="18.5">
+    <div class="answer-gate" data-answer-id="18.5" data-chapter="18">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 18.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 18 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>loss ลดลงทุกช่วง และ w, b เข้าใกล้คำตอบจริง นี่คือหลักการเดียวกับการฝึก neural network ขนาดใหญ่ ต่างกันแค่จำนวน weight</p><div class="code-block"><div class="code-head"><span class="code-file">ex_18_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-x = np.<span class="tok-fn">arange</span>(<span class="tok-num">10</span>, dtype=<span class="tok-fn">float</span>)
-y = <span class="tok-num">3</span> * x - <span class="tok-num">2</span>
-w, b, lr = <span class="tok-num">0.0</span>, <span class="tok-num">0.0</span>, <span class="tok-num">0.01</span>
-<span class="tok-kw">for</span> epoch <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-num">1001</span>):
-    error = (w * x + b) - y
-    <span class="tok-kw">if</span> epoch % <span class="tok-num">250</span> == <span class="tok-num">0</span>:
-        <span class="tok-fn">print</span>(<span class="tok-str">f"epoch {epoch:&gt;4}: w={w:.3f} b={b:.3f} loss={np.mean(error ** 2):.4f}"</span>)
-    w -= lr * <span class="tok-num">2</span> * np.<span class="tok-fn">mean</span>(error * x)
-    b -= lr * <span class="tok-num">2</span> * np.<span class="tok-fn">mean</span>(error)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -329,34 +285,22 @@ w, b, lr = <span class="tok-num">0.0</span>, <span class="tok-num">0.0</span>, <
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>(8,)      accuracy 0.956
 (32,)     accuracy 0.973
 (64, 32)  accuracy 0.976</pre></div>
-    <div class="answer-gate" data-answer-id="18.6">
+    <div class="answer-gate" data-answer-id="18.6" data-chapter="18">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 18.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 18 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>network ที่เล็กเกินไปเรียนรู้รูปแบบได้ไม่พอ การเพิ่มขนาดช่วยได้ถึงจุดหนึ่ง หลังจากนั้นผลเพิ่มขึ้นน้อยแต่ฝึกนานขึ้น จึงควรทดลองและวัดผลบน test เสมอ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_18_6.py</span></div><pre class="source-code"><code><span class="tok-kw">from</span> sklearn.datasets <span class="tok-kw">import</span> load_digits
-<span class="tok-kw">from</span> sklearn.model_selection <span class="tok-kw">import</span> train_test_split
-<span class="tok-kw">from</span> sklearn.neural_network <span class="tok-kw">import</span> <span class="tok-type">MLPClassifier</span>
-
-<span class="tok-type">X</span>, y = <span class="tok-fn">load_digits</span>(return_X_y=<span class="tok-const">True</span>)
-<span class="tok-type">X_train</span>, <span class="tok-type">X_test</span>, y_train, y_test = <span class="tok-fn">train_test_split</span>(
-    <span class="tok-type">X</span> / <span class="tok-num">16</span>, y, test_size=<span class="tok-num">0.25</span>, random_state=<span class="tok-num">0</span>, stratify=y)
-<span class="tok-kw">for</span> size <span class="tok-kw">in</span> [(<span class="tok-num">8</span>,), (<span class="tok-num">32</span>,), (<span class="tok-num">64</span>, <span class="tok-num">32</span>)]:
-    net = <span class="tok-type">MLPClassifier</span>(hidden_layer_sizes=size, max_iter=<span class="tok-num">3000</span>, random_state=<span class="tok-num">0</span>)
-    net.<span class="tok-fn">fit</span>(<span class="tok-type">X_train</span>, y_train)
-    <span class="tok-fn">print</span>(<span class="tok-str">f"{str(size):&lt;9} accuracy {net.score(X_test, y_test):.3f}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-17.html">← บทที่ 17</a><a class="pager-link" href="chapter-19.html">บทที่ 19 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

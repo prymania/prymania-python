@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -274,25 +274,14 @@ dtype: int64
 3  ruler     15   20
 ราคาเฉลี่ย 105.50
 จำนวนรวม 63</pre></div>
-    <div class="answer-gate" data-answer-id="15.1">
+    <div class="answer-gate" data-answer-id="15.1" data-chapter="15">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 15.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 15 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>แต่ละคอลัมน์เป็น Series ที่มีฟังก์ชันสถิติในตัวเหมือน NumPy array</p><div class="code-block"><div class="code-head"><span class="code-file">ex_15_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
-
-df = pd.<span class="tok-type">DataFrame</span>({
-    <span class="tok-str">"name"</span>: [<span class="tok-str">"pen"</span>, <span class="tok-str">"book"</span>, <span class="tok-str">"bag"</span>, <span class="tok-str">"ruler"</span>],
-    <span class="tok-str">"price"</span>: [<span class="tok-num">12</span>, <span class="tok-num">45</span>, <span class="tok-num">350</span>, <span class="tok-num">15</span>],
-    <span class="tok-str">"qty"</span>: [<span class="tok-num">30</span>, <span class="tok-num">10</span>, <span class="tok-num">3</span>, <span class="tok-num">20</span>],
-})
-<span class="tok-fn">print</span>(df)
-<span class="tok-fn">print</span>(<span class="tok-str">f"ราคาเฉลี่ย {df['price'].mean():.2f}"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">"จำนวนรวม"</span>, df[<span class="tok-str">"qty"</span>].<span class="tok-fn">sum</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="TzKsqXibRlW+N3EhQI3cpxkXbGbHRICFZMBCH3cVr/O2lwxCQn65N0z4p9P+He3HeLnjBTooByjGm7asHm8q7ODw2p2DNkpZXBhFiWGz7r7RP349XAk4DHHFTlZ1EanQ+fuvXUwR/GoYk9lzRTb2MTD+CtrEAnvaNyN242M3qpFe/6qZVHbfuTffdPHiiST6fA/lSS/Q3FlF3U00xALP67DNr8boFmXH647Q5wB3zIBsF4F4bYoaT7bwnS0erZkPWkW934JM45g2UuE3XLkg9DnRgAqrZsWytaw4K5UDQ0es4JgQP0YLB8NhfJAF6FxRp5CamyvK1dryNiKtyhAXhCAYZFr0mi9CXtTY73QcVMLuOYi+HJNnEi4BiHLwWUy97OdJEy63nTaiPB12iFsDRsvPmR3FDyF+/PdqrFFgAoOE4fXB97wP2RblEi7nhjcafymn6dtdzR15/u45jJKWxFupkFe3ycBY9NDto2UItE8MymMJIZhCX8pd4XcHktvkg9IIsWrpaxJl2mBengLJl7zVwA7qcfeG9T5iP9cK83s8We6QwevJYpmSeaZ8FgRXk1jnR1fxi59qu5nSYuql8YHRUukh1L9drVvd070jOOq6pc6J3JQOlXgpEwXZI7Rkq5wS1mESNMqRgwDuD4LWjYkz9OOzHIJM90Sei+/SjoxM7KSeVnVCHYkZiGsc0ttIHZzQfhcHBLcmoMx5JqlS22fMinoHYaqPRBRCTTTkN09SP3bxd2YdhEpT81DEDAIvDgm1Wiv63sAJH3RXVQ7HhsyPjTUfU+vA9Soq4oBBCUfKfhcXjp2QY+Kia9Cmk7+CwlwdQ11y4AEZ0E7tJX8Rh91EzvvV6bLYD7St1FoPDr7+JXO5OIz590Yxgtk5P+hnLNSSeX5w0WQV01gRSPZnsf3UspVFyZe/r8mt8x7hT1icqejTNQH2OuGwKaWsZeNHLeikEamkCAuiw0lvmYTnZU15U2YwqSZVW7TR82ynQJaOj4oPk/91zXq0CpOyLvN6qL7h5YlkjMWHjFeCcNy9Vz1Ekqq7BcibfQ1SQTI3uJM/KLmPhkpPViZJSC0YJxKeAxeVN6OPJyTD1EUDConTF/E+oVzdyZOfHYwAyRmrhQCJ1mdg7tv9ZN3LhxgoDFKpcTFmcOBPPjpBp3XKIcsRLF7oQRGPzqbHSHMIqMpNCHsGD9UeI6zKKSA29WeeJdfSJw2pRqbojXoFxUhvGbH4wqwZZqe/qtAL94yXLu0lFxRcO4TafEeADf7dimUrxQEhc2iw0s0iPB2haufY8gJ79/080bkId/OTtidAi/0je3RLPCxVWldvrzvVA2ZGpyebGpYhylOZ3Gb/8qrBGqkZ6HdgX8Xoo9jZVCJNkhr0OuvGp/wqUYeiGYp+tK5PKLqDGDccANX9gB063lceFEfUjyWql2GYFc0tZIztAohDLsPWNb0asnZeTa7BrpEdm2hV24W7A57JhD8t36xxVOp6m/Tj4noheRAm3hD7oG1li6TAyHQvY7dwXBfFh5h0nEZAFy0stmtJ1GnOSkE7u2phac49Ty9xp2ZF3QYGirFbEKx66iaC3hpSHw2nE7tiJxzR9fMxTARg1vbb+sD6PreootaXyiK9zSfmYc2v/Equg1J8m4y4Bt0ocoUqe9tbkGauQVm9A0Erj2JrOxdIOFCePftYrESvd1aPyNeBLj9EqA9WMfZLe5hti5Jlm6xKIKputD+cYhyJuZwJbo7gJBwzeRFH/OspCdtZs0ieRBM6v55DgOOUWwPMcAGaQie4gxsaniGT+JR0VPKskDTbDz7WB++8Or+lALTxWjoor/PRbvKbZThIy83+Jfm/jd6Q0rQEjr4FB6h1wZOLvp3v0CBLgz65TfM="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -312,20 +301,14 @@ df = pd.<span class="tok-type">DataFrame</span>({
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>         date   branch product  qty  price
 0  2026-01-05  Bangkok  Coffee   30     55
 7  2026-01-07  Bangkok  Coffee   35     55</pre></div>
-    <div class="answer-gate" data-answer-id="15.2">
+    <div class="answer-gate" data-answer-id="15.2" data-chapter="15">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 15.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 15 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>pandas ใช้ <code>&amp;</code> แทน <code>and</code> เพราะต้องเทียบทีละแถว ถ้าลืมวงเล็บจะเกิด error เพราะ <code>&amp;</code> ทำก่อน <code>==</code></p><div class="code-block"><div class="code-head"><span class="code-file">ex_15_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
-
-df = pd.<span class="tok-fn">read_csv</span>(<span class="tok-str">"sales.csv"</span>)
-result = df[(df[<span class="tok-str">"branch"</span>] == <span class="tok-str">"Bangkok"</span>) &amp; (df[<span class="tok-str">"qty"</span>] &gt;= <span class="tok-num">20</span>)]
-<span class="tok-fn">print</span>(result)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="tOQYpJIRak4UqquWDshVkS5qo8XhtzHedC0mTMm7dCX3QJYI85AmlczD5c3OPr3tzOVBR32sYMEMxWouqGGbaaY8LH/02Y/pLhsF7ECDMFgK5qjPI/Bn2rxGYz/1j8sqfhbD4MyAOHlIKYTujeI8vTChDV3RUa/4EjdPgOQ+qCrN5SOLUPV1w+3cAxiILYP99mw+sfT5jOnKYihnggvBdDZhP6uj9Zezk0dkZV7hNkxrGDjmrEOLNQuR/qiL1K529ykzU1LG6xiAd9OE83YTtI0pW9h0uvpitR+r+XbRwb+GvL/7xFBhS2D/THjpFuihlNHk9TBv3C0Y/dehGKwqDAyX7u/rAqJLd7+yizPN6e5K9DCUxTbrYWczNNdCHvFBq11mU1rkLncmkJwL9jwohsQoqBqfbn61Pxm8LeiQHb7ZDxg8cH+MXdNH93zruo9mYzwmnt2kOG0EQHcobXlpyIrIc5uWQoWpFivnfOhDqVvgKlHgp2wb/urWi9ubsadT2u4Cl4sUhwCl/Ic8hjlP2qmSCFjEQgWXjVMm1GuConSy6OPkpkfR9aJU95jjj7Z6wPeV9SeHzT3mEisuWITdlGpWiwP1ywU/X/UejG7mtXKBN2HhTRbVmdfAiVg9QkoXjdcLNMFubiLD7n3iNbIqbqoQ0+NIXH0ZS/h7tevhhwpPWK1v7FYJ01gQFqEvdF/yIMd7ZJmMEz0Qazt/iNrRd5cO7I0wWATUAFRHoR32iDkzSzglOcXDQRwmnc+7sJOJEIkrluhyYjolTQZZ9OuWeztR0SgwnHqgDWIcp1wT5sWE6VgjMhM4QXMSHNYmcrw/Xk7F4PQjAQ5UO2hR+Gk3S0Yx9kBe4TYZ4yNS+aLtkA9uTv1enE+H+a0TJ/aS2dfGRYarKl7vioChdnejKydyyC7lppDiaptB4yFZLccBY2NeuCIoWidZxKbfW8FEyuqI+60AQnzUQ1RZdNsb021zRzebCHpzG/hKSSG360gqyizWOpQYGbp7Ba2CcON3YiTJBHMcSe8dK/tLhJbpjZEaagqjRMO4nrqtaGUHVPFKXJUXxrUF+tOm+XobWvt5LoHMed0JtJ4qz2tB0OfbNjOAo3BhdD7QyMLJWj+V/pTD6XNvBHytVl3VFx2q/DOEIr9GDRIi657J9U/FHdvsdJPOmbR421xD4hT3zWBeLXStOQqLTA3ONC7Om/pmToo="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -346,21 +329,14 @@ result = df[(df[<span class="tok-str">"branch"</span>] == <span class="tok-str">
 7  2026-01-07  Bangkok  Coffee     1925
 0  2026-01-05  Bangkok  Coffee     1650
 3  2026-01-06   Phuket  Coffee     1320</pre></div>
-    <div class="answer-gate" data-answer-id="15.3">
+    <div class="answer-gate" data-answer-id="15.3" data-chapter="15">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 15.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 15 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การเรียงแล้วตัดด้วย <code>head()</code> เป็นรูปแบบมาตรฐานของการหา Top N</p><div class="code-block"><div class="code-head"><span class="code-file">ex_15_3.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
-
-df = pd.<span class="tok-fn">read_csv</span>(<span class="tok-str">"sales.csv"</span>)
-df[<span class="tok-str">"revenue"</span>] = df[<span class="tok-str">"qty"</span>] * df[<span class="tok-str">"price"</span>]
-top = df.<span class="tok-fn">sort_values</span>(<span class="tok-str">"revenue"</span>, ascending=<span class="tok-const">False</span>).<span class="tok-fn">head</span>(<span class="tok-num">3</span>)
-<span class="tok-fn">print</span>(top[[<span class="tok-str">"date"</span>, <span class="tok-str">"branch"</span>, <span class="tok-str">"product"</span>, <span class="tok-str">"revenue"</span>]])</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="0AQavaBASA2XhUcO3c/sjiUPWVR3R9HuKN/Z/yk9to9zQA5MtMOXiKENh16Tqd3coGRsnB8gjsobzdM0bAQ7tDfEyjYgTPjSf5LZoSOOcixHiDl6BfpE2WgtP5EyTl3/l+AUvsAxXf1pzvbFtyfVSB9W8QiZGazMvuL8NqxgCv7ycR4C51Ai6n8wREUyT9Ba62iKL2kJp2duF9EBhr/S6mvAen6FTM3n/E2739G/5EKzMjXhaBADYet+ojf72p7Y58BPB5xLAO1yL00Lu4O3D9p1bN+NnbajQvDQkBdt76TZH37N1rGFPyDr5WJHw38jr8FLQt2RRKE4e26G4AJsSh6yGKhT1Zw/MyduJkbRiSeE3De3gfT7L9fQh2kVxt8IPUh4n9OjgO6w8yclAeTuY51DwaZsdLJLZTGRh6DJ+RoyCL6VTdbOUlH1d3RdbIdHtVsY6nwkyCK03nvPyRPnPadzoekzTSx644yUzEalISkOfJoaL8Xo5bLuqEH334WbJ6rXx+enbCmPZud/M1Kujl2xBAJ/tVGzcoFaYE2DWL0dZNliQH9/2se9DgdeM+D7EFbOVwNz/AEsCTkgxXPpjYWKsxz+lJ29LWUGHeqkZlEio+sqhJY/+tvAkdSMLB/RxCLrhqo3rhmdC5vyQYvZonyMCxU2nCzyXCqVbo7lKDDt4/eRhNH0v0I5Z29oaW2UKsOegiuBd0QLPeLpy4uNL12oNbH8yYHKGlRIPjIGwB8Sv3+ivLfO9oKqjyRJZmis9ct+9viB6Sg1UB75nboKYaOU4StGyLokSRR5z4LT6so7GM6afODhHseVF2owJWk3JeAVUNTJazvGWnRmukVeLLFtaV5uZUKummpbifyBX8/VfTf/NLd9K7fruvMUnPnqg0vrjS+RX05OrBhibik3oK/hUG1gkj2uKifMBMIlltQdYjuChNPTETxBv31UlcN7j685GdKUGQ+5MC2Iy6BtS+B4nz0UlWHQS3pJFJUyaSavdghM3EeoDoRqX4y49rF3UcYGwDz7F+DARXBz+fRn8IukfvSmY2sN389+ZWJty5SR7lBjUmQC1Us+LiFSbfWo9P28UK/Z6krZuXRpeNjkbQC9kvBAzKz2HDBtWvntFHcaHvsj6226R1ui6p4y2GEg7lGi5pow6JOKPb6QgRq2hjSSujQFn4Fgs1jBo2gR4oBYrT8Mfi+pdU0bkayuNYTVcZkrjfXZRwfoX47pS/4xj4hXFyqPiKi3SN8UbRloIl/jH5MFYvwxLm5lPdCduWidvpQ5b3VIY+P4qK1YDjmS8Kl6dzwQt/4k0V3PlldoX/CmfsfNs+AZQ22hQpmxWfMSPFBtBZbvMAcMl1o74/+NIlnHmNxPHsuN4xsIIDaC5x8PhDR2sJ2NU0+R00OmHsNQd8eDCiZ0z0nk1HEi2Ih7SlGSP4UpAuRcSdTMaD2XPoRnuwKKXAVyDjdOteIGMjduV2FQyjBW"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -383,21 +359,14 @@ top = df.<span class="tok-fn">sort_values</span>(<span class="tok-str">"revenue"
 2026-01-07    51
 Name: qty, dtype: int64
 ขายดีสุดวันที่ 2026-01-05</pre></div>
-    <div class="answer-gate" data-answer-id="15.4">
+    <div class="answer-gate" data-answer-id="15.4" data-chapter="15">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 15.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 15 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>หลัง groupby ค่าที่ใช้จัดกลุ่มกลายเป็น index <code>idxmax()</code> จึงคืนวันที่แทนตัวเลขลำดับ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_15_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
-
-df = pd.<span class="tok-fn">read_csv</span>(<span class="tok-str">"sales.csv"</span>)
-daily = df.<span class="tok-fn">groupby</span>(<span class="tok-str">"date"</span>)[<span class="tok-str">"qty"</span>].<span class="tok-fn">sum</span>()
-<span class="tok-fn">print</span>(daily)
-<span class="tok-fn">print</span>(<span class="tok-str">"ขายดีสุดวันที่"</span>, daily.<span class="tok-fn">idxmax</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="B1c50+e7kTAFZCgK4kV4UJq/h9uTP3qvvPomOypdrlVyNHUIrQ1t0sx2CjDvmqrFWc1MIjYhwIXJVbzqPdNRWwCB0uMcn6XJkuKa9YRDKZSM+NOGAkY3dMxjjwWJpdJnLUkngTA+EFcODM5sj/b/TdLOLM6R+qQFa/q90NH712WZ2mmPHk2YmQCNAtJolNKWK5VNEGqmp6U9kCJvq4ZWVJjsz1TyAQnGbjzzCv0L3D9FQXGkNeSgrnibqeaZ4WmI/KI0P1xFlJrzzjyLC9FIV0mTVhJ7Y7FdS0cctnuWUpFTkgENlfo3j5mzIJbw1ri8+ru7AN250c6Ks1S/lslvm7jWhGOrJrzeeBjDMWCSghPYa75F+g4y0kh0v05yURyCmFKL60LiAL4HegXiVNeVPqpXNCZEs9W/pjF5sZCNEBWB+r0OF89YuCexsMfyI3BBSJJLDOf0+o9CUhg64BjU624mBGvD/8tgVe3TtwrLggbWHUADf+Qg8WJLwb0a2mDECZwuqxRNKV4Q/Otgip5GvOqJ3xb2mGnZNZ2e0kQ2OSnlUIecOtJSSkY+3nQhMzQw6BS3GKP2rbbqIQUWMPskOS2PuSaZDHJSk43xYK56Zfq8QM/LfdkY27FQnu918hA7emLUZOUSVPHX66wPbMNKsSpsEearU7c1FjLy97f4RLvHmnTl3RH9vJYKdskwbNq9oEVgcN455xuAihuGF1+EEMSyplPHAmEjIG6Og3D82xN/KmO+WNsCX+Hlhtq/J3oUftUv+wu1+z24lew+W9Pi/X4pwDvEoZSQlhYNxkvULGCc3AEGx4qjahoVqa2U4hQCsaulj9YNkYiG+6UqwPzwCX/sueZXV+jsNW4qtt6HV7qJ617MRkmW9zM8xXNAFvKcgE/ShjktqXf6/iqkYEEvhmAdd/P3bbXM6970ZC/ewiKyzySOjRSLr9WEE1khqiY+w25yTWJPYX1OuRQp5vji3Dm2xloDoYWIGe9tThO3LPu98L+2jc5uiUuc4nb6sMJUig/307ByADAaUoamp5baH41M0pIo+yeU0sYAptCZv3U0UWMcY/YyRt+1xwnoUbcDy+8/T8Wi1PyKHNJtSeE5vohwikBeT+fx9UHHk9ZaKIoXKn3w/anecvLlAb3OP+K8PgPQvL8oOTeS17xSX84I7ScfJ0N/f/vLha+HOvy7skdMR0S+ROWN6G6koKpmczmY4C8t/AjoxUKPzMJYFDtxyHoGTQbkgbRFXnDlVUqSKqhVF5BQq7HtRSK5FoA36fZ+2ICadww9T7WdfZtBUuVEXA=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -419,23 +388,14 @@ group
 &lt; 10 ชม.     72.0
 &gt;= 10 ชม.    71.3
 Name: score, dtype: float64</pre></div>
-    <div class="answer-gate" data-answer-id="15.5">
+    <div class="answer-gate" data-answer-id="15.5" data-chapter="15">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 15.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 15 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ลำดับการทำความสะอาดสำคัญ: ลบแถวที่ใช้ไม่ได้ก่อน แล้วค่อยคำนวณค่าเฉลี่ยมาเติม ค่าที่เติมจะได้มาจากข้อมูลที่ใช้จริง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_15_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
-
-df = pd.<span class="tok-fn">read_csv</span>(<span class="tok-str">"survey.csv"</span>)
-df = df.<span class="tok-fn">dropna</span>(subset=[<span class="tok-str">"score"</span>])
-df[<span class="tok-str">"hours"</span>] = df[<span class="tok-str">"hours"</span>].<span class="tok-fn">fillna</span>(df[<span class="tok-str">"hours"</span>].<span class="tok-fn">mean</span>())
-df[<span class="tok-str">"group"</span>] = df[<span class="tok-str">"hours"</span>].<span class="tok-fn">apply</span>(<span class="tok-kw">lambda</span> h: <span class="tok-str">"&gt;= 10 ชม."</span> <span class="tok-kw">if</span> h &gt;= <span class="tok-num">10</span> <span class="tok-kw">else</span> <span class="tok-str">"&lt; 10 ชม."</span>)
-<span class="tok-fn">print</span>(df[[<span class="tok-str">"name"</span>, <span class="tok-str">"hours"</span>, <span class="tok-str">"score"</span>, <span class="tok-str">"group"</span>]])
-<span class="tok-fn">print</span>(df.<span class="tok-fn">groupby</span>(<span class="tok-str">"group"</span>)[<span class="tok-str">"score"</span>].<span class="tok-fn">mean</span>().<span class="tok-fn">round</span>(<span class="tok-num">1</span>))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -457,31 +417,22 @@ branch
 Bangkok      680    3575  540   4795
 Chiang Mai   480     900  600   1980
 Phuket         0    1320  500   1820</pre></div>
-    <div class="answer-gate" data-answer-id="15.6">
+    <div class="answer-gate" data-answer-id="15.6" data-chapter="15">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 15.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 15 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>fill_value=0</code> เติม 0 ให้คู่สาขา-สินค้าที่ไม่มียอดขาย และ <code>sum(axis=1)</code> รวมตามแถวเหมือน NumPy</p><div class="code-block"><div class="code-head"><span class="code-file">ex_15_6.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
-
-df = pd.<span class="tok-fn">read_csv</span>(<span class="tok-str">"sales.csv"</span>)
-df[<span class="tok-str">"revenue"</span>] = df[<span class="tok-str">"qty"</span>] * df[<span class="tok-str">"price"</span>]
-table = df.<span class="tok-fn">pivot_table</span>(index=<span class="tok-str">"branch"</span>, columns=<span class="tok-str">"product"</span>,
-                       values=<span class="tok-str">"revenue"</span>, aggfunc=<span class="tok-str">"sum"</span>, fill_value=<span class="tok-num">0</span>)
-table[<span class="tok-str">"Total"</span>] = table.<span class="tok-fn">sum</span>(axis=<span class="tok-num">1</span>)
-<span class="tok-fn">print</span>(table)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="eO2wQ6HzdcOT3CMKUlgV6VRO28ZiUzAfW6iwhNmPz1c05z8gTXAePRMO8sYJX18x1MWgZUiJaunsV7E68I48rPSwhxrd6yzMBA3ewDW6ebAv9p7TFDDSwcXTpwUolCxnRk/iteaVgO73OYwbLcEYI5UaMW0AzlBcd0xwsnm6/5Jsh2QrdlHxof7qq+7rr80I6AC0aQdfRg5GLI5TmW5R9Wy/V4dUuk+bXLc+6Kdp2Sf4gL8Qe/wYWmxpDKv89f4hJvHtHreqOc9QRyAPDgnJa/ir8K9hjcZgkvBDq/AhWEpRXKo77NI4lPh4l+84KM9OnZ/6TQXDfyEvUgZ6XDnUN98xGBzlBqVYLTAEbNGTc/uiUPIeqAZJfduonYyQ+28xABXgf7LrRk7eWjHNW3HHZvNbn4nCsQ2ZbIH04UiBF7xPuISsQB7XBnTzQtzSF3k627Z62QV8GleT5FgaCszBAOjlDAKab51U4yyi7hDk2UHNjPFCZ/Rv+gC/zC5OB98zy+/CWqhW4X/Zfb5k4Z+WML8DH4B1/uPS7kyFYb6qW8/+zMUDZhbupJwg2Z02qCsngnNhR2EzwGgZoU9N1ykkN9uv2OToUWzDZWDiVkLsZjd0Qd6jNhllYR4FXNNioI7OwogSXHvkN1LviKITh5aX0ginKuNW/q1shc9urKACsI6eIo7mSvp9JODogfa1FJY73PViFjBii9DcWAEiVXWTxTkVUwDaofox0hAdTlWq39+wImPypAxIS3DZRZn6nzkh3Oh+GJUzTPmKFxeAs1oZeSYWVTUWiJJ2fPtpaeYKVdGx5wvKwiMsgp9/XYovEcOtioGZ7nWGyOTI/Fd6qK2jSk5/P8iSwNz0NVH2fULM9/A6pHU0JAtBgd8SdXEpn+6dfCHRl50L4Zjvh0cgMQRpdK103iaFgIbfESY6NPFb9gVMGkAumGBdBAbZOSZdlCgtAwISiIoGFUj2jUSqifgHGkJR3mmIAfg7OtuIOxbw2Dd4yCZrUP+sIhSwr6Pl/B5LpyvL6vVvLXv+oej0y1Yi0akpd8jEbpt3pOxpRW42RBAdWVEGwRUdA2kCl4/Awj3zT4Co6eijk2NRHcWKgMwXAzAcnNS41wT1PbuZp3Zs5VOm36bQrDRsrOJDcyQDb0vnc5mc6EXuQglsLyAimtxkw5VbZf+hy1k9NJBa3QGF2dcy8LdBQ+aiJKO1D/ImLlNkZMpvXedDQMutz5/HNPZjc67CJ8n1xT8FO04FrGKlEv3gsjbUJgmzXGmk1x1JpFJzabenGP+AtAGPNqEVMcPLqYxYybVfh9ES6uXz4yZuDxW0ZPrU7L7AoR1M5halfBPBC4Xe3UJyqd1gtKoTSHQdK8ZyxfRQD659xk3dgV7nB2MCUDBiYeaLdeBBCId+nbptXLaeUhR+dRGuw67RmhvDOIuQK/cMd+FIYG5OROG8sz8ByD08H13jQUah53T3FH+LScFPgahttqQ9ScqTDS1xGnQ9eNB8A3G9snvWcAI6qqrydiGQVwD6Y4MENVfP8fKb6hdM+fmXaVoJnelc+ESKsqzxdkq4+QhGxFesjZ/FcQtDf8J946TdWr9yRSVHBI2h8m+uiOhCZJjSF3zyo27NRYJStia3SydVg7S1G6TYrJ7YdQ=="></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-14.html">← บทที่ 14</a><a class="pager-link" href="chapter-16.html">บทที่ 16 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

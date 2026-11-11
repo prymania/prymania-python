@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -246,27 +246,14 @@ sys.<span class="tok-fn">exit</span>(app.<span class="tok-fn">exec</span>())</co
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ข้อมูลของตัวเอง</dd></div><div><dt>ต้องหา</dt><dd>หน้าต่างที่มีข้อความ 3 บรรทัด</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>QWidget</code> + <code>QVBoxLayout</code></li><li><code>addWidget(QLabel(...))</code> 3 ครั้ง</li><li><code>show()</code> แล้ว <code>app.exec()</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · หน้าต่างที่ได้จากการรันโค้ดนี้</strong><div class="gui-stage"><figure class="gui-shot"><div class="gui-titlebar">About me</div><img src="../assets/gui/ch19-ex1.png" alt="ภาพหน้าต่าง About me" loading="lazy"></figure></div></div>
-    <div class="answer-gate" data-answer-id="19.1">
+    <div class="answer-gate" data-answer-id="19.1" data-chapter="19">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 19.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 19 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>layout จัดตำแหน่งให้ทั้งหมด เราแค่เพิ่ม widget ตามลำดับที่อยากให้แสดง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_19_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> sys
-<span class="tok-kw">from</span> <span class="tok-type">PySide6</span>.<span class="tok-type">QtWidgets</span> <span class="tok-kw">import</span> <span class="tok-type">QApplication</span>, <span class="tok-type">QWidget</span>, <span class="tok-type">QVBoxLayout</span>, <span class="tok-type">QLabel</span>
-
-app = <span class="tok-type">QApplication</span>(sys.argv)
-window = <span class="tok-type">QWidget</span>()
-window.<span class="tok-fn">setWindowTitle</span>(<span class="tok-str">"About me"</span>)
-layout = <span class="tok-type">QVBoxLayout</span>(window)
-<span class="tok-kw">for</span> text <span class="tok-kw">in</span> [<span class="tok-str">"ชื่อ: Hobi"</span>, <span class="tok-str">"สาขา: Computer Science"</span>, <span class="tok-str">"งานอดิเรก: ถ่ายภาพ"</span>]:
-    layout.<span class="tok-fn">addWidget</span>(<span class="tok-type">QLabel</span>(text))
-window.<span class="tok-fn">resize</span>(<span class="tok-num">260</span>, <span class="tok-num">120</span>)
-window.<span class="tok-fn">show</span>()
-sys.<span class="tok-fn">exit</span>(app.<span class="tok-fn">exec</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -275,48 +262,14 @@ sys.<span class="tok-fn">exit</span>(app.<span class="tok-fn">exec</span>())</co
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>คะแนนเริ่มที่ 0</dd></div><div><dt>ต้องหา</dt><dd>กด +1 แล้วคะแนนเพิ่ม กดรีเซ็ตแล้วกลับเป็น 0 (ภาพ: หลังกด +1 สองครั้ง)</dd></div></dl><strong>วิธีคิด</strong><ol><li>เขียนเป็น class เก็บ <code>self.score</code></li><li>method <code>add_one</code> และ <code>reset</code></li><li><code>connect</code> ปุ่มทั้งสอง</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · หน้าต่างที่ได้จากการรันโค้ดนี้ (จำลองการกรอกและกดปุ่มแล้ว)</strong><div class="gui-stage"><figure class="gui-shot"><div class="gui-titlebar">Score</div><img src="../assets/gui/ch19-ex2.png" alt="ภาพหน้าต่าง Score" loading="lazy"></figure></div></div>
-    <div class="answer-gate" data-answer-id="19.2">
+    <div class="answer-gate" data-answer-id="19.2" data-chapter="19">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 19.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 19 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>object จำค่า <code>self.score</code> ไว้ระหว่างการกดแต่ละครั้ง เหมือน class Counter ในบทที่ 12</p><div class="code-block"><div class="code-head"><span class="code-file">ex_19_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> sys
-<span class="tok-kw">from</span> <span class="tok-type">PySide6</span>.<span class="tok-type">QtWidgets</span> <span class="tok-kw">import</span> <span class="tok-type">QApplication</span>, <span class="tok-type">QWidget</span>, <span class="tok-type">QVBoxLayout</span>, <span class="tok-type">QHBoxLayout</span>, <span class="tok-type">QLabel</span>, <span class="tok-type">QPushButton</span>
-
-<span class="tok-kw">class</span> <span class="tok-type">ScoreWindow</span>(<span class="tok-type">QWidget</span>):
-    <span class="tok-kw">def</span> <span class="tok-fn">__init__</span>(<span class="tok-const">self</span>):
-        <span class="tok-fn">super</span>().<span class="tok-fn">__init__</span>()
-        <span class="tok-const">self</span>.<span class="tok-fn">setWindowTitle</span>(<span class="tok-str">"Score"</span>)
-        <span class="tok-const">self</span>.score = <span class="tok-num">0</span>
-        <span class="tok-const">self</span>.label = <span class="tok-type">QLabel</span>(<span class="tok-str">"คะแนน: 0"</span>)
-        <span class="tok-const">self</span>.plus = <span class="tok-type">QPushButton</span>(<span class="tok-str">"+1"</span>)
-        reset = <span class="tok-type">QPushButton</span>(<span class="tok-str">"รีเซ็ต"</span>)
-        <span class="tok-const">self</span>.plus.clicked.<span class="tok-fn">connect</span>(<span class="tok-const">self</span>.add_one)
-        reset.clicked.<span class="tok-fn">connect</span>(<span class="tok-const">self</span>.reset)
-        row = <span class="tok-type">QHBoxLayout</span>()
-        row.<span class="tok-fn">addWidget</span>(<span class="tok-const">self</span>.plus)
-        row.<span class="tok-fn">addWidget</span>(reset)
-        layout = <span class="tok-type">QVBoxLayout</span>(<span class="tok-const">self</span>)
-        layout.<span class="tok-fn">addWidget</span>(<span class="tok-const">self</span>.label)
-        layout.<span class="tok-fn">addLayout</span>(row)
-
-    <span class="tok-kw">def</span> <span class="tok-fn">add_one</span>(<span class="tok-const">self</span>):
-        <span class="tok-const">self</span>.score += <span class="tok-num">1</span>
-        <span class="tok-const">self</span>.label.<span class="tok-fn">setText</span>(<span class="tok-str">f"คะแนน: {self.score}"</span>)
-
-    <span class="tok-kw">def</span> <span class="tok-fn">reset</span>(<span class="tok-const">self</span>):
-        <span class="tok-const">self</span>.score = <span class="tok-num">0</span>
-        <span class="tok-const">self</span>.label.<span class="tok-fn">setText</span>(<span class="tok-str">"คะแนน: 0"</span>)
-
-app = <span class="tok-type">QApplication</span>(sys.argv)
-window = <span class="tok-type">ScoreWindow</span>()
-window.<span class="tok-fn">resize</span>(<span class="tok-num">240</span>, <span class="tok-num">100</span>)
-window.<span class="tok-fn">show</span>()
-sys.<span class="tok-fn">exit</span>(app.<span class="tok-fn">exec</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -325,40 +278,14 @@ sys.<span class="tok-fn">exit</span>(app.<span class="tok-fn">exec</span>())</co
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>องศาเซลเซียส เช่น 37</dd></div><div><dt>ต้องหา</dt><dd>ป้ายแสดง <code>37.0 °C = 98.6 °F</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>setRange(-100, 100)</code></li><li>signal <code>valueChanged</code> ของ spin box</li><li>เรียก method อัปเดตครั้งแรกใน <code>__init__</code> ด้วย</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · หน้าต่างที่ได้จากการรันโค้ดนี้ (จำลองการกรอกและกดปุ่มแล้ว)</strong><div class="gui-stage"><figure class="gui-shot"><div class="gui-titlebar">Temperature</div><img src="../assets/gui/ch19-ex3.png" alt="ภาพหน้าต่าง Temperature" loading="lazy"></figure></div></div>
-    <div class="answer-gate" data-answer-id="19.3">
+    <div class="answer-gate" data-answer-id="19.3" data-chapter="19">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 19.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 19 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>valueChanged</code> เกิดทุกครั้งที่ค่าเปลี่ยน ผู้ใช้จึงเห็นผลทันที การเรียก <code>update_result()</code> ใน <code>__init__</code> ทำให้ป้ายมีข้อความตั้งแต่เปิดแอป</p><div class="code-block"><div class="code-head"><span class="code-file">ex_19_3.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> sys
-<span class="tok-kw">from</span> <span class="tok-type">PySide6</span>.<span class="tok-type">QtWidgets</span> <span class="tok-kw">import</span> <span class="tok-type">QApplication</span>, <span class="tok-type">QWidget</span>, <span class="tok-type">QVBoxLayout</span>, <span class="tok-type">QDoubleSpinBox</span>, <span class="tok-type">QLabel</span>
-
-<span class="tok-kw">class</span> <span class="tok-type">TempWindow</span>(<span class="tok-type">QWidget</span>):
-    <span class="tok-kw">def</span> <span class="tok-fn">__init__</span>(<span class="tok-const">self</span>):
-        <span class="tok-fn">super</span>().<span class="tok-fn">__init__</span>()
-        <span class="tok-const">self</span>.<span class="tok-fn">setWindowTitle</span>(<span class="tok-str">"Temperature"</span>)
-        <span class="tok-const">self</span>.celsius = <span class="tok-type">QDoubleSpinBox</span>(suffix=<span class="tok-str">" °C"</span>)
-        <span class="tok-const">self</span>.celsius.<span class="tok-fn">setRange</span>(-<span class="tok-num">100</span>, <span class="tok-num">100</span>)
-        <span class="tok-const">self</span>.result = <span class="tok-type">QLabel</span>()
-        <span class="tok-const">self</span>.celsius.valueChanged.<span class="tok-fn">connect</span>(<span class="tok-const">self</span>.update_result)
-        layout = <span class="tok-type">QVBoxLayout</span>(<span class="tok-const">self</span>)
-        layout.<span class="tok-fn">addWidget</span>(<span class="tok-const">self</span>.celsius)
-        layout.<span class="tok-fn">addWidget</span>(<span class="tok-const">self</span>.result)
-        <span class="tok-const">self</span>.<span class="tok-fn">update_result</span>()
-
-    <span class="tok-kw">def</span> <span class="tok-fn">update_result</span>(<span class="tok-const">self</span>):
-        c = <span class="tok-const">self</span>.celsius.<span class="tok-fn">value</span>()
-        <span class="tok-const">self</span>.result.<span class="tok-fn">setText</span>(<span class="tok-str">f"{c:.1f} °C = {c * 9 / 5 + 32:.1f} °F"</span>)
-
-app = <span class="tok-type">QApplication</span>(sys.argv)
-window = <span class="tok-type">TempWindow</span>()
-window.<span class="tok-fn">resize</span>(<span class="tok-num">240</span>, <span class="tok-num">90</span>)
-window.<span class="tok-fn">show</span>()
-sys.<span class="tok-fn">exit</span>(app.<span class="tok-fn">exec</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="RqrYh9o4xOIHQAtwiLaH/N/P9DWLTdYfNwifpKDqvMylV7+vTLxte2K0ExfmCXI4kcQUXJ8VPXFmzjBjvKlQhihgPM97vScXu08R6pYzB2fJaoQ39WG4+KLTGP8HZHPVL3jsB+r827YcbINxgRU9NStXNymZliVpprPnCh7i5tZvhnBHV5+TU7WcEKXOh2TLW2zGDx4AhswfsjHHfMwLB/5fvHL1oZCIyUnQhqndZHPqLonKzSahQ4KXAY6sTCYE4+SsmDrdcK5f9Cz6F4CnW0Gn+FGUvhtND8/Y7X3gz6mB1kT2/Q1Vi/RPsnxeqFkVZWdwcRq++ozqMIEJBSpR8UUAsosqAzie2OQCts1ZDC4ImorymteOVLeFrm/iise4O9HlhRs0dy+g0zwypumHtEXUnZUzj77CU6v4wwRPaK6Xo7yGwZ2JRSJOdI9Tzj6x2qBm0gAS+P4OS1oLY6j1F6cVV4+Jpm1eg9KRtkkgCSYMAyQyEK3zFty4zagI8on9QmETxYshPyL8/d92Bl3N1Oy0OBRDQb8m6xFjpdJKPQtiYuOMOt5jlJIBHP0lRo36Gxcopvx0iayG2gBYWdfNhctcvBtDMqx9EUWfEI95LoTCCtGkGaLnDrGf22jPfbl4TuOHpxukzUnf0R6gW35qPpPltQpBlj8S1o41a4PucIeuPYHcN0vPbw5PgTBQfH7s9W4JL9x8R9wAAz/9mVHNf7hIDPa+GgwkfM4f3883Zjdqi3dkx3UO9OHT27nJTUJlnmcmXmey5EXik5gYB0KCQaTvfqaUMI+IbYGbhZb/YzokUk+6AqFy/uLrJP0M7lTT3niOlVv93gHdXo2FW4ayZvnFHj3NrwFpiP0I/ZsBVfdoRi3UTVHVz/Uohm4ZB2qdEbH87YUsaa2VjEqO42xCG41TW9NHXk2GKMRY3AhoYKxn3u4I/x5etYYSpfQjislke563fnqFb2xKnYhzNypzWIaI9S9IWJFzrvxwPZFpjbFi8mL/ISEHjeg4wT3s/VyS0nBDWFJB6EgGe8zqI/GfbQFGukeVWk8xzH4elORXkeOL/r+TPszorq8dG9bH5V1yoy8QVTjuqou+ffcqw8TVjciaGpIKHrVuLBZZrp5Gr+F2SMsn98YbNlv2EbOpfaiEHVWvS9SsIVWek4FdX1eoLGECrvh7EoH7OUW2rdTDAB4lbi6uzZz5Ir1E720HXYxKfQwBkwrUnKN5u/+kYDOZeaO0AgCTGFecKVXab97UfMVg83hgU0hcgJKCLxX14Wg63zJruVD81xf0C7PLNOo9l7TLQD2NaS0DgWTp63dSV5iUuFrE8jNzyWbxFz2eTgwJss2kgyL5hrYUX3fooxtunt7JK6dIdlX+/sgtEX5kJLgifT9jfTk/6jw8mKH5M9SP1dmAzpL/iUZCUC2N6TtkAxasx2Mu9KjR0VmvOpl3ITGkbreu/aLKdOmPZpmfJHD8PkiPAK8cHxr3Sr0Fqny3nMYzVM7KZSuRV0RE0jSWcm+5Prwly9uTu3Y5SqLIBmLH3J8aM8OgFhaiiV2ggejAKVI5Axl70fzAGudbrD2gMUG2rxHSzFMkIXcaMKW2UNxGtL6raKKY8yB0qopLJCiAiH4JZcCnWgy3lmteUbac9LX1rf4+aZjPkcrvNwbr5VoV6i1gP0sO6URC3JjMx4OhhND/Jb4C0LNI0uVGfzyhWR2JVi9r+/rqn+Zb/pZy/X/3yEX/gJtp4eJYXCAcoZg/66hzDR+aaffhQ0EUiYBLGg1clLhGy5YkU9JbnMApUFhX3rUQAAJzw23/1pOrpgxImxasqJZEMJsJSon/yr5vK4U7BMdjVhIUpcA+T9RwC667F8fa2+uH9RT/8u7lxZQjyQdFY4rmn/zqURSCY9gRbZvvbfwON1V2pmTgunNelCJajmLK+d37/yDzzXCtx6SWyyjC2+wroZ9GH9wdj4K4Brymq87ujQtJY7/NjkVaC6pmKnY9ebpuRYbOQkTWgDMEw0wzzEOxbTdk8a3VYWNEPjAsZgJiC0Ey5HSt4AAA4M3PDGSX6sN9lqW98/eTCQ821llLtuTHlvTJZvwL99z0PEQdPdUFvUIFTzK4bmqxDaVMXq3UdcJ7jfqWi+Yaa/01JKcYBnsgz8oxIqgffEiokGrcBZqu06/DJlg2vuBCGluQUaPRR8R0ZtLfyO1Zhn8zjQrFNjMgPVSsd5FOgoeUqyb1v+obD0Gd+bQ8hnvHcsjskfxpXHAGL2pLy7Z9rRf/81kkDeyuO/OtLs0cgEUQ1ej3xCZW2ociEjCA2zIYQCu78YwQRjryfkM2gWeLWHgEQKEtp4KnkpNtRO1DhnmKNu53RnA8u+DEoQqNSVno6F7lzHbPAmiWvo5nx94QpAh1etlDKQwJivWewY+kggyNE45n3hcOXdhYJJBVSbkpmO4q1HZPBozWtPX/0/WxpjG9WvUJSnp6G7Sh/8Y9A8VOl7MuJZyr53iEwk60Ja+oEQLVJEdHpZXWsxfIPya/nRq8ZL6ED2Phe3qgJGBmPH7kEX1GHl536Uzh7+ypwOEL+QUinAFhRDvTd+EUoe9U3o8OGvYJ853VEJorlVz9yKAZ2avcSAXC3c/6kydfzGuF7Wo1b83baV+7CsVeoEIxPz11n1owVTSoTO/1yLbp1cG/zD3VxljR4+YcFh6baHpbfO/fqhIRaKJnCTRKnWKGEeAf+3DqDFURLjV/mKEjYt6cq5OLsJOeFEbvdl+TNucbeWmkHJ8vzZ0MaqlYC3kpjWNZt6/8XiMR4JGdJDV5OalpFvEqLaA1b1cCLVYQVhJ3aZLgkmKJMnmSrLKsvWAVWGojdg3M6jodkQcsNbfeLqcofHh/daThxcjMoIbbvtAU8ZRgb2GLJlSyPZoBOIzyqvhP+iVqFQgdBNO5+C5GMdDZQ+lJ4hcYW9zMcuc2wS07c9zX6llGoZTUWVk0Zc43GB2/eZ4caPFZLh9oWot2sEKgx4l8KFLg8OqSOHxdR3Vs6F8BvAmScvTcEqEU+TgsuQAFKqcafzJ4TTBIziBRQuVs533kOBJukstCDPV3AdvkaxxIL9+TgZEMD2rKcMR1P6+Jp2BRG16gyTvnAmtuTeJIeYceTHoKZwA7G/KE25lddep4pLLf3bXeVV3oAx2A0/NzH5dCGxqdp4+vRLznz/ke9eDA0lWVXfhTzBzKl3jDQiwMqxi/oex0NtZxTwlsl75y2lRbtl8iKHWItUFI5tjrCHKoJEyZkcsJI4rU4n1ryc/gxYgBfB/OelPm3GoKWMz8JsacdQ5kJappnEmB2U1O0hT/+S+iZxZItLmzQvrj0ruO2K/u8gF4J4e2Heg2gJ/fhsVuEbJXgTuYUcS4Mg94E6soaxtGfg/AUjyxZJWF8ykc4QLTIcPT/1t3ICxc6l8nQpCU/yh43DRe0BqzVGEhtBKnqfu1xqUy7yXQXTvfMV89gE9DpMNN3XXMIAtB8/OWF/Mw9lVA5GLEQIQeX728RZt8e3rjrqj1Jwqa/ZlmPawdBqDpYvIHSS6YiLCz690lFrTFEiPpeRoo97fnCrZjvqBah1qGBOvA0e/qWbblYk+7IoISafUiMTqWD26GE4aEPd+ZGS8r/UgqWx5wj70Q9P2xuZPg9AUYB0dh6RfiIXrx0mU98X9glzJTx4A+AZ1g2JiGK3zEwoJ65/eYtQqdag7/rVEcuKDxOAqoWO+wiuflPA8aOGwRq0V3ExHi858QWB/Nb/NRWHT2MSYimRt4TgS87Q6d+fGZx7E/va7YQViQzyQP9RtNVZ6/wuw2NtqSBFWfXETovZAXo42SzMZwNwvGtR/DPIKdmiFBNJXOODqqGq2rUJq0PYiggs81/jWxfcq1mjoFKAyPGnI79AHaztSechmGA0aRQOoiH/7RYiGkB2HaJQqn3lPfAyivQTf5mmJvinIDNtFyLyO45kXFp4qt9Wso5ZHacvB9q7Ra2sV5ImeC8+K4GItVu98YQ1gG5jyOKKBE0eOyoE5xKW/6o7HWN7OBNTagDXh10zTJyLo/4ksmLfBDYpNznwHJo7N+8mFRsQ+v6II4d1w/m1qEMJ1a8Snub5TqSWj7MjphEg=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -367,48 +294,14 @@ sys.<span class="tok-fn">exit</span>(app.<span class="tok-fn">exec</span>())</co
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>เมนู Latte 60, Mocha 65, Tea 45</dd></div><div><dt>ต้องหา</dt><dd>ภาพ: Mocha 2 แก้ว เพิ่มวิป = <code>รวม 150 บาท</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>เก็บราคาใน dict แล้ว <code>addItems(dict.keys())</code></li><li>อ่าน <code>currentText()</code>, <code>value()</code>, <code>isChecked()</code></li><li>ราคา = (ราคาเมนู + วิป) × จำนวน</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · หน้าต่างที่ได้จากการรันโค้ดนี้ (จำลองการกรอกและกดปุ่มแล้ว)</strong><div class="gui-stage"><figure class="gui-shot"><div class="gui-titlebar">Order</div><img src="../assets/gui/ch19-ex4.png" alt="ภาพหน้าต่าง Order" loading="lazy"></figure></div></div>
-    <div class="answer-gate" data-answer-id="19.4">
+    <div class="answer-gate" data-answer-id="19.4" data-chapter="19">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 19.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 19 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ข้อมูลราคาแยกไว้ใน dict ด้านบน เพิ่มเมนูใหม่ได้โดยไม่ต้องแก้ส่วนหน้าต่าง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_19_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> sys
-<span class="tok-kw">from</span> <span class="tok-type">PySide6</span>.<span class="tok-type">QtWidgets</span> <span class="tok-kw">import</span> (<span class="tok-type">QApplication</span>, <span class="tok-type">QWidget</span>, <span class="tok-type">QFormLayout</span>, <span class="tok-type">QComboBox</span>,
-                               <span class="tok-type">QSpinBox</span>, <span class="tok-type">QCheckBox</span>, <span class="tok-type">QPushButton</span>, <span class="tok-type">QLabel</span>)
-
-<span class="tok-const">PRICES</span> = {<span class="tok-str">"Latte"</span>: <span class="tok-num">60</span>, <span class="tok-str">"Mocha"</span>: <span class="tok-num">65</span>, <span class="tok-str">"Tea"</span>: <span class="tok-num">45</span>}
-
-<span class="tok-kw">class</span> <span class="tok-type">OrderWindow</span>(<span class="tok-type">QWidget</span>):
-    <span class="tok-kw">def</span> <span class="tok-fn">__init__</span>(<span class="tok-const">self</span>):
-        <span class="tok-fn">super</span>().<span class="tok-fn">__init__</span>()
-        <span class="tok-const">self</span>.<span class="tok-fn">setWindowTitle</span>(<span class="tok-str">"Order"</span>)
-        <span class="tok-const">self</span>.menu = <span class="tok-type">QComboBox</span>()
-        <span class="tok-const">self</span>.menu.<span class="tok-fn">addItems</span>(<span class="tok-const">PRICES</span>.<span class="tok-fn">keys</span>())
-        <span class="tok-const">self</span>.qty = <span class="tok-type">QSpinBox</span>(minimum=<span class="tok-num">1</span>, maximum=<span class="tok-num">20</span>)
-        <span class="tok-const">self</span>.cream = <span class="tok-type">QCheckBox</span>(<span class="tok-str">"เพิ่มวิปครีม (+10)"</span>)
-        <span class="tok-const">self</span>.button = <span class="tok-type">QPushButton</span>(<span class="tok-str">"สรุปราคา"</span>)
-        <span class="tok-const">self</span>.total = <span class="tok-type">QLabel</span>(<span class="tok-str">"-"</span>)
-        <span class="tok-const">self</span>.button.clicked.<span class="tok-fn">connect</span>(<span class="tok-const">self</span>.summarize)
-        form = <span class="tok-type">QFormLayout</span>(<span class="tok-const">self</span>)
-        form.<span class="tok-fn">addRow</span>(<span class="tok-str">"เมนู"</span>, <span class="tok-const">self</span>.menu)
-        form.<span class="tok-fn">addRow</span>(<span class="tok-str">"จำนวน"</span>, <span class="tok-const">self</span>.qty)
-        form.<span class="tok-fn">addRow</span>(<span class="tok-const">self</span>.cream)
-        form.<span class="tok-fn">addRow</span>(<span class="tok-const">self</span>.button)
-        form.<span class="tok-fn">addRow</span>(<span class="tok-str">"ราคา"</span>, <span class="tok-const">self</span>.total)
-
-    <span class="tok-kw">def</span> <span class="tok-fn">summarize</span>(<span class="tok-const">self</span>):
-        each = <span class="tok-const">PRICES</span>[<span class="tok-const">self</span>.menu.<span class="tok-fn">currentText</span>()] + (<span class="tok-num">10</span> <span class="tok-kw">if</span> <span class="tok-const">self</span>.cream.<span class="tok-fn">isChecked</span>() <span class="tok-kw">else</span> <span class="tok-num">0</span>)
-        <span class="tok-const">self</span>.total.<span class="tok-fn">setText</span>(<span class="tok-str">f"รวม {each * self.qty.value()} บาท"</span>)
-
-app = <span class="tok-type">QApplication</span>(sys.argv)
-window = <span class="tok-type">OrderWindow</span>()
-window.<span class="tok-fn">resize</span>(<span class="tok-num">280</span>, <span class="tok-num">180</span>)
-window.<span class="tok-fn">show</span>()
-sys.<span class="tok-fn">exit</span>(app.<span class="tok-fn">exec</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -417,48 +310,14 @@ sys.<span class="tok-fn">exit</span>(app.<span class="tok-fn">exec</span>())</co
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>เพิ่ม <code>อ่านหนังสือ</code> 2 ครั้ง</dd></div><div><dt>ต้องหา</dt><dd>ครั้งที่สองขึ้นเตือน <code>มีงานนี้อยู่แล้ว</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>เก็บชื่องานที่มีใน list หรืออ่านจาก QListWidget</li><li>ตรวจกรณีว่างก่อน แล้วตรวจซ้ำ</li><li><code>setStyleSheet(&quot;color: #c0392b&quot;)</code> ให้ข้อความเตือนเป็นสีแดง</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · หน้าต่างที่ได้จากการรันโค้ดนี้ (จำลองการกรอกและกดปุ่มแล้ว)</strong><div class="gui-stage"><figure class="gui-shot"><div class="gui-titlebar">To-do</div><img src="../assets/gui/ch19-ex5.png" alt="ภาพหน้าต่าง To-do" loading="lazy"></figure></div></div>
-    <div class="answer-gate" data-answer-id="19.5">
+    <div class="answer-gate" data-answer-id="19.5" data-chapter="19">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 19.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 19 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ตรวจข้อมูลก่อนเพิ่มเหมือนบทที่ 4 แต่แสดงผลบนหน้าต่างแทน <code>print</code> ผู้ใช้จึงรู้ทันทีว่าต้องแก้อะไร</p><div class="code-block"><div class="code-head"><span class="code-file">ex_19_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> sys
-<span class="tok-kw">from</span> <span class="tok-type">PySide6</span>.<span class="tok-type">QtWidgets</span> <span class="tok-kw">import</span> <span class="tok-type">QApplication</span>, <span class="tok-type">QWidget</span>, <span class="tok-type">QVBoxLayout</span>, <span class="tok-type">QLineEdit</span>, <span class="tok-type">QListWidget</span>, <span class="tok-type">QLabel</span>
-
-<span class="tok-kw">class</span> <span class="tok-type">TodoWindow</span>(<span class="tok-type">QWidget</span>):
-    <span class="tok-kw">def</span> <span class="tok-fn">__init__</span>(<span class="tok-const">self</span>):
-        <span class="tok-fn">super</span>().<span class="tok-fn">__init__</span>()
-        <span class="tok-const">self</span>.<span class="tok-fn">setWindowTitle</span>(<span class="tok-str">"To-do"</span>)
-        <span class="tok-const">self</span>.entry = <span class="tok-type">QLineEdit</span>(placeholderText=<span class="tok-str">"งานใหม่ แล้วกด Enter"</span>)
-        <span class="tok-const">self</span>.tasks = <span class="tok-type">QListWidget</span>()
-        <span class="tok-const">self</span>.message = <span class="tok-type">QLabel</span>(<span class="tok-str">""</span>)
-        <span class="tok-const">self</span>.message.<span class="tok-fn">setStyleSheet</span>(<span class="tok-str">"color: #c0392b"</span>)
-        <span class="tok-const">self</span>.entry.returnPressed.<span class="tok-fn">connect</span>(<span class="tok-const">self</span>.add_task)
-        layout = <span class="tok-type">QVBoxLayout</span>(<span class="tok-const">self</span>)
-        <span class="tok-kw">for</span> widget <span class="tok-kw">in</span> (<span class="tok-const">self</span>.entry, <span class="tok-const">self</span>.tasks, <span class="tok-const">self</span>.message):
-            layout.<span class="tok-fn">addWidget</span>(widget)
-
-    <span class="tok-kw">def</span> <span class="tok-fn">add_task</span>(<span class="tok-const">self</span>):
-        text = <span class="tok-const">self</span>.entry.<span class="tok-fn">text</span>().<span class="tok-fn">strip</span>()
-        existing = [<span class="tok-const">self</span>.tasks.<span class="tok-fn">item</span>(i).<span class="tok-fn">text</span>() <span class="tok-kw">for</span> i <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-const">self</span>.tasks.<span class="tok-fn">count</span>())]
-        <span class="tok-kw">if</span> <span class="tok-kw">not</span> text:
-            <span class="tok-const">self</span>.message.<span class="tok-fn">setText</span>(<span class="tok-str">"กรุณาพิมพ์ชื่องาน"</span>)
-        <span class="tok-kw">elif</span> text <span class="tok-kw">in</span> existing:
-            <span class="tok-const">self</span>.message.<span class="tok-fn">setText</span>(<span class="tok-str">"มีงานนี้อยู่แล้ว"</span>)
-        <span class="tok-kw">else</span>:
-            <span class="tok-const">self</span>.tasks.<span class="tok-fn">addItem</span>(text)
-            <span class="tok-const">self</span>.message.<span class="tok-fn">setText</span>(<span class="tok-str">""</span>)
-        <span class="tok-const">self</span>.entry.<span class="tok-fn">clear</span>()
-
-app = <span class="tok-type">QApplication</span>(sys.argv)
-window = <span class="tok-type">TodoWindow</span>()
-window.<span class="tok-fn">resize</span>(<span class="tok-num">300</span>, <span class="tok-num">220</span>)
-window.<span class="tok-fn">show</span>()
-sys.<span class="tok-fn">exit</span>(app.<span class="tok-fn">exec</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -467,55 +326,22 @@ sys.<span class="tok-fn">exit</span>(app.<span class="tok-fn">exec</span>())</co
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>บิล 1,250 บาท ทิป 10% 4 คน</dd></div><div><dt>ต้องหา</dt><dd><code>คนละ 343.75 บาท</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>เชื่อม <code>valueChanged</code> / <code>currentTextChanged</code> ทั้ง 3 widget เข้า method เดียว</li><li>ยอดต่อคน = บิล × (1 + ทิป/100) ÷ คน</li><li><code>setRange</code> ให้จำนวนคนเริ่มที่ 1 ป้องกันหารด้วยศูนย์</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · หน้าต่างที่ได้จากการรันโค้ดนี้ (จำลองการกรอกและกดปุ่มแล้ว)</strong><div class="gui-stage"><figure class="gui-shot"><div class="gui-titlebar">Tip calculator</div><img src="../assets/gui/ch19-ex6.png" alt="ภาพหน้าต่าง Tip calculator" loading="lazy"></figure></div></div>
-    <div class="answer-gate" data-answer-id="19.6">
+    <div class="answer-gate" data-answer-id="19.6" data-chapter="19">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 19.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 19 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>signal หลายตัวต่อเข้า slot เดียวได้ ทุกครั้งที่ค่าใดเปลี่ยนจะคำนวณใหม่ทั้งหมด และ <code>minimum=1</code> ป้องกันหารด้วยศูนย์ตั้งแต่ต้นทาง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_19_6.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> sys
-<span class="tok-kw">from</span> <span class="tok-type">PySide6</span>.<span class="tok-type">QtWidgets</span> <span class="tok-kw">import</span> (<span class="tok-type">QApplication</span>, <span class="tok-type">QWidget</span>, <span class="tok-type">QFormLayout</span>, <span class="tok-type">QDoubleSpinBox</span>,
-                               <span class="tok-type">QComboBox</span>, <span class="tok-type">QSpinBox</span>, <span class="tok-type">QLabel</span>)
-
-<span class="tok-kw">class</span> <span class="tok-type">TipWindow</span>(<span class="tok-type">QWidget</span>):
-    <span class="tok-kw">def</span> <span class="tok-fn">__init__</span>(<span class="tok-const">self</span>):
-        <span class="tok-fn">super</span>().<span class="tok-fn">__init__</span>()
-        <span class="tok-const">self</span>.<span class="tok-fn">setWindowTitle</span>(<span class="tok-str">"Tip calculator"</span>)
-        <span class="tok-const">self</span>.bill = <span class="tok-type">QDoubleSpinBox</span>(maximum=<span class="tok-num">100000</span>, suffix=<span class="tok-str">" บาท"</span>)
-        <span class="tok-const">self</span>.tip = <span class="tok-type">QComboBox</span>()
-        <span class="tok-const">self</span>.tip.<span class="tok-fn">addItems</span>([<span class="tok-str">"0"</span>, <span class="tok-str">"5"</span>, <span class="tok-str">"10"</span>, <span class="tok-str">"15"</span>])
-        <span class="tok-const">self</span>.people = <span class="tok-type">QSpinBox</span>(minimum=<span class="tok-num">1</span>, maximum=<span class="tok-num">50</span>)
-        <span class="tok-const">self</span>.result = <span class="tok-type">QLabel</span>()
-        <span class="tok-const">self</span>.bill.valueChanged.<span class="tok-fn">connect</span>(<span class="tok-const">self</span>.update_result)
-        <span class="tok-const">self</span>.tip.currentTextChanged.<span class="tok-fn">connect</span>(<span class="tok-const">self</span>.update_result)
-        <span class="tok-const">self</span>.people.valueChanged.<span class="tok-fn">connect</span>(<span class="tok-const">self</span>.update_result)
-        form = <span class="tok-type">QFormLayout</span>(<span class="tok-const">self</span>)
-        form.<span class="tok-fn">addRow</span>(<span class="tok-str">"ยอดบิล"</span>, <span class="tok-const">self</span>.bill)
-        form.<span class="tok-fn">addRow</span>(<span class="tok-str">"ทิป (%)"</span>, <span class="tok-const">self</span>.tip)
-        form.<span class="tok-fn">addRow</span>(<span class="tok-str">"จำนวนคน"</span>, <span class="tok-const">self</span>.people)
-        form.<span class="tok-fn">addRow</span>(<span class="tok-const">self</span>.result)
-        <span class="tok-const">self</span>.<span class="tok-fn">update_result</span>()
-
-    <span class="tok-kw">def</span> <span class="tok-fn">update_result</span>(<span class="tok-const">self</span>):
-        total = <span class="tok-const">self</span>.bill.<span class="tok-fn">value</span>() * (<span class="tok-num">1</span> + <span class="tok-fn">int</span>(<span class="tok-const">self</span>.tip.<span class="tok-fn">currentText</span>()) / <span class="tok-num">100</span>)
-        <span class="tok-const">self</span>.result.<span class="tok-fn">setText</span>(<span class="tok-str">f"คนละ {total / self.people.value():,.2f} บาท"</span>)
-
-app = <span class="tok-type">QApplication</span>(sys.argv)
-window = <span class="tok-type">TipWindow</span>()
-window.<span class="tok-fn">resize</span>(<span class="tok-num">280</span>, <span class="tok-num">150</span>)
-window.<span class="tok-fn">show</span>()
-sys.<span class="tok-fn">exit</span>(app.<span class="tok-fn">exec</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-18.html">← บทที่ 18</a><a class="pager-link" href="chapter-20.html">บทที่ 20 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

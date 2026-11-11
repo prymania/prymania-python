@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -90,7 +90,7 @@
 <p>ทำคำถามท้ายบทได้ แต่ถ้า<b>ไม่ได้เช็คชื่อในคาบนั้น</b> คะแนนบทนั้นจะเป็น 0</p>
 <p>ขาด 1 คาบ = เสีย 5 คะแนน ซึ่งเท่ากับเกรดครึ่งขั้นพอดี</p></div>
 <div class="box note"><div class="box-t">📌 คำถามท้ายบท ≠ แบบฝึกหัดท้ายบทในเว็บ</div>
-<p><b>คำถามท้ายบท</b> ทำในชั่วโมงเรียนและเก็บคะแนน</p>
+<p><b>คำถามท้ายบท</b> ทำในชั่วโมงเรียนและเก็บคะแนน เป็น Quiz บน Google Form อยู่ในหัวข้อ <b>📝 เก็บคะแนนท้ายบท</b> ท้ายหน้าบทที่ 1–10 (เช็คชื่อก่อน แล้วจึงเปิด Quiz)</p>
 <p><b>แบบฝึกหัดท้ายบท</b> ในเว็บนี้มีไว้ฝึกเอง ไม่เก็บคะแนน เฉลยล็อกด้วยรหัสผ่าน (ขอจากผู้สอน)</p></div>
 
 <h2 id="s2">เกณฑ์การตัดเกรด</h2>
@@ -162,7 +162,6 @@
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

@@ -99,6 +99,8 @@
     '<button type="button" class="ink-import" title="นำไฟล์สำรองหมึกเข้ามา" aria-label="นำไฟล์สำรองเข้ามา">⬆️</button>' +
     '<input type="file" accept=".json,application/json" hidden>' +
     '</div>' +
+    '<button type="button" class="ink-dark" title="โหมดมืด (ถนอมสายตาเวลาฉายจอ)" aria-label="โหมดมืด" aria-pressed="false">🌙</button>' +
+    '<button type="button" class="ink-big" title="โหมดฉายจอ: ขยายตัวหนังสือ" aria-label="โหมดฉายจอ ขยายตัวหนังสือ" aria-pressed="false">A+</button>' +
     '<button type="button" class="ink-toggle" title="ปากกา" aria-label="เปิดโหมดปากกา" aria-pressed="false">✏️</button>' +
     '<div class="ink-toast" hidden></div>';
   document.body.appendChild(bar);
@@ -166,8 +168,9 @@
   // ---- อินพุต (ใช้ร่วมกันทั้งบทเรียนและกระดาน)
   var cur = null, eraseOn = false;
   function pt(e) {
-    var r = S.host.getBoundingClientRect();
-    return [Math.round((e.clientX - r.left) * 10) / 10, Math.round((e.clientY - r.top) * 10) / 10];
+    // โหมดฉายจอ (A+) ขยายคอลัมน์ด้วย CSS zoom: แปลงพิกัดจอกลับเป็นพิกัดก่อนขยาย หมึกจึงตรงทั้งสองโหมด
+    var r = S.host.getBoundingClientRect(), z = (S.host.offsetWidth && r.width / S.host.offsetWidth) || 1;
+    return [Math.round((e.clientX - r.left) / z * 10) / 10, Math.round((e.clientY - r.top) / z * 10) / 10];
   }
   function canDraw(e) { return e.pointerType === "pen" || e.pointerType === "mouse"; }   // นิ้ว (touch) ปล่อยให้เบราว์เซอร์เลื่อน/ซูม
   function segDist(q, a, b) {   // ระยะจากจุด q ถึงส่วนของเส้นตรง ab
@@ -197,7 +200,7 @@
     svg.addEventListener("pointerdown", function (e) {
       if (!st.on || S !== surf || !canDraw(e)) return;
       e.preventDefault();
-      svg.setPointerCapture(e.pointerId);
+      try { svg.setPointerCapture(e.pointerId); } catch (err) {}
       if (st.eraser) { eraseOn = true; if (eraseAt(pt(e))) S.save(); return; }
       var p = PENS[st.pen];
       cur = { c: p.c, w: p.w, o: p.o, p: [pt(e)] };
@@ -274,6 +277,41 @@
     board.save(); refreshBar();
     say("กระดาษ: " + PAPERS[(i + 1) % PAPERS.length][2]);
   });
+
+  // ---- โหมดฉายจอ (A+): ขยายคอลัมน์เนื้อหา 125% จำค่าไว้ทุกหน้า (คลาส big-text ใส่ตั้งแต่ <head>)
+  var big = $(".ink-big");
+  function setBig(on) {
+    document.documentElement.classList.toggle("big-text", on);
+    big.textContent = on ? "A−" : "A+";
+    big.setAttribute("aria-pressed", String(on));
+    big.title = on ? "ปิดโหมดฉายจอ" : "โหมดฉายจอ: ขยายตัวหนังสือ";
+    try { localStorage.setItem("big-text", on ? "1" : "0"); } catch (e) {}
+  }
+  big.addEventListener("click", function () {
+    var on = !document.documentElement.classList.contains("big-text");
+    var y = window.scrollY / Math.max(1, document.documentElement.scrollHeight);
+    setBig(on);
+    window.scrollTo(0, y * document.documentElement.scrollHeight);   // คงตำแหน่งอ่านไว้ใกล้เดิม
+    say(on ? "โหมดฉายจอ: ตัวหนังสือใหญ่ขึ้น" : "กลับเป็นขนาดปกติ");
+  });
+  setBig(document.documentElement.classList.contains("big-text"));
+
+  // ---- โหมดมืด (🌙): คลาส dark ที่ <html> จำค่าไว้ทุกหน้า (ใส่ตั้งแต่ <head> กันหน้ากระพริบ)
+  var darkBtn = $(".ink-dark");
+  function setDark(on) {
+    document.documentElement.classList.toggle("dark", on);
+    darkBtn.textContent = on ? "☀️" : "🌙";
+    darkBtn.setAttribute("aria-pressed", String(on));
+    darkBtn.title = on ? "กลับเป็นโหมดสว่าง" : "โหมดมืด (ถนอมสายตาเวลาฉายจอ)";
+    try { localStorage.setItem("dark", on ? "1" : "0"); } catch (e) {}
+  }
+  darkBtn.addEventListener("click", function () {
+    var on = !document.documentElement.classList.contains("dark");
+    setDark(on);
+    window.dispatchEvent(new Event("themechange"));   // ให้กราฟโต้ตอบ (widgets.js) วาดใหม่ด้วยสีชุดใหม่
+    say(on ? "โหมดมืด" : "โหมดสว่าง");
+  });
+  setDark(document.documentElement.classList.contains("dark"));
 
   // ---- ปุ่มทั่วไป
   toggle.addEventListener("click", function () {

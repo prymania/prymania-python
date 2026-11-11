@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -386,20 +386,14 @@ nearest = dist.<span class="tok-fn">argmin</span>(axis=<span class="tok-num">1</
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>array ราคา USD และอัตราแลกเปลี่ยน</dd></div><div><dt>ต้องหา</dt><dd>array ราคาเป็นบาท</dd></div></dl><strong>วิธีคิด</strong><ol><li>สร้าง <code>np.array</code></li><li>คูณด้วย 35.5 ทั้ง array</li><li><code>np.round(..., 2)</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>[ 443.75 1420.    283.64 4260.  ]</pre></div>
-    <div class="answer-gate" data-answer-id="14.1">
+    <div class="answer-gate" data-answer-id="14.1" data-chapter="14">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 14.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 14 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>คูณครั้งเดียวได้ทุกค่า ไม่ต้องเขียนลูปเหมือน list</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-usd = np.<span class="tok-fn">array</span>([<span class="tok-num">12.5</span>, <span class="tok-num">40</span>, <span class="tok-num">7.99</span>, <span class="tok-num">120</span>])
-thb = np.<span class="tok-fn">round</span>(usd * <span class="tok-num">35.5</span>, <span class="tok-num">2</span>)
-<span class="tok-fn">print</span>(thb)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="D7DXE/047e6U4bON4a1Wt+R85MDxJMF4eq/km1ZxcRd8B0rNqKZydJmaz26kEsBh0QlUqb3rhxYqOSjFT99nuyWv5ujzTtg8p7PeltA8JHiRcNv30iSgi8g37RkZnpm86T+aosAm+3MZ9lYR9FW49Ulv8EBwK68GlCsbnnwPCJxynphz4JfbygEgT39snwc+d1EFMJWmTbyn10cPsulI37LyEJFNgr9Lwe9QL4Z7haiTqIPDMmmqR+09WgE9W2x/yNF+TyzC+llDLhFNegrYgFBZUY0St/vR8gEVTdtuaI9e5jm9SJYVkD3OduD5Rn776j+gjuFBGUdHuNDA30fzDVYk2RaQN58nXQRLcGVFf3v4hOaI2nVs6NBgtzx8I610VnbTS3VI1hTYG/Ol4f9phVZDPnEjAQOZcaoJGD1IbBw8M9KV311AQOKzZrvj/GB8dblKYTVgZKNzU1up65NqxkqIgONgQ07PUzRgab+0GeuQGijrtuabZbBEekAKZUY+uXdJyPBaF9LxaTPlST1hpANa1RrMrw79gZLxj8r/ADottdnp2Kk9sg2BQpKfJFfqL6Qt8DUS8jI8lnkvqb4EWI70zQ7e6kPuQrmg9PE7LKI3F4GEsq20pjyma4AhzmKKs8SaxOBgKtxgGv4H+RMiUFO+9Ed3rxuH7gDEAoXr5doko1lSfsLFB81U5GNnP1KM/eNbdA305cI3N/GrTxi/1KBIffLNFBIhylTUxThRr0DkKAHiLLDpjvfBelMbyRN5vrzWrneClzPj9LFC2BLjxkC5Zo2nfqMizjFc+w1Uh86pWZaTxLCycw9aq0ttK43lSeHzgqKGd4GVO0oKDCDOl9NQl9s5MgbIbIloEzZWKc1kCWgU9aXF6Sz5pdwlOfbpNIK9yUqrWVSEWky3vW5fKS5XrVdl7YFs2ZDISoYXn760aR7yB+224iU6nCX6j80Vg4W151DhDnLieWEbxnEgAadr5X0Upa4qYAcPb+QacQjQa3CpbxwZgAX9slts86ywzkIbBwHvEyBAWeC1LtxJX4V+rddDyeC8eIYUAcJO452siLEynZODVh4="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -409,20 +403,14 @@ thb = np.<span class="tok-fn">round</span>(usd * <span class="tok-num">35.5</spa
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>array อุณหภูมิ 7 ค่า</dd></div><div><dt>ต้องหา</dt><dd><code>เฉลี่ย 32.0 สูงสุด 35 (วันที่ 4)</code> และ <code>สูงกว่าค่าเฉลี่ย 3 วัน</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>mean()</code>, <code>max()</code></li><li><code>argmax()</code> ได้ index เริ่ม 0 ต้อง +1 เป็นวันที่</li><li><code>(temps &gt; temps.mean()).sum()</code> นับวัน</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>เฉลี่ย 32.0 สูงสุด 35 (วันที่ 4)
 สูงกว่าค่าเฉลี่ย 3 วัน</pre></div>
-    <div class="answer-gate" data-answer-id="14.2">
+    <div class="answer-gate" data-answer-id="14.2" data-chapter="14">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 14.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 14 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>argmax</code> บอกตำแหน่ง ไม่ใช่ค่า และผลเปรียบเทียบเป็น True/False ที่นำมา <code>sum()</code> นับได้ทันที</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-temps = np.<span class="tok-fn">array</span>([<span class="tok-num">31</span>, <span class="tok-num">33</span>, <span class="tok-num">29</span>, <span class="tok-num">35</span>, <span class="tok-num">34</span>, <span class="tok-num">30</span>, <span class="tok-num">32</span>])
-<span class="tok-fn">print</span>(<span class="tok-str">f"เฉลี่ย {temps.mean():.1f} สูงสุด {temps.max()} (วันที่ {temps.argmax() + 1})"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"สูงกว่าค่าเฉลี่ย {(temps &gt; temps.mean()).sum()} วัน"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="F9roMQppdYgAtu4BS20fiBaXDtz3E74kRhKgkBQwB95VA88GzZDd4xtqzTM5rYqLArZINvTE9+frWuhZKqIVuhcC+TToblYazDZjDznS3GD5a6ObepqUXnMbX3/BPYzosO/10vI7Us1nHY1yeSeNkdVYP+ejYDK7NM3LHyqdJZpa7oCwCHm7YfnbkAdx7F+APSi+/ThQoBH9NhXrtmYXS4JSQ7hjmyKlLJzGfWlcNNuz5Vtkau/I2160tiixlR2Bthf5AMqX9J4lDd+LCsbTas/sjQe40PCDVKj4tHa2+7nXaqsob+BQlvoLUhzYTPGORjZIKv/+8VCp9QXeCuBDmsr6e4WSNDlSyhkawRWGCXaTLH4rFeE0EJG4fMDwP5ULbMvmm9cM1oOfybbaO9bmaVHF/3n7+CYSRxPRDANy/di0AsAQleF4c4l1s8N90aYapYN+ulDDbLrQHH6tTtOHB4IQIHsJb3srBGAfBdzgwtpe3LC1k03eQLwg2rlAzcUu+fKxBPaHZ5lMbQ/8UilaI3FAvfPo/BchT9C2+Vl/zOj20vgzL5f2BLKQaitAjyCnOfQalreugaPhfGEQyR6+Ot8vPc+t1ZcKH+MYZ9yGYCxoQXA68S3anu21P8ir2JJ5TVUJt+KhhrH7mYd4BKCsavR91xjlr4fN9KmgGSwrsXb5kDPPz4JIqWfyQ7qMXVLNLhxVxm0stBd8SFiRBrw2h13AvTAYYLd9bSHf15mY0SJAFqVp5nYYqs15hX6cq+be1u7AeY27skqlT6VM8mzcoEjnPk83airGWX5XOm2KjNKy8sN3H0CPQuv8YUZNmV/8N0WLZWzSRP0HYuc5kAoJenTxJ7rX6/5opMQhpO6q4IxDenR6YhkxNClLgMBED3tJfmZWZbQWR4Q/eXRi0g1K6mA4dmPhs9sEhYekkRtgWE/5QEscHwA3aFlyppyqnCK2+SKxEWUxd5VE5nYuY05KMsR3dDuMp4IaYb37fPKWpSSRaYUdq5v4nGBjXgR4WD7LSBaBHBiyJd+9ZiUxG7VPRoYzKbAZtfyvigzvksmIYV24DlNeRb1qRA/+urO69DsTEJU71+/DhsHGAS3Pi8me3gwPoy5rjwN32pHeEMP65wISJNysqtxiG/+cNEu4CtuZQGU1F0KsQxMOJl61Tr9ZjLhvlbvr2kh2Rzoj2Df0QN1k8F4V8TqGAzHmmXARXpdEZrxe3MCda1y1XteXB16jGsXMXxMk5hFZYy6m2wfIL6wisVBvsc8XLcJm1hHvg99MeJlN1seQmAcIfFSHRwkswhqa3dioMcOeqS7NMCSQ3sIq+q4bw8KYGBC55fJdR3jkVNBM38gPCVTWKZqza+N6dPg5RKaHes2a1A1qFEhKPAkRN6QKYOFM0ZpvM4CDRebmYkgxW5Fx5TEVXXlkpQZmO26sJCrd4LekxYA1NnHe8PXfEhuHkCWKhl90sPwcXO0GcfKsKJrPaidQjPms11fCIbLUAhwUQY/HHOh0RsQhHX2fCCD5feM93VOyX2sYedAHMDElGPLLUjxZG7D9IOJ+xE6zCbsNFxl+ZrB3Rw=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -434,22 +422,14 @@ temps = np.<span class="tok-fn">array</span>([<span class="tok-num">31</span>, <
 [13 14 15 16 17 18]
 [ 6 12 18 24]
 78</pre></div>
-    <div class="answer-gate" data-answer-id="14.3">
+    <div class="answer-gate" data-answer-id="14.3" data-chapter="14">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 14.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 14 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>t[2]</code> ได้ทั้งแถว ส่วนคอลัมน์ต้องใช้ <code>t[:, ...]</code> คือ “ทุกแถว ที่คอลัมน์นี้” และ slicing <code>t[:2]</code> ใช้กับแถวได้เหมือน list</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_3.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-t = np.<span class="tok-fn">arange</span>(<span class="tok-num">1</span>, <span class="tok-num">25</span>).<span class="tok-fn">reshape</span>(<span class="tok-num">4</span>, <span class="tok-num">6</span>)
-<span class="tok-fn">print</span>(t.shape)
-<span class="tok-fn">print</span>(t[<span class="tok-num">2</span>])
-<span class="tok-fn">print</span>(t[:, -<span class="tok-num">1</span>])
-<span class="tok-fn">print</span>(t[:<span class="tok-num">2</span>].<span class="tok-fn">sum</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="A+CsYeb6EdJP687aG/iKn3/L6ThETJmzOVfAFWLwgSsSZ/sqm/mFU0714FyCSUx8BvxGztjZ8ArKwjp9Brf/sQkxC0c3wLlXxy70ItL/LaU0mbqhxNftTY8pq43WZpo5jfAiAHhtzPEa6pAc5deUfEE4yk8BdVgGwBNkUDeqtPn8MJJ9wW87me0K7T4S82sFYeImZ4prMKWRjVfup2Rudwub7z/qxaAjEfLJ54LcX7OO3RxeTvbBZXzwyiL8MS733cr9vMHJaxkEa8Dd+/sG0NbKcR94oBuuMoDtfHBysKyPEdWNhWVDA8vpXUtJW92RHW3yd0FxYw0eT/lmscxF72l26RmTeUxCbb4RaChtUfo1OhgUZ1RdEuQ/xQsqS0cV4k0rKJQNx480IFvcHjRyrOu2GN+zU6jm7gmpHaXVSLN570jwgoTANPx1z7qnifXOeHJfXoBlu7o9qOFebPBMu9OzPkja6WdulQmQM5+N6yPq4/VlZAtEnOy5E/JklWad81Xyt/ZkOdZfyrkDoCXxGVfd2eklPNXDHw6CfVJZEjcrUYGuwAjjzygJBHpfIBl4KGc5r/vtK48mqrbUV69NSBYkSnSvpnaa9bKSfITiGH0BD5/NhmdXLtfe/xqopJHUw85aT62pGgFvOPRyLzsShHBUXttinlKdEdahZt72t8LEqSEj7oRgNYngitvW6l+N56cYCRPLXfLqoc3XCt1R3u2sJDIzMz9KIybHXFW3AyZMDEXo9ucWWqKg1ooLdENBI3EoDqFd2TMDnbBkAYRuyLTAuD/fpmB/QUng1tbUjC3aHqz9bKWKnec2Q+MAzy9OsXi/Ug/hKbdC+1A9TEkHetf/OMDAonfHwpMbVcv0RG5wMKJ6P3MyTBF0FP6ecaVqxhPw1iQCiNMt4wTXAYJxTQgYTK/sMTtm1iJzZF/823M/8srck3cXsrRHowfmzzaiWvCwASIqquAOThTN69R1DhLDwEpvbbnds0Q34JhbMCBBPaY5JNc/W4YlDi+R3PNIFZi4vn53I4btUSA7f46aHfksd5MZvE+i+6SQ+ClWhuiRdLatG+cWtAqEZkTH/N7CEuo/60QC0u7sbIyZP2e3xjqyfElUXtZ4QA0lDABZb+EpI7ysFk3B6XEQ5nS955NBCZOo7J9tOIhZ7hrMJa1NP6gzayAs+ptXMPrgEwvxJnF0jBo9xkBhXM0GkJOrOytWmFAvGJdbXVAzcFptYSFf8yOvFrJRhcnvhVQ9QwvQIIDPHEY3IqG2+DJwL9yuQL+/5RP3k942B7D94tVrLgyrwPp5buZiyojOnlTKKOUfJy3zeXO/SztFgQ4s56g2ThoSKeIcOkQcwTKieS5766Cmetk2JN+dzW8uAI/vzn5TQo78X48KNe2O369XPFYndv3ySIV4v5PUI8YMONu6dBmxWTH388uzR3GxD4RSOAEzTfY7tda56sfxhDw2uffvcyW6XIWorwICYisikZ5Y9KhPbm/3Y85sIOJhKluq"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -459,21 +439,14 @@ t = np.<span class="tok-fn">arange</span>(<span class="tok-num">1</span>, <span 
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>array ราคาและงบ 600</dd></div><div><dt>ต้องหา</dt><dd>ราคาที่ ≤ 600, <code>4 ชิ้น รวม 944 บาท</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>สร้าง mask <code>prices &lt;= 600</code></li><li><code>prices[mask]</code> เลือกค่า</li><li><code>.size</code> และ <code>.sum()</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>[250  89 560  45]
 4 ชิ้น รวม 944 บาท</pre></div>
-    <div class="answer-gate" data-answer-id="14.4">
+    <div class="answer-gate" data-answer-id="14.4" data-chapter="14">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 14.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 14 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>mask เป็น array ของ True/False ขนาดเท่าข้อมูล ใช้ในวงเล็บเหลี่ยมเพื่อดึงเฉพาะตำแหน่งที่เป็น True</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-prices = np.<span class="tok-fn">array</span>([<span class="tok-num">250</span>, <span class="tok-num">1200</span>, <span class="tok-num">89</span>, <span class="tok-num">560</span>, <span class="tok-num">3200</span>, <span class="tok-num">45</span>])
-affordable = prices[prices &lt;= <span class="tok-num">600</span>]
-<span class="tok-fn">print</span>(affordable)
-<span class="tok-fn">print</span>(<span class="tok-str">f"{affordable.size} ชิ้น รวม {affordable.sum()} บาท"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="LYgkWwqsdbIrTU5i5bQpXxA41lR7PLd2SvKY3laX78yNjm+J3IUIDTzjMdex4CuiQJtCp0omucNYo1Wb+KebKnjD43AaLMs7byG0LqgD/7EuxaMbB0z0bT1zzEU9k7QghgGMRfV+1zCl5BC7r08rI4uSzg89dRyKKEQHR81RVuI4zsYZoaT1cCw51/JQqMOgnC1Vv6lpBawbXgBLFP6oVfrBNFf0dDVGF1m2rakV0R6gHGn5yEJ9lA0t/6BJjwP7VGPf0YRkGevqa00C2Zhwm2auwOylLWRqQBey+dRYQK0osG9JkTYJriwOQWntLADM8LSMuCDoMJbs71cmftE5+DOciZdxN8BAzGH0YU96PmjnLVVLAJgKCQHomugtIO66ehuXp0Hs2j0mV4BQGR8jFG8ZhfPuztj0ojE5OCDKYZjr8cqbLnhfeOUGr/wGn6L0HwB8ijXgsvCGWiwhM3l70ZMJSpv4Mb+2UXiLuzh/IyiqA7pp5CTFoAWxdy7QoXpPqxcHuYDZDB22/eLpxaRhcUVuafNS8ZDZY9PtdUihbjY4HaG303EO0lbs5iJtDHi/oEL4t/c4fRjeGJkNtFL6k58sHYNksMGd1HoAm41Gt/2pfzKArtH7gMlS+jAOUjKelGq6bQSV+Qmv7dvD1E5M2HjQPMXrZcYEF6tzxMhOQSfGqlv+1ipo75UoGIPujWbWZI4Apo0Fs5sP5o3jBnfPXKOyONTGFLWPb91gyU5uIJRbXXvWVrqwdK+g5vfQthWR1hJRUQYD43h8euhiVLQ42etrI8pJYAuFZqeEwKFTCcd2v4E3XlT4+XpCF2sYI3o/WZbvatIrOqDtKh1l363sxnp4smKy05lKg+tysXvvLOjOMfnHB+KfRjK5bGHFcv6uJdTvb8qh/7/avtJ7EyIPfdI/3EWgP9NQgyrhH+w0poq2+j8EzcCuNsgRY4EO66/1NuBCO2g/q/e4EE91mPA1D7MDf5uNAJJ2ivnGsQvIjj7OXK6aPXgPYmQK2HIUqet/qB6eOP4gSOiD5ZYlC6dU4NIagXQgbvHbtf2+srkh2txqpKfNOtm3WJ9T4M0Y2LA/xV8FCN7pIgn46WKlPXBD7jVyfgbWaCXPwpVLWO7ypnQAYG3eruN+0KUv8o3pMjvrzXE65O0hno2L/nB6oZBYin05Gli0+46smO9sVcPj4OQyaFYsu0vlxDCS0nPLeSjhv7q+hF39zTQukMMPO9MOI6a4qKLY2B/TQm9Spt5d8a9DLbl0yjXJKB87zP7J5oygzVU0Phcb67NgS7/WthWi8U2VNLcWC6LyZMaYxl79El0d+Cumi9F6tZvWfnDlMX9k3/6fKawvi5FjZuegRr4DVBwtuc1xJW7ZykxtK1pcT1oMceUgWQoFdd5pkO4knOyTdvMmA6b+weAcGVY="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -487,23 +460,14 @@ RM: B
 Jungkook: F
 Mark: A
 JayB: D</pre></div>
-    <div class="answer-gate" data-answer-id="14.5">
+    <div class="answer-gate" data-answer-id="14.5" data-chapter="14">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 14.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 14 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>np.select</code> เลือกค่าจากเงื่อนไขแรกที่เป็นจริงของแต่ละตำแหน่ง เหมือน if/elif แต่ทำกับทั้ง array และอ่านง่ายกว่า <code>np.where</code> ซ้อนหลายชั้น</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-names = np.<span class="tok-fn">array</span>([<span class="tok-str">"Hobi"</span>, <span class="tok-str">"SUGA"</span>, <span class="tok-str">"RM"</span>, <span class="tok-str">"Jungkook"</span>, <span class="tok-str">"Mark"</span>, <span class="tok-str">"JayB"</span>])
-scores = np.<span class="tok-fn">array</span>([<span class="tok-num">85</span>, <span class="tok-num">62</span>, <span class="tok-num">74</span>, <span class="tok-num">48</span>, <span class="tok-num">91</span>, <span class="tok-num">55</span>])
-grades = np.<span class="tok-fn">select</span>([scores &gt;= <span class="tok-num">80</span>, scores &gt;= <span class="tok-num">70</span>, scores &gt;= <span class="tok-num">60</span>, scores &gt;= <span class="tok-num">50</span>],
-                   [<span class="tok-str">"A"</span>, <span class="tok-str">"B"</span>, <span class="tok-str">"C"</span>, <span class="tok-str">"D"</span>], default=<span class="tok-str">"F"</span>)
-<span class="tok-kw">for</span> name, grade <span class="tok-kw">in</span> <span class="tok-fn">zip</span>(names, grades):
-    <span class="tok-fn">print</span>(<span class="tok-str">f"{name}: {grade}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -512,22 +476,14 @@ grades = np.<span class="tok-fn">select</span>([scores &gt;= <span class="tok-nu
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>หน่วยไฟของ 4 หลังและอัตราค่าไฟ 2 ขั้น</dd></div><div><dt>ต้องหา</dt><dd>ค่าไฟ 292.5, 487.5, 825.1 และ 1584.7 บาท</dd></div></dl><strong>วิธีคิด</strong><ol><li>ส่วนขั้นแรก = <code>np.minimum(units, 150)</code></li><li>ส่วนที่เกิน = <code>np.maximum(units - 150, 0)</code></li><li>คูณอัตราแต่ละขั้นแล้วบวกกัน</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>[ 292.5  487.5  825.1 1584.7]</pre></div>
-    <div class="answer-gate" data-answer-id="14.6">
+    <div class="answer-gate" data-answer-id="14.6" data-chapter="14">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 14.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 14 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>minimum</code> และ <code>maximum</code> แทน if ได้: บ้านที่ใช้ไม่ถึง 150 หน่วย ส่วนเกินจะเป็น 0 อัตโนมัติ แนวคิดนี้ใช้คิดภาษีหรือค่าส่งแบบขั้นบันไดได้เหมือนกัน</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_6.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-units = np.<span class="tok-fn">array</span>([<span class="tok-num">90</span>, <span class="tok-num">150</span>, <span class="tok-num">230</span>, <span class="tok-num">410</span>])
-first = np.<span class="tok-fn">minimum</span>(units, <span class="tok-num">150</span>)
-extra = np.<span class="tok-fn">maximum</span>(units - <span class="tok-num">150</span>, <span class="tok-num">0</span>)
-bill = first * <span class="tok-num">3.25</span> + extra * <span class="tok-num">4.22</span>
-<span class="tok-fn">print</span>(np.<span class="tok-fn">round</span>(bill, <span class="tok-num">2</span>))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="1bKxLOJybonEgpBwByPDvgAMP6ggGZWJt3wAFVA+RV8RLVv+ziYjevraw6GI52D3rUaosESWNKOYSIDIJHWyleeSA6bripmiv8dyEQ390S98HEkJGvCbBhoJnqQcU2gtpaeohjcEOPb5vn4nY27z2l+sI3TOnEg69pnMshk221nBsn6wjdqxkmmQDcE+bTF5NL9FWSWKqYu/bXGeDDEbiYxfOPpKGbV8edwtZee81B8GO7SGwG9RQq0wIVEESUVCyMo3LrlIYZMgethabbSoKMZlbkP3SCnHLOzwCkAVMEDqaOz7G5HhjLQlcS5CWi2ULgVYIoKsN4uYgYrkQFlx20T8EgKeZkdiVsUKsPoJ/JEJskIGcO+tggQLZsGBB+2y9ddu4O3VfZcWtHduZdgHUT+MsuW0tzCBKLf7NvP5LTIdpp2ssEhujrWbdpDTd9gEjZZ3onfWGsyfhVQ5aQV+BJD9BTl4XUKoODTNP+178GGXhSjhypjeHnxnQ6ea0Y4dBMv+jyjmhaPl0+3zYaK9NNmzOAm+GtJovUtVqWMfEyB9jeEGQ6WXsguNu7BuZABKbE2RLv/Uqy9A8s8OGwB2rvao2bMk89wU/uSxAWyfbSFbYavf0Frx3FpB89OhxXpthpucrYWoz+1lC+eLxZ4yeyAkT2BgdgpAvs6MqXb9Q8us2S9leWgv0WUdk13Or/neugX52MBjuWpO7eb2XYiiYDUFhC2Trm9cC4uNt/lWpQ/YyqLE4F/SaHcHmliakxvwSFCPFP3oZaIU1lAQ8bN5dx85it5FjBCVq5muWWRqj85LoL79W8b3EhIq/sF2iGu8po8X1d5+zxAaC3A4fRxxU0kcF5jGoea4vpD1mvdpaPIbJA/qSPWYJg2PIxOP7huYbzGz2HnkH2TyBFNoXUroTE3E616xwMDKS7cu4b+5yyQGM4dZFiIA5r9VF0AN4Ok39HIjHBeIvjVfqV0oWb3f7QCwqigtH0UTHDJW0Jn8YlEdHAkBeowasusQl67qz8Hy/vxLYHR6eUjji8vie9ltrKcyIB/2e+j96x8JDtqpy+dw4RuKD3dJZIXQv75sbQ3+qNDuFSq+5xWl3arnRV8pTJEzpJI31pDlee141FNuj3FEr3/LQRjSFRnqzCjYbfxRtS3E5g+FTfoXczetGZiuEEdCC2UmAisK8Lx4wjTi4d31vx2ioJfDkJl2k6D25hIK5RE4wnKKZonEn3JcLrb6PdLyfT7J/WgeXIB80JGNSM81vJ6kIC8LwdW7I238aqNofJi2D/YDh1Nd1ZNM2Iw8kbmhhK2UbvXqni8rpkRyM0MUjZVWGSpl3b34nihcLP6PkH+RXKR4sTqli0En2VuYdLxHjb71Idu0DYRELcs4fRXhXoQ6dU7VneS7ZRtOEUj8fqWpbwGlwoZzdkPi0fd+w8/87l9mfEyNN5e9LCDLPjosyImm3DJ+HSECae0otqxM4H1zqrGPf/GoKw+pJ9Gdka89/eZLY9RCEV5n7RIZTNMYDJ6X4yyxcHfc+icT3fUErG6VQv7KZcYe4B0khwjcAON8P80qd0jhpkVHYyDSloPsMrKRvJ+V8ze7lSiktyPQY6w+oBwmJrPTGADZA6E6DO+8BCUMMyDuP1wJ3BR8DGDBT5tLKfDhIR2zYMVhaX66Oqq6ygzA4agjHXhsRjdDeoCAnAwRv8gaPJ5H5MncHNWH0MLgss6r+FeTkXiR8NNtOBAJjT7Ey+IDRwZk"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -538,22 +494,14 @@ bill = first * <span class="tok-num">3.25</span> + extra * <span class="tok-num"
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>(9, 9)
 [ 7 14 21 28 35 42 49 56 63]
 56</pre></div>
-    <div class="answer-gate" data-answer-id="14.7">
+    <div class="answer-gate" data-answer-id="14.7" data-chapter="14">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 14.7<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 14 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>คอลัมน์ (9, 1) คูณกับแถว (9,) ถูกยืดเป็น 9 × 9 ทุกคู่ เป็นรูปแบบเดียวกับการหาระยะทางทุกคู่ในตัวอย่างร้านใกล้ที่สุด</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_7.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-n = np.<span class="tok-fn">arange</span>(<span class="tok-num">1</span>, <span class="tok-num">10</span>)
-table = n.<span class="tok-fn">reshape</span>(-<span class="tok-num">1</span>, <span class="tok-num">1</span>) * n
-<span class="tok-fn">print</span>(table.shape)
-<span class="tok-fn">print</span>(table[<span class="tok-num">6</span>])
-<span class="tok-fn">print</span>(table[<span class="tok-num">6</span>, <span class="tok-num">7</span>])</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="1hmkBYn2oE6rxteLljeA8jcO1m9TE+M94Qx2beF4fPNrxKA3LpjziE4rdPDRcqNdzrVRQeMSbgJnEM47oZf8S/vfnoSjEsGTSeeq4uUzMjtqYJi8PLyZ5CT56b/ElGQ+VWI0KKNNn/4MAXYs9ihPDRENSPSu9KK8COLkrmgOoopwyl7lVbwMAPpg2sZHwVMaFuZIEMxTC+8qS8kjISrk9r46M+vf1KwE+N9omi8DSgHP1VdrJKa+gOdFPD3wxzqisLvyydfNRWz9VsEiNBK8jPMiD2AxxtFhcveykmS9Gji0Cy71QU34GihxVKEv0nOP4q062r+2JyY7XEBxvkwGdAevYglpb4/pWuEEbzbwjL9HUe8UzkXk6l2B3suWP10fAT3pN3kHIPna5DIXYdSoxW4HLJJYymUvGDx+UH8pTZeH1+fYheD/Up373GiR1Y+0VapIvYmgZhZBm6dNTO1tjEph3i5GnOfsL5pCDC4qrYaJh6hBnsbOckgze7fOsmLiZyVH6N6lpucbMm4Yg6LDjzOYSghKUpH5fs/alMniigKSgJ+U9J2PGny5srmnHEqb0m1gc1Eu5eCHOq02q8UbpZCo8ZTEZiPRB3bdS9BxbiwmVOVuApHONNrtubPQTKxwflZ+K5h+zwuKK3rLJ4QfGiJp/5RxhqF4A6kNvzF4C9pKEEWaMlrEFrumhhDX1OysHHnQNprsz4eDqsPOhkILgJv/P2MfsQE/5utmlKH3b4OOUnXxllyXqi3EtiEM6PqAB9hrg1arwRZ6h9Ogxop3cYVU6ZDAfZATXBslqeJAVGV/jnBRfhP4DCHOQtcqe4jgRKjkjDOfv2BX93BeR6hKZTYxpSezY2CXfiaNHZUeKOf5JZ8Sd0fnE7xXNckpelWzQJFni2RWF2Cm2ofhOy2KFMfmThqtcl6ViAe3NDIvfRWfr1JXL0ufdgOTn06X1vOZQpnHzKKsLjW3/ai83T92uAnLtE9MjLhmCoI5fQOL3GJEY1REbeMBsp50ZG3elEA0Htc6HFZsHfqANP3zbXPEW5WuKZrkXfX6XM7WzReJebI6gtSF1QkgMvqHhgmfvcSqiX+uiB0p7RWKbuFysP9k5VBPTBFKv4qNIXflMUi5ZxrFzUjQRhXflqLZ/sGMo6XdspIqaHv001/PUm39rPT/tgJZQhEupL/lQhmyFxwUWojvaoEBrPJ1OAmLoBnQh7NhOiEvm/7Rv2AK5oALJFxsi08wY0wIvSCBxPoNvZ+kF34iN6KwGX1QlH7HaTHYEKheGTqeiAbGJWZjKq44R+PobPRKn/Mw8rp2xC40owKQynjNuA5IJkJeond0KEJxdg8hLM07MHoF02XnYPMFghPe8wQRIhKNK2eVWh7h8c867UV3FOi6u+4JPcoletDLgylm/2kypmuLgWjD540GzXIBjK+FPs20UJ7vEZkw"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -564,25 +512,14 @@ table = n.<span class="tok-fn">reshape</span>(-<span class="tok-num">1</span>, <
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>รายคน: [76.75 70.75 82.5 ]
 รายวิชา: [80.   71.67 90.   65.  ]
 วิชาที่ยากสุด: Thai</pre></div>
-    <div class="answer-gate" data-answer-id="14.8">
+    <div class="answer-gate" data-answer-id="14.8" data-chapter="14">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 14.8<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 14 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>จำง่าย ๆ: <code>axis</code> คือแกนที่ถูกยุบหายไป <code>axis=1</code> ยุบคอลัมน์ทิ้งเหลือค่าต่อแถว</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_8.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-subjects = np.<span class="tok-fn">array</span>([<span class="tok-str">"Math"</span>, <span class="tok-str">"Sci"</span>, <span class="tok-str">"Eng"</span>, <span class="tok-str">"Thai"</span>])
-scores = np.<span class="tok-fn">array</span>([[<span class="tok-num">80</span>, <span class="tok-num">72</span>, <span class="tok-num">90</span>, <span class="tok-num">65</span>],
-                   [<span class="tok-num">70</span>, <span class="tok-num">68</span>, <span class="tok-num">85</span>, <span class="tok-num">60</span>],
-                   [<span class="tok-num">90</span>, <span class="tok-num">75</span>, <span class="tok-num">95</span>, <span class="tok-num">70</span>]])
-<span class="tok-fn">print</span>(<span class="tok-str">"รายคน:"</span>, scores.<span class="tok-fn">mean</span>(axis=<span class="tok-num">1</span>).<span class="tok-fn">round</span>(<span class="tok-num">2</span>))
-by_subject = scores.<span class="tok-fn">mean</span>(axis=<span class="tok-num">0</span>).<span class="tok-fn">round</span>(<span class="tok-num">2</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">"รายวิชา:"</span>, by_subject)
-<span class="tok-fn">print</span>(<span class="tok-str">"วิชาที่ยากสุด:"</span>, subjects[by_subject.<span class="tok-fn">argmin</span>()])</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -596,26 +533,14 @@ by_subject = scores.<span class="tok-fn">mean</span>(axis=<span class="tok-num">
  [1.   1.   1.  ]
  [0.27 0.23 0.33]]
 [0. 0. 0.] [1. 1. 1.]</pre></div>
-    <div class="answer-gate" data-answer-id="14.9">
+    <div class="answer-gate" data-answer-id="14.9" data-chapter="14">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 14.9<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 14 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>แต่ละ feature มีหน่วยและช่วงต่างกันมาก การปรับให้อยู่ช่วงเดียวกันช่วยให้โมเดลอย่าง KNN ไม่ถูก feature ที่ตัวเลขใหญ่ครอบงำ (บทที่ 17 ทำแบบเดียวกันด้วย StandardScaler)</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_9.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-<span class="tok-type">X</span> = np.<span class="tok-fn">array</span>([[<span class="tok-num">150</span>, <span class="tok-num">45</span>, <span class="tok-num">19</span>],
-              [<span class="tok-num">165</span>, <span class="tok-num">60</span>, <span class="tok-num">22</span>],
-              [<span class="tok-num">172</span>, <span class="tok-num">68</span>, <span class="tok-num">20</span>],
-              [<span class="tok-num">180</span>, <span class="tok-num">75</span>, <span class="tok-num">25</span>],
-              [<span class="tok-num">158</span>, <span class="tok-num">52</span>, <span class="tok-num">21</span>]], dtype=<span class="tok-fn">float</span>)
-low, high = <span class="tok-type">X</span>.<span class="tok-fn">min</span>(axis=<span class="tok-num">0</span>), <span class="tok-type">X</span>.<span class="tok-fn">max</span>(axis=<span class="tok-num">0</span>)
-scaled = (<span class="tok-type">X</span> - low) / (high - low)
-<span class="tok-fn">print</span>(scaled.<span class="tok-fn">round</span>(<span class="tok-num">2</span>))
-<span class="tok-fn">print</span>(scaled.<span class="tok-fn">min</span>(axis=<span class="tok-num">0</span>), scaled.<span class="tok-fn">max</span>(axis=<span class="tok-num">0</span>))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -626,23 +551,14 @@ scaled = (<span class="tok-type">X</span> - low) / (high - low)
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>[5. 5. 4. 5.]
 รวม 19.0 กม.
 ช่วงที่ยาวสุด: ช่วงที่ 1</pre></div>
-    <div class="answer-gate" data-answer-id="14.10">
+    <div class="answer-gate" data-answer-id="14.10" data-chapter="14">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 14.10<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 14 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>np.diff</code> ตามแกน 0 ลบแถวถัดไปด้วยแถวก่อนหน้า ได้การเปลี่ยนแปลงของแต่ละช่วง ถ้ามีหลายช่วงยาวเท่ากัน <code>argmax</code> จะคืนช่วงแรกที่เจอ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_10.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-points = np.<span class="tok-fn">array</span>([[<span class="tok-num">0</span>, <span class="tok-num">0</span>], [<span class="tok-num">3</span>, <span class="tok-num">4</span>], [<span class="tok-num">6</span>, <span class="tok-num">8</span>], [<span class="tok-num">6</span>, <span class="tok-num">12</span>], [<span class="tok-num">9</span>, <span class="tok-num">16</span>]])
-steps = np.<span class="tok-fn">diff</span>(points, axis=<span class="tok-num">0</span>)
-lengths = np.<span class="tok-fn">sqrt</span>((steps ** <span class="tok-num">2</span>).<span class="tok-fn">sum</span>(axis=<span class="tok-num">1</span>))
-<span class="tok-fn">print</span>(lengths)
-<span class="tok-fn">print</span>(<span class="tok-str">f"รวม {lengths.sum():.1f} กม."</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"ช่วงที่ยาวสุด: ช่วงที่ {lengths.argmax() + 1}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -652,22 +568,14 @@ lengths = np.<span class="tok-fn">sqrt</span>((steps ** <span class="tok-num">2<
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>array ยอดขาย 10 วัน</dd></div><div><dt>ต้องหา</dt><dd>ค่าเฉลี่ยเคลื่อนที่ 8 ค่า และวันที่ <code>[4 5 7 9]</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>np.convolve(sales, np.ones(3) / 3, mode=&quot;valid&quot;)</code> ได้ค่าเฉลี่ยของทุกช่วง 3 วัน</li><li>ค่าเฉลี่ยของ 3 วันก่อนวันที่ i คือ <code>ma[i - 3]</code> จึงเทียบ <code>sales[3:]</code> กับ <code>ma[:-1]</code></li><li>แปลง index เป็นวันที่ด้วย +4</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>[20.3 22.  24.7 26.3 29.7 29.  34.3 33.7]
 วันที่ขายเกินค่าเฉลี่ย 3 วันก่อนหน้า: [4 5 7 9]</pre></div>
-    <div class="answer-gate" data-answer-id="14.11">
+    <div class="answer-gate" data-answer-id="14.11" data-chapter="14">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 14.11<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 14 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>mode=&quot;valid&quot;</code> คืนเฉพาะช่วงที่มีข้อมูลครบ 3 วัน จึงได้ 8 ค่าจาก 10 วัน การจับตำแหน่งให้ตรงกัน (<code>sales[3:]</code> คู่กับ <code>ma[:-1]</code>) คือจุดที่ต้องคิดให้ดีในโจทย์ข้อมูลตามเวลา</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_11.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-sales = np.<span class="tok-fn">array</span>([<span class="tok-num">20</span>, <span class="tok-num">22</span>, <span class="tok-num">19</span>, <span class="tok-num">25</span>, <span class="tok-num">30</span>, <span class="tok-num">24</span>, <span class="tok-num">35</span>, <span class="tok-num">28</span>, <span class="tok-num">40</span>, <span class="tok-num">33</span>])
-ma = np.<span class="tok-fn">convolve</span>(sales, np.<span class="tok-fn">ones</span>(<span class="tok-num">3</span>) / <span class="tok-num">3</span>, mode=<span class="tok-str">"valid"</span>)
-<span class="tok-fn">print</span>(ma.<span class="tok-fn">round</span>(<span class="tok-num">1</span>))
-above = sales[<span class="tok-num">3</span>:] &gt; ma[:-<span class="tok-num">1</span>]
-<span class="tok-fn">print</span>(<span class="tok-str">"วันที่ขายเกินค่าเฉลี่ย 3 วันก่อนหน้า:"</span>, np.<span class="tok-fn">flatnonzero</span>(above) + <span class="tok-num">4</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -677,30 +585,22 @@ above = sales[<span class="tok-num">3</span>:] &gt; ma[:-<span class="tok-num">1
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ลูกเต๋า 4 ลูก จำลอง 200,000 ครั้ง</dd></div><div><dt>ต้องหา</dt><dd>ค่าจากการจำลองใกล้ 0.518</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>rng.integers(1, 7, size=(200_000, 4))</code></li><li><code>(rolls == 6).any(axis=1)</code> ได้ True เมื่อแถวนั้นมี 6 อย่างน้อยหนึ่งลูก</li><li><code>.mean()</code> คือความน่าจะเป็นโดยประมาณ</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>จำลอง  0.5165
 ทฤษฎี 0.5177</pre></div>
-    <div class="answer-gate" data-answer-id="14.12">
+    <div class="answer-gate" data-answer-id="14.12" data-chapter="14">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 14.12<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 14 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>any(axis=1)</code> ตรวจทีละแถวว่ามี True อย่างน้อยหนึ่งค่าหรือไม่ การจำลองจำนวนมากให้คำตอบใกล้ทฤษฎี และใช้ได้แม้กับปัญหาที่คำนวณด้วยสูตรยาก</p><div class="code-block"><div class="code-head"><span class="code-file">ex_14_12.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-rng = np.random.<span class="tok-fn">default_rng</span>(<span class="tok-num">1</span>)
-rolls = rng.<span class="tok-fn">integers</span>(<span class="tok-num">1</span>, <span class="tok-num">7</span>, size=(<span class="tok-num">200_000</span>, <span class="tok-num">4</span>))
-has_six = (rolls == <span class="tok-num">6</span>).<span class="tok-fn">any</span>(axis=<span class="tok-num">1</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"จำลอง  {has_six.mean():.4f}"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"ทฤษฎี {1 - (5 / 6) ** 4:.4f}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="9ADd/wf+i/yFFLfWLjlo4Zv3WHOxjNSqITa554MQuGMJ1okUmN4G1tkeqEHU/JvD6Oco4g4FAaFYASqTR0Y0P747p0iB3QMFPnKZAxOw1g+HGGBFd/EbhFfsJFJOsUJPiNQntKaKczuKEI1G/knZbosPvipHbgaYENaITe09E/2Im4bIYkMkUWf3F3EoEFYe4oQnlwfNggdgBBpHDsRmR7X/9mi0Feg4dNjLvEJgZJTjKRcfqLJfdxdClooNFiaC57AiwUOv0rDos0/yU5AiQSaHPJlsf54MIkJpTv+51/9i+Ie7M0JyGqCN4rdkpJcYwPBGCJD21MwdH3wyGmI3BsL4enNKgbX2Tj9miD6vfMywLBcHh0G0C++pyLLRMHM0TjlLsjIaWUTEsKghNTme3wdV5OoVSL4LCG1FeTZ7tBFihheiCqR/sFwyJGsxRXUBTGEp+KNwML3wq8eNa0lqPh3Vpl7wALBUAwRHOqQOBKCV44/efy9rQMcc5k9jKrbIhqJCxw84pD2B9+WWlWAdl1StI9cfmCl3iRlxFH16JwFP4rEh54pEcKq+H2aPThCaFrNzIMsU/+u8AFZ40VEa5q4YTRy/4d8N4rKiUlgXOj6rkA2EPy59zsK0kqkhPJRkA5h4s42ay3uktYtoU2ydc2d53x+CuSBzyle4g+hrGInO08tUaGFc1gdqFHcg2l+C2IWrNaBF7D+2LkRbDj9J6lu0cFLrMaDOabvCNcACbp33NH1+GKmXF/1Jvpr1mjn9TW7NUlw1W9zy6heSs5Zt5xzj9LQGNKxwYrAWcMoqvOHMKQCs3VD4TO/A0BWED48IHNwBexWn8yxk02BgrgWyK0Sunwezq12nNv/VQVYmP8EBrBA3/A3amk+gVagbtpaTx0tKzaSGVMbW7CjA0CZ+ArXMhqqRi0qzcfBD3YMUNDd+w0uNfTjtmatPDau7QUAY7aWoS/zfYVyW2jRWMKwY0+NRG0DqfZA7mL1DAmc6bcusYn5AspVzCeo/WBgL7bH/P4A7l6WBAnX+enKVOiMiFF2TW5XO9kPnv/CSr/EW67eYxkiHKh/khG1u5IZybRZl65tVR/zEMH+YJ0nXDavXnPe0XKSFXqRWW6clgbhGvqiAmfVppLxxQ9HGtuflwx/qowGbRG9sSTGSshi9A4egnMazfBXeZrfmZqbHFr0c6iSBZghV0ONFl6UDQG9NBbxkehnoimaB1/XWmJ1swjscqXMbeeXb9Skxv95NmotPgJtlED+l6xhjDFOp+AXcjPT/4GwY4qwFRPQceOYu9f9PydIUZ0Wm2ubBg1htq6QROCtJY2V2AVagdD7HAkJfEdQ9IEjq4g6TckmvN9mlxXMy3FkFbBFNFrkkGbChd4hDBB8jfAktL1JZT08vBlIHAYW4THxKjEdaTxqZ3jziRDoPfOxtPTJ7Uomdu75WWuuxiF/0g+zOSK82YGaAfSPWlR8Nk8wz00VVsx2l5/MvHtJ5iwLVciOryiMTjJnqxK0Q+Ri4qU9cRUuF4o4dRKgg3Ev5xa8c5VmqTiJ8p0Ih+5yX+tMZs1G+7Ei0XcsZA4n6ppXNisydj3EnBdOauPhs13m7swb1M17QKnPeCAlwLKKbETYeLzhgo9CiyAuZCOctG//q3MlCyoJDD4Nj+frkgkaV5Ojj0MNipDB2Wy1ZlJ798pNL0Np01oa00T5suYxL7tfcV5O/m2LfTa32VsGwqpSlMAfcmphWvAPMVQMeDOvlj7hSgNJN"></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-13.html">← บทที่ 13</a><a class="pager-link" href="chapter-15.html">บทที่ 15 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

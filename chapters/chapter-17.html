@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -181,22 +181,14 @@ MAE 0.82</pre></div></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>178 ตัวอย่าง 13 feature
 [&#39;alcohol&#39;, &#39;malic_acid&#39;, &#39;ash&#39;]
 [np.str_(&#39;class_0&#39;), np.str_(&#39;class_1&#39;), np.str_(&#39;class_2&#39;)]</pre></div>
-    <div class="answer-gate" data-answer-id="17.1">
+    <div class="answer-gate" data-answer-id="17.1" data-chapter="17">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 17.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 17 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>สำรวจข้อมูลก่อนเสมอ จะรู้ว่ามี feature อะไร และเป็นงาน classification กี่คลาส</p><div class="code-block"><div class="code-head"><span class="code-file">ex_17_1.py</span></div><pre class="source-code"><code><span class="tok-kw">from</span> sklearn.datasets <span class="tok-kw">import</span> load_wine
-
-data = <span class="tok-fn">load_wine</span>()
-rows, cols = data.data.shape
-<span class="tok-fn">print</span>(<span class="tok-str">f"{rows} ตัวอย่าง {cols} feature"</span>)
-<span class="tok-fn">print</span>(data.feature_names[:<span class="tok-num">3</span>])
-<span class="tok-fn">print</span>(<span class="tok-fn">list</span>(data.target_names))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="k29dEaw6tLUoSqKXVauCzz5otoeKuJoPMKrtgHVBSaxKOkXiA7ZfY8TDGrChLPBxQI8x6b40uSMAqkXIEjGHJpKKUJtrxqjaUZxILNw6VvbjJryYgMKZu6BT2cOwMlNe5kyh4T8zFomY29ItZ1IPlui5Td805tCc7mjyCJsuX7gQMuQUptcw/S96hrinq7E08VR6UX0Qq7zzwAYw0r10Koza3uQ8bUJUttcglp1G8xbrLQtmlZ/7Nf+K1Z0M0FQnYR3bZx2axNmta7q6w0CpDA7yCvLRGg67koUaTQchYijISrM6PzVSgi81vUue41S3CoH/wwWDhTV9tSU9ianniuWdFdjL4UqvQupDVMEoKlrYNMHT74CAvZvf7G2vP/Y6ij5kVKpjW9puHre8Rl6e+LwAU8W0f39I04yNNQuDABZUUoLe53pxwWj1anvnCitvtJBn1u4Vc2ADWyQvWF/J1av1unYmUHeA5hSSNih0AkZwzsCvnJ+sgECwvzGnPxMmwjqiHIPZ7XSjPBV+noo9xekBc7Y94HQaiJpUnteH0mc8L346BZ4R/kw+W8CNaCFDSx3yKL9PEPZMeraaXLHxfpfXyE6KVdypI23yw/VA5Fy5WNIr9sRrMVCBKVV38scsU0lulVDDXv8Eux/Ydohlty5CgpCe69B+cqRUMgakldC/XGkWZgNiueEqCG6YjTKJMTtqSGMpG4hIdMOp5AywsJ/g0MiMVP6Dlh7RbtwYYX7fFi+eBwiWZ4KtJ5pW7RZgPu5WoIb/K6uZG3ijSVKtwx1sk4hqZjsTyPvE7pN4OkikqczCEHPurcJIdrY0HLvt/zBYnGmQxOHfVs044eMA7TFJZ5ddFkBn7+/aTum2qyskxLtEzt3lxNhaNWZSjEMwHoHHKVJHvjuiAcUnQKV6X8W1KPssQqUkQ5CHo1WwicbuAFS8iqmVgTLw1k7XGTBwvK0RlAfVB17CADzWL2NzsWPStC2zRg46+t64YLZvuL1qfINcJmIQ3e8pyVLNMpfM2GwA683u65uFSR3fHS6lVVrTbzwZKD5SZiwXbdo0NaowizOspiKvNVZroji4KrWxJ3GcDMp93fTy5sKhNSD6JOoPGlSxoqgDIm0DE/otBDxwH/M/bYo46/26wXsuhou37X8IFoBLvwqdDc+298rJgN84/yjpYRA7FIeLQmUf47PMNA=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -206,24 +198,14 @@ rows, cols = data.data.shape
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>iris 150 ตัวอย่าง 3 คลาส</dd></div><div><dt>ต้องหา</dt><dd>30 ตัวอย่างทดสอบ คลาสละ 10</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>test_size=0.2</code>, <code>stratify=y</code>, <code>random_state=1</code></li><li><code>np.bincount(y_test)</code> นับแต่ละคลาส</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>120 30
 [10 10 10]</pre></div>
-    <div class="answer-gate" data-answer-id="17.2">
+    <div class="answer-gate" data-answer-id="17.2" data-chapter="17">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 17.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 17 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>stratify ทำให้ทุกคลาสมีสัดส่วนเท่ากันในชุดทดสอบ ผลวัดจึงไม่เอียงไปทางคลาสใดคลาสหนึ่ง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_17_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-<span class="tok-kw">from</span> sklearn.datasets <span class="tok-kw">import</span> load_iris
-<span class="tok-kw">from</span> sklearn.model_selection <span class="tok-kw">import</span> train_test_split
-
-<span class="tok-type">X</span>, y = <span class="tok-fn">load_iris</span>(return_X_y=<span class="tok-const">True</span>)
-<span class="tok-type">X_train</span>, <span class="tok-type">X_test</span>, y_train, y_test = <span class="tok-fn">train_test_split</span>(
-    <span class="tok-type">X</span>, y, test_size=<span class="tok-num">0.2</span>, stratify=y, random_state=<span class="tok-num">1</span>)
-<span class="tok-fn">print</span>(<span class="tok-fn">len</span>(<span class="tok-type">X_train</span>), <span class="tok-fn">len</span>(<span class="tok-type">X_test</span>))
-<span class="tok-fn">print</span>(np.<span class="tok-fn">bincount</span>(y_test))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="5PqdmjZQRqzJKyRastxkkxSZkbbxHDKd1gV3hN/wchIBYfucRzjQXTnmbAsSIMIS2zzNQGcykznQw9EP/MzYQMCILDyo3y2HtL88EjyieUYQGQPn6Kuv1N8ouJACrcCsv96IwWLf+fCBzILz+9EZuCP1FWPBIG/GPgtpeGMrga6Lric/INHblyjtENCqJyDA0Jfz+5uqTsfJqgsGn7ORxrcZZzoAl2Fllkpqoniqa0aKpU6UPhTnEv6bXUJVHazuFLJNY0YQiGlXW8JpXzCxBLr+xEPDSaS6xfZfw97tO/zGN9bi56OcQt+p+QdN36T6IyL67AXqgnUdkZtZwWMforEPy6KE3ZTuwvrouX3w9uqWA4Jt2GNmZVdzZ0+edu5SX6LEalE39T1/1RD2TWHHOEjynrFv895bmrLT9+Es8tyDYoAADHls8N9yKsSMlTD4QOdyMOiZa+7csbY9A6ehq3A994NRDVtjTlbD8PoGo+46dUgWTHUgD1xcR2ttiuxdWZ1CaMqM1cC99sQWd+ts3z1amHqkJRpki/uDwu4sAqT2d5+t34cnS6Ukei4rK1VfJA1LSHmUE7w8Qtcvf81RPdQpNUNuJ+EBpudvguaZZu+VeYndjG5Vi79KDGKf+4Z0vo00QzfVag3a6hhmGi6GxKqLTiaDjjZrXTBgu6hormBSXVn5e4y3knfSYIHjOJoDhC7GPkcruvMVxaG9WII0EMXNlCDkuF/qrkEE9wAzAGDScle0gx9C9fod/tf7SnLH7tltcsmeMN+qQN7Vy+WcPHUb8mtO5HNX42U5zWRwezuU/6LfeMy0l85jVZYNatTZBBGJ+xglCgoEBYrfS13q7pUhZ/LDk3kCtl6CD6g0XCRi7CIcNoQYgT2QsgZcuab38g+kf8QMvbtalcEVYtaeHwd3EO46hLec3vquoI3IPaseJbjcwl4bybSvIWbfEyOVWImxfMxsuWLkmJ//YnNvHT+504QRWrv4QBBc/AHkkzNdBYyQBkI5kG4dIW9kP6+BWJjH71wfWfKFozJLNRIsxrzTX0z4bmUHXMAeFxlgYFQmCbsQEJbqLGXvypo/gOJ+aciUQHak/ah7WtynKMXraee6kyDh1qu4vcC/LgfCRjKoTl2+T+2Z0Em6NLdshwuIq1F3Vl9Y1cPXzCcka6+gsgNRm4ZV3XnyzVeeQHXjZFxISHGyreNmvxoHIRZ/n2277UWqJ/jH5xKtACueoC++2nNGMQZihUhkFBYiOya/pbkUxJsG5rZG6Mbtl431SDYXBLYGaD3AM1qgvlYyM9m7a1BvKzcoi7skBjhURska0x2j2HjbYy62xQikp1OD2W/6x/C10goFQWE6Q27lEeM1ZkcSHkH1woi3Bj+bExTMfPcQNfvcN6dCb8wyTM8+8F6QqD4wGPIoJerfzWi2Oe/1j8yaQgQ7euCvA189KX0GrdKKSIeg9tE5zOs9qPTaOAqvqD9toAjTx31ZWnkVfIBoAjOVdQl0EjBxBGW0zmHRxlmL8JmbFIvxpOrOs7b2iTCxCIXLEngEFWPl/NJCM4HaQY0qlZPgD8WMwfLJmvdWNFd9rePr5IngxOu0eer/vmUekeHEE4vfY8eETtrMKaC928k0OcmKh9ac+TKGGHCjaBmlB63QE0zzrrXYI7+57ZQCDAMUsgdtgK1KZAOHuCFWqkJf8yXwx8skpTuzQH3YSuvw4/PHZriubNkjUBSXfjrXqlCr11GZb1s21voMIhedpYj74pXn8uwGIA30/xXvkY3RMIxJA4b9xNeP3YWWXc0OcSZEmTmPGxacnZtzmY6UNNZf+rIng398Ld0sy01o5VPS7fWQInti8a6xrhBZVykdzgbCAY/YqLWyNTGG8OuGGtS8XGjrttD8PJja4LmS78LsfqhXuSyy6jLNnd5m/Q=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -234,32 +216,14 @@ rows, cols = data.data.shape
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>KNN            0.667
 Decision Tree  0.889
 Logistic       0.956</pre></div>
-    <div class="answer-gate" data-answer-id="17.3">
+    <div class="answer-gate" data-answer-id="17.3" data-chapter="17">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 17.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 17 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ทุกโมเดลใช้ fit/score เหมือนกัน การเปรียบเทียบจึงเขียนเป็นลูปได้ KNN ได้คะแนนต่ำเพราะ feature ของไวน์มีสเกลต่างกันมาก ซึ่งแก้ได้ในข้อถัดไป</p><div class="code-block"><div class="code-head"><span class="code-file">ex_17_3.py</span></div><pre class="source-code"><code><span class="tok-kw">from</span> sklearn.datasets <span class="tok-kw">import</span> load_wine
-<span class="tok-kw">from</span> sklearn.model_selection <span class="tok-kw">import</span> train_test_split
-<span class="tok-kw">from</span> sklearn.neighbors <span class="tok-kw">import</span> <span class="tok-type">KNeighborsClassifier</span>
-<span class="tok-kw">from</span> sklearn.tree <span class="tok-kw">import</span> <span class="tok-type">DecisionTreeClassifier</span>
-<span class="tok-kw">from</span> sklearn.linear_model <span class="tok-kw">import</span> <span class="tok-type">LogisticRegression</span>
-
-<span class="tok-type">X</span>, y = <span class="tok-fn">load_wine</span>(return_X_y=<span class="tok-const">True</span>)
-<span class="tok-type">X_train</span>, <span class="tok-type">X_test</span>, y_train, y_test = <span class="tok-fn">train_test_split</span>(
-    <span class="tok-type">X</span>, y, test_size=<span class="tok-num">0.25</span>, random_state=<span class="tok-num">0</span>, stratify=y)
-models = {
-    <span class="tok-str">"KNN"</span>: <span class="tok-type">KNeighborsClassifier</span>(),
-    <span class="tok-str">"Decision Tree"</span>: <span class="tok-type">DecisionTreeClassifier</span>(random_state=<span class="tok-num">0</span>),
-    <span class="tok-str">"Logistic"</span>: <span class="tok-type">LogisticRegression</span>(max_iter=<span class="tok-num">5000</span>),
-}
-<span class="tok-kw">for</span> name, model <span class="tok-kw">in</span> models.<span class="tok-fn">items</span>():
-    model.<span class="tok-fn">fit</span>(<span class="tok-type">X_train</span>, y_train)
-    <span class="tok-fn">print</span>(<span class="tok-str">f"{name:&lt;14} {model.score(X_test, y_test):.3f}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -269,28 +233,14 @@ models = {
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>load_wine แบ่งเหมือนข้อที่แล้ว</dd></div><div><dt>ต้องหา</dt><dd>accuracy ของ KNN ก่อนและหลังปรับสเกล</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>make_pipeline(StandardScaler(), KNeighborsClassifier())</code></li><li>ฝึกและวัดผลทั้งสองแบบ</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>ไม่ปรับสเกล 0.667
 ปรับสเกล   0.933</pre></div>
-    <div class="answer-gate" data-answer-id="17.4">
+    <div class="answer-gate" data-answer-id="17.4" data-chapter="17">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 17.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 17 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>KNN วัดระยะห่าง feature ที่ค่าใหญ่ (เช่น 1000) จะกลบ feature ค่าเล็ก (เช่น 0.5) การปรับสเกลให้ทุก feature มีน้ำหนักใกล้กัน</p><div class="code-block"><div class="code-head"><span class="code-file">ex_17_4.py</span></div><pre class="source-code"><code><span class="tok-kw">from</span> sklearn.datasets <span class="tok-kw">import</span> load_wine
-<span class="tok-kw">from</span> sklearn.model_selection <span class="tok-kw">import</span> train_test_split
-<span class="tok-kw">from</span> sklearn.neighbors <span class="tok-kw">import</span> <span class="tok-type">KNeighborsClassifier</span>
-<span class="tok-kw">from</span> sklearn.pipeline <span class="tok-kw">import</span> make_pipeline
-<span class="tok-kw">from</span> sklearn.preprocessing <span class="tok-kw">import</span> <span class="tok-type">StandardScaler</span>
-
-<span class="tok-type">X</span>, y = <span class="tok-fn">load_wine</span>(return_X_y=<span class="tok-const">True</span>)
-<span class="tok-type">X_train</span>, <span class="tok-type">X_test</span>, y_train, y_test = <span class="tok-fn">train_test_split</span>(
-    <span class="tok-type">X</span>, y, test_size=<span class="tok-num">0.25</span>, random_state=<span class="tok-num">0</span>, stratify=y)
-raw = <span class="tok-type">KNeighborsClassifier</span>().<span class="tok-fn">fit</span>(<span class="tok-type">X_train</span>, y_train)
-scaled = <span class="tok-fn">make_pipeline</span>(<span class="tok-type">StandardScaler</span>(), <span class="tok-type">KNeighborsClassifier</span>()).<span class="tok-fn">fit</span>(<span class="tok-type">X_train</span>, y_train)
-<span class="tok-fn">print</span>(<span class="tok-str">f"ไม่ปรับสเกล {raw.score(X_test, y_test):.3f}"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"ปรับสเกล   {scaled.score(X_test, y_test):.3f}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -300,23 +250,14 @@ scaled = <span class="tok-fn">make_pipeline</span>(<span class="tok-type">Standa
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>X <code>[[50,1],[65,2],[80,2],[95,3],[110,3],[130,4],[150,4],[170,5]]</code> y <code>[1.8,2.4,2.9,3.5,3.9,4.7,5.3,6.1]</code></dd></div><div><dt>ต้องหา</dt><dd>ราคาที่ทำนาย และสมการที่โมเดลเรียนรู้</dd></div></dl><strong>วิธีคิด</strong><ol><li>X มี 2 feature ต่อแถว</li><li><code>coef_</code> มี 2 ค่า (ต่อ ตร.ม. และต่อห้อง)</li><li><code>predict([[120, 3]])</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>ราคา = 0.0301 x ตร.ม. + 0.167 x ห้อง + 0.123
 บ้าน 120 ตร.ม. 3 ห้อง ≈ 4.24 ล้านบาท</pre></div>
-    <div class="answer-gate" data-answer-id="17.5">
+    <div class="answer-gate" data-answer-id="17.5" data-chapter="17">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 17.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 17 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>Linear Regression หาน้ำหนักของแต่ละ feature ผลที่ได้อ่านเป็นสมการได้ จึงอธิบายเหตุผลของการทำนายได้ ต่างจากโมเดลซับซ้อนหลายแบบ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_17_5.py</span></div><pre class="source-code"><code><span class="tok-kw">from</span> sklearn.linear_model <span class="tok-kw">import</span> <span class="tok-type">LinearRegression</span>
-
-<span class="tok-type">X</span> = [[<span class="tok-num">50</span>, <span class="tok-num">1</span>], [<span class="tok-num">65</span>, <span class="tok-num">2</span>], [<span class="tok-num">80</span>, <span class="tok-num">2</span>], [<span class="tok-num">95</span>, <span class="tok-num">3</span>], [<span class="tok-num">110</span>, <span class="tok-num">3</span>], [<span class="tok-num">130</span>, <span class="tok-num">4</span>], [<span class="tok-num">150</span>, <span class="tok-num">4</span>], [<span class="tok-num">170</span>, <span class="tok-num">5</span>]]
-y = [<span class="tok-num">1.8</span>, <span class="tok-num">2.4</span>, <span class="tok-num">2.9</span>, <span class="tok-num">3.5</span>, <span class="tok-num">3.9</span>, <span class="tok-num">4.7</span>, <span class="tok-num">5.3</span>, <span class="tok-num">6.1</span>]
-model = <span class="tok-type">LinearRegression</span>().<span class="tok-fn">fit</span>(<span class="tok-type">X</span>, y)
-a, b = model.coef_
-<span class="tok-fn">print</span>(<span class="tok-str">f"ราคา = {a:.4f} x ตร.ม. + {b:.3f} x ห้อง + {model.intercept_:.3f}"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"บ้าน 120 ตร.ม. 3 ห้อง ≈ {model.predict([[120, 3]])[0]:.2f} ล้านบาท"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -326,33 +267,22 @@ a, b = model.coef_
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>load_breast_cancer แบ่ง 75/25 random_state=0 stratify</dd></div><div><dt>ต้องหา</dt><dd>accuracy train/test ของทั้งสองแบบ</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>score</code> กับ train และ test</li><li>train สูงมากแต่ test ต่ำกว่า = overfitting</li><li>เปลี่ยน <code>max_depth</code> แล้วสังเกตช่องว่างระหว่างสองค่า</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>max_depth=None: train 1.000 test 0.902
 max_depth=3: train 0.977 test 0.916</pre></div>
-    <div class="answer-gate" data-answer-id="17.6">
+    <div class="answer-gate" data-answer-id="17.6" data-chapter="17">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 17.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 17 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ต้นไม้ที่ไม่จำกัดความลึกได้ train = 1.000 คือจำข้อมูลฝึกได้หมด (overfitting) การจำกัดความลึกทำให้ช่องว่าง train/test แคบลง ซึ่งเป็นสัญญาณว่าโมเดลเรียนรู้รูปแบบทั่วไปมากกว่าการท่องจำ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_17_6.py</span></div><pre class="source-code"><code><span class="tok-kw">from</span> sklearn.datasets <span class="tok-kw">import</span> load_breast_cancer
-<span class="tok-kw">from</span> sklearn.model_selection <span class="tok-kw">import</span> train_test_split
-<span class="tok-kw">from</span> sklearn.tree <span class="tok-kw">import</span> <span class="tok-type">DecisionTreeClassifier</span>
-
-<span class="tok-type">X</span>, y = <span class="tok-fn">load_breast_cancer</span>(return_X_y=<span class="tok-const">True</span>)
-<span class="tok-type">X_train</span>, <span class="tok-type">X_test</span>, y_train, y_test = <span class="tok-fn">train_test_split</span>(
-    <span class="tok-type">X</span>, y, test_size=<span class="tok-num">0.25</span>, random_state=<span class="tok-num">0</span>, stratify=y)
-<span class="tok-kw">for</span> depth <span class="tok-kw">in</span> [<span class="tok-const">None</span>, <span class="tok-num">3</span>]:
-    tree = <span class="tok-type">DecisionTreeClassifier</span>(max_depth=depth, random_state=<span class="tok-num">0</span>).<span class="tok-fn">fit</span>(<span class="tok-type">X_train</span>, y_train)
-    <span class="tok-fn">print</span>(<span class="tok-str">f"max_depth={depth}: train {tree.score(X_train, y_train):.3f} test {tree.score(X_test, y_test):.3f}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-16.html">← บทที่ 16</a><a class="pager-link" href="chapter-18.html">บทที่ 18 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

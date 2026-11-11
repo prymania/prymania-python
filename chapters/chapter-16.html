@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -183,23 +183,14 @@ plt.<span class="tok-fn">show</span>()</code></pre></div></div><div class="sourc
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>น้ำหนัก 6 สัปดาห์</dd></div><div><dt>ต้องหา</dt><dd>กราฟเส้นที่มี marker ชื่อกราฟ แกน x = Week แกน y = kg</dd></div></dl><strong>วิธีคิด</strong><ol><li>สร้าง x ด้วย <code>range(1, 7)</code></li><li><code>plt.plot(x, y, marker=&quot;o&quot;)</code></li><li><code>title</code>, <code>xlabel</code>, <code>ylabel</code> แล้ว <code>show()</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</strong><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-ex1.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div>
-    <div class="answer-gate" data-answer-id="16.1">
+    <div class="answer-gate" data-answer-id="16.1" data-chapter="16">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 16.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 16 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ข้อมูลตามเวลาใช้กราฟเส้น marker ช่วยให้เห็นว่าค่าจริงอยู่ตรงไหน</p><div class="code-block"><div class="code-head"><span class="code-file">ex_16_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
-
-weight = [<span class="tok-num">68</span>, <span class="tok-num">67.5</span>, <span class="tok-num">67.2</span>, <span class="tok-num">66.8</span>, <span class="tok-num">66.9</span>, <span class="tok-num">66.1</span>]
-plt.<span class="tok-fn">plot</span>(<span class="tok-fn">range</span>(<span class="tok-num">1</span>, <span class="tok-num">7</span>), weight, marker=<span class="tok-str">"o"</span>)
-plt.<span class="tok-fn">title</span>(<span class="tok-str">"Weight per week"</span>)
-plt.<span class="tok-fn">xlabel</span>(<span class="tok-str">"Week"</span>)
-plt.<span class="tok-fn">ylabel</span>(<span class="tok-str">"kg"</span>)
-plt.<span class="tok-fn">show</span>()</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="ntSvULWltiP7nZRsnH3sJ6Ae7MIwaxcxMB8SGBvsGSguggqxA6/Nd9J7a+68UxPQtPJYAY/jduyJLGxzxzKb3mezZWFZy3RxBe6LOvgJsOY7y7nFkN15/Oj/r1uKUovzuVCvG53mUeJdnE6utSJI+LE+CtYsJahUU1x3774j/fhetYMCnyK02gguNR/uyUUumuNrZ0ACGEUSLQr943MMxFpBolUk53kWuyQko+2nRsoYgC/fAOj2FZPj39WeQkwXS0Y0lCI607aqRulCbsRGoB2pMUCPY3i0NvU8wLoFz+seFfFEp917HHJ5bzclABzfka6yusnUnDF32iTCu8B397Fj9ZX3sesv2ac8T4pmpPEuP2jzVkqV15gWB8IDA/lQfGqVCt8VRzO5edLh+scJvGz9lwya5vxiFu2ruOrpZEyNkLQ+7x7qzczz8fL8W9NLk/KCOaTyudE8Iw8ZdbZJsVoHFT79GxAjtWEhe81oT/to92+3ThNBRfsFtygjyAGZ38iuxZyiBM95z1fJX7YlCkzNT0a7c3dwHxC+8IQtSYRcCw817/ll5P5KyrV9edLmw+5oqPQzHhTU4ssjOk6Ox6njxHNgKjDu+y0DT6nPSOZlxtIKSovbp2Z1Ty++Ln8UxdM49n1/dKr/U2ZP6ZP3ISWM3ys+cTRcCFw6bdNWmQG9nz74d5nT5P6eSA1l0MGcI86Uuk7w5KBBp5NUrbe0W//ejaRyeYAGv/O8+CBMOtO8ydRxWdNmwoxTjDWa4ZQ7facISZd3cz3SAtb5m/cWF+/AFgYV0LrjU2hHYX9pMDwcnWoFRqZ40biR26AC1zTkJZujirsOo7Gjcozh0TLW5O7N7NfRv4kEnMrd9PvdxUws2mDlW+rp5P24djna+2i81NWL91RZIU+/g4WuCSfON2ljxKKQ3muTciynzyPXjJG1qUox6FNAoPEti1gMPy2w61iz8OAtvte42V28tYxv7ObQeaKnheqtNONWkIkZvlQoV4sCpV1woEDWGe9koGLFKLtHDUA075Sag5O/okJ2WqeBK+SFjJySf53dS9z7wLHLAieaxrZdALqK4ROeIHk52LsbeyjxRz0ObSQvjUaNF5WgL3a0HVuECqPAfPejwzZHYdUnlYK9gMKShTWPTyEi/+9O0vtoHNDO62ckFtpg4iZyx3XwIIRSaoBev0wcRdCFz7uRSBS0sp7QWYqC8dzSXhNIeycQrd746ed+ZsR+iGyjgylF8YvGLHwXJwmOz8Jg9UpY7AFbKg8tEVAQNhLB8fxPhBtfY2h9Hjvl6tDCx9OoAvWnPXmM0q13SLWcm4rmw1aFUMwIKO/oEYLdahgbBZHGbSqPS6tb4ynf/iR9cnl8mg4Wvre7CRIIXxrVUD/y9plRqVOAIEuy1A8f/lIwruxy/oyMoey8bBWxirHjacPh1TpPihN4ZHsRGW7f+jy70F+bllnzbJOmR9HnlZrGhv09Tw+teqC+F3QjmFX6rUN0pO+J2Edon1s7kLDlfbExKGfiYb6o7ziWvExRKaATUmTQYjuVPnsj+aDnzwSYsSWJC+p6KsKGulVNI2Ot+NElKh/eXhIq6VJ4i3CNEw2cUg=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -208,24 +199,14 @@ plt.<span class="tok-fn">show</span>()</code></pre></div>
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ชื่อวิชาและคะแนน</dd></div><div><dt>ต้องหา</dt><dd>กราฟแท่ง 4 แท่ง มีตัวเลขบนแท่ง</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>bars = plt.bar(names, values)</code></li><li><code>plt.bar_label(bars)</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</strong><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-ex2.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div>
-    <div class="answer-gate" data-answer-id="16.2">
+    <div class="answer-gate" data-answer-id="16.2" data-chapter="16">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 16.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 16 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>ylim(0, 100)</code> ให้แกน y เริ่มที่ 0 กราฟแท่งที่ไม่เริ่มที่ 0 จะทำให้ความต่างดูเกินจริง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_16_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
-
-subjects = [<span class="tok-str">"Math"</span>, <span class="tok-str">"Sci"</span>, <span class="tok-str">"Eng"</span>, <span class="tok-str">"Art"</span>]
-scores = [<span class="tok-num">72</span>, <span class="tok-num">68</span>, <span class="tok-num">85</span>, <span class="tok-num">90</span>]
-bars = plt.<span class="tok-fn">bar</span>(subjects, scores, color=<span class="tok-str">"#6d597a"</span>)
-plt.<span class="tok-fn">bar_label</span>(bars)
-plt.<span class="tok-fn">title</span>(<span class="tok-str">"Average score by subject"</span>)
-plt.<span class="tok-fn">ylim</span>(<span class="tok-num">0</span>, <span class="tok-num">100</span>)
-plt.<span class="tok-fn">show</span>()</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="zwA9PJPUzBxhLFSDqMCD4Qi8GWMWjrKR77PZTJD/UuaUl/9L+SS7Ckgi5VplRdG09+p6SYCZEGWKgDJCw1MBsmLlXazG7+jvMxNeqrd12kBiTbxy4KVBbJm6u9FR2lXqhX+ncJofBu+vMe+RPf6xptz3TVsS1akZeDeZgfC16JuOuM59qGfbHXZ+PiAc5DLq7JyeFOJCcC5FfI3oZqKumIU2HdCuQKTJGBJyBlzTC3qkb74+tt5fr/ce6/hqbwLn1kBwWGmVlbVkk58sYpFQG+yOjYwGWXZuDhd9JTep1j/HZxYeIBD83cA4GTnccLMEzYcL5gTKOdi4d4sdIutS6meW0V1sxV0i6VWd8tdMCpmwRTQQI50TFKEr/HZeRccbgFB0WlTrx3kXVEPIcx2Aa6lznaHiDRydyrsqKTPZdyntNwKlMwB0/LM851vo+rrWbS4Y+3/0kPtkNln6zKCxvzGFh+pii7Vv/675xQqsL+kgGtT1YlNRG9RKCc717Mgb0pQr0D0OZNyXagOHSi7jtLj1y+YdCSbIlM7a4Ywl7+MtKCdYtJXawL3yTmv3ZntwDxM7Dj4ugZjPOnS9ty+6WxYh3q0nZ/tPwoLzOeVi5S4QhV2U+O2+DiiBE4Y7V+UBPiunSBVqdX794773Z3f27xHhNDVfGYvSKGzbjf/0G2hNIHrAxkY6GJw6/41Lrsw6gG42h/YzpvndHthvFB6DYVJz9HXm+uF0fmsAj6Hk7K096ps8McifUbqACfmk/LPBNYb001gAEUgGLWYS7eUxT1KGxkADsjf4hWooTl3fLaCuZ4xI8dmexTj6xsDvsG5nvnOn5O5uaErnP6MZTzNtmdSwtQmhwDiDWUvilXqo3qIXwJ+FazuAgsEUp5DnwDZMZjb67HYr+5RToScepbDyhlpFTdGpDPA9HAXqp4EMDkth8s/in4VfyyOmf73AmUZIEz3nIjvpdPnK5VyfluBnDzxeXZXJuB/ZJQrMSiCsy+J0jGNBys1Vz66XK6+SzJK4TWe2yhVSnYF+IdwL41JG4QvU3KaaFhopp0QUS4CCydWH91IUqmZXN4CWqhfuWLC5J1gwTzNfx5YMYWXbbMCyMZsP67cQu2NvKd//mAJ/TbfInYg/eCzvVQC3PVmFfw5q42kC6ZxDDFCfIExzFm1gLOrSt7mJvl5Bs65AgRoG2gM+j6MiTZPs2MtiPK/v11Sz1PInJMBMD+h9NC9KPifAZfC2kxvNmB3x7uP1JN8WPKQgwyOOmoEBe8Hnxum9xOKgoufEDMa2Zgk/6wwi7YUF78fIifbKT095mto/O8Cn66Inv+qD9RambWCwAPfV+bv21VDC42adEOi8mUw88i61L6T0I9bnO1/7RZgJpFvE9GaBLyeUmn28xpNgqKSmPpxb7juEdITSHWiVDuAspAQObWxg+oZ/cbvc9eGe6OF3PtyJE+kqodk5omjsqjQELf9zdwO/B2/CI5yEqAJfjntB6VkbAp43+XxX0EP6whV1bxYAI38/+ibAYzONAVAzoTcQ3oVfUPfPRrv/u1SUC+6V9s+qSmavsdjQmQDvju/qruQdLdHY3u8QaFu4cEUcpTIossC8UP7iALCW1k2UXB5evXIrINv+qQabDedwryR8E06lPjnyInuxCxXTHVQ3E9eEayLticctJrykas0="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -234,24 +215,14 @@ plt.<span class="tok-fn">show</span>()</code></pre></div>
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>BKK <code>[34, 35, 33, 36, 35, 34, 33]</code> CNX <code>[30, 31, 29, 32, 33, 31, 30]</code></dd></div><div><dt>ต้องหา</dt><dd>2 เส้นสีต่างกัน มี legend</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>plot</code> สองครั้งพร้อม <code>label=</code></li><li><code>plt.legend()</code></li><li><code>plt.grid(alpha=0.3)</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</strong><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-ex3.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div>
-    <div class="answer-gate" data-answer-id="16.3">
+    <div class="answer-gate" data-answer-id="16.3" data-chapter="16">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 16.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 16 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ถ้าไม่ใส่ <code>label</code> คำสั่ง <code>legend()</code> จะไม่รู้ว่าจะเขียนชื่ออะไร</p><div class="code-block"><div class="code-head"><span class="code-file">ex_16_3.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
-
-days = [<span class="tok-str">"Mon"</span>, <span class="tok-str">"Tue"</span>, <span class="tok-str">"Wed"</span>, <span class="tok-str">"Thu"</span>, <span class="tok-str">"Fri"</span>, <span class="tok-str">"Sat"</span>, <span class="tok-str">"Sun"</span>]
-plt.<span class="tok-fn">plot</span>(days, [<span class="tok-num">34</span>, <span class="tok-num">35</span>, <span class="tok-num">33</span>, <span class="tok-num">36</span>, <span class="tok-num">35</span>, <span class="tok-num">34</span>, <span class="tok-num">33</span>], marker=<span class="tok-str">"o"</span>, label=<span class="tok-str">"Bangkok"</span>)
-plt.<span class="tok-fn">plot</span>(days, [<span class="tok-num">30</span>, <span class="tok-num">31</span>, <span class="tok-num">29</span>, <span class="tok-num">32</span>, <span class="tok-num">33</span>, <span class="tok-num">31</span>, <span class="tok-num">30</span>], marker=<span class="tok-str">"o"</span>, label=<span class="tok-str">"Chiang Mai"</span>)
-plt.<span class="tok-fn">title</span>(<span class="tok-str">"Max temperature (C)"</span>)
-plt.<span class="tok-fn">legend</span>()
-plt.<span class="tok-fn">grid</span>(alpha=<span class="tok-num">0.3</span>)
-plt.<span class="tok-fn">show</span>()</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -260,25 +231,14 @@ plt.<span class="tok-fn">show</span>()</code></pre></div>
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>คะแนนสุ่ม 200 ค่า</dd></div><div><dt>ต้องหา</dt><dd>ฮิสโทแกรมและเส้นค่าเฉลี่ยสีแดง</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>rng.normal(65, 12, 200)</code></li><li><code>plt.hist(scores, bins=15)</code></li><li><code>plt.axvline(scores.mean(), color=&quot;red&quot;)</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</strong><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-ex4.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div>
-    <div class="answer-gate" data-answer-id="16.4">
+    <div class="answer-gate" data-answer-id="16.4" data-chapter="16">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 16.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 16 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ฮิสโทแกรมแสดงว่าคะแนนส่วนใหญ่อยู่ช่วงไหน เส้นค่าเฉลี่ยช่วยให้เห็นจุดกลางทันที</p><div class="code-block"><div class="code-head"><span class="code-file">ex_16_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
-<span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-rng = np.random.<span class="tok-fn">default_rng</span>(<span class="tok-num">1</span>)
-scores = rng.<span class="tok-fn">normal</span>(<span class="tok-num">65</span>, <span class="tok-num">12</span>, <span class="tok-num">200</span>)
-plt.<span class="tok-fn">hist</span>(scores, bins=<span class="tok-num">15</span>, color=<span class="tok-str">"#90be6d"</span>, edgecolor=<span class="tok-str">"white"</span>)
-plt.<span class="tok-fn">axvline</span>(scores.<span class="tok-fn">mean</span>(), color=<span class="tok-str">"red"</span>, linestyle=<span class="tok-str">"--"</span>, label=<span class="tok-str">f"mean {scores.mean():.1f}"</span>)
-plt.<span class="tok-fn">title</span>(<span class="tok-str">"Score distribution"</span>)
-plt.<span class="tok-fn">legend</span>()
-plt.<span class="tok-fn">show</span>()</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="D8JfhPv4uULMx6dAKHcJNyu87SRFHkQC7erbY5NnvkTIkpNj5hwA8gI+93TE5H/8VCs1YfUevqAUngVjf6ISu/BQEB6W/mMXv8Yo3YRNCQEf5uCBRebJgycRxq1UijLYeQjDl5Gt4n2Ccryi75ZuZAFvEbOmhGb/rvHYwhmisravy8apNI4V8QM2D5DJEfzwkjIe4dvWHrh1V4/4NuMi2Lq2fJ7Gr8I93t7nNnym4L0IAGbYO6EYLJv0eXiMTVlYa7nkosZvIJDx4dgBHaMjGjCOI+qA6TFk/qyIHsItL0ViJNs6Uc12kmxlNIIRjGunX786SbPq7szUk5mj8GDIq9X3sBNMhlcJ9nqzvfvARXEo754ChGYJBA1Eth2hK+7TAKXf4dAbqOUfJ3h7VhRSUpJd9O0HEp0fpsJVkQSb6c1a6vAoNpeHHor3bZ+64h3k3hG+q0UkI9nGfJw9OKflCB5zI3CQz6KQIn3sa8BIduoIxX1aN7HE/Mv79smeBf4gY8Obj2Qs4Vh1nA1cBgKwTeLLEdo833lRSOYBBZQ69g3b6kp4ppbDeOXJKm8EDwdqGg1n1PNEZrOFti9JFLGHBq02bkdJA2Bev0flSGaECUchLY1q76Ivy/rvf7Obj2AwEkCo+ELzv7yPKFF44vg30zh9dcCSmA5jF/O6lsC2bVAb15zq1u1LQCxBoffRbqZcwDYWNHgXn0GJsthzaMVvIqZGNcoGZNXqeQ/VM2R+FziY7Bo+MK7mwnAuNykIoSGkewpDe5y5u45w4MJdKlbsVnmvc0HMKe+jpcstBpRBpovYnbyUUiAM98QoC2GxW/lz+838zXlAmE4QOHgeWH6a1d3xmzLyos05/YHoObvLmkWJ0la2IzOLbCk/OY2mjqVgGGM1yI1JV7HbsZ80GFMvZhFEo8W+CuYx+/b2uU2QylADGVeipfyPVbWPyjcs6Ht+D5eimk4S9TDegE09+/RnzDORgE00ZusBFv0g0+wuczukOYJArFEQu3XIMKx5X8IP0HwiPNemq+Mla82dS+i+Ciynd+TX9tKsn6AOcvFnqF+qmDh3fLePaB4iztCHIZMOHYO/IQ9/l9vrylj2CUgfTh0Wm6ceLbSh0zvJ/qqyW2Ax2UDwpsttuTZJGmNR9Vper7gpEeG7a6OLGDJEeeGhIU1m77Kbm0AoBCp7Yk+t6ebzvHZ5m3715EG0CYUPtLvt3hEhXGYlZxjwRJJCTJmcaIbrPGi855fF0yHx+Jd7fdG3D5cPAgTraW3xjcZvZscf1wSlFv+ugXtuCoPBIty6X7fkelopZJn4u86hIay2sHih6pmZNGWRpIDFyp7tfdTIlBM1enh8HHViQz2lH4jkIVnjaUCo+W8DSDhmx+IZIYX4PqswO6raEG0AvzNXWjiH73QT3BZ/nttb90VOR8t9X1P26MyTV3aI9GAGVhnPx7WNhZ6JkxjpUf4SLNJts6uv2WAeGMSsHchoFDnh/MUCGd70xvH3+2feEZekyXgluwN8vkoBGiT4XuEgy3NPfo7B3K0etD19epQvj12V5dlqPmA2TodQOLU1ROpohEnrZCUOIa+jFgiiwE+GX/+zqbwobNu676ScJCx3H5el3Td1VBCMhvCMBLv6HnPtLG+sqSkaie/Z0ii6FEMX1GB3LlLBbilXKK2d6iGWripH+ABDEHqDMToziS53GswpbExaU+ocu9S2+YIin9b5MGb4TtVdabGr+gOPu0kWW/4+tfRVum2DpmKwESa7cFjAB2NvLD/a6Qw+uAEEdW9W87FOz7LOmLlEH2UFi5YMSW5mpcXHP6s5Ms8L6Uovy1SNxWoosixQv1qh3M3ZrLJs4jRmzcMYX/RHKdl/ItTTxzWQkdQXF5OnT4FJfqMzujKn7eJ0IoRBwmMF5nF7QkfrAP3/Pzj5Q+ZyV2xoT5tpfnXRK5zr9uriNb9PkSVrr2+YHlII"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -296,26 +256,14 @@ plt.<span class="tok-fn">show</span>()</code></pre></div>
 2026-01-07,Chiang Mai,Cake,6,80</pre></div></div>
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ไฟล์ sales.csv</dd></div><div><dt>ต้องหา</dt><dd>กราฟแท่งกลุ่ม: แกน x เป็นวัน แต่ละวันมีแท่งของ Cake, Coffee, Tea</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>pivot_table(index=&quot;date&quot;, columns=&quot;product&quot;, values=&quot;qty&quot;, aggfunc=&quot;sum&quot;, fill_value=0)</code></li><li>DataFrame มี <code>.plot()</code> ที่เรียก Matplotlib ให้</li><li>หมุนชื่อแกน x ด้วย <code>rot=0</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</strong><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-ex5.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div>
-    <div class="answer-gate" data-answer-id="16.5">
+    <div class="answer-gate" data-answer-id="16.5" data-chapter="16">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 16.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 16 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>DataFrame.plot()</code> ใช้ index เป็นแกน x และวาดแต่ละคอลัมน์เป็นหนึ่งชุดข้อมูลให้อัตโนมัติ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_16_5.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> pandas <span class="tok-kw">as</span> pd
-<span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
-
-df = pd.<span class="tok-fn">read_csv</span>(<span class="tok-str">"sales.csv"</span>)
-table = df.<span class="tok-fn">pivot_table</span>(index=<span class="tok-str">"date"</span>, columns=<span class="tok-str">"product"</span>, values=<span class="tok-str">"qty"</span>,
-                       aggfunc=<span class="tok-str">"sum"</span>, fill_value=<span class="tok-num">0</span>)
-ax = table.<span class="tok-fn">plot</span>(kind=<span class="tok-str">"bar"</span>, rot=<span class="tok-num">0</span>, figsize=(<span class="tok-num">7</span>, <span class="tok-num">3.5</span>))
-ax.<span class="tok-fn">set_title</span>(<span class="tok-str">"Units sold per day"</span>)
-ax.<span class="tok-fn">set_ylabel</span>(<span class="tok-str">"Units"</span>)
-plt.<span class="tok-fn">tight_layout</span>()
-plt.<span class="tok-fn">show</span>()</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="sFncDWw2yNktaTf4WiAP2y/Zg0uX2fKSm8ahddneq8GyHmqaPueZKADR/6fLaftCKSjSj7RIIZOf/TcIslJylM1JHwZGppuj9OQtz+c7/9KaLbjb1SZj4nwSpWBIK+jQ1MTptgHVxUybulYS6l58+1coNKx7xLrnD485xKCYOysq1EeNoU84Trn+u9UOidIPElqtUn7flgLtT2Y4aH/xHO3kw/Ye5ZAw8lS8V7xQrwwjsG1iIp7tU4LJk/LpMpLoe+UO9KNtPUVNBg+RtSq8wfJhhnQuVTGTvw+75qSnRIhVhkIZF2jsVnfRoE94mKhP9YJEnd2kFtQ1Pre0M8T4H/gcakgruEbmtKN7t8uIiLVqIVQ56T7LD5lWeM5QB4dhQWFK4oVynHvsEyirSyPvV95ukdvqupHUSQuRfHfENMSZigKl9HQgGYYEDp7Ws7/noxm2b0ta8EkkldB1Q8+bmEEoiKhVmmjtOJS/CRAB6HHoAjOT/qtxieU9ld+rDPS43ur3lkW+mGKtt505qUHKUPpgDJurlwHrJX26HGAe/noLIz649RTUb5w6kYyeymOHZMlaf+0ZSBRqIRb0Y7mbGUP25GIocnLM3pu4ehmCh2OTNXsxv/a5pL962raH1Mc2ClaNH1a8LfhKwfh3wow/wwjbl+3SO944IMz8Oi892diOVekWooHv1T0RcZP0mxuTQyoAgfsQ1IeY6CIq2XT67srxL7kIk+8OW2AUd8exIuGMshPhEjif1I5/zfzcbIX+ti/M6plRcZy16c/KyQKb5EUqaEssN8PSP+dL2y821aa13lf3q3h9WzU4eyHG3IQnvEhBxBE0B2XZlDC2L0kygQeB7w/p8Lv0NWZcQCqL16Kx2Qu1893SU9HKc8LFPrkZoTrWXKXTpeb9jgVxocX7kG2ivKUe3KkA9iT7c4qTeKqox2gAtXEdwKtagmMd7WMVqov+tSIrZ5nYPKy+gcXJ2YmixqZFjKfR3/76bM3VAF65UzOgn6FfD56S7frBFULA8FPwK0pZuiUxuubx8Xv++GXL81aPTBXZFtVCPDDMNIO8q+XiBvJaz7LWmsaIKc4zzQv77KWvLeE9ZgAqBuhfH64tpAIVZuzJhY9Ed0aoG2cFMNATmyWY9NlRpPRq3F5vOBlFTzoJqKtZ8LCnAejK5FhhUMcoWQ8t2tmOc/DCTBS3u1awRdJpV2COaH2OKKinocnBGbLxZoyc7MPeb9PXDiWtFRvOmqncx38t0U3PdG3VbtZlE3gW6VxiHQoSFL/apIiAs08Z6mWaG124D9fx2enz5NUjFHVqBtjei3AyIVxGHIFNAfdGIJy16FY/X+zJ/sxFki6h69Y8FJ+BBDoZuBgIxUG+BzkmmSJ8PkEhUTcDC+N9VCPFBIu+q1Hgton5UrgwxKrW9h4k/6XsvMYcqtziWn/jkG5PAK3Ov53HlvEmofqCWyQkwjl82Hp8T2qloRix+QCDhFdNkJbZfVae+ChsIjQC+AGwseW0AAUwP8qSRdZu6L2b/cOdcct2Qd1xtObocx+upzLY20zc8hPpMhoiSB+Ubqu3PU5mGy4bKuamQrKd5Rn/P2VUQe/2Alsl3dFn0MCDH9yxmc74wMqHKPyPUYvn869kDVmyJKrcTg9rLTP3CxLCcso7uc1vIDMa+LCuY7E5Vdb5b7bHXy/nhaH8UE4hqrpXzgC1pVNpVPSmrbrSMhpbtmIBYOr7Fu47aXlkJGl23YpdaRkCOno1H++GfwjBJh1igXV/rpFZbO/4Yy6cgU6scnobudv5GkZCDfLHqGaNdbVkyjnfwfKPD0uM8dMkkakCY486prhJp3lWg9e18zbbL2p63qBuMV63AnOXHQdZ8nYomNIuT6RhexD6moe+DhOHqrtjhNvL36ZeiVOBcrSKe5v0z5eOqH1Iz7Di7tyg4/bhAj/Oy0CVpYSqXZLBhKGg73wgibuSM2UdNNWQAw=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -324,37 +272,22 @@ plt.<span class="tok-fn">show</span>()</code></pre></div>
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>hours <code>[2, 4, 5, 6, 7, 8, 9, 10]</code> scores <code>[50, 58, 62, 65, 70, 74, 80, 85]</code></dd></div><div><dt>ต้องหา</dt><dd>จุด 8 จุด และเส้นตรงแนวโน้ม</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>plt.scatter(x, y)</code></li><li><code>slope, intercept = np.polyfit(x, y, 1)</code></li><li>วาดเส้น <code>slope * x + intercept</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · กราฟที่ได้จากการรันโค้ดนี้</strong><div class="gui-stage"><img class="plot-shot" src="../assets/figures/ch16-ex6.png" alt="กราฟที่ได้จากการรันโค้ด" loading="lazy"></div></div>
-    <div class="answer-gate" data-answer-id="16.6">
+    <div class="answer-gate" data-answer-id="16.6" data-chapter="16">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 16.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 16 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>polyfit</code> หาเส้นตรงที่ใกล้ทุกจุดที่สุด ความชัน (slope) บอกว่าอ่านเพิ่ม 1 ชั่วโมง คะแนนเพิ่มประมาณเท่าไร ซึ่งเป็นแนวคิดเดียวกับ Linear Regression ในบทถัดไป</p><div class="code-block"><div class="code-head"><span class="code-file">ex_16_6.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> matplotlib.pyplot <span class="tok-kw">as</span> plt
-<span class="tok-kw">import</span> numpy <span class="tok-kw">as</span> np
-
-hours = np.<span class="tok-fn">array</span>([<span class="tok-num">2</span>, <span class="tok-num">4</span>, <span class="tok-num">5</span>, <span class="tok-num">6</span>, <span class="tok-num">7</span>, <span class="tok-num">8</span>, <span class="tok-num">9</span>, <span class="tok-num">10</span>])
-scores = np.<span class="tok-fn">array</span>([<span class="tok-num">50</span>, <span class="tok-num">58</span>, <span class="tok-num">62</span>, <span class="tok-num">65</span>, <span class="tok-num">70</span>, <span class="tok-num">74</span>, <span class="tok-num">80</span>, <span class="tok-num">85</span>])
-slope, intercept = np.<span class="tok-fn">polyfit</span>(hours, scores, <span class="tok-num">1</span>)
-
-plt.<span class="tok-fn">scatter</span>(hours, scores, label=<span class="tok-str">"students"</span>)
-plt.<span class="tok-fn">plot</span>(hours, slope * hours + intercept, color=<span class="tok-str">"red"</span>,
-         label=<span class="tok-str">f"trend: {slope:.1f} points/hour"</span>)
-plt.<span class="tok-fn">xlabel</span>(<span class="tok-str">"Study hours"</span>)
-plt.<span class="tok-fn">ylabel</span>(<span class="tok-str">"Score"</span>)
-plt.<span class="tok-fn">legend</span>()
-plt.<span class="tok-fn">show</span>()</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-15.html">← บทที่ 15</a><a class="pager-link" href="chapter-17.html">บทที่ 17 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -145,21 +145,14 @@ scores = [<span class="tok-num">67</span>, <span class="tok-num">82</span>, <spa
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>ตัวเลข: <b class="stdin">20</b>
 รากที่สอง 4.47
 ปัดขึ้น 5 ปัดลง 4</pre></div>
-    <div class="answer-gate" data-answer-id="11.1">
+    <div class="answer-gate" data-answer-id="11.1" data-chapter="11">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 11.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 11 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>ceil</code> ปัดขึ้นเสมอ <code>floor</code> ปัดลงเสมอ ต่างจาก <code>round</code> ที่ปัดตามค่าใกล้สุด</p><div class="code-block"><div class="code-head"><span class="code-file">ex_11_1.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> math
-
-n = <span class="tok-fn">float</span>(<span class="tok-fn">input</span>(<span class="tok-str">"ตัวเลข: "</span>))
-root = math.<span class="tok-fn">sqrt</span>(n)
-<span class="tok-fn">print</span>(<span class="tok-str">f"รากที่สอง {root:.2f}"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">"ปัดขึ้น"</span>, math.<span class="tok-fn">ceil</span>(root), <span class="tok-str">"ปัดลง"</span>, math.<span class="tok-fn">floor</span>(root))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="Yk5txrtAt818+SWQgtamwcim6PF6XcHCpjQUhr/i6UHV1OJRX9HXMxWbb7OqosJ8knct7505uF8MheGb1/a7u+m0VvQvgMwrMNQhqqd4HiLlXWfFruerNl0nvzH1tXQMRHZXMKDLFmoQRLn6YuiP56OhaGRZrhDgANeFHFx88tjKU1iHxXiHkMXWolswcnmtuMx4fG1JOw1LAWt6ql8kADLTgrsIU9L3O4ZnOPAUEnb+6hjuLLX/+GY4gKyD1xoOJax8w8dY3k9l4gPHYEdN1Fh28BFC6H+PnqT0DBYxzVYPsNu69QrOH7dPFbJPwFsBIckm1uVzRWCOFcldXPlicHelXdmtMvxRXjJ7ODqykiFW5V8t6i//flyDmH5KRyqz+JRrsuArH8tHZtcK9n7YaUNijRuau2ONjQ52pr0QCvHAH6jeRN6is4Sg71rzdt3oN05u1ZHJNmoBsnedFB/yE9f/FY55F7gMDP1/D8+knmmi9gMYdQfI/v24cskc6/i+PFA//pazqVBA7SW/AmPc/a2fbDYWNcC0T72vK5HnIaftsije8FBxPb5WtUro7IoDkZVjdIysSBGdAOnzqVT1ta77PVbQqp9bIRU4mmYD079sSZdHOp2Yn/RqwrgQ6Z9jPlkcxQZmGGMQqntZFbANFxjQWWA2VqPXp44XwlikoHHKvW0W25F6KiL/Cv90p/dPJJ+dgaL1YeWFmkY2kLvS6uemMB9YIcOA9xoBd93HadwvWDjZBcl3weOQujPq1FxOA07FkmpQWi+36GR7qgkm1aQhU4Pf99jn116CZMYs8w/zbNNsXy246ywPuDFFaPji3rWXLFf5oI0zpXmGDjObYZ+slqmjTf93eC0QVPQQrxulDTePzMIQY68gusA/12LAJFUxkguCe+EflVf4eq4s3o+bLbBtWE2YOpfqbp0bfbufFd2VCgxqB9zqBTGA2xAoq6VF86qtNAyaYZFxKmgTcDv+xYj0KizOKg8CxXXxI6hU3E58MCaJZvXMSkJF2TnrinFneTjQmGqE0Cd+UmSwp4GsCK9acHc3tQU2y1CaLwCc9a3qTUX+tQFYRwaW0tlBHxm1Da6/fgRHJhKQqDEi5MwYNmPrfa/PVDPV+GUuFG3MqFmibq3DeezqlKdc5hGEOEaN+U0UKR8S8UGrO2E8LqNAgdNd+HV4KDnpYXmAs+CaY9z9R7mouSck55aUYieZOBPSwSuoh1oEA9YhYaHpkc0xO3E0W37jNIobFCYGhiAp5Xsaqt5fHkLW1sgfbzvoV8EYl4iAJxDV5XQcR5hat2VtHmPntvOnuKlhh9VTLtk2tNJzS8xRCAIISGAiUg=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -172,22 +165,14 @@ root = math.<span class="tok-fn">sqrt</span>(n)
 ครั้งที่ 3: 3 + 5 = 8
 ครั้งที่ 4: 4 + 6 = 10
 ครั้งที่ 5: 5 + 1 = 6</pre></div>
-    <div class="answer-gate" data-answer-id="11.2">
+    <div class="answer-gate" data-answer-id="11.2" data-chapter="11">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 11.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 11 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>randint</code> รวมค่าปลายทั้งสองข้าง ต่างจาก <code>range</code> ที่ไม่รวมตัวท้าย</p><div class="code-block"><div class="code-head"><span class="code-file">ex_11_2.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> random
-
-random.<span class="tok-fn">seed</span>(<span class="tok-num">3</span>)
-<span class="tok-kw">for</span> roll <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-num">1</span>, <span class="tok-num">6</span>):
-    a = random.<span class="tok-fn">randint</span>(<span class="tok-num">1</span>, <span class="tok-num">6</span>)
-    b = random.<span class="tok-fn">randint</span>(<span class="tok-num">1</span>, <span class="tok-num">6</span>)
-    <span class="tok-fn">print</span>(<span class="tok-str">f"ครั้งที่ {roll}: {a} + {b} = {a + b}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="pc579uJASFP8lqHvYLY/xoQIycnS6R0r9lckJNPhBv6DTUm0n7HuYIxZlicpAxkleR1G4vmjta67NQ2a0ZipGWQ5YsDjLkTPMUKDn7Ru4hGJV4PZ/+w3AkbZeAINIBvggla9aMWBSflmy3mGo5Y2H+H5saNiRcifallWxQWToxdCPMGoLO0rhbFWgq+4uLv/y0rvw7rz25XnruDI2PXBVqqHesIJMO9TwaoIKBcCE/3VWre47DX25vz2xwicjwE0uShrPTkIUdPuzf5R2gUgxRpxHUKqJbHFn/ATy6tEPkAHJGLPkila81HiByN8Sk0TT0JWXykeobnnenBaOv/tWkWv8HDAFCUplND94jgeDt+4Df6bRgBgKLY/9RSBB4bnkh4fSsa3PZFwdjlHbDF/g5Gb2k8rX92vIquMKq01o+iXO++lSJpG6E2W34S0phUMhVnHbZI9RdQWeQ+EUmBud/i268PnnGisz4kGGH3814N5t8VfmKu54D9pDFj3NpQ19P713UqJnfTvkqFXz4F8DR62gYhT2A1H8tkOWOtyCkhhylOR96tkScQ45xk20gok8YBm+bp0XDKPFiWPEbjJwBGAVhlLlSyly9Of5KbgEwdlmsv4mZygJ7vQlTD43uC0G8W+AtJtSZ7EfqkxisYbmgCyS0cbkBcfwqUZtcACb6ASdOGNmsCFduO6ni+srDupocBw2MKj4N53Np1/3hzeYPhAR1TOKxcqziCEf9kpLNY8pFCZrkdDqiel7wdMwpg8JvRgmvr2BT9GEkY04ntznLWfumZoRp0Aesw9QCL0YlWN1ZytKd/YIzSH9/2p0k98DmhsaQ8zVZf23Dw5YEqbO867PO83BLJvsjfV3oXXBrWJ21B8al6F54sX1M1hi6BO+GkorBnp+TaZ9+ZCpvwN9df6YwgX//Xh+saOarqcT67yIQSDA3fRJ2xV7HCYhO2gZrqaRMHKT5oz6PhRXRSF4jVIbAcjTaOzfZ6ZrulAz+ZPBR4exD+hSfb7xXGlZo5JdBjMDOvMuekwefXZqu3H5H/SBooCPEloff0IswtaaNvF0dsgcbqFYTxo2mvLOY9YMf79D6BHTEd1/hWnrSR5wP1RSSi4DN+G+JRmsrPBvuxnHK4W4CE3Tak3jMcS1ivLxkJUz0zb00+0Un6UNu4GYjYuDW+jURF6nEHqg+OotX4yd8oRaTBhv87c5JkwgOMFiZlEvi2n4jnM5tHQ274lDSQ/vChyoWU/6Q6I3d7wyFngTuZGw2I7xUphvB1/AKqcvHWE77kW1+QN8ZCxtaindIyf1r/94/diP3oAFfAh3iXO6p7HQHwWWrZDfg7M1VpEbOXBbx6h5bWQjp92u7S1KoUnoGju0C/l+fhm/zpjM29UP50Jgi+R4fixvy1dq488/r/Ek7QgsvWf2jJkrKQF"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -196,21 +181,14 @@ random.<span class="tok-fn">seed</span>(<span class="tok-num">3</span>)
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>2 วันที่</dd></div><div><dt>ต้องหา</dt><dd><code>เหลือ 44 วัน (6 สัปดาห์ 2 วัน)</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>from datetime import date</code></li><li>ลบ date กันได้ผลเป็นช่วงเวลา ใช้ <code>.days</code></li><li>แยกสัปดาห์ด้วย <code>//</code> และ <code>%</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>เหลือ 44 วัน (6 สัปดาห์ 2 วัน)</pre></div>
-    <div class="answer-gate" data-answer-id="11.3">
+    <div class="answer-gate" data-answer-id="11.3" data-chapter="11">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 11.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 11 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ใช้งานจริงให้เปลี่ยน <code>today</code> เป็น <code>date.today()</code> ตัวอย่างนี้กำหนดวันตายตัวเพื่อให้ตรวจคำตอบได้</p><div class="code-block"><div class="code-head"><span class="code-file">ex_11_3.py</span></div><pre class="source-code"><code><span class="tok-kw">from</span> datetime <span class="tok-kw">import</span> date
-
-today = <span class="tok-fn">date</span>(<span class="tok-num">2026</span>, <span class="tok-num">11</span>, <span class="tok-num">1</span>)
-exam = <span class="tok-fn">date</span>(<span class="tok-num">2026</span>, <span class="tok-num">12</span>, <span class="tok-num">15</span>)
-days = (exam - today).days
-<span class="tok-fn">print</span>(<span class="tok-str">f"เหลือ {days} วัน ({days // 7} สัปดาห์ {days % 7} วัน)"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="U5f+TIsY5oc2GgOzp7hOxgiTQ20+OmC56+zx7kTlimnoh+ObIqksld8ZyG923He4I7uVVBkoSOUd2hAt0Yrz2V8mctYHSpEYfXKKZogwWc9hP9cX4mwl22D7dkDJMkrZS4G/O1A1xUJA7jmj7PeW6NHohC64r1JKLZMKvW/zxbBe3BuBnYLqAYoTlGht+R4YifvS6IlbgK4W5+Rq1Cg9X9ohFAxe6w8zHviAezlQpqQdK7ZGJvtRfjVkoQSuG3R6d8vlemoIo9m8lxEttQE4NpmqQ49xD9Y9K5XjZvIWuJDs6y0km8foBrkqbJP4bDuMWmG0ZZypM3QHXDmbo0jiACBJRzkYriyCHxj67eGy8xD42W68P0HUIe8c4IbDlmgKMEIiZ08PVN5siudKASQmS+34Wt6H4g4rxqCRnA+VPrXZsiMBl7veomp5x/H5/oHibV5faacgVtS6LMsToldjNlEZoBe9k8VOkQvGhzOxiRhS2MaYEmr7TxOSEcHwFZX+8cRcJfNVDm5FcjghWGpMwJVSELR3Gd/7MNGL2QZFjFHeN1YAMVW/dMiyUzU+RJpdH+cCBpJ4M4Vz0Zi6UlQLPe73ml2gGupQ/iWZlXEvF61u9h/YgiSB+BWt/NXLEuOPDAx6Q6rMtJlilifGd/u59T2sIUI+yK+ElDTIK1jMhywpdl/Cu0MvcCI/jFbeXTPk6hcihL2YCX9v2/mEVCTMutUTX3Ldzf4clmfR3I+7Xb5bVwG2XgJmdaXQMVWwXWHN/mf5vEU35bV1fMy8JyqSJbqR1Ow4BZCfJJjh7daHarcxJUs9i2TSYC7eo7yGd+PJhPWfAmV1gJRqj4iqqFnUqdnWqLbK4JZDT/x86wLI8WEgAfyRvdFP8nYjHtsmdwKcYc5Ke3b3xxirwvpahbjpVFOggjoVLb/98tHHxixvZFfmPBIK5+K4b6eMSxv6xSLiF5B1BMi0FoHOq9mdeCSK4jjuPSJI7CCdMdDbDFS8+PfBfLlC6mxSPb7G6YjBjkvGRQ7Uvd1V6j8Mo2gzgHySUkJHgqYb5xijPUZpwIGtuQhzS6Idux89vXFyr6NHTQ/vYieCCjiNc87bI/9004rRpUBDMTJ7RslrG4jDioFmEQbzI4Q2jhDS4GA8lmt/9tFb8QbY+j7d7aAIv21z3uMCLLjXG3zBjixO2DjOpoEMhPOYaRPye5iMVh+NNWbT8BcjPnX41dobq14tSEhCI9YxrGEQk36Qgg4NGJuBsn4Iyczsv8wPQ6NRdiAH/A0lfecT7IBPhgSS6MKbAH3M0JVCZJSM0OEhOlWv1CtriCrSjNt6Hf/70aEc++HIVIT/NnW3s52wN8TumFKIwVdajPvDlwVgZVu87H/xpDNWD9rM9jgYWfQbIbGHf3nDStP2zZN+l3un/o4yHCE="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -221,21 +199,14 @@ days = (exam - today).days
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>906790
 377420
 875135</pre></div>
-    <div class="answer-gate" data-answer-id="11.4">
+    <div class="answer-gate" data-answer-id="11.4" data-chapter="11">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 11.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 11 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>สุ่มทีละหลักทำให้ได้เลข 0 นำหน้าได้ ถ้าสุ่ม <code>randint(0, 999999)</code> ต้องจัดรูป <code>:06d</code> เพิ่ม (งานจริงด้านความปลอดภัยควรใช้โมดูล <code>secrets</code>)</p><div class="code-block"><div class="code-head"><span class="code-file">ex_11_4.py</span></div><pre class="source-code"><code><span class="tok-kw">import</span> random
-
-random.<span class="tok-fn">seed</span>(<span class="tok-num">10</span>)
-<span class="tok-kw">for</span> _ <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-num">3</span>):
-    otp = <span class="tok-str">""</span>.<span class="tok-fn">join</span>(random.<span class="tok-fn">choice</span>(<span class="tok-str">"0123456789"</span>) <span class="tok-kw">for</span> _ <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-num">6</span>))
-    <span class="tok-fn">print</span>(otp)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="Q6MtptjA/e9Q1gMzDp7KF0cXTtvfwMmE0B3j87mV2EVP76ESMNKxLdrvn92Rse3JvAXM+ppHa7cO8lZT4Xp4oH2zUucDBid1Kxza4T4i4Pj7ZY2YW2CEzRDb746vGWdKEh/UWxcYdr38vJR0PTBy1H1Vqy30iZMluudXTnQmsWToCm/f6HhXFRhEqYPL2hN4uil2TDYgcmdzt9abrQX1re0HJky62jS7rvVYESoNBjRMackZpesrMiWBr3dCWNrhd5slnYD8GPcVnkxQ0VznN+WLJ1W5W9+gyl8JZ9PTaTZ/2b/PT1fJCOfR5WjQczvhdiTgVguF7nwDPy7JNfbMpFy/05jIMeSl4/Ety6ZjNUbbH9HW+JH86qEH2c5JaaFwgapBSv7s4Ta8z0oiROLXy1wQE7P9WDy4XJhrLnDbrhSDlBgCTLWQmGCHW6Z2SC6hEtYDhe+FKe1mM1uTvB4srgXKCnOVu5UXDVRPR+IBB+/0kfFZH1GSpyEuYalSYUV/LvkxqlSSfYmDFibQQdgrn9Tw4OG+Od9D2jUr2P+g6DuBygI3zXi4lYHcRit2Z1kQ12KlIC1aupHeJZWMSGjjXuu223CI1PjE/Pka6BwqRCWkadBDYJu+3w4Nj3bLrDggl17Hii1RJCZv4CYGPWNyF2ocI9u42MJHf4TyF412r1vcyCZvx4mhEqndjumYJFBygCuStHiN5aPBl5qHh0xxTCkOF/1Ut5iFAh2dvaeqDyT4iwVtRAIjjVn0S+EXOTgfCOQKu6+HRz53GveigxlaJ00wHiVrkfrBrQ/bAQLoDbcIqTsSkZqlw2xgRz2ttQ2WqHyN63KkVQLOyIAU/FufDWF07z+bC0ZA7fu3ENhc1ZffhmcouZ2qiTeh1N25Te7DcH8bGgvsZXSTrdq6CZkxmlNwGYY4etoIvRV6cW9pp1tTsdddTEsGWB7iVBRJyZjaIJA1RI44VZ0XeRK42C7/8wtUosKt14mqjZFNsOXRBWWtgLy37p40USTJVYeXLFOIbneemN0f37PV18U4+2MeMWFdLTi1amLSLelZQGmudCGOOyvgbZ0XZR5UiMVLoq1ow4/v9naSqJ8Md80ROdWoTc+9hSrF/B1ahoZZ2He+DobKECFLMM62rkQCbx4NiLmvorcwJjnX21BVusP4V9kBwpO56Bn7Wuq0cCxx3KPWnokM2YPVtOaCG8/bqw1mZ9JToqtP3lPE380TaxrRio0PxAZx9OES+1BuTEc17BRZDdCexgqkWU/ZpwomaXjG9SSey4cnOGvm0jF8qUfUXXXIULLzGXiYvhoJ9+2Iz218R0rsei+xOZJFXcvT9JL3F4ci0k3NP+ZSwozlP7UYsoPcf9rPAyGXgI8cecIBoIE6QKs/PdgE/YmZuG3jfHOyQw9l+lgYXO6C0S3SUM0vuDlN3JpsvJmr1w+PaKuvSxiumrP7OyMZeTdKrVm1ECrU5yYpQtkBt4Vhs78tSfbXD1fu2pqxk0RUpQXitFu9uL7mKJPtizfXWpNboEUZ5EE7vDRKOU3HovfK03EmbTYtJHDMpQfcj94Qq4KUQNGN4Uxjtu3f"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -249,19 +220,14 @@ def kg_to_lb(kg):
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ไฟล์โมดูล units.py</dd></div><div><dt>ต้องหา</dt><dd><code>10 km = 6.21 mile</code> และ <code>60 kg = 132.28 lb</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>from units import km_to_mile, kg_to_lb</code></li><li>เรียกฟังก์ชันแล้วจัดรูปทศนิยม 2 ตำแหน่ง</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>10 km = 6.21 mile
 60 kg = 132.28 lb</pre></div>
-    <div class="answer-gate" data-answer-id="11.5">
+    <div class="answer-gate" data-answer-id="11.5" data-chapter="11">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 11.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 11 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การแยกฟังก์ชันไว้ในโมดูลทำให้หลายโปรแกรมใช้สูตรเดียวกันได้ แก้ที่ไฟล์เดียวก็มีผลทุกที่</p><div class="code-block"><div class="code-head"><span class="code-file">ex_11_5.py</span></div><pre class="source-code"><code><span class="tok-kw">from</span> units <span class="tok-kw">import</span> km_to_mile, kg_to_lb
-
-<span class="tok-fn">print</span>(<span class="tok-str">f"10 km = {km_to_mile(10):.2f} mile"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"60 kg = {kg_to_lb(60):.2f} lb"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="AbwO3CywUUQo4Ygwzu2rZvSLFw5V6/N4Joi5cSQQ0o91S9+MDebMBVSpvQczymR4KEIASP9ydrZBkDNFUbc2NqKkseGiKDYkL4c7ITVpTGOighvX/yHa4laDamfm+dhpYwaiF5l4xuhxuzkfcMFcdNGcsxofUTASzAOupMDLKXT7lOBpl0nsvmtzg1rJdD2LTVqrdd8+ZQzVNrdzBPme4fHPRHeXq2l68zqMDrenE3vtjk+QuixEfg9yI+YiEy8oNdcURVYHtoYZ9ZEu6/ik7pSZxOh2+lZhfSLMHf4w5oHJ5oGRPfJygojIzGjfx8POUJzaBk0wBfBvpvnLTEhs9PGwDmSyP7MXA6n7Waw/VGzYKYP9XeDbGLadAmsnggEJBmXiPuuNvf9Bimi5xNh4GtNnv+bsgGBLi0lbQ6A/pVsEAzRPi4D1j7GejWDx+jK7F5u59CWhs7sPTs62adBx0Eu3GMNsgniCItptH7188G4zxqo7LN+h69V1Fe/iSS6MFSCqF+O5SeLSLRGJq38hlAYh5a6O0HVyCTEe/3ytTVlqrQ25tCqUhObI2hLwM9+QKKqfahKUXMg+bZ+Cl6KmSLSECXz8vnAya206zarUX7LMI5dAcLH5+asnVV3VFX4rjZ5CgS3VCjt2mBvuJHNV/ya+qZg2WbYZVDz0uC6lr2LCgJtMFQlTMrJcRurEjK9+FxtagSY1IiFIurdyGHEGp4+sswivuSbWmUJHanFgilR+1JJVhpmywE0aixs+KlcwUhLkIRQ7voDG6oYf+Oe5TRvi4D6w66g44EvNzaJJGOGhPIGZOIIPpZJqCYMIUFnGDxXib5PGkJGzJ4dsXv6ptgDCxVlSsZ/7tspRwLOQC2hCUIhmUUfJxXsdrqPnBmREX1Q96IJ1QXZmCQdqOjvX9247kwu1ypPd6BS0Km2qSspx5Jn/S2iUAVH2H85a3XB6FuwxmRDF2GUatIEoDr89Zxti9aqds9VJfQMTov00nCvqQaW63f7985ZMj2/0m6UbrSMlhGU8LPQq9b1RhbAeYmsmVk766rBXFvznkPSn0XKcuVosm3MV9d1wMA=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -274,32 +240,22 @@ pandas&gt;=2.2
 matplotlib&gt;=3.10
 
 [&#39;numpy&#39;, &#39;pandas&#39;, &#39;matplotlib&#39;]</pre></div>
-    <div class="answer-gate" data-answer-id="11.6">
+    <div class="answer-gate" data-answer-id="11.6" data-chapter="11">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 11.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 11 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ไฟล์นี้ทำให้คนอื่นติดตั้งแพ็กเกจครบด้วยคำสั่งเดียว <code>python -m pip install -r requirements.txt</code></p><div class="code-block"><div class="code-head"><span class="code-file">ex_11_6.py</span></div><pre class="source-code"><code>packages = {<span class="tok-str">"numpy"</span>: <span class="tok-str">"2.2"</span>, <span class="tok-str">"pandas"</span>: <span class="tok-str">"2.2"</span>, <span class="tok-str">"matplotlib"</span>: <span class="tok-str">"3.10"</span>}
-<span class="tok-kw">with</span> <span class="tok-fn">open</span>(<span class="tok-str">"requirements.txt"</span>, <span class="tok-str">"w"</span>, encoding=<span class="tok-str">"utf-8"</span>) <span class="tok-kw">as</span> f:
-    <span class="tok-kw">for</span> name, version <span class="tok-kw">in</span> packages.<span class="tok-fn">items</span>():
-        f.<span class="tok-fn">write</span>(<span class="tok-str">f"{name}&gt;={version}\n"</span>)
-
-<span class="tok-kw">with</span> <span class="tok-fn">open</span>(<span class="tok-str">"requirements.txt"</span>, encoding=<span class="tok-str">"utf-8"</span>) <span class="tok-kw">as</span> f:
-    content = f.<span class="tok-fn">read</span>()
-<span class="tok-fn">print</span>(content)
-<span class="tok-fn">print</span>([line.<span class="tok-fn">split</span>(<span class="tok-str">"&gt;="</span>)[<span class="tok-num">0</span>] <span class="tok-kw">for</span> line <span class="tok-kw">in</span> content.<span class="tok-fn">split</span>()])</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-10.html">← บทที่ 10</a><a class="pager-link" href="chapter-12.html">บทที่ 12 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

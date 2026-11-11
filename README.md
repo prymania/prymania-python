@@ -34,18 +34,19 @@ tools/lesson-builder/appendix/     ★ เนื้อหาภาคผนว�
 assets/python-path.svg             ภาพประกอบเส้นทางการเรียนรู้
 assets/figures/*.svg               ภาพประกอบแนวคิด (เขียนด้วยมือ)
 assets/figures/*.png, assets/gui/  กราฟและภาพหน้าต่างที่ builder สร้างจากการรันโค้ดจริง
-tools/lesson-builder/course-basics.mjs     บทที่ 1–8
-tools/lesson-builder/course-practice.mjs   บทที่ 9–13
-tools/lesson-builder/course-data-ai.mjs    บทที่ 14–18
-tools/lesson-builder/course-gui.mjs        บทที่ 19–20
+private/course/course-basics.mjs   บทที่ 1–8   ┐ ต้นฉบับบทเรียน (มีโค้ดเฉลย) อยู่ใน private/
+private/course/course-practice.mjs บทที่ 9–13  │ ซึ่งไม่ขึ้น git — ดู private/README.md
+private/course/course-data-ai.mjs  บทที่ 14–18 │
+private/course/course-gui.mjs      บทที่ 19–20 ┘
+private/passwords.json             รหัสดูเฉลยแบบฝึกหัดต่อบท (ไม่ขึ้น git)
 tools/lesson-builder/course-helpers.mjs    รูปแบบข้อมูลบท หัวข้อ ตัวอย่าง และโจทย์
 tools/lesson-builder/highlight.mjs         ระบายสี syntax ของ Python ตอน build
 tools/lesson-builder/build.mjs     รัน source และสร้างหน้าเว็บ
 requirements.txt                   แพ็กเกจ data/AI/GUI สำหรับตัวอย่าง
-password.js                        รหัสผ่านฝั่ง browser สำหรับแบบฝึกหัด
+sw.js                              service worker ให้เปิดเว็บได้แม้ไม่มีเน็ต (builder สร้าง)
 ```
 
-แก้เนื้อหาที่ `tools/lesson-builder/course-*.mjs` แล้วรัน builder ใหม่ เมนูด้านซ้ายถูกเขียนใหม่ทุกครั้งที่ build ทั้งในหน้าบทและใน `index.html` ระหว่าง `<!-- course-nav -->` กับ `<!-- /course-nav -->` (ถ้าเพิ่มบทใหม่ ให้เพิ่มชื่อสั้นใน `NAV_TITLES` ของ `build.mjs`) อย่าแก้ HTML ใน `chapters/` โดยตรง เพราะการ build จะเขียนทับ
+แก้เนื้อหาที่ `private/course/course-*.mjs` แล้วรัน builder ใหม่ เมนูด้านซ้ายถูกเขียนใหม่ทุกครั้งที่ build ทั้งในหน้าบทและใน `index.html` ระหว่าง `<!-- course-nav -->` กับ `<!-- /course-nav -->` (ถ้าเพิ่มบทใหม่ ให้เพิ่มชื่อสั้นใน `NAV_TITLES` ของ `build.mjs`) อย่าแก้ HTML ใน `chapters/` โดยตรง เพราะการ build จะเขียนทับ
 
 แต่ละหัวข้อเป็นย่อหน้าสั้น ๆ และเพิ่ม `code`, `table`, `figure` หรือ `tip` ได้ แบบฝึกหัดมี `given`/`want`/`checklist` ซึ่งแสดงเป็นกล่อง "เข้าใจโจทย์" ฟิลด์เสริมที่ใช้ได้ทั้งหัวข้อ ตัวอย่าง และโจทย์:
 
@@ -69,6 +70,12 @@ password.js                        รหัสผ่านฝั่ง browser 
 
 ## เฉลยและรหัสผ่าน
 
-รหัสผ่านตัวอย่างคือ `py` ตามด้วยเลขบทสองหลักและเลขข้อสองหลัก เช่น ข้อ 1 ของบท 1 ใช้ `py0101`; ข้อ 4 ของบท 20 ใช้ `py2004`
+เฉลยแบบฝึกหัดท้ายบทแต่ละข้อถูกเข้ารหัสตอน build (AES-GCM, กุญแจ PBKDF2 จากรหัสของบทนั้น) หน้าเว็บจึงไม่มีทั้งรหัสและเฉลยแบบอ่านได้ นิสิตใส่รหัสของบทครั้งเดียวก็เปิดเฉลยได้ทุกข้อในบทนั้นจนปิดแท็บ
 
-ข้อจำกัด: เว็บนี้เป็นไฟล์ static และรหัสผ่านตรวจใน JavaScript เพื่อความสะดวกในการสอน ผู้เปิดเว็บสามารถดูรหัสหรือเฉลยจากไฟล์ที่สร้างได้ จึงไม่ใช่ระบบรักษาความลับหรือระบบสอบออนไลน์
+- รหัสอยู่ที่ `private/passwords.json` (`exercises` → เลขบท) แก้แล้วรัน builder ใหม่
+- `KDF_ITER`/`SALT_TAG` ใน `build.mjs` ต้องตรงกับ `ITER`/`SALT_TAG` ใน `assets/lesson.js`
+- การถอดรหัสใช้ WebCrypto ซึ่งทำงานบน https, localhost และการเปิดไฟล์ในเครื่อง
+
+## เก็บคะแนนท้ายบท (Quiz)
+
+ท้ายบทที่มี Quiz จะมีหัวข้อ "📝 เก็บคะแนนท้ายบท": ขั้นที่ 1 เช็คชื่อ → ขั้นที่ 2 เปิด Quiz (Google Form) ใส่ id ฟอร์มใน `QUIZ_FORMS` ของ `build.mjs` (ส่วน `/forms/d/<id>/` ของลิงก์ นิสิตใช้ `/viewform` ไม่ใช่ `/edit`) บทที่ไม่มี id จะไม่มีหัวข้อนี้

@@ -19,7 +19,7 @@
   --coral: #e0533f; --coral2: #b8402f; --coralbg: #fcece8;
   --mango: #e0a020; --mango2: #94650a;
   --mint: #14a08e;  --mint2: #0b7a6c;
-  --sky: #2f80ed;   --sky2: #1d62c4;
+  --sky: #2f80ed;   --sky2: #1d62c4; --skybg: #e8f1fe;
   --g1: #E3EBFD; --g2: #FCEEE2; --g3: #E7DCFC; --g4: #F8D5F8;
   --f-display: "Bai Jamjuree", "Anuphan", "Leelawadee UI", Tahoma, sans-serif;
   --f-body: "Anuphan", "Leelawadee UI", "Noto Sans Thai", Tahoma, sans-serif;
@@ -149,6 +149,31 @@ table.tbl td.hot { background: var(--coralbg); color: var(--coral2); font-weight
 /* หน้าแรก: ชั้นหมึกวางทับคอลัมน์เนื้อหา <main> */
 .page-content > main { position: relative; }
 
+/* โหมดฉายจอ (A+): ขยายคอลัมน์เนื้อหา — กระดานทดไม่ขยาย (ink.js หารพิกัดด้วยอัตรา zoom หมึกจึงตรง) */
+.big-text .lesson-main, .big-text .page-content > main { zoom: 1.25; }
+.ink-big { font: 700 15px var(--f-display) !important; color: var(--fg); }
+.big-text .ink-big { border-color: var(--brand) !important; background: var(--grapebg) !important; color: var(--brand); }
+
+/* ---------- เก็บคะแนนท้ายบท (Quiz Google Form) — จากเว็บ Calculus ---------- */
+.quiz-score { margin-top: 48px; border-top: 1px solid var(--line); padding-top: 26px; scroll-margin-top: 18px; }
+.quiz-score > h2 { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 0 0 10px; font: 700 26px/1.4 var(--f-display); }
+.quiz-card { display: flex; gap: 14px; align-items: flex-start; border: 1px solid #c9d8f2; border-left: 4px solid var(--sky); border-radius: 10px; background: var(--skybg); padding: 14px 18px; }
+.quiz-ico { flex: none; font-size: 30px; line-height: 1.1; }
+.quiz-card h4 { margin: 0 0 2px; font: 600 16.5px var(--f-display); }
+.quiz-card p { margin: 0 0 10px; color: var(--muted); font-size: 14.5px; }
+.quiz-btn { display: inline-flex; min-height: 42px; align-items: center; border-radius: 8px; background: var(--accent); padding: 8px 16px; color: #fff; font: 600 15px var(--f-body); text-decoration: none; }
+.quiz-btn:hover { background: #214a6f; }
+.quiz-note { margin: 8px 0 0; color: var(--muted); font-size: 13.5px; }
+.quiz-login { display: inline-block; margin: 0 0 10px; border: 1px solid #f2c9c9; border-radius: 8px; background: #fff3f3; padding: 6px 12px; color: #9a2b2b; font-size: 14.5px; }
+.quiz-lead { margin: 0 0 10px; color: var(--muted); font-size: 14.5px; }
+.quiz-steps { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.quiz-no { display: inline-flex; width: 22px; height: 22px; margin-right: 8px; align-items: center; justify-content: center; border-radius: 50%; background: var(--accent); color: #fff; font-size: 13px; vertical-align: 2px; }
+.quiz-card.checkin { border-color: #bfe3cf; border-left-color: #2e9e6a; background: #eefaf3; }
+.quiz-card.checkin .quiz-no { background: #2e9e6a; }
+.quiz-btn.checkin { background: #2e9e6a; }
+.quiz-btn.checkin:hover { background: #237a52; }
+@media (max-width: 700px) { .quiz-score > h2 { font-size: 22px; } .quiz-card { padding: 12px 14px; } }
+
 /* ---------- ภาคผนวก B: วิธีใช้ปากกา ---------- */
 .pen-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 10px; margin: 14px 0; }
 .pen-step { display: flex; gap: 12px; border-radius: 10px; padding: 14px 16px; }
@@ -183,6 +208,9 @@ table.tbl td.hot { background: var(--coralbg); color: var(--coral2); font-weight
   .side-hide:hover, .side-show:hover { border-color: var(--accent); color: var(--accent); }
   .side-collapsed .lesson-shell { grid-template-columns: minmax(0, 1fr); }
   .side-collapsed .lesson-sidebar { display: none; }
+  /* แถบปากกาตัดขึ้นบรรทัดใหม่ในพื้นที่เนื้อหาเท่านั้น ไม่ทับเมนูซ้าย/ปุ่ม « (iPad แนวตั้ง) — --sidebar-width มีทั้ง lesson.css และ site.css */
+  html:not(.side-collapsed):not(.ink-board-open) .ink-bar { max-width: calc(100vw - var(--sidebar-width) - 24px); }
+  html.side-collapsed:not(.ink-board-open) .ink-bar { max-width: calc(100vw - 112px); /* เว้นที่ให้ปุ่ม ☰ เมนู มุมซ้ายบน */ }
   .side-collapsed .side-show { position: fixed; top: 12px; left: 12px; z-index: 1000; display: inline-flex; height: 44px; align-items: center; gap: 6px; border: 1px solid var(--line); border-radius: 10px; background: #fff; padding: 0 14px; color: var(--fg); font: 600 14px var(--f-body); box-shadow: 0 2px 8px #17202d22; cursor: pointer; }
 }
 @media (max-width: 700px) { .ink-bar { top: auto; bottom: 12px; } .ink-toast { top: auto; bottom: 52px; } }
@@ -212,6 +240,227 @@ table.tbl td.hot { background: var(--coralbg); color: var(--coral2); font-weight
 }
 @media print {
   .lesson-sidebar, .sidebar, .lesson-pager, .ink-bar, .side-show, .side-hide { display: none !important; }
+  .big-text .lesson-main, .big-text .page-content > main { zoom: 1; }
   .lesson-shell { display: block; }
   .page-content { margin-left: 0; }
+}
+
+/* ============================================================
+   โหมดมืด (ปุ่ม 🌙 ในแถบปากกา → คลาส html.dark, จำใน localStorage "dark") — จาก style.css ของเว็บ Calculus
+   สำหรับฉายในห้องมืด: พื้นเทาเข้มไม่ดำสนิท ตัวหนังสือขาวนวล · พิมพ์ (print) ใช้ธีมสว่างเสมอ
+   ส่วนท้ายแก้สีตายตัวของเว็บนี้ (lesson.css, course-nav.css, site.css)
+   ภาพหน้าต่าง GUI และกราฟ PNG คงพื้นขาวไว้ เพราะเป็นภาพที่ได้จากการรันโค้ดจริง
+   ============================================================ */
+@media screen {
+  html.dark {
+    color-scheme: dark;
+    --bg: #161b22;
+    --side-bg: #1b212a;
+    --surface: #1f2630;
+    --soft: #252d38;
+    --fg: #e4e9f0;
+    --muted: #a5b0bf;
+    --line: #36404d;
+    --accent: #82b4ff;
+    --accent-soft: #1f2d45;
+    --brand: #82b4ff;
+    --ok: #63d29b;
+    --ok-soft: #173126;
+    --warn: #f2a375;
+    --warn-soft: #3a261b;
+    --btn: #2d6ad0;
+    --btn-hover: #3b7be3;
+    --py-gold: #f0c75a;
+    --code-bg: #0f141b;
+    --code-head: #151c27;
+
+    --grape: #a897ff;
+    --grape2: #c4b8ff;
+    --grapebg: #1f2d45;
+    --coral: #ff7b67;
+    --coral2: #ffa091;
+    --coralbg: #3a2420;
+    --mango: #f2b63c;
+    --mango2: #f6cd73;
+    --mint: #2fcab4;
+    --mint2: #6ee0cf;
+    --sky: #5ba1ff;
+    --sky2: #8dbcff;
+    --skybg: #1b2a40;
+    --g1: #1e2a42;
+    --g2: #392a1f;
+    --g3: #2c2543;
+    --g4: #3b2239;
+
+    /* หน้าแรก (site.css) */
+    --paper: #161b22;
+    --white: #1f2630;
+    --ink: #e4e9f0;
+    --coral-pale: #3a2420;
+    --mint-dark: #6ee0cf;
+  }
+
+  /* พื้นขาวที่เขียนตายตัว → พื้นผิวมืด */
+  html.dark .nav-topics a.is-active,
+  html.dark .gc-out,
+  html.dark .ink-bar button,
+  html.dark .pen-step > b,
+  html.dark .pen-demo,
+  html.dark .side-hide,
+  html.dark.side-collapsed .side-show,
+  html.dark.js .nav-toggle,
+  html.dark .pager-link.secondary,
+  html.dark .password-form input,
+  html.dark .gc-form input,
+  html.dark .skip-link {
+    background: var(--surface);
+  }
+  html.dark .password-form input,
+  html.dark .gc-form input,
+  html.dark.js .nav-toggle {
+    border-color: var(--line);
+    color: var(--fg);
+  }
+  html.dark .pager-link.secondary { border-color: var(--line); color: var(--fg); }
+  html.dark .pager-link.secondary:hover { border-color: var(--accent); background: var(--surface); color: var(--accent); }
+
+  /* ปุ่มสีหลัก: ใช้น้ำเงินเข้มพอให้ตัวหนังสือขาวอ่านชัด */
+  html.dark .answer-open,
+  html.dark .password-submit,
+  html.dark .pager-link:not(.secondary),
+  html.dark .quiz-btn,
+  html.dark .quiz-no {
+    border-color: var(--btn);
+    background: var(--btn);
+    color: #fff;
+  }
+  html.dark .answer-open:hover,
+  html.dark .password-submit:hover,
+  html.dark .pager-link:not(.secondary):hover,
+  html.dark .quiz-btn:hover {
+    background: var(--btn-hover);
+  }
+  html.dark .pen-demo .pd-x { background: var(--btn); }
+  html.dark .ink-on .ink-toggle { background: var(--btn) !important; color: #fff; }
+  html.dark .ink-toast { background: #2d3748; color: #fff; }
+
+  /* เมนูซ้าย (course-nav.css ใส่สีตายตัว) */
+  html.dark .lesson-sidebar,
+  html.dark .sidebar { border-color: var(--line); background: var(--side-bg); }
+  html.dark .brand { color: var(--fg); }
+  html.dark .brand-note,
+  html.dark .sidebar-foot,
+  html.dark .course-nav .nav-label,
+  html.dark .chapter-empty { color: var(--muted); }
+  html.dark .sidebar-foot { border-color: var(--line); }
+  html.dark .nav-chapter > summary,
+  html.dark .nav-topics a { color: #c9d1dc; }
+  html.dark .nav-chapter > summary::after { color: #7d8898; }
+  html.dark .nav-chapter > summary:hover,
+  html.dark .nav-chapter[open] > summary,
+  html.dark .nav-topics a:hover,
+  html.dark .nav-topics a:focus-visible { background: var(--accent-soft); color: var(--fg); }
+  html.dark .nav-chapter > summary[aria-current="page"] { box-shadow: inset 3px 0 0 var(--accent); }
+  html.dark .nav-number,
+  html.dark .nav-topics .toc-number,
+  html.dark .nav-topics a.is-active { color: var(--accent); }
+  html.dark .nav-topics { border-color: var(--line); }
+
+  /* ข้อความ/กล่องในบทเรียน (lesson.css) */
+  html.dark code:not(pre code) { background: #2a3340; color: #e4e9f0; }
+  html.dark .note-box,
+  html.dark .callout.tip,
+  html.dark .callout.try,
+  html.dark .try-it,
+  html.dark .answer-content { border-color: #2b5541; }
+  html.dark .callout.warn { border-color: #5c3a28; }
+  html.dark .quick-check,
+  html.dark .quick-check details > div { border-color: #34465f; }
+  html.dark .source-output .stdin-box { background: #2e2715; }
+  html.dark .source-output.is-error pre { border-color: #5c3a28; color: #ffb59a; }
+  html.dark .ex-hint { color: #f0d68c; }
+  html.dark .gui-shot { border-color: #4a5566; }
+  html.dark .concept-figure img { border-radius: 6px; background: #fff; }
+  html.dark .fc-terminal { fill: #173126; stroke: #63d29b; }
+  html.dark .fc-io { fill: #1f2d45; stroke: #82b4ff; }
+  html.dark .fc-process { fill: #3a2a1b; stroke: #f2a375; }
+  html.dark .fc-decision { fill: #2c2543; stroke: #c4b8ff; }
+  html.dark .fc-edge { stroke: #8a96a8; }
+  html.dark .fc-arrowhead { fill: #8a96a8; }
+
+  /* กล่องในภาคผนวก (course-extras.css) */
+  html.dark .box.idea,
+  html.dark .box.cs,
+  html.dark .box.hook,
+  html.dark .grade-calc,
+  html.dark .quiz-card { border-color: #34465f; }
+  html.dark .box.tip { border-color: #2b5541; }
+  html.dark .box.note { border-color: #5a4a20; background: #2e2715; }
+  html.dark .box.note .box-t { color: #f3c969; }
+  html.dark .box.warn { border-color: #5c3a28; }
+
+  /* Quiz ท้ายบท */
+  html.dark .quiz-card.checkin { border-color: #2b5541; border-left-color: #3fbf86; background: #16302a; }
+  html.dark .quiz-card.checkin .quiz-no,
+  html.dark .quiz-btn.checkin { border-color: #23875a; background: #23875a; }
+  html.dark .quiz-btn.checkin:hover { background: #2b9d6a; }
+  html.dark .quiz-login { border-color: #6a3434; background: #3a1f22; color: #ffb4b4; }
+
+  /* ภาคผนวก A: เกณฑ์คะแนน */
+  html.dark .gs-a,
+  html.dark .gc-row.ok { background: #1a3a2b; }
+  html.dark .gs-b,
+  html.dark .gs-b2,
+  html.dark .sb-quiz { background: #1e2a42; }
+  html.dark .sb-quiz { color: #a9c6ff; }
+  html.dark .gs-d,
+  html.dark .gs-d2 { background: #3a2622; }
+  html.dark .gs-c,
+  html.dark .gs-c2,
+  html.dark .sb-bonus { background: #3a3416; }
+  html.dark .sb-bonus { border-color: #8a6e22; }
+  html.dark .sb-final { background: #2c2543; }
+  html.dark .gs-f { background: #262d37; color: #8f9aaa; }
+  html.dark .gc-row.no { color: #6f7a89; }
+
+  /* ภาคผนวก B: ขั้นตอนใช้ปากกา (ชมพู/ม่วง/เหลือง แบบเข้ม) */
+  html.dark .pen-step:nth-child(1) { background: #3b2234; }
+  html.dark .pen-step:nth-child(2) { background: #262840; }
+  html.dark .pen-step:nth-child(3) { background: #352f1a; }
+
+  /* หน้าแรก (site.css) */
+  html.dark .hero { background: #222b3a; }
+  html.dark .search-box { border-color: var(--line); }
+  html.dark .filter:hover,
+  html.dark .filter.active { border-color: var(--btn); background: var(--btn); color: #fff; }
+  html.dark .callout > a { color: var(--fg); }
+  html.dark .assess a { color: var(--accent); }
+  html.dark .path-steps i { color: #5d6878; }
+
+  /* ปากกา: บนพื้นมืด multiply จะมองไม่เห็นหมึก → วาดปกติ และไฮไลต์ (เส้นหนา 18) โปร่ง 38%
+     ปากกาดำแสดงเป็นสีขาว */
+  html.dark .ink-layer { mix-blend-mode: normal; }
+  html.dark .ink-layer [stroke-width="18"] { stroke-opacity: 0.38; }
+  html.dark .ink-layer [stroke="#17202d"] { stroke: #f1f4f8; }
+  html.dark .ink-pen[data-i="0"] span { background: #f1f4f8 !important; }
+  html.dark .ink-tools { border-color: var(--line); background: #1f2630f2; }
+  html.dark .ink-tools .ink-pen.active span { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px currentColor; }
+  html.dark .ink-bar button,
+  html.dark .side-hide,
+  html.dark.side-collapsed .side-show { border-color: var(--line); color: var(--fg); }
+  html.dark .ink-toggle { border-color: var(--brand) !important; color: var(--brand); }
+
+  /* กระดานทด 📒 = กระดานดำ */
+  html.dark .ink-board { background: #0f1318; }
+  html.dark .ink-paper { background-color: #1a2421; }
+  html.dark .ink-paper.paper-lines {
+    background-image:
+      linear-gradient(90deg, transparent 0 63px, #7a3b4f 63px, #7a3b4f 64px, transparent 64px),
+      repeating-linear-gradient(to bottom, transparent 0 39px, #2d3d38 39px 40px);
+  }
+  html.dark .ink-paper.paper-grid {
+    background-image:
+      linear-gradient(#2d3d38 1px, transparent 1px),
+      linear-gradient(90deg, #2d3d38 1px, transparent 1px);
+  }
 }

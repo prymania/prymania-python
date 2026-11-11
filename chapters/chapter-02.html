@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -149,19 +149,14 @@ VAT 7%    13.76 บาท
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ชื่อ SUGA, อายุ 20, ส่วนสูง 1.75 (กำหนดค่าในโค้ดได้เลย ไม่ต้องรับค่า)</dd></div><div><dt>ต้องหา</dt><dd>ข้อความ <code>SUGA อายุ 20 ปี สูง 1.75 เมตร</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>สร้างตัวแปร 3 ตัว: ข้อความ (<code>str</code>), จำนวนเต็ม (<code>int</code>), ทศนิยม (<code>float</code>)</li><li>ใช้ f-string รวมทั้ง 3 ค่าเป็นประโยค</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>SUGA อายุ 20 ปี สูง 1.75 เมตร</pre></div>
-    <div class="answer-gate" data-answer-id="02.1">
+    <div class="answer-gate" data-answer-id="02.1" data-chapter="2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 2.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 2 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>แต่ละค่าเก็บในชนิดที่ตรงกับความหมาย แล้ว f-string นำค่าทั้งหมดมาวางในประโยคเดียว โดยไม่ต้องแปลงเป็นข้อความเอง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_2_1.py</span></div><pre class="source-code"><code>name = <span class="tok-str">"SUGA"</span>
-age = <span class="tok-num">20</span>
-height = <span class="tok-num">1.75</span>
-<span class="tok-fn">print</span>(<span class="tok-str">f"{name} อายุ {age} ปี สูง {height} เมตร"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="M0u1lpgR2DSBur4z4u2zDcuNkS1H5E6dTlajiKV8pFlIDiuZf1yvkrR8HdR4A6k6Zv1FClIIYH4aRijGuDXvz8wgvFi3dqHwk25JjmFQ9V/YUPZ92ENmTz1vpw9tQ/ZwBMu31gm41KMEL3f7vCOejMUX278aa6NwKvq61FjxrXkqjo1v5W3DBGyXBgUSbYavEiK07i8umMg5OPH2djPsTgB0WuYqDJ9Yx0AdqicWCNaz4ZNCupc809NRFFzGgEx7oxJQICEtp+BIuElBelYknEBpYSWmjK+A0/+UxSftQPpf6LD4CroTxL/pCLJFThmM4nDsXVwa/zr4yZ3PR7aMrNKPl7Z7d/ZZpG6gZLQfWi4cUAlJja4HJ7G9NyEkJji+9Ehc2AcZvNGV14T80KxadnfeDEOhM8DgU+JIdmFc3WauP2uyzEcR5ge5RefIG+4KOYylduD1a+IszplxIA/A0Gd0Ykm31Cen3DFLZHvVkgAxFG8VOiXIMzsIebT8XSmvPltJDydGJTFK2T/1Cqdzqe+FuQMI6x1Njjs8FfspwsSWvmMP/6AyH8aiNMdVWyqaozDQAHhqblxoISyZooyq8UexvHPB7XDwan933hKipU2v3Nh5xW5xSle5ENpbxtlIayZCqi70/vz0att1o6jrBXFdLkCIw9lcIMTB0b4SCzZm8LKr33S8u+8yloevofRWl5Et9e1U9haOuFiFnjS3HLJWFGUsB7Wn8sndKUawrP4FSRHpdBrGAlAuoEx7vQ+KwoahKM4iNo1KtLqKm939MYUxrYZLWK/aTVC8IiXuVAxUXkvPx9C5giuk/k/f0GpcKs2mh1Qe8AWm7lauB/mno6JmKmp45aDx7Nz2EmeeMmOFtv7RnrvK5dY4aEje59sboNHzt4nhbyG7m3qTQ1CIk+JU3Xw1soHbBujbhSmERUrMki9d/8jgCkUjNfxfM+vqbQjul0Ig4AkgHynNkHa4T/qcgnbSbal+rTDOV9Am3XDtbzHvRIgar/gIA3cAY61I2882dDSsM9GBoQD3+T8qsN8ufZzev+yE/FMN7XjYQTy0RPQsOP3GAIJ57qyJL9MpLsVH"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -173,19 +168,14 @@ height = <span class="tok-num">1.75</span>
 &lt;class &#39;str&#39;&gt;
 &lt;class &#39;float&#39;&gt;
 &lt;class &#39;bool&#39;&gt;</pre></div>
-    <div class="answer-gate" data-answer-id="02.2">
+    <div class="answer-gate" data-answer-id="02.2" data-chapter="2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 2.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 2 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>&quot;42&quot;</code> เป็น <code>str</code> เพราะมีเครื่องหมายคำพูดครอบ ส่วน <code>False</code> (F ตัวใหญ่ ไม่มีเครื่องหมายคำพูด) เป็น <code>bool</code></p><div class="code-block"><div class="code-head"><span class="code-file">ex_2_2.py</span></div><pre class="source-code"><code><span class="tok-fn">print</span>(<span class="tok-fn">type</span>(<span class="tok-num">42</span>))
-<span class="tok-fn">print</span>(<span class="tok-fn">type</span>(<span class="tok-str">"42"</span>))
-<span class="tok-fn">print</span>(<span class="tok-fn">type</span>(<span class="tok-num">4.2</span>))
-<span class="tok-fn">print</span>(<span class="tok-fn">type</span>(<span class="tok-const">False</span>))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="lgXkLW434sGGbB4alLcJPUezy9dooGpHlWQwFYvoOSUf6yJ/dPhVzLE4G597FAWNoZIm3A+4C1Bna1ajAvTYP/Qr831urIRdBqupSFWA6dC0N/guoNkES2WxTz/zp92Bp6h3mSZ5IkqklDnHxCzdfO2TpDAIJkWwCi7pzvMytpssiAncrPdJAAH3TVasRHfA1C4fZ06AQ/ooqmghuWsGBCYT5ilC85cZZV9nPlzDSrBkoHihoWAoDkmq1OD1QPbCH8EyviEl83ZnlEoSwGJgrOUIsSE7oXjdzHSGfXQ6I4z1Z6Eidz1NGCe29Bjl+WzQrEgFJVLmkKTn/ChIt3uilt5g5qAiC5vzBwyM4wHsjBrRsrdF3vJPq4ZMGCAXE51hE/uUBXQp+L4ptsUvPWgsK7U0yfi05J1yic+q7wn9Y1EUbgSgakBR0In1M5djQgLUu3GOR41nI5iCu20HDS5xVNbn6WDOLOKZWGLQhmbH4nX3MzGGv1CkFSp03yT/3j0mR3oQb/OOLf87v0dgh+40F8j9X3O3aKS8amxYe8sK8j9+j7pKcDzsPjLulqjCSG0ehZKC5qIpBXJ6kpr5tEfAkjMVUlfuvWpgSPU2zYOnNjQOSZuAlIfHEA5gFB91swBvuDM7qoS3lbBzyrGcKhda2QcaqwAmunz3tvQhf71c4VIR86IxzHZwPLJgV1IwxEoq9lsph0CFfSWhVLEJqHxxBksOpNYh6kgTD83bLsA7zySUb+MUIx02piYeyNcv3V+LXiYdgiLT80KG7eTZdocPGCOj2/weOl2om5/fdo0LSJO3eolwQnZ0dW3Up2lWBBANDcMwwzYMwXNl2hoSca6Q14/HxUpJ5nSSX1DxYc73aApeqlt5ZENjp6MCKj2s6hu6yEaQORjx/beDiMLOA246vC1dEhW1+4KW7IHqz2zqS7lmK62ZBHhT0f8L6VudlH8zefcAiaV3qa2OQEFnuMUlePytiQmJpJmQ4xZt2OGdurNCBRCdL++nUs8YPukob0Gxvrir/MiRUUBrgCKl7399hq0Dhsw3fG4Q0k/KfBFtzei87XMDByV4jJg6VgYBxlVLEWXO1uE9RF8POcjZzjt1UgWUBKz5hjRKfowcX6L8CjISRTq8lveUk1AwZMOcY4a49JeJbbzH3gC0Exdtv06ZNlEtigGKH68vMYXaHPkA35UWwFYr9wIYHx1byB/PbtRNmQfjz+JaUVT/tMK2tszHRpxMBkMU7bAwtEE457F8eQKrZ7/EiMW8iBU7WZUsvX3yPMIKng=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -195,17 +185,14 @@ height = <span class="tok-num">1.75</span>
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ชื่อที่ผู้ใช้พิมพ์ (ตัวอย่างพิมพ์ว่า RM)</dd></div><div><dt>ต้องหา</dt><dd><code>สวัสดี RM ยินดีต้อนรับ!</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>ใช้ <code>input(&quot;ชื่อของคุณ: &quot;)</code> รับชื่อ</li><li>ไม่ต้องแปลงชนิด เพราะชื่อเป็นข้อความอยู่แล้ว</li><li>แสดงผลด้วย f-string</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>ชื่อของคุณ: <b class="stdin">RM</b>
 สวัสดี RM ยินดีต้อนรับ!</pre></div>
-    <div class="answer-gate" data-answer-id="02.3">
+    <div class="answer-gate" data-answer-id="02.3" data-chapter="2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 2.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 2 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>input()</code> คืนค่าเป็น <code>str</code> ซึ่งตรงกับข้อมูลที่ต้องการอยู่แล้ว จึงนำไปใส่ใน f-string ได้ทันที</p><div class="code-block"><div class="code-head"><span class="code-file">ex_2_3.py</span></div><pre class="source-code"><code>name = <span class="tok-fn">input</span>(<span class="tok-str">"ชื่อของคุณ: "</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"สวัสดี {name} ยินดีต้อนรับ!"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="phpiRwNKacozUaA9dgMbTiG4Dg0oHuwvdAGz7aSSze3qyg+7n6dXNNbApYBDW3/veEZfwRaKel69DVjUTQqdNyHSQueWO8RCmCaTFRfDoOq6hAgx0Aj5CPaZd/9RB0xqHn8br0QVLIJK7TNeSuj/cuFtX0xEGzz1Yd2OxOzt7hhSonlROD9vkAAYqGcjQ1K5eQr9XpmTHs7NoYgqUpGRb+VqDzTAmDV4JzOg3zb5pVwgKYckty4zbIQHAlU1ioiEzVpWmdH49+j59sFYvX5TTs8Ho6ibYGU7DnMHn9C/PACKKaEKmWHcWmthKB95fiu/4lMY9IqOKM7FyQ+3blgN/P7r61RUKio4q3hDtgdJZ+DeuXn2lzvTdYDX+DvUjhoM3itH2AqDX3rBBvgsBLkykbvwXEtWRmpu/YN4yNriRt0q6Jxw3ka86Ey80ViorqlLf0egOP+V60ed2Kw5Gz9C1xzPrNfr+sn9W5C7OCmtPdeCb4kdkpMZ6siVF7X9xj5D6d+/RSGNQGxcvRVcvJAfwYP6SRArWm01dQszWsnKcV/LQzHX1g6len29XS1BIeTkNFRb2zfYczCqjobY7cQoZqoOx3cDGMXMuS86wC79+SV2ftRYDKmvrmGdJyeC7ExlwlBm88llq3flA7wxA7uikEQ459hmNxIcM/USD+rUs9Iqc1VSVE1ZVZ0dy0adXkyX8wDKAedgHgZkPJGKUgszSgSAgbFqtT6/oJ/vyx6YErl1ARHTOCAWSq1iGe2MkSsduwbdbiqfqzPHwMhV4XdlK26LHgM9s3PeXoGonk+kAyz8rlo9C5S2PzYO+Sq/B9Gyt5wpZ+inqAbpwzauS1xRMGYQHcIATBpxTQaWWDMcU5iWt7wM6tIh3JgNZ4jNNoQySw3GasLpXSImUA7velAI4uJnVEKiO7pFeWDlHoJBVO50HS3ily5oNXRGf4NA8DmAYya+sZy1zH1m98Hlcaalq1ghSg=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -215,18 +202,14 @@ height = <span class="tok-num">1.75</span>
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>อุณหภูมิ °C ที่ผู้ใช้พิมพ์ (อาจมีทศนิยม เช่น 36.5)</dd></div><div><dt>ต้องหา</dt><dd>อุณหภูมิ °F ทศนิยม 1 ตำแหน่ง</dd></div></dl><strong>วิธีคิด</strong><ol><li>รับค่าด้วย <code>float(input(...))</code> เพราะอาจมีทศนิยม</li><li>แทนค่าในสูตร</li><li>แสดงผลด้วย <code>:.1f</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>องศาเซลเซียส: <b class="stdin">30</b>
 30.0 °C = 86.0 °F</pre></div>
-    <div class="answer-gate" data-answer-id="02.4">
+    <div class="answer-gate" data-answer-id="02.4" data-chapter="2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 2.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 2 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ถ้าใช้ <code>int()</code> แล้วผู้ใช้พิมพ์ 36.5 โปรแกรมจะเกิด ValueError จึงควรใช้ <code>float()</code> กับค่าที่อาจมีทศนิยม</p><div class="code-block"><div class="code-head"><span class="code-file">ex_2_4.py</span></div><pre class="source-code"><code>celsius = <span class="tok-fn">float</span>(<span class="tok-fn">input</span>(<span class="tok-str">"องศาเซลเซียส: "</span>))
-fahrenheit = celsius * <span class="tok-num">9</span> / <span class="tok-num">5</span> + <span class="tok-num">32</span>
-<span class="tok-fn">print</span>(<span class="tok-str">f"{celsius} °C = {fahrenheit:.1f} °F"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="MUrVlz3HhuuKf/3ArN4VXCaTf7umY0OuB7FnmGYlyKL/t/A7U3qDOIBg/rRN/fPh0B3nsPWBsQyG9O/U0b5N2wafPEgWWs/KwuFk64pMNVWsT1XPcKRRCd/EPcO0Br5/p6ouhcz/n0uuiOn6WY/vkR/JYIGbXjpX1lKzsAODROfPq3slDLTfxWB4oPyDcSmNdIWl6fSRY9hliBVjWbWBcm01RV3LjXfbLItT6MQJ+hY4IalrV1N1+Bg61vwyaMly/S0jW7G/XEpPAl5ysGeBdD/vesEhvXkArgzL6MflxF2Vbg88FliPdyW9FcpHSK1CKpdB4fWLqpBQKfE56tUXdflvYuTsDVyeUHM/rfIig+HFvsKvNkri1vwMKjTRNHngQAQD8ZD6KHngIeNHuJfSnenFOhJVPmomikfWiRQRh7NDhkm89+l6JyYsgIHdICmNX/Hbt/4En2heMkTlw9xzjcKwA4m/z9bYUHusvQ5yAbVZu8HpQZViGAEHma664qZKgazCAnkZHcLE4Ofv32r0yYbR3IX0JoA6cW//auhNjzAl7rI69zrpb9uC/+SAH36mz3fb8HUVXs2QXFk4oyrpXpXtOkzKwrtm0fR/85RpiJD07NIqeuJCwaghtslJR71P3MJd9LViAhOXx9U3ExqZdHZakp9dyj/UIiM7PFeqSvRFgCCJHfusPEx1Z+zUFtPEz109N6vykWnx1FKsiSstieRQLYtM/jYKcWgEwta3Mdj5jGPtXTl81Q/gWEYcsMkRyK3udoAC4G6x+Nr4rkBkAN/mDqEdm3myJbyGfRbBsGG+2oO25m8DW3WPiYwKPCkCp8vzWnL3BRwvpxy/WVqBvP8Lc3+z+dYeqgLe9A0RBCYREBRfYNuyaP4zEFJwh3zZssFVM8kl3dabP5psqrEtD2XVrrzkliwgGrmgUS1y+/HTLgxtlSsEakqhQ79rIuG2m3NnUPAMhqe75H4wVcJ771EtQCz4mnVgD4MUG7lCA8RFebmry3soZ9jmrm6p97VdD0RvVW7aGyxo93glUdf+Ul2L5d23EiAdCdmdaHx9o4I648kbYno8kC9jH7qkGn04BHh0LYSUKf6tqGM/ivNKyLEfdLKsUbeYNOVF/IBpeHG4OsaNBEHWJX5QlNyOsCa0b30468klU7QGcNxrjnGA7P0ERkE="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -237,19 +220,14 @@ fahrenheit = celsius * <span class="tok-num">9</span> / <span class="tok-num">5<
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>ยอดบิล: <b class="stdin">1250</b>
 จำนวนคน: <b class="stdin">4</b>
 จ่ายคนละ 312.50 บาท</pre></div>
-    <div class="answer-gate" data-answer-id="02.5">
+    <div class="answer-gate" data-answer-id="02.5" data-chapter="2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 2.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 2 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>จำนวนคนเป็นจำนวนเต็มเสมอจึงใช้ <code>int</code> ผลจากเครื่องหมาย <code>/</code> เป็น <code>float</code> เสมอ จึงจัดทศนิยมด้วย <code>.2f</code> ได้เลย</p><div class="code-block"><div class="code-head"><span class="code-file">ex_2_5.py</span></div><pre class="source-code"><code>bill = <span class="tok-fn">float</span>(<span class="tok-fn">input</span>(<span class="tok-str">"ยอดบิล: "</span>))
-people = <span class="tok-fn">int</span>(<span class="tok-fn">input</span>(<span class="tok-str">"จำนวนคน: "</span>))
-each = bill / people
-<span class="tok-fn">print</span>(<span class="tok-str">f"จ่ายคนละ {each:,.2f} บาท"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="5qRt3gWTMdjT8I/i2NMHt2EbfAJyVO5WyDv8YhK3Zic8I5RTgKBOrVAMhwP5raqJTliA1haxjiWQGNt7qCUxqlNY2pPproXgf2tLuOzEAqTmhZiCTxfaKoaGukm46bDgeitIY7LO8UoW1DbxZMgS7PC0sXYPtyNsBSy4cg7s7pSblWi4flOH/eop+Z4+PHj51KUnBMBTccF9EHEY0P+q7yE3qzYLIRNX2SguSK9kXmF344t5rdnG97MyAsrB4shhvg3suOoBlXyFw0qE921JKhFiCf2yjbAGHymBwSys9PVo+QXJzxBtp33TsYIh8GCcBOc5Zyie4aE3/79Hb6HkoddJBRyDCnzqv062IpgyOP6cU59RtFlS/m++Gn8h6zbHgsvRBLPYChsv8NWW1LgR+gaBcnBYGBsVIrYwZ1yEEsN9BQXfE7sfewrN8bxHlrZi7XNM3lydwQz6jtlOzdirDLBJh3XDdhmsqklv8O+UThFh15bTyHEHEk7wSy2he2swQFTo8ttFPsal0e7R3a6goLx4uo0JVo/i1j9E43JbB7ahfOtYR2GXCvlCfgZI4QsjMR09gdrDvhLXiv2D3/JbQT54ANH0qN066eZ11gVkOricw3nbXSC6PZ3KIo7CXvdF6YO4IBQ6oQngHBhy+YHsZgopfiFIS7p9FPkDo9L2RYL7vdVekmamoYGmvxXY9UvBQDpGWuw9Skj8NpG7f7TunZgxWXD17OVu1v6RpoSKqXhCftz5sGbcpyV/P+VR6KI1ljGTGO01z2tqmQ3zG/NriS5X6Vfkt8DiOaiqYafuvtjC2DZhYVWdtcR2fRTVarxXtse+Am6JXhLCsqm3k9OPoa4xGxWXkGNAZHF7c0dwU0nObpmo40RLGM5wKFRxSx1S/G8qJ/l2kuN++3LzV15UHzQ5Pk6pdEwazlpMHJOmm9Qrxx05UcKI895l4ZrF4qA0OlYL0u7PBS16SKTuixPCMgMsfqRC9MCCNjUDxN9QbuBDAPqs1snMipj2qiq2PYTb7diFqkxXO0BaOkL0Ycz3BXqsTKUA2Z5K/wz1K5sDcbK4YPOWw3zmtVZqzT4U1NrEVjTKbwrg2AO2nded6/sjQ6gA0bjVrRoGADIV7eau2UoHe26GpDfezhHUX3Cf8YvSfPgSUs+ehKDDeIUWup78ZoHvlTradfSjHaA8EnNfHw+/kDkYT0o8Kfea+Vb5n9lgnrQl1hz1yErMptNfqOC5aDMIT3hPiPHmJtsXph/GM/JayG37ERiKd+HtyEhw"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -260,19 +238,14 @@ each = bill / people
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>น้ำหนัก (kg): <b class="stdin">60</b>
 ส่วนสูง (m): <b class="stdin">1.70</b>
 BMI = 20.76</pre></div>
-    <div class="answer-gate" data-answer-id="02.6">
+    <div class="answer-gate" data-answer-id="02.6" data-chapter="2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 2.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 2 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ถ้าไม่ใส่วงเล็บ Python จะคำนวณจากซ้ายไปขวา คือ <code>weight / height * height</code> ซึ่งได้ค่าเท่ากับ weight จึงผิด</p><div class="code-block"><div class="code-head"><span class="code-file">ex_2_6.py</span></div><pre class="source-code"><code>weight = <span class="tok-fn">float</span>(<span class="tok-fn">input</span>(<span class="tok-str">"น้ำหนัก (kg): "</span>))
-height = <span class="tok-fn">float</span>(<span class="tok-fn">input</span>(<span class="tok-str">"ส่วนสูง (m): "</span>))
-bmi = weight / (height * height)
-<span class="tok-fn">print</span>(<span class="tok-str">f"BMI = {bmi:.2f}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="aFJIlUeYkGco7lj990fihWuG9M8YAUasIUY204lRZ5vVyHrNOR+RyCyPT1Fp1KVR2OUaTeKQDZU5TYzspslBdwbnPaYamh1LR3BUQuDQ/A+9nnHFosdLwo1ANK37JsafkjMMjDLr6WrmXhUZG6fm9Tn+NZE7f6KABunwYfLASoAfoM9tF7m6eEE5zOSP/OZTGDYI4wnaM8/PnvDZJ6iMmLVJ2luOJwVMAa+LQs/rdjeC4+k4wHY+vtB7jKd/B53yIap4uLQU0leqO1a8ZKaBusHCVwu2FawrPRcSYhjC9AtX7SogtVxuR3QhMQJ7FmwRlicVA8JVm+xlTJNW+xoQR2rQoMFscwkigzt5S5GpNhczBmqA3GEon0h4QLbNfxVI2TOnV7oDPLzHYZ80Cs10XcigERgZ2Y8wWkR2VDSgM+WnfQIXb46JcyFSJ9IUP1TI6FsZs+aUWvz0fUjunayCPkKD5Oazr5JWP8mLxk3HE7uuh7pifiHI1RzpTZO51P8SCMzRiEbGSwN9fzgPsx92AnS6yIZUR4PnyInw51ci8zLgedcsFqBWNhrnv0ume24f+CIL4jZYo8bmQNXDhq/GW1BGM7IbdjmC2g57l6JOZXonDpnN34X0v5IidkYHMD8RVAh6cw0DREvQLyt/cjTplDlef2ktg6axz3aV+yGpiCgYsyyMJlioSR9OhYO4rXLeRQD22QiC3QmKPWw4Y7u7Jiiu6qgmercaXqu37aGbYskd/HIBodxMmPdZYIw2WfUm0cOJs1Br7CZgrz9OfD2D4UyGsoSDKoAtHtQMgc1elb3SnL23SDWKsQo2aibbKqSBCyhA61XSGzF7k4oFBSBLVRWOT2gepeKVmlvGmhbu970ZX+M46Q4SX8JrKnEKO5uv3jU+tnmrjGDeBp16gMZkMLRliJohmRbfO4KbaamO/Jg/M+lyDldEMe1W0CLNmVy8+jmm/kAOVL4Hrng1OckoYfK4fXkrPtoyn26vPpxeFe7Yv+Gn5AUUri/37e+gelb6qwdDWdmhuqMu7uuUfOpOJ18gB3H/P7EJvNieOOO0BK0rxAh0xvj1vkNqnCCTzVKcsYe3gSn7yKwZPunPhzBLOGZasRiTOoBo8MSplmHpRvcMDDeN1uNblS9d6rn1mLZG7QR10+ShSDEfWTC8VnPm8AOTNZxp2aGBuw=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -287,27 +260,14 @@ bmi = weight / (height * height)
 Notebook     85.00
 Pen          36.00
 TOTAL       121.00</pre></div>
-    <div class="answer-gate" data-answer-id="02.7">
+    <div class="answer-gate" data-answer-id="02.7" data-chapter="2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 2.7<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 2 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>&lt;10</code> จองพื้นที่ 10 ช่องแล้วชิดซ้าย ส่วน <code>&gt;8.2f</code> จอง 8 ช่อง ชิดขวา และแสดงทศนิยม 2 ตำแหน่ง ทุกบรรทัดจองความกว้างเท่ากัน ตัวเลขจึงตรงกันเป็นคอลัมน์</p><div class="code-block"><div class="code-head"><span class="code-file">ex_2_7.py</span></div><pre class="source-code"><code>notebook_price = <span class="tok-fn">float</span>(<span class="tok-fn">input</span>(<span class="tok-str">"ราคาสมุด: "</span>))
-notebook_qty = <span class="tok-fn">int</span>(<span class="tok-fn">input</span>(<span class="tok-str">"จำนวนสมุด: "</span>))
-pen_price = <span class="tok-fn">float</span>(<span class="tok-fn">input</span>(<span class="tok-str">"ราคาปากกา: "</span>))
-pen_qty = <span class="tok-fn">int</span>(<span class="tok-fn">input</span>(<span class="tok-str">"จำนวนปากกา: "</span>))
-
-notebook_total = notebook_price * notebook_qty
-pen_total = pen_price * pen_qty
-total = notebook_total + pen_total
-
-<span class="tok-fn">print</span>(<span class="tok-str">f"{'Notebook':&lt;10}{notebook_total:&gt;8.2f}"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"{'Pen':&lt;10}{pen_total:&gt;8.2f}"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">f"{'TOTAL':&lt;10}{total:&gt;8.2f}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -317,25 +277,22 @@ total = notebook_total + pen_total
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>โค้ด 2 บรรทัดที่มี error และผู้ใช้พิมพ์อายุ 19</dd></div><div><dt>ต้องหา</dt><dd><code>อีก 5 ปีคุณจะอายุ 24 ปี</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>รันแล้วอ่านบรรทัดสุดท้ายของ error: <code>TypeError</code></li><li>สาเหตุที่ 1: <code>age</code> เป็น <code>str</code> จึงต้องแปลงด้วย <code>int()</code> ก่อนบวก 5</li><li>สาเหตุที่ 2: นำข้อความไปต่อกับตัวเลขด้วย <code>+</code> ไม่ได้ ให้เปลี่ยนไปใช้ f-string</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>อายุ: <b class="stdin">19</b>
 อีก 5 ปีคุณจะอายุ 24 ปี</pre></div>
-    <div class="answer-gate" data-answer-id="02.8">
+    <div class="answer-gate" data-answer-id="02.8" data-chapter="2">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 2.8<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 2 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>บั๊กนี้มี 2 ชั้น: ค่าจาก <code>input()</code> เป็นข้อความ และ <code>+</code> ต่อข้อความกับตัวเลขไม่ได้ ถ้าแปลงเป็น <code>int</code> ก่อนแล้วใช้ f-string ก็แก้ได้ทั้งสองปัญหา</p><div class="code-block"><div class="code-head"><span class="code-file">ex_2_8.py</span></div><pre class="source-code"><code>age = <span class="tok-fn">int</span>(<span class="tok-fn">input</span>(<span class="tok-str">"อายุ: "</span>))
-<span class="tok-fn">print</span>(<span class="tok-str">f"อีก 5 ปีคุณจะอายุ {age + 5} ปี"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="l6ztQpB1BWDoKKCpUDumoN30p69zPKi22klD7vMWGJyrCmv/PFypwIWvBu+2K8GhMbBqUpqMz5Gus57cIem9Ng40Up6BfoJvarFqTSwzjqj2wsgRrMM+n06ioCLtXJxHKZwyRh/KZ4BtDlOuvaYsVlZl8dFFmTNcb3AqBSgsf/uTRyv9LQ8rz8GiextcYhmiz44TYLkyBiR0othAlDOs1NOMZEfT0Jljh0VvW/7eSsNPPFFs1M+pdSSMTkzeQNGJQxnz3RJ9hKVs316DOM9Rq7KMwXiqWCgurwu1Km6r+/vWO27AphJ26vB1jDAwRudhBv1r4jOWtx37qNhocO71JGm4F2Wl2SmS2cz4VABL4f+uumb/3k66xpbxAFz09pw5teXy91CvZxREhs8348QuVLCB12atRnlsQg+lnzBsKeP/gRjaGWCAISMg2tbUDw3+k4v8aTH+apcIiacDJ54EKvZEGnc9oauSXfcifZl4fHPkTj9UFU2I7ye62WZYKxAkECjl17SYHX33cnlI0anE8xUFx0AJozARDXgbIw+APrCq7aR1X553T03dzkaC6HCxSIUAjR81kAqYktLG8fU/cgUW1aEgg0Ri+wGSP/0KMZImy1Io68BAw/7cJ8DUvZLHEckBwvRNofIKEQeVtxRxNPjMikfoDzUfOg31EmjxwXlXISRx6fsIVh3C5QXqbU1roJflZVHg9jTxT7B6WLqb6qx5A/1UfE8P12hpEeAgyj9uJFJeTilNK3zrOrMPJ0R5g6uvqVDhA0nwognBxm9pAw+5Tf0PohvpjczFBFUmb1qWmuGP/N1ks9EyOxGknTXmmUms9SlAcivIFaYnq6Ak2jUXcBXg2u7dEbNkjpQ7nX5m3QpAPoP14M7+vTspOk553pfGR7Z6HfxBCXzRvrui5f7YBbICIGPeEBLPkPfyQd/VEBCbsvQaSAnt8WnJuGgMzx6H14dRLihg6xHA1ViC8muLGp48enE0bose3TNzC2KMPxd2Vt5bLG58HmU/yjHnykC2bE6AnSiyWRD2rJ2geexqNPQyD4z1QQBDGpm/oYN16LMOngA8z1LeU/vW4DUxIAofHelZk68jHa+LHe1cr7nz3Ef4XTxNBwkzSEPx0x1L5VRaPPzveZs71gfSPT3aWwqU5XWSfpyald5D0h7oNmbZOg=="></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-01.html">← บทที่ 1</a><a class="pager-link" href="chapter-03.html">บทที่ 3 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

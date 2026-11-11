@@ -1,19 +1,61 @@
 import { spawnSync } from "node:child_process";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { basics } from "./course-basics.mjs";
-import { practice } from "./course-practice.mjs";
-import { dataAi } from "./course-data-ai.mjs";
-import { guiProject } from "./course-gui.mjs";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { highlightPython } from "./highlight.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "../..");
 const OUT = path.join(ROOT, "chapters");
 const PYTHON = process.env.PYTHON || path.join(ROOT, ".venv", "Scripts", "python.exe");
-const chapters = [...basics, ...practice, ...dataAi, ...guiProject];
+
+// ---------------- ของลับอยู่ใน private/ (ไม่ขึ้น git) ----------------
+// private/course/*.mjs = ต้นฉบับบทเรียน (มีโค้ดเฉลยแบบฝึกหัด), private/passwords.json = รหัสดูเฉลยต่อบท
+const PRIVATE = path.join(ROOT, "private");
+if (!fs.existsSync(path.join(PRIVATE, "passwords.json"))) {
+  throw new Error("ไม่พบ private/passwords.json และต้นฉบับใน private/course/ — ดู private/README.md (โฟลเดอร์นี้ไม่ขึ้น git ต้องสำรองเอง)");
+}
+const loadCourse = async (file, name) => (await import(pathToFileURL(path.join(PRIVATE, "course", file)).href))[name];
+const chapters = [
+  ...await loadCourse("course-basics.mjs", "basics"),
+  ...await loadCourse("course-practice.mjs", "practice"),
+  ...await loadCourse("course-data-ai.mjs", "dataAi"),
+  ...await loadCourse("course-gui.mjs", "guiProject"),
+];
+const PASSWORDS = JSON.parse(fs.readFileSync(path.join(PRIVATE, "passwords.json"), "utf8"));
+
+// เข้ารหัสเฉลยแต่ละข้อด้วย AES-GCM (กุญแจ = PBKDF2 ของรหัสบทนั้น) แบบเดียวกับเว็บ Calculus
+// หน้าเว็บเก็บแค่เฉลยที่เข้ารหัสแล้ว · salt/iv คำนวณจากเนื้อหา → build ซ้ำได้ไฟล์เดิม
+const KDF_ITER = 150000;   // ต้องตรงกับ ITER ใน assets/lesson.js
+const SALT_TAG = "py-prymania";   // ต้องตรงกับ SALT_TAG ใน assets/lesson.js
+const keys = new Map();
+function encrypt(kind, chap, plain) {
+  const pw = String(PASSWORDS[kind]?.[String(chap)] ?? "");
+  if (!pw) throw new Error(`private/passwords.json: ยังไม่มีรหัส ${kind} ของบทที่ ${chap}`);
+  const id = `${kind}:${chap}:${pw}`;
+  if (!keys.has(id)) {
+    const salt = crypto.createHash("sha256").update(`${SALT_TAG}:${kind}:${chap}`).digest().subarray(0, 16);
+    keys.set(id, crypto.pbkdf2Sync(pw, salt, KDF_ITER, 32, "sha256"));
+  }
+  const key = keys.get(id);
+  const data = Buffer.from(plain, "utf8");
+  const iv = crypto.createHash("sha256").update(Buffer.concat([key, data])).digest().subarray(0, 12);
+  const cipher = crypto.createCipheriv("aes-256-gcm", key, iv);
+  const body = Buffer.concat([cipher.update(data), cipher.final(), cipher.getAuthTag()]);
+  return Buffer.concat([iv, body]).toString("base64");
+}
+
+// ---------------- เก็บคะแนนท้ายบท (เช็คชื่อ → Quiz Google Form) ----------------
+// id ฟอร์มคือส่วน /forms/d/<id>/ ของลิงก์ (นิสิตใช้ /viewform ห้ามใช้ลิงก์ /edit)
+// บทที่ไม่มี id ในนี้จะไม่มีหัวข้อ "เก็บคะแนนท้ายบท" · เกณฑ์: บทที่ 1–10 บทละ 5 คะแนน (ภาคผนวก A)
+const QUIZ_FORMS = {
+  // 1: "id ฟอร์ม Quiz บทที่ 1",
+};
+const QUIZ_POINTS = 5;
+// ระบบเช็คชื่อ (Apps Script ชุดเดียวกับวิชา Calculus) — ปุ่มขั้นที่ 1 ก่อนเปิด Quiz ทุกบท
+const CHECKIN_URL = "https://script.google.com/a/macros/msu.ac.th/s/AKfycbzpTf65VMcSGo4MXHRpm5UwfOpaCDismTxdNom5TLgBY6_NvAO_mg51YacITznabpgrHw/exec?page=teacher";
 
 // กลุ่มบทในเมนูด้านซ้ายและหัวบท
 const GROUPS = {
@@ -268,18 +310,41 @@ function renderExercise(exercise, chapterNo, exerciseNo) {
     ${renderFiles(exercise)}
     ${spec}
     <div class="ex-sample"><strong>${outputLabel(exercise, "ตัวอย่างผลลัพธ์")}</strong>${outputBody(exercise, run)}</div>
-    <div class="answer-gate" data-answer-id="${answerId}">
+    <div class="answer-gate" data-answer-id="${answerId}" data-chapter="${chapterNo}">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ ${chapterNo}.${exerciseNo}<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ ${chapterNo} (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>${fmt(exercise.explain)}</p>${codeBlock(exercise.code, `ex_${chapterNo}_${exerciseNo}.py`)}
-      </div>
+      <div class="answer-content" hidden data-enc="${encrypt("exercises", chapterNo, `<h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
+        <p>${fmt(exercise.explain)}</p>${codeBlock(exercise.code, `ex_${chapterNo}_${exerciseNo}.py`)}`)}"></div>
     </div>
   </article>`;
+}
+
+// หัวข้อ "เก็บคะแนนท้ายบท" ต่อจากแบบฝึกหัด: ขั้นที่ 1 เช็คชื่อ → ขั้นที่ 2 ทำ Quiz (คัดลอกจาก quiz_block ของเว็บ Calculus)
+function quizBlock(no) {
+  const id = QUIZ_FORMS[no];
+  if (!id) return "";
+  return `<section class="quiz-score" id="quiz" aria-labelledby="quiz-heading">
+        <h2 id="quiz-heading">📝 เก็บคะแนนท้ายบท <span class="level level-3">มีคะแนน</span></h2>
+        <p class="quiz-login">🔐 Login ด้วยอีเมลมหาวิทยาลัย <b>@msu.ac.th</b> เท่านั้น</p>
+        <p class="quiz-lead">คำถามท้ายบทที่ ${no} (Quiz) · ${QUIZ_POINTS} คะแนน · ส่งได้ครั้งเดียว — ทำตามลำดับ 2 ขั้น</p>
+        <ol class="quiz-steps">
+          <li class="quiz-card checkin"><div class="quiz-ico" aria-hidden="true">🙋</div><div>
+            <h4><span class="quiz-no">1</span>เช็คชื่อก่อนสอบ</h4>
+            <p>เช็คชื่อเข้าเรียนในคาบ — ไม่ได้เช็คชื่อ = ไม่ได้คะแนนคำถามท้ายบทนี้</p>
+            <a class="quiz-btn checkin" href="${esc(CHECKIN_URL)}" target="_blank" rel="noopener">เช็คชื่อ ↗</a>
+          </div></li>
+          <li class="quiz-card"><div class="quiz-ico" aria-hidden="true">📝</div><div>
+            <h4><span class="quiz-no">2</span>ทำ Quiz บทที่ ${no} (Google Form)</h4>
+            <p>ต้องใช้ <b>รหัส Quiz</b> ที่อาจารย์บอกในห้องเรียน จึงจะทำส่วนถัดไปได้</p>
+            <a class="quiz-btn" href="https://docs.google.com/forms/d/${esc(id)}/viewform" target="_blank" rel="noopener">เปิด Quiz บทที่ ${no} ↗</a>
+          </div></li>
+        </ol>
+        <p class="quiz-note">แบบฝึกหัดท้ายบทด้านบนไม่เก็บคะแนน · ดูกติกาคะแนนทั้งหมดที่ <a href="appendix-a-course.html">ภาคผนวก A · เกณฑ์คะแนน</a></p>
+      </section>`;
 }
 
 // ---------------- ภาคผนวก (เนื้อหาเขียนเป็น HTML ใน tools/lesson-builder/appendix/) ----------------
@@ -323,6 +388,7 @@ function renderCourseNav({ base = "", current = null } = {}) {
         ...chapter.concepts.map(([heading], i) => `<a href="${href(`#topic-${i + 1}`)}"><span class="toc-number">${number}.${i + 1}</span>${esc(heading)}</a>`),
         `<a href="${href("#chapter-examples")}"><span class="toc-number">ตย.</span>ตัวอย่างโปรแกรม</a>`,
         `<a href="${href("#chapter-exercises")}"><span class="toc-number">ฝึก</span>แบบฝึกหัดท้ายบท</a>`,
+        ...(QUIZ_FORMS[number] ? [`<a href="${href("#quiz")}"><span class="toc-number">📝</span>เก็บคะแนนท้ายบท</a>`] : []),
       ],
     });
   });
@@ -355,7 +421,8 @@ const FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Bai+Jamjuree:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">`;
 
 // โครงหน้าที่ใช้ร่วมกันทั้งหน้าบทและภาคผนวก
-// สคริปต์ใน <head> อ่านค่าซ่อนเมนูก่อนแสดงหน้า เมนูจึงไม่กระพริบ
+// สคริปต์ใน <head> อ่านค่าซ่อนเมนู โหมดฉายจอ (A+) และโหมดมืดก่อนแสดงหน้า หน้าจึงไม่กระพริบ (index.html ใช้บรรทัดเดียวกัน)
+const HEAD_SCRIPT = `<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>`;
 function pageShell({ file, title, description, main, mainClass = "" }) {
   return `<!doctype html>
 <html lang="th">
@@ -369,7 +436,7 @@ function pageShell({ file, title, description, main, mainClass = "" }) {
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  ${HEAD_SCRIPT}
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -387,7 +454,6 @@ function pageShell({ file, title, description, main, mainClass = "" }) {
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>
@@ -427,6 +493,7 @@ function renderChapter(chapter, index) {
         <div class="level-legend">ระดับความยาก: ${legend}</div>
         ${exercises}
       </section>
+      ${quizBlock(number)}
       <nav class="lesson-pager" aria-label="เปลี่ยนบท">${previous}${next}</nav>`,
   });
 }
@@ -458,17 +525,12 @@ ${appendix.body}
 
 fs.mkdirSync(OUT, { recursive: true });
 fs.mkdirSync(path.join(ROOT, "assets", "gui"), { recursive: true });
-const passwordEntries = [];
 
 for (const [index, chapter] of chapters.entries()) {
   if (chapter.exercises.length < 6) throw new Error(`Chapter ${index + 1} must have at least six exercises.`);
   const file = `chapter-${pad(index + 1)}.html`;
   fs.writeFileSync(path.join(OUT, file), renderChapter(chapter, index), "utf8");
-  chapter.exercises.forEach((_, exerciseIndex) => {
-    const exerciseId = `${pad(index + 1)}.${exerciseIndex + 1}`;
-    passwordEntries.push(`  "${exerciseId}": "py${pad(index + 1)}${pad(exerciseIndex + 1)}"`);
-  });
-  console.log(`${file}: ${chapter.concepts.length} หัวข้อ, ${chapter.examples.length} ตัวอย่าง, ${chapter.exercises.length} แบบฝึกหัด`);
+  console.log(`${file}: ${chapter.concepts.length} หัวข้อ, ${chapter.examples.length} ตัวอย่าง, ${chapter.exercises.length} แบบฝึกหัด${QUIZ_FORMS[index + 1] ? " + Quiz" : ""}`);
 }
 for (const [index, appendix] of APPENDICES.entries()) {
   fs.writeFileSync(path.join(OUT, appendix.file), renderAppendix(appendix, index), "utf8");
@@ -480,6 +542,53 @@ const indexPath = path.join(ROOT, "index.html");
 const indexHtml = fs.readFileSync(indexPath, "utf8");
 const NAV_MARKER = /<!-- course-nav -->[\s\S]*?<!-- \/course-nav -->/;
 if (!NAV_MARKER.test(indexHtml)) throw new Error("index.html: missing <!-- course-nav --> marker");
-fs.writeFileSync(indexPath, indexHtml.replace(NAV_MARKER, () => renderCourseNav({ base: "chapters/" })), "utf8");
-fs.writeFileSync(path.join(ROOT, "password.js"), `window.EXERCISE_PASSWORDS = {\n${passwordEntries.join(",\n")}\n};\n`, "utf8");
-console.log(`สร้างเสร็จ ${chapters.length} บท + ${APPENDICES.length} ภาคผนวก, ${passwordEntries.length} ชุดรหัสเฉลย`);
+const HEAD_MARKER = /<script>document\.documentElement\.classList\.add\("js"\);[^\n]*?<\/script>/;
+if (!HEAD_MARKER.test(indexHtml)) throw new Error("index.html: missing the <head> script that sets html.js");
+fs.writeFileSync(indexPath, indexHtml
+  .replace(NAV_MARKER, () => renderCourseNav({ base: "chapters/" }))
+  .replace(HEAD_MARKER, () => HEAD_SCRIPT), "utf8");
+
+// ---------------- sw.js: เปิดเว็บได้แม้ไม่มีเน็ต (จาก write_service_worker ของเว็บ Calculus) ----------------
+// มีเน็ต = โหลดของใหม่เสมอ (แล้วเก็บสำเนา) · ไม่มีเน็ต = ใช้สำเนาในเครื่อง
+// เลขเวอร์ชันมาจากเนื้อหาทุกไฟล์ที่ cache เมื่อแก้อะไร สำเนาเก่าในเครื่องนิสิตจะถูกแทนที่เอง
+const listFiles = (dir, exts) => fs.readdirSync(path.join(ROOT, dir)).filter((f) => exts.test(f)).sort().map((f) => `${dir}/${f}`);
+const core = [
+  "index.html",
+  ...chapters.map((_, i) => `chapters/chapter-${pad(i + 1)}.html`),
+  ...APPENDICES.map((a) => `chapters/${a.file}`),
+  ...listFiles("assets", /\.(css|js|svg)$/),
+  ...listFiles("assets/icon", /\.(png|jpe?g|svg|webp)$/i),
+  ...listFiles("assets/figures", /\.(png|jpe?g|svg|webp)$/i),
+  ...listFiles("assets/gui", /\.(png|jpe?g|svg|webp)$/i),
+];
+const swHash = crypto.createHash("sha1");
+for (const f of core) swHash.update(fs.readFileSync(path.join(ROOT, f)));
+fs.writeFileSync(path.join(ROOT, "sw.js"), `// สร้างโดย tools/lesson-builder/build.mjs — อย่าแก้ไฟล์นี้ตรง ๆ
+// เปิดเว็บได้แม้ไม่มีเน็ต: มีเน็ต = โหลดของใหม่เสมอ (แล้วเก็บสำเนา) · ไม่มีเน็ต = ใช้สำเนาในเครื่อง
+var CACHE = "py-${swHash.digest("hex").slice(0, 10)}";
+var CORE = ${JSON.stringify(["./", ...core])};
+self.addEventListener("install", function (e) {
+  e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(CORE); }).then(function () { return self.skipWaiting(); }));
+});
+self.addEventListener("activate", function (e) {
+  e.waitUntil(caches.keys().then(function (ks) {
+    return Promise.all(ks.filter(function (k) { return k.indexOf("py-") === 0 && k !== CACHE; }).map(function (k) { return caches.delete(k); }));
+  }).then(function () { return self.clients.claim(); }));
+});
+self.addEventListener("fetch", function (e) {
+  if (e.request.method !== "GET") return;
+  e.respondWith(fetch(e.request).then(function (res) {
+    if (res && (res.ok || res.type === "opaque")) {
+      var copy = res.clone();
+      caches.open(CACHE).then(function (c) { c.put(e.request, copy); });
+    }
+    return res;
+  }).catch(function () {
+    return caches.match(e.request, { ignoreSearch: true }).then(function (hit) {
+      return hit || (e.request.mode === "navigate" ? caches.match("index.html") : undefined);
+    });
+  }));
+});
+`, "utf8");
+console.log(`sw.js (offline): ${core.length + 1} ไฟล์`);
+console.log(`สร้างเสร็จ ${chapters.length} บท + ${APPENDICES.length} ภาคผนวก, Quiz ${Object.keys(QUIZ_FORMS).length} บท`);

@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -189,28 +189,14 @@ cart.<span class="tok-fn">add</span>(<span class="tok-type">Item</span>(<span cl
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>กว้าง 4 ยาว 6</dd></div><div><dt>ต้องหา</dt><dd><code>พื้นที่ 24 เส้นรอบรูป 20</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>__init__(self, width, height)</code> เก็บเป็น attribute</li><li>method คืนค่าด้วย return</li><li>สร้าง object แล้วเรียก method</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>พื้นที่ 24 เส้นรอบรูป 20</pre></div>
-    <div class="answer-gate" data-answer-id="12.1">
+    <div class="answer-gate" data-answer-id="12.1" data-chapter="12">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 12.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 12 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>method เข้าถึงความกว้างยาวผ่าน self ได้ จึงไม่ต้องส่งค่าเข้าไปซ้ำทุกครั้ง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_12_1.py</span></div><pre class="source-code"><code><span class="tok-kw">class</span> <span class="tok-type">Rectangle</span>:
-    <span class="tok-kw">def</span> <span class="tok-fn">__init__</span>(<span class="tok-const">self</span>, width, height):
-        <span class="tok-const">self</span>.width = width
-        <span class="tok-const">self</span>.height = height
-
-    <span class="tok-kw">def</span> <span class="tok-fn">area</span>(<span class="tok-const">self</span>):
-        <span class="tok-kw">return</span> <span class="tok-const">self</span>.width * <span class="tok-const">self</span>.height
-
-    <span class="tok-kw">def</span> <span class="tok-fn">perimeter</span>(<span class="tok-const">self</span>):
-        <span class="tok-kw">return</span> <span class="tok-num">2</span> * (<span class="tok-const">self</span>.width + <span class="tok-const">self</span>.height)
-
-r = <span class="tok-type">Rectangle</span>(<span class="tok-num">4</span>, <span class="tok-num">6</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">"พื้นที่"</span>, r.<span class="tok-fn">area</span>(), <span class="tok-str">"เส้นรอบรูป"</span>, r.<span class="tok-fn">perimeter</span>())</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -220,31 +206,14 @@ r = <span class="tok-type">Rectangle</span>(<span class="tok-num">4</span>, <spa
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>เรียก increment 3 ครั้ง แล้ว reset</dd></div><div><dt>ต้องหา</dt><dd><code>3</code> แล้ว <code>0</code></dd></div></dl><strong>วิธีคิด</strong><ol><li><code>self.value = 0</code> ใน <code>__init__</code></li><li>method เปลี่ยนค่า <code>self.value</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>3
 0</pre></div>
-    <div class="answer-gate" data-answer-id="12.2">
+    <div class="answer-gate" data-answer-id="12.2" data-chapter="12">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 12.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 12 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>object จำสถานะ (value) ไว้ระหว่างการเรียก method แต่ละครั้ง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_12_2.py</span></div><pre class="source-code"><code><span class="tok-kw">class</span> <span class="tok-type">Counter</span>:
-    <span class="tok-kw">def</span> <span class="tok-fn">__init__</span>(<span class="tok-const">self</span>):
-        <span class="tok-const">self</span>.value = <span class="tok-num">0</span>
-
-    <span class="tok-kw">def</span> <span class="tok-fn">increment</span>(<span class="tok-const">self</span>):
-        <span class="tok-const">self</span>.value += <span class="tok-num">1</span>
-
-    <span class="tok-kw">def</span> <span class="tok-fn">reset</span>(<span class="tok-const">self</span>):
-        <span class="tok-const">self</span>.value = <span class="tok-num">0</span>
-
-c = <span class="tok-type">Counter</span>()
-<span class="tok-kw">for</span> _ <span class="tok-kw">in</span> <span class="tok-fn">range</span>(<span class="tok-num">3</span>):
-    c.<span class="tok-fn">increment</span>()
-<span class="tok-fn">print</span>(c.value)
-c.<span class="tok-fn">reset</span>()
-<span class="tok-fn">print</span>(c.value)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="Ve7/bePJTiT92GtT9W/gXOOqGbYn9hsjcvOdzNTV0Ryp1Wem16ykgc9x6kCrRhxFVJpoDsXgeNHiHprvymqpy4/kSnQw0Pn1oSt/kbYlR266+5gyCNMbv+6tORw830RaCrXgDvonggAw16AfuxwtHYe7RzdlMv0EiXizI9Gqa+0Xip3w7dlaE2iKxtM4PoQ/c1U4ZZZx30bGpIXbLuxCbVAF33bWwP8d1+gJkM6FXykwRjVO2CSb731khtu9/BhrV8mqkZUH/WodBg0w8644QthkUO+dkgLyCBmGaxyB989rNiyW2ZSXzYe2pyk8mkBL2Ue9v/1f0G2wUeyBZFKnDcXDA1Esn5nPSDodObXK/NBHdSRDqfvTywaUCDF2mAhPhcL2mTjK7OJxNxheDrH6zH3DknQeveapUctHS7Dq0+XJw2k04R8V7uw3ydb927wKIK1uVQjrI8CJSkNe6KR/wWxK8APm3wYZjPClPsFjAqZy6/M/9NRHxTFPom4lMh6zEihB43DE8Y5/x6NA8hCPuxCC0JzgZTHsU+k8dHeOd/Ep+7qJcXpyzK6cmzapADm3EAsvwgQAwotE0QRzl5eL72Mp7a+I5p3yL7wCWCStYFelXbYoJNVPsdrsdQHDh5agYQM2luhf+1X4XING+70DospxB/vaYp0tBcUtpOFj6f6Hi3H97UQAakqNnctBJS9Z23WUPsgmdpbomXuOOo3eGKBCsAysbyW9JtXzKCQcMtMCm2H7yImQ3VW/hc8F9lV8+Wwj8aQFH57C8wJWyfKbOHVFjrjfYCVZNTo7OgMW96B1EfaYnC6kxaP25SEMfS/bARYzRQouDbRKeMB/rF19RjOfzFyFzBYtvY4UUlZ7XK1hmZOYH8YGb5/B0j04dQDRUFKohe6y/2Pnj3rv8dbIqENO/q2eIRkNjIDQau6ol6D/zSksL03X0ZsOR60CBFFjjz9kzQMjIkxTiZPS5Q9xXGQskCpQzMkSEeWTRSshgW0tBUnCzpBABmnNhM8cEKPvCfFZw8hfSjf+IHXt/DZF+GER+yIKPBcEcToJyiWQ64oKCWmbt7aASvvYYVmLe+hjBQvRNRyZbaIIi8QEL4KGFEkKK6o1IwwJ6PM+bEectiRSLhcKbLr7AWlfj1n8EwqKpXkzIshkkbW99qIQypGs9k+RrUlXmAu4zSQqy4LGjqyOd6i4J53qryzZMlo4OM3wG4C6EJO9ELH4O95MMrWVhDGrRO2X63Q8ZBMQKDmuRXgWBwPvmwbv6YqyA2BM22KFP19CPX6avfmHL4/aU/rva1Y8et2JjJFiCq8O7sbX0EZdlWoEUElvk7Gm21Br4vTCjzJaQ3mu2BXcN0TxmJM1D90Khf/xIDG+N1XV+kJxtzZM9U3GDI0PYL5VQb8Px5H+Qwlvhnr8VJ3wI737GESB6pc7hULR10wJgY/Y9B2XqohDx5oPJnhWuNZoyMsqrXhUN1gMRmoC6xp09v3nHsRRjMG3VcKzW5Y74O4HMn6/iQxz+QAZglH6C7caDq1ZxNTUFOdr1djBgn2CrDjBPzPcITEGozCaZp6rG3TVc9WtmLC0rbNyIDR1epF21uhF+c+whGdBUTE7WxmuTTvImMO/zS+9qK1+GZ/NzSgnhpJDU3dymblyywrZPWl1+2vtctRuUD4BoDdfr4fpz6UUmcJwfc1jTdUU9aFJZhy8WtUfsLhuc92OEYnSSBTXzdbGd/fOSdBwojei7xpALEOzQxPTAEDwAaA2q5fDmzG0g/aW71Dv4vyBAZSR+EPe4R77eD/k1cymSo8/CuLQytuTDJjPGBbrjE8vRScjyrbkvz8Mo8qkIxvV9PnJNeBwXZDx3x9cUQ=="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -253,25 +222,14 @@ c.<span class="tok-fn">reset</span>()
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>หนังสือ Python 101, Mark, 320 หน้า</dd></div><div><dt>ต้องหา</dt><dd><code>&quot;Python 101&quot; โดย Mark (320 หน้า)</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>เขียน <code>__str__(self)</code> คืนข้อความ</li><li>ใช้ f-string รวม attribute</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>&quot;Python 101&quot; โดย Mark (320 หน้า)</pre></div>
-    <div class="answer-gate" data-answer-id="12.3">
+    <div class="answer-gate" data-answer-id="12.3" data-chapter="12">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 12.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 12 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p><code>print()</code> เรียก <code>__str__</code> ให้อัตโนมัติ ใช้ <code>&#39;...&#39;</code> ครอบ f-string เพราะข้างในมี <code>&quot;</code> อยู่แล้ว</p><div class="code-block"><div class="code-head"><span class="code-file">ex_12_3.py</span></div><pre class="source-code"><code><span class="tok-kw">class</span> <span class="tok-type">Book</span>:
-    <span class="tok-kw">def</span> <span class="tok-fn">__init__</span>(<span class="tok-const">self</span>, title, author, pages):
-        <span class="tok-const">self</span>.title = title
-        <span class="tok-const">self</span>.author = author
-        <span class="tok-const">self</span>.pages = pages
-
-    <span class="tok-kw">def</span> <span class="tok-fn">__str__</span>(<span class="tok-const">self</span>):
-        <span class="tok-kw">return</span> <span class="tok-str">f'"{self.title}" โดย {self.author} ({self.pages} หน้า)'</span>
-
-<span class="tok-fn">print</span>(<span class="tok-type">Book</span>(<span class="tok-str">"Python 101"</span>, <span class="tok-str">"Mark"</span>, <span class="tok-num">320</span>))</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="XnpdGGuM45IB35dET+0KoNZqV2+bnY9zudcIXniwMuuWPj2HK4sI7FMlFIT3wwWz2lrVBZLQJIOq+Om02NmxkJ1BQ07eXiwBBQHbesdWVVwEY4mU4GDiyJTgvl67U64PNAWp+J4Hw8a899FLuGPawHrS1PIH+oJEASyQ1bSaNDxNzaquY0gTFvG3eOmzAWHhoVR+bMVz9+4zk2Gwa+Zm+1CqoEPADijtH24sTcl63rFvMrH2OFYWdMNyThP/julqFKrwtP8t5/v/1YEBpXu1QqG/xZFenXmVbKxdUpWzVSfKp6mmiUMIfLNhT+Z08Iximm1flVm1Igc7hsdc/ZdeWbCxZQbbCTC0KcALfLXR07XgSWDGT6n83LMKl1gBNyoG+wWBh2YNBSJnLNuR9vFzMA9ktWAxnC0HzVcZz542/CI9kaPN/tMYaMj4iv8MvpsCn18eZGEPcffxX4v4JE/ao3pFxUw+1MwiVH0PG44cgcSieVh2BKrGTWcp9NaahcSjIBzgqCLWfo3TepLw895ndxfo1n2Gj6pbjxNC4tveWMMCCVNKBGvTBFkPnGPzKzncvXQDPREQz5jc6iNN8bRneAKm/NxTkYdjJ57siKxdaL33krCFZ4sVCG6FqmOr/xYvuiOmjjWSE900ZNTAHlmkvBxAxk+53aMC6m4AlP1VHgtMi/ReEgo11HSqoVxwVZYu3PUvNK1mo9Jrdad+F107C7NdF6UyI/F6ltLu2IXalz/c+VaxqCYY9c8/rhElrl96P/xqR4KUo0kRlDBOoUogAs5kPfz5McWP3cpbhyznDYGAUH/3409sArSlbZh6VbsIIjIV7muWOYUJYDo6Hzjd6DCmwsqJRdHDDiaqCFnHfkdqfarqPcLU/zKdds/Odzn+qSo6J8PXC2RX7FuATytAjTSamkHiTSX2RjLg5+oWMnSXJ9NpPJLAnoqKzqn87LYYbq8YhUmWzMxiPG7oF8jZS81tzA4F/tDlawrn5Db1EXpvXum1D1WTpa7B/36jtFenlmvRKaTsZ81zlJi6gZrW67fgtHmUGS02rmLQv4c4F9Lz27ipjJG/SRDwFJIPXG3XMYq8qA4e5A3j3y4kOkYgRosT1iZ6RP82LkFuyYQRsqFBSq7T8E4Y+c9KnpltZGA62jQ/QTAL2vjJF3EOmD2JbFe5N+qhXnU+xx7aBpu6a44FvxDPnNYEvdr1474d8ZiKTkBN5oGvjbdZdr1jV9UTHvKCkmDntt72UqqS0jfuW9jihbZGdrNbqesqS84SOJAilsirFXOezCZPGkgvHcNgK+ttJYd3SLlkpQq37moEEG94/JareRTKYxKOuBxZya9PKn50Q6g5jcewC9yqxhSxV5Hz8/ekDShe5zoOI/i0/8hDfJMEqce+nCayDdaPqNgh2iqVkVY8cEcakciNzq2KfHyte58Nt62+LP1NZeqs5Fz13FjBhbsEV4J431UWI2VjA5i23uDPKaxdGSYlS8kgEpaCfhBNVttoSYZdX0LC+n56LdjKIjOn/LNgByk0ukxaBfr4ordxUJUpze/U886owTB4/gLk81yMwzMAM5TSTTqBZTFSwZPYWtv2QXaqN4uwD8oE9eoynBmtTx6LAQz44YyqFmReojU1yYBszrc033kgbuFdMv0G03CgKMi/BL3CRjkQhE/kmMM0gk/X4oVyv5AWDXU+B/lDVM0hbilofkJ6siuZdjKczsFb8hNs6Z1uHP4DVArjcBSMosPf3UtwO3Wsltc="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -280,30 +238,14 @@ c.<span class="tok-fn">reset</span>()
     
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>เป้าหมาย 2000 บาท ออม 500, 300, 450</dd></div><div><dt>ต้องหา</dt><dd><code>ออมแล้ว 1250 / 2000 บาท (62.5%)</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>เก็บ <code>goal</code> และ <code>saved</code></li><li><code>progress()</code> คืน <code>saved / goal * 100</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>ออมแล้ว 1250 / 2000 บาท (62.5%)</pre></div>
-    <div class="answer-gate" data-answer-id="12.4">
+    <div class="answer-gate" data-answer-id="12.4" data-chapter="12">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 12.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 12 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ค่าที่คำนวณได้จากข้อมูลอื่น (progress) ทำเป็น method ดีกว่าเก็บเป็น attribute เพราะไม่ต้องคอยอัปเดตตาม</p><div class="code-block"><div class="code-head"><span class="code-file">ex_12_4.py</span></div><pre class="source-code"><code><span class="tok-kw">class</span> <span class="tok-type">PiggyBank</span>:
-    <span class="tok-kw">def</span> <span class="tok-fn">__init__</span>(<span class="tok-const">self</span>, goal):
-        <span class="tok-const">self</span>.goal = goal
-        <span class="tok-const">self</span>.saved = <span class="tok-num">0</span>
-
-    <span class="tok-kw">def</span> <span class="tok-fn">save</span>(<span class="tok-const">self</span>, amount):
-        <span class="tok-const">self</span>.saved += amount
-
-    <span class="tok-kw">def</span> <span class="tok-fn">progress</span>(<span class="tok-const">self</span>):
-        <span class="tok-kw">return</span> <span class="tok-const">self</span>.saved / <span class="tok-const">self</span>.goal * <span class="tok-num">100</span>
-
-bank = <span class="tok-type">PiggyBank</span>(<span class="tok-num">2000</span>)
-<span class="tok-kw">for</span> amount <span class="tok-kw">in</span> [<span class="tok-num">500</span>, <span class="tok-num">300</span>, <span class="tok-num">450</span>]:
-    bank.<span class="tok-fn">save</span>(amount)
-<span class="tok-fn">print</span>(<span class="tok-str">f"ออมแล้ว {bank.saved} / {bank.goal} บาท ({bank.progress():.1f}%)"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -313,38 +255,14 @@ bank = <span class="tok-type">PiggyBank</span>(<span class="tok-num">2000</span>
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>Hobi 88, SUGA 72, RM 95</dd></div><div><dt>ต้องหา</dt><dd><code>เฉลี่ย 85.00</code> และ <code>สูงสุด RM</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>Classroom เก็บ list ของ Student</li><li><code>average()</code> ใช้ sum ของคะแนนทุกคน</li><li><code>top()</code> ใช้ <code>max(..., key=lambda s: s.score)</code></li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>เฉลี่ย 85.00
 สูงสุด RM</pre></div>
-    <div class="answer-gate" data-answer-id="12.5">
+    <div class="answer-gate" data-answer-id="12.5" data-chapter="12">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 12.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 12 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>Classroom ไม่ต้องรู้รายละเอียดของ Student มากกว่า name และ score การแบ่งหน้าที่แบบนี้ทำให้ขยายโปรแกรมได้ง่าย</p><div class="code-block"><div class="code-head"><span class="code-file">ex_12_5.py</span></div><pre class="source-code"><code><span class="tok-kw">class</span> <span class="tok-type">Student</span>:
-    <span class="tok-kw">def</span> <span class="tok-fn">__init__</span>(<span class="tok-const">self</span>, name, score):
-        <span class="tok-const">self</span>.name = name
-        <span class="tok-const">self</span>.score = score
-
-<span class="tok-kw">class</span> <span class="tok-type">Classroom</span>:
-    <span class="tok-kw">def</span> <span class="tok-fn">__init__</span>(<span class="tok-const">self</span>):
-        <span class="tok-const">self</span>.students = []
-
-    <span class="tok-kw">def</span> <span class="tok-fn">add</span>(<span class="tok-const">self</span>, student):
-        <span class="tok-const">self</span>.students.<span class="tok-fn">append</span>(student)
-
-    <span class="tok-kw">def</span> <span class="tok-fn">average</span>(<span class="tok-const">self</span>):
-        <span class="tok-kw">return</span> <span class="tok-fn">sum</span>(s.score <span class="tok-kw">for</span> s <span class="tok-kw">in</span> <span class="tok-const">self</span>.students) / <span class="tok-fn">len</span>(<span class="tok-const">self</span>.students)
-
-    <span class="tok-kw">def</span> <span class="tok-fn">top</span>(<span class="tok-const">self</span>):
-        <span class="tok-kw">return</span> <span class="tok-fn">max</span>(<span class="tok-const">self</span>.students, key=<span class="tok-kw">lambda</span> s: s.score)
-
-room = <span class="tok-type">Classroom</span>()
-<span class="tok-kw">for</span> name, score <span class="tok-kw">in</span> [(<span class="tok-str">"Hobi"</span>, <span class="tok-num">88</span>), (<span class="tok-str">"SUGA"</span>, <span class="tok-num">72</span>), (<span class="tok-str">"RM"</span>, <span class="tok-num">95</span>)]:
-    room.<span class="tok-fn">add</span>(<span class="tok-type">Student</span>(name, score))
-<span class="tok-fn">print</span>(<span class="tok-str">f"เฉลี่ย {room.average():.2f}"</span>)
-<span class="tok-fn">print</span>(<span class="tok-str">"สูงสุด"</span>, room.<span class="tok-fn">top</span>().name)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -354,40 +272,22 @@ room = <span class="tok-type">Classroom</span>()
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>สินค้า 8 ชิ้น ขาย 3 แล้วขาย 10</dd></div><div><dt>ต้องหา</dt><dd>ขายครั้งแรกได้ เหลือ 5 ครั้งที่สองแสดงข้อความ error</dd></div></dl><strong>วิธีคิด</strong><ol><li>ใน <code>sell</code> ตรวจ <code>n &gt; self.qty</code> แล้ว raise</li><li>ผู้เรียกใช้ try/except</li><li>ยอดคงเหลือต้องไม่เปลี่ยนเมื่อขายไม่สำเร็จ</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์</strong><pre>ขาย 3 ชิ้น เหลือ 5
 ผิดพลาด: ปากกา เหลือ 5 ชิ้น ขาย 10 ไม่ได้</pre></div>
-    <div class="answer-gate" data-answer-id="12.6">
+    <div class="answer-gate" data-answer-id="12.6" data-chapter="12">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 12.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 12 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ตรวจก่อนเปลี่ยนค่าทำให้ object อยู่ในสถานะถูกต้องเสมอ ใช้ความรู้ raise จากบทที่ 9 ร่วมกับ class</p><div class="code-block"><div class="code-head"><span class="code-file">ex_12_6.py</span></div><pre class="source-code"><code><span class="tok-kw">class</span> <span class="tok-type">Stock</span>:
-    <span class="tok-kw">def</span> <span class="tok-fn">__init__</span>(<span class="tok-const">self</span>, name, qty):
-        <span class="tok-const">self</span>.name = name
-        <span class="tok-const">self</span>.qty = qty
-
-    <span class="tok-kw">def</span> <span class="tok-fn">sell</span>(<span class="tok-const">self</span>, n):
-        <span class="tok-kw">if</span> n &gt; <span class="tok-const">self</span>.qty:
-            <span class="tok-kw">raise</span> <span class="tok-type">ValueError</span>(<span class="tok-str">f"{self.name} เหลือ {self.qty} ชิ้น ขาย {n} ไม่ได้"</span>)
-        <span class="tok-const">self</span>.qty -= n
-
-pen = <span class="tok-type">Stock</span>(<span class="tok-str">"ปากกา"</span>, <span class="tok-num">8</span>)
-<span class="tok-kw">for</span> n <span class="tok-kw">in</span> [<span class="tok-num">3</span>, <span class="tok-num">10</span>]:
-    <span class="tok-kw">try</span>:
-        pen.<span class="tok-fn">sell</span>(n)
-        <span class="tok-fn">print</span>(<span class="tok-str">f"ขาย {n} ชิ้น เหลือ {pen.qty}"</span>)
-    <span class="tok-kw">except</span> <span class="tok-type">ValueError</span> <span class="tok-kw">as</span> e:
-        <span class="tok-fn">print</span>(<span class="tok-str">"ผิดพลาด:"</span>, e)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-11.html">← บทที่ 11</a><a class="pager-link" href="chapter-13.html">บทที่ 13 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>

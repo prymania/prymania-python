@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../assets/lesson.css">
   <link rel="stylesheet" href="../assets/course-nav.css">
   <link rel="stylesheet" href="../assets/course-extras.css">
-  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed")}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(localStorage.getItem("side-collapsed")==="1")document.documentElement.classList.add("side-collapsed");if(localStorage.getItem("big-text")==="1")document.documentElement.classList.add("big-text");if(localStorage.getItem("dark")==="1")document.documentElement.classList.add("dark")}catch(e){}</script>
 </head>
 <body>
   <a class="skip-link" href="#lesson-content">ข้ามไปเนื้อหาบทเรียน</a>
@@ -152,22 +152,14 @@ member = <span class="tok-fn">input</span>(<span class="tok-str">"เป็น�
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ตัวเลข เช่น -3</dd></div><div><dt>ต้องหา</dt><dd><code>จำนวนลบ</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>มี 3 กรณี จึงใช้ if / elif / else</li><li>ตรวจ <code>&gt; 0</code> และ <code>&lt; 0</code> ที่เหลือคือศูนย์</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>ตัวเลข: <b class="stdin">-3</b>
 จำนวนลบ</pre></div>
-    <div class="answer-gate" data-answer-id="04.1">
+    <div class="answer-gate" data-answer-id="04.1" data-chapter="4">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 4.1<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 4 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>else รับกรณีที่เหลือซึ่งมีแค่ 0 จึงไม่ต้องเขียน <code>n == 0</code></p><div class="code-block"><div class="code-head"><span class="code-file">ex_4_1.py</span></div><pre class="source-code"><code>n = <span class="tok-fn">float</span>(<span class="tok-fn">input</span>(<span class="tok-str">"ตัวเลข: "</span>))
-<span class="tok-kw">if</span> n &gt; <span class="tok-num">0</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">"จำนวนบวก"</span>)
-<span class="tok-kw">elif</span> n &lt; <span class="tok-num">0</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">"จำนวนลบ"</span>)
-<span class="tok-kw">else</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">"ศูนย์"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="MwxewfHey+o65eAjZ98bXoAFQsYdMBmYdbAn4g2Y3dNXQ+OTFaUuAspHEZDz5SYFpCTOJUZLJMV9rAuTtG51PJetTRkl06mB+W1VR9XbPvUsoOq12ZFVBVPtnkww9K412RRW9nMM1wgG428uTBjD3zOhnooAhQ/D3a6E/WfuYdMCqeY8zj3oCQIdfRU7tZR9MKMQCL1hxj8T7gSTYowIymG4GVVCzn7aVXB3EiU5yjJLec8ABmSsX21HLjM/DToyvMX3C+9Ggeq5Mh3a8c+8Oacb94ZLBQyoaEmx8UZCUyezp3DSkfnGjHymx4Mb7IB8DmozDDKW/HIwW9NMrhzqClohvy0SL2OttKjWLjppJPShf2+g/NwizK5OYR0+obR+ObZ+HzufFEp6NRmxylvxBoy4eEDDhSi5wwV653xWdOceeG+6vJ6VAuYmIQJjsvSk/Ch1A03OCyIOFvFAg3ALoIirT9x1AlM/4nO+q7U/LjLFXTsjKxXSAFkXweKyCnIXd2d3SZIgohh51LZzQj8tMd9VWocyzv6/xPRtuVAz38ZoKADm/idbDOu/d4W3yyfvGs9tc3tgtj/3q+XkAH8Q1YI4GND4gXEnVkaYOnypRikj2ebA/sOtq2KEOXqVF2TrVZ0WzkzyknEOkyG2dSRb+qJLY6DujPP7j5OB0466NGUmgH/3MsCqOwwiJZrlO5MJfZ8I+jMbt82LBwe/pg5U+Eu7lsu0cvkVll5AaKf70bfbrQr5HreYcuPg3sOy3jar1Ya872Wr5xj2WsgHIpjY98ZbIQkcEx320PxHuJ2IVKq5qh0ofwmbdI5lOY1OmQ5Qt0Zw39+QdmknJRIS/5JRJ1b49bFRsLjLyKXttVNHNm/abia5Je2uIrT/laIcPJyOXgiIp+PbuZwPZoErCtXrQYizTWlTB7sANT4B3hlpQhvj+Js70mnkzLexAmefnslrLWxNg2jbFx/nNZuZvbB5HScfFQr7d6knGQXN2bToqSpOt5CoJoES/W+sG6oqAsBoF449vZkHpIrHI27YbESwJfc8AezTvZIeOWgq8WdwPBgm4M2vFt5P2vw0kfuu0Exn5+OBcAXYWVFfPFZotr/K+4G+LlN03trFOX52pZ0vXzy0vK67QVG1lvSOVwQw6CGj+KlKC5k2/qexiMgn/K2K+XRw57YHcMIS+bG40HnaK5vcmNYVVnp0IEl3V9mVZJilz1hcfPS546pGnf8+nM7TldbO3zpiF9J2lFT6dHNWI3HU4C+z+Z3oH/Zv5GYwc5sqAUqiveFgqQkk0zkWbM2HxefLl0o="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -177,20 +169,14 @@ member = <span class="tok-fn">input</span>(<span class="tok-str">"เป็น�
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>จำนวนเต็ม เช่น 15</dd></div><div><dt>ต้องหา</dt><dd><code>15 เป็นเลขคี่</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>ตรวจเศษจากการหาร 2 ด้วย <code>%</code></li><li>มี 2 กรณี ใช้ if-else</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>จำนวนเต็ม: <b class="stdin">15</b>
 15 เป็นเลขคี่</pre></div>
-    <div class="answer-gate" data-answer-id="04.2">
+    <div class="answer-gate" data-answer-id="04.2" data-chapter="4">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 4.2<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 4 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>จำนวนเต็มทุกตัวเป็นเลขคู่หรือเลขคี่อย่างใดอย่างหนึ่ง if-else จึงครอบคลุมครบ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_4_2.py</span></div><pre class="source-code"><code>n = <span class="tok-fn">int</span>(<span class="tok-fn">input</span>(<span class="tok-str">"จำนวนเต็ม: "</span>))
-<span class="tok-kw">if</span> n % <span class="tok-num">2</span> == <span class="tok-num">0</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">f"{n} เป็นเลขคู่"</span>)
-<span class="tok-kw">else</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">f"{n} เป็นเลขคี่"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="Efo/0RLeQcrB/06LUSuN5RtybY67obBDmFJvHaKAwQPg0aXlPdAVVLVY5LZ9OT74XXJ/7wyCqUxtdsE3Ilg1BSioolvH+ZrLeioD+6Q8KT7rUd5TCw8IcgdmO5cAoRVsAOpPrznywT/WDzPgu3At0zBPjA5nTErny0/prhfYxUXh1xF5abm1spLSz1BO7Rnr8I7OfyrbF2CsNN4Kw9XWDFETEY1uEQjFYHQi5zOn3fd4G/l5/REiVBlHsUWNE0de+PiogcR1MTCefDBNb9gB7UWek07Rl0DKwA82tdBnwu18CMkXAtcRlTpvkOvrxzk2+0TzibnL8w0ZKHHoJXCMYWW9F3YTg7f4tZqIZA/zc065LgbSXXXtSHgUIPYbiZvx6xu73txUUlq2eH2fwpp5njXKFBIiGmo9tVADiV0t/WIyPPD4uocdjQeaKFbhrA/wcTEVu9xj12iJE6faP3TdZ+UuqEQ375Ojd61Xs7utcYs+2lwHMb3GCMat8ojA55rD80i96k1Wd33vIVYaQz/EOY+V7QoPhOt3iYhubwBkUSGMgB6dBXJ0fCNTMkaG6SWnlwYy/Sh5sxHPKeGGfVCKKn2I9nEr0cRbkvkdjf8gWR9FJ0g65YB/tTUEWlh1rV8mZbhSKJXILD1eoeQsm//JKZJrEzrk1YkcS66cWN4NbIyzgWK+mAV+zUi6MUip9uD8AylKU9omuXtKEHLQV0pw4ylqbdZB7e2mCFuajVuRHdrilOn4BNjjvcMaZ/wBrmovA2POGW6EPcuIELz4LyVPxoJxutq33GFrU0BKja9caO4Edecx5dJPChWW3ppmXG9CBhz0XJJieKMKhB5rDZ3/E809yJYQ67KvllABobShg12LrhAqND4YVDZAtPBi+RxvPr94wSWD5fHmCLXN+SAOnfZdN0p+crCrcN5IQpy4zSq4D9a/Y7dWCn4vm2UALzBz4C+bn+m0eg3TUOIAlfZaTxebL4q/r0j1N0Cj29FhGyWASRMBuGKUg4+lgb5AYHQFeRqSWwoxzACnbCbVSg9I30WTtTriuirOh3Yh+X0B+Or3W2kYLOfBfaX8k83e+G2Sp+VA7fJGffw8VILATGlCouyrt2qK92gzCzLLxrxVNcIci7q0BbNS133PR9ZeiKW9KWOZ8s3uthOg4oa6sAmrfZH2QBidfm1oj1lSiljMtdOt4QIslr0xi+0ee5uhCRSvsM+JYT065p0e7VKQPWnt8X++wC1Q9Bz7yOTz6zCdJw05/r4="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -200,23 +186,14 @@ member = <span class="tok-fn">input</span>(<span class="tok-str">"เป็น�
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>จำนวนชั่วโมงที่จอด (จำนวนเต็ม) เช่น 4</dd></div><div><dt>ต้องหา</dt><dd><code>ค่าจอด 40 บาท</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>แบ่ง 3 ช่วง: <code>&lt;= 2</code>, <code>&lt;= 5</code>, ที่เหลือ</li><li>ช่วงกลางคิดเฉพาะชั่วโมงที่เกิน 2: <code>(hours - 2) * 20</code></li><li>ทดสอบค่าขอบ 2, 5, 6</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>จำนวนชั่วโมง: <b class="stdin">4</b>
 ค่าจอด 40 บาท</pre></div>
-    <div class="answer-gate" data-answer-id="04.3">
+    <div class="answer-gate" data-answer-id="04.3" data-chapter="4">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 4.3<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 4 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>จอด 4 ชั่วโมง: ฟรี 2 ชั่วโมงแรก คิดเงินอีก 2 ชั่วโมง = 40 บาท การทดสอบค่าขอบช่วยยืนยันว่าใช้ <code>&lt;=</code> ถูกตำแหน่ง</p><div class="code-block"><div class="code-head"><span class="code-file">ex_4_3.py</span></div><pre class="source-code"><code>hours = <span class="tok-fn">int</span>(<span class="tok-fn">input</span>(<span class="tok-str">"จำนวนชั่วโมง: "</span>))
-<span class="tok-kw">if</span> hours &lt;= <span class="tok-num">2</span>:
-    fee = <span class="tok-num">0</span>
-<span class="tok-kw">elif</span> hours &lt;= <span class="tok-num">5</span>:
-    fee = (hours - <span class="tok-num">2</span>) * <span class="tok-num">20</span>
-<span class="tok-kw">else</span>:
-    fee = <span class="tok-num">150</span>
-<span class="tok-fn">print</span>(<span class="tok-str">f"ค่าจอด {fee} บาท"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="3cLSEG/HnoSOwqyOkrAYBTrtrSb9573TLD7BZ1i/D4izZ7bHvfg6UNphhSHKBzWYHSyR1AlIC/8Pn1c5+ErC56WF6p6rnZJJ/A+v7C88aEL7TfMQsVpWHv2OjuA8WvSjM75WCz/KbgtijEJXnXEfRVuh+Qv3xHqhUUcm+EusZEFXoNHSjRaAlrQRsVEq9NGgJ9/62D90dNLJOyDPku0f82dDP8rq7MU8k/ecqLZLzOqWb3DRC1tLMcLmlllbJOjzfBekzWMEYyD/Anb5j8tG0gVMQODYi/1XXQYHgJ2oGsAnxOm6mH9uZmSrfWawWbZMnAERGAiQsro+QkcAP5mQv5V/kFsg1CwzLnxR6k2gAfRP9B8BmHZAotODaAyQol4aI5tjPdkTacGEDg5tkEl5bAP9yt1OuXXcWDCAqsdLx7T/JJubkB3WBBeh4eFi3cop3OpWQuWGnwwn7ffNAQ8RlLG95YCRfoS93WXyaobfXtTxlSbGI6HwoCX1Tk1Svon2meyWsvkQH3HC3rU6RdnbsHA9oyh7l1Ss4i1xtEx4Em7LiO+VVhAeOqvRAY+h9zd0X+wYYje3U8ivzxqyTm1Mtjl3KYb7/xC2k2k2IRX4GDM6rJ1/Ql/9fUhj3FpVeHq8P9cyJUrGAahqq4kNiWnbxzsrE5lx+6nlyPIMgCJ7O6izsBJcfaZjx8gqG8XqcHxjvMB3PGGFwEoTMOrzbcg7je7vsrqqfQ99ZwpFGIsvkJbVCtnzkJ1cIis8uPASEpNzwVhj7apzHQz+75bIdor6gX15OgtIN2dKIlCoZxp+F+Kmq2gpId4w+AZL95rz9LBtY8RAPq2os/0hJ7/s/kLMrvQ5qt9jj7CFmmIrcvpPzMsvjcuKdqCzeKjElUkgK1gfbUydGKqUJ3849b1GqDbHRvQ98yP1UyRyoqM+7GovFx5KX10TCbPqBDnCZ6qSr5ypspUOPhiuo7WXb2TFrE7uDr5LkW2svEiu+t1fngcsz6BvzxMY+YwaupS+Q8hsLWUULSAL6v8H/uYq5WOyKvEoWvNxAcd7v0hMTpeYVaYEJKmksfIsZxbGCFnjeY7VTBBadmePEv3PASzX5F6S3DshwS4NVOGZw0KW1iPTRF2E04EztICanGpmd5r99KMxw4wwtJr0A+FCG4Roh+rvlyFUahEjcFSvjghGh4JSVHOcAFVDvQ0edXhCfZBZg5ENUD7iNW5oC6YamGr3bxlMoyuKzyxGnxoY59DuYFHULkzFudaJap3xw58NnAfYQ0QZHlH+wKD+EEZOAnCyYqHoM1pRpK7+8YG2nIUFq4+mmfZ3NtV7eoXF3s8TSU6e2GG4qo0eFc2Iws7oi9j0mA5YfBExKN29GKfblEjsPQha/DVg6RANaIKOuknLoc9kl2UD/XucJmaiE1rMcVT1aZTAQNRg/1DgWr0VhMvKxY2vpuoZGYj8+PpoCpVFVxXEYOAq2MATuhuwtDh28/7a9XSFoYLJMU+AXqLAYSZ/oQ9Vrne9gJQSUeT1ixh6+Tte5mF7wLU="></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -226,22 +203,14 @@ member = <span class="tok-fn">input</span>(<span class="tok-str">"เป็น�
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>รหัสผ่าน เช่น <code>hello123</code></dd></div><div><dt>ต้องหา</dt><dd><code>รหัสผ่านใช้ได้</code> หรือบอกเหตุผลที่ใช้ไม่ได้</dd></div></dl><strong>วิธีคิด</strong><ol><li><code>len(text)</code> นับจำนวนตัวอักษร</li><li>แยกเหตุผลด้วย if / elif</li><li>else คือกรณีที่ผ่านทุกข้อ</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>รหัสผ่าน: <b class="stdin">hello123</b>
 รหัสผ่านใช้ได้</pre></div>
-    <div class="answer-gate" data-answer-id="04.4">
+    <div class="answer-gate" data-answer-id="04.4" data-chapter="4">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 4.4<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 4 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>การแยก elif ทีละเหตุผลทำให้บอกผู้ใช้ได้ชัดว่าต้องแก้อะไร</p><div class="code-block"><div class="code-head"><span class="code-file">ex_4_4.py</span></div><pre class="source-code"><code>pw = <span class="tok-fn">input</span>(<span class="tok-str">"รหัสผ่าน: "</span>)
-<span class="tok-kw">if</span> <span class="tok-fn">len</span>(pw) &lt; <span class="tok-num">8</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">"สั้นเกินไป"</span>)
-<span class="tok-kw">elif</span> pw == <span class="tok-str">"password"</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">"รหัสนี้เดาง่ายเกินไป"</span>)
-<span class="tok-kw">else</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">"รหัสผ่านใช้ได้"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="Gn8zuYzh2Us4ZzWM0IacFVHc99uqvyI+8uA1UOhkl3tdHrWIadBA8Ukqv/hSwECs56vhBm5OnwSQw3bQR/PGsnHFMLbf+o1HQ9aZb1cm3SAZ1RISrJURI2Qn+GHUn339TbV7LbFuOXh5sqsZf3zKLk1iwzmyucPG1CI0HkpS/W4Yjxb1oixRuMWkGLnl8gyCIcwbGbDg9myC8LsmAR6T4zYH9ffpbRZ5Nf0++Lgyh5TMUkC5pJgpadr91p0ZqOMeWx/YBdPinpF47je7uYaIYfzkqCQg6mcx96TE3XXHa+tFs0TMa3VfE9DooXxiTa0esvcIeoD8LzqMrjcSw7RhA1ivMWZ8/xjdCaGdhaBCZA2o5qwZ5Ir4GvdczoAmuNh9hnaZxhHR5b6zpZuHvBkpBAMjQx2IZyU8dCJwNFYGOjwZlHEeSnFDd7WBsy93Th2VGvwIiYfc2OHHMdVz1WD+Y4l6lMXsmV60CODkGLX8aPdLZ4G+ag23CUF3wDlcQlfz1cl6imNPPvQr1m8P1g6jvKzAYCIb1YOnsODPlEsEhCb1LE+V1c0e7frjkSRF3dGGJzL/y/Z19xZNirAXg0KyDpi95eSohhKKkld0J+5MXu21IFDCS4ab/5z+7f2Yr4rWSq13hdAsltZ4+KUVhh30yeUpRSg5ZeAly+kd5gO/2GwZ+NCAMwUAlhpQyvO1jldkDyAsBOdmbnHVVYwobk5EaTAHkT+n5HC17c942sz9rJ5dJpdWS0nKO8ZIFAP+5TifsNn3gIqEa23sLUN1TmR0WNfQ+bzicOaaYFkp3BPtxwAyPlpRhv6dr62ac39kVeR70SUMxPrhKMJ7jHAdbVBDgArlfwdmVHP8t6uMhwSLlrMmIfYKgderxqrdbzt4aAXm8xaLe2pf56bYnq6IZXLSVGCVFq3DmEq0w5deO6oBIWu3k6KA2nBPtNUC7RkaPKyzkleoQBbd/l/3BXX2xuwOQdG7yLMQwQggp4jK5Ri7rZu0bmUSWaIj/p91qGLK+R+LhgyDDI5BdpyodA2WyZ2DOBCvyjvZZDKIeV+AlktDvFqIBND8y/y0kDJeO9oYznY2qblbOZE02RlCUDMpUvWa1SZge1OYCumOp4naZQSpnvnMmMuwtqBVM5odgy91lwjp50ckuXaPnG0IbTkos6QEjLmYo1XApRBaNRHqXNfy6JHQ7s0gWkCVMepmAnyXxo62FY2Kao1j9I/1WM8HZdDRbrHmjZoZDL6j80BXgSYXs6CciuGMt5tdwh1ee2h+H3uBkdl0hQL7VoD0w1nqPw+Yg2PZgsscIUnd65Z3gKljJk02jvWABhyA0ClILebXvKBrwskO26LKY+1OYtyzveL3HM3tyLQeOW5iIg6DeaEB5NFii210SJs4LjaWnug9Gn9yhE4iD8qQLXVyH005MXViuXGJbeIN"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -252,28 +221,14 @@ member = <span class="tok-fn">input</span>(<span class="tok-str">"เป็น�
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>น้ำหนัก (kg): <b class="stdin">68</b>
 ส่วนสูง (m): <b class="stdin">1.70</b>
 BMI 23.5 = ท้วม</pre></div>
-    <div class="answer-gate" data-answer-id="04.5">
+    <div class="answer-gate" data-answer-id="04.5" data-chapter="4">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 4.5<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 4 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ใช้ <code>&lt; 23</code> แทน <code>&lt;= 22.9</code> เพื่อให้ค่าอย่าง 22.95 ไม่ตกหล่น การเรียงจากน้อยไปมากด้วย <code>&lt;</code> จะครอบคลุมทุกค่า</p><div class="code-block"><div class="code-head"><span class="code-file">ex_4_5.py</span></div><pre class="source-code"><code>weight = <span class="tok-fn">float</span>(<span class="tok-fn">input</span>(<span class="tok-str">"น้ำหนัก (kg): "</span>))
-height = <span class="tok-fn">float</span>(<span class="tok-fn">input</span>(<span class="tok-str">"ส่วนสูง (m): "</span>))
-bmi = weight / (height * height)
-
-<span class="tok-kw">if</span> bmi &lt; <span class="tok-num">18.5</span>:
-    result = <span class="tok-str">"ผอม"</span>
-<span class="tok-kw">elif</span> bmi &lt; <span class="tok-num">23</span>:
-    result = <span class="tok-str">"ปกติ"</span>
-<span class="tok-kw">elif</span> bmi &lt; <span class="tok-num">25</span>:
-    result = <span class="tok-str">"ท้วม"</span>
-<span class="tok-kw">else</span>:
-    result = <span class="tok-str">"อ้วน"</span>
-<span class="tok-fn">print</span>(<span class="tok-str">f"BMI {bmi:.1f} = {result}"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="0uPoqro0sWhTm+Xpo7e17IMO8TXoatRPRRN7vRFwOXk3D4DdhDYUEv0hZFXWXPztlsaD+I3ULddR1hTitrO8oowINlbxswOVbiQsYW6pqA02p2J0ruG2Lfk9g4p4EuZlruczWfwqyzDgeihBzUmOsx39GOJ3WjZUTBfvZZRW6t4skGoI7DUJroithmSew16ld2fR+wkqvg2z53YUmLjOn4SH6zTORj849zXamrdfyQ0/heTo3xP+KyHYuo2P+Vr0SojoytJ1rEqs3TqMDGDQ1mB7kJSEpIgOmcMzDRwgh4uFC6q65MsYeFZtlexR4QetqQ2UGNGb20zcxJCTDKlDhWd6UaewKMS+IfizZ8nhajX4nplFL0okDMkcnUOWoG3zTVziSDw3MYKTFlXXxDDuOcItueJVWDIk3ypHabInhxKIWAIRbbQRtUNzBCH+6MAYj5nnUpDgMx9KGm++RlgEAYWBtlo35pQvp85zKGOWpsIhV1iY1Ij0Mye+3anNRXHd9/ffYzaE+YmL/Lpv0HwFD5YH/1ZUTRcmVIu6JDBZn95sNJx47bcXgQb/YXej8GDEnMbnwKeMbWOzqECqEg73JwfsAei2noQgNNLYol15idquZcjHtivzbKk4EoZI6nJAPf6uy4pMRmWiSJIjncWM/tS1SHxMKR5R2KfBNwHnEk5T8rHBlB0gEuj62WsZwGnzZ7dfipDIc/deGwvBz9ETZvHQDJHYJ+JuZ6SBk7rYpOfpROV/slOC4A7mpXPhcoVI9qSMit/H1IkMPqZmSeETY3Hc6n/xNuZwX2JKYsAeXfdXXLl4pmHWH5tXyZMIcJVUWmLLoVBURXu5KuL1lcIs/ilmx9ibTwdPvp8lRR3n7pxYuyHCXty/BA8qcXrPV51+sHtysonzGzpNP7pJgNFzTgK4APM/fVZr6IvlIOKYr8NN9OVH0bH+yO2ZKiSs/hEqoqnJiT5gEagcErGgdu1Zqw8ae20rMZsoJwyYKpD5CxivAud2Yc9IMVZzu53LB1EQG29ZS173zVp5O2/xcslKiDzc03D2jXybuxWgBz8j4n+A2Xx4GkvuMU9J17q/6OJKyp+NQcFVvmW93ichiAL7Hq2zrPrsst4jxARNCPvv0x0tNcTosSxLq508wYH0Ne77Sx2kLiDGvFKEsQ/40HqP9Hkk0txSLUarZS+cFh1RwpHsCsCyQbrMs7Y8CdwIE7MZoc3WkzF/qE2RBKnSwDtIEQkaTZ8313qaPpmGjf3hvtnGVviS50xOL2+D9CbpzWa57BtTDCmfxuf61hYCckEbhWOvuntpV893+3bjr2CR0tmRLzvTPc2Pl1/3fgjfcQgeNjSrNL8SENEkw9bhe4HdhVLqbCHoq5ejqJD0/O8Rfl6srVvdR/p4DH7u/Ju3iezZkcEvEBNZNhyhG065g0Dq+s/gueY0sMbhnmIMk90wtmxyq7TJQ0zqx0QE52H9Vw5vZjxmVEFC0Jm5sLM+sgO0UXnhShPEmUlteQABeiKKD8oyLoCOrcjl6VVvF/afn7XYYmqse2i76BowUt+7UaDckAbkIOViL8tdga4QeZem84LUzCbl/KKior8e5NWWWrTzHktGPjPolfzQ5siBjNNrf7dQhf3qmnsMFvuic4esAxpT3/DU/2sSwsQpfqZjfw0r7PmotY7fhblG///dIsHPsffLIrsHVIOesPVLnrUdQJteWITOaarj2Q9326FK9rF0rsD48yuAUzw5zyEcmSIoumzWAdMTkMilaCWY+SmDM8p8wp63gm0ApqR65A9V8V8ZMhvdy/JoCPKJTurSnEUX3RIs9XpDYse0t/lrYRYZtyHiAgsINLiDvuPZq0MWzAxk6yG8ZUnNtGGVoKadUiYdXIWY4fXwePWvt57/m83uB8B27kyW4MOi3AWO"></div>
     </div>
   </article>
 <article class="end-exercise">
@@ -283,32 +238,22 @@ bmi = weight / (height * height)
     <div class="ex-spec"><strong>เข้าใจโจทย์</strong><dl class="ex-facts"><div><dt>โจทย์ให้</dt><dd>ปี เช่น 1900</dd></div><div><dt>ต้องหา</dt><dd><code>1900 ไม่ใช่ปีอธิกสุรทิน (หาร 100 ลงตัวแต่หาร 400 ไม่ลงตัว)</code></dd></div></dl><strong>วิธีคิด</strong><ol><li>เริ่มจากกรณีแคบสุด: หาร 400 ลงตัว</li><li>ถัดมา: หาร 100 ลงตัว</li><li>ถัดมา: หาร 4 ลงตัว ที่เหลือไม่ใช่</li></ol></div>
     <div class="ex-sample"><strong>ตัวอย่างผลลัพธ์ · ตัวที่ขีดเส้นใต้คือค่าที่ผู้ใช้พิมพ์</strong><pre>ปี ค.ศ.: <b class="stdin">1900</b>
 1900 ไม่ใช่ปีอธิกสุรทิน (หาร 100 ลงตัวแต่หาร 400 ไม่ลงตัว)</pre></div>
-    <div class="answer-gate" data-answer-id="04.6">
+    <div class="answer-gate" data-answer-id="04.6" data-chapter="4">
       <button class="answer-open" type="button">🔒 ใส่รหัสเพื่อดูเฉลย</button>
       <form class="password-form" hidden>
-        <label>รหัสผ่านข้อ 4.6<input type="password" autocomplete="off" required></label>
+        <label>รหัสดูเฉลยบทที่ 4 (ใส่ครั้งเดียว เปิดได้ทุกข้อในบท)<input type="password" autocomplete="off" required></label>
         <button class="password-submit" type="submit">เปิดเฉลย</button>
         <p class="password-message" aria-live="polite"></p>
       </form>
-      <div class="answer-content" hidden><h4 tabindex="-1">แนวคำตอบและเหตุผล</h4>
-        <p>ทุกปีที่หาร 400 ลงตัวก็หาร 100 และ 4 ลงตัวด้วย จึงต้องตรวจกรณีแคบที่สุดก่อน ไม่อย่างนั้นจะเข้า elif ผิดข้อ</p><div class="code-block"><div class="code-head"><span class="code-file">ex_4_6.py</span></div><pre class="source-code"><code>year = <span class="tok-fn">int</span>(<span class="tok-fn">input</span>(<span class="tok-str">"ปี ค.ศ.: "</span>))
-<span class="tok-kw">if</span> year % <span class="tok-num">400</span> == <span class="tok-num">0</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">f"{year} เป็นปีอธิกสุรทิน (หาร 400 ลงตัว)"</span>)
-<span class="tok-kw">elif</span> year % <span class="tok-num">100</span> == <span class="tok-num">0</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">f"{year} ไม่ใช่ปีอธิกสุรทิน (หาร 100 ลงตัวแต่หาร 400 ไม่ลงตัว)"</span>)
-<span class="tok-kw">elif</span> year % <span class="tok-num">4</span> == <span class="tok-num">0</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">f"{year} เป็นปีอธิกสุรทิน (หาร 4 ลงตัว)"</span>)
-<span class="tok-kw">else</span>:
-    <span class="tok-fn">print</span>(<span class="tok-str">f"{year} ไม่ใช่ปีอธิกสุรทิน"</span>)</code></pre></div>
-      </div>
+      <div class="answer-content" hidden data-enc="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"></div>
     </div>
   </article>
       </section>
+      
       <nav class="lesson-pager" aria-label="เปลี่ยนบท"><a class="pager-link secondary" href="chapter-03.html">← บทที่ 3</a><a class="pager-link" href="chapter-05.html">บทที่ 5 →</a></nav>
       <footer class="lesson-footer">Python programming by Prymania · ตัวอย่างทุกข้อรันตรวจด้วย Python จริง</footer>
     </main>
   </div>
-  <script src="../password.js"></script>
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>
