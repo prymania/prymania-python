@@ -1,0 +1,47 @@
+<!-- คัดลอกจาก D:/_claudeCalculus/private/src/appendix-f-feedback.html · build แทน FEEDBACK_URL และ <!--CHAPTER_OPTIONS--> (รายชื่อบท ค่า "บทที่ N") ให้เอง -->
+<div class="box idea"><div class="box-t">💬 หน้านี้คืออะไร</div>
+<ul>
+<li>ช่องส่งข้อความถึงอาจารย์ <b>ไม่ต้องล็อกอิน และไม่ระบุชื่อ</b></li>
+<li>ถามเนื้อหาที่ยังไม่เข้าใจ แจ้งจุดผิดในเว็บ หรือบอกว่าอยากให้สอนแบบไหน หรือจะชมก็ได้ ไรเงี้ย 😊 ส่งได้หมดนะ</li>
+<li>คำถามที่หลายคนน่าจะสงสัย อาจารย์จะตอบไว้ในหัวข้อ <a href="#s2">คำถามที่พบบ่อย</a> ให้ทุกคนอ่าน</li>
+</ul></div>
+
+<h2 id="s1">ส่งข้อความ</h2>
+<div class="widget fb" data-w="feedback" data-url="FEEDBACK_URL">
+<div class="widget-head">✉️ ข้อความถึงอาจารย์ <span class="tag">ไม่ระบุชื่อ</span></div>
+<form class="widget-body fb-form" novalidate>
+<fieldset class="fb-types"><legend>เรื่องอะไร</legend>
+<label><input type="radio" name="type" value="คำถามเนื้อหา" checked><span>❓ คำถามเนื้อหา</span></label>
+<label><input type="radio" name="type" value="ข้อคิดเห็น/ข้อเสนอแนะ"><span>💡 ข้อคิดเห็น / ข้อเสนอแนะ</span></label>
+<label><input type="radio" name="type" value="แจ้งจุดผิดในเว็บ"><span>🐞 แจ้งจุดผิดในเว็บ</span></label>
+<label><input type="radio" name="type" value="อื่น ๆ"><span>✏️ อื่น ๆ</span></label>
+</fieldset>
+<label class="fb-field"><span>เกี่ยวกับบทไหน</span>
+<select name="chapter">
+<option value="ไม่ระบุ">ไม่ระบุ / ทั้งวิชา</option>
+<!--CHAPTER_OPTIONS-->
+<option value="ภาคผนวก">ภาคผนวก / หน้าเว็บทั่วไป</option>
+</select></label>
+<label class="fb-field"><span>ข้อความ</span>
+<textarea name="msg" rows="6" maxlength="2000" placeholder="เช่น ทำไม for i in range(5) ได้ 0 ถึง 4 ไม่ถึง 5 · แบบฝึกหัดข้อ 4.3 พิมพ์ผิด · อยากให้มีตัวอย่าง pandas เพิ่ม"></textarea></label>
+<div class="fb-hp" aria-hidden="true"><label>เว็บไซต์ <input name="website" tabindex="-1" autocomplete="off"></label></div>
+<div class="fb-foot"><span class="fb-count">0 / 2000</span><button type="submit">ส่งข้อความ</button></div>
+<p class="fb-status" role="status" aria-live="polite"></p>
+</form></div>
+<p>ถ้าแจ้งจุดผิด บอกเลขตัวอย่างหรือเลขข้อมาด้วย อาจารย์จะหาเจอเร็วขึ้น · ถ้าโค้ด error ให้คัดลอกข้อความ error บรรทัดสุดท้ายมาด้วย · หรือถามในห้องเรียนเลยก็ได้นะ อาจจะได้โบนัสด้วยงี้</p>
+
+<h2 id="s2">คำถามที่พบบ่อย</h2>
+<p>คำถามจากเพื่อน ๆ ที่อาจารย์เลือกมาตอบให้ทุกคนอ่าน ใหม่สุดอยู่บน · กดที่คำถามเพื่อดูคำตอบ</p>
+<div class="widget" data-w="faq" data-url="FEEDBACK_URL"></div>
+
+<h2 id="s3">ไม่ระบุชื่อจริงไหม</h2>
+<div class="kv"><span>อาจารย์เห็น</span><span>เวลาที่ส่ง · ประเภท · บท · ข้อความ</span><span>ระบบไม่เก็บ</span><span>ชื่อ · อีเมล · รหัสนิสิต · IP · คุกกี้</span><span>เพื่อนเห็น</span><span>เฉพาะคำถามที่อาจารย์เลือกขึ้นคำถามที่พบบ่อย และอาจารย์อาจเกลาคำถามใหม่ก่อน</span><span>ระวังเอง</span><span>ถ้าเขียนสิ่งที่บอกตัวตน เช่น ชื่อเล่น หรือ "ผมที่นั่งหน้าสุด" ระบบก็ช่วยปิดให้ไม่ได้</span></div>
+<p>ส่งแล้วแก้หรือลบเองไม่ได้ ถ้าส่งผิด ส่งข้อความใหม่บอกอาจารย์ได้เลย</p>
+
+<div class="box cs"><div class="box-t">💻 ในโลกคอมพิวเตอร์: กด "ส่ง" แล้วข้อความไปไหน</div>
+<ul>
+<li>เบราว์เซอร์แพ็กข้อความเป็นคำขอแบบ <b>HTTP POST</b> ส่งไปที่ <b>Google Apps Script</b> ซึ่งทำหน้าที่เป็นเซิร์ฟเวอร์เล็ก ๆ แล้วเขียนลงแถวใหม่ใน Google Sheet</li>
+<li>คำถามที่พบบ่อยใช้ทางกลับกัน คือ <b>HTTP GET</b> ขอรายการมาเป็น <b>JSON</b> แล้ว JavaScript ในหน้าเว็บสร้างเป็นรายการให้อ่าน — หลักเดียวกับบท Web API ที่เราใช้ <code>requests.get()</code> กับ <code>.json()</code></li>
+<li>กันบอตสแปมด้วย<b>ช่องดัก (honeypot)</b> ที่คนมองไม่เห็นแต่บอตชอบกรอก และ<b>จำกัดอัตรา (rate limit)</b> ว่ารับได้กี่ข้อความต่อ 10 นาที</li>
+<li>เว็บใหญ่ ๆ ใช้หลักเดียวกัน แค่เปลี่ยน Google Sheet เป็นฐานข้อมูล และเปลี่ยนช่องดักเป็น CAPTCHA</li>
+</ul></div>

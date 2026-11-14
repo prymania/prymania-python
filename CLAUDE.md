@@ -6,6 +6,7 @@
 
 - เนื้อหาบทเรียนอยู่ที่ `private/course/course-*.mjs` → `node tools/lesson-builder/build.mjs` → ได้ `chapters/*.html`, เมนูใน `index.html`, `sw.js` (ห้ามแก้ไฟล์ที่ build สร้างตรง ๆ)
 - ภาคผนวกแก้ที่ `tools/lesson-builder/appendix/*.html` · ตัวเลขคะแนนต้องตรงกับตาราง "การวัดผล" ใน `index.html`
+- หน้าสถิติ (`c-stats`) และส่งข้อความ (`d-feedback`) ขึ้นเฉพาะเมื่อใส่ `GOATCOUNTER` / `FEEDBACK_URL` ใน build.mjs · Apps Script อยู่ `private/feedback/`
 - ฟีเจอร์ปากกา/โหมดมืด/A+/ซ่อนเมนู/Quiz ย้ายมาจาก `D:\_claudeCalculus` (ดู `D:\_claudeCalculus\PORTING-GUIDE.md`)
 
 ## ของลับอยู่ใน `private/` (ไม่ขึ้นรีโป Public)

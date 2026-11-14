@@ -50,12 +50,34 @@ function encrypt(kind, chap, plain) {
 // ---------------- เก็บคะแนนท้ายบท (เช็คชื่อ → Quiz Google Form) ----------------
 // id ฟอร์มคือส่วน /forms/d/<id>/ ของลิงก์ (นิสิตใช้ /viewform ห้ามใช้ลิงก์ /edit)
 // บทที่ไม่มี id ในนี้จะไม่มีหัวข้อ "เก็บคะแนนท้ายบท" · เกณฑ์: บทที่ 1–10 บทละ 5 คะแนน (ภาคผนวก A)
+// ฟอร์มที่เผยแพร่แล้ว (ลิงก์ /forms/d/e/<id>/viewform) ใส่เป็น "e/<id>"
+// ตอนนี้ยังใช้ฟอร์มเดียวกันทุกบทชั่วคราว — ได้ฟอร์มแยกของแต่ละบทแล้วแก้ทีละบรรทัด
+const QUIZ_TEMP_FORM = "e/1FAIpQLSfJ2Ehw8f0V1LcZwpRacBryKxvkr99XmjZa3SctDj0j5WoWDQ";
 const QUIZ_FORMS = {
-  // 1: "id ฟอร์ม Quiz บทที่ 1",
+  1: QUIZ_TEMP_FORM, 2: QUIZ_TEMP_FORM, 3: QUIZ_TEMP_FORM, 4: QUIZ_TEMP_FORM, 5: QUIZ_TEMP_FORM,
+  6: QUIZ_TEMP_FORM, 7: QUIZ_TEMP_FORM, 8: QUIZ_TEMP_FORM, 9: QUIZ_TEMP_FORM, 10: QUIZ_TEMP_FORM,
 };
 const QUIZ_POINTS = 5;
-// ระบบเช็คชื่อ (Apps Script ชุดเดียวกับวิชา Calculus) — ปุ่มขั้นที่ 1 ก่อนเปิด Quiz ทุกบท
-const CHECKIN_URL = "https://script.google.com/a/macros/msu.ac.th/s/AKfycbzpTf65VMcSGo4MXHRpm5UwfOpaCDismTxdNom5TLgBY6_NvAO_mg51YacITznabpgrHw/exec?page=teacher";
+// ระบบเช็คชื่อ (Apps Script ชุดเดียวกับวิชา Calculus, ต้นฉบับ D:/_claudeCheckAttendance) — ปุ่มขั้นที่ 1 ก่อนเปิด Quiz ทุกบท
+// ไม่ใส่ ?page=teacher: อาจารย์เปิดแล้วได้หน้าอาจารย์อยู่แล้ว (เช็คอีเมลฝั่งเซิร์ฟเวอร์) ส่วนนิสิตได้หน้า "สแกน QR บนจอ"
+const CHECKIN_URL = "https://script.google.com/a/macros/msu.ac.th/s/AKfycbzpTf65VMcSGo4MXHRpm5UwfOpaCDismTxdNom5TLgBY6_NvAO_mg51YacITznabpgrHw/exec";
+
+// ---------------- สถิติผู้เข้าชม (GoatCounter) → ภาคผนวกสถิติ ----------------
+// code ของ site วิชานี้ (= ส่วนหน้า .goatcounter.com เช่น "prymania-python") · "" = ปิดการนับและไม่สร้างหน้าสถิติ
+// ตั้งค่า site: Allow adding visitor counts ☑ · Dashboard viewable by ทุกคน (ดู PORTING-GUIDE ข้อ 12)
+const GOATCOUNTER = "prymania-python";
+const GC_URL = GOATCOUNTER ? `https://${GOATCOUNTER}.goatcounter.com` : "";
+// หน้าแรกนับรวมกัน ("/x/" กับ "/x/index.html" = หน้าเดียวกัน) · count.js ไม่นับเมื่อเปิดจาก localhost
+const ANALYTICS = GC_URL
+  ? `<script>window.goatcounter={path:function(p){return p.replace(/\\/index\\.html$/,"/")}}</script>
+  <script data-goatcounter="${GC_URL}/count" async src="//gc.zgo.at/count.js"></script>`
+  : "";
+
+// ---------------- ส่งข้อความถึงอาจารย์ (ไม่ระบุชื่อ) + คำถามที่พบบ่อย ----------------
+// Web App URL (/exec) จาก private/feedback/feedback.gs (วิธี deploy: private/feedback/README.md)
+// "" = ยังไม่เปิดระบบ: ไม่สร้างหน้าส่งข้อความ และไม่มีปุ่มท้ายบท
+const FEEDBACK_URL = "https://script.google.com/macros/s/AKfycbxGgCFULGKe0E86pe4kLC1B_zYf35SQRzmPR8UEkZNCwJOkC_itmZpG-AVy5qzA4NhAhw/exec";
+const FEEDBACK_PAGE = "appendix-d-feedback.html";
 
 // กลุ่มบทในเมนูด้านซ้ายและหัวบท
 const GROUPS = {
@@ -343,24 +365,56 @@ function quizBlock(no) {
             <a class="quiz-btn" href="https://docs.google.com/forms/d/${esc(id)}/viewform" target="_blank" rel="noopener">เปิด Quiz บทที่ ${no} ↗</a>
           </div></li>
         </ol>
-        <p class="quiz-note">แบบฝึกหัดท้ายบทด้านบนไม่เก็บคะแนน · ดูกติกาคะแนนทั้งหมดที่ <a href="appendix-a-course.html">ภาคผนวก A · เกณฑ์คะแนน</a></p>
+        <p class="quiz-note">แบบฝึกหัดท้ายบทด้านบนไม่เก็บคะแนน · ดูกติกาคะแนนทั้งหมดที่ <a href="appendix-a-course.html">ภาคผนวก A · เกณฑ์คะแนนและคะแนนนิสิต</a></p>
       </section>`;
+}
+
+// ปุ่มท้ายทุกบท → หน้าส่งข้อความ โดยเลือกบทนี้ไว้ให้ (#ask-N · ใช้ hash ไม่ใช้ ?query เพื่อไม่ให้สถิติ GoatCounter แตกเป็นหลายหน้า)
+function askBlock(no) {
+  if (!FEEDBACK_URL) return "";
+  return `<aside class="ask-card"><div class="quiz-ico" aria-hidden="true">💬</div><div>
+        <h4>มีคำถาม หรือเจอจุดผิดในบทนี้?</h4>
+        <p>ส่งข้อความถึงอาจารย์ได้แบบ<b>ไม่ระบุชื่อ</b> ไม่ต้องล็อกอิน · ดูคำถามที่เพื่อน ๆ เคยถามได้ในหน้าเดียวกัน</p>
+        <a class="quiz-btn ask" href="${FEEDBACK_PAGE}#ask-${no}">ส่งข้อความ / ดูคำถามที่พบบ่อย →</a>
+      </div></aside>`;
 }
 
 // ---------------- ภาคผนวก (เนื้อหาเขียนเป็น HTML ใน tools/lesson-builder/appendix/) ----------------
 
-// คัดลอกมาจากเว็บ Calculus (D:/_claudeCalculus/build/src/appendix-c-course.html, appendix-d-pen.html)
-// หัวข้อในเมนูดึงจาก <h2 id="..."> ของแต่ละไฟล์
+// คัดลอกมาจากเว็บ Calculus (D:/_claudeCalculus/private/src/appendix-*.html)
+// หัวข้อในเมนูดึงจาก <h2 id="..."> ของแต่ละไฟล์ · หน้าสถิติ/ส่งข้อความขึ้นเฉพาะเมื่อตั้งค่า GOATCOUNTER / FEEDBACK_URL แล้ว
+// ตัวอักษร A B C D เรียงตามลำดับที่มีจริง (ข้อความในภาคผนวกจึงไม่ควรอ้างตัวอักษรของหน้าอื่นตรง ๆ)
 const APPENDICES = [
-  { letter: "A", file: "appendix-a-course.html", src: "a-course.html", nav: "เกณฑ์คะแนน", title: "เกณฑ์คะแนน",
-    kicker: "ภาคผนวก A · COURSE GUIDE", sub: "คะแนนมาจากไหน ตัดเกรดอย่างไร และข้อตกลงที่เราใช้ร่วมกันตลอดเทอม" },
-  { letter: "B", file: "appendix-b-pen.html", src: "b-pen.html", nav: "วิธีใช้ปากกา", title: "วิธีใช้ปากกาเขียนบนหน้าเว็บ",
-    kicker: "ภาคผนวก B · HOW TO", sub: "เขียน ไฮไลต์ และจดโน้ตทับบทเรียนด้วย Apple Pencil หรือเมาส์ พร้อมวิธีบันทึกและสำรองหมึก" },
-].map((appendix) => {
+  { file: "appendix-a-course.html", src: "a-course.html", nav: "เกณฑ์คะแนนและคะแนนนิสิต", title: "เกณฑ์คะแนนและคะแนนนิสิต",
+    kicker: "COURSE GUIDE", sub: "ดูคะแนนของตัวเอง คะแนนมาจากไหน ตัดเกรดอย่างไร และข้อตกลงที่เราใช้ร่วมกันตลอดเทอม" },
+  { file: "appendix-b-pen.html", src: "b-pen.html", nav: "วิธีใช้ปากกา", title: "วิธีใช้ปากกาเขียนบนหน้าเว็บ",
+    kicker: "HOW TO", sub: "เขียน ไฮไลต์ และจดโน้ตทับบทเรียนด้วย Apple Pencil หรือเมาส์ พร้อมวิธีบันทึกและสำรองหมึก" },
+  { file: "appendix-c-stats.html", src: "c-stats.html", nav: "สถิติผู้เข้าชม", title: "สถิติผู้เข้าชม", enabled: !!GC_URL,
+    kicker: "VISITOR STATS", sub: "มีคนเปิดเว็บวันละกี่คน และแต่ละบทมีคนอ่านเท่าไร นับแบบไม่ใช้คุกกี้และไม่ระบุตัวตน" },
+  { file: FEEDBACK_PAGE, src: "d-feedback.html", nav: "ส่งข้อความถึงอาจารย์", title: "ส่งข้อความถึงอาจารย์", enabled: !!FEEDBACK_URL,
+    kicker: "ASK & FEEDBACK", sub: "ถามเนื้อหา แจ้งจุดผิด หรือเสนอแนะได้แบบไม่ระบุชื่อ พร้อมคำถามที่พบบ่อยที่อาจารย์ตอบไว้ให้ทุกคน" },
+].filter((appendix) => appendix.enabled !== false).map((appendix, i) => {
+  const letter = String.fromCharCode(65 + i);
   const body = fs.readFileSync(path.join(HERE, "appendix", appendix.src), "utf8").replace(/^<!--[^\n]*-->\r?\n/, "");
   const topics = [...body.matchAll(/<h2 id="([^"]+)">([^<]+)<\/h2>/g)].map(([, id, heading]) => [id, heading]);
-  return { ...appendix, body, topics };
+  return { ...appendix, letter, kicker: `ภาคผนวก ${letter} · ${appendix.kicker}`, body, topics };
 });
+
+// ตัวแทนในไฟล์ภาคผนวกที่ต้องรู้รายชื่อบท/ภาคผนวกทั้งหมด (แทนตอนสร้างหน้า หลังรู้ตัวอักษรครบแล้ว)
+function fillAppendix(body) {
+  const row = (file, label) => `<tr data-gc-path="${file}"><td>${file === "appendix-c-stats.html" ? `${esc(label)} (หน้านี้)` : `<a href="${file}">${esc(label)}</a>`}</td><td class="gc-n">…</td></tr>`;
+  const gcRows = [
+    row("../index.html", "หน้าแรก / สารบัญรายวิชา"),
+    ...chapters.map((chapter, i) => row(`chapter-${pad(i + 1)}.html`, `บทที่ ${i + 1} · ${navTitle(chapter)}`)),
+    ...APPENDICES.map((a) => row(a.file, `ภาคผนวก ${a.letter} · ${a.nav}`)),
+  ].join("\n");
+  const options = chapters.map((chapter, i) => `<option value="บทที่ ${i + 1}">บทที่ ${i + 1} · ${esc(navTitle(chapter))}</option>`).join("\n");
+  return body
+    .replaceAll("GOATCOUNTER_URL", GC_URL)
+    .replaceAll("FEEDBACK_URL", FEEDBACK_URL)
+    .replace("<!--GC_ROWS-->", () => gcRows)
+    .replace("<!--CHAPTER_OPTIONS-->", () => options);
+}
 
 // ---------------- เมนูด้านซ้าย (ใช้ร่วมกันทุกหน้า รวม index.html) ----------------
 
@@ -457,6 +511,8 @@ function pageShell({ file, title, description, main, mainClass = "" }) {
   <script src="../assets/lesson.js"></script>
   <script src="../assets/course-nav.js"></script>
   <script defer src="../assets/ink.js"></script>
+  <script defer src="../assets/widgets.js"></script>${ANALYTICS ? `
+  ${ANALYTICS}` : ""}
 </body>
 </html>`;
 }
@@ -493,7 +549,7 @@ function renderChapter(chapter, index) {
         <div class="level-legend">ระดับความยาก: ${legend}</div>
         ${exercises}
       </section>
-      ${quizBlock(number)}
+      ${quizBlock(number)}${askBlock(number)}
       <nav class="lesson-pager" aria-label="เปลี่ยนบท">${previous}${next}</nav>`,
   });
 }
@@ -515,7 +571,7 @@ function renderAppendix(appendix, index) {
     main: `<div class="utility-row"><a href="../index.html">← สารบัญรายวิชา</a><span class="utility-code">APPENDIX ${appendix.letter}</span></div>
       <header class="lesson-header"><p class="lesson-kicker">${esc(appendix.kicker)}</p><h1>${esc(appendix.title)}</h1><p>${esc(appendix.sub)}</p></header>
       <section class="appendix-body">
-${appendix.body}
+${fillAppendix(appendix.body)}
       </section>
       <nav class="lesson-pager" aria-label="เปลี่ยนหน้า">${previous}${next}</nav>`,
   });
@@ -523,17 +579,32 @@ ${appendix.body}
 
 // ---------------- สร้างไฟล์ ----------------
 
+// assets/x.js → assets/x.js?v=<hash เนื้อหา> เบราว์เซอร์จึงโหลดไฟล์ใหม่ทันทีที่แก้ (จาก bust_cache ของเว็บ Calculus)
+// GitHub Pages ให้จำไฟล์ได้ 10 นาที: หน้าใหม่ + JS เก่า = พัง · SW หาสำเนา offline ด้วย ignoreSearch อยู่แล้ว
+const ASSET_VERSIONS = Object.fromEntries(fs.readdirSync(path.join(ROOT, "assets"))
+  .filter((f) => /\.(css|js)$/.test(f))
+  .map((f) => [f, crypto.createHash("sha1").update(fs.readFileSync(path.join(ROOT, "assets", f))).digest("hex").slice(0, 8)]));
+function bustCache(html) {
+  return html.replace(/((?:\.\.\/)?assets\/)([\w.-]+\.(?:css|js))(?:\?v=[0-9a-f]+)?"/g,
+    (all, dir, f) => (ASSET_VERSIONS[f] ? `${dir}${f}?v=${ASSET_VERSIONS[f]}"` : all));
+}
+
 fs.mkdirSync(OUT, { recursive: true });
+// ลบหน้าภาคผนวกที่ไม่ได้สร้างแล้ว (เช่น ปิด GOATCOUNTER / FEEDBACK_URL) ไม่ให้ค้างในเว็บ
+for (const f of fs.readdirSync(OUT)) {
+  if (/^appendix-.*\.html$/.test(f) && !APPENDICES.some((a) => a.file === f)) fs.rmSync(path.join(OUT, f));
+}
+
 fs.mkdirSync(path.join(ROOT, "assets", "gui"), { recursive: true });
 
 for (const [index, chapter] of chapters.entries()) {
   if (chapter.exercises.length < 6) throw new Error(`Chapter ${index + 1} must have at least six exercises.`);
   const file = `chapter-${pad(index + 1)}.html`;
-  fs.writeFileSync(path.join(OUT, file), renderChapter(chapter, index), "utf8");
+  fs.writeFileSync(path.join(OUT, file), bustCache(renderChapter(chapter, index)), "utf8");
   console.log(`${file}: ${chapter.concepts.length} หัวข้อ, ${chapter.examples.length} ตัวอย่าง, ${chapter.exercises.length} แบบฝึกหัด${QUIZ_FORMS[index + 1] ? " + Quiz" : ""}`);
 }
 for (const [index, appendix] of APPENDICES.entries()) {
-  fs.writeFileSync(path.join(OUT, appendix.file), renderAppendix(appendix, index), "utf8");
+  fs.writeFileSync(path.join(OUT, appendix.file), bustCache(renderAppendix(appendix, index)), "utf8");
   console.log(`${appendix.file}: ภาคผนวก ${appendix.letter}, ${appendix.topics.length} หัวข้อ`);
 }
 
@@ -544,9 +615,18 @@ const NAV_MARKER = /<!-- course-nav -->[\s\S]*?<!-- \/course-nav -->/;
 if (!NAV_MARKER.test(indexHtml)) throw new Error("index.html: missing <!-- course-nav --> marker");
 const HEAD_MARKER = /<script>document\.documentElement\.classList\.add\("js"\);[^\n]*?<\/script>/;
 if (!HEAD_MARKER.test(indexHtml)) throw new Error("index.html: missing the <head> script that sets html.js");
-fs.writeFileSync(indexPath, indexHtml
+// สคริปต์นับผู้เข้าชมอยู่ระหว่าง <!-- analytics --> กับ <!-- /analytics --> · จำนวนบท/ภาคผนวกใน hero-facts อัปเดตให้เอง
+const GC_MARKER = /<!-- analytics -->[\s\S]*?<!-- \/analytics -->/;
+if (!GC_MARKER.test(indexHtml)) throw new Error("index.html: missing <!-- analytics --> marker");
+const FACTS_MARKER = /<b>\d+<\/b> บท \+ \d+ ภาคผนวก/;
+if (!FACTS_MARKER.test(indexHtml)) throw new Error("index.html: missing '<b>N</b> บท + N ภาคผนวก' in hero-facts");
+fs.writeFileSync(indexPath, bustCache(indexHtml
   .replace(NAV_MARKER, () => renderCourseNav({ base: "chapters/" }))
-  .replace(HEAD_MARKER, () => HEAD_SCRIPT), "utf8");
+  .replace(HEAD_MARKER, () => HEAD_SCRIPT)
+  .replace(GC_MARKER, () => `<!-- analytics -->${ANALYTICS ? `
+  ${ANALYTICS}
+  ` : ""}<!-- /analytics -->`)
+  .replace(FACTS_MARKER, () => `<b>${chapters.length}</b> บท + ${APPENDICES.length} ภาคผนวก`)), "utf8");
 
 // ---------------- sw.js: เปิดเว็บได้แม้ไม่มีเน็ต (จาก write_service_worker ของเว็บ Calculus) ----------------
 // มีเน็ต = โหลดของใหม่เสมอ (แล้วเก็บสำเนา) · ไม่มีเน็ต = ใช้สำเนาในเครื่อง
@@ -577,6 +657,7 @@ self.addEventListener("activate", function (e) {
 });
 self.addEventListener("fetch", function (e) {
   if (e.request.method !== "GET") return;
+  if (/goatcounter\.com|gc\.zgo\.at|script\.google(usercontent)?\.com/.test(e.request.url)) return;   // สถิติผู้เข้าชม / FAQ (Apps Script): ไม่เก็บลง cache
   e.respondWith(fetch(e.request).then(function (res) {
     if (res && (res.ok || res.type === "opaque")) {
       var copy = res.clone();
